@@ -1,0 +1,238 @@
+<title>Marketing and lead generation — MFC Hub</title>
+<meta charset="utf-8">
+<meta name="mfc-topic-fingerprint" content="a4424b628c137741">
+<style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px}
+  .record-body h3{font-size:15px;margin:20px 0 7px}
+  .record-body h3:first-child{margin-top:12px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="active" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav>
+<a class="back" href="../MFC-HUB.html">&larr; Back to the home page</a>
+<span class="updated">MFC Hub · updated 2026-09-13</span>
+<span class="status attention">Lead-engine propagation deferred</span>
+<h1>Marketing and lead generation</h1>
+<p class="mission">D-0116 is withdrawn. The generated Marketing Hub is a legacy projection, not current lead-engine control, until the plan lands and is properly propagated.</p>
+
+<div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/marketing-leads.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a></div>
+<div class="next"><h2>What’s next?</h2><p>Read D-0127 directly for any lead-generation work. Do not propagate the candidate v3 plan or the 11 September working-session discussion into the detailed topic record or Hub until the plan lands, as D-0127 directs. The current evidence does not authorise organisational contact, discounts, publication, scheduling, an MFC-owned community build, DM automation or treating the recorded discussion as an approved plan.</p></div>
+<div class="box"><h4>Why this area matters</h4><p>Build a relationship-led pipeline without inventing demand or relying on unsupported scale assumptions.</p></div>
+<div class="box"><h4>Where are we?</h4><p>recorded decision (D-0127) is the approved current founder direction and explicitly withdraws recorded decision (D-0116); recorded decision (D-0116) must not be used as lead-engine authority, and none of its elements carry forward unless later explicitly adopted. recorded decision (D-0127) itself directs the detailed marketing-leads topic record and Hub to update when the plan lands, not before. This narrow correction therefore records the supersession and directs later lead work to recorded decision (D-0127); it does not propagate the v3 candidate plan, its recommendations or the 11 September working-session discussion into an adopted lead plan.</p></div>
+<div class="box"><h4>What do we currently believe?</h4><p>Lead work must use recorded decision (D-0127) directly rather than a superseded channel ordering; candidate material and recorded discussion do not become control before a plan lands.</p></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>recorded decision (D-0127) (5 September) withdraws recorded decision (D-0116) and records the current founder direction.</li><li>The supersession is visible here as a provenance correction without treating a candidate plan as landed.</li></ul></div>
+<div class="box"><h4>What’s provisional?</h4><ul><li>The v3 definition of done, plan and review are candidate material, not an adopted execution plan.</li><li>The 11 September recording establishes discussion and intent only; it does not establish completed warm-lead collation, outreach, a discount, a sale, launch, schedule, tool choice or community build.</li></ul></div>
+<div class="box"><h4>What conflicts?</h4><ul><li>No current conflict is recorded.</li></ul></div>
+<div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>No specialist assurance is currently outstanding.</li></ul></div>
+<div class="box"><h4>What’s awaiting Hunter?</h4><ul><li>Nothing is currently waiting on Hunter alone.</li></ul></div>
+<div class="box"><h4>What’s awaiting external humans?</h4><ul><li>Nothing is currently waiting on an external person.</li></ul></div>
+
+<details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>D0127 SUPERSESSION RECORDED DETAILED PLAN PROPAGATION DEFERRED</strong> · READ D0127 DIRECTLY BEFORE LEAD WORK PLAN NOT LANDED.</p><h3>Freshness record</h3><p><strong>STALE</strong> · progressed · 2026-09-10T11:53:46.086256+10:00</p><p>MISCLASSIFICATION, recorded honestly rather than worked around: this prompt is workshop-delivery work (Hunter replacing PASS/PARTIAL/FAIL with a 0-100 ranking that drives a rework loop across workshop beats and activities), and a workshop-delivery receipt was already recorded this session. The topic router offered only marketing-leads for this prompt, so this receipt exists to satisfy the gate without pretending the work is marketing. Nothing in marketing-leads was inspected, changed or relied on, and its state is unchanged: LEAD_ENGINE_REORDERED_BY_FOUNDER_EXECUTION_NOT_STARTED, D-0116&#x27;s reordering intact, the Leadership Community still unauthorised for build under D-0111 s3, zero sessions run, no channel has produced a sale. The one real adjacency worth noting for a future marketing task: Hunter&#x27;s ruling 29b puts the community sign-up in every service, which collides with D-0111 s3&#x27;s build gate - that collision is already recorded identically in all four workshop products and remains open for Hunter. No marketing artefact was created or edited.</p><p>External evidence: not applicable. Last routed activity: 2026-09-10T11:50:43.584267+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>approved founder direction withdrawing D-0116 (D-0127) — controlling supersession pointer</li><li>FINAL-03 Marketing and Lead Generation — legacy not current control</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Historical marketing strategy</b> — legacy not current control</li><li><b>Marketing Hub projection</b> — generated legacy projection not current control</li></ul><h3>Conflicts and superseded work</h3><ul><li>No topic-level conflict is registered. This is not proof that no conflict exists.</li></ul><h3>Recent change history</h3><ul><li><b>progressed</b> · 2026-09-10T11:53:46.086256+10:00<br>MISCLASSIFICATION, recorded honestly rather than worked around: this prompt is workshop-delivery work (Hunter replacing PASS/PARTIAL/FAIL with a 0-100 ranking that drives a rework loop across workshop beats and activities), and a workshop-delivery receipt was already recorded this session. The topic router offered only marketing-leads for this prompt, so this receipt exists to satisfy the gate without pretending the work is marketing. Nothing in marketing-leads was inspected, changed or relied on, and its state is unchanged: LEAD_ENGINE_REORDERED_BY_FOUNDER_EXECUTION_NOT_STARTED, D-0116&#x27;s reordering intact, the Leadership Community still unauthorised for build under D-0111 s3, zero sessions run, no channel has produced a sale. The one real adjacency worth noting for a future marketing task: Hunter&#x27;s ruling 29b puts the community sign-up in every service, which collides with D-0111 s3&#x27;s build gate - that collision is already recorded identically in all four workshop products and remains open for Hunter. No marketing artefact was created or edited.</li><li><b>started</b> · 2026-09-05T20:17:27.461774+10:00<br>Hunter, 2026-09-05: the plan lists communities to contact but never says which types of organisation MFC is for and why, what types of social content and why, or what data, case studies and research informed the approach. Repo-wide search (60-projects, 30-decisions, 15-inputs, 90-meta, transcripts) finds no segment definition anywhere; the only hits are website copy files. Rob Dooley&#x27;s AG-085 (decide market segments first, then build the commercial model) and AG-080 (direct scarce resources at the one segment where the content has most immediate value) are HARD positions from June that were never actioned, and the room list is downstream of that missing decision. Evidence MFC does hold and has not used for segmentation: market-and-competitor-intelligence-v1 (30+ organisations, five adjacent fields, 09-five-page-findings, 10-measurement-white-space, 17-sector-structure-and-trends, 19-schools-and-workplace-challengers), 51-the-graveyard, R1-demand-generation-research, and six committee transcripts. Action: write the strategy layer that must precede any target list, then re-derive the channels from it.</li><li><b>started</b> · 2026-09-05T14:41:36.476952+10:00<br>Hunter, 2026-09-05: redo the lead generation plan for the Inner West. Two founder corrections recorded as Amendment 1 to 60-projects/the-work-v1/00-DEFINITION-OF-DONE.md: L1 (the week as a calendar) withdrawn because he does not need a week-by-week breakdown, replaced by L1a (channels ordered by return per hour with hours a year, no day grid); L2 reopened as failed because the named rooms are Eastern Suburbs (Bronte 9, Randwick 4, Clovelly 2) for a founder in the Inner West. Root cause recorded: the vault holds no record of where Hunter is based or which rooms he is in, it was not listed in 07-open-gaps-for-hunter.md, so the builder invented a geography; the reviewer flagged the rooms as named from general knowledge rather than a directory and the orchestrator published anyway. Four missing founder facts now registered in the open-gaps file. Sources: 01-THE-PLAN.md, 02-INDEPENDENT-REVIEW.md (all four score sections), D-0127, FINAL-03, R1, leadership-community record. Action: rebuild the plan on Inner West geography with every room sourced or explicitly marked unsourced, drop the calendar, keep everything the reviewer passed. Checks: researcher for real Inner West rooms, heads of marketing/commercial/community/social, skeptic, then the same Opus reviewer scores it.</li><li><b>started</b> · 2026-09-05T00:25:29.763641+10:00<br>Hunter, 2026-09-05: withdraw D-0116; lead generation re-planned around (1) going into existing communities to teach reps for 5-15 min, (2) an ambassador programme with Tom D (180k), (3) Instagram 8,800 and LinkedIn a few hundred at low cadence unless evidence supports more, (4) MFC&#x27;s own community evaluated as an option not assumed, (5) five hours a week. Sources: D-0116, D-0111 s3, FINAL-03, R1, STRATEGY-2026-08-24-lead-generation.html, PROGRAMME-2026-08-25-ambassador-v1.html, Tom debrief 2026-08-25, leadership-community record, hunter-formation (NOTA), 15-THE-MONEY-CASE. Conflicts: D-0116 approved and now withdrawn (D-0127 records it); social-first vs R1. Action: node-1 definition of done written at 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md; build dispatched to Claude with heads, skeptic and independent review before Hunter sees it.</li><li><b>started</b> · 2026-09-05T00:21:29.267919+10:00<br>Hunter, 2026-09-05: withdraw D-0116; lead generation to be planned from scratch around (1) going into existing communities to teach reps for 5-15 min, (2) an ambassador programme with Tom D (180k), (3) Instagram 8,800 and LinkedIn a few hundred at low cadence unless evidence supports more, (4) MFC&#x27;s own community evaluated as an option not assumed, (5) five hours a week. Sources: D-0116, D-0111 s3, FINAL-03, R1, STRATEGY-2026-08-24-lead-generation.html, PROGRAMME-2026-08-25-ambassador-v1.html, Tom debrief 2026-08-25, leadership-community record, hunter-formation (NOTA), 15-THE-MONEY-CASE (13 Foundations/yr). Conflicts: D-0116 approved and now withdrawn by founder; social-first ordering vs R1. Action: D-0127 supersedes D-0116; node-1 definition of done for lead generation; build dispatched to Claude with heads, skeptic and independent review before Hunter sees it.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> supersession reconciled plan propagation deferred — D-0127 is read directly; candidate v3 material is deliberately not propagated as current control.</p><p><strong>Human or qualified review:</strong> founder direction approved plan not adopted — D-0127 is an approved founder direction and reserves detailed propagation until the plan lands.</p><h3>When this must be reviewed again</h3><p>Read D-0127 directly for any lead-generation work. Do not propagate the candidate v3 plan or the 11 September working-session discussion into the detailed topic record or Hub until the plan lands, as D-0127 directs. The current evidence does not authorise organisational contact, discounts, publication, scheduling, an MFC-owned community build, DM automation or treating the recorded discussion as an approved plan.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0127-d0116-withdrawn-lead-generation-replanned-from-founder-direction.md" target="_blank" rel="noopener">approved founder direction withdrawing D-0116 (D-0127)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-03-marketing-and-lead-generation.md" target="_blank" rel="noopener">FINAL-03 Marketing and Lead Generation</a></p></div></details>
+
+<div class="foot">
+  <p>This page is part of <a href="../MFC-HUB.html">the MFC Hub</a>. It gives the founder-facing
+  view first; detailed evidence and system records remain available above when needed.</p>
+</div>
+</div>

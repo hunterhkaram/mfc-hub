@@ -1,0 +1,238 @@
+<title>Organisational operations and governance — MFC Hub</title>
+<meta charset="utf-8">
+<meta name="mfc-topic-fingerprint" content="5796d008727ee6c8">
+<style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px}
+  .record-body h3{font-size:15px;margin:20px 0 7px}
+  .record-body h3:first-child{margin-top:12px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="active" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav>
+<a class="back" href="../MFC-HUB.html">&larr; Back to the home page</a>
+<span class="updated">MFC Hub · updated 2026-09-13</span>
+<span class="status progress">Important records exist · key gaps remain</span>
+<h1>Organisational operations and governance</h1>
+<p class="mission">MFC still needs one reliable view of finances, people, delivery administration and work held outside the vault.</p>
+
+<div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/operations-governance.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a><a class="viewwork" href="https://docs.google.com/spreadsheets/d/1LYQp5Chi7uN-P5FKM_SEV5S1OwvP8nN8qVCnfwQ4XNY" target="_blank" rel="noopener">Open MFC Homepage Actions Register ACT-016 (business-name renewal) <span class="arrow">&rarr;</span></a><a class="viewwork" href="https://mentalfitnesscollective.monday.com" target="_blank" rel="noopener">Open Monday operational boards <span class="arrow">&rarr;</span></a></div>
+<div class="next"><h2>What’s next?</h2><p>Read the official business-name registration notice or account today; preserve ACT-016&#x27;s deadline and cost details as an unresolved internal-record conflict until then, then give Hunter the exact verified expiry, available terms, cost and recommended next move for a human-controlled financial decision. In parallel, map the existing finance, cash-runway, people, delivery-administration and external-system records into this control without creating a parallel database; then verify Monday, Drive, Gmail and Wix readback boundaries and cleanly integrate the current Git work.</p></div>
+<div class="box"><h4>Why this area matters</h4><p>Keep MFC's operating state responsibilities dependencies finances and external work systems visible without inventing a second project-management database.</p></div>
+<div class="box"><h4>Where are we?</h4><p>Important governance and intelligence records exist, but MFC still lacks one verified view of finances, cash runway, people, delivery administration and work held in external systems. On 11 September, the live MFC Homepage Action Register&#x27;s ACT-016 reported a 14 September 2026 business-name renewal deadline, $99 one-year or $189 three-year terms and Not started status. That conflicts with a 9 September recorded report of a possible seven-day window and $50 per year. The Action Register is not an official registration record, so expiry, cost and renewal status remain unresolved until official-source readback. Monday has only been partly checked, and the current vault changes have not yet been cleanly integrated into version control.</p></div>
+<div class="box"><h4>What do we currently believe?</h4><p>Existing records and external systems should be reconciled into one understandable operating picture rather than replaced with another database.</p></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>Fifteen organisational areas have controlled topic records and generated Hub pages.</li><li>The vault, Gmail and selected Drive/grant states have evidence-backed continuity examples.</li></ul></div>
+<div class="box"><h4>What’s provisional?</h4><ul><li>Finance, cash runway, people and delivery administration do not yet have one verified operating view.</li><li>External-system coverage and clean version-control integration remain incomplete.</li><li>ACT-016&#x27;s renewal date and cost conflict with the 9 September recorded report; neither was verified against the official registration account or notice.</li></ul></div>
+<div class="box"><h4>What conflicts?</h4><ul><li>No single verified operating source covers finance, people, delivery administration and external-system state.</li><li>Live Obsidian changes are present on a dirty branch and are not cleanly integrated into version control.</li><li>ACT-016 reports renewal before 14 September 2026 at $99 for one year or $189 for three years, while the 9 September Fathom recording reports a possible seven-day window and $50 per year. Neither is official registration evidence.</li></ul></div>
+<div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>A complete source inventory has not yet been executed.</li><li>Current connectors do not provide universal event capture or prove correct semantic placement.</li></ul></div>
+<div class="box"><h4>What’s awaiting Hunter?</h4><ul><li>Nothing is currently waiting on Hunter alone.</li></ul></div>
+<div class="box"><h4>What’s awaiting external humans?</h4><ul><li>Verify Monday, Drive, Gmail and Wix state through authenticated readback before describing them as current.</li></ul></div>
+
+<details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>PARTIAL OPERATING CONTROL NO UNIFIED VERIFIED LEDGER</strong> · INTERNAL CONTROL USABLE EXTERNAL PARITY INCOMPLETE.</p><h3>Freshness record</h3><p><strong>STALE</strong> · started · 2026-09-10T23:53:14.255648+10:00</p><p>Hunter asked why the vault has unlinked notes; ran a Phase-1 read-only vault-navigation audit (filesystem/git scope reconciliation, link-health regex pass, duplicate-basename count, worktree/node_modules pollution analysis). No controlling decision record conflicts found; this is new infra-diagnostic work, not a topic content change. Action: write single new audit report to 90-meta/reviews/ per explicit user-specified safety boundary (no other vault mutation). Required checks: report-path new/untracked verification (done), scope reconciliation against prior hypothesis counts (done), methodology-limits disclosure for link-health regex pass (done). No remediation performed; explicit human decision gate included in the report.</p><p>External evidence: not applicable. Last routed activity: 2026-09-10T23:48:55.445220+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>Master Project Control — roadmap authority</li><li>Current State and Next Action — derived live pointer</li><li>Living Operating Model — capability and operating map</li><li>Organisation-wide continuity decision (D-0101) — current continuity control</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Current State pointer</b> — current</li><li><b>MFC Homepage Actions Register ACT-016 (business-name renewal)</b> — direct readback internal record official verification pending · verified 2026-09-11</li><li><b>Monday operational boards</b> — partial readback semantics unverified · verified 2026-08-12</li><li><b>Operations Hub projection</b> — generated</li></ul><h3>Conflicts and superseded work</h3><ul><li><b>No single verified operating source covers finance, people, delivery administration and external-system state.</b><br>open<br><span class='src'>Record reference: OPERATING-LEDGER-COVERAGE</span><br><span class='src'>Controlling source: 90-meta/Current State and Next Action.md</span></li><li><b>Live Obsidian changes are present on a dirty branch and are not cleanly integrated into version control.</b><br>open<br><span class='src'>Record reference: GIT-INTEGRATION</span><br><span class='src'>Controlling source: live_git_status</span></li><li><b>ACT-016 reports renewal before 14 September 2026 at $99 for one year or $189 for three years, while the 9 September Fathom recording reports a possible seven-day window and $50 per year. Neither is official registration evidence.</b><br>open<br><span class='src'>Record reference: BUSINESS-NAME-RENEWAL-SOURCE-CONFLICT</span><br><span class='src'>Controlling source: Official business-name registration notice or account — not read in this run</span></li></ul><h3>Recent change history</h3><ul><li><b>started</b> · 2026-09-10T23:53:14.255648+10:00<br>Hunter asked why the vault has unlinked notes; ran a Phase-1 read-only vault-navigation audit (filesystem/git scope reconciliation, link-health regex pass, duplicate-basename count, worktree/node_modules pollution analysis). No controlling decision record conflicts found; this is new infra-diagnostic work, not a topic content change. Action: write single new audit report to 90-meta/reviews/ per explicit user-specified safety boundary (no other vault mutation). Required checks: report-path new/untracked verification (done), scope reconciliation against prior hypothesis counts (done), methodology-limits disclosure for link-health regex pass (done). No remediation performed; explicit human decision gate included in the report.</li><li><b>progressed</b> · 2026-09-10T15:53:52.722370+10:00<br>Control-layer change, 2026-09-10, on Hunter&#x27;s explicit instruction after he raised that errors kept arising despite the agentic system. Built .claude/hooks/verify_document_assertions.py (MFC-SOURCE-READ), registered on Stop: blocks a turn asserting a named artefact&#x27;s contents when nothing in that turn read it. 17 end-to-end regression cases plus a replay over 365 real turns of this session&#x27;s transcript, which found and fixed a false-positive class the synthetic suite could not see; final rate 1.1 percent with zero false positives on review, 0.30s per turn, fails open. It catches four of the six motivating errors and its own docstring says which two it cannot. Section 12 freeze paid by retiring MFC-PROGRESS-Q11 (4,027 firings, action_taken never once set, never blocks) along with its guard in run_all_controls.py; both files marked retired in place rather than deleted. Also fixed: session_orientation.py was crashing on an uncaught subprocess timeout in its branch check, which killed the tool before it printed the resume pointer, the lesson binding register or the founder signal register - the entire reason CLAUDE.md offers it as the session-start fast path. It now degrades and all six sections print. L-089 written and bound. Control suite moved from 12 failures to 10; both failures caused by this work are closed and the remaining 10 are pre-existing and named.</li><li><b>started</b> · 2026-09-07T22:02:17.936163+10:00<br>Not an operations change. The router matched on the scratchpad path rather than the content. What is being produced is the workshop skeleton page for Hunter — architecture, not script — carrying the fixes from today&#x27;s two-sided design debate. The workshop-delivery receipt for this same work was recorded minutes earlier in this session. No operating record, finance view, people record or external system is touched, and no Monday, Drive, Gmail or Wix state is described or changed. Action: publish the skeleton page for founder decision; nothing applied to the design file. Required checks: K-08, the environment boundary said once, no unsourced figures, and every proposed fix costed against the beat it displaces.</li><li><b>progressed</b> · 2026-09-07T11:19:08.958413+10:00<br>Same workstream as the framework-integrity receipt recorded this turn: rewriting the Astra build prompts for all eight framework models after three founder corrections (Environment is the social layer of other road users, rules, norms and expectations rather than a draining/supportive dial; the HOS is an assembling and driving sequence with a crossroads choice point rather than a click-to-explore diagram; the invented pressure-ring jargon is removed and Stop-Shift-Do becomes a designed traffic light with a symbol per lamp in MFC&#x27;s palette). Sources inspected: corrected K-07 HOS section, K-07 locked step and skill wording, K-08 claim boundaries, mfc-site.html design tokens, Radar v2 build constraints. No foundations record changed; the Environment defect was in the treatment, not the governed wording. Parked and explicitly not dropped: the K-07 propagation sweep is part-done, with three live website copy files corrected to seven parts, six current workshop delivery files still carrying the six-part reading, and twelve dated records still needing supersession markers rather than rewrites.</li><li><b>started</b> · 2026-09-07T00:41:52.021666+10:00<br>Creative expansion round: two further models added by the founder this session — a ripple chain across successive moments in a day (what you do in one moment shapes the next), and a zoom-out from inside one person to the people around them, carrying his central argument that we are not just colleagues, workers, friends, siblings, bosses or athletes but humans, and that no system was ever built to teach and practise these skills. Also standing: the explorable Human Operating System atlas, the Roles model, and designed reusable marks for Stop-Shift-Do and the Workable too-little/too-much scale. New founder constraint carried into every brief: no AI-generated realistic humans, no faces, abstract non-identifiable figures only, output must read as deliberately designed rather than AI-generated. Sources inspected: canonical topic register (operations-governance, framework-integrity, website), K-07 and K-08, founder-voice explaining-mental-fitness and design-rationale, Moment Bank, Radar v2 pipeline and the 2026-09-04 live parity check. Conflicts: the outward-ripple model is the closest thing in this set to a causal or outcome claim and is explicitly routed to head-of-framework for the permitted K-08 framing rather than resolved here; three live domain spellings still block shareable asset URLs. Action: execute head-of-framework, head-of-product, head-of-digital and head-of-marketing lenses in parallel. No artefact created, no destination updated, no governance added. Checks: governed public wording verbatim; no diagnostic or scored reading of a person; no claim that MFC improves third parties&#x27; wellbeing; accessibility parity for every visual.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> partial control evidence — Deterministic topic control and Hub checks pass; broader operating-source coverage is incomplete.</p><p><strong>Human or qualified review:</strong> retained — Financial</p><h3>When this must be reviewed again</h3><p>Any material operating-state, finance, people, external commitment or system-parity change.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/MFC%20Intelligence%20System%20—%20Master%20Project%20Control.md" target="_blank" rel="noopener">Master Project Control</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/Current%20State%20and%20Next%20Action.md" target="_blank" rel="noopener">Current State and Next Action</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/living-operating-model/00-index.md" target="_blank" rel="noopener">Living Operating Model</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0101-organisation-wide-continuity-and-propagation-control.md" target="_blank" rel="noopener">Organisation-wide continuity decision (D-0101)</a></p></div></details>
+
+<div class="foot">
+  <p>This page is part of <a href="../MFC-HUB.html">the MFC Hub</a>. It gives the founder-facing
+  view first; detailed evidence and system records remain available above when needed.</p>
+</div>
+</div>

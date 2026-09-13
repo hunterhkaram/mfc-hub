@@ -1,0 +1,238 @@
+<title>Committee — MFC Hub</title>
+<meta charset="utf-8">
+<meta name="mfc-topic-fingerprint" content="4541eef833ab7135">
+<style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px}
+  .record-body h3{font-size:15px;margin:20px 0 7px}
+  .record-body h3:first-child{margin-top:12px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="active" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav>
+<a class="back" href="../MFC-HUB.html">&larr; Back to the home page</a>
+<span class="updated">MFC Hub · updated 2026-09-13</span>
+<span class="status progress">7 September catch-up recorded · 9/11 September planning inputs only</span>
+<h1>Committee</h1>
+<p class="mission">The 9 September Hunter–Onno and 11 September Hunter–Jake recordings add planning context only; no schedule, agenda, renewal, decision or approval is verified, and the 52 M12 positions remain pending Hunter approval.</p>
+
+<div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/committee.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a></div>
+<div class="next"><h2>What’s next?</h2><p>Use M12 positions and the 9 and 11 September planning discussions only to prepare a compact founder decision map and clearly labelled operational-plan draft. Treat Jake&#x27;s agenda/reply statement as an internal working intention until a sent artifact and response are read back. Retain Rob&#x27;s written or verbal feedback route. Verify the official business-name registration record before reporting a deadline or recommending renewal. Do not schedule, renew, spend, send or treat a non-response, meeting discussion or advisory support as approval, consent, ratification or strategy finalisation. After a response or timing point, bring Hunter a short approve/revise/hold recommendation with exact source basis.</p></div>
+<div class="box"><h4>Why this area matters</h4><p>Be the single home for everything relating to the MFC Committee — governance, membership, meetings and notices, AGM matters, and committee-facing communications and papers — not only the flow of sending a given paper.</p></div>
+<div class="box"><h4>Where are we?</h4><p>The 31 August Committee feedback remains captured alongside Eimear Quigley&#x27;s same-day email in the Advisor Guidance Register. The 7 September Committee catch-up is now also recorded in Fathom: the raw recording verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated; no Rob speaker appears. This is recording-based participation evidence, not an inference from Calendar RSVP status. The register holds 378 captured entries plus one withdrawn unsourced entry, including 52 M12 advisory positions from the catch-up; all are pending Hunter approval. Hunter&#x27;s 7 September post-meeting email offers Rob a verbal or written feedback route and states an intended Friday timing point. No Rob reply was visible in the checked Gmail evidence. The recording, advisor guidance and follow-up email do not establish a committee decision, consensus, consent, legal/privacy clearance, strategy finalisation or approval. Onno&#x27;s chair-authored notes remain advisory source material, not formal signed minutes, approved policy or an approval decision. The current task is source-grounded founder triage, not automatic adoption. A 9 September Hunter–Onno governance follow-up is now recorded. It captures discussion of draft dates, a possible monthly rhythm, AGM preparation, board materials, measurement follow-up and a reported business-name renewal window. These are planning inputs only: no calendar schedule, constitutional or regulatory requirement, official registration expiry, renewal, payment, formal resolution, approval or ratification was verified. An 11 September Hunter–Jake working session adds a further planning input: Jake said he would begin an agenda draft and reply to Onno. The recording does not verify a sent reply, Onno&#x27;s agreement, a board calendar, a formal agenda or any adoption.</p></div>
+<div class="box"><h4>What do we currently believe?</h4><p>Committee feedback is now a controlled input to a founder decision map; it must improve the strategy without silently becoming policy or removing participant-delivery protections.</p></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>Hunter&#x27;s email and seven-page report were sent to Jake and Onno and verified in Gmail (the 11 August paper).</li><li>Onno&#x27;s 16 August structural feedback is captured and built into FINAL-08.</li><li>FINAL-08 passes the unsourced-numeric-claim check with zero findings and contains no em dashes.</li><li>Hunter read and sent the rebuilt FINAL-08 (v8) and the optional FINAL-13 companion (v15) to Onno and Jake, 17 August 2026, user-reported.</li><li>Onno reviewed the rebuilt paper and replied 2026-08-17T09:09:55Z (Gmail-verified) that it captures the 5 W&#x27;s and How well and should be sent to the committee as-is; committee feedback to happen live at the next meeting.</li><li>{&#x27;Hunter sent FINAL-08 to the full 7-person committee at 2026-08-17T09:50:56Z (Gmail-verified&#x27;: &#x27;SENT label, all 7 recipients correct, PDF attached), and a calendar invite for Mon 31 Aug 2026 7:30-8:30pm AEST went out to the same list.&#x27;}</li><li>Hunter sent Rob and both known Rachel addresses a request for commercial-strategy feedback on 1 September; Rob and Rachel have each replied that the 7 September option works for them. Rachel&#x27;s 6:30pm question was candidate timing only, not substantive feedback or approval.</li><li>Before the event date, the live Calendar verified the 7 September catch-up&#x27;s schedule, Meet link and RSVP statuses. That historical Calendar readback did not itself prove attendance or an outcome.</li><li>The raw Fathom recording now verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated in the 7 September catch-up; no Rob speaker appears. This is recording-based participation evidence, not a formal minute, committee resolution, approval, consensus, policy or strategy finalisation.</li><li>Onno sent chair-authored written notes titled &quot;Key notes and actions 31 August 2026 meeting&quot; on 1 September. They are a verified source for recorded follow-up and framing, not formal signed minutes or approved policy.</li><li>A 9 September Fathom recording verifies that Hunter and Onno discussed governance planning. It is a current advisory/planning source, not a calendar confirmation, formal minute, legal requirement, financial action, approval, ratification or decision.</li></ul></div>
+<div class="box"><h4>What’s provisional?</h4><ul><li>The FINAL-13 market-gap companion document was not attached to the full-committee send (only sent earlier to Onno and Jake individually); unclear whether that was intentional for this circulation.</li><li>Onno&#x27;s one refinement note (tighten for concision) has not been actioned or explicitly deferred by Hunter; the paper went out as-is per his own recommendation.</li><li>The 31 August Committee feedback and Eimear&#x27;s same-day email are captured in the Advisor Guidance Register. They remain pending Hunter approval; the register is not a substitute for a decision record.</li><li>A committee roster and governance record now exists (GOVERNANCE-committee-roster.md), reconstructed from Gmail history at Hunter&#x27;s request; it is explicitly not yet Hunter-confirmed, and the Secretary role plus Rachel Willis&#x27;s and Eimear Quigley&#x27;s specific committee offices are marked as not confirmed rather than guessed.</li><li>The 31 August meeting opener was reconciled with recorded decision (D-0110)/recorded decision (D-0111), extended live through the meeting (product benefit case, October-launch reframing, recorded decision (D-0115) pricing changes), reviewed twice for claims accuracy against K-08/recorded decision (D-0104), independently pre-publish reviewed (one $59 rounding error found and fixed), then delivered by Hunter to open the 31 August meeting. The feedback is now captured in the Advisor Guidance Register; formal minutes and Hunter&#x27;s approval decisions are still not recorded.</li><li>A reusable skill (`.claude/skills/preread-meeting-opener/SKILL.md`) was extended from this session&#x27;s live drafting to cover in-session founder benefit-claim additions, founder-override handling, live length management and the mandatory pre-publish read, for use on the next pre-read opener.</li><li>The 7 September Calendar booking supersedes the earlier 6:30pm candidate time. The Fathom recording confirms a recorded discussion, but no direct Rob reply was visible in the checked Gmail evidence after Hunter&#x27;s post-meeting follow-up. That checked absence is not consent, comfort, approval or a basis to finalise strategy.</li><li>Proposed dates, a possible meeting rhythm, AGM preparation, roles, board materials, a measurement discussion and a reported business-name renewal window were raised on 9 September. No calendar event, constitution/ACNC source, official registration record, renewal, payment, formal resolution or ratification was verified in this run.</li><li>The 11 September Hunter–Jake recording captures Jake&#x27;s stated intention to draft an agenda and reply to Onno. It does not verify a sent message, Onno&#x27;s response, a board calendar, a formal agenda or adoption.</li></ul></div>
+<div class="box"><h4>What conflicts?</h4><ul><li>The internal 31 August opener described Foundations as the only product built for adoption with a leader session and presented a monthly session as an offer. Reconciled with recorded decision (D-0110)&#x27;s individual-teaching boundary and recorded decision (D-0111)&#x27;s shared, unified manager session before the opener was finalised and delivered on 2026-08-31; the delivered script&#x27;s manager-session and product-architecture language matches recorded decision (D-0111)&#x27;s shape.</li></ul></div>
+<div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>No specialist assurance is currently outstanding.</li></ul></div>
+<div class="box"><h4>What’s awaiting Hunter?</h4><ul><li>Nothing is currently waiting on Hunter alone.</li></ul></div>
+<div class="box"><h4>What’s awaiting external humans?</h4><ul><li>The 7 September catch-up is recorded in Fathom: Hunter, Rachel Willis, Onno van-es and Jake Pepper participated; no Rob speaker appears. Its 52 M12 positions are captured in the Advisor Guidance Register but remain pending Hunter approval. Hunter&#x27;s post-meeting email offers Rob a verbal or written route; no reply was visible in the checked Gmail evidence. A recording, advisor guidance or non-response does not establish attendance beyond the recording, substantive Rob feedback, approval, consent, consensus, policy or a binding finalisation condition.</li></ul></div>
+
+<details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>COMMITTEE CATCHUP AND GOVERNANCE FOLLOW UP RECORDED JAKE AGENDA DRAFT INTENT RECORDED ROB FEEDBACK PENDING FOUNDER TRIAGE</strong> · M12 ADVISORY INPUT AND GOVERNANCE PLANNING CONTEXT CAPTURED JAKE DRAFT INTENT RECORDED ROB FEEDBACK PENDING FOUNDER TRIAGE.</p><h3>Freshness record</h3><p><strong>STALE</strong> · reconciled · 2026-09-08T08:22:03.434227+10:00</p><p>Raw Fathom transcript 180421578, Gmail follow-up readback, Advisor Guidance Register and MFC Homepage readback</p><p>External evidence: verified readback. Last routed activity: 2026-09-01T23:45:06.699439+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>The committee paper itself — the artifact to send</li><li>Monday send folder — operational workspace</li><li>Committee pack (full set of committee papers) — committee document corpus</li><li>Committee consolidation result — historical assessment and current quality record</li><li>Committee consolidation decision trail — premise and assurance evidence</li><li>Committee roster and governance record (7 positions and terms, drafted from Gmail history, not yet Hunter-confirmed) — committee governance record</li><li>9 September Hunter–Onno governance follow-up (bounded source extract) — current advisory governance follow up</li><li>11 September Hunter–Jake working session — current governance planning evidence not decision</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Committee working folder</b> — current draft</li><li><b>Email to Jake and Onno (11 August paper)</b> — sent verified readback · verified 2026-08-13</li><li><b>Rebuilt FINAL-08 and FINAL-13 sent to Onno and Jake</b> — sent confirmed by recipient reply · verified 2026-08-17</li><li><b>FINAL-08 circulated to the full 7-person committee</b> — sent verified readback · verified 2026-08-17</li><li><b>Calendar invite for next committee meeting</b> — sent verified · verified 2026-08-17</li><li><b>31 August meeting opener (reconciled, reviewed, delivered live)</b> — delivered 2026 08 31</li><li><b>Reusable pre-read opener skill (extended 2026-08-31)</b> — current</li><li><b>Committee Hub projection</b> — generated</li><li><b>Rob Dooley and Rachel Willis feedback request</b> — sent verified readback · verified 2026-09-01</li><li><b>Rob Dooley availability reply for the 7 September feedback option</b> — availability confirmed not meeting · verified 2026-09-02</li><li><b>Rachel Willis availability reply and 6:30pm question for the 7 September feedback option</b> — availability confirmed time proposed not meeting · verified 2026-09-03</li><li><b>MFC Committee Meeting Catch-up — Commercial Strategy Review</b> — scheduled verified readback historical · verified 2026-09-04</li><li><b>7 September Committee catch-up recording</b> — recorded readback advisory pending · verified 2026-09-08</li><li><b>Hunter's 7 September post-meeting follow-up to Rob</b> — sent verified readback response pending · verified 2026-09-08</li><li><b>Onno's written 31 August meeting notes</b> — received advisory not approved · verified 2026-09-02</li><li><b>9 September Onno x Hunter governance follow-up</b> — recorded readback advisory actions unverified · verified 2026-09-10</li></ul><h3>Conflicts and superseded work</h3><ul><li><b>The internal 31 August opener described Foundations as the only product built for adoption with a leader session and presented a monthly session as an offer. Reconciled with D-0110&#x27;s individual-teaching boundary and D-0111&#x27;s shared, unified manager session before the opener was finalised and delivered on 2026-08-31; the delivered script&#x27;s manager-session and product-architecture language matches D-0111&#x27;s shape.</b><br>closed reconciled<br><span class='src'>Record reference: COMMITTEE-OPENER-PRODUCT-ARCHITECTURE</span><br><span class='src'>Controlling source: 30-decisions/D-0110-foundations-individual-teaching-not-environment-readiness.md; 30-decisions/D-0111-product-architecture-and-manager-session-unified.md</span></li></ul><h3>Recent change history</h3><ul><li><b>reconciled</b> · 2026-09-08T08:22:03.434227+10:00<br>Raw Fathom transcript 180421578, Gmail follow-up readback, Advisor Guidance Register and MFC Homepage readback</li><li><b>reconciled</b> · 2026-09-04T08:13:58.470272+10:00<br>Direct Calendar full-event readback schedules the Committee catch-up for 7 September 2026, 7:30–8:30pm Australia/Sydney with Google Meet and mixed RSVP statuses; this records scheduling only, not attendance, feedback, approval, consensus, policy or AG-225 satisfaction.</li><li><b>reconciled</b> · 2026-09-03T08:15:17.660278+10:00<br>Direct Gmail readback confirms Rachel is available for 7 September and asks whether 6:30pm is intended; primary-calendar MFC and Rob searches bounded to 7 September found no event for the call, so the time is recorded as a candidate and not a booking, approval, feedback or AG-225 satisfaction.</li><li><b>reconciled</b> · 2026-09-02T08:16:23.688240+10:00<br>2026-09-02 organisational-freshness follow-on: direct Gmail readback confirms Hunter&#x27;s 1 September feedback request and Rob&#x27;s reply that the 7 September option works; Onno&#x27;s chair-authored 31 August meeting notes received. No Rachel reply was found in the checked Gmail evidence and no MFC calendar event was found in the 1–3 September search; no meeting is confirmed. AG-225 remains pending advice, not a binding finalisation condition.</li><li><b>progressed</b> · 2026-09-01T11:50:23.753763+10:00<br>Hunter sent the Rob/Rachel feedback-request email himself; independently verified via Gmail search (in:sent, subject match), SENT label present, thread 1a05aa5784cab744, sent 2026-09-01T01:49:19Z to the correct recipients with Onno and Jake CC&#x27;d. This satisfies Onno&#x27;s hard AG-225 condition that the strategy cannot finalise without Rob&#x27;s and Rachel&#x27;s feedback. Registered as an operational_destination on the committee topic record with full verification evidence, and next_action updated to reflect the two-week response window (due approximately 2026-09-15) running in parallel with the founder decision map over the Advisor Guidance Register entries.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> internal assurance controls passed — Distinct premise audit and visible five-option ranking are recorded; L-051 and L-057 pass.</p><p><strong>Human or qualified review:</strong> committee feedback captured founder approval pending — Gmail verifies the 17 August circulation. The raw Fathom recording verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated in the 7 September catch-up; no Rob speaker appears. The 52 M12 positions are captured in the Advisor Guidance Register but none is approved by Hunter. Hunter&#x27;s post-meeting Gmail follow-up offers Rob a response route; no reply was visible in the checked evidence. None of this is committee approval, consent, policy or a finalisation decision.</p><h3>When this must be reviewed again</h3><p>Use M12 positions and the 9 and 11 September planning discussions only to prepare a compact founder decision map and clearly labelled operational-plan draft. Treat Jake&#x27;s agenda/reply statement as an internal working intention until a sent artifact and response are read back. Retain Rob&#x27;s written or verbal feedback route. Verify the official business-name registration record before reporting a deadline or recommending renewal. Do not schedule, renew, spend, send or treat a non-response, meeting discussion or advisory support as approval, consent, ratification or strategy finalisation. After a response or timing point, bring Hunter a short approve/revise/hold recommendation with exact source basis.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-08-committee-paper.md" target="_blank" rel="noopener">The committee paper itself</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/monday-send-onno-jake-v1/" target="_blank" rel="noopener">Monday send folder</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/" target="_blank" rel="noopener">Committee pack (full set of committee papers)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/RESULT-2026-08-12-committee-document-consolidation.html" target="_blank" rel="noopener">Committee consolidation result</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/TRAIL-2026-08-12-committee-consolidation.html" target="_blank" rel="noopener">Committee consolidation decision trail</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/GOVERNANCE-committee-roster.md" target="_blank" rel="noopener">Committee roster and governance record (7 positions and terms, drafted from Gmail history, not yet Hunter-confirmed)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/10-sources/fathom-transcripts/2026-09-09-onno-x-hunter-governance-follow-up-extract.md" target="_blank" rel="noopener">9 September Hunter–Onno governance follow-up (bounded source extract)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/10-sources/fathom-transcripts/2026-09-11-jake-x-hunter-impromptu.md" target="_blank" rel="noopener">11 September Hunter–Jake working session</a></p></div></details>
+
+<div class="foot">
+  <p>This page is part of <a href="../MFC-HUB.html">the MFC Hub</a>. It gives the founder-facing
+  view first; detailed evidence and system records remain available above when needed.</p>
+</div>
+</div>

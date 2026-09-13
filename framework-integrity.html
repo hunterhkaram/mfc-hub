@@ -1,0 +1,238 @@
+<title>Framework integrity evidence and claims — MFC Hub</title>
+<meta charset="utf-8">
+<meta name="mfc-topic-fingerprint" content="67530ba878968e34">
+<style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px}
+  .record-body h3{font-size:15px;margin:20px 0 7px}
+  .record-body h3:first-child{margin-top:12px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="active" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav>
+<a class="back" href="../MFC-HUB.html">&larr; Back to the home page</a>
+<span class="updated">MFC Hub · updated 2026-09-13</span>
+<span class="status progress">Current working Framework · formal approval still needed</span>
+<h1>Framework integrity evidence and claims</h1>
+<p class="mission">The current skills, tools and language are consistent enough to guide product work; Committee/adviser approval and continuing evidence review are still needed.</p>
+
+<div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/framework-integrity.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a></div>
+<div class="next"><h2>What’s next?</h2><p>Maintain the current Framework as the build basis; route any material terminology or claims change through the Observatory source map and obtain the named human assurance before representing it as ratified.</p></div>
+<div class="box"><h4>Why this area matters</h4><p>Keep MFC's meaning architecture terminology evidence position and claims boundaries current without treating product language as validated science.</p></div>
+<div class="box"><h4>Where are we?</h4><p>MFC currently works with five public skills, seven deeper skills, Stop-Shift-Do, State Check, Mental Reps and Radar. This is the basis for current product work and has passed internal consistency checks. The Committee and advisers have not yet ratified the overall Framework, and continuing evidence review is still required.</p></div>
+<div class="box"><h4>What do we currently believe?</h4><p>Mental fitness is best presented as MFC&#x27;s practical synthesis of learnable capabilities for everyday moments, not as a separately proven scientific category.</p></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>The five public skills, seven deeper skills and current tools have one controlled meaning.</li><li>Internal source, evidence-boundary and logical-integrity checks exist.</li></ul></div>
+<div class="box"><h4>What’s provisional?</h4><ul><li>The overall Framework and claims position are not Committee/adviser-ratified.</li><li>Continuing evidence review and external challenge remain necessary.</li></ul></div>
+<div class="box"><h4>What conflicts?</h4><ul><li>Current Framework meaning is internally controlled but foundations and claims are not committee-ratified.</li><li>No construct-validation evidence establishes mental fitness as a distinct scientific category; public wording must identify it as MFC&#x27;s synthesis.</li></ul></div>
+<div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>No completed committee/adviser ratification is recorded for the whole Framework.</li></ul></div>
+<div class="box"><h4>What’s awaiting Hunter?</h4><ul><li>Obtain the appropriate human ratification before describing the Framework or claims position as formally approved.</li></ul></div>
+<div class="box"><h4>What’s awaiting external humans?</h4><ul><li>Nothing is currently waiting on an external person.</li></ul></div>
+
+<details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>CURRENT FRAMEWORK CONTROLLED PROVISIONAL ASSURANCE OPEN</strong> · CURRENT BUILD BASIS NOT COMMITTEE RATIFIED.</p><h3>Freshness record</h3><p><strong>CURRENT</strong> · started · 2026-09-13T13:47:42.609572+10:00</p><p>Scheduled evidence-watch run 2026-09-13. Controlling sources inspected: .claude/skills/evidence-watch/SKILL.md, references/watch-topics.md (17 non-category construct rows), references/run-log.md (last actual search pass 2026-08-17), references/artifact-url.md, references/master-sheet-url.md (master Sheet 12uNDPNkPbNaERMiZe1QdTx4LzNYr7nSaWt2pXvbV2Zg, 71 rows). Conflict found: run log&#x27;s last row is 2026-08-17 but today is 2026-09-13 - the weekly watch has not run for 26 days, so roughly three scheduled runs were missed; window start set to 2026-08-18 and the gap will be disclosed in both digests and the run log rather than presented as a clean weekly result. Action: abstract-level PubMed + web sweep across all 17 construct rows, dated markdown + HTML digest into 15-inputs/, HTML published in place at the standing Artifact URL, master Sheet regenerated, pointer files and run log updated. Checks required: step 7a register/Sheet duplicate check before naming any hit as new; K-08 exclusion tagging with every screened paper still shown; no 10-sources/ per-paper record written by this skill; no evidence marked approved.</p><p>External evidence: not applicable. Last routed activity: 2026-09-13T13:50:29.969110+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>Foundations index — canonical foundations index</li><li>Framework architecture — canonical framework architecture</li><li>Claims red lines — canonical claims boundary</li><li>Framework Observatory review — controlled assurance review</li><li>framework confirmations (D-0089) — controlling decision</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Controlled foundations</b> — current provisional</li><li><b>Framework Hub projection</b> — generated</li></ul><h3>Conflicts and superseded work</h3><ul><li><b>Current Framework meaning is internally controlled but foundations and claims are not committee-ratified.</b><br>open known<br><span class='src'>Record reference: FRAMEWORK-RATIFICATION</span><br><span class='src'>Controlling source: 00-foundations/README.md</span></li><li><b>No construct-validation evidence establishes mental fitness as a distinct scientific category; public wording must identify it as MFC&#x27;s synthesis.</b><br>open known<br><span class='src'>Record reference: DISTINCT-CATEGORY-EVIDENCE</span><br><span class='src'>Controlling source: 90-meta/framework-integrity-observatory/00-index.md</span></li></ul><h3>Recent change history</h3><ul><li><b>started</b> · 2026-09-13T13:47:42.609572+10:00<br>Scheduled evidence-watch run 2026-09-13. Controlling sources inspected: .claude/skills/evidence-watch/SKILL.md, references/watch-topics.md (17 non-category construct rows), references/run-log.md (last actual search pass 2026-08-17), references/artifact-url.md, references/master-sheet-url.md (master Sheet 12uNDPNkPbNaERMiZe1QdTx4LzNYr7nSaWt2pXvbV2Zg, 71 rows). Conflict found: run log&#x27;s last row is 2026-08-17 but today is 2026-09-13 - the weekly watch has not run for 26 days, so roughly three scheduled runs were missed; window start set to 2026-08-18 and the gap will be disclosed in both digests and the run log rather than presented as a clean weekly result. Action: abstract-level PubMed + web sweep across all 17 construct rows, dated markdown + HTML digest into 15-inputs/, HTML published in place at the standing Artifact URL, master Sheet regenerated, pointer files and run log updated. Checks required: step 7a register/Sheet duplicate check before naming any hit as new; K-08 exclusion tagging with every screened paper still shown; no 10-sources/ per-paper record written by this skill; no evidence marked approved.</li><li><b>started</b> · 2026-09-09T13:12:43.508539+10:00<br>Hunter rejected the manager session&#x27;s central argument (M3&#x27;s driving/times tables/bins analogy set) after reading a rendering of 03-MANAGER-SESSION-DESIGN.md for the first time, and gave a new brief: the session is a planning session with an intention, about high-friction workplace moments not struggle moments, about the environment a manager creates and what gets rewarded, with a working block where managers build something for their own team. Sources inspected: 03-MANAGER-SESSION-DESIGN.md (candidate, 2026-09-02, AI-simulated manager panel disclosed), 08-DEFINITION-OF-DONE.md Ch5, 07-BUYER-PACK.md R5, K-07 (locked framework), K-08 claim limits, D-0113 (inside the price), advisor register AG-001/AG-011/AG-131/AG-160/AG-165. Conflict found: M3 is cut and M8&#x27;s consulting block exists only to answer M3&#x27;s three questions, so both must be rebuilt together; the design&#x27;s Ch5 pass (50.9% environment minutes) was counted against a structure that no longer holds. Action: redesign via chief-of-staff routing head-of-product, head-of-framework and head-of-compliance, with head-of-digital excluded as genuinely irrelevant (no website, data capture or widget in scope). Required checks: skeptic pass before the result reaches Hunter; K-08 and AG-001 applied to everything a manager hears; preserved load-bearing items are the M7 scope rule, the do-not-go-looking ask, and the quiet-employee safety line.</li><li><b>started</b> · 2026-09-08T10:22:31.442824+10:00<br>Hunter, 2026-09-08: &#x27;is this a combined approach with the agentic systems best attempt at constructing the spine whilst combining my founder transcript and plan? I want us to maximise our approach for this.&#x27; Honest reconstruction of what the current spine proposal was actually built from: D-0130, the 7 September founder capture, the written 58-minute script, 02-MERGED, plus framework/compliance passes. Three real limitations found and disclosed to Hunter rather than papered over: (1) the four movements are a REORGANISATION of the existing fourteen beats, not an independent construction, so the result is anchored to the artefact that already existed; (2) only one of Hunter&#x27;s transcripts was used, while seven Fathom recordings and two founder interviews exist unmined; (3) the earlier MFC spines - the eleven-part design, spine v2&#x27;s eight beats, and the 2026-08-19/20 experience-design pass Hunter personally commissioned and which was LOST in the 2026-09-01 rebuild - were recorded as collisions and absences but never reconciled into the current structure. Selected action: run three genuinely independent parallel constructions - founder-voice building the arc cold from Hunter&#x27;s own corpus without reading the current design, head-of-product building an optimal arc cold from adult-learning and transfer evidence without reading the current design, and an archaeology pass recovering every prior MFC spine and what each held that the current one dropped - then compare all three against the standing proposal and merge. Required checks: K-07 construct integrity, K-08 claim limits, the ladder property, and a fresh-context adversarial pass over the merged result.</li><li><b>started</b> · 2026-09-08T09:53:27.465953+10:00<br>Hunter rejected the minute-based presentation of the workshop structure on 2026-09-08 and asked for the SPINE to be locked: named movements containing beats, with duration as a per-product setting rather than part of the structure. Sources inspected: 22-THE-PARTICIPANT-FOUNDATION.md (filed today, fourteen movements), 03-DELIVERY-SCRIPT-INTRODUCTION-60.md (the only depth written as spoken words, now 58 min), 02-MERGED-DESIGN-ALL-THREE-PRODUCTS.md (beats table, departures, cut orders), D-0130, and the 2026-09-07 founder capture. Conflict found and NOT silently reconciled: Hunter&#x27;s &#x27;four main things the flow must cover&#x27; was never written down as a named set anywhere in the vault - grep across the redesign folder, decisions and founder notes returns nothing - so the spine&#x27;s top level does not exist as a record and is being defined in this pass rather than retrieved. Second conflict standing: the 90 and 240 per-beat ladders were derived against the retired 56-minute Introduction and have not been re-derived against 58. Selected action: run head-of-product, head-of-framework and head-of-compliance in parallel on the spine proposal, then skeptic in fresh context, then put a single locked-spine recommendation to Hunter. Required checks: K-08 claim limits on anything a participant reads, K-07 framework construct integrity, the ladder property that no beat is added or reordered at any depth, and a fresh-context adversarial pass which has never once run against the fourteen-beat structure.</li><li><b>progressed</b> · 2026-09-07T11:17:48.923430+10:00<br>Rewriting the Astra build prompts after three founder corrections. (1) Environment was built as a draining/supportive quality dial; the founder corrected it to the social layer he means and the model&#x27;s own wording already carries: other people on the roads, the rules, social norms, expectations, everyone turning right so you want to turn right. The governed K-07 wording (people, places, cues, pressures and supports around you) is unchanged and already supports this; the defect was in the treatment, not the record, so no foundations edit is required. (2) The Human Operating System is not a click-to-explore diagram but an assembling, driving, zooming sequence with a crossroads as the choice point. (3) Pressure ring was invented jargon and is removed from Stop-Shift-Do, which becomes a real traffic light with a symbol per lamp, rendered in MFC&#x27;s palette rather than literal signal red/yellow/green. Sources inspected: the corrected K-07 HOS section (seven parts, two tiers, per this session&#x27;s correction against the live Drive model), K-07 locked Stop-Shift-Do step wording and public five skill wording, K-08 claim boundaries for the two ripple models, the site design tokens in mfc-site.html, and the Radar v2 build constraints including the no-em-dash assertion. Conflicts: none new. Action: rewrite 01-ASTRA-PROMPTS.md to cover all eight models with the corrections applied. No foundations record changed. Checks: governed strings verbatim; no scores or diagnostics; no faces on figures; reduced-motion parity; accessibility constraints written into every prompt.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> internal integrity review complete — Framework Observatory source map</p><p><strong>Human or qualified review:</strong> pending where required — Hunter confirmed named terminology decisions; committee/adviser ratification remains incomplete.</p><h3>When this must be reviewed again</h3><p>Material new evidence, terminology change, claims change or scheduled Observatory cycle.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/00-foundations/README.md" target="_blank" rel="noopener">Foundations index</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/00-foundations/K-07-framework-architecture.md" target="_blank" rel="noopener">Framework architecture</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/00-foundations/K-08-claims-red-lines.md" target="_blank" rel="noopener">Claims red lines</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/framework-integrity-observatory/00-index.md" target="_blank" rel="noopener">Framework Observatory review</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0089-progression-and-deep-term-confirmed-workshop-reopened.md" target="_blank" rel="noopener">framework confirmations (D-0089)</a></p></div></details>
+
+<div class="foot">
+  <p>This page is part of <a href="../MFC-HUB.html">the MFC Hub</a>. It gives the founder-facing
+  view first; detailed evidence and system records remain available above when needed.</p>
+</div>
+</div>

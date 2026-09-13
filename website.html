@@ -1,0 +1,238 @@
+<title>Website — MFC Hub</title>
+<meta charset="utf-8">
+<meta name="mfc-topic-fingerprint" content="7ce53901205c283e">
+<style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px}
+  .record-body h3{font-size:15px;margin:20px 0 7px}
+  .record-body h3:first-child{margin-top:12px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="active" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav>
+<a class="back" href="../MFC-HUB.html">&larr; Back to the home page</a>
+<span class="updated">MFC Hub · updated 2026-09-13</span>
+<span class="status progress">Build materials exist · live site not checked</span>
+<h1>Website</h1>
+<p class="mission">The vault contains substantial website work; it has not yet been compared with the live Wix site.</p>
+
+<div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/website.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a></div>
+<div class="next"><h2>What’s next?</h2><p>Reconcile the latest handoff and claims pack against the live Wix site, then fix only verified gaps in the existing build.</p></div>
+<div class="box"><h4>Why this area matters</h4><p>Maintain one public website path from approved strategy and buyer language through build, verification and release.</p></div>
+<div class="box"><h4>Where are we?</h4><p>The vault contains substantial wireframes, copy, build instructions and review work. The live Wix site has not yet been compared with those materials, so the Hub cannot currently confirm what is live, missing or out of date.</p></div>
+<div class="box"><h4>What do we currently believe?</h4><p>MFC should reconcile and improve the existing website build rather than begin another website architecture.</p></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>Substantial wireframes, copy, build instructions and review materials exist in the vault.</li></ul></div>
+<div class="box"><h4>What’s provisional?</h4><ul><li>The live Wix site has not been compared with the current handoff, so live completeness and release status are unknown.</li></ul></div>
+<div class="box"><h4>What conflicts?</h4><ul><li>No current conflict is recorded.</li></ul></div>
+<div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>Verify the live site against current controlled handoff and claims sources.</li></ul></div>
+<div class="box"><h4>What’s awaiting Hunter?</h4><ul><li>Nothing is currently waiting on Hunter alone.</li></ul></div>
+<div class="box"><h4>What’s awaiting external humans?</h4><ul><li>Nothing is currently waiting on an external person.</li></ul></div>
+
+<details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>SUBSTANTIAL HANDOFF EXISTS LIVE PARITY UNVERIFIED</strong> · RECONCILIATION REQUIRED.</p><h3>Freshness record</h3><p><strong>CURRENT</strong> · started · 2026-09-08T11:46:43.046529+10:00</p><p>Hunter, 2026-09-08: he will not deliver from a written script - &#x27;I&#x27;m not gonna read something word for word&#x27; - and what he needs is slides whose bullets work for the audience AND cue him, plus per-slide speaker notes he can glance at and resume from. He also asked the real question: &#x27;based on everything else we&#x27;ve done in the workshops and our conversations, even the website stuff we put on, what&#x27;s important for us to incorporate here?&#x27; And he named the problem plainly: &#x27;we&#x27;re getting really stuck on the sixty minute one.&#x27; Correction recorded in this pass: the adversarial finding that the script is ~4,260 words / ~34 minutes against a 58-minute label was over-read by this system as twenty minutes of dead air. A script delivered from cues is not a teleprompter and its word count is a floor, not a running time. The cut-ladder overstatement and the false &#x27;derived from word counts&#x27; claim both stand as real defects; the dead-air framing does not. Website topic is in play only as a SOURCE - the deck must not contradict approved public language, and the live Wix parity gate (LIVE-WIX-PARITY) remains open and is NOT touched or closed by this task. Selected action: one bounded head-of-marketing pass to extract the approved public language and claims the deck must match, while the deck itself is built as a format conversion of content already decided under D-0131. Deliberately NOT a full round table - Hunter has named over-processing on this product as the problem. Required checks: K-08 claim limits on every audience-facing slide line, consistency with the website authority-language and claims pack, and no new design decisions introduced under cover of a format change.</p><p>External evidence: not applicable. Last routed activity: 2026-09-09T14:46:19.578813+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>Website build readiness register — readiness control</li><li>Website source and status note — source map</li><li>Website authority language and claims pack — language authority</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Website handoff</b> — substantial current source</li><li><b>Live Wix site</b> — unverified</li><li><b>Website Hub projection</b> — generated</li></ul><h3>Conflicts and superseded work</h3><ul><li>No topic-level conflict is registered. This is not proof that no conflict exists.</li></ul><h3>Recent change history</h3><ul><li><b>started</b> · 2026-09-08T11:46:43.046529+10:00<br>Hunter, 2026-09-08: he will not deliver from a written script - &#x27;I&#x27;m not gonna read something word for word&#x27; - and what he needs is slides whose bullets work for the audience AND cue him, plus per-slide speaker notes he can glance at and resume from. He also asked the real question: &#x27;based on everything else we&#x27;ve done in the workshops and our conversations, even the website stuff we put on, what&#x27;s important for us to incorporate here?&#x27; And he named the problem plainly: &#x27;we&#x27;re getting really stuck on the sixty minute one.&#x27; Correction recorded in this pass: the adversarial finding that the script is ~4,260 words / ~34 minutes against a 58-minute label was over-read by this system as twenty minutes of dead air. A script delivered from cues is not a teleprompter and its word count is a floor, not a running time. The cut-ladder overstatement and the false &#x27;derived from word counts&#x27; claim both stand as real defects; the dead-air framing does not. Website topic is in play only as a SOURCE - the deck must not contradict approved public language, and the live Wix parity gate (LIVE-WIX-PARITY) remains open and is NOT touched or closed by this task. Selected action: one bounded head-of-marketing pass to extract the approved public language and claims the deck must match, while the deck itself is built as a format conversion of content already decided under D-0131. Deliberately NOT a full round table - Hunter has named over-processing on this product as the problem. Required checks: K-08 claim limits on every audience-facing slide line, consistency with the website authority-language and claims pack, and no new design decisions introduced under cover of a format change.</li><li><b>started</b> · 2026-09-07T15:19:07.091032+10:00<br>Not a website change. The topic router matched on the founder-voice corpus paths, which the website copy also draws from. What is actually being created is a new bench agent, founder-voice, at Hunter&#x27;s direct request after he found that the workshop design captured the evidence line and not the reason it matters to people. Sources inspected: the 2026-09-07 founder capture and its addendum, the existing founder-lens agent definition which judges rather than produces, the 13-founder-voice-v2 corpus, 05-brand-voice-and-language and 15-copywriting-craft-fundamentals. Conflict: none with website records; the agent is bound to workshop-delivery and names website copy only as a downstream use. Action: create the agent, then run it with head-of-product on the hour&#x27;s structure. Required checks: K-08 claim limits written into the agent&#x27;s own constraints, the do-not-publish markings on hunter-formation carried explicitly, and a standing instruction to mark which words are Hunter&#x27;s and which are composed.</li><li><b>started</b> · 2026-09-07T00:36:40.275527+10:00<br>Design specification for explorable framework models: an interactive Human Operating System atlas, a Roles model (same person and system across social roles, showing the same untaught skills load-bearing across all), and designed reusable marks for Stop-Shift-Do and the Workable too-little/too-much scale, exportable as SVG/PDF/slide/facilitator-card assets, delivered as small HTML pieces per website section. Sources inspected: canonical topic register (framework-integrity, website, operations-governance), K-07 and 00-foundations governance of HOS components and public wording, founder-voice explaining-mental-fitness and design-rationale captures, Radar v2 build pipeline and 2026-09-04 live parity check, advisor guidance surfaced this session (AG-036 use over understanding, AG-042 visual ladder, AG-147 prompts over blank page, AG-294/322 glossary and link-at-point-of-use, AG-194/195 de-identification). Conflicts: three live spellings of the MFC domain block any shareable asset URL; /radar is a 404 and the site has been unpublished since 19 July, so October is closer to a first launch than a refresh; AG-036 holds that understanding is not the differentiator, and Hunter has himself framed these as descriptive explorable models rather than education-first, which resolves the tension in his direction. Action: execute head-of-framework for governed model specification, head-of-product for the experience design, head-of-digital for 3D-versus-layered-2D feasibility, export pipeline and cost. No artefact created, no destination updated, no governance added. Checks: governed public wording verbatim; no diagnostic or scored reading of a person; K-08 claim boundaries on any accumulation or prevention implication; accessibility parity for every visual.</li><li><b>started</b> · 2026-09-05T20:59:05.697861+10:00<br>Content review of the six example moments in the website&#x27;s fictional interactive Radar demonstration (Radar widget, rebuild-v2). Controlling sources inspected: MOMENT-WRITING-STANDARD-001.md (approved working rule for moment wording: When/Before/After shape, Level 1+2 tests, five non-negotiable boundaries incl. do-not-embed-the-response, 8-22 word editorial rule); CONTEXTUAL-RECOMMENDATION-MODEL-001.md (Direction/Moment/Possible next move/Shift Tool layering, eight recommendation profiles); DIRECTION-PROFILE-MAP-001.md (profile assignment rules, 132/132 directions covered); 90-meta/agent-context-v1/14-moment-examples-bank.md (standing rule: no session may invent a moment scenario from scratch; M-01 and M-02 are verified entries matching territories 3 and 6; M-06 the running one is a known-lost entry); 00-foundations/K-07-framework-architecture.md (Notice/Shift/Choose/Focus/Connect public labels, Stop-Shift-Do recall structure, mental rep definition). Conflicts found: none between these sources. The six territories are supplied by Hunter directly 2026-09-05, which is a valid moment-bank source and does not breach the no-invention rule; territories 3 and 6 must be anchored to M-01/M-02 verbatim framing rather than redrafted. Advisor constraints in play and binding on this copy: AG-001 and AG-008 (no outcome claims, correlation only) bear on the single possible-outcome screen; AG-010 (no-disclosure premise) is why the demo uses a fictional character; AG-027/AG-028 (lead with what people get, single caveat appearance) and AG-292/AG-293 (permitted claim set must be written down) bind the copy. Selected action: chief-of-staff round table across product, marketing, compliance, framework, research and digital, adversarially checked by skeptic, producing a nine-field revision per scene plus duplication audit, flow audit, per-scene confidence rating and the residual Hunter decisions. Required checks: every Radar moment conformant to MOMENT-WRITING-STANDARD-001 including the do-not-embed-the-response boundary; each scene mapped to a CONTEXTUAL-RECOMMENDATION-MODEL profile; no research support claimed without a traceable source; five evaluation tests reported pass/fail per moment. Scope limits: review and content revision only, no code, no visual art direction, no new controls per governance freeze; live Wix parity gate LIVE-WIX-PARITY remains open and untouched by this work.</li><li><b>started</b> · 2026-09-04T16:44:00.805618+10:00<br>Live parity check of mentalfitnesscollective.com.au against 60-projects/mfc-website/ handoff and rebuild-v2, triggered by the four-product workshop build closing 2026-09-04 and /radar returning 404. Method: Wix connector (ListWixSites/GetSiteContext, authenticated) plus HTTP probes of sitemap and 29 routes.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> historical assurance exists — Multiple handoff and QA records exist; current live parity was not checked in this run.</p><p><strong>Human or qualified review:</strong> release status unverified — Do not infer current production approval.</p><h3>When this must be reviewed again</h3><p>Reconcile the latest handoff and claims pack against the live Wix site, then fix only verified gaps in the existing build.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/mfc-website/website-design-handoff/website-build-readiness-v1.yml" target="_blank" rel="noopener">Website build readiness register</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/mfc-website/website-design-handoff/MFC%20Website%20Source%20and%20Status%20Note.md" target="_blank" rel="noopener">Website source and status note</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/mfc-website/website-design-handoff/MFC%20Website%20Authority%20Language%20and%20Claims%20Pack%20V1.md" target="_blank" rel="noopener">Website authority language and claims pack</a></p></div></details>
+
+<div class="foot">
+  <p>This page is part of <a href="../MFC-HUB.html">the MFC Hub</a>. It gives the founder-facing
+  view first; detailed evidence and system records remain available above when needed.</p>
+</div>
+</div>
