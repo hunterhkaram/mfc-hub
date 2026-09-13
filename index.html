@@ -1,6 +1,6 @@
 <title>MFC — Everything, One Place</title>
 <meta charset="utf-8">
-<meta name="mfc-portfolio-fingerprint" content="4459041a9ec9261d">
+<meta name="mfc-portfolio-fingerprint" content="7ff3128d6b1c2c05">
 <style>
   /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
      logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
@@ -85,6 +85,8 @@
   .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
   .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
   .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
 
   .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
   .rule h3{margin:0 0 6px;font-size:15.5px}
@@ -287,318 +289,329 @@
 <div id="act-list"></div>
 <script id="mfc-actions-state" type="application/json">
 {
- "updated": "2026-09-11",
- "_note": "Founder-edited action state. The published Hub writes back here via its own save; generate_hub.py reads this file and must never overwrite it. 'area' links a task to a work-area id from PILLARS, so each area page can show its open actions.",
- "tasks": [
-  {
-   "id": "t01",
-   "view": "mine",
-   "who": null,
-   "title": "Renew the ASIC business name",
-   "due": "2026-09-16",
-   "src": "Onno 1:1, 9 Sep",
-   "note": "Expires ~16 Sep. $50/yr, Onno agreed. Sits under a separate ABN (73 409 584 823), not the incorporated entity's, which is why it lapses on its own.",
-   "done": false,
-   "area": "operations-governance"
-  },
-  {
-   "id": "t02",
-   "view": "mine",
-   "who": null,
-   "title": "On-site website review at Alysse's",
-   "due": "2026-09-10",
-   "src": "Alysse, 7 Sep",
-   "note": "",
-   "done": false,
-   "area": "website"
-  },
-  {
-   "id": "t03",
-   "view": "mine",
-   "who": null,
-   "title": "Secure Rob's feedback on the commercial strategy",
-   "due": "2026-09-11",
-   "src": "Committee, 7 Sep",
-   "note": "Committed to Fri 11 Sep. Onno's 2-week rule lands 14 Sep. Agreed: proceed without it if nothing arrives.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t04",
-   "view": "mine",
-   "who": null,
-   "title": "Email Eimear, Onno and Debra to schedule the measurement session",
-   "due": "2026-09-12",
-   "src": "Onno 1:1, 9 Sep",
-   "note": "Propose the Monday 6:30pm slot at 2, 3, 4 and 5 weeks out. Measurement forms as pre-reading.",
-   "done": false,
-   "area": "measurement-research"
-  },
-  {
-   "id": "t05",
-   "view": "mine",
-   "who": null,
-   "title": "Send Onno the meeting calendar and AGM proposal",
-   "due": "2026-09-12",
-   "src": "Onno 1:1, 9 Sep",
-   "note": "Monthly first-Monday dates through 2027, public-holiday moves, AGM structure and discussion points.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t06",
-   "view": "mine",
-   "who": null,
-   "title": "Email Jake and Onno with the strategy next steps",
-   "due": "2026-09-12",
-   "src": "Onno 1:1, 9 Sep",
-   "note": "So the paper can be formally moved, seconded and minuted rather than staying in consultation.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t07",
-   "view": "mine",
-   "who": null,
-   "title": "Read the market gap pack in full",
-   "due": "2026-09-14",
-   "src": "This session",
-   "note": "In print, 12+ hours after the last edit. Both documents are candidates, not sent.",
-   "done": false,
-   "area": "market-intelligence"
-  },
-  {
-   "id": "t08",
-   "view": "mine",
-   "who": null,
-   "title": "Update KN-0006: IMTTAQ timing and CC-BY licensing",
-   "due": "2026-09-14",
-   "src": "This session",
-   "note": "Day-21 is outside the validated window; three months is the study's first integration wave. CC-BY 4.0, no permission needed.",
-   "done": false,
-   "area": "measurement-research"
-  },
-  {
-   "id": "t09",
-   "view": "mine",
-   "who": null,
-   "title": "Fix the DGR/HPC contradiction and unhedge the donate page",
-   "due": "2026-09-16",
-   "src": "This session",
-   "note": "Register confirms HPC and DGR Item 1 from 3 Apr 2025, ABN 19 105 963 278. Two vault files disagree, so the site still says 'may be tax deductible'.",
-   "done": false,
-   "area": "operations-governance"
-  },
-  {
-   "id": "t10",
-   "view": "mine",
-   "who": null,
-   "title": "Draft the homepage Stop-Shift-Do copy for Alysse",
-   "due": "2026-09-17",
-   "src": "Alysse, 7 Sep",
-   "note": "Simplified model on the homepage with a Learn More CTA; detail moves to the Mental Fitness page.",
-   "done": false,
-   "area": "website"
-  },
-  {
-   "id": "t11",
-   "view": "mine",
-   "who": null,
-   "title": "Schedule the website review with Jake and Elise",
-   "due": "2026-09-18",
-   "src": "Committee, 7 Sep",
-   "note": "Include the grant and funder-facing lens, not just the client lens.",
-   "done": false,
-   "area": "website"
-  },
-  {
-   "id": "t12",
-   "view": "mine",
-   "who": null,
-   "title": "Circulate the committee pack for 12 October",
-   "due": "2026-09-28",
-   "src": "Onno 1:1, 9 Sep",
-   "note": "A fortnight before, a week before at the latest. Members read before the meeting so the session opens on feedback.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t13",
-   "view": "mine",
-   "who": null,
-   "title": "Draft board bios and send to directors for approval",
-   "due": "2026-09-30",
-   "src": "Committee, 7 Sep",
-   "note": "150-200 words each, same length, on skills / knowledge / experience. Then photos, then Elise brands them.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t14",
-   "view": "mine",
-   "who": null,
-   "title": "Draft the Advisory Committee governance proposal and AGM item",
-   "due": "2026-09-30",
-   "src": "Committee, 7 Sep",
-   "note": "Naming undecided: Advisory Committee vs Clinical Advisory Panel vs Clinical Reference Group.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t15",
-   "view": "mine",
-   "who": null,
-   "title": "Draft the grants strategy, process and calendar; share with Rachel",
-   "due": "2026-10-12",
-   "src": "Jake, 3 Aug",
-   "note": "",
-   "done": false,
-   "area": "grants-funding"
-  },
-  {
-   "id": "t16",
-   "view": "mine",
-   "who": null,
-   "title": "Scope the market sizing with Jake",
-   "due": "2026-10-12",
-   "src": "This session",
-   "note": "Buyer, segment counts, price points, breakeven volume. The largest gap in the commercial thinking.",
-   "done": false,
-   "area": "market-intelligence"
-  },
-  {
-   "id": "t17",
-   "view": "mine",
-   "who": null,
-   "title": "Confirm Google Ad Grants eligibility and apply",
-   "due": "2026-10-31",
-   "src": "Jake, 3 Aug",
-   "note": "",
-   "done": false,
-   "area": "marketing-leads"
-  },
-  {
-   "id": "t18",
-   "view": "mine",
-   "who": null,
-   "title": "Add email capture to the Radar, routing to a 20-minute fit check",
-   "due": "2026-10-31",
-   "src": "Jake, 3 Aug",
-   "note": "",
-   "done": false,
-   "area": "marketing-leads"
-  },
-  {
-   "id": "t19",
-   "view": "mine",
-   "who": null,
-   "title": "Lodge the AIS for 3 Apr 2025 - 30 Jun 2026",
-   "due": "2026-12-31",
-   "src": "AGM thread, 3 Aug",
-   "note": "Extended ~15-month period. Every NSW-specific question must be answered or the Fair Trading exemption is lost.",
-   "done": false,
-   "area": "operations-governance"
-  },
-  {
-   "id": "t20",
-   "view": "waiting",
-   "who": "Rachel Willis",
-   "title": "Privacy and confidentiality policy templates",
-   "due": "2026-09-15",
-   "src": "Committee, 7 Sep",
-   "note": "Blocks the research consent work - the plan depends on anonymous self-generated codes and a workable opt-out.",
-   "done": false,
-   "area": "safeguarding"
-  },
-  {
-   "id": "t21",
-   "view": "waiting",
-   "who": "Rob Dooley",
-   "title": "Feedback on the commercial strategy paper",
-   "due": "2026-09-11",
-   "src": "Committee, 31 Aug",
-   "note": "Outstanding since 31 Aug. Proceed without it if nothing arrives by 14 Sep.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t22",
-   "view": "waiting",
-   "who": "onno van-es",
-   "title": "Board paper and agenda template examples",
-   "due": "2026-09-14",
-   "src": "Onno 1:1, 9 Sep",
-   "note": "He said he'd send thoughts, probably by the weekend. Then Hunter and Elise brand it.",
-   "done": false,
-   "area": "committee"
-  },
-  {
-   "id": "t23",
-   "view": "waiting",
-   "who": "onno van-es",
-   "title": "Kirkpatrick example questions from his team's surveys",
-   "due": "2026-09-20",
-   "src": "Committee, 31 Aug",
-   "note": "Not blocking - our questions already map to the four levels.",
-   "done": false,
-   "area": "measurement-research"
-  },
-  {
-   "id": "t24",
-   "view": "waiting",
-   "who": "onno van-es",
-   "title": "Mental Fitness Australia review and market comparison",
-   "due": "2026-10-12",
-   "src": "Committee, 7 Sep",
-   "note": "MFA is a private company running the Mental Fitness First Responder course - the one Rachel is certified in.",
-   "done": false,
-   "area": "market-intelligence"
-  },
-  {
-   "id": "t25",
-   "view": "waiting",
-   "who": "Jake Pepper",
-   "title": "Confirm revenue for 3 Apr 2025 - 30 Jun 2026",
-   "due": "2026-10-31",
-   "src": "AGM thread, 3 Aug",
-   "note": "Locks in small-charity status (under $500k): no financial report, review or audit needed.",
-   "done": false,
-   "area": "operations-governance"
-  },
-  {
-   "id": "t26",
-   "view": "waiting",
-   "who": "Jake Pepper",
-   "title": "Final Business Plan structure and consolidated draft",
-   "due": "2026-10-12",
-   "src": "Jake, 3 Aug",
-   "note": "",
-   "done": false,
-   "area": "grand-strategy"
-  },
-  {
-   "id": "t27",
-   "view": "waiting",
-   "who": "Alysse Curran",
-   "title": "Mental Fitness page fixes and template duplication",
-   "due": "2026-09-15",
-   "src": "Alysse, 7 Sep",
-   "note": "Resize left image, resolve overlaps, then duplicate the template - saves ~6 hours per page.",
-   "done": false,
-   "area": "website"
-  },
-  {
-   "id": "t28",
-   "view": "waiting",
-   "who": "Alysse Curran",
-   "title": "Notice-Shift-Help and Stop-Shift-Do icon designs",
-   "due": "2026-09-20",
-   "src": "Alysse, 7 Sep",
-   "note": "Replacing the traffic-light graphic, which reads as childish.",
-   "done": false,
-   "area": "website"
-  }
- ]
+  "updated": "2026-09-13",
+  "_note": "Founder-edited action state. The published Hub writes back here via its own save; generate_hub.py reads this file and must never overwrite it. 'area' links a task to a work-area id from PILLARS, so each area page can show its open actions.",
+  "tasks": [
+    {
+      "id": "t01",
+      "view": "mine",
+      "who": null,
+      "title": "Renew the ASIC business name",
+      "due": "2026-09-16",
+      "src": "Onno 1:1, 9 Sep",
+      "note": "Expires ~16 Sep. $50/yr, Onno agreed. Sits under a separate ABN (73 409 584 823), not the incorporated entity's, which is why it lapses on its own.",
+      "done": false,
+      "area": "operations-governance"
+    },
+    {
+      "id": "t02",
+      "view": "mine",
+      "who": null,
+      "title": "On-site website review at Alysse's",
+      "due": "2026-09-10",
+      "src": "Alysse, 7 Sep",
+      "note": "",
+      "done": false,
+      "area": "website"
+    },
+    {
+      "id": "t03",
+      "view": "mine",
+      "who": null,
+      "title": "Secure Rob's feedback on the commercial strategy",
+      "due": "2026-09-11",
+      "src": "Committee, 7 Sep",
+      "note": "Committed to Fri 11 Sep. Onno's 2-week rule lands 14 Sep. Agreed: proceed without it if nothing arrives.",
+      "done": false,
+      "area": "committee"
+    },
+    {
+      "id": "t04",
+      "view": "mine",
+      "who": null,
+      "title": "Email Eimear, Onno and Debra to schedule the measurement session",
+      "due": "2026-09-12",
+      "src": "Onno 1:1, 9 Sep",
+      "note": "Propose the Monday 6:30pm slot at 2, 3, 4 and 5 weeks out. Measurement forms as pre-reading. Meeting organised for Mon 21 Sep. Eimear, Onno and Debra all confirmed available.",
+      "done": true,
+      "area": "measurement-research"
+    },
+    {
+      "id": "t05",
+      "view": "mine",
+      "who": null,
+      "title": "Send Onno the meeting calendar and AGM proposal",
+      "due": "2026-09-12",
+      "src": "Onno 1:1, 9 Sep",
+      "note": "Monthly first-Monday dates through 2027, public-holiday moves, AGM structure and discussion points. Sent 9 Sep. Onno reviewed, requested revisions, confirmed 13 Sep: 'looks great on MFC letterhead'.",
+      "done": true,
+      "area": "committee"
+    },
+    {
+      "id": "t06",
+      "view": "mine",
+      "who": null,
+      "title": "Email Jake and Onno with the strategy next steps",
+      "due": "2026-09-12",
+      "src": "Onno 1:1, 9 Sep",
+      "note": "So the paper can be formally moved, seconded and minuted rather than staying in consultation. Sent 13 Sep.",
+      "done": true,
+      "area": "committee"
+    },
+    {
+      "id": "t07",
+      "view": "mine",
+      "who": null,
+      "title": "Read the market gap pack in full",
+      "due": "2026-09-14",
+      "src": "This session",
+      "note": "In print, 12+ hours after the last edit. Both documents are candidates, not sent.",
+      "done": false,
+      "area": "market-intelligence"
+    },
+    {
+      "id": "t08",
+      "view": "mine",
+      "who": null,
+      "title": "Update KN-0006: IMTTAQ timing and CC-BY licensing",
+      "due": "2026-09-14",
+      "src": "This session",
+      "note": "Day-21 is outside the validated window; three months is the study's first integration wave. CC-BY 4.0, no permission needed.",
+      "done": false,
+      "area": "measurement-research"
+    },
+    {
+      "id": "t09",
+      "view": "mine",
+      "who": null,
+      "title": "Fix the DGR/HPC contradiction and unhedge the donate page",
+      "due": "2026-09-16",
+      "src": "This session",
+      "note": "Register confirms HPC and DGR Item 1 from 3 Apr 2025, ABN 19 105 963 278. Two vault files disagree, so the site still says 'may be tax deductible'.",
+      "done": false,
+      "area": "operations-governance"
+    },
+    {
+      "id": "t10",
+      "view": "mine",
+      "who": null,
+      "title": "Draft the homepage Stop-Shift-Do copy for Alysse",
+      "due": "2026-09-17",
+      "src": "Alysse, 7 Sep",
+      "note": "Simplified model on the homepage with a Learn More CTA; detail moves to the Mental Fitness page.",
+      "done": false,
+      "area": "website"
+    },
+    {
+      "id": "t11",
+      "view": "mine",
+      "who": null,
+      "title": "Schedule the website review with Jake and Elise",
+      "due": "2026-09-18",
+      "src": "Committee, 7 Sep",
+      "note": "Include the grant and funder-facing lens, not just the client lens.",
+      "done": false,
+      "area": "website"
+    },
+    {
+      "id": "t12",
+      "view": "mine",
+      "who": null,
+      "title": "Circulate the committee pack for 12 October",
+      "due": "2026-09-28",
+      "src": "Onno 1:1, 9 Sep",
+      "note": "A fortnight before, a week before at the latest. Members read before the meeting so the session opens on feedback.",
+      "done": false,
+      "area": "committee"
+    },
+    {
+      "id": "t13",
+      "view": "mine",
+      "who": null,
+      "title": "Draft board bios and send to directors for approval",
+      "due": "2026-09-30",
+      "src": "Committee, 7 Sep",
+      "note": "150-200 words each, same length, on skills / knowledge / experience. Then photos, then Elise brands them.",
+      "done": false,
+      "area": "committee"
+    },
+    {
+      "id": "t14",
+      "view": "mine",
+      "who": null,
+      "title": "Draft the Advisory Committee governance proposal and AGM item",
+      "due": "2026-09-30",
+      "src": "Committee, 7 Sep",
+      "note": "Naming undecided: Advisory Committee vs Clinical Advisory Panel vs Clinical Reference Group.",
+      "done": false,
+      "area": "committee"
+    },
+    {
+      "id": "t15",
+      "view": "mine",
+      "who": null,
+      "title": "Draft the grants strategy, process and calendar; share with Rachel",
+      "due": "2026-10-12",
+      "src": "Jake, 3 Aug",
+      "note": "",
+      "done": false,
+      "area": "grants-funding"
+    },
+    {
+      "id": "t16",
+      "view": "mine",
+      "who": null,
+      "title": "Scope the market sizing with Jake",
+      "due": "2026-10-12",
+      "src": "This session",
+      "note": "Buyer, segment counts, price points, breakeven volume. The largest gap in the commercial thinking.",
+      "done": false,
+      "area": "market-intelligence"
+    },
+    {
+      "id": "t17",
+      "view": "mine",
+      "who": null,
+      "title": "Confirm Google Ad Grants eligibility and apply",
+      "due": "2026-10-31",
+      "src": "Jake, 3 Aug",
+      "note": "",
+      "done": false,
+      "area": "marketing-leads"
+    },
+    {
+      "id": "t18",
+      "view": "mine",
+      "who": null,
+      "title": "Add email capture to the Radar, routing to a 20-minute fit check",
+      "due": "2026-10-31",
+      "src": "Jake, 3 Aug",
+      "note": "",
+      "done": false,
+      "area": "marketing-leads"
+    },
+    {
+      "id": "t19",
+      "view": "mine",
+      "who": null,
+      "title": "Lodge the AIS for 3 Apr 2025 - 30 Jun 2026",
+      "due": "2026-12-31",
+      "src": "AGM thread, 3 Aug",
+      "note": "Extended ~15-month period. Every NSW-specific question must be answered or the Fair Trading exemption is lost.",
+      "done": false,
+      "area": "operations-governance"
+    },
+    {
+      "id": "t20",
+      "view": "waiting",
+      "who": "Rachel Willis",
+      "title": "Privacy and confidentiality policy templates",
+      "due": "2026-09-15",
+      "src": "Committee, 7 Sep",
+      "note": "Blocks the research consent work - the plan depends on anonymous self-generated codes and a workable opt-out.",
+      "done": false,
+      "area": "safeguarding"
+    },
+    {
+      "id": "t21",
+      "view": "waiting",
+      "who": "Rob Dooley",
+      "title": "Feedback on the commercial strategy paper",
+      "due": "2026-09-11",
+      "src": "Committee, 31 Aug",
+      "note": "Outstanding since 31 Aug. Proceed without it if nothing arrives by 14 Sep.",
+      "done": false,
+      "area": "committee"
+    },
+    {
+      "id": "t22",
+      "view": "waiting",
+      "who": "onno van-es",
+      "title": "Board paper and agenda template examples",
+      "due": "2026-09-14",
+      "src": "Onno 1:1, 9 Sep",
+      "note": "He said he'd send thoughts, probably by the weekend. Then Hunter and Elise brand it.",
+      "done": false,
+      "area": "committee"
+    },
+    {
+      "id": "t23",
+      "view": "waiting",
+      "who": "onno van-es",
+      "title": "Kirkpatrick example questions from his team's surveys",
+      "due": "2026-09-20",
+      "src": "Committee, 31 Aug",
+      "note": "Not blocking - our questions already map to the four levels.",
+      "done": false,
+      "area": "measurement-research"
+    },
+    {
+      "id": "t24",
+      "view": "waiting",
+      "who": "onno van-es",
+      "title": "Mental Fitness Australia review and market comparison",
+      "due": "2026-10-12",
+      "src": "Committee, 7 Sep",
+      "note": "MFA is a private company running the Mental Fitness First Responder course - the one Rachel is certified in.",
+      "done": false,
+      "area": "market-intelligence"
+    },
+    {
+      "id": "t25",
+      "view": "waiting",
+      "who": "Jake Pepper",
+      "title": "Confirm revenue for 3 Apr 2025 - 30 Jun 2026",
+      "due": "2026-10-31",
+      "src": "AGM thread, 3 Aug",
+      "note": "Locks in small-charity status (under $500k): no financial report, review or audit needed.",
+      "done": false,
+      "area": "operations-governance"
+    },
+    {
+      "id": "t26",
+      "view": "waiting",
+      "who": "Jake Pepper",
+      "title": "Final Business Plan structure and consolidated draft",
+      "due": "2026-10-12",
+      "src": "Jake, 3 Aug",
+      "note": "",
+      "done": false,
+      "area": "grand-strategy"
+    },
+    {
+      "id": "t27",
+      "view": "waiting",
+      "who": "Alysse Curran",
+      "title": "Mental Fitness page fixes and template duplication",
+      "due": "2026-09-15",
+      "src": "Alysse, 7 Sep",
+      "note": "Resize left image, resolve overlaps, then duplicate the template - saves ~6 hours per page.",
+      "done": false,
+      "area": "website"
+    },
+    {
+      "id": "t28",
+      "view": "waiting",
+      "who": "Alysse Curran",
+      "title": "Notice-Shift-Help and Stop-Shift-Do icon designs",
+      "due": "2026-09-20",
+      "src": "Alysse, 7 Sep",
+      "note": "Replacing the traffic-light graphic, which reads as childish.",
+      "done": false,
+      "area": "website"
+    },
+    {
+      "id": "t29",
+      "view": "mine",
+      "who": null,
+      "title": "Send the measurement and forms pack to Eimear, Onno and Debra",
+      "due": "2026-09-14",
+      "src": "Hunter, 13 Sep",
+      "note": "Pre-reading for the Mon 21 Sep measurement session. Needs to land tomorrow to give them a clear week.",
+      "done": false,
+      "area": "measurement-research"
+    }
+  ]
 }
 </script>
 <script>
@@ -908,7 +921,7 @@
 
 <details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>FOUR PRODUCTS BUILT AND QUALITY ASSESSED AWAITING HUNTER READ AND APPROVAL</strong> · FOUR PRODUCTS HAVE WORDS AND ARE SCORED AGAINST QUALITY CRITERIA NOT HUNTER APPROVED NOT RUN WITH REAL PEOPLE ZERO COHORTS.</p><h3>Freshness record</h3><p><strong>CURRENT</strong> · progressed · 2026-09-10T15:52:22.509854+10:00</p><p>Hunter personally chose all 14 activity options and 6 session-level decisions across two db-backed decision pages; both read back from the pages&#x27; own stores into 46-HUNTERS-ACTIVITY-CHOICES-2026-09-10.md and 48-HUNTERS-SESSION-DECISIONS-2026-09-10.md. Foundations cut to twelve activities (11, 12, 16 out); teach-back rebuilt as the three-versions-on-the-wall device; gallery corpus approved for build with the brief widened beyond workplace moments; manager session confirmed as its own twelve-beat session with its commercial framing flagged not decided. The fold-and-hold is withdrawn by Hunter&#x27;s ruling, amending D-0131 section 4 item 1. Two items remain open and are named rather than resolved: the spine grouping (D-0131 section 2 disagrees with all three scripts; a recommendation with its argument has been put to Hunter and he has not ruled) and a conflict between the gallery&#x27;s sort instruction and MOMENT-WRITING-STANDARD-001 boundary 1. A prior claim that the gallery corpus does not exist was withdrawn: it is the Radar corpus of 608 moments, 128 workplace, not the 18-entry founder copywriting bank. The resume pointer was rewritten from the build files directly and its stale 270-minute Foundations figure corrected to 240.</p><p>External evidence: not applicable. Last routed activity: 2026-09-13T13:50:07.909752+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>ALL FOUR SESSIONS - the readable page for Hunter (2026-09-09) — current founder facing product view</li><li>The rulings - 124 Hunter rulings incl. 17 anti-rulings, read before any proposal — current standing constraints</li><li>The quality checklists - how MFC judges whether work is GOOD, not just allowed — current quality criteria</li><li>The participant foundation - four movements over fourteen beats — current participant spine</li><li>Delivery script - The Hour 60 — current delivery script</li><li>Delivery script - Essentials 90 — current delivery script</li><li>Foundations 240 structure and sixteen activities — current delivery structure</li><li>Manager session v2 — current delivery design</li><li>The card set - every card, tagged per product — current content bank</li><li>Facilitator recovery - 23 rows for a room going wrong — current facilitator support</li><li>Recovered Foundations devices - moment gallery and application studios — current participant devices</li><li>Has this been shown to work - the scripted answer — current claims response</li><li>SUPERSEDED IN STRUCTURE 2026-09-09 - the 15- triads. Content NOT replaced; several devices recovered from them and more remain live — superseded structure live material</li><li>Introduction service pack v1 (entry point to controlled triad) — current internal service definition entry point</li><li>Essentials service pack v1 (entry point to controlled triad) — current internal service definition entry point</li><li>Foundations service pack v1 (entry point to controlled triad) — current internal service definition entry point</li><li>Shared Operations specification v1 (normative triad companion) — current normative triad companion</li><li>Introduction facilitator packet v1 (normative triad companion) — current normative triad companion</li><li>Essentials facilitator packet v1 (normative triad companion) — current normative triad companion</li><li>Foundations facilitator packet v1 (normative triad companion) — current normative triad companion</li><li>Final pack independent re-review — current independent assurance</li><li>Half-Day format decision (D-0094) — decision</li><li>Introduction and Essentials product decision (D-0098) — decision</li><li>Workshop sequence and team-Radar decision (D-0091) — controlling product amendment</li><li>Foundations individual-teaching boundary (D-0110) — controlling product positioning decision</li><li>three-product architecture and shared manager session (D-0111) — controlling product architecture decision</li><li>take-home leave-behind and Route B reframe (D-0112) — controlling product materials decision</li><li>included product boundary (D-0113) — controlling commercial boundary</li><li>return session check-in direction (D-0114) — controlling return session direction</li><li>Return Session v2 (current internal candidate) — current internal return session candidate</li><li>Historical 2026-08-27-to-28 workshop build handover — historical candidate evidence</li><li>Former workshop package (legacy source material) — legacy source material</li><li>Historical Half-Day deck preflight and assurance — historical legacy assurance</li><li>Former Half-Day facilitator guide (legacy source material) — legacy source material</li><li>Former Half-Day participant materials (legacy source material) — legacy source material</li><li>Historical unified Half-Day package quality review — historical legacy assurance</li><li>Historical Half-Day design intelligence and founder finalisation — historical design rationale</li><li>Historical Half-Day specialist panel and architecture recommendation — historical reconciled design intelligence</li><li>Design intelligence receipt — controlled lifecycle and bench coverage</li><li>Contrast and readability specification — production specification</li><li>Specialist execution record — prior assurance evidence</li><li>FINAL-04 Delivery Models — strategy</li><li>Whole-bench reconciliation and specialist-loop closure — current specialist closure</li><li>Formal specialist panel closure routing record — registered assurance evidence</li><li>Evaluated-panel independent checker verdict — prior assurance evidence</li><li>Fresh Compass cold read — prior assurance evidence</li><li>Founder-decision interface build routing record — registered assurance evidence</li><li>Second fresh Compass cold read (of the new interface) — prior assurance evidence</li><li>Design implications from shortlisted researchers&#x27; actual published findings — design input not yet incorporated</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Current workshop service definition</b> — current internal definition</li><li><b>Introduction service pack (entry point to controlled triad)</b> — current internal definition rebuild required before delivery</li><li><b>Essentials service pack (entry point to controlled triad)</b> — current internal definition rebuild required before delivery</li><li><b>Foundations service pack (entry point to controlled triad)</b> — current internal definition rebuild required before delivery</li><li><b>Shared Operations specification (normative triad companion)</b> — current internal definition rebuild required before delivery</li><li><b>Introduction facilitator packet (normative triad companion)</b> — current internal definition rebuild required before delivery</li><li><b>Essentials facilitator packet (normative triad companion)</b> — current internal definition rebuild required before delivery</li><li><b>Foundations facilitator packet (normative triad companion)</b> — current internal definition rebuild required before delivery</li><li><b>Return Session v2 candidate</b> — current internal candidate not build or delivery clearance</li><li><b>Former workshop package</b> — legacy source material not current definition</li><li><b>Former 60-Minute Introduction deck</b> — legacy source material not current definition</li><li><b>Former 90-Minute Essentials deck</b> — legacy source material not current definition</li><li><b>Former Half-Day deck</b> — legacy source material not current definition</li><li><b>Former Half-Day facilitator guide</b> — legacy source material not current definition</li><li><b>Former Half-Day participant materials</b> — legacy source material not current definition</li><li><b>Workshop Hub projection</b> — generated</li></ul><h3>Conflicts and superseded work</h3><ul><li><b>Files 01, 10 and the storyboard/timings in 11 preserve the founder-rejected 44:56 arc. They are legacy source material and may not drive current delivery.</b><br>controlled<br><span class='src'>Record reference: WD-SUPERSEDED-ARC</span><br><span class='src'>Controlling source: 60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/11-LEGACY-DECK-DISPOSITION-v1.md</span></li><li><b>Form 2 is explicitly placed at 3:30-3:34 after the 180 instructional minutes and remains blocked until the exact cohort-frozen form is approved.</b><br>resolved internal design<br><span class='src'>Record reference: WD-MEASUREMENT-PLACEMENT</span><br><span class='src'>Controlling source: 30-decisions/D-0100-first-pilot-measurement-core.md</span></li><li><b>Routine D-0100 does not include the team-nomination item; shared Radar is conditional on a separately approved privacy-reviewed module actually being collected.</b><br>resolved internal design<br><span class='src'>Record reference: WD-TEAM-RADAR-MODULE</span><br><span class='src'>Controlling source: 30-decisions/D-0100-first-pilot-measurement-core.md; 60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/03-FOUNDATIONS-FINAL-SERVICE-PACK-v1.md</span></li><li><b>D-0112 calls for one premade leave-behind and phone-based cue writing, while legacy Introduction and Essentials deck candidates still use card/reference-card wording. Treat this as a pre-promotion artifact-alignment correction, not delivery evidence.</b><br>open<br><span class='src'>Record reference: WD-LEAVE-BEHIND-DECK-ALIGNMENT</span><br><span class='src'>Controlling source: 30-decisions/D-0112-single-takehome-leavebehind-and-route-b-reframe.md</span></li><li><b>Return Session v2&#x27;s pre-session form is not yet reconciled with the Product and Pricing Book&#x27;s rule that the capture never reaches the commissioning organisation. Until resolved, no form content or derived theme goes to the organisation.</b><br>open<br><span class='src'>Record reference: WD-RETURN-FORM-ROUTING</span><br><span class='src'>Controlling source: 60-projects/workshop-evidence-informed-adult/12-evidence-first-rebuild/121-RETURN-SESSION-DESIGN-v2.md</span></li><li><b>Live MFC Homepage ACT-039 was read on 2026-08-30 and still describes the former 2.5–3 hour pilot; the 29 August controlled triads are the current internal definition. No Google Sheet write was made, so the action record must not be treated as current workshop truth.</b><br>open external reconciliation<br><span class='src'>Record reference: WD-ACTION-REGISTER-DRIFT</span><br><span class='src'>Controlling source: 60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/00-CURRENT-WORKSHOP-SERVICE-DEFINITION-2026-08-29.md</span></li></ul><h3>Recent change history</h3><ul><li><b>progressed</b> · 2026-09-10T15:52:22.509854+10:00<br>Hunter personally chose all 14 activity options and 6 session-level decisions across two db-backed decision pages; both read back from the pages&#x27; own stores into 46-HUNTERS-ACTIVITY-CHOICES-2026-09-10.md and 48-HUNTERS-SESSION-DECISIONS-2026-09-10.md. Foundations cut to twelve activities (11, 12, 16 out); teach-back rebuilt as the three-versions-on-the-wall device; gallery corpus approved for build with the brief widened beyond workplace moments; manager session confirmed as its own twelve-beat session with its commercial framing flagged not decided. The fold-and-hold is withdrawn by Hunter&#x27;s ruling, amending D-0131 section 4 item 1. Two items remain open and are named rather than resolved: the spine grouping (D-0131 section 2 disagrees with all three scripts; a recommendation with its argument has been put to Hunter and he has not ruled) and a conflict between the gallery&#x27;s sort instruction and MOMENT-WRITING-STANDARD-001 boundary 1. A prior claim that the gallery corpus does not exist was withdrawn: it is the Radar corpus of 608 moments, 128 workplace, not the 18-entry founder copywriting bank. The resume pointer was rewritten from the build files directly and its stale 270-minute Foundations figure corrected to 240.</li><li><b>progressed</b> · 2026-09-10T11:52:11.705805+10:00<br>Hunter rejected PASS/PARTIAL/FAIL as the assessment instrument and asked for a ranking out of 100, where 100 means evidence-standpoint incredible and leading to the outcome, with anything under 90-95 triggering a rework: find another way, re-assess, and pitch old-versus-proposed to him for decision. He also asked that the agent meant to represent him be renamed, since Compass is not him. Sources inspected: 33-THE-QUALITY-CHECKLISTS.md (29 tests across five checklists plus five anti-gaming rules), 40-THE-LOOP.md (the six-step loop), 41-THE-FINAL-SCORE.md (which found tests that were unfalsifiable, trivially satisfiable, or counting presence instead of meaning), 34-THE-ASSESSMENT.md (271 scores now rendered in 32-THE-FOUR-SESSIONS.html), 00-THE-RULINGS.md. Conflicts found and carried into the design briefs: a 0-100 scale invites fake precision unless every band is anchored with written descriptors; a weighted composite can hide a gate failure behind nine good scores; and Hunter&#x27;s definition of 100 as leading to the outcome collides with AG-001 and K-08, which bar outcome claims with zero cohorts, so the ceiling must be defined as design quality and mechanism strength. Action: design only, no scoring and no product edits - head-of-research designs the scale and its anchors, head-of-product designs the redo loop and the pitch format, then one converged proposal reaches Hunter before anything is built. Required checks: both briefs instruct the agent to tell Hunter the approach is wrong if that is the honest conclusion; anti-ruling 119 bars the output becoming a blocker list.</li><li><b>progressed</b> · 2026-09-09T15:49:33.796836+10:00<br>Hunter asked for one readable page covering all four products: the hub workshop page updated, the Foundations 240 structure built (flow, beats, movements, key things to say, activities inline - explicitly NOT a script), activities shown inline for Essentials and Foundations, and a gap check against his own transcripts for what he says that is genuinely absent from the built products. Sources inspected: 00-THE-RULINGS.md (124 rulings incl. 17 anti-rulings), 22-THE-PARTICIPANT-FOUNDATION.md (Rule 3 amended today to ARGUED not TAUGHT, which is what permits practice in the longer products), 03-DELIVERY-SCRIPT-INTRODUCTION-60.md, 29-DELIVERY-SCRIPT-ESSENTIALS-90.md and 30-MANAGER-SESSION-v2.md (both written today), 23-THE-CARD-SET.html, 26-RECOVERED-FOUNDATIONS-DEVICES.md, 27-FACILITATOR-RECOVERY.md, and the orphaned 15-current-service-definition-v1/40-FOUNDATIONS-FINAL-SERVICE-PACK-v3.md. Conflicts found and carried into the briefs: three card-set d2 fields contradict anti-ruling 114 (Radar built in the room); the Moment Bank holds FIVE verified entries not 16 or 18 as three separate files state, and none is a workplace moment, so the moment gallery&#x27;s corpus does not exist; the standing E1-E5 cut order would delete the Essentials differentiator; beat 11&#x27;s silent practice has no facilitator recovery row. Action: head-of-product builds the Foundations structure, founder-lens runs the transcript gap check, then one HTML assembles all four products for Hunter to read. Required checks: skeptic pass on the Foundations structure; K-08 and AG-001 on every participant-facing line; AG-010 bars staged live practice; the hub page is generator-controlled with a fingerprint and must NOT be hand-edited.</li><li><b>started</b> · 2026-09-09T10:32:19.941222+10:00<br>Hunter, 2026-09-09: &#x27;have we now got the ideal structure to follow - and we&#x27;ve analysed the vault to see other slide decks and now making the best for all 3 products? I want to see the flow, beats, movements for each product... once we have that then we go to the manager session.&#x27; Plus: &#x27;I want to reinforce the importance of us tracking and having measurement at the forefront of essentials and foundations.&#x27; Plus: show him what from the other sessions is better and how it is being implemented, so he can rule on the differences. Honest answer to his first question is NO, not yet, and the four gaps are nameable: (1) the manager session, the three-week return and the written report have NO teaching definition anywhere in the card set, while D-0113&#x27;s own title states they sit INSIDE the product price at 1.5 facilitator hours each - MFC is contractually selling three components the design does not describe; (2) measurement appears nowhere in the cards; (3) the scenario bank with its per-scenario avoid/switch triggers is gone - verified verbatim in 04-PACKET-OPERATIONS-SPEC-v1.md, including the domestic-safety trigger on the household scenario and the rule &#x27;if a scenario resembles a live dispute, stop and switch to the fallback without discussion&#x27; - and the card set has no bank, no reveal structure and no switch rule; (4) the breakpoint map and its line &#x27;No opportunity and no use are not the same&#x27;, verified in 35-FOUNDATIONS-FINAL-SERVICE-PACK-v2.md, which is the only device that lets a participant tell WHICH failure they had. Also live and unresolved: Part B states the five skills and the Human Operating System are not taught in any product while card 16 has Essentials teaching them properly - two documents both reading as current, opposite rules, neither citing the other. Archaeology established four non-inheriting build lines in thirty-three days, three carrying no supersession marking at all. Selected action: commission head-of-research on measurement placement for Essentials and Foundations against the advisor rulings, and head-of-product on the three-product flow incorporating the recovered material, then assemble one surface showing flow, beats and movements per product with an explicit better-elsewhere comparison for Hunter to rule on. Manager session deliberately deferred until after, on his instruction. Required checks: K-08 on participant-facing lines, D-0113&#x27;s included-product boundary, AG-176/179/187/194/195/201 on measurement, and the standing no-disclosure constraints.</li><li><b>started</b> · 2026-09-09T09:54:28.670454+10:00<br>Hunter, 2026-09-09, authorised all four outstanding items: write the spoken transitions into the nine audible sections; scan the three August slide decks against the current card set; check the 2026-08-29 service triads for content the cards lack; and fix the system pattern so that the best version stops losing to the most recent one - his words, &#x27;maybe it&#x27;s looking at merging stuff to the vault or something.&#x27; The pattern being fixed, evidenced three times in one session: 04-RUN-SHEETS-AND-DECKS Part B (a sixteen-slide claims-swept deck), the 2026-08-19/20 experience-design pass (orphaned in three unmarked files), and three built slide decks from 27-30 August - each nearly rebuilt from scratch because nothing points at what already exists. Root cause is not that MFC fails to build; it is that rebuilds write NEW files rather than editing old ones, so git records no deletion, nothing is marked superseded, and the next session finds the newest file rather than the best one. Under CLAUDE.md section 12 the governance freeze bars new controls except where Hunter explicitly asks - he has - and the fix will still extend the existing topic-start receipt rather than adding a parallel register, because another register is the failure wearing a new costume. Also in scope: four files staged but uncommitted for 12-24 hours, including the 2026-09-08 founder content bank and D-0131, which is the literal &#x27;merging stuff to the vault&#x27; he named. Sources inspected: the card set, D-0131, the 2026-09-08 content bank, 11-two-format-build-v1 directory listing, and the workshop-delivery topic record whose own next_action names the August triads. Required checks: K-08 on any spoken line produced, K-07 on construct wording, no new control added beyond extending an existing one, and nothing committed that has not been read.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> current service triads and return candidate internally checked — Current triads have section</p><p><strong>Human or qualified review:</strong> pending — No qualified safeguarding/privacy/insurer approval, real-participant validation or complete delivery approval recorded.</p><h3>When this must be reviewed again</h3><p>Any change to the workshop arc, product label, locked wording, measurement design, facilitator/material package, safety advice or participant evidence.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/32-THE-FOUR-SESSIONS.html" target="_blank" rel="noopener">ALL FOUR SESSIONS - the readable page for Hunter (2026-09-09)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/00-THE-RULINGS.md" target="_blank" rel="noopener">The rulings - 124 Hunter rulings incl. 17 anti-rulings, read before any proposal</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/33-THE-QUALITY-CHECKLISTS.md" target="_blank" rel="noopener">The quality checklists - how MFC judges whether work is GOOD, not just allowed</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/22-THE-PARTICIPANT-FOUNDATION.md" target="_blank" rel="noopener">The participant foundation - four movements over fourteen beats</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/03-DELIVERY-SCRIPT-INTRODUCTION-60.md" target="_blank" rel="noopener">Delivery script - The Hour 60</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/29-DELIVERY-SCRIPT-ESSENTIALS-90.md" target="_blank" rel="noopener">Delivery script - Essentials 90</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/31-FOUNDATIONS-240-STRUCTURE.md" target="_blank" rel="noopener">Foundations 240 structure and sixteen activities</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/30-MANAGER-SESSION-v2.md" target="_blank" rel="noopener">Manager session v2</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/23-THE-CARD-SET.html" target="_blank" rel="noopener">The card set - every card, tagged per product</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/27-FACILITATOR-RECOVERY.md" target="_blank" rel="noopener">Facilitator recovery - 23 rows for a room going wrong</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/26-RECOVERED-FOUNDATIONS-DEVICES.md" target="_blank" rel="noopener">Recovered Foundations devices - moment gallery and application studios</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/28-HAS-THIS-BEEN-SHOWN-TO-WORK.md" target="_blank" rel="noopener">Has this been shown to work - the scripted answer</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/00-CURRENT-WORKSHOP-SERVICE-DEFINITION-2026-08-29.md" target="_blank" rel="noopener">SUPERSEDED IN STRUCTURE 2026-09-09 - the 15- triads. Content NOT replaced; several devices recovered from them and more remain live</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/01-INTRODUCTION-FINAL-SERVICE-PACK-v1.md" target="_blank" rel="noopener">Introduction service pack v1 (entry point to controlled triad)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/02-ESSENTIALS-FINAL-SERVICE-PACK-v1.md" target="_blank" rel="noopener">Essentials service pack v1 (entry point to controlled triad)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/03-FOUNDATIONS-FINAL-SERVICE-PACK-v1.md" target="_blank" rel="noopener">Foundations service pack v1 (entry point to controlled triad)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/04-PACKET-OPERATIONS-SPEC-v1.md" target="_blank" rel="noopener">Shared Operations specification v1 (normative triad companion)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/05-INTRODUCTION-FACILITATOR-PACKET-v1.md" target="_blank" rel="noopener">Introduction facilitator packet v1 (normative triad companion)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/06-ESSENTIALS-FACILITATOR-PACKET-v1.md" target="_blank" rel="noopener">Essentials facilitator packet v1 (normative triad companion)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/07-FOUNDATIONS-FACILITATOR-PACKET-v1.md" target="_blank" rel="noopener">Foundations facilitator packet v1 (normative triad companion)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/90-INDEPENDENT-FINAL-SERVICE-PACK-REVIEW.md" target="_blank" rel="noopener">Final pack independent re-review</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0094-half-day-format-and-repeat-engagement-model.md" target="_blank" rel="noopener">Half-Day format decision (D-0094)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0098-introduction-and-essentials-are-two-products.md" target="_blank" rel="noopener">Introduction and Essentials product decision (D-0098)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0091-workshop-staged-arc-and-team-pulse-compression.md" target="_blank" rel="noopener">Workshop sequence and team-Radar decision (D-0091)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0110-foundations-individual-teaching-not-environment-readiness.md" target="_blank" rel="noopener">Foundations individual-teaching boundary (D-0110)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0111-product-architecture-and-manager-session-unified.md" target="_blank" rel="noopener">three-product architecture and shared manager session (D-0111)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0112-single-takehome-leavebehind-and-route-b-reframe.md" target="_blank" rel="noopener">take-home leave-behind and Route B reframe (D-0112)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0113-product-boundary-everything-inside-the-price.md" target="_blank" rel="noopener">included product boundary (D-0113)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0114-return-session-is-a-checkin-branching-design-retired.md" target="_blank" rel="noopener">return session check-in direction (D-0114)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/12-evidence-first-rebuild/121-RETURN-SESSION-DESIGN-v2.md" target="_blank" rel="noopener">Return Session v2 (current internal candidate)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/14-build-readiness-and-expert-lens-v1/00-HANDOVER-2026-08-27-to-28.md" target="_blank" rel="noopener">Historical 2026-08-27-to-28 workshop build handover</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/workshop-package.html" target="_blank" rel="noopener">Former workshop package (legacy source material)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/19-half-day-deck-preflight-and-assurance.md" target="_blank" rel="noopener">Historical Half-Day deck preflight and assurance</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/20-half-day-foundations-facilitator-guide-current.md" target="_blank" rel="noopener">Former Half-Day facilitator guide (legacy source material)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/21-half-day-foundations-participant-materials-current.md" target="_blank" rel="noopener">Former Half-Day participant materials (legacy source material)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/22-half-day-foundations-unified-package-quality-review.md" target="_blank" rel="noopener">Historical unified Half-Day package quality review</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/23-half-day-design-intelligence-and-founder-finalisation.md" target="_blank" rel="noopener">Historical Half-Day design intelligence and founder finalisation</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md" target="_blank" rel="noopener">Historical Half-Day specialist panel and architecture recommendation</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/design-intelligence.yml" target="_blank" rel="noopener">Design intelligence receipt</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/13-contrast-asset-spec-and-readability-pass.md" target="_blank" rel="noopener">Contrast and readability specification</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/05-specialist-execution-record.md" target="_blank" rel="noopener">Specialist execution record</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-04-delivery-models.md" target="_blank" rel="noopener">FINAL-04 Delivery Models</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/25-half-day-whole-bench-reconciliation-and-closure.md" target="_blank" rel="noopener">Whole-bench reconciliation and specialist-loop closure</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/routing-records/2026-08-17-half-day-panel-formal-closure.yml" target="_blank" rel="noopener">Formal specialist panel closure routing record</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13-evaluated-panel/independent-check.md" target="_blank" rel="noopener">Evaluated-panel independent checker verdict</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13-evaluated-panel/reviews/FL-01.md" target="_blank" rel="noopener">Fresh Compass cold read</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/routing-records/2026-08-17-half-day-founder-decision-interface-built.yml" target="_blank" rel="noopener">Founder-decision interface build routing record</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-17-founder-interface/FL-01-fresh-cold-read.md" target="_blank" rel="noopener">Second fresh Compass cold read (of the new interface)</a> · <a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/12-research-ethics-and-data-strategy-v1/07-design-implications-from-shortlisted-researchers.md" target="_blank" rel="noopener">Design implications from shortlisted researchers' actual published findings</a></p></div></details>
 
-</div></section><section class="view" id="view-area-measurement-research" hidden><div class="view-body"><a class="crumb" href="#areas">&larr; All work areas</a><div class="local-note">Evidence and source links below open local vault files and only resolve on Hunter&rsquo;s own Mac.</div><div class="area-actions"><h3>3 open actions in this area</h3><ul><li><b>Email Eimear, Onno and Debra to schedule the measurement session</b> &middot; due 2026-09-12</li><li><b>Update KN-0006: IMTTAQ timing and CC-BY licensing</b> &middot; due 2026-09-14</li><li><b>Kirkpatrick example questions from his team&#x27;s surveys</b> &mdash; waiting on onno van-es &middot; due 2026-09-20</li></ul><p style="margin:9px 0 0"><a href="#actions">Open the Actions page &rarr;</a></p></div><h1>Measurement and research partnership</h1>
+</div></section><section class="view" id="view-area-measurement-research" hidden><div class="view-body"><a class="crumb" href="#areas">&larr; All work areas</a><div class="local-note">Evidence and source links below open local vault files and only resolve on Hunter&rsquo;s own Mac.</div><div class="area-actions"><h3>3 open actions in this area</h3><ul><li><b>Update KN-0006: IMTTAQ timing and CC-BY licensing</b> &middot; due 2026-09-14</li><li><b>Send the measurement and forms pack to Eimear, Onno and Debra</b> &middot; due 2026-09-14</li><li><b>Kirkpatrick example questions from his team&#x27;s surveys</b> &mdash; waiting on onno van-es &middot; due 2026-09-20</li></ul><p style="margin:9px 0 0"><a href="#actions">Open the Actions page &rarr;</a></p></div><h1>Measurement and research partnership</h1>
 <p class="mission">MEASUREMENT-FORMS-v4.html is the latest working candidate as of 2026-09-01 — Kirkpatrick-structured (L1 reaction, L2 learning, L3 behaviour on the return-session form, L4 results on the organisation side, never the participant form), rendered as actual forms with a validated-measure key (WHO-5 confirmed; a second training-transfer measure held pending Eimear's confirmation of its real identity), plus new quarterly and 12-month case-study check-ins against D-0105's cadence. Hunter is still reviewing — not approved, not frozen. v3 and its founder review remain the last APPROVED-for-review baseline underneath it.</p>
 
 <div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/measurement-research.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/workshop-package.html" target="_blank" rel="noopener">Open workshop-package.html (historical source material, meas3/meas1/meas90 tabs) <span class="arrow">&rarr;</span></a><a class="viewwork" href="https://docs.google.com/document/d/1xZff9ZPoaUCOIFCyB0Y-tRsiqOKd2VwmE3sWUkov1TI/edit" target="_blank" rel="noopener">Open Workshop Forms <span class="arrow">&rarr;</span></a><a class="viewwork" href="https://docs.google.com/spreadsheets/d/1CC4o982pnJNu0xqt-BAHiKQGhL_bYIyATGOAfLGKhaQ/edit" target="_blank" rel="noopener">Open Measurement Blueprint <span class="arrow">&rarr;</span></a><a class="viewwork" href="https://mentalfitnesscollective.monday.com/boards/5030579707/pulses/2828284661" target="_blank" rel="noopener">Open HREC and data strategy tracker (Monday.com, board 5030579707, item 2828284661) <span class="arrow">&rarr;</span></a></div>
@@ -996,7 +1009,7 @@
 
 <details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>INTERNAL LANGUAGE FINALISED PROPAGATION OPEN</strong> · CANDIDATE BUYER LANGUAGE.</p><h3>Freshness record</h3><p><strong>CURRENT</strong> · reconciled · 2026-08-26T09:15:05.610162+10:00</p><p>Reconciled after committing stale staged terminology-cleanup edits (D2/D5/D7/R-code citations replaced with plain-language source descriptions) that had sat uncommitted 8-9+ days, causing hub-integrity drift on this topic. Content reviewed and confirmed coherent/intentional before committing (commit 54b1004). current_truth/next_action in the register re-checked against the now-committed file content and still hold.</p><p>External evidence: not applicable. Last routed activity: 2026-09-05T21:35:24.488230+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>FINAL-06 WIIFM — canonical language</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>WIIFM source</b> — current</li><li><b>Website propagation</b> — pending propagation</li><li><b>WIIFM Hub projection</b> — generated</li></ul><h3>Conflicts and superseded work</h3><ul><li>No topic-level conflict is registered. This is not proof that no conflict exists.</li></ul><h3>Recent change history</h3><ul><li><b>reconciled</b> · 2026-08-26T09:15:05.610162+10:00<br>Reconciled after committing stale staged terminology-cleanup edits (D2/D5/D7/R-code citations replaced with plain-language source descriptions) that had sat uncommitted 8-9+ days, causing hub-integrity drift on this topic. Content reviewed and confirmed coherent/intentional before committing (commit 54b1004). current_truth/next_action in the register re-checked against the now-committed file content and still hold.</li><li><b>reconciled</b> · 2026-08-17T20:09:27.875101+10:00<br>Added three missing 2026-08-17 important_updates entries (committee-send full circulation, pricing correction, measurement/HREC visibility) that had been made in the underlying topic records but never propagated to the Hub&#x27;s updates feed, per Hunter noticing the Hub wasn&#x27;t showing recent changes.</li><li><b>corrected</b> · 2026-08-13T12:11:39.819945+10:00<br>90-meta/controlled-automation-v1/topic-control/HUB-FOUNDER-EXPERIENCE-REVIEW-2026-08-13.md</li><li><b>reconciled</b> · 2026-08-13T00:38:32.157707+10:00<br>D-0101 transcript-aligned baseline: topic state, local sources, operational destinations and explicit assurance boundaries reconciled; external confidence remains per destination.</li><li><b>reconciled</b> · 2026-08-13T00:35:29.150476+10:00<br>Initial 13-pillar vault reconciliation under D-0101; each topic retains its recorded external verification boundary.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> internal review complete — Controlled internal copy exists.</p><p><strong>Human or qualified review:</strong> buyer validation pending — No real buyer language evidence recorded.</p><h3>When this must be reviewed again</h3><p>Reconcile this language into the controlled website copy and test it in buyer conversations.</p><h3>All source documents</h3><p class="src"><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-06-wiifm-business-case.md" target="_blank" rel="noopener">FINAL-06 WIIFM</a></p></div></details>
 
-</div></section><section class="view" id="view-area-committee" hidden><div class="view-body"><a class="crumb" href="#areas">&larr; All work areas</a><div class="local-note">Evidence and source links below open local vault files and only resolve on Hunter&rsquo;s own Mac.</div><div class="area-actions"><h3>8 open actions in this area</h3><ul><li><b>Secure Rob&#x27;s feedback on the commercial strategy</b> &middot; due 2026-09-11</li><li><b>Feedback on the commercial strategy paper</b> &mdash; waiting on Rob Dooley &middot; due 2026-09-11</li><li><b>Send Onno the meeting calendar and AGM proposal</b> &middot; due 2026-09-12</li><li><b>Email Jake and Onno with the strategy next steps</b> &middot; due 2026-09-12</li><li><b>Board paper and agenda template examples</b> &mdash; waiting on onno van-es &middot; due 2026-09-14</li><li><b>Circulate the committee pack for 12 October</b> &middot; due 2026-09-28</li><li><b>Draft board bios and send to directors for approval</b> &middot; due 2026-09-30</li><li><b>Draft the Advisory Committee governance proposal and AGM item</b> &middot; due 2026-09-30</li></ul><p style="margin:9px 0 0"><a href="#actions">Open the Actions page &rarr;</a></p></div><h1>Committee</h1>
+</div></section><section class="view" id="view-area-committee" hidden><div class="view-body"><a class="crumb" href="#areas">&larr; All work areas</a><div class="local-note">Evidence and source links below open local vault files and only resolve on Hunter&rsquo;s own Mac.</div><div class="area-actions"><h3>6 open actions in this area</h3><ul><li><b>Secure Rob&#x27;s feedback on the commercial strategy</b> &middot; due 2026-09-11</li><li><b>Feedback on the commercial strategy paper</b> &mdash; waiting on Rob Dooley &middot; due 2026-09-11</li><li><b>Board paper and agenda template examples</b> &mdash; waiting on onno van-es &middot; due 2026-09-14</li><li><b>Circulate the committee pack for 12 October</b> &middot; due 2026-09-28</li><li><b>Draft board bios and send to directors for approval</b> &middot; due 2026-09-30</li><li><b>Draft the Advisory Committee governance proposal and AGM item</b> &middot; due 2026-09-30</li></ul><p style="margin:9px 0 0"><a href="#actions">Open the Actions page &rarr;</a></p></div><h1>Committee</h1>
 <p class="mission">The 9 September Hunter–Onno and 11 September Hunter–Jake recordings add planning context only; no schedule, agenda, renewal, decision or approval is verified, and the 52 M12 positions remain pending Hunter approval.</p>
 
 <div class="worklinks"><a class="viewwork" href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/hub/work/committee.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a></div>
@@ -1004,7 +1017,7 @@
 <div class="box"><h4>Why this area matters</h4><p>Be the single home for everything relating to the MFC Committee — governance, membership, meetings and notices, AGM matters, and committee-facing communications and papers — not only the flow of sending a given paper.</p></div>
 <div class="box"><h4>Where are we?</h4><p>The 31 August Committee feedback remains captured alongside Eimear Quigley&#x27;s same-day email in the Advisor Guidance Register. The 7 September Committee catch-up is now also recorded in Fathom: the raw recording verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated; no Rob speaker appears. This is recording-based participation evidence, not an inference from Calendar RSVP status. The register holds 378 captured entries plus one withdrawn unsourced entry, including 52 M12 advisory positions from the catch-up; all are pending Hunter approval. Hunter&#x27;s 7 September post-meeting email offers Rob a verbal or written feedback route and states an intended Friday timing point. No Rob reply was visible in the checked Gmail evidence. The recording, advisor guidance and follow-up email do not establish a committee decision, consensus, consent, legal/privacy clearance, strategy finalisation or approval. Onno&#x27;s chair-authored notes remain advisory source material, not formal signed minutes, approved policy or an approval decision. The current task is source-grounded founder triage, not automatic adoption. A 9 September Hunter–Onno governance follow-up is now recorded. It captures discussion of draft dates, a possible monthly rhythm, AGM preparation, board materials, measurement follow-up and a reported business-name renewal window. These are planning inputs only: no calendar schedule, constitutional or regulatory requirement, official registration expiry, renewal, payment, formal resolution, approval or ratification was verified. An 11 September Hunter–Jake working session adds a further planning input: Jake said he would begin an agenda draft and reply to Onno. The recording does not verify a sent reply, Onno&#x27;s agreement, a board calendar, a formal agenda or any adoption.</p></div>
 <div class="box"><h4>What do we currently believe?</h4><p>Committee feedback is now a controlled input to a founder decision map; it must improve the strategy without silently becoming policy or removing participant-delivery protections.</p></div>
-<div class="box"><h4>What’s complete?</h4><ul><li>Hunter&#x27;s email and seven-page report were sent to Jake and Onno and verified in Gmail (the 11 August paper).</li><li>Onno&#x27;s 16 August structural feedback is captured and built into FINAL-08.</li><li>FINAL-08 passes the unsourced-numeric-claim check with zero findings and contains no em dashes.</li><li>Hunter read and sent the rebuilt FINAL-08 (v8) and the optional FINAL-13 companion (v15) to Onno and Jake, 17 August 2026, user-reported.</li><li>Onno reviewed the rebuilt paper and replied 2026-08-17T09:09:55Z (Gmail-verified) that it captures the 5 W&#x27;s and How well and should be sent to the committee as-is; committee feedback to happen live at the next meeting.</li><li>{&#x27;Hunter sent FINAL-08 to the full 7-person committee at 2026-08-17T09:50:56Z (Gmail-verified&#x27;: &#x27;SENT label, all 7 recipients correct, PDF attached), and a calendar invite for Mon 31 Aug 2026 7:30-8:30pm AEST went out to the same list.&#x27;}</li><li>Hunter sent Rob and both known Rachel addresses a request for commercial-strategy feedback on 1 September; Rob and Rachel have each replied that the 7 September option works for them. Rachel&#x27;s 6:30pm question was candidate timing only, not substantive feedback or approval.</li><li>Before the event date, the live Calendar verified the 7 September catch-up&#x27;s schedule, Meet link and RSVP statuses. That historical Calendar readback did not itself prove attendance or an outcome.</li><li>The raw Fathom recording now verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated in the 7 September catch-up; no Rob speaker appears. This is recording-based participation evidence, not a formal minute, committee resolution, approval, consensus, policy or strategy finalisation.</li><li>Onno sent chair-authored written notes titled &quot;Key notes and actions 31 August 2026 meeting&quot; on 1 September. They are a verified source for recorded follow-up and framing, not formal signed minutes or approved policy.</li><li>A 9 September Fathom recording verifies that Hunter and Onno discussed governance planning. It is a current advisory/planning source, not a calendar confirmation, formal minute, legal requirement, financial action, approval, ratification or decision.</li></ul></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>Hunter&#x27;s email and seven-page report were sent to Jake and Onno and verified in Gmail (the 11 August paper).</li><li>Onno&#x27;s 16 August structural feedback is captured and built into FINAL-08.</li><li>FINAL-08 passes the unsourced-numeric-claim check with zero findings and contains no em dashes.</li><li>Hunter read and sent the rebuilt FINAL-08 (v8) and the optional FINAL-13 companion (v15) to Onno and Jake, 17 August 2026, user-reported.</li><li>Onno reviewed the rebuilt paper and replied 2026-08-17T09:09:55Z (Gmail-verified) that it captures the 5 W&#x27;s and How well and should be sent to the committee as-is; committee feedback to happen live at the next meeting.</li><li>Hunter sent FINAL-08 to the full 7-person committee at 2026-08-17T09:50:56Z (Gmail-verified: SENT label, all 7 recipients correct, PDF attached), and a calendar invite for Mon 31 Aug 2026 7:30-8:30pm AEST went out to the same list.</li><li>Hunter sent Rob and both known Rachel addresses a request for commercial-strategy feedback on 1 September; Rob and Rachel have each replied that the 7 September option works for them. Rachel&#x27;s 6:30pm question was candidate timing only, not substantive feedback or approval.</li><li>Before the event date, the live Calendar verified the 7 September catch-up&#x27;s schedule, Meet link and RSVP statuses. That historical Calendar readback did not itself prove attendance or an outcome.</li><li>The raw Fathom recording now verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated in the 7 September catch-up; no Rob speaker appears. This is recording-based participation evidence, not a formal minute, committee resolution, approval, consensus, policy or strategy finalisation.</li><li>Onno sent chair-authored written notes titled &quot;Key notes and actions 31 August 2026 meeting&quot; on 1 September. They are a verified source for recorded follow-up and framing, not formal signed minutes or approved policy.</li><li>A 9 September Fathom recording verifies that Hunter and Onno discussed governance planning. It is a current advisory/planning source, not a calendar confirmation, formal minute, legal requirement, financial action, approval, ratification or decision.</li></ul></div>
 <div class="box"><h4>What’s provisional?</h4><ul><li>The FINAL-13 market-gap companion document was not attached to the full-committee send (only sent earlier to Onno and Jake individually); unclear whether that was intentional for this circulation.</li><li>Onno&#x27;s one refinement note (tighten for concision) has not been actioned or explicitly deferred by Hunter; the paper went out as-is per his own recommendation.</li><li>The 31 August Committee feedback and Eimear&#x27;s same-day email are captured in the Advisor Guidance Register. They remain pending Hunter approval; the register is not a substitute for a decision record.</li><li>A committee roster and governance record now exists (GOVERNANCE-committee-roster.md), reconstructed from Gmail history at Hunter&#x27;s request; it is explicitly not yet Hunter-confirmed, and the Secretary role plus Rachel Willis&#x27;s and Eimear Quigley&#x27;s specific committee offices are marked as not confirmed rather than guessed.</li><li>The 31 August meeting opener was reconciled with recorded decision (D-0110)/recorded decision (D-0111), extended live through the meeting (product benefit case, October-launch reframing, recorded decision (D-0115) pricing changes), reviewed twice for claims accuracy against K-08/recorded decision (D-0104), independently pre-publish reviewed (one $59 rounding error found and fixed), then delivered by Hunter to open the 31 August meeting. The feedback is now captured in the Advisor Guidance Register; formal minutes and Hunter&#x27;s approval decisions are still not recorded.</li><li>A reusable skill (`.claude/skills/preread-meeting-opener/SKILL.md`) was extended from this session&#x27;s live drafting to cover in-session founder benefit-claim additions, founder-override handling, live length management and the mandatory pre-publish read, for use on the next pre-read opener.</li><li>The 7 September Calendar booking supersedes the earlier 6:30pm candidate time. The Fathom recording confirms a recorded discussion, but no direct Rob reply was visible in the checked Gmail evidence after Hunter&#x27;s post-meeting follow-up. That checked absence is not consent, comfort, approval or a basis to finalise strategy.</li><li>Proposed dates, a possible meeting rhythm, AGM preparation, roles, board materials, a measurement discussion and a reported business-name renewal window were raised on 9 September. No calendar event, constitution/ACNC source, official registration record, renewal, payment, formal resolution or ratification was verified in this run.</li><li>The 11 September Hunter–Jake recording captures Jake&#x27;s stated intention to draft an agenda and reply to Onno. It does not verify a sent message, Onno&#x27;s response, a board calendar, a formal agenda or adoption.</li></ul></div>
 <div class="box"><h4>What conflicts?</h4><ul><li>The internal 31 August opener described Foundations as the only product built for adoption with a leader session and presented a monthly session as an offer. Reconciled with recorded decision (D-0110)&#x27;s individual-teaching boundary and recorded decision (D-0111)&#x27;s shared, unified manager session before the opener was finalised and delivered on 2026-08-31; the delivered script&#x27;s manager-session and product-architecture language matches recorded decision (D-0111)&#x27;s shape.</li></ul></div>
 <div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>No specialist assurance is currently outstanding.</li></ul></div>
