@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "specialist_call_contract": "90-meta/full-permanent-specialist-bench-v1/specialist-call-contract.md",
+  "objective": "Determine and build the strongest evidence-informed Half-Day Foundations workshop, not merely the most internally consistent version of the current candidate.",
+  "artifact": "60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/slide-deck-half-day-foundations.html",
+  "lifecycle_state": "internal_candidate",
+  "rationale_artifact": "60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/23-half-day-design-intelligence-and-founder-finalisation.md",
+  "options": [
+    {
+      "id": "A",
+      "name": "Current education-led sequence",
+      "shape": "Explain the mental-fitness premise and core model first, then retrieve, apply and plan transfer.",
+      "current_position": "Existing candidate; not the default winner.",
+      "main_test": "Whether the explanation earns its cognitive cost and improves later understanding and use."
+    },
+    {
+      "id": "B",
+      "name": "Experience-first sequence",
+      "shape": "Begin with a low-risk lived exercise or contrast, then name and explain what participants experienced.",
+      "current_position": "Credible alternative requiring fresh comparison; not adopted.",
+      "main_test": "Whether experience creates useful curiosity without the weak domain-general productive-failure assumption."
+    },
+    {
+      "id": "C",
+      "name": "Recognition–experience–explanation spiral",
+      "shape": "Use short cycles of familiar moment, micro-experience, explanation, retrieval and application rather than one long education block followed by practice.",
+      "current_position": "Promising synthesis requiring specialist challenge; not adopted.",
+      "main_test": "Whether repeated short cycles improve comprehension, energy and transfer without fragmenting the framework."
+    }
+  ],
+  "bench_relevance_screen": [
+    {"id":"A-07","disposition":"route_now","reason":"Participant and facilitator journey, screen density, navigation and progressive disclosure are decision-bearing."},
+    {"id":"A-08","disposition":"route_now","reason":"Narrative order, founder/Gina language and participant comprehension are load-bearing."},
+    {"id":"A-09","disposition":"route_now","reason":"Behaviour barriers, social context and the gap between intention and real-world use require challenge."},
+    {"id":"A-10","disposition":"route_now","reason":"Learning architecture and the comparison of education-led, experience-led and spiral approaches are central."},
+    {"id":"A-11","disposition":"route_now","reason":"Outcomes, measurement burden and theory-of-change trace must shape rather than follow the teaching design."},
+    {"id":"A-12","disposition":"human_boundary","reason":"AI accessibility and safeguarding screening is relevant, but participant-facing approval remains with qualified humans under D-0016."},
+    {"id":"A-13","disposition":"route_now","reason":"Authentic participation and carry-forward may matter, without turning the workshop into campaign theatre."},
+    {"id":"A-14","disposition":"route_now","reason":"The experiential and visual medium must be designed, not inferred from an 80-screen text assembly."},
+    {"id":"A-15","disposition":"route_now","reason":"Facilitator load, room mechanics, materials, timing and scale feasibility constrain the design."},
+    {"id":"A-16","disposition":"route_now","reason":"Cueing, repetition, lapse and return are central to starting and sustaining mental reps."},
+    {"id":"A-17","disposition":"route_now","reason":"Relevant market analogues, including RULER, must inform sequence and leave-behind design without being copied."},
+    {"id":"A-18","disposition":"route_now","reason":"The workshop must make MFC's distinct category and product promise legible against adjacent approaches."},
+    {"id":"A-19","disposition":"route_now","reason":"Individual skill teaching must not erase workplace, relational and population conditions."},
+    {"id":"A-20","disposition":"route_now","reason":"The design needs an explicit line to MFC's social-change and access theory rather than assumed impact."},
+    {"id":"A-21","disposition":"defer_conditionally","reason":"Partnership design becomes decision-bearing only for a named host or employer implementation model."},
+    {"id":"A-22","disposition":"route_now","reason":"The current package lacks fresh intended-audience comprehension evidence and could still feel generic or overwhelming."},
+    {"id":"A-23","disposition":"route_now","reason":"Source integration and supersession control are essential after retired arcs and labels previously re-entered the build."},
+    {"id":"A-24","disposition":"route_now","reason":"Load-bearing assumptions need ranked disconfirmation tests before pilot or scale."},
+    {"id":"A-25","disposition":"route_now","reason":"Mission fit, strategic leverage and opportunity cost determine what the flagship should optimise for."},
+    {"id":"A-26","disposition":"defer_conditionally","reason":"Government and policy architecture is not design-bearing unless public-sector adoption becomes part of this objective."},
+    {"id":"H-01","disposition":"human_boundary","reason":"Clinical-adjacent content and participant response pathways require a qualified clinical reviewer; the role is unstaffed."},
+    {"id":"H-02","disposition":"human_boundary","reason":"Privacy, consent and participant-data decisions require qualified legal/regulatory input."},
+    {"id":"FL-01","disposition":"route_now","reason":"A cold founder-fit and plain-language check is required after synthesis, independent of builder rationale."},
+    {"id":"SYS-03","disposition":"defer_conditionally","reason":"No new persistent capability is justified unless this pilot proves a distinct responsibility remains unowned."},
+    {"id":"SYS-04","disposition":"route_now","reason":"The system must reconcile routed findings into one recommendation and actual artifact changes."}
+  ],
+  "executed_reviews": [
+    {"id":"A-07","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-08","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-09","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-10","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-11","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-12","status":"restricted_screen_with_findings","execution_mode":"restricted_screen","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-13","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-14","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-15","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-16","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-17","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-18","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-19","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-20","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-22","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-23","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-24","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"A-25","status":"consulted_with_findings","execution_mode":"same_context_role_lens","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"},
+    {"id":"SYS-04","status":"reconciled_same_context_inputs","execution_mode":"reconciliation","learning_disposition":"candidate_update","output":"60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/24-half-day-specialist-panel-and-architecture-decision.md"}
+  ],
+  "knowledge_equipment_snapshot": {
+    "as_of": "2026-08-13",
+    "evaluated_pack": ["A-07","A-08","A-09","A-10","A-11","A-12","A-13","A-14","A-15","A-16","A-17","A-18","A-19","A-20","A-21","A-22","A-23","A-24","A-25","A-26","FL-01","SYS-03","SYS-04"],
+    "role_only_not_equipped": [],
+    "restricted_human_boundary": ["H-01","H-02"],
+    "rule": "PACK STATE, NOT ROLE READINESS -- these are two different claims and this field carries only the first. Pack state mirrors specialist-knowledge-index.yml: whether a role's professional knowledge equipment has passed evaluation. The 2026-08-13 governed retest (independent preregistered case owner, blind performer, separate checker, 175/175, zero critical failures) explicitly corrected the process defects behind the earlier all-bench withhold, so 23 AI-operable packs are evaluated_pack on that basis and H-01/H-02 remain restricted_human_boundary under every result. Role readiness is tracked separately in specialist-bench.yml's observability.confidence, where FL-01 is deliberately held at unproven despite its pack passing -- it is the founder-facing cold-review gate and a genuine rendered cold read is a separately required gate that no text evaluation substitutes for. An evaluated pack means reasoning-evaluation confidence only; every role retains an open real-world evidence gate, and none of this is clinical, legal, accessibility or participant assurance."
+  },
+  "execution_note": "One accountable AI context consulted seventeen same-context role lenses, ran one restricted AI screen and performed one same-context reconciliation. The synthesis produced useful artifact corrections, but it did not complete seventeen bounded specialist reviews: individual task packets and contract-complete outputs were not preserved. These entries therefore remain limited consultation evidence and candidate learning only. FL-01 remains pending because a same-context cold read would be invalid.",
+  "contract_audit": {
+    "audited_on": "2026-08-13",
+    "result": "partial_not_full_specialist_execution",
+    "bounded_specialist_reviews_completed": 0,
+    "independent_specialist_reviews_completed": 0,
+    "same_context_role_lenses_consulted": 17,
+    "restricted_screens_completed": 1,
+    "learning_writebacks_completed": 0,
+    "next_test": "Run a small fresh-context panel using saved task packets, unique contract-complete outputs, explicit reconciliation and controlled learning write-back before claiming the call contract is proven."
+  },
+  "qualified_human_gates_complete": false,
+  "hunter_gate": {
+    "artifact_seen": false,
+    "explicit_approval": false,
+    "evidence": null,
+    "status": "not_requested_pending_design_intelligence"
+  }
+}

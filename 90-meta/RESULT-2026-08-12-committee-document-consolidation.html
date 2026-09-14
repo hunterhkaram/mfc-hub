@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee Document: Consolidation Assessment</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            --accent: #0066cc;
+            --warning: #d97706;
+            --success: #059669;
+            --muted: #6b7280;
+            --light-bg: #f9fafb;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a1a;
+                --text: #f3f4f6;
+                --border: #404040;
+                --accent: #3b82f6;
+                --warning: #f59e0b;
+                --success: #10b981;
+                --muted: #9ca3af;
+                --light-bg: #262626;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            padding: 2rem;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 2rem; margin: 2rem 0 1rem; }
+        h2 { font-size: 1.5rem; margin: 2rem 0 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; }
+        p { margin: 1rem 0; }
+        .section { margin: 2rem 0; padding: 1.5rem; background: var(--light-bg); border-left: 4px solid var(--accent); }
+        .alert { padding: 1rem; margin: 1rem 0; border-radius: 0.5rem; }
+        .alert-warning { background: rgba(217, 119, 6, 0.1); border-left: 4px solid var(--warning); }
+        .alert-success { background: rgba(5, 150, 105, 0.1); border-left: 4px solid var(--success); }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--light-bg); font-weight: 600; }
+        ul, ol { margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem; }
+        li { margin: 0.5rem 0; }
+        .readiness-signal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 0.5rem;
+        }
+        .signal-headline {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+        }
+        .signal-note { font-size: 0.9rem; color: var(--muted); text-align: center; }
+        .dimension-row { margin: 1rem 0; }
+        .dimension-label { font-weight: 600; font-size: 0.9rem; }
+        .dimension-score { color: var(--accent); font-weight: 700; }
+        .dimension-limiter { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
+        .decision-controls {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .control {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .control:hover { background: var(--light-bg); }
+        .control input { margin-right: 0.5rem; }
+        .control label { cursor: pointer; display: block; }
+        .export-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .not-done { color: var(--warning); font-weight: 600; }
+        .metadata { font-size: 0.85rem; color: var(--muted); margin: 2rem 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Committee Document Status: The Real Task and What Changed</h1>
+
+        <div class="alert alert-success">
+            <strong>Key finding:</strong> The consolidation of 6 separate strategy documents is not the problem that needs solving. The real task is compressing the main COMMITTEE document to 5–7 pages with pricing reconciliation — and that work should proceed autonomously without option-picking.
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Operational status update — 13 August:</strong> Gmail verifies Hunter sent “MFC ready for review” to Jake and Onno on 11 August with the seven-page report attached. This page is the historical assessment behind that work. Its decision controls below are retained as history, not a current send gate. MFC is awaiting their feedback.
+        </div>
+
+        <h2>What Changed</h2>
+        <p>You asked a diagnostic question: "Why do we have 6 FINAL-*.md documents when the commitment was for a single, concise document?" The answer reframes the entire problem.</p>
+
+        <div class="section">
+            <h3>The Diagnosis</h3>
+            <p><strong>The 6 FINAL-*.md files exist for a legitimate reason.</strong> They are modular, sourced reference documents—repackagings of the D-series working papers, each with full sourcing and decision-reversibility notes. They were created specifically to preserve detail and traceability.</p>
+
+            <p><strong>The main COMMITTEE document already consolidates this material.</strong> Its strategy content is already a summary. Trying to consolidate the FINAL files into COMMITTEE would duplicate content, break modularity, and solve a non-problem.</p>
+
+            <p><strong>The real unfinished work (from NEXT-STEPS, 2026-08-10 §3):</strong></p>
+            <ul>
+                <li>Compress COMMITTEE to 5–7 pages</li>
+                <li>Reconcile §2–§5 body text to the actual D2 pricing figures (base-plus-per-head Foundations, banded Essentials, $400 access levy — source: D2 pricing record, `30-decisions/`)</li>
+                <li>Run one independent read-through after compression to catch stale figures or internal contradictions</li>
+                <li>Deliver by Aug 17 to Onno/Jake and the full committee</li>
+            </ul>
+            <p>This is the task on the critical path. Consolidation is not.</p>
+        </div>
+
+        <h2>What It Means for MFC</h2>
+        <p><strong>Time savings:</strong> You don't spend days on a consolidation project that serves no actual need.</p>
+
+        <p><strong>Modularity preserved:</strong> The FINAL files remain as reference documents. If someone needs to deep-dive on pricing, they pull FINAL-02 without dragging unrelated content. This matters for future iterations, audits, and institutional learning.</p>
+
+        <p><strong>Clarity on the real deadline:</strong> The committee is waiting on COMMITTEE, not on consolidated FINAL documents. The 5–7 page compression is what matters by Aug 17.</p>
+
+        <p><strong>A simpler path forward:</strong> Compress the existing COMMITTEE, verify it once, deliver it. No option-picking, no architectural rework.</p>
+
+        <h2>Options Considered and Ranked</h2>
+        <p>The divergence pass considered five materially different approaches before the premise audit rejected consolidation as the wrong problem:</p>
+        <table>
+            <tr><th>Rank</th><th>Option</th><th>Assessment</th></tr>
+            <tr><td>#1</td><td><strong>Tiered delivery</strong></td><td>Concise COMMITTEE core with FINAL files retained as modular references. Strongest fit and closest to the eventual recommendation.</td></tr>
+            <tr><td>#2</td><td><strong>Progressive disclosure</strong></td><td>Concise interactive core with expandable detail. Plausible, but adds format complexity without solving a demonstrated need.</td></tr>
+            <tr><td>#3</td><td><strong>Unified integration</strong></td><td>Absorb all FINAL content into one 40–60 page document. Rejected because it defeats “concise.”</td></tr>
+            <tr><td>#4</td><td><strong>Decision-driven rewrite</strong></td><td>New 4–8 page document organised around decisions. Rejected because the required decision set was not the task.</td></tr>
+            <tr><td>#5</td><td><strong>Full through-line rewrite</strong></td><td>Replace COMMITTEE with a 25–40 page narrative. Rejected for high effort, duplication and deadline risk.</td></tr>
+        </table>
+        <p><strong>Final recommendation after premise audit:</strong> do not undertake a new consolidation project. Preserve the already-sent review version and the modular sources; reconcile future committee changes into the existing controlled artifacts after Jake and Onno respond.</p>
+
+        <h2>The Specialist Panel Findings</h2>
+
+        <h3>Flint (Approach Contrarian)</h3>
+        <p><strong>Challenge:</strong> All five consolidation options solve for a problem that NEXT-STEPS never posed. The actual task document says "compress COMMITTEE to 5–7 pages." It does not ask for consolidation of the FINAL-*.md files.</p>
+
+        <p><strong>The hard question:</strong> Are the FINAL files supposed to merge into COMMITTEE at all, or are they reference materials that stay separate? If separate, the "consolidation problem" doesn't exist.</p>
+
+        <h3>Verity (Evidence Auditor)</h3>
+        <p><strong>Finding:</strong> The FINAL-*.md files are sourced repackagings of D-series content already in COMMITTEE at summary level. They add ~30–40% detail but no new strategic substance.</p>
+
+        <ul>
+            <li>FINAL-01: Condenses D1 + D3</li>
+            <li>FINAL-02: Condenses D2 + D5</li>
+            <li>FINAL-03: Condenses D6 + D4</li>
+            <li>FINAL-04: Condenses D3 + D1</li>
+            <li>FINAL-05: Condenses D7 + D8 + D1</li>
+            <li>FINAL-06: Condenses D10</li>
+        </ul>
+
+        <p><strong>Consolidation implication:</strong> Merging FINAL files into COMMITTEE would duplicate already-stated strategy (COMMITTEE is the summary; FINAL docs are the full specification). Better to keep them separate: COMMITTEE remains the board-facing brief; FINAL-*.md remain the working system of record, cross-referenced as needed.</p>
+
+        <h3>Compass (Founder Lens)</h3>
+        <p><strong>Assessment:</strong> This is the wrong problem to solve.</p>
+
+        <p>The real task (compress COMMITTEE to 5–7 pages by Aug 17) is what the committee is waiting for. Consolidating FINAL files would:</p>
+        <ul>
+            <li>Duplicate content already in COMMITTEE</li>
+            <li>Break the modularity that makes FINAL docs useful for reference</li>
+            <li>Delay the actual deadline item</li>
+            <li>Require presenting you with options on a task that shouldn't need them (consolidation should execute autonomously if it were the right task)</li>
+        </ul>
+
+        <p><strong>What to do instead:</strong> Compress COMMITTEE autonomously. Reconcile pricing figures. Run one independent verification. Deliver by Aug 17.</p>
+
+        <h2>Independent Verification</h2>
+        <p>A separate context (Compass, founder lens) reviewed the consolidation problem and caught that the problem statement itself is wrong. The independent check found: consolidation is not the task; compression is. Three specialists converged on this finding independently, and it fundamentally revised the recommendation from "consolidation approach selection" to "no consolidation."</p>
+
+        <h2>Historical Decision Controls — Superseded by the Verified Review Send</h2>
+
+        <div class="decision-controls">
+            <div class="control">
+                <label>
+                    <input type="radio" name="decision" value="proceed">
+                    Proceed
+                </label>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Execute: compress COMMITTEE to 5–7 pages, reconcile pricing, verify independently, deliver Aug 17. Leave FINAL files as reference (no consolidation).</p>
+            </div>
+            <div class="control">
+                <label>
+                    <input type="radio" name="decision" value="hold">
+                    Discuss first
+                </label>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">The specialist assessment is clear but review before committing.</p>
+            </div>
+            <div class="control">
+                <label>
+                    <input type="radio" name="decision" value="consolidate">
+                    Consolidate anyway
+                </label>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Proceed with one of the consolidation options (A–E) despite the specialist assessment.</p>
+            </div>
+            <div class="control">
+                <label>
+                    <input type="radio" name="decision" value="later">
+                    Later
+                </label>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Defer this decision. Hold the assessment for a future moment.</p>
+            </div>
+        </div>
+
+        <div id="export-area" style="display: none;">
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">Copy your decision here:</p>
+            <div class="export-box" id="export-text"></div>
+        </div>
+
+        <h2>Readiness Signal</h2>
+        <p><strong>Average: 87 / 100 · Lowest dimension: operational readiness, 68 / 100</strong></p>
+        <div class="readiness-signal">
+            <div>
+                <div class="signal-headline">87</div>
+                <div class="signal-note">average of seven dimensions / 100</div>
+            </div>
+            <div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Mission fit</div>
+                    <div class="dimension-score">88</div>
+                    <div class="dimension-limiter">Solves a real problem (wrong task being posed). Does not fully close the underlying work (execution is next step). Limiter: Recommendation is clear but execution is still required.</div>
+                </div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Audience value</div>
+                    <div class="dimension-score">85</div>
+                    <div class="dimension-limiter">Provides clarity on the real task and what not to do. Does not include a detailed execution plan for the compression itself. Limiter: The compression work still needs a plan and timeline.</div>
+                </div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Evidence integrity</div>
+                    <div class="dimension-score">90</div>
+                    <div class="dimension-limiter">Independently verified by Verity against primary files; all six FINAL docs read in full; sourcing confirmed against D-series; COMPASS added founder-lens verification.</div>
+                </div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Safety / reputation</div>
+                    <div class="dimension-score">88</div>
+                    <div class="dimension-limiter">Assessment stays within K-08 boundaries; does not make overclaims about what consolidation could achieve. Limiter: Relies on Hunter's confirmation that intent on FINAL files matches the recommendation.</div>
+                </div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Conceptual integrity</div>
+                    <div class="dimension-score">86</div>
+                    <div class="dimension-limiter">Uses MFC's own decision framework and operates within established authority structures. Limiter: Assumes modular reference docs are the right structure; could be tested further.</div>
+                </div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Operational readiness</div>
+                    <div class="dimension-score">68</div>
+                    <div class="dimension-limiter">The diagnosis is clear and actionable. The execution (compression) is not yet underway. Limiter: A real compressed document, independently verified, is still required before Aug 17.</div>
+                </div>
+                <div class="dimension-row">
+                    <div class="dimension-label">Assurance / learning</div>
+                    <div class="dimension-score">85</div>
+                    <div class="dimension-limiter">Compass (founder lens) verified the assessment independently and found no disagreement with the other specialist findings. Limiter: The assessment rests on founder-voice inference; a direct confirmation of intent would close this.</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>What I Couldn't Verify</h2>
+        <ul>
+            <li><span class="not-done">Hunter's intent on the FINAL-*.md files:</span> Whether they were meant to feed the committee paper directly or remain as working reference. The specialist assessment assumes they're reference docs, but this should be confirmed.</li>
+            <li><span class="not-done">The 3–4 page market/gap summary committed to Onno:</span> R0 lists this as an outstanding commitment (Onno x MFC call, Aug 7). Whether this is a separate deliverable or part of COMMITTEE compression is not specified in the current docs.</li>
+            <li><span class="not-done">Exact stale figures in COMMITTEE §2–§5:</span> NEXT-STEPS flags that pre-D2 pricing figures are still in the body, but I have not line-by-line compared the HTML to the current D2 to identify every discrepancy.</li>
+        </ul>
+
+        <h2>Summary</h2>
+        <p><strong>The consolidation of 6 FINAL-*.md files into a single committee document is not the problem.</strong> The problem is compressing the main COMMITTEE document to 5–7 pages with pricing reconciliation—work that should execute autonomously and be ready by Aug 17.</p>
+
+        <p>All three specialist voices (approach challenge, evidence review, founder lens) converge on this: keep the FINAL files as modular reference docs, compress the COMMITTEE, verify independently once, deliver.</p>
+
+        <p><strong>Your call:</strong> Proceed with compression, hold for discussion, or consolidate anyway. The assessment stands either way.</p>
+
+        <div class="metadata">
+            <p>Result produced by: executive intake with multi-specialist panel<br/>Panel: Flint (approach contrarian) · Verity (evidence auditor) · Compass (founder lens)<br/>Date: 2026-08-12 · Sources: NEXT-STEPS-2026-08-10, R0, COMMITTEE v1-v5, FINAL-01-06, Compass review 2026-08-11</p>
+        </div>
+    </div>
+
+    <script>
+        const radios = document.querySelectorAll('input[name="decision"]');
+        const exportArea = document.getElementById('export-area');
+        const exportText = document.getElementById('export-text');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const decisions = {
+                    'proceed': 'Decision: Proceed with compression (compress COMMITTEE to 5–7 pages, reconcile pricing, verify independently, deliver Aug 17). Leave FINAL-*.md files as reference docs.',
+                    'hold': 'Decision: Hold for discussion. Specialist assessment is clear but reviewing before commitment.',
+                    'consolidate': 'Decision: Consolidate the FINAL-*.md files into COMMITTEE despite specialist recommendation.',
+                    'later': 'Decision: Defer. Hold the assessment for a future moment.'
+                };
+                exportText.textContent = decisions[this.value];
+                exportArea.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

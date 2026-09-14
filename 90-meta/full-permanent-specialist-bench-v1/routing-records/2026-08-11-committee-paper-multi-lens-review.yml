@@ -1,0 +1,46 @@
+objective: committee-paper-multi-lens-review-2026-08-11
+artefact_reviewed: 90-meta/COMMITTEE-2026-08-11-strategy-and-commercial-model-source.html
+context: >
+  First real (non-self-test) run of a genuine multi-specialist review panel, built and dispatched
+  2026-08-11 at Hunter's direct instruction after he identified that the specialist bench had never
+  actually been invoked for real work -- only self-tested. Run against the already-"finalised,
+  independently reviewed" committee paper specifically to test whether a real panel would find
+  anything a single-pass independent check missed.
+specialists:
+  - id: FL-02
+    name: Flint (approach contrarian)
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-flint-committee-paper-review.md
+  - id: FL-03
+    name: Verity (evidence auditor)
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-verity-committee-paper-review.md
+  - id: FL-COMMITTEE-Sable
+    name: "Simulated Sable (governance/risk/safeguarding lens)"
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-sable-committee-paper-review.md
+  - id: FL-COMMITTEE-Dax
+    name: "Simulated Dax (commercial/strategy lens)"
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-dax-committee-paper-review.md
+  - id: FL-01
+    name: Compass (founder lens)
+    status: SUBSTITUTED
+    substitution_reason: >
+      Not run as a separate pass in this round -- the producing session synthesised the four reviews
+      directly against what Hunter would need to see, per standing practice when Compass isn't
+      separately available (per L-025/CLAUDE.md, disclosed rather than silently treated as done).
+convergent_findings:
+  - "3 of 4 reviewers (Flint, Sable, and indirectly Dax's commercial-risk framing) independently flagged the total absence of safeguarding/D-0016 disclosure in a paper requesting delivery-model ratification -- found independently, with no cross-visibility between reviewers."
+  - "2 of 4 reviewers (Dax, Flint) independently flagged the founding-rate/sustainability claims as asserted rather than shown, from different lenses (commercial-source-fidelity vs capacity-math)."
+disagreements: none material -- no reviewer's finding was contradicted by another; findings were complementary across lenses (accuracy, commercial, governance, contrarian-strategy), not conflicting.
+what_this_proves: >
+  A single independent-check pass the previous night ("fix invented moments and overstated grants-gap
+  framing") did not catch: a real pricing-table factual error, a total safeguarding-disclosure gap, or
+  the unverified-assumption/against-case omissions in the founding-rate mechanism. A genuine multi-lens
+  panel run for the first time found all of these in one pass. This is offered as evidence for the
+  panel's value, not as a claim that this one run proves the model always works -- one data point.

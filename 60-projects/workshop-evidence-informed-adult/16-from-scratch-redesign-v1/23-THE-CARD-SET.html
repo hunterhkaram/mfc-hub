@@ -1,0 +1,552 @@
+<!--
+mfc_topic: workshop-delivery
+artifact_role: candidate
+canonical_source: 15-inputs/hunter-notes/workshop/2026-09-08-founder-the-full-content-bank.md
+The card set: every thing MFC says, numbered and in order, with the bullets spoken inside each,
+tagged per product. Depth is the variable, not content. Built to Hunter's specification 2026-09-08.
+-->
+<title>The Card Set</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Newsreader:ital@0;1&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F7F7F5; --card:#FFFFFF; --sunk:#ECECE8; --deep:#17171A;
+  --ink:#18181B; --ink-2:#494950; --muted:#7A7A82;
+  --line:#DDDDD8; --line-2:#C4C4BE;
+  --i60:#1F5E4F; --i60s:#DBEAE5;
+  --e90:#8A4A16; --e90s:#F7E6D6;
+  --f240:#3B3A8F; --f240s:#E1E1F3;
+  --block:#8F2D28; --blocks:#F6DEDC;
+  --shadow:0 1px 2px rgba(24,24,27,.05), 0 10px 26px -18px rgba(24,24,27,.35);
+  --sans:"Inter Tight",-apple-system,"Segoe UI",sans-serif;
+  --serif:"Newsreader",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121214; --card:#1B1B1E; --sunk:#161618; --deep:#0A0A0C;
+  --ink:#ECECEF; --ink-2:#B5B5BC; --muted:#85858E;
+  --line:#2B2B2F; --line-2:#3D3D42;
+  --i60:#67BFA6; --i60s:#142B25;
+  --e90:#D89A57; --e90s:#2E2317;
+  --f240:#9A9AE8; --f240s:#1E1E3A;
+  --block:#E08E88; --blocks:#321917;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 26px -18px rgba(0,0,0,.9);
+}}
+:root[data-theme="dark"]{
+  --paper:#121214; --card:#1B1B1E; --sunk:#161618; --deep:#0A0A0C;
+  --ink:#ECECEF; --ink-2:#B5B5BC; --muted:#85858E;
+  --line:#2B2B2F; --line-2:#3D3D42;
+  --i60:#67BFA6; --i60s:#142B25;
+  --e90:#D89A57; --e90s:#2E2317;
+  --f240:#9A9AE8; --f240s:#1E1E3A;
+  --block:#E08E88; --blocks:#321917;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 26px -18px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px 70px}
+
+header.m{padding:46px 0 24px;border-bottom:3px solid var(--ink)}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-weight:800;font-size:clamp(36px,6.2vw,62px);line-height:1;letter-spacing:-.035em;margin:0}
+.dek{font-size:clamp(17px,2.1vw,19.5px);color:var(--ink-2);max-width:64ch;margin:18px 0 0}
+.dek b{color:var(--ink);font-weight:600}
+
+.filters{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);padding:14px 0;margin-bottom:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.fb{font-family:var(--sans);font-size:14px;font-weight:600;padding:8px 16px;border:1px solid var(--line-2);background:var(--card);color:var(--ink-2);cursor:pointer;transition:.13s}
+.fb:hover{border-color:var(--ink)}
+.fb[aria-pressed="true"]{color:#fff;border-color:transparent}
+.fb.f-a[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.fb.f-1[aria-pressed="true"]{background:var(--i60)}
+.fb.f-2[aria-pressed="true"]{background:var(--e90)}
+.fb.f-3[aria-pressed="true"]{background:var(--f240)}
+.fb:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+.count b{color:var(--ink)}
+
+.sec{margin:34px 0 10px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line-2)}
+
+.c{background:var(--card);border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow);border-left:4px solid var(--line-2)}
+.c.in60{border-left-color:var(--i60)}
+.c-h{padding:16px 22px 0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.c-h .no{font-family:var(--mono);font-size:20px;font-weight:600;color:var(--muted);min-width:32px}
+.c-h h3{font-weight:700;font-size:19.5px;margin:0;letter-spacing:-.02em;flex:1;min-width:220px}
+.tags{display:flex;gap:4px}
+.tg{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;padding:3px 7px;font-weight:600}
+.g1{background:var(--i60s);color:var(--i60)}
+.g2{background:var(--e90s);color:var(--e90)}
+.g3{background:var(--f240s);color:var(--f240)}
+.gx{background:var(--sunk);color:var(--muted)}
+.gb{background:var(--blocks);color:var(--block)}
+
+.c ul{margin:10px 0 0;padding:0 22px 0 46px}
+.c li{margin-bottom:8px;font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.c li b{color:var(--ink);font-weight:600}
+.c li em{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:16px}
+.c .pad{height:14px}
+.depth{background:var(--sunk);margin-top:12px;padding:12px 22px 14px}
+.depth p{margin:0 0 6px;font-size:14.5px;color:var(--ink-2)}
+.depth p:last-child{margin:0}
+.depth b{color:var(--ink)}
+.depth .d2 b{color:var(--e90)}
+.depth .d3 b{color:var(--f240)}
+.opt{background:var(--e90s);margin-top:12px;padding:11px 22px;font-size:14.5px;color:var(--ink)}
+.opt b{color:var(--e90)}
+.warn{background:var(--blocks);margin-top:12px;padding:11px 22px;font-size:14.5px;color:var(--ink)}
+.warn b{color:var(--block)}
+
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);padding:20px 24px;margin:20px 0 8px;box-shadow:var(--shadow)}
+.note h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px;font-weight:700}
+.note p{margin:0 0 10px;color:var(--ink-2);max-width:72ch}
+.note p:last-child{margin:0}
+.note b{color:var(--ink);font-weight:600}
+
+.close{background:var(--deep);color:#E9E9EC;padding:34px 0 42px;margin-top:48px}
+.close h2{font-weight:800;font-size:25px;margin:0 0 10px;color:#fff;letter-spacing:-.02em}
+.close p{color:#A6A6AE;max-width:72ch;margin:0 0 12px;font-size:16px}
+.close b{color:#fff;font-weight:600}
+.hide{display:none}
+@media print{body{background:#fff}.filters{display:none}.c{page-break-inside:avoid;box-shadow:none}.close{background:#fff;color:#000}.close h2{color:#000}}
+</style>
+
+<div class="wrap">
+<header class="m">
+  <p class="kick">Mental Fitness Collective · the card set · 8 September 2026</p>
+  <h1>Every card,<br>in order.</h1>
+  <p class="dek">One numbered set for all three products. <b>Everything gets mentioned in every session</b> — depth is the variable, not content. Foundations runs the lot. Essentials runs a subset with room to practise. The Introduction runs the cards a person has to walk out holding.</p>
+</header>
+
+<div class="filters">
+  <button class="fb f-a" data-f="all" aria-pressed="true">All cards</button>
+  <button class="fb f-1" data-f="60" aria-pressed="false">Introduction</button>
+  <button class="fb f-2" data-f="90" aria-pressed="false">Essentials</button>
+  <button class="fb f-3" data-f="240" aria-pressed="false">Foundations</button>
+  <span class="count" id="count"></span>
+</div>
+
+<div class="note">
+  <h2>How to read this</h2>
+  <p>Click a product and the set filters to what that session actually runs. <b>The numbers never change</b> — card 14 is card 14 in all three, so you never relearn where you are.</p>
+  <p><b>What the Introduction drops isn't content, it's depth.</b> The Human Operating System, the five skills taught properly, the shift toolkit practised live, the organisational plan — those are named in the hour and worked in the longer ones. The one exception is the Foundations planning block, which only exists because 240 minutes can carry it.</p>
+</div>
+
+<div id="cards"></div>
+</div>
+
+<div class="close"><div class="wrap">
+  <h2>What the hour has to leave behind</h2>
+  <p>Your own test: <b>if they're starting at level zero, how do we take them up — and by the end do they have the capacity to actually practise this in their life?</b></p>
+  <p>So the Introduction's cards were chosen against that, not against what's interesting. <b>Stop, Shift, Do. Why it matters to them. A basic understanding of what's happening inside. That a rep is a thing they can start doing. That it lands on other people too. That they weren't born with any of this.</b> Everything else earns its place in Essentials or Foundations instead.</p>
+  <p><b>Nothing here is applied.</b> Move cards between products, cut them, add them — tell me and it changes.</p>
+</div></div>
+
+<script>
+var C=[
+{s:"Opening — setting the scene"},
+{n:1,t:"The four things, and the scene",p:[1,1,1],
+ b:["We all <b>think, feel, act and connect</b> — in every part of a life, not just work.",
+    "<b>We depend on those four constantly, and almost never think about them.</b>",
+    "No welcome, no agenda. <b>Start at zero, on this.</b>"]},
+{n:2,t:"Nobody has to speak",p:[1,1,1],
+ b:["<b>Someone booked this for you. That's worth naming out loud.</b>",
+    "<b>So here's what you control.</b> Whether you speak. Whether you write. Whether you share. Whether you stay. <b>Whether you use any of it afterwards. Whether you come back.</b>",
+    "<b>Nobody here will be asked to speak.</b> Not to your neighbour, not to a group, not to me. Nothing is collected. <b>And you don't owe anyone a reason for any of it.</b>",
+    "<em>If you say nothing at all today, you've done this exactly right.</em>",
+    "Said as a gift, not a caveat."]},
+{n:3,t:"You're not just a worker",p:[1,1,1],
+ b:["<b>Not just an employee. Not just a parent, an athlete, a founder, a friend. You're a human being</b>, and you play several roles.",
+    "In every one of them you're thinking, feeling, acting, and either connecting or not.",
+    "<b>Right now you're not thinking of me — you're thinking of you.</b> That's the point. <b>This is for you.</b>"],
+ d3:"Work the roles out loud — one moment from each, so the room sees the same four capacities running in a completely different setting."},
+{n:4,t:"The door",p:[1,1,1],
+ b:["Not a clinical workshop. Not a psychologist. Not treatment.",
+    "<b>If it's bigger than a rough patch, the thing that helps is your GP, not me.</b> <em>That's not me passing you off — it's a different job.</em>",
+    "GP · Lifeline 13 11 14 · triple zero, printed so nobody has to ask.",
+    "<b>You don't need a reason to sit anything out.</b>"],
+ warn:"⛔ Never lengthened. Length turns this into a warning — it has to land as a non-event."},
+
+{s:"The gap"},
+{n:5,t:"We train our bodies for what it gives us",p:[1,1,1],
+ b:["<b>Answer this in your own head — no hands, nobody speaks.</b>",
+    "Most of us move our bodies. Not to prevent something — <b>we do it for what it gives us.</b> Better company. Sleep. Keeping up with the kids.",
+    "<em>Is that true for you?</em>",
+    "<b>Hold on to that yes — I'm going to hold you to it.</b> Where's the version of that for your mind?",
+    "<b>Nobody ever sold you the benefit.</b> The mind is sold as something to prevent, and that's where it stops."]},
+{n:6,t:"What's actually happening inside",p:[1,1,1],
+ b:["<b>You have a brain, and your brain harbours your mind. That's your internal experience.</b>",
+    "Your thoughts — and the spiral they can start. What you feel: overwhelmed, excited, flat.",
+    "<b>A thought triggers a feeling, and what we do reinforces it.</b>",
+    "<b>Feelings can carry information about what matters to you. They are not instructions.</b>",
+    "Thoughts, feelings, emotions — <b>plainly, and assume nobody's ever been taught it.</b>"],
+ d2:"The nervous system properly — what your state actually is, why it moves, and what it does to what you can reach.",
+ d3:"More room on thoughts, feelings and emotions, plainly. ⛔ <b>The Human Operating System does NOT go here</b> — Hunter, 2026-09-09. This card is already carrying a lot, and the operating system earns its place at card 19b, where it explains why knowing doesn't transfer. Loading it in here is information for its own sake."},
+{n:7,t:"All we ever see is behaviour",p:[1,1,1],
+ b:["<b>We don't educate anyone about what happens internally.</b>",
+    "<b>So all we get from another person is their behaviour</b> — with no knowledge or understanding of what's underneath it.",
+    "<b>That's the gap we're trying to fill.</b>"]},
+{n:8,t:"Never learned to brake",p:[1,1,1],
+ b:["<b>Nobody ever taught us to brake.</b>",
+    "<b>And nobody walks around saying “I can't brake.”</b> You don't know what you can't do.",
+    "<b>So you live your life on the skills you already have — and that becomes your norm.</b> Different roads. Things you never do. And it never occurs to you a skill was missing.",
+    "Same with your state, and your thoughts, in a tricky moment. <b>You don't think “I can't regulate.” You just adapt around it.</b>",
+    "<b>Same with your own state, and your own thoughts.</b> Nobody thinks <em>I cannot regulate.</em> You just adapt around it, and that becomes normal."]},
+{n:"8b",t:"So how did we learn it? By watching.",p:[1,1,1],
+ b:["<b>If we were never taught this properly — then we learned it growing up.</b> Not in a lesson. <b>We watched.</b>",
+    "Kids seeing how their parents handle a hard moment. How their friends do. <b>That becomes our norm — and that doesn't make it THE norm, or the best way to do it.</b>",
+    "<b>And our parents got it from their parents. And them from theirs.</b> Back to the beginning. We've always been able to think and feel and act, <b>and we learned from whatever was around us.</b>",
+    "<b>We have more knowledge and information than we've ever had. And the actual education for an everyday person hasn't improved.</b>",
+    "<b>This isn't on you. It has always worked this way.</b> You haven't learned these things — <b>and that's a problem, not a fault.</b>",
+    "<b>You don't know what you don't know.</b> And it becomes the thing nobody questions.",
+    "<b>And everyone in this room has already experienced the gap.</b> I don't care who you are \u2014 <b>you weren't born with these skills.</b> We've all got caught in our thoughts. Reacted. <b>Done things we regretted. That's normal.</b>",
+    "<b>I'm not saying it should never happen. But imagine we were more equipped. Imagine that was normal.</b>"],
+ warn:"\u26a0 <b>SAY \u201cnot taught properly\u201d OR \u201cnot taught consistently\u201d \u2014 never a flat \u201cnobody is ever taught this.\u201d</b> Verified 2026-09-08: the Australian Curriculum <b>requires</b> schools to deliver mental health and wellbeing content from school entry to year 10, and the Productivity Commission calls those topics <em>\u201ccomprehensive and likely to support mental health and wellbeing.\u201d</em> <b>A briefed funder or committee member can cite that against the absolute version.</b> \u26a1 What the Commission actually criticises is quality and consistency: <em>\u201cno consistent assessment of the quality or effectiveness\u201d</em> and <em>\u201cno consistent approach to accreditation.\u201d</em> <b>That version survives scrutiny. The absolute one doesn't.</b><br><br>\u26d4 <b>This card is also what stops the whole gap argument landing as \u201cyou're deficient.\u201d</b> Hunter: <em>\u201cthis is to make them not feel like \u2014 oh, it's on me.\u201d</em> Without it, the room hears an accusation.",
+ d2:"Worked further \u2014 what each of us actually inherited, and how you would know.",
+ d3:"Full treatment, including what a person can choose to pass on differently."},
+{n:9,t:"Mental health, and mental fitness",p:[1,1,1],
+ b:["<b>So imagine if we could \u2014 and if the environment around us actually supported it.</b>",
+    "<b>Physical health is how it's doing. Physical fitness is what it can actually do.</b> Nobody confuses those.",
+    "Same split for the mind — <b>and say “we define it this way.”</b>",
+    "<b>If you have a brain, you have mental fitness.</b> Not just kids, not just workers. Every human.",
+    "<b>They're not the same thing, and they're connected \u2014 and it goes both ways.</b> When the moments get harder to handle, that shows up in how you're doing. <b>And when you're not doing well, the moments get harder to handle.</b>",
+    "<b>Which is why we work on the part that can be practised.</b>",
+    "<b>It's a capacity, not perfection.</b>"],
+ warn:"\u26d4 <b>The arrow goes BOTH ways or it doesn't go.</b> <em>\u201cIf we don't have the skill, our mental health can be impacted\u201d</em> is one-way, puts deficit first, and reads as blame \u2014 and MFC's own definition says the two are separate axes: you can be doing well and still find these hard, or be struggling and still be skilled. \u26a1 <b>Never: will deteriorate \u00b7 protects \u00b7 preventative \u00b7 risk factor \u00b7 mentally unfit \u00b7 \u201cthe research shows\u201d \u2014 no such research exists.</b> And drop <em>\u201cit's not far-fetched to say that\u201d</em>: it tells the room there's nothing behind it.",
+ d2:"The four positions worked properly \u2014 doing well with skills, doing well without, struggling with, struggling without \u2014 which is where <em>you can be doing well and still find some of these hard</em> earns its place.",
+ d3:"Full treatment. ⛔ <b>The room does NOT place itself in the model</b> — Hunter, 2026-09-09: <em>“they shouldn't have to place their own week into that, that's really weird.”</em> He's right, and K-04 agrees: the four positions may never be used as a quiz result assigning someone to a box."},
+{n:"9b",t:"What this is \u2014 and what it is not",p:[1,1,1],
+ b:["<b>Say it plainly, because people hear \u201cmental\u201d and fill the gap in themselves.</b>",
+    "<b>Not therapy, counselling or treatment</b>, and I\u2019m not a clinician. <b>If something needs that, this doesn\u2019t replace it</b> \u2014 they sit alongside each other fine.",
+    "<b>Not a promise you\u2019ll never struggle.</b> Fit people still get sick. <b>What this is <em>for</em></b> is strengthening what you can reach for when you do.",
+    "<b>Not one tool that transforms a life.</b> It\u2019s reps. Deliberately unglamorous.",
+    "<b>And never a way of saying what\u2019s hard is your fault.</b> The situation, the people, what you\u2019ve been through, a system not built for you \u2014 <b>none of that is a skills problem.</b>"],
+ warn:"\u26d4 <b>This is the <em>is-not</em> half of K-04\u2019s locked table, paraphrased for speech \u2014 not its verbatim wording.</b> The <em>is</em> half is carried by card 9\u2019s definition. <b>Until 2026-09-09 neither half was said in any MFC product.</b> They are the boundary the whole hour rests on \u2014 and the fourth is the anti-blame position card 8b is trying to carry on its own. <b>Never cut.</b>",
+ d2:"Worked \u2014 the two axes shown, so \u201cseparate but connected\u201d is demonstrated rather than asserted.",
+ d3:"Full treatment, including where mental fitness stops and what MFC will refer on."},
+{n:10,t:"The four positions",p:[1,1,1],
+ b:["Struggling with skills to draw on. Struggling with none. Doing well with skills. <b>Doing well with none — most of us, and nobody talks about it.</b>",
+    "<b>None of the four is a verdict on you.</b>",
+    "The second thing — what you can do — <b>is the one that can be practised.</b>"],
+ d3:"Work all four positions with a real example each, and where a person can move."},
+{n:11,t:"The noise",p:[1,1,1],
+ b:["<b>Wellbeing, resilience, mindfulness, mental health first aid — all worth doing.</b> Named briefly, so the room knows where this sits next to them. <b>None of them teaches you what to do in your own hard moment.</b>",
+    "And you're being sold hydration supplements to boost your wellbeing. <b>It is genuinely hard to tell what's accurate or what you should actually be doing.</b>",
+    "<b>We're bringing it to the simplest lens you can act on.</b>"]},
+{n:12,t:"The picture in society",p:[0,1,1],block:1,
+ b:["Two or three external figures showing the scale of it — <b>not our numbers.</b>",
+    "<b>There's a mental health conversation, and no system for what it means to be mentally strong.</b>"],
+ warn:"⚠ <b>BLOCKED.</b> No statistic can be said until it's registered against a real source. That's a research job, not a refusal — and it's why this card sits out of the hour for now.",
+ d3:"The full societal case, with the reactive-only pattern named: mental health days, EAPs, things brought in to manage a problem after it exists."},
+
+{s:"The experience"},
+{n:13,t:"The breath",p:[1,1,1],
+ b:["Ninety seconds. <b>Nobody's watching and nobody will be asked about it.</b>",
+    "Eyes closed if comfortable — <b>or look down, that works the same.</b>",
+    "Afterwards: most of us wandered, got hooked, came back. <b>That coming back is the whole thing.</b>",
+    "<em>Not the breathing. The catching.</em>"]},
+{n:14,t:"That was mental fitness, for one second",p:[1,1,1],
+ b:["<b>Name it only now</b> — after they've felt it.",
+    "<b>The first thing: you already do this.</b>"]},
+
+{s:"What it's made of"},
+{n:15,t:"Thinking, feeling, acting, connecting",p:[1,1,1],
+ b:["Four things running right now. <b>Bored is a feeling. Sitting still is an action.</b>",
+    "When a moment goes badly, <b>usually one ran the show and the other three never got a say.</b>",
+    "<b>Four things means four ways in.</b> You can't always change what you're feeling. <b>You can nearly always change what you're doing.</b>"],
+ d2:"Work one difficult moment through all four doors, so the four ways in are shown rather than asserted.",
+ d3:"Full treatment, with the room mapping their own moment across the four."},
+{n:16,t:"The five skills",p:[1,1,1],
+ b:["<b>Underneath those four, five things we're actually training: Notice. Shift. Choose. Focus. Connect.</b>",
+    "<b>And why those five \u2014 every moment that goes badly, one of them is the part that failed.</b> Didn\u2019t catch it (Notice) \u00b7 caught it and couldn\u2019t get workable (Shift) \u00b7 workable and still did the usual thing (Choose) \u00b7 knew what mattered and couldn\u2019t stay on it (Focus) \u00b7 it was about someone else and went how it always goes (Connect).",
+    "<b>Named, not taught. Never returned to in the hour.</b>",
+    "<em>That's what's under the bonnet.</em>"],
+ d2:"<b>Taught properly.</b> Each one defined, with a worked example, and used as the way a participant picks the moment they'll practise on.",
+ d3:"Full depth, plus how they map to the seven underneath — and how they show up differently across roles."},
+{n:17,t:"How the mind actually learns",p:[1,1,1],
+ b:["<b>Muscle memory isn't in the muscle. It's the mind</b> — practice and repetition, like any skill.",
+    "<b>Language.</b> You speak English without thinking about it — you don't assemble the sentence, you just talk. <b>There was a time you couldn't.</b> Nothing changed except repetition, over years.",
+    "<b>Autopilot.</b> Your life runs on the patterns you've already built — <b>the brain is an energy-saving machine.</b> Not a flaw, the design."],
+ warn:"⚡ <b>Pathways CAN be explained — Hunter's ruling, 2026-09-09, overturning an earlier over-cautious block.</b> Say it as how learning works: <em>not one rep — one rep does nothing — but repetition over time builds the path.</em> ⛔ <b>What stays out is the promise:</b> never <em>“this will rewire your brain”</em> to a person, never a brain graphic, never a number of days.",
+ d3:"Full treatment — why repetition works, why it takes what it takes, and why a talk doesn't do it."},
+
+{n:"17b",t:"Learn It. Build It. Use It.",p:[1,1,1],
+ b:["<b>Three stages, with any skill \u2014 this is how you actually progress.</b>",
+    "<b>Learn It</b> \u2014 what we\u2019re doing right now. You understand it, you\u2019ve seen it once. <b>Real, and on its own it changes nothing under pressure.</b>",
+    "<b>Build It</b> \u2014 you pick your moments on purpose and practise in them. Deliberate, clunky, not automatic. <b>This is where the work is, and it\u2019s the stage most things skip.</b>",
+    "<b>Use It</b> \u2014 it turns up in a moment you didn\u2019t plan for, without you reaching for it. <b><em>It starts showing up on its own.</em></b>",
+    "<b>I\u2019m not going to tell you an hour gets you there.</b>"],
+ warn:"\u26d4 <b>Say the stage names. Do NOT ask the room to place itself on the pathway</b> \u2014 same ruling as the week-placement exercise. \u26a1 <b>Use It is named honestly as an aim</b>, never as an outcome MFC has evidenced.",
+ d2:"<b>Worked properly</b> \u2014 the participant identifies which stage they\u2019re at for the one skill they picked, and what Build It looks like for them this week.",
+ d3:"Full treatment across all five skills, plus the honest reason Build It is where almost everything fails."},
+
+{s:"Why knowing doesn't transfer"},
+{n:18,t:"Emotional intelligence — the probe",p:[1,1,1],
+ b:["<b>Have you heard of emotional intelligence?</b> Most of us think we're reasonably good at it.",
+    "<b>Ask yourself — what have you actually been repeating in your life to get better at it?</b>",
+    "Ten seconds. <b>Nobody answers out loud.</b>",
+    "<b>The truth is we don't expect you to have an answer.</b> And if you do, that's genuinely great.",
+    "<b>Not that nobody's ever practised anything — we all have. It's just never been part of our life.</b>"]},
+{n:19,t:"Be calm. Be kind.",p:[1,1,1],
+ b:["<b>We tell people how we want them to behave.</b> Be calm. Be kind. Think of others.",
+    "<b>When someone's overwhelmed, “just calm down” doesn't help.</b>",
+    "So they promise — and then do exactly what they've always done, <b>because there's no foundation underneath it.</b>",
+    "<b>It's why people say “I'll be better” and the same thing happens.</b>"]},
+{n:"19b",t:"Why knowing isn't doing \u2014 what's actually happening",p:[1,1,1],
+ b:["<b>Three things are running in any moment.</b>",
+    "<b>The passenger</b> \u2014 the thoughts and feelings that show up. <b>Uninvited, and not bad.</b> They just arrive.",
+    "<b>The engine</b> \u2014 your body state. Your energy, how wound up or flat you are.",
+    "<b>The driver</b> \u2014 your capacity to pause, steer your attention, and choose.",
+    "<b>Here's what actually happens.</b> Something kicks off. You're overthinking. <b>You're not about to go \u201cwow, what a beautiful day\u201d</b> \u2014 you're caught up in it. <b>The engine goes up. And the driver can't reach the thing you already know.</b>",
+    "<b>That's the gap.</b> Not a missing skill. <b>You knew. You just couldn't get to it from where you were.</b>",
+    "<b>Which is why the move is a shift</b> \u2014 it's what gets you back to having a choice at all."],
+ warn:"\u26a0 <b>Three parts only in the hour \u2014 passenger, engine, driver.</b> That is tier one of the operating system and the framework's own recall frame. \u26d4 <b>Never drawn as a brain, never a rewiring claim, and the passenger is never described as bad.</b> \u26a1 A stale six-part version of this model is sitting in 81 vault files with Autopilot missing \u2014 don't build from those.",
+ d2:"The wider four \u2014 autopilot, the roads worn in by repetition, what matters, and the environment around you.",
+ d3:"The full model, in two tiers, worked on the room's own moments."},
+{n:20,t:"Knowing isn't doing",p:[1,1,1],
+ b:["<b>A calf raise builds your calves. It doesn't build match day.</b>",
+    "An athlete practises the specific skill, over and over, <b>in something that looks like the real thing.</b>",
+    "The late-night episode. The scroll. The food before bed. <b>I shouldn't have done that — even though I knew better.</b>",
+    "<b>That isn't a missing skill. It's the gap between having one and applying it.</b>",
+    "<b>You might know better. That doesn't mean you're going to do better.</b>"]},
+{n:21,t:"Methods, correctly placed",p:[1,1,1],
+ b:["<b>Heard of meditation, breathwork, gratitude?</b> Nearly everyone has.",
+    "<b>But how many of us practise them AND can apply something in the moments that matter?</b>",
+    "Physical fitness has capacities <b>and methods</b> — the gym, running. <b>Mental fitness has psychologists and doctors, but the equivalent of running is missing.</b>",
+    "Meditation is a <b>method</b>. It can improve your ability to notice. <b>Doing only methods doesn't mean you'll apply anything in a moment.</b>",
+    "<b>And nobody thinks going to the gym means you'll never get sick.</b> It works the other way too \u2014 <b>when you're unwell, the stairs get harder.</b> It just means more of the ordinary days are within reach."],
+ warn:"\u26a0 <b>The old closing clause was \u201cif these diminish, our physical health could deteriorate.\u201d</b> The images are excellent and stay \u2014 groceries, stairs, getting back up. But that clause let the room complete the parallel with a one-way deterioration arrow, and the physical side borrows a certainty the mental side doesn't have. <b>The bidirectional version carries the right structure and pre-empts \u201cso you're saying mental illness is a fitness failure\u201d before anyone raises it.</b>",
+ d2:"The full parallel — capacities, methods, and where each existing practice actually sits.",
+ d3:"Plus the basics that keep physical health from deteriorating — groceries, stairs, getting back up — mapped onto the mental equivalents."},
+{n:22,t:"November 2025 — the one that didn't work",p:[1,1,1],
+ b:["<b>We launched something. Four hundred people signed up. One percent of their day</b> — meditation, mindfulness, gratitude, visualisation, breathwork.",
+    "<b>It was my idea. And I didn't finish it.</b>",
+    "I'd quit my job for this, and I'm going — <b>why is this so hard?</b>",
+    "<b>I was practising, and not implementing it in the life I was already living.</b>"]},
+{n:23,t:"High friction, low friction",p:[1,1,1],
+ b:["<b>You practise where it's easy and expect to perform where it's hard</b> — then ask what's wrong with you.",
+    "<b>It's retrieval under pressure.</b>",
+    "<b>The gym.</b> Expecting to bench a hundred kilos — <em>hold on, champion, have you learned the technique? Have you progressed to it?</em> Sub-three marathon. Everest. <b>Have you practised that?</b>",
+    "<b>And in society there's no structured lens for how you progress in this at all.</b>",
+    "<b>So start where it's easy.</b> Practise it in the moments that don't cost you anything \u2014 the queue, the kettle, the walk to the car.",
+    "<b>Because if the first place you ever try this is the hardest moment of your week, it will not work, and you'll decide it doesn't work.</b>"],
+ d2:"Named and worked with two examples.",
+ d3:"Full progression model — where to start, what low-friction practice actually looks like, and how it steps up."},
+{n:24,t:"The environment isn't built for this",p:[1,1,1],
+ b:["<b>The system around us isn't designed for human thriving, flourishing, learning.</b>",
+    "<b>Not a rant, not blame — it just makes sense why this is hard.</b>"],
+ d3:"Plus the norms treatment: what our environments currently reward, and what they could."},
+
+{s:"The method"},
+{n:25,t:"Stop, Shift, Do",p:[1,1,1],
+ b:["<b>Traffic lights. Red, yellow, green.</b> Built to be retrieved under pressure, not admired.",
+    "<b>Stop</b> — catching the moment <b>while it's still happening.</b> Hard, because by the time most of us notice, we've sent the reply.",
+    "<b>Shift</b> — changing one thing so the moment becomes workable. <b>Nobody has ever calmed down just because someone told them to.</b>",
+    "<b>Do</b> — the next move, however small. Or the same move, <b>having actually decided on it.</b>"]},
+{n:26,t:"The state check",p:[1,1,1],
+ b:["<b>Too much in you right now? Too little? Or workable?</b>",
+    "Not <em>what</em> am I feeling — <b>how much.</b>",
+    "<b>Never scored, never asked for.</b>"],
+ d2:"<b>With examples of what too-up and too-low actually feel like</b>, and a worked check-in: here's a moment, this person's probably too up — what brings them back?",
+ d3:"Full treatment against the nervous-system education in card 6."},
+{n:27,t:"The shift toolkit",p:[1,1,1],
+ b:["<b>Two doors — shift your state, or shift your thinking.</b>",
+    "One slower breath. Feet on the floor. Stand up. Walk somewhere pointless. <b>Or one different question — not a positive one, a different one.</b>",
+    "<b>Breath is one option. Never the required one.</b>",
+    "<b>The test: can I do the next thing from here?</b> That's the bar. Not calm. Workable.",
+    "<b>So have a think \u2014 which one of those is actually yours?</b> Not out loud, not now. <b>Just know which door you'd reach for.</b>"],
+ opt:"\u26d4 <b>In the hour they THINK about their toolkit. They do not practise it.</b> Hunter's ruling, 2026-09-08: <em>\u201cwe can get them to think about their toolkit \u2014 I don't think it's about practising the shifts in the room in the 60min talk.\u201d</em> \u26a1 <b>This protects the hour's founding promise</b> \u2014 nothing is asked of anyone. The moment a tool gets practised, the room contains a person visibly not doing it.",
+ d2:"<b>They pick one and actually do it.</b> Close your eyes and go to the breath, or five things you can see and three you can hear. <em>You get to choose.</em> A minute.",
+ d3:"The full menu, practised, plus which tools suit which state — and why the high-intensity moment needs a different door."},
+{n:28,t:"The mental rep",p:[1,1,1],
+ b:["<b>A rep counts when you attempt it.</b> Not when it works.",
+    "You Stop, you Shift, you Do — the other person still reacts badly, the day's still bad. <b>That's a completed rep.</b>",
+    "<b>Think about speaking English.</b> You don't assemble the sentence — you just talk. <b>And there was a time you couldn't do that at all.</b>",
+    "<b>Toward what actually matters to you</b> — not to me, not to your manager."]},
+{n:29,t:"You can't do a Do in this room",p:[1,1,1],
+ b:["<b>The moment isn't here. Anything I got you to perform would be a performance, and you'd know it.</b>",
+    "<b>But you've done thousands.</b> Your phone — felt the pull, noticed it, put it down anyway. <b>That's the whole loop, and nobody taught it to you.</b>",
+    "<b>That's the equipment already being installed.</b>"]},
+{n:30,t:"Run it on real moments",p:[1,1,1],
+ b:["<b>These aren't yours and I won't ask for one of yours.</b>",
+    "<b>The rep inside exercise.</b> You're on the run and the thought comes — <em>I'll stop. I'll do eight instead of ten.</em> <b>You catch it and do two more. That's the rep.</b>",
+    "The handover. Forty seconds, someone waiting. <b>Priya at seven fifteen</b>, twelve steps from the car — <b>the hello doesn't survive the bag question, and it does survive being second.</b>",
+    "<b>Then fire off ten more, fast</b>, across a whole life.",
+    "<b>Nobody had time in any of them. If it needs time, it isn't what I'm offering.</b>"],
+ d2:"More scenarios, including one that goes badly and still counts.",
+ d3:"<b>Group work.</b> Threes and fours, printed situations that belong to nobody, feeding back to the room."},
+{n:31,t:"The drawbridge, and pressure",p:[0,1,1],
+ b:["<b>We all want to get to the other side.</b> We can't always — because in that moment our thoughts, our feelings, our state are in the way. <b>So what gets us across?</b>",
+    "<b>The free throw. The penalty shootout. The serve. The final pitch.</b> In training they never missed.",
+    "<b>“The moment got to me.”</b> That's why sport moves people — it's human error, live.",
+    "Parenting: it's fine, and then your kid does something, and it all changes."],
+ d3:"Worked in full, with the room finding the pressure moments in their own week."},
+
+{s:"Practice"},
+{n:32,t:"It will miss",p:[1,1,1],
+ b:["<b>You'll miss most of them at first.</b> Day three you'll remember forty minutes late and think that's ruined it. <b>It isn't — remembering late is a rep. You caught it late.</b>",
+    "<b>This is not don't-break-the-chain.</b>",
+    "<b>I still miss more than I catch.</b> Catch one in three and you're doing it properly. <b>Catch one in ten and you're still doing it — there's no pass mark.</b>",
+    "<b>One rep. Not one a day. Not a streak.</b>"]},
+{n:33,t:"We're not building people who never feel anxious",p:[1,1,1],
+ b:["<b>That isn't possible, and it isn't the goal.</b>",
+    "<b>You are going to have more challenge. There are highs and lows.</b>",
+    "<b>Even the wealthiest people aren't the happiest</b> — they still don't feel enough, or loved, or seen."]},
+{n:34,t:"The basics",p:[1,1,1],
+ b:["Sleep. Movement. Food. <b>Rest.</b>",
+    "<b>Without them the system can't function and you don't have the mental energy.</b>",
+    "<b>We don't cut our head off and walk around with a head and a bodysuit. We're one system.</b>"],
+ d3:"Full treatment — what each one actually does to what you can reach in a moment."},
+{n:"34b",t:"The four ways to shift",p:[1,1,1],
+ b:["<b>A state you\u2019re stuck in isn\u2019t a fixed fact about the moment.</b> It\u2019s a pattern you fell into \u2014 and patterns can be interrupted, four ways.",
+    "<b>Through your body.</b> Feet on the floor. One slower breath. Stand up and stretch. Step outside. <b>Changing something physical can move it faster than trying to think your way out.</b>",
+    "<b>Through your attention.</b> Name three things you can see. Furthest sound, then closest. <b>Attention only holds one thing properly at a time</b> \u2014 point it somewhere else and you get space without solving anything.",
+    "<b>Through your thinking.</b> Zoom out (matter in a week?) or zoom in (one next thing, not the list). Or what would I tell a friend here. <b>A different question doesn\u2019t answer itself \u2014 it gives your thinking somewhere else to go.</b>",
+    "<b>With other people.</b> Text one person. Two minutes of someone\u2019s time. <b>Some states were never meant to be handled alone.</b>",
+    "<b>All four answer one question: too much, too little, or workable?</b> Too much, shift down. Too little, shift up.",
+    "<b>The point isn\u2019t which one. It\u2019s that you have one at all.</b>"],
+ warn:"\u26a1 <b>Categories corrected 2026-09-09 to the live website wording Hunter pointed at</b> \u2014 through your body \u00b7 your attention \u00b7 your thinking \u00b7 with other people. \u26a0 <b>These DIVERGE from K-07/D-0083\u2019s locked names</b> (Move it / Zoom in or out / Ask a different question / Bring someone in), which the site marks as a copy trial on Hunter\u2019s 2026-08-25 instruction, <b>pending a decision record.</b> Now that the trial wording is going into a delivered product, <b>that record is owed.</b><br><br>\u26d4 <b>Shown and explained. Never performed</b> \u2014 ruling 6 stands, the room cannot do a Do. \u26a1 <b>Breath is one option, never the required strategy.</b>",
+ d2:"<b>Practised.</b> The participant picks one and uses it on a moment they already had.",
+ d3:"Full menu with worked examples per category, the up/down direction for each, and the when-you-haven\u2019t-got-the-tool case."},
+{n:35,t:"The Radar",p:[1,1,1],
+ b:["<b>Your cue is already there — four places it hides.</b> People. Places. Times and transitions. Objects and screens.",
+    "<b>The Radar is what you keep</b> — the cue, so you can practise in the days you're already living.",
+    "<b>Not a target. Not three a day.</b>",
+    "<em>Nobody checks their mirrors because they're disciplined. You check because the mirror's in your eyeline.</em>"],
+ d2:"<b>They build it.</b> Their own moments, on their own phone, before they leave.",
+ d3:"Built together — and for a team, the shared version alongside the personal one."},
+{n:36,t:"A practice buddy, and the stacking line",p:[1,1,1],
+ b:["<b>One person.</b> A partner, a colleague, a friend.",
+    "<b>You don't have to hold hands.</b> Just: <em>got any reps this week?</em> — <em>actually no, I forgot.</em> That's it.",
+    "<b>Don't let this be a notification</b> you stop responding to. <b>Stack it onto the coffee, the drive, the wait.</b>",
+    "<b>&#9889; Corrected 2026-09-10 (propagation).</b> Habit stacking is <b>no longer a beat of its own in any product</b> \u2014 it is one spoken line inside the sixty-second swap at beat 14. The card content above is unchanged and still accurate; only the label was stale. Verified against 03-DELIVERY-SCRIPT-INTRODUCTION-60.md, not a changelog."],
+ d2:"They pick the person and the day before they leave.",
+ d3:"Plus the team version — how a group keeps it alive without it becoming a programme."},
+
+{n:"20b",t:"Why this doesn't catch on \u2014 you can't see it",p:[1,1,1],
+ b:["<b>Someone goes for a run and puts it on Strava. Someone posts the walk.</b> We can see it \u2014 <b>and they get rewarded for it.</b>",
+    "<b>We change our behaviour based on reward.</b> Sometimes that's the validation.",
+    "<b>There's no equivalent for the mind.</b> If you've ever done gratitude or a bit of mindfulness \u2014 <b>you don't finish and go WOO.</b>",
+    "It's quieter than that. <b>You feel more grounded.</b> And grounded doesn't give you what a run or a pump at the gym gives you.",
+    "<b>Which is exactly why it never spreads, and why it never becomes a habit.</b>"],
+ d2:"Worked further \u2014 what a group could actually notice and mark, given nothing shows on the outside.",
+ d3:"Full treatment against norms: how a team makes the invisible thing visible without turning it into performance."},
+{n:"20c",t:"Nobody sells a gym on \u201cbe less unhealthy\u201d",p:[1,1,1],ov:"⚡ <b>Cards 20b, 20c and 38 are ONE argument and Hunter flagged the overlap.</b> No visible signal → no reward → it never spreads (20b) · so the category sells it as <em>be less anxious</em>, which motivates nobody (20c) · and the groups we live in reward the run and not the rep (38). <b>Recommendation: deliver them as one continuous run, not three separate cards</b> — and if the hour is tight, 20c is the one that can compress to a single line.",
+ b:["<b>Look at how mental health gets marketed.</b> Be calm. Be less anxious. Be less stressed. <b>Be less.</b>",
+    "<b>That is not how the gym is sold.</b> Nobody says <em>be less unhealthy.</em> They say <b>stronger. Fitter. Healthier. The life you actually want to live.</b>",
+    "<b>You're never going to think \u2014 let me meditate, because I really don't want this.</b>",
+    "<b>It's a deficit, reactive framing. It doesn't lead to behaviour change, and we know it.</b> And right now it's completely normal.",
+    "<b>That's what we're trying to change.</b>"],
+ d3:"The full category argument \u2014 what a strength framing would look like across a whole organisation."},
+{n:"20d",t:"You shouldn't have to be a psychologist",p:[1,1,1],
+ b:["<b>You shouldn't have to be a psychologist or a neuroscientist</b> \u2014 or learn it through their lens \u2014 <b>to understand the basics of how you work.</b>",
+    "<b>That's the gap.</b>"]},
+{n:"28b",t:"The rep pays twice",p:[1,1,1],
+ b:["<b>You get better at the process.</b> That's the practice, and that's the skill.",
+    "<b>And you get the benefit right there, in that moment</b> \u2014 a changed response, a different next move.",
+    "<b>That second one almost never gets sold to people</b>, and it's the one you feel today rather than in six months."]},
+{s:"Why it matters beyond you"},
+{n:37,t:"The ripple",p:[1,1,1],
+ b:["Someone cuts you off in the morning. <b>That moment is now in this moment.</b>",
+    "You get home and there's nothing left for the person in front of you, <b>and they didn't do anything.</b>",
+    "<b>Moments make a day. Days make a week. And that's a life.</b>"]},
+{n:38,t:"Norms — and the PB problem",p:[1,1,1],ov:"⚡ <b>Same argument as 20b and 20c</b> — this is its third face, and the one with the sharpest line in it. <b>If they run as a continuous block earlier, this card becomes the payoff rather than a repeat.</b>",
+ b:["<b>Your household is a community. So is your team, your run club, your coffee group. Every one has norms.</b>",
+    "<b>Tell people you ran a PB — “great work.” Tell them you caught a thought and got yourself back to workable — “cool, bro.”</b>",
+    "<b>That's the whole problem in one exchange</b>, and it's what we're trying to change."],
+ d3:"Worked properly — what these environments currently reward, and what a group could choose to reward instead."},
+{n:39,t:"We are a product of our environment",p:[1,1,1],
+ b:["<b>The people around us, our family, our school, what we scroll</b> — it shapes how we think, what we feel, what we act on.",
+    "<b>Our values are built out of the people around us.</b>",
+    "<b>No one is born knowing this. Nobody is born with evidence-based strategies.</b>"]},
+{n:40,t:"The asymmetry",p:[1,1,1],
+ b:["<b>You are guaranteed more discomfort and more challenge in your life.</b>",
+    "<b>You are not guaranteed more highs.</b> For those, you have to do something.",
+    "<b>The truest thing I'll say today.</b>"],
+ warn:"⛔ The peak. Never cut, at any length."},
+{n:41,t:"The turn, and the mission",p:[1,1,1],
+ b:["<b>Not how do I get a better life — how do I improve the life I'm already living?</b>",
+    "More intentional with the person in front of me. Walk up to the group. Speak up when I get the chance.",
+    "<b>In ten, twenty, fifty years — I gave it my best shot. I had healthy relationships. I was able to express myself.</b>",
+    "<b>That\u2019s the ripple.</b> Every household, every team, every community. <b>And this is how you can help us.</b>",
+    "<b>And say who we are, once:</b> <em>And that\u2019s us \u2014 the Mental Fitness Collective. Our mission is to help people understand and strengthen their mental fitness, through education and lifelong practice.</em>"],
+ warn:"\u26a1 <b>K-03\u2019s mission, verbatim, said aloud.</b> Until 2026-09-09 the hour never named the organisation or what it exists to do. \u26a0 <b>Do not add \u201cwe\u2019re a charity\u201d until ACNC registration is confirmed</b> \u2014 the vault records only NSW incorporated-association status."},
+
+{n:"41b",t:"The kids coming up \u2014 and you",p:[1,1,1],
+ b:["<b>There's a real push to teach this to kids now, and that's genuinely great.</b> Imagine every kid having these skills.",
+    "<b>And it means a generation is coming up more equipped than the adults around them.</b>",
+    "<b>Adults are harder, and I'll be honest about why \u2014 you already are who you are.</b> New habits are harder to build. <b>But they get built.</b>",
+    "<b>Whatever age you are, you've still got a life to live. You deserve to know this.</b>"],
+ warn:"\u26a0 <b>The comparative claim \u2014 that kids are becoming more emotionally intelligent than adults \u2014 needs a registered source before it's said as fact.</b> The argument works without the comparison.",
+ d3:"Worked properly, including what an adult can pass to the kids around them."},
+{n:"41c",t:"What we have in common",p:[1,1,1],
+ b:["<b>Someone more mentally fit is someone who can give more to the people around them.</b> Their family. Their team. Their community.",
+    "<b>It doesn't matter how old you are, what you believe, your race, your gender, where you're from.</b>",
+    "<b>We're very good at finding what makes us different.</b> And we are different, and that's real.",
+    "<b>But we've got more in common than we haven't. We're people. We live in this together.</b>"]},
+{s:"What you take"},
+{n:42,t:"What was your moment?",p:[1,1,1],
+ b:["<b>Without going back over it.</b> Four seconds. Nobody answers.",
+    "<b>That came back on its own. That's the only evidence you'll get today that anything stuck.</b>",
+    "<b>And if nothing came, that's not a miss either.</b>"]},
+{n:43,t:"Your plan",p:[1,1,1],
+ b:["<b>One thing that matters. Where you'll catch it. What you'll do.</b>",
+    "<em>I'll take a breath and put the phone down. I'll be present on the commute. I'll tell someone I appreciate them.</em>",
+    "<b>It doesn't have to feel forced.</b>"],
+ d1:"<b>In the hour they think of one thing, silently, for a minute.</b> Nothing written, nothing built.",
+ d2:"They write it, and they build the Radar around it.",
+ d3:"Written, built, and rehearsed."},
+{n:44,t:"The organisational plan",p:[0,0,1],
+ b:["<b>Now that we've learned this — what do we actually do here?</b>",
+    "<b>How does this stay alive in your team?</b> What happens in the meeting. How you check in. Who notices.",
+    "<b>They fill it out. It's theirs, not ours.</b>"],
+ d3:"<b>Foundations only, and it can be a third of the session.</b> This is the thing 240 minutes exists to make room for."},
+{n:"44b",t:"The community \u2014 in every service",p:[1,1,1],block:1,
+ b:["<b>Not a pitch, and not a promise.</b> <em>The hard part isn\u2019t today. It\u2019s the fourth week, when nobody\u2019s talking about this any more.</em>",
+    "<b>Free, open to anyone, people doing this in their actual weeks</b> \u2014 not a course, not a support group.",
+    "<b>On the sheet. Take it or don\u2019t. Nobody follows up with you.</b>"],
+ warn:"\u26d4 <b>BLOCKED \u2014 and it is now on the critical path for all three products.</b> Hunter ruled 2026-09-09 that the sign-up goes in <b>every single service</b>: <em>\u201cIt\u2019s linking and showing people what we have and how they can maintain the practice or get involved or connect to other people.\u201d</em> \u26a0 But <b>D-0111 \u00a73 records the Leadership Community as NOT authorised for build</b>. <b>A sign-up pointing at something that doesn\u2019t exist is worse than no sign-up</b> \u2014 so this card is cut until the build gate clears.",
+ d3:"Same card. The community is product-independent."},
+{n:45,t:"One sentence, and the flat finish",p:[1,1,1],
+ b:["<b>Have you learned something today? Then who else in your life would benefit — and how would you explain it to them?</b>",
+    "<b>If you tell one person tonight, give them one sentence:</b> mental health is how you're doing, mental fitness is what you can actually do.",
+    "<b>We're not perfect — and that's what's incredible about people.</b>",
+    "<b>That's it. It's not you trying harder. It's what's around you. We're done a bit early on purpose.</b>"],
+ warn:"⛔ No crescendo, no closing question, no thank-you slide."}
+];
+
+var LB=["Intro","Ess","Found"];
+function render(f){
+  var h="", n60=0,n90=0,n240=0,shown=0;
+  for(var i=0;i<C.length;i++){
+    var X=C[i];
+    if(X.s){h+='<div class="sec" data-sec="1">'+X.s+'</div>';continue}
+    if(X.p[0])n60++; if(X.p[1])n90++; if(X.p[2])n240++;
+    var vis=(f==="all")||(f==="60"&&X.p[0])||(f==="90"&&X.p[1])||(f==="240"&&X.p[2]);
+    if(!vis)continue;
+    shown++;
+    var tg="";
+    for(var k=0;k<3;k++) tg+='<span class="tg '+(X.p[k]?("g"+(k+1)):"gx")+'">'+LB[k]+'</span>';
+    if(X.block) tg+='<span class="tg gb">Blocked</span>';
+    var li="";
+    for(var j=0;j<X.b.length;j++) li+='<li>'+X.b[j]+'</li>';
+    var dep="";
+    if(X.d1&&(f==="all"||f==="60")) dep+='<p class="d1"><b>In the hour:</b> '+X.d1+'</p>';
+    if(X.d2&&(f==="all"||f==="90"||f==="60")) dep+='<p class="d2"><b>Essentials adds:</b> '+X.d2+'</p>';
+    if(X.d3&&(f!=="60"||true)) dep+='<p class="d3"><b>Foundations adds:</b> '+X.d3+'</p>';
+    h+='<div class="c'+(X.p[0]?' in60':'')+'"><div class="c-h"><span class="no">'+X.n+'</span><h3>'+X.t+'</h3><span class="tags">'+tg+'</span></div>'
+      +'<ul>'+li+'</ul>'
+      +(dep?'<div class="depth">'+dep+'</div>':'')
+      +(X.ov?'<div class="opt">'+X.ov+'</div>':'')+(X.opt?'<div class="opt">'+X.opt+'</div>':'')+(X.warn?'<div class="warn">'+X.warn+'</div>':((dep||X.opt||X.ov)?'':'<div class="pad"></div>'))
+      +'</div>';
+  }
+  document.getElementById("cards").innerHTML=h;
+  var lbl = f==="all" ? ("<b>"+n240+"</b> cards total · Introduction <b>"+n60+"</b> · Essentials <b>"+n90+"</b> · Foundations <b>"+n240+"</b>")
+    : ("showing <b>"+shown+"</b> of "+n240+" cards");
+  document.getElementById("count").innerHTML=lbl;
+}
+document.querySelectorAll(".fb").forEach(function(b){
+  b.addEventListener("click",function(){
+    document.querySelectorAll(".fb").forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")});
+    render(b.dataset.f);
+  });
+});
+render("all");
+</script>

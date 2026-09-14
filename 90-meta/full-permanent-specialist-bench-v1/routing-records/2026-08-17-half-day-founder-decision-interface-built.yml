@@ -1,0 +1,77 @@
+schema_version: 2
+objective: >-
+  Build the beat-by-beat founder-decision interface FL-01/Compass specified in its 2026-08-13 cold
+  read (assurance-2026-08-13-evaluated-panel/reviews/FL-01.md): a per-beat view of the Half-Day
+  Foundations candidate showing participant job, authority class (approved decision / external
+  evidence / MFC design judgement / working hypothesis), strongest objection, evidence limit and next
+  test, so Hunter can view the build without doing the specialist-reconciliation work himself. This is
+  bounded production on the existing candidate per the founder's explicit no-rebuild instruction, not
+  new specialist assurance work; it follows directly from the 2026-08-17 whole-bench closure
+  (2026-08-17-half-day-panel-formal-closure.yml).
+task_session_id: 9a49bf6e-6231-4fca-b8eb-bc5db7dd9e7b
+material_prompt_fingerprint: 82546da864e51ead
+material_task_id: 82546da864e51ead-2026-08-17T17:48:36.365680+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+  - {id: A-07, disposition: not_relevant, reason: "Production task on an existing information architecture; no new participant/facilitator journey question arose."}
+  - {id: A-08, disposition: not_relevant, reason: "Table content quotes/summarises existing approved copy verbatim; no new narrative language question arose."}
+  - {id: A-09, disposition: not_relevant, reason: "No new behaviour/opportunity question arose."}
+  - {id: A-10, disposition: not_relevant, reason: "Architecture question already resolved and unchanged by this task; the authority table cites but does not reopen it."}
+  - {id: A-11, disposition: not_relevant, reason: "No measurement-instrument change; the Form 2 beat's authority entry cites the existing D-0100 gate unchanged."}
+  - {id: A-12, disposition: not_relevant, reason: "No new accessibility/safeguarding question; existing human gates cited, not altered."}
+  - {id: A-13, disposition: not_relevant, reason: "Participation-route content quoted verbatim from the already-corrected walkthrough; no new question."}
+  - {id: A-14, disposition: not_relevant, reason: "No render/creative question; this is a text table, not a visual redesign."}
+  - {id: A-15, disposition: not_relevant, reason: "No facilitator-load or timing question arose."}
+  - {id: A-16, disposition: not_relevant, reason: "No new cue/return question arose."}
+  - {id: A-17, disposition: not_relevant, reason: "No comparator/market question arose."}
+  - {id: A-18, disposition: not_relevant, reason: "No category/promise question arose."}
+  - {id: A-19, disposition: not_relevant, reason: "No structural/population-claim question arose."}
+  - {id: A-20, disposition: not_relevant, reason: "No causal-chain question arose; existing ARC-03 disposition cited, not reopened."}
+  - {id: A-21, disposition: not_relevant, reason: "No host/partner question arose."}
+  - {id: A-22, disposition: not_relevant, reason: "No new comprehension-testing question arose; existing open gate cited, not closed."}
+  - {id: A-23, disposition: reuse_current_evidence, reason: "Source-identity/hash discipline applies directly to this task (new arc hash after edit); the manifest was updated and the package verifier rerun and passed."}
+  - {id: A-24, disposition: not_relevant, reason: "No new test-sequencing question arose beyond what the 2026-08-13 coverage challenge already set."}
+  - {id: A-25, disposition: not_relevant, reason: "No stop/defer/expand strategic question arose; this task is exactly the bounded production the prior reconciliation recommended, not a scope expansion."}
+  - {id: A-26, disposition: not_relevant, reason: "No policy/government trigger."}
+  - {id: H-01, disposition: human_boundary, reason: "Unchanged: qualified clinical/safeguarding review remains open and is not touched by this production task."}
+  - {id: H-02, disposition: human_boundary, reason: "Unchanged: qualified privacy/legal review remains open and is not touched by this production task."}
+  - {id: FL-01, disposition: route_now, reason: "Directly decision-bearing: this task exists to satisfy FL-01's own 2026-08-13 recommendation, so a fresh independent FL-01 check of the delivered artifact is the correct and only necessary review."}
+  - {id: SYS-03, disposition: not_relevant, reason: "No new persistent-capability question arose."}
+  - {id: SYS-04, disposition: reconciliation, reason: "Producer role for this task; reconciled FL-01's finding by adding the signpost fix it recommended."}
+coverage_challenge:
+  selector: "A-04 (original 2026-08-13 whole-panel selector)"
+  selector_context: "primary-workshop-design-intelligence-2026-08-13"
+  challenger: "A-24 - Experimentation and Organisational Learning"
+  challenger_context: "workshop-coverage-challenger-2026-08-13"
+  completed_before_execution: true
+  decision_surfaces:
+    - "Reconciliation and founder gate: SYS-04 reconciles, then FL-01 reads the rendered result cold, run only after accepted changes are rendered and reconciled."
+  omissions_challenged:
+    - "FL-01 Founder and mission lens: the existing producing context saw the rationale, so it cannot test whether the finished build makes human sense cold. Disposition: mandatory fresh-context final stage, run only after accepted changes are rendered and reconciled."
+  changes: []
+  unresolved:
+    - "FL-01's fresh read did not itself re-verify whether rat3/plan3's specific stale claims (63:37 ratio treated as authoritative, movement-scale benefit implied, older butcher-paper/habit language) were corrected at the source in the 2026-08-13 correction cycle — that remains supported only by this session's earlier independent grep-verification (see 25-half-day-whole-bench-reconciliation-and-closure.md), not by today's review."
+    - "External-evidence citations in decide3 (generation effect, Bandura, Wood & Neal, implementation intentions) were not independently traced to source by FL-01 in this review; they are reused from the existing, already-cited rat3 evidence rows, not new claims."
+  reconciler: "SYS-04 - Loop Engineer (this session)"
+  reconciliation: >-
+    This is the exact stage the 2026-08-13 coverage challenge pre-authorised: "FL-01 remains a
+    compulsory fresh-context final gate," run "only after accepted changes are rendered and
+    reconciled." That precondition is met (the whole-bench closure and this session's arc corrections
+    were rendered and verified first). FL-01's one material finding from today's run (additive fix
+    leaves rat3/plan3's flagged content unmarked) was accepted in full and fixed within the same
+    turn: a signpost linking rat3 and plan3 to decide3 was added and verified working via direct JS
+    interaction in the rendered page. FL-01's disclosed non-findings (evidence-citation sourcing,
+    rat3/plan3 content re-verification) are correctly left open as named limitations, not silently
+    treated as resolved.
+learning_disposition: candidate_update
+specialists:
+  - {id: A-23, execution_mode: reuse_current_evidence, learning_disposition: no_new_learning, applicability_reason: "Hash/identity discipline applied directly by the producer this session: package-manifest.yml's arc hash was recomputed and updated after the edit, and verify_half_day_workshop_package.py rerun and passed.", outputs: {evidence: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/package-manifest.yml}}
+  - {id: FL-01, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Genuinely fresh, separate Agent-tool context with no exposure to this session's reasoning ran this review, but no separate five-layer task packet was saved before dispatch (a direct prompt was used instead) — recorded as reuse_current_evidence rather than claimed as a strict independent_specialist_review pass, to avoid overstating process completeness. Found one material gap (additive-not-corrective fix) which was accepted and fixed in this same turn.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-17-founder-interface/FL-01-fresh-cold-read.md}}
+  - {id: SYS-04, execution_mode: reconciliation, learning_disposition: candidate_update, applicability_reason: "Producer reconciliation of FL-01's finding into the live artifact.", outputs: {reconciliation: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/package-manifest.yml}}
+outputs_summary:
+  artefact: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/workshop-package.html#decide3
+  status: internal_candidate; founder-decision interface built and independently checked; signpost fix applied; Hunter has not yet viewed or approved
+  human_gates_preserved: "qualified clinical/safeguarding, privacy/legal, insurer, host and accessibility review; Hunter's explicit viewing and approval; rehearsal and participant testing"
+contract_deviations:
+  - "coverage_challenge.completed_before_execution is false. Disclosed, not fabricated: see deviation_disclosed above — this task directly executes a pre-existing specialist recommendation rather than opening a new design question, so the independent check was correctly run as a post-production gate rather than a pre-dispatch coverage challenge."
+  - "FL-01's review has task_packet: none (no separate five-layer packet file was saved before dispatch, only a direct agent prompt). Recorded honestly as reuse_current_evidence rather than claimed as a strict CONTRACT_REVIEW_MODES pass, to avoid overstating process completeness the packet format would otherwise imply."

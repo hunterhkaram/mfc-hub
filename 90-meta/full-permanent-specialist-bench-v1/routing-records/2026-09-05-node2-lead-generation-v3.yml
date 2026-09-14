@@ -1,0 +1,272 @@
+schema_version: 2
+objective: 'Node 2 BUILD of MFC''s lead generation plan v3 against the frozen 26-condition definition
+  of done and D-0127''s five founder directions: into existing communities to teach a rep in fifteen minutes,
+  an ambassador programme, low-cadence social, MFC''s own community evaluated rather than assumed, five
+  hours a week.'
+task_session_id: 9f869fad-1121-47fe-b96d-3a2b99c81548
+material_prompt_fingerprint: ddb2ffefe5c16959
+material_task_id: ddb2ffefe5c16959-2026-09-05T00:20:08.602749+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: route_now
+  reason: 'head-of-digital: per-channel keywords closing the attribution gap, four fields and a room-log
+    tab without which eight monthly-page lines were unfillable, website work costed to Alysse rather than
+    Hunter''s five hours, three capture failure points including a personal mobile number published to
+    strangers'
+- id: A-08
+  disposition: route_now
+  reason: 'head-of-marketing: organiser email and subject line, run-sheet opening reordered hook-before-disclaimers,
+    capture keyword changed off MFC''s internal vocabulary, grid post 4 cut from the public calendar;
+    one rhetorical figure refused for spoken use'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: route_now
+  reason: 'head-of-compliance: the real A3 call - found the DM protocol told Tom never to assess severity
+    then required it, a fourth P10 wording reintroducing an inversion the permitted-claims page records
+    fixing, an unpaired negative category claim breaching P37, three non-permitted sentences, no spoken
+    crisis line, and an AG-016 justification cell containing a dash; signed off section 3.3 with nine
+    conditions'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: route_now
+  reason: 'head-of-product: found the room never actually did a rep and fixed it at zero minute cost,
+    swapped the scenario by room type from P8 verbatim, closed an AG-147 blank-page breach with three
+    prompts, recomputed the cut order, added the printed card for hearing redundancy'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: route_now
+  reason: 'head-of-community: caught the plan quoting Hunter against himself on the community question,
+    screened Debra''s AG-069 co-hosted quarterly option that was never costed, removed a follow-up double-count,
+    replaced the 60-contact threshold with a dated month-four decision, rebuilt ambassador measurement
+    on the floor rather than post sends'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: route_now
+  reason: 'head-of-commercial: restructured the unit of sale from 13 transactions to 4 client organisations,
+    added R1''s Route 1 partnerships channel after showing its exclusion enforced the withdrawn D-0116,
+    replaced point estimates with P10/P50/P90 bands and a tiered X2, rewrote the flex rule and four kill
+    criteria; at H1 caught channel 4''s inputs not reproducing their own output'
+- id: A-18
+  disposition: route_now
+  reason: 'head-of-movement: found MFC already holds 350+ Mental Fitness Month signups and 30-40 ambassadors
+    while the plan proposed cold recruitment, and two statements factually false on MFC''s own Theory
+    of Change; Mental Fitness Month ruled with the November clustering win; the recorded rep made public
+    rather than unlisted'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: route_now
+  reason: 'head-of-social: profile specified as the landing page for the room channel, one Reel and three
+    Stories weekly at zero incremental creation, Instagram inbox moved to the follow-up hour, LinkedIn
+    to fortnightly, the unchecked buyer-set claim marked as a first-week Insights check'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: route_now
+  reason: 'independent review, fresh context, no exposure to the build: scored all 26 conditions against
+    the definition''s own pass observables twice - 22 of 26 with E2 FAIL, then 25 of 26 with zero FAIL
+    after remediation'
+- id: SYS-04
+  disposition: route_now
+  reason: 'adversarial pass, two run (the first stalled and a fresh general-purpose agent stood in per
+    CLAUDE.md 9b): broke the frame both head rounds improved inside - the hours table was plugged not
+    costed, the recommended community option costed at zero, ~65h/yr of named work in no table, three
+    of seven kill criteria unable to fire, no selling half to the funnel, no P10 branch, and thirteen
+    cohorts reached only by counting three channels the plan itself disclaims'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-node2-lead-generation-v3
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-node2-lead-generation-v3
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'A-15 (Implementation and Delivery Design) and the founder-capacity lens were reconsidered and excluded,
+    and both exclusions are contestable. Capacity IS the binding constraint - the adversarial pass showed
+    the honest total is ~6-7.3h/wk inside an 11.5h delivery week nobody has shown Hunter - but what that
+    produces is Hunter''s own time allocation (FQ11), not a specialist judgement, and the plan surfaces
+    it rather than resolving it. A-15 owns what happens after a sale, and the adversarial pass found the
+    plan''s largest structural gap is exactly that: no price answer, no scoping call, no proposal, no
+    contract. Section 1.5 names and costs those four artefacts and deliberately does NOT write them, routing
+    them to A-15 and A-17, because drafting buyer-facing commercial language inside a lead-generation
+    plan is how a fourth wording of a governed construct gets created - the precise failure A-12 caught
+    elsewhere in this same build. A-06/researcher was run for the cadence-evidence and gatherings questions
+    rather than a full evidence lens, which was right because no claim in this plan is new; every one
+    traces to 11-PERMITTED-CLAIMS.md.'
+  changes: []
+  unresolved:
+  - 'Eleven founder questions, of which FQ11 (five hours produces ~10 cohorts against a minimum viable
+    of 13 - accept, give 7-8 hours, or change the mix) is the decision the document turns on. FQ4 reverses
+    D-0111 section 3 if accepted. G1 is the one PARTIAL of 26: channel 5''s 0.2 clients has no itemised
+    inputs. The insurance exposure at section 3.3 is real and unchanged until Osman answers a broker email
+    drafted 1 September and still unsent. The ambassador programme''s own status is a live registered
+    conflict (FQ8). MFC has no privacy determination and no delivered cohort.'
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 'Built to all 26 frozen conditions. 43 head findings (39 applied,
+  4 refused with reasons), 8 of 8 heads agreeing on the record while finding 11 further defects, 14 adversarial
+  findings (11 applied, 3 refused), and two independent scoring passes: 22 of 26 then 25 of 26 after remediation.'
+no_specialist_execution_reason: null
+specialist_evidence: 60-projects/lead-generation-v3/01-THE-PLAN.md
+specialists:
+- id: A-08
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-marketing: organiser email and subject line, run-sheet opening reordered hook-before-disclaimers,
+    capture keyword changed off MFC''s internal vocabulary, grid post 4 cut from the public calendar;
+    one rhetorical figure refused for spoken use'
+  learning_disposition: no_new_learning
+- id: A-17
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-commercial: restructured the unit of sale from 13 transactions to 4 client organisations,
+    added R1''s Route 1 partnerships channel after showing its exclusion enforced the withdrawn D-0116,
+    replaced point estimates with P10/P50/P90 bands and a tiered X2, rewrote the flex rule and four kill
+    criteria; at H1 caught channel 4''s inputs not reproducing their own output'
+  learning_disposition: no_new_learning
+- id: A-13
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-community: caught the plan quoting Hunter against himself on the community question,
+    screened Debra''s AG-069 co-hosted quarterly option that was never costed, removed a follow-up double-count,
+    replaced the 60-contact threshold with a dated month-four decision, rebuilt ambassador measurement
+    on the floor rather than post sends'
+  learning_disposition: no_new_learning
+- id: A-22
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-social: profile specified as the landing page for the room channel, one Reel
+    and three Stories weekly at zero incremental creation, Instagram inbox moved to the follow-up hour,
+    LinkedIn to fortnightly, the unchecked buyer-set claim marked as a first-week Insights check'
+  learning_disposition: no_new_learning
+- id: A-18
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-movement: found MFC already holds 350+ Mental Fitness Month signups and 30-40
+    ambassadors while the plan proposed cold recruitment, and two statements factually false on MFC''s
+    own Theory of Change; Mental Fitness Month ruled with the November clustering win; the recorded rep
+    made public rather than unlisted'
+  learning_disposition: no_new_learning
+- id: A-10
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-product: found the room never actually did a rep and fixed it at zero minute
+    cost, swapped the scenario by room type from P8 verbatim, closed an AG-147 blank-page breach with
+    three prompts, recomputed the cut order, added the printed card for hearing redundancy'
+  learning_disposition: no_new_learning
+- id: A-12
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-compliance: the real A3 call - found the DM protocol told Tom never to assess
+    severity then required it, a fourth P10 wording reintroducing an inversion the permitted-claims page
+    records fixing, an unpaired negative category claim breaching P37, three non-permitted sentences,
+    no spoken crisis line, and an AG-016 justification cell containing a dash; signed off section 3.3
+    with nine conditions'
+  learning_disposition: no_new_learning
+- id: A-07
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'head-of-digital: per-channel keywords closing the attribution gap, four fields and a
+    room-log tab without which eight monthly-page lines were unfillable, website work costed to Alysse
+    rather than Hunter''s five hours, three capture failure points including a personal mobile number
+    published to strangers'
+  learning_disposition: no_new_learning
+- id: SYS-04
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  contribution: 'adversarial pass, two run (the first stalled and a fresh general-purpose agent stood
+    in per CLAUDE.md 9b): broke the frame both head rounds improved inside - the hours table was plugged
+    not costed, the recommended community option costed at zero, ~65h/yr of named work in no table, three
+    of seven kill criteria unable to fire, no selling half to the funnel, no P10 branch, and thirteen
+    cohorts reached only by counting three channels the plan itself disclaims'
+  learning_disposition: no_new_learning
+- id: FL-01
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v3/00-DEFINITION-OF-DONE.md
+  outputs:
+    review: 60-projects/lead-generation-v3/02-INDEPENDENT-REVIEW.md
+  contribution: 'independent review, fresh context, no exposure to the build: scored all 26 conditions
+    against the definition''s own pass observables twice - 22 of 26 with E2 FAIL, then 25 of 26 with zero
+    FAIL after remediation'
+  learning_disposition: no_new_learning
+outputs_summary:
+  plan: 60-projects/lead-generation-v3/01-THE-PLAN.md
+  independent-review: 60-projects/lead-generation-v3/02-INDEPENDENT-REVIEW.md

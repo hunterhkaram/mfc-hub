@@ -1,0 +1,617 @@
+<!--
+mfc_topic: workshop-delivery
+artifact_role: candidate
+canonical_source: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/22-THE-PARTICIPANT-FOUNDATION.md
+All four MFC products in one place: movements, beats, what must be said, and every activity written
+out. Built 2026-09-09 for Hunter to read end to end.
+-->
+<title>The Four Sessions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --page:#F5F4F1; --card:#FFFFFF; --sunk:#EAE8E3; --deep:#16181A;
+  --ink:#191B1D; --ink-2:#4B5054; --faint:#7E8388;
+  --line:#DEDCD6; --line-2:#C3C0B9;
+  --p60:#1E5F52; --p60s:#DCEBE7;
+  --p90:#8A4B12; --p90s:#F6E7D5;
+  --p240:#33357F; --p240s:#E0E0F2;
+  --pmgr:#7A2E56; --pmgrs:#F4DDE9;
+  --act:#6B4A00; --acts:#F7EBCC;
+  --stop:#8C2B22; --stops:#F7DEDA;
+  --sans:"Instrument Sans",-apple-system,"Segoe UI",sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#121315; --card:#1B1D1F; --sunk:#161819; --deep:#000000;
+  --ink:#EBEDEE; --ink-2:#B0B5B9; --faint:#82888C;
+  --line:#2A2D2F; --line-2:#3D4143;
+  --p60:#5FBFA9; --p60s:#12291F;
+  --p90:#D89A52; --p90s:#2C2314;
+  --p240:#9192E6; --p240s:#1D1D38;
+  --pmgr:#DE8FB4; --pmgrs:#2E1522;
+  --act:#D8B356; --acts:#2A2312;
+  --stop:#E28C82; --stops:#2E1815;
+}}
+:root[data-theme="dark"]{
+  --page:#121315; --card:#1B1D1F; --sunk:#161819; --deep:#000000;
+  --ink:#EBEDEE; --ink-2:#B0B5B9; --faint:#82888C;
+  --line:#2A2D2F; --line-2:#3D4143;
+  --p60:#5FBFA9; --p60s:#12291F;
+  --p90:#D89A52; --p90s:#2C2314;
+  --p240:#9192E6; --p240s:#1D1D38;
+  --pmgr:#DE8FB4; --pmgrs:#2E1522;
+  --act:#D8B356; --acts:#2A2312;
+  --stop:#E28C82; --stops:#2E1815;
+}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px 70px}
+
+header.t{padding:52px 0 24px;border-bottom:3px solid var(--ink)}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 15px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,7.5vw,76px);line-height:.95;letter-spacing:-.02em;margin:0}
+.dek{font-size:clamp(16.5px,2vw,18.5px);color:var(--ink-2);max-width:64ch;margin:20px 0 0}
+.dek b{color:var(--ink);font-weight:600}
+
+.nav{position:sticky;top:0;z-index:20;background:var(--page);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:6px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.nb{font-family:var(--sans);font-size:13.5px;font-weight:600;padding:7px 14px;border:1px solid var(--line-2);background:var(--card);color:var(--ink-2);cursor:pointer;transition:.12s}
+.nb:hover{border-color:var(--ink)}
+.nb[aria-pressed="true"]{color:#fff;border-color:transparent}
+.nb.n0[aria-pressed="true"]{background:var(--ink);color:var(--page)}
+.nb.n1[aria-pressed="true"]{background:var(--p60)}
+.nb.n2[aria-pressed="true"]{background:var(--p90)}
+.nb.n3[aria-pressed="true"]{background:var(--p240)}
+.nb.n4[aria-pressed="true"]{background:var(--pmgr)}
+.nb:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.ph{margin:44px 0 0;padding:22px 24px;border:1px solid var(--line-2);background:var(--card);border-top:5px solid var(--line-2)}
+.ph.h1c{border-top-color:var(--p60)} .ph.h2c{border-top-color:var(--p90)}
+.ph.h3c{border-top-color:var(--p240)} .ph.h4c{border-top-color:var(--pmgr)}
+.ph h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.4vw,42px);margin:0;letter-spacing:-.015em}
+.ph .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:9px 0 0}
+.ph p{margin:13px 0 0;color:var(--ink-2);max-width:70ch;font-size:15.5px}
+.ph p b{color:var(--ink);font-weight:600}
+.ph .st{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;font-weight:600;background:var(--sunk);color:var(--ink-2)}
+.ph .st.ok{background:var(--p60s);color:var(--p60)}
+.ph .st.no{background:var(--stops);color:var(--stop)}
+
+.mv{margin:26px 0 8px;padding:9px 0 7px;border-bottom:2px solid var(--line-2);display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.mv .mn{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.13em;color:var(--faint)}
+.mv h3{font-family:var(--sans);font-weight:700;font-size:18.5px;margin:0;letter-spacing:-.015em;flex:1;min-width:200px}
+.mv .sc{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--faint)}
+
+.b{background:var(--card);border:1px solid var(--line);border-bottom:none;padding:14px 20px}
+.grp .b:last-child{border-bottom:1px solid var(--line)}
+.b .bh{display:flex;gap:11px;align-items:baseline;flex-wrap:wrap}
+.b .bn{font-family:var(--mono);font-size:12px;color:var(--faint);min-width:52px}
+.b .bt{font-weight:600;font-size:16.5px;letter-spacing:-.01em;flex:1;min-width:200px}
+.b .tag{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 6px;font-weight:600;background:var(--stops);color:var(--stop)}
+.b .say{margin:9px 0 0 63px;font-family:var(--serif);font-size:16.5px;line-height:1.5;color:var(--ink);border-left:2px solid var(--line-2);padding-left:13px}
+.b .why{margin:8px 0 0 63px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.b .why b{color:var(--ink);font-weight:600}
+
+.act{margin:11px 0 2px 63px;background:var(--acts);border-left:3px solid var(--act);padding:13px 16px}
+.act .ah{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--act);font-weight:600;margin:0 0 7px}
+.act p{margin:0 0 7px;font-size:14.5px;line-height:1.5;color:var(--ink)}
+.act p:last-child{margin:0}
+.act b{font-weight:600}
+.act em{font-family:var(--serif);font-style:italic}
+
+.gap{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--stop);padding:17px 21px;margin-bottom:11px}
+.gap h4{font-family:var(--sans);font-weight:700;font-size:17px;margin:0 0 9px}
+.gap p{margin:0 0 8px;font-size:15px;color:var(--ink-2);line-height:1.5}
+.gap p:last-child{margin:0}
+.gap b{color:var(--ink);font-weight:600}
+.gap em{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:16px}
+.gap .cost{display:block;margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.03em;line-height:1.5}
+
+.sec{font-family:var(--serif);font-weight:400;font-size:clamp(27px,4.2vw,38px);margin:54px 0 6px;letter-spacing:-.015em}
+.sub{color:var(--ink-2);margin:0 0 18px;max-width:70ch;font-size:15.5px}
+.sub b{color:var(--ink);font-weight:600}
+
+.close{background:var(--deep);color:#E6E8E9;margin-top:54px;padding:38px 0 46px}
+.close h2{font-family:var(--serif);font-weight:400;font-size:31px;color:#fff;margin:0 0 12px}
+.close p{color:#A4AAAE;max-width:70ch;margin:0 0 13px;font-size:16px;line-height:1.55}
+.close b{color:#fff;font-weight:600}
+.hide{display:none}
+.mx{border:1px solid var(--line-2);background:var(--card);margin-bottom:14px;overflow-x:auto}
+.mx h4{margin:0;padding:12px 18px;font-size:16px;font-weight:700;border-bottom:1px solid var(--line)}
+.mx table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+.mx th{text-align:left;padding:8px 10px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap}
+.mx td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.mx tr:last-child td{border-bottom:none}
+.mx td.nm{font-weight:600;color:var(--ink);min-width:190px}
+.mx td.cd{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
+.pip{display:inline-block;width:100%;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;font-weight:600;padding:3px 0;border-radius:2px}
+.pip.P{background:var(--p60s);color:var(--p60)}
+.pip.p{background:var(--acts);color:var(--act)}
+.pip.F{background:var(--stops);color:var(--stop)}
+.mx td.g{position:relative}
+.mx td.g .pip.F{outline:2px solid var(--stop);outline-offset:-2px}
+.vd{font-size:12.5px;color:var(--ink-2)}
+.vd b{color:var(--stop)}
+.key{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 16px;font-size:13px;color:var(--ink-2);align-items:center}
+.key span{display:flex;gap:6px;align-items:center}
+.led{border:1px solid var(--line-2);background:var(--card);margin:0 0 12px}
+.led h4{margin:0;padding:13px 18px;font-size:16.5px;font-weight:700;border-bottom:1px solid var(--line);letter-spacing:-.01em}
+.led table{width:100%;border-collapse:collapse;font-size:14px}
+.led td{padding:8px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.led tr:last-child td{border-bottom:none}
+.led td:first-child{color:var(--ink-2)}
+.led td:last-child{text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.06em;font-weight:600;white-space:nowrap}
+.y{color:var(--p60)} .n{color:var(--stop)} .part{color:var(--act)}
+.led tr.hard td{background:var(--stops)} .led tr.hard td:first-child{font-weight:600;color:var(--ink)}
+.led tr.ceil td{background:var(--sunk)}
+.gate{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--stop);padding:17px 21px;margin-bottom:11px}
+.gate h4{margin:0 0 4px;font-size:17px;font-weight:700}
+.gate .w{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--stop);font-weight:600;display:block;margin-bottom:8px}
+.gate p{margin:0 0 8px;font-size:15px;color:var(--ink-2);line-height:1.5}
+.gate p:last-child{margin:0}
+.gate b{color:var(--ink);font-weight:600}
+.gate em{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:16px}
+.opt{border:1px solid var(--line);background:var(--card);margin-bottom:10px}
+.opt .oh{padding:12px 18px;border-bottom:1px solid var(--line);font-weight:700;font-size:16.5px}
+.opt .oh span{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400;margin-left:8px}
+.opt .row{display:grid;grid-template-columns:76px 1fr;border-bottom:1px solid var(--line)}
+.opt .row:last-child{border-bottom:none}
+.opt .rl{padding:11px 0 11px 18px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--faint)}
+.opt .rc{padding:11px 18px 11px 6px;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.opt .rc b{color:var(--ink);font-weight:600}
+.sc{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;padding:2px 6px;margin-right:5px;font-weight:600;background:var(--sunk);color:var(--ink-2)}
+.sc.g{background:var(--p60s);color:var(--p60)} .sc.b{background:var(--stops);color:var(--stop)} .sc.m{background:var(--acts);color:var(--act)}
+@media (max-width:640px){.b .say,.b .why,.act{margin-left:0}}
+@media print{body{background:#fff}.nav{display:none}.b,.gap{page-break-inside:avoid}.close{background:#fff;color:#000}.close h2,.close b{color:#000}}
+</style>
+
+<div class="wrap">
+<header class="t">
+  <p class="kick">Mental Fitness Collective · every session, end to end · 9 September 2026</p>
+  <h1>The four sessions.</h1>
+  <p class="dek">Movements, beats, what has to be said in each, and <b>every activity written out where it happens</b>. One argument across all four — the products differ by depth and by how much practice they can carry, never by what they claim.</p>
+</header>
+
+<div class="nav">
+  <button class="nb n0" data-f="all" aria-pressed="true">All four</button>
+  <button class="nb n1" data-f="p60" aria-pressed="false">The Hour · 60</button>
+  <button class="nb n2" data-f="p90" aria-pressed="false">Essentials · 90</button>
+  <button class="nb n3" data-f="p240" aria-pressed="false">Foundations · 240</button>
+  <button class="nb n4" data-f="pmgr" aria-pressed="false">Manager · 60</button>
+</div>
+
+<h2 class="sec">Every beat and every activity, scored</h2>
+<p class="sub"><b>271 individual scores.</b> Fourteen beats against six tests, twenty-two activities against nine. <b>Two of the nine are gates</b> — exposure and accessibility — outlined in red where they fail, because an activity failing either does not run whatever else it scores.</p>
+<div class="key"><span><i class="pip P" style="width:34px">PASS</i></span><span><i class="pip p" style="width:34px">PART</i></span><span><i class="pip F" style="width:34px">FAIL</i></span><span>· <b>A2</b> exposure and <b>A9</b> accessibility are gates</span></div>
+<div id="matrix"></div>
+
+<h2 class="sec">Where each session actually stands</h2>
+<p class="sub"><b>Eight rows each. The last two are the ones that matter</b> — nothing is final until you have read it, and nothing has been near a real room. <b>Once the other six are green, no further analysis moves those two.</b> That is the ceiling.</p>
+<div id="ledgers"></div>
+
+<div id="out"></div>
+
+<h2 class="sec">What your own agent said</h2>
+<p class="sub"><b>Compass — the founder lens — was rebuilt today to be you</b>: your 124 rulings, your working method, your register, and the nine things you actually test work against. <b>Nothing reaches you until it has passed through it.</b> It read the scoring and gave the verdict you would give.</p>
+<div id="compass"></div>
+
+<h2 class="sec">Five things that stop an activity running</h2>
+<p class="sub">Two of the nine tests are <b>gates, not scores</b> — exposure, and accessibility. An activity failing either does not run, whatever else it scores. <b>These five failed one.</b> Everything else found is a fix; these are stops.</p>
+<div id="gates"></div>
+
+<h2 class="sec">Three options for every activity</h2>
+<p class="sub">Sixteen activities, forty-eight options, <b>and no recommendation from me</b> — that was your instruction. Each is scored on four columns and <b>the fourth is the one nobody puts on a design checklist</b>: how likely is a participant to think <em>another activity someone is making me do.</em></p>
+<p class="sub"><b>A is not automatically the safe one and B is not automatically the good one.</b> Several A options score worse on resentment than their B, because a room that is never asked for anything decides it is being lectured. Below are the four where the choice genuinely changes the product. <b>The full forty-eight are in <code>35-THE-OPTIONS.md</code>.</b></p>
+<div id="opts"></div>
+
+<h2 class="sec" id="gapsec">What is missing, checked against your own words</h2>
+<p class="sub">Not a wish list. <b>Things you say — repeatedly, and with force — that are not in any built product.</b> Each one names what it would displace, because nothing is free.</p>
+<div id="gaps"></div>
+</div>
+
+<div class="close"><div class="wrap">
+  <h2>The whole list is five things</h2>
+  <p>The scoring produced about sixty findings. <b>Your own agent held it against your own anti-ruling</b> — <em>“there shouldn’t be eight things or six things we need to achieve first… Stop it”</em> — and said yes, in effect, this had become that. <b>So here is the actual list, across all four products.</b></p>
+  <ol>
+    <li><b>Two instructions reworded so nobody’s state is visible.</b> ✅ <b>Both done today.</b> The silent shift no longer tells the room to roll their shoulders; the gallery wall no longer carries visible arena labels.</li>
+    <li><b>Cut the Hour’s ending from five to one.</b> Yours — it’s a judgement about which one survives.</li>
+    <li><b>Give Foundations its one sentence</b>, then cut what doesn’t serve it. And move the safety door in front of beat 2, which is a reorder, not a rebuild.</li>
+    <li><b>Four facilitator recovery rows</b> — the four that put a person inside a real difficult moment. Not sixteen.</li>
+    <li><b>A spoken route through the manager working block.</b> One line.</li>
+  </ol>
+  <p><b>What your agent would actually say, in your words:</b> <em>“Right — so the manager one’s good, the hour’s good until it can’t stop, and Foundations doesn’t know what it’s saying. Fix the two bits where someone can see what another person picked, because that’s the whole promise. The rest of this is a list, and I’ve told you about lists.”</em></p>
+  <p><b>One thing Compass got wrong, and I checked before acting on it.</b> It said the crisis contacts were an empty block to fill in. The participant-facing ones are already built and said aloud at beat 3 — GP, Lifeline, 000 — exactly as Eimear specified. <b>What is genuinely empty is MFC’s internal escalation threshold</b>, and that file says in terms: do not fill this in without qualified input, <b>including for a safe-enough default that seems obviously correct.</b> It was left alone.</p>
+  <p><b>And the honest ceiling.</b> Every readiness ledger above ends with two rows that read NO. One is you. <b>The other is a real room, and no amount of this moves it.</b> Zero cohorts. Whatever else is true, that stays true until somebody sits in one.</p>
+</div></div>
+
+<script>
+const P={p60:"The Hour · 60",p90:"Essentials · 90",p240:"Foundations · 240",pmgr:"Manager · 60"};
+
+const DATA=[
+{k:"p60",cls:"h1c",title:"The Hour",meta:"60 minutes · keynote · nobody writes, nobody speaks · cap 20",
+ st:["ok","Full script written"],
+ blurb:"A keynote, not a workshop. <b>One participant act at minute six and a half</b> — the breath — and nothing else asked of anyone. The room leaves rehearsing one rep and holding a Radar of three.",
+ mv:[
+  {n:"MOVEMENT I",t:"Is this me?",s:"the room stops bracing",beats:[
+   {n:"BEAT 1",t:"The human, and the promise",why:"Opens on the human, never on the limitation. <b>Nobody is asked to speak. Nothing is collected.</b> Said at minute zero, not saved for later."},
+   {n:"BEAT 2",t:"The silent poll, and the car that never learned to brake",say:"“Nobody walks around saying <b>I can't brake.</b> You don't know what you can't do. You just live your life on the skills you already have, and that becomes your norm.”",why:"The poll is answered <b>to themselves</b> — <em>is that true for you?</em> No hands for anything about their own state."},
+   {n:"BEAT 3",t:"The door",tag:"never cut",why:"The permission to leave, with its reason — placed immediately before the first thing anyone does, not stacked at the start."},
+   {n:"BEAT 4",t:"The breath. Experience with no name on it",tag:"never cut",
+    act:{h:"The only activity in the hour",p:["<b>Ninety seconds.</b> Eyes closed if comfortable, or look down at the table — that works the same.",
+      "<em>Bring your attention to your breath. Not changing it. Just noticing it going in, and going out.</em>",
+      "Afterwards: most of us wandered, got hooked, came back. <b>That coming back is the whole thing.</b>",
+      "⛔ Nobody is asked what happened. Nothing is collected. <b>It is named only after it has been experienced.</b>"]}},
+  ]},
+  {n:"MOVEMENT II",t:"Can it change?",s:"from recognition to possibility",beats:[
+   {n:"BEAT 5",t:"What that was, and what mental fitness actually is",tag:"never cut",say:"“<b>Mental health is how you're doing. Mental fitness is what you can actually do.</b>”",why:"The four positions, taught and never self-applied. <b>And the boundary, said aloud:</b> not therapy, not a promise you'll never struggle, not one tool that transforms a life — <b>and never a way of saying what's hard is your fault.</b>"},
+   {n:"BEAT 6",t:"The four, and the five skills named",why:"Thinking, feeling, acting, connecting. Then <b>Notice. Shift. Choose. Focus. Connect</b> — named with why those five: <b>every moment that goes badly, one of them is the part that failed.</b> Not taught here."},
+   {n:"BEAT 7",t:"Muscle memory, and how you progress",why:"<b>Learn It. Build It. Use It.</b> Build It is where the work is and the stage most things skip. <b>The room is never asked to place itself on the pathway.</b>"},
+   {n:"BEAT 8",t:"The practice site is the life you're already living",why:"Carries the environment boundary, said once: <b>a skill doesn't replace a bad environment</b> — and the handoff to the manager session."},
+  ]},
+  {n:"MOVEMENT III",t:"What do I actually do?",s:"the method",beats:[
+   {n:"BEAT 9",t:"Stop, Shift, Do. And the unit",tag:"never cut",say:"“<b>Stop is not calming down.</b> Stop is noticing that a moment is happening while it's happening.”",why:"The State Check named aloud — <b>too much, too little, or workable.</b> Then the four ways to shift, shown and explained, never performed."},
+   {n:"BEAT 10",t:"Specificity of practice, and the knowing–doing gap",tag:"the centre",why:"Why practising somewhere quiet doesn't transfer. <b>The honest limit lands inside the argument</b>, not as a disclaimer: <em>it's an hour, and I think it lands. That doesn't guarantee behaviour change, and it can't.</em>"},
+   {n:"BEAT 11",t:"Run it on a real moment",why:"<b>Silently, on a moment they already lived.</b> Which part is hard for you — the Notice, or the Choose? Nobody answers out loud."},
+   {n:"BEAT 12",t:"It will miss. Grace, with a number",why:"<b>Catch one in three and you're doing it properly.</b> A number rather than a feeling, because a feeling can't be checked."},
+  ]},
+  {n:"MOVEMENT IV",t:"Why does it matter, and what do I take?",s:"the peak, then flat",beats:[
+   {n:"BEAT 13",t:"The ripple — the peak, and deliberately not the end",why:"<b>How do I improve the life I'm already living?</b> Then MFC named once, and the mission said plainly. The community, on the sheet."},
+   {n:"BEAT 14",t:"The Radar given. Habit stacking. The flat finish",
+    act:{h:"The sixty-second swap",p:["<b>The Radar is given, not built</b> — three moments already printed, so nobody faces a blank page.",
+      "<b>Sixty seconds to swap one</b> for a moment of their own, if they want to. <em>Don't tell me, don't show anyone.</em> Phone face down, or fold the sheet.",
+      "Then the cold retrieval: <b>without going back over it — what was your moment?</b> Four seconds of silence, never repeated, nobody answers.",
+      "⛔ No crescendo. <em>We're done, and we're done a bit early on purpose.</em>"]}},
+  ]}
+ ]},
+
+{k:"p90",cls:"h2c",title:"Essentials",meta:"90 minutes + a 60-minute remote return · cap 20 · return and report inside the price",
+ st:["ok","Full script written today"],
+ blurb:"The same fourteen beats, same order, same words — <b>where a beat is unchanged it points at the Hour rather than repeating it</b>, so your words exist in one place. The difference lands in four places, not spread thin.",
+ mv:[
+  {n:"WHAT IS ADDED",t:"Four places, not everywhere",s:"depth and practice, same argument",beats:[
+   {n:"BEAT 6",t:"The five skills, worked",tag:"the difference",why:"Not named — <b>worked, with one example each</b>, then used as the instrument for choosing which moment to practise on.",
+    act:{h:"Worked example per skill",p:["<b>Notice.</b> <em>You get in the car after work and arrive home with no memory of the drive. Nothing went wrong. You just were not there for any of it.</em>",
+     "<b>Shift.</b> <em>You've finished a hard call and the next starts in ninety seconds. You are going to take the first call into the second one unless you do something with those ninety seconds.</em>",
+     "<b>Choose.</b> <em>You know exactly what you should say. You say the other thing. You knew the whole time.</em> — the gap between knowing and doing, <b>and it is its own skill, not a character flaw.</b>",
+     "<b>Focus.</b> <em>Focus is not concentration. It is coming back, again and again, without making a thing of it.</em>"]}},
+   {n:"BEAT 10",t:"The wider operating system",why:"The Human Operating System beyond tier one — the parts the Hour names and cannot open."},
+   {n:"BEAT 11",t:"The practice",tag:"this is the product",
+    act:{h:"Silent, private, on a moment they already lived",p:["<b>“You are going to use one, and nobody is going to know which one.”</b>",
+     "<b>Find the moment.</b> Not a new one, not a hard one. Something from the last week that will happen again. <em>The ordinary kind. The kind that comes round again on Thursday.</em> <b>(15 seconds)</b>",
+     "<b>Put it back.</b> Where you were. What the first sign was that it was starting. <em>Not what you should have done. Just where the catch was.</em> <b>(15 seconds)</b>",
+     "<b>Pick one of the four.</b> Body, attention, thinking, or other people. <b>The one you could actually have reached</b> — <em>if it needs ten minutes and a quiet room, it is the wrong one.</em> <b>(10 seconds)</b>",
+     "<b>Now do it. Here, sitting where you are.</b> Feet on the floor and one slower breath. Or three things you can see and the furthest sound. Or the different question. Or work out who you'd text and what the one sentence is. <b>(1 minute)</b>",
+     "⛔ <b>Eyes down or closed if you'd rather. Nobody is watching and nobody is asked about it afterwards.</b> This is a moment they already lived — never a new one staged in the room."]}},
+   {n:"BEAT 14",t:"The return session named",why:"Four beats of its own, 60 minutes remote, participants only. <b>Inside the price, not an extension.</b>"},
+  ]}
+ ]},
+
+{k:"pmgr",cls:"h4c",title:"The Manager Session",meta:"60 minutes · four movements, twelve beats · inside the Essentials and Foundations price",
+ st:["ok","Rebuilt today on your rulings"],
+ blurb:"<b>A planning session with an intention.</b> Managers have already sat the participant session — so this teaches almost nothing new. It is about the week their team goes back to, and it answers the double-up question from inside the framework: <b>six of the operating system's seven parts sit inside a person. One doesn't.</b>",
+ mv:[
+  {n:"MOVEMENT A",t:"What this hour is, and what it isn't",s:"the room stops waiting for a briefing",beats:[
+   {n:"BEAT 1",t:"The frame",why:"A planning session. <b>You leave with something written, for your own team, that you intend to implement.</b> Nothing collected, nobody asked to speak."},
+   {n:"BEAT 2",t:"The scope rule, said to their face",tag:"first, not later",say:"“<b>If the real problem is workload, or staffing, or safety, or one specific person behaving badly — that is not a habit, and I'm not going to let us turn it into one.</b>”",why:"⚠ Placed <b>before</b> any friction example. Naming workplace friction raises legal and industrial exposure, so the boundary arrives first — never as a mid-hour correction."},
+  ]},
+  {n:"MOVEMENT B",t:"You are already rewarding behaviour",s:"the uncomfortable turn",beats:[
+   {n:"BEAT 4",t:"The arithmetic",tag:"load-bearing",say:"“You answer the nine p.m. email in four minutes. The one that came in Tuesday lunchtime, you get to on Thursday. <b>Nobody has said a word about when to send things — and everybody now knows when to send things.</b>”",why:"Ends on: <b>you are already rewarding behaviour, you just aren't choosing which.</b>"},
+   {n:"BEAT 5",t:"The room as an environment",say:"“Chairs in rows facing me. Phones face up. That's an environment doing its job, and it isn't neutral. <b>Nobody voted for it. I set it up in four minutes.</b>”"},
+   {n:"BEAT 6",t:"The four levers",say:"“<b>People.</b> For everyone who works for you, <b>you are on that list.</b> Some days you make it easier and some days you make it harder, and it's usually the same you.”",why:"And what stops it becoming guilt: <b>plenty of you don't decide any of it. That band isn't yours — that's a fact about your job, not a failing.</b>"},
+  ]},
+  {n:"MOVEMENT C",t:"The moments and the moves",s:"given, never a blank page",beats:[
+   {n:"BEAT 8",t:"The friction moments",why:"Read as a list. Nobody names one out loud. <b>Three of the eight are invented and held pending your call</b> — six come from your own approved script."},
+   {n:"BEAT 9",t:"The move menu, sorted by lever",why:"Every move is <b>a change to a condition, never to a person</b>. Schedule-send anything written after hours. Put a gap between two things that touch. Make one route to contribute that isn't speaking first in front of everyone."},
+  ]},
+  {n:"MOVEMENT D",t:"Build it, in the room",s:"the centre of the product",beats:[
+   {n:"BEAT 10",t:"The moment, the move, and the notice",tag:"the product",
+    act:{h:"The working block",p:["Three parts. <b>The moment</b> — which recurring bit of your week you're changing. <b>The move</b> — what you'll do differently that somebody would actually see. <b>The notice</b> — what you'll say out loud, once, when you see someone else do it.",
+     "<b>The third part is the only part of the plan another human hears</b>, and it's what was missing everywhere.",
+     "<b>The facilitator builds his own first, badly, and repairs it in front of them.</b> That is what unblocks the page — not encouragement, not a better prompt.",
+     "Then <b>five tests</b> managers apply to their own draft: does it fit something already in the diary · would you do it on a bad Tuesday · does it need nobody's permission · <b>could someone tell it happened</b> · does it name no person and count nothing."]}},
+   {n:"BEAT 12",t:"The three don'ts",tag:"never cut",say:"“When they come back they'll have written one sentence on their own phone. <b>Don't go looking for it.</b>”",why:"With the reason, because the rule alone won't survive a week. And the safety line: <b>if someone goes quiet, or slow, or flat — that is not them doing this.</b>"},
+  ]}
+ ]}
+];
+
+const GAPS=[
+{t:"⚑ Why all five happened — the Introduction never got rebuilt against the card set",
+ p:["<b>Essentials cites 21 cards by number. The Introduction cites zero.</b> Both were edited the same afternoon.",
+   "The content bank you gave on 8 September landed in the card set and in Essentials. <b>The hour — the flagship, and the only product with a published price — did not receive it.</b> It is still the spine composed on 7 September, before the bank existed.",
+   "<b>Every gap below is a card tagged for all three products that the hour does not say.</b>"]},
+
+{t:"1 · High friction, low friction — not in the Introduction at all",
+ p:["You say it twice in one capture, the second time as pure emphasis: <em>“I think it's so important that we really push down low friction, high friction. It's important. So, so important we practise in the low friction moments.”</em>",
+   "<b>Your own ruling 19 says put it in the Introduction.</b> The word “friction” appears <b>zero</b> times in the hour's script. Eight times in Essentials, eleven in the manager session.",
+   "<b>What it costs:</b> this is the only instruction that makes the practice survivable. Without it, someone leaves, tries their first rep on the hardest moment in their life, fails, and concludes it doesn't work. <b>Beat 12 is recovery, not prevention.</b>"],
+ cost:"GOES: beat 11, before the private thirty seconds. PAYS FOR ITSELF: replaces the “which is hard for you — Notice or Choose” sub-device, which duplicates beat 6 and asks a self-classification question the room was promised it would not get."},
+
+{t:"2 · Passenger, Engine, Driver — the hour asserts the knowing–doing gap and never explains it",
+ p:["Your ruling 31, from the capture: <em>“Why is the knowing–doing gap a thing? And that's what we can explain — the driver, the passenger, the engine… So it makes more sense to people.”</em>",
+   "<b>Zero mentions in the hour. Fourteen across Essentials.</b> The card is literally titled <em>“Why knowing isn't doing — what's actually happening”</em> and tagged for all three.",
+   "<b>What it costs:</b> beat 10 is labelled in your own script as <b>the centre of the talk</b>. It currently gives breath-work and late-night scrolling as illustrations and <b>no mechanism at all</b>. The room is told the gap exists, agrees, and gets no account of why."],
+ cost:"GOES: inside beat 10, replacing the third illustration, not the beat. CARRIES: never drawn as a brain, never a rewiring claim, Passenger never framed as the bad one."},
+
+{t:"3 · No mirror — the visibility and reward argument",
+ p:["<b>The longest-running item of the five.</b> The capture has it twice — <em>“it's not visible… we change our behaviour based on rewards”</em>, and the PB contrast: <em>“I caught a thought before… cool, bro. What?”</em> And a month earlier the founder-voice file names <b>“mental fitness has no mirror”</b> as the strongest of the four reasons the gap stayed open.",
+   "<b>Absent from both the hour and Essentials.</b> The card set carries it as three cards plus <em>“the rep pays twice”</em> — and you already said those three are one argument.",
+   "<b>What it costs:</b> the hour asks people to practise something that produces no visible signal, and never tells them so. <b>Your own answer is the fix</b> — the rep pays twice, the skill and the moment, <em>“and that isn't normally sold to people.”</em>"],
+ cost:"GOES: one card, not three, folded into beat 13 as the setup for the turn. ⚠ WHAT PAYS IS UNRESOLVED — the check proposed cutting the hospice material, but that was already cut on sourcing, so this one still needs its trade."},
+
+{t:"4 · Thoughts, feelings and emotions, said plainly",
+ p:["In both captures, and structural in the second: <em>“We need to assume that these people have never ever heard of thoughts and feelings before.”</em> That is your ruling 55.",
+   "<b>The word “emotion” appears zero times in the hour and zero in Essentials.</b> The card carries it only as an unwritten bullet, and its own note says the card is already overloaded.",
+   "<b>What it costs:</b> ruling 43 makes thinking, feeling, acting and connecting the basis of everything MFC teaches. <b>The hour names all four and defines none of them.</b> Someone without that vocabulary cannot run a Stop."],
+ cost:"⚠ THIS ONE IS NOT FREE. Either a short beat of its own between 5 and 6, or compress beat 6's five-skills naming to the names plus one line — which ruling 30 permits, since depth belongs to Essentials and Foundations. The recommendation is the second."},
+
+{t:"5 · The rep inside exercise, and the ten fast examples",
+ p:["Flagged in the bank's own screen as one of the strongest new items: <em>“Exercise itself isn't a rep… I'll do eight instead of ten. That's an opportunity for a rep. You catch it. You do two more.”</em> Then ten examples, fired off fast, across a whole life.",
+   "<b>Beat 11 currently runs two scenarios — a shift handover and Priya at 7:15. Both interpersonal, both domestic or shift work.</b>",
+   "<b>What it costs:</b> someone who neither parents nor does shift handovers hears two moments and recognises neither. <b>The ten-fast is what makes the idea general</b>, and the exercise rep is the only solo, non-relational example available."],
+ cost:"GOES: beat 11. PAYS: nothing — the ten-fast is seconds, and the exercise rep replaces nothing, because that beat currently has no solo example at all."},
+
+{t:"✅ Checked and ruled out, so you know it was looked for",
+ p:["<b>“Be calm, be kind”</b> — present. <b>Moment to day to week to year</b> — present, beat 13. <b>The practice buddy</b> — the habit-stacking beat already carries the substance.",
+   "<b>The emotional-intelligence probe</b> — one mention only, so it fails the test for inclusion. It stays in the card set.",
+   "<b>“One person, many roles”</b> — present, but sitting at beat 13 as a late aside when you use it as an opening identity frame. <b>A placement question, not an absence.</b>"]},
+
+{t:"⚠ One process fix, and it is your own anti-ruling",
+ p:["<b>The hour's script still carries per-beat minute allocations in every heading.</b> That is anti-ruling 108 — refused, and last re-proposed on 8 September. Essentials has already had them stripped.",
+   "Not a content gap. Worth fixing before the two are read side by side."]}
+];
+const FOUNDATIONS={k:"p240",cls:"h3c",title:"Foundations",meta:"240 minutes · two breaks · cap 20 · sixteen activities · structure, not a script",
+ st:["ok","Structure written today"],
+ blurb:"<b>Everything else is Essentials, and Essentials is the Hour.</b> What 240 minutes actually buys is five things: the moment gallery, application studios, <b>four separate pieces of practice against Essentials' one</b>, three spaced unaided retrievals, and the two arguments only a half day can carry.",
+ mv:[
+  {n:"WHAT 240 BUYS",t:"Five things, and nothing else is different",s:"depth and practice, same argument",beats:[
+   {n:"BEAT 2",t:"The technique that did not work",tag:"foundations only",
+    act:{h:"The first thing that happens in the room, before any content",p:["<b>“Think of something you were once given that was supposed to help and didn't. Don't tell me what it was.”</b>",
+     "About twenty seconds. Nothing said, nothing written, no hands. He does not scan the room.",
+     "Then he closes it himself: <em>“For a lot of people the technique wasn't the problem. Nobody gave them the process it was supposed to sit inside.”</em>",
+     "<b>The room supplies its own evidence for the gap before he argues it</b> — instead of being told about it. This is Debra's ruling on doing the reflection before any content, answered directly.",
+     "⛔ If nothing comes to mind, <b>that is a complete answer, and he says so before the silence starts, not after.</b>"]}},
+   {n:"BEAT 6",t:"The body catch",why:"The five skills worked as in Essentials, then a physical device the shorter products have no room for."},
+   {n:"BEAT 8",t:"Where the pressure is in your week",why:"<b>A private search, nothing shared.</b> Sets up the practice that comes after the break."},
+   {n:"BEAT 10",t:"Say it back to one other person",tag:"the only one of its kind",
+    act:{h:"Teach-back — retrieval by producing",p:["Each person explains <b>Stop, Shift and Do in their own words</b> to one other person. One explains, the other says the one thing they would add, then they swap. About four minutes.",
+     "<b>Nothing personal is exchanged. This is about the process, not about anybody's life.</b>",
+     "<b>This is the only place in any MFC product where a participant has to produce the process rather than recognise it.</b>",
+     "The facilitator demonstrates the shape in fifteen seconds first, then listens for one specific error and corrects it <b>to the whole room, never to a person</b>: ⛔ <em>“Shift equals calm down.”</em> That error used to be caught here by design; in the current build it only gets caught if someone volunteers the mistake. <b>This restores the place it gets caught on purpose.</b>",
+     "Four routes offered aloud before anyone turns, <b>all equal</b>: with the person next to you · in your own head · just listen to theirs · or say it to me at the front.",
+     "⛔ If pair work feels unwanted once started, <b>switch straight to the solo fallback. Do not negotiate it in front of the room.</b>",
+     "⛔ <b>Not a rep, and never counted as one.</b>"]}},
+   {n:"BEAT 11",t:"The moment gallery",tag:"mandatory here",
+    act:{h:"Five arenas on the wall — self, relationships, work, performance, transitions",p:["Specific, ordinary moments posted around the room. Participants walk and <b>privately note three that connect to them.</b>",
+     "⛔ <b>No disclosure. No group formation. Nobody says which arena they stood in longest.</b>",
+     "<b>The selection instruction is what makes it work:</b> <em>“Don't just pick three you recognise. Find one where the hard part is noticing it's even happening. One where the hard part is choosing — you notice fine, you just do the other thing anyway. And one where the hard part is shifting.”</em> <b>Three moments, three different hard parts.</b> This is what finally gives the five skills a consumer.",
+     "Both routes offered aloud <b>before anyone stands up</b>: <em>“Note them if you want to, or just hold them in your head. You can also stay where you are and read from where you're sitting.”</em>",
+     "⛔ <b>BUILD DEPENDENCY: the wall does not exist yet.</b> A gallery needs forty to sixty moments. The Moment Bank holds five under its Verified heading, sixteen counting every later approval — <b>and not one is a workplace moment.</b> Curation only; no facilitator may write a new one."]}},
+   {n:"BEAT 11",t:"Application studios",tag:"foundations only",
+    act:{h:"Split by kind of application, never by life domain",p:["The room splits into <b>managing myself in a moment</b> versus <b>responding to another person.</b>",
+     "Three reasons for that split: <b>nobody learns anything about your life from which studio you picked</b> · it reliably produces two even groups · and a moment involving someone else has a second party's response in it, which changes what Shift and Do can be.",
+     "⛔ <b>The facilitator demonstrates one complete worked example at the front first. Non-negotiable</b> — a self-guided studio with no worked model produces vague reflection, which this service explicitly excludes.",
+     "Each guide walks the participant through their own moment: <b>where the catch is, what Shift options exist, what the Do could be, and what changes if the first option is gone.</b>"]}},
+   {n:"BEAT 12",t:"The breakpoint pass, and the reflection rep",tag:"foundations only",why:"The two arguments only a half day carries — the breakpoint map, and <b>the case that separates a Do from its outcome, so private work doesn't turn into self-blame.</b>"},
+   {n:"BEAT 14",t:"The Rep Plan and the rehearsal, run three times",tag:"foundations only",
+    act:{h:"Walked verbally, nothing written",p:["The eight questions asked aloud and <b>answered in the head</b> — including the one that matters most: <b><em>“If I miss it”</em></b> — because a plan with no answer for the first thing that will happen gets abandoned.",
+     "<b>Then the rehearsal, run three times, with an option removed each time.</b> What do you do when the first thing you'd reach for isn't available?",
+     "⛔ <b>The written sheet is out, the content is in.</b> Nothing bars asking eight questions aloud; the rule that nobody writes anything is what removes the sheet. <b>That call is Hunter's to reverse.</b>",
+     "Then unaided retrieval three — <b>the last thing that happens in the room.</b>"]}},
+  ]}
+ ]};
+
+function beat(b){
+  var h='<div class="b"><div class="bh"><span class="bn">'+b.n+'</span><span class="bt">'+b.t+'</span>'+
+    (b.tag?'<span class="tag">'+b.tag+'</span>':'')+'</div>';
+  if(b.say) h+='<div class="say">'+b.say+'</div>';
+  if(b.why) h+='<div class="why">'+b.why+'</div>';
+  if(b.act){ h+='<div class="act"><p class="ah">⚡ Activity — '+b.act.h+'</p>'+
+    b.act.p.map(function(x){return '<p>'+x+'</p>';}).join('')+'</div>'; }
+  return h+'</div>';
+}
+function product(d){
+  var h='<section class="prod" data-k="'+d.k+'"><div class="ph '+d.cls+'"><h2>'+d.title+'</h2>'+
+    '<p class="meta">'+d.meta+'</p><p>'+d.blurb+'</p>'+
+    '<span class="st '+d.st[0]+'">'+d.st[1]+'</span></div>';
+  d.mv.forEach(function(m){
+    h+='<div class="mv"><span class="mn">'+m.n+'</span><h3>'+m.t+'</h3><span class="sc">'+m.s+'</span></div>';
+    h+='<div class="grp">'+m.beats.map(beat).join('')+'</div>';
+  });
+  return h+'</section>';
+}
+function render(){
+  var all=DATA.slice();
+  if(FOUNDATIONS){ all.splice(2,0,FOUNDATIONS); }
+  document.getElementById('out').innerHTML=all.map(product).join('');
+  var g=document.getElementById('gaps');
+  if(!GAPS.length){ g.innerHTML='<div class="gap"><h4>The check is still running</h4><p>Your own captures and the merged interviews are being read against all four built products. <b>What comes back is only what you say repeatedly and with force, and that is genuinely absent</b> — not a wish list.</p></div>'; }
+  else { g.innerHTML=GAPS.map(function(x){
+    return '<div class="gap"><h4>'+x.t+'</h4>'+x.p.map(function(y){return '<p>'+y+'</p>';}).join('')+
+      (x.cost?'<span class="cost">'+x.cost+'</span>':'')+'</div>'; }).join(''); }
+}
+
+const LEDGERS=[
+["The Hour · 60",[["Built","Full script, 767 lines","y"],
+["Checked against your 124 rulings","2 anti-ruling matches found","part"],
+["Adversarially attacked","Fresh context, 10 findings, 9 repaired","y"],
+["Gap-checked against your own words","5 things you say that it does not","part"],
+["Claims-checked","2 outcome claims found in beat 9","part"],
+["Scored on the quality checklists","1 activity fails a gate","part"],
+["⛔ Hunter has read and approved","NO","n"],
+["Run with real people","NO — zero cohorts","n"]]],
+["Essentials · 90",[["Built","Full script, 1,096 lines","y"],
+["Checked against your 124 rulings","1 anti-ruling match, self-named","part"],
+["Adversarially attacked","13 defects, 11 fixed in file","y"],
+["Gap-checked against your own words","Carries the content bank the Hour missed","y"],
+["Claims-checked","Strongest claim-safety passage MFC has","y"],
+["Scored on the quality checklists","2 activities fail a gate","part"],
+["⛔ Hunter has read and approved","NO","n"],
+["Run with real people","NO — zero cohorts","n"]]],
+["Foundations · 240",[["Built","Structure + 16 activities, 1,429 lines","y"],
+["Checked against your 124 rulings","1 clear match, 1 probable","part"],
+["Adversarially attacked","Skeptic pass run","y"],
+["Gap-checked against your own words","Two devices recovered into it today","y"],
+["Claims-checked","No outcome claims found","y"],
+["Scored on the quality checklists","Mandatory activity fails a gate","n"],
+["⛔ Hunter has read and approved","NO","n"],
+["Run with real people","NO — zero cohorts","n"]]],
+["Manager · 60",[["Built","Rebuilt on your rulings, 518 lines","y"],
+["Checked against your 124 rulings","2 matches, 1 unnamed in the file","part"],
+["Adversarially attacked","11 findings, all applied","y"],
+["Gap-checked against your own words","Built from your 9 Sep brief directly","y"],
+["Claims-checked","1 causal prediction at beat 7","part"],
+["Scored on the quality checklists","4 of 12 beats have no words yet","n"],
+["⛔ Hunter has read and approved","NO","n"],
+["Run with real people","NO — no manager has seen any version","n"]]]];
+
+function ledgers(){
+  document.getElementById("ledgers").innerHTML = LEDGERS.map(function(L){
+    var rows = L[1].map(function(r,i){
+      var cls = i===6 ? ' class="hard"' : (i===7 ? ' class="ceil"' : '');
+      return '<tr'+cls+'><td>'+r[0]+'</td><td class="'+r[2]+'">'+r[1]+'</td></tr>';
+    }).join('');
+    return '<div class="led"><h4>'+L[0]+'</h4><table>'+rows+'</table></div>';
+  }).join('');
+}
+ledgers();
+
+const ACTS=[{"c": "I-A1", "p": "p60", "t": "The breath, ninety seconds", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PARTIAL", "A7": "PASS", "A8": "PASS", "A9": "PASS"}, "v": "runs"}, {"c": "I-A2", "p": "p60", "t": "The private thirty seconds", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PARTIAL", "A5": "PASS", "A6": "PASS", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": "runs, with no recovery"}, {"c": "I-A3", "p": "p60", "t": "The sixty-second swap and the fold-and-hold", "s": {"A1": "PARTIAL", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "FAIL", "A6": "PASS", "A7": "PARTIAL", "A8": "PASS", "A9": "FAIL"}, "v": "does not run as written"}, {"c": "E-A1", "p": "p90", "t": "The elicit-before-explain questions", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PARTIAL", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": "runs, with no recovery"}, {"c": "E-A2", "p": "p90", "t": "The silent shift on a moment already lived", "s": {"A1": "PASS", "A2": "FAIL", "A3": "PASS", "A4": "PARTIAL", "A5": "PARTIAL", "A6": "PASS", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": "does not run as written"}, {"c": "E-A3", "p": "p90", "t": "The private Learn It / Build It / Use It placement", "s": {"A2": "PASS", "A5": "PASS", "A7": "FAIL", "A9": "PASS"}, "v": "automatic FAIL on the anti-ruling collision"}, {"c": "E-A4", "p": "p90", "t": "The two-moment skill-referenced selection", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PASS", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-1", "p": "p240", "t": "The technique that did not work", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "FAIL", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-2", "p": "p240", "t": "The breath, ninety seconds", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PASS", "A7": "PASS", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-3", "p": "p240", "t": "The body catch", "s": {"A1": "PARTIAL", "A2": "PARTIAL", "A3": "PASS", "A4": "PARTIAL", "A5": "PARTIAL", "A6": "PARTIAL", "A7": "PARTIAL", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-4", "p": "p240", "t": "Fold your arms", "s": {"A1": "PARTIAL", "A2": "PASS", "A3": "PARTIAL", "A4": "PARTIAL", "A5": "FAIL", "A6": "FAIL", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": "passes both gates and should still be cut on A5"}, {"c": "F-5", "p": "p240", "t": "Where the pressure is in your week", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PARTIAL", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-6", "p": "p240", "t": "One thing, changed", "s": {"A1": "PARTIAL", "A2": "PARTIAL", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PARTIAL", "A7": "PARTIAL", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-7", "p": "p240", "t": "Say it back to one other person", "s": {"A1": "PARTIAL", "A2": "PASS", "A3": "PASS", "A4": "PARTIAL", "A5": "PARTIAL", "A6": "PASS", "A7": "PASS", "A8": "PASS", "A9": "PASS"}, "v": "runs"}, {"c": "F-8", "p": "p240", "t": "The moment gallery", "s": {"A1": "PARTIAL", "A2": "FAIL", "A3": "PARTIAL", "A4": "PASS", "A5": "FAIL", "A6": "PASS", "A7": "PARTIAL", "A8": "PARTIAL", "A9": "PARTIAL"}, "v": "does not run as written"}, {"c": "F-9", "p": "p240", "t": "The silent shift on a moment already lived", "s": {"A2": "FAIL", "A7": "FAIL", "A5": "PARTIAL"}, "v": ""}, {"c": "F-10", "p": "p240", "t": "Application studios", "s": {"A1": "PARTIAL", "A2": "PARTIAL", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PASS", "A7": "PARTIAL", "A8": "PASS", "A9": "PASS"}, "v": "runs, and it is the best-designed activity in the four products"}, {"c": "F-11", "p": "p240", "t": "The breakpoint pass", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PARTIAL", "A5": "PASS", "A6": "PASS", "A7": "PASS", "A8": "PASS", "A9": "PASS"}, "v": "runs"}, {"c": "F-12", "p": "p240", "t": "The reflection rep", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PARTIAL", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": "runs on both gates, and should not run until the escalation draft is closed by a"}, {"c": "F-14", "p": "p240", "t": "The Rep Plan, walked verbally", "s": {"A1": "PASS", "A2": "PASS", "A3": "FAIL", "A4": "FAIL", "A5": "FAIL", "A6": "FAIL", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": "passes both gates and fails on value"}, {"c": "F-15", "p": "p240", "t": "The rehearsal rep, run three times", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PARTIAL", "A5": "PASS", "A6": "PASS", "A7": "FAIL", "A8": "PASS", "A9": "PASS"}, "v": ""}, {"c": "F-16", "p": "p240", "t": "Unaided retrieval 3", "s": {"A1": "PASS", "A2": "PASS", "A3": "PASS", "A4": "PASS", "A5": "PASS", "A6": "PARTIAL", "A7": "PASS", "A8": "PASS", "A9": "PASS"}, "v": ""}];
+const BEATS=[{"p": "p60", "n": 1, "t": "The human and the promise", "s": ["PASS", "PARTIAL", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 2, "t": "The poll, the gap, braking", "s": ["PASS", "PASS", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 3, "t": "The door", "s": ["PASS", "FAIL", "PASS", "PASS", "FAIL", "PARTIAL"]}, {"p": "p60", "n": 4, "t": "The breath debrief", "s": ["PASS", "PASS", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 5, "t": "The definition and the boundary", "s": ["PASS", "FAIL", "FAIL", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 6, "t": "The four, the five skills", "s": ["PASS", "PASS", "PASS", "PASS", "FAIL", "PARTIAL"]}, {"p": "p60", "n": 7, "t": "Muscle memory", "s": ["PASS", "PASS", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 8, "t": "The practice site", "s": ["PASS", "PARTIAL", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 9, "t": "Stop Shift Do", "s": ["PARTIAL", "PARTIAL", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 10, "t": "Specificity, knowing\u2013doing", "s": ["PASS", "PASS", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 11, "t": "Two scenarios", "s": ["PASS", "PARTIAL", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 12, "t": "Grace, with a number", "s": ["PASS", "FAIL", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 13, "t": "The ripple, the mission", "s": ["PASS", "PARTIAL", "PASS", "PASS", "FAIL", "PASS"]}, {"p": "p60", "n": 14, "t": "The Radar, flat finish", "s": ["PASS", "FAIL", "PASS", "PASS", "FAIL", "PASS"]}];
+
+const BT=["B1 clarity","B2 curiosity","B3 recognition","B4 claim safety","B5 his voice","B6 portable"];
+const AT=["A1","A2","A3","A4","A5","A6","A7","A8","A9"];
+const AL={A1:"barrier",A2:"exposure",A3:"mechanism",A4:"engage",A5:"dignity",A6:"Thursday",A7:"recovery",A8:"solo",A9:"access"};
+function pip(v){var c=v==="PASS"?"P":(v==="FAIL"?"F":"p");var t=v==="PARTIAL"?"PART":v;return '<span class="pip '+c+'">'+t+'</span>';}
+function matrix(){
+  var h='<div class="mx"><h4>The fourteen beats — shared spine, scored once</h4><table><tr><th>Beat</th>'+
+    BT.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  BEATS.forEach(function(b){
+    h+='<tr><td class="nm">'+b.n+' · '+b.t+'</td>'+b.s.map(function(v){return '<td>'+pip(v)+'</td>';}).join('')+'</tr>';
+  });
+  h+='</table></div>';
+  ["p60","p90","p240","pmgr"].forEach(function(k){
+    var rows=ACTS.filter(function(a){return a.p===k;});
+    if(!rows.length) return;
+    h+='<div class="mx" data-k="'+k+'"><h4>'+P[k]+' — activities</h4><table><tr><th>Activity</th>'+
+      AT.map(function(t){return '<th>'+t+'<br><span style="font-weight:400;text-transform:none;letter-spacing:0">'+AL[t]+'</span></th>';}).join('')+'<th>Verdict</th></tr>';
+    rows.forEach(function(a){
+      h+='<tr><td class="nm">'+a.t+'</td>'+AT.map(function(t){
+        var v=a.s[t]||"—";var g=(t==="A2"||t==="A9")?' class="g"':'';
+        return '<td'+g+'>'+(v==="—"?'<span class="pip p" style="opacity:.4">—</span>':pip(v))+'</td>';
+      }).join('')+'<td class="vd">'+(a.v?(/not run|does not/i.test(a.v)?'<b>'+a.v+'</b>':a.v):'')+'</td></tr>';
+    });
+    h+='</table></div>';
+  });
+  document.getElementById("matrix").innerHTML=h;
+}
+matrix();
+
+
+const GATES=[
+["The sixty-second Radar swap — The Hour, beat 14","fails accessibility · and it is the take-home",
+ ["<b>It needs a phone, a working camera, a connection and a printed panel</b> — and no equivalent is said aloud before it starts.",
+  "This is the one thing the hour asks anyone to do afterwards. The script promises <em>“you\u2019re walking out with one”</em>. <b>A participant without a usable phone walks out with none, and nobody in the room says a word to them about it.</b>",
+  "It is marked ⛔ NEVER CUT, and it is the device that satisfies D-0008. <b>If it goes, that decision reopens immediately.</b>"]],
+["The moment gallery — Foundations, beat 11","fails exposure · and it is mandatory",
+ ["Participants take a <b>visible physical position</b> at a wall under five labelled arenas — self, relationships, work, performance, transitions — <b>in a room that may contain their manager.</b>",
+  "The design says <em>“nobody says which arena they stood in longest.”</em> <b>That is a rule about speaking, applied to a problem of seeing.</b> Banning the saying does not stop the watching.",
+  "⚑ <b>This is a genuine collision between your ruling and your checklist.</b> You made the gallery mandatory in Foundations this morning; the exposure gate was written this afternoon. <b>Yours to resolve, not mine.</b>"]],
+["The silent shift practice — Essentials beat 11, Foundations activity 9","fails exposure · and it is what Essentials is sold on",
+ ["The four shift routes are not equally invisible, <b>and the script instructs the visible ones</b>: <em>“If you picked the body, do the thing… roll the shoulders.”</em>",
+  "<b>A colleague sees whether you moved</b> — in a room whose own risk model is <em>“a colleague hears it, a manager remembers it.”</em>",
+  "Compare the breath at beat 4, which is safe <b>precisely because everyone does the identical thing.</b> ⚡ It also has no facilitator recovery row, and the file says so itself."]],
+["The manager working block","fails accessibility · and it is the best activity in the four products",
+ ["Writing is mandatory and structural. <b>The only opt-out in the beat is the pair reading, not the writing.</b> No spoken-only or think-only route exists anywhere in 518 lines.",
+  "It is simultaneously <b>the strongest thing built today</b> on dignity, engagement and Thursday value. <b>The fix is one sentence said aloud, not a redesign.</b>"]],
+["Nine of fifteen Foundations activities have no facilitator recovery","the systemic one",
+ ["Only <b>5 of 21 activities across all four products</b> have a matched recovery row.",
+  "<b>The four that put a participant inside a real difficult moment have none.</b> Beats 12 and 14 hold the day\u2019s most private devices and nothing is scripted behind them.",
+  "⛔ And the one distress row that exists is <b>ruled not-a-route by MFC\u2019s own HARD checklist item</b>, with the escalation procedure still an uncleared draft with an empty crisis block. <b>No further design work closes this one.</b>"]]];
+
+const OPTS=[
+["Activity 8 · The moment gallery","the one that decides whether Foundations runs",
+ [["A","<b>The full wall, walked, three moments, three hard parts</b> — what is currently built.","b|High","g|Moderate","g|High","b|Medium — standing at a labelled wall is the exposure problem"],
+  ["B","<b>The wall, plus a curated line from the buyer\u2019s own sector.</b> Same device, moments that look like their week.","b|High","g|Moderate","g|High","m|Medium"],
+  ["C","<b>The spoken gallery — no wall, no standing, no assets.</b> Twelve moments read in three groups of four; the room selects privately as he reads.","g|Low","m|Moderate","m|Medium","g|Low — nothing is asked of anyone"]],
+ "<b>C is the only one deliverable now</b> — the wall needs forty to sixty curated moments and the bank holds five verified, none of them workplace. <b>And C is the weakest of the three at the thing the device exists to do:</b> a wall makes the ordinary visible and gives permission for the small; a read list of twelve does that less well, in the third consecutive hour of sitting."],
+["Activity 7 · Say it back to one other person","the only place anyone produces the process",
+ [["A","<b>Four routes, all equal, offered aloud</b> — pair, in your head, just listen, or say it to me. What is currently built.","g|Low","g|Strong","m|Medium","m|Medium — taking the fourth route marks you as the one who would not pair"],
+  ["B","<b>One word each, round the room.</b> Everybody speaks, nobody has to compose.","m|Medium","g|Strong","g|High","b|High — round-the-room is the classic resented device"],
+  ["C","<b>Correct his deliberate mistake.</b> He teaches it wrong on purpose; the room catches it.","g|Low","g|Strong","g|High","g|Low — nobody is exposed, and being right is enjoyable"]],
+ "<b>C solves the problem the activity exists for.</b> The whole reason for a teach-back is to catch <em>“Shift equals calm down”</em> — and with one facilitator listening to ten simultaneous pairs, A cannot catch it in eight of them. <b>C catches it in front of everyone, once.</b>"],
+["Activity 4 · Fold your arms","the one scored worst on dignity",
+ [["A","<b>Fold, then fold the other way</b> — what is currently built.","g|Low","g|Strong","m|Medium","b|High — the corporate away-day parlour trick, and adults have met it twice"],
+  ["B","<b>Fold your arms, then sign your name with the other hand.</b> Same mechanism, less familiar.","m|Medium","g|Strong","g|High","m|Medium"],
+  ["C","<b>The route home.</b> No movement at all — he describes driving home a different way and what it costs in attention.","g|Low","g|Moderate","m|Medium","g|Low"]],
+ "<b>A is the only activity in four products that a scoring pass flagged as something a sceptical adult has already sat through elsewhere.</b> The mechanism is right; the vehicle is worn out."],
+["Activity 1 · The technique that did not work","the first thing that happens in Foundations",
+ [["A","<b>Silent recall, twenty seconds, closed by him</b> — what is currently built.","g|Low","g|Moderate","m|Medium","g|Low"],
+  ["B","<b>Hands up on the shared experience first</b>, then the silent recall.","g|Low","g|Moderate","g|High","g|Low — recognition, not disclosure"],
+  ["C","<b>He goes first</b>, with a named thing that did not work for him.","g|Low","m|Moderate","g|High","g|Low"]],
+ "⛔ <b>Whichever you pick, this currently runs at beat 2 — before the safety door at beat 3.</b> Your own foundation says the door must precede the first experience. A private recall of a personal failure is an experience. <b>That ordering is a real finding and it is the same in all three options.</b>"]];
+
+function gates(){
+  document.getElementById("gates").innerHTML = GATES.map(function(g){
+    return '<div class="gate"><span class="w">'+g[1]+'</span><h4>'+g[0]+'</h4>'+
+      g[2].map(function(x){return '<p>'+x+'</p>';}).join('')+'</div>';
+  }).join('');
+  document.getElementById("opts").innerHTML = OPTS.map(function(o){
+    var rows = o[2].map(function(r){
+      var sc = r.slice(3).map(function(x){var p=x.split("|");return '<span class="sc '+p[0]+'">'+p[1]+'</span>';}).join('');
+      return '<div class="row"><div class="rl">OPTION '+r[0]+'</div><div class="rc">'+r[1]+
+        '<div style="margin-top:7px">'+sc+'</div></div></div>';
+    }).join('');
+    return '<div class="opt"><div class="oh">'+o[0]+'<span>'+o[1]+'</span></div>'+rows+
+      '<div class="row"><div class="rl">HONESTLY</div><div class="rc">'+o[3]+'</div></div></div>';
+  }).join('');
+}
+gates();
+
+const COMPASS=[
+["The Hour","HE WOULD PUSH BACK",
+ "<em>“Five endings in twelve minutes. And the one thing they take home needs a phone and a printer? I said one leave-behind, premade, nothing written on it. So what happens when someone\u2019s phone is flat.”</em>",
+ "<b>Eleven beats hold.</b> The braking analogy does the job you built it for. The shift-tool menu is where you put it this morning \u2014 spoken through, not performed. <b>Nobody performs a Do.</b>",
+ "The ending first: you ruled the finish does not crescendo. <b>Five endings is the opposite failure \u2014 it does not crescendo, it just will not stop.</b> Then the Radar swap: sixty seconds is right, the phone dependency is not."],
+["Essentials","HE WOULD PUSH BACK",
+ "<em>“The silent shift is what we\u2019re selling and the room can see who moved. That\u2019s disclosure with a different name.”</em>",
+ "<b>Experience first, name second, done properly.</b> The five skills get their depth here \u2014 exactly where you put them this morning.",
+ "<b>That is the same failure as “hands up if you\u2019ve had a bad day”, wearing a better outfit</b> \u2014 and it was in the beat the product is sold on. ⚡ <b>Fixed today.</b> Also: depth added by volume into beats already full. You don\u2019t object to length; you object to stacking."],
+["Foundations","HE WOULD PUSH BACK",
+ "<em>“It doesn\u2019t make one argument. What\u2019s the sentence?”</em>",
+ "Sixteen activities, the deepest individual teaching, <b>and both recovered devices are where you put them.</b>",
+ "<b>Hardest here.</b> If nobody can write the one sentence Foundations argues, it is four hours of good parts. Then: <b>beat 2 asks for a private recall of a personal failure before the safety door at beat 3.</b> Your own rule, broken in your own product \u2014 and it is a reorder, not a rebuild."],
+["Manager","HE WOULD TAKE THIS, WITH ONE THING",
+ "",
+ "<b>Tightest of the four.</b> A separate product with its own purpose, not a compression. The working block is genuinely the centre. High-friction workplace moments, not struggle. <b>The best thing in the entire set on dignity and on whether a manager can use it Thursday.</b>",
+ "<b>One thing:</b> writing is mandatory with no spoken route. Not the butcher\u2019s-paper anti-ruling \u2014 managers planning is not participants handed a blank page \u2014 but <b>a manager who cannot write is excluded from the best thing MFC has built.</b> One line fixes it."]];
+
+const PRECIOUS=[
+ "<b>“No literature citation anywhere.”</b> Ruling 45 asks for real external stats and none has been registered yet. <b>That is a content task, not a defect in the product.</b>",
+ "<b>157 em dashes.</b> A find-and-replace, not a finding.",
+ "<b>“Only 5 of 21 activities have a recovery row.”</b> The count is noise. <b>Four of them matter</b> \u2014 the four that put a person inside a real difficult moment. Fix four, not sixteen.",
+ "<b>The distress row “failing” a checklist item written the same afternoon.</b> New criteria applied retroactively as gates is how you get a permanent not-ready state. <em>“Whose rule is that, and did anyone qualified ask for it?”</em>",
+ "<b>Anti-ruling 108 fired on all four products.</b> It is true of one. ⚡ A per-beat minute band in fourteen headings is the thing you killed \u2014 <b>stripped today.</b> A product-level settings table is not: it describes the ruling that beats widen by product. <b>Decided, not handed back to you.</b>"];
+
+function compass(){
+  document.getElementById("compass").innerHTML = COMPASS.map(function(c){
+    var q = c[2] ? '<p style="font-family:var(--serif);font-size:17px;color:var(--ink);border-left:2px solid var(--pmgr);padding-left:14px">'+c[2]+'</p>' : '';
+    return '<div class="gate" style="border-left-color:var(--pmgr)"><span class="w" style="color:var(--pmgr)">'+c[1]+'</span><h4>'+c[0]+'</h4>'+q+
+      '<p><b>Why you would like it.</b> '+c[3]+'</p><p><b>Where you would push.</b> '+c[4]+'</p></div>';
+  }).join('') +
+  '<div class="gate" style="border-left-color:var(--act)"><span class="w" style="color:var(--act)">and where the system was being precious</span><h4>Findings Compass threw out</h4>'+
+  PRECIOUS.map(function(x){return '<p>'+x+'</p>';}).join('')+'</div>';
+}
+compass();
+
+
+
+render();
+document.querySelectorAll('.nb').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var f=btn.dataset.f;
+    document.querySelectorAll('.nb').forEach(function(b){b.setAttribute('aria-pressed',String(b===btn));});
+    document.querySelectorAll('.prod').forEach(function(s){
+      s.classList.toggle('hide', f!=='all' && s.dataset.k!==f);
+    });
+  });
+});
+</script>

@@ -1,0 +1,217 @@
+schema_version: 2
+objective: Answer Hunter 2026-09-06 - what pricing leads to good profits while staying enticing across
+  organisation type, size and need - as an architecture question rather than a level question, plus his
+  same-day follow-up that Foundations will be hardest to sell and Essentials will be the most used service.
+  Produced 21-THE-PRICE-ARCHITECTURE.md. No ratified price changed.
+task_session_id: 9f869fad-1121-47fe-b96d-3a2b99c81548
+material_prompt_fingerprint: 89e3fca77abd6e1b
+material_task_id: 89e3fca77abd6e1b-2026-09-06T11:25:09.164085+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: route_now
+  reason: head-of-marketing. Owned section 4's six buyer passages and section 5's framing; found and corrected
+    the pricing case's false claim that MFC has no free-competitor answer sentence.
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: route_now
+  reason: head-of-product. Ruled that no price flex may change what is delivered; found the manager-session
+    amortisation is conditional on the same managers attending, and that the Foundations design floor
+    exceeds the decision record's.
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: route_now
+  reason: head-of-commercial. Owned sections 1, 2, 3, 6 and 7; reconciled the three-way cost seam to 07
+    section 4.2 and derived the repeat-cohort indifference points. Sent the skeptic's D-0122 findings
+    for revision; had not returned when the document closed, so the corrections were applied by the builder
+    after independent verification at source.
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: route_now
+  reason: skeptic. Adversarial pass, briefed that a differentiated structure is complexity a one-person
+    charity cannot administer; eight material findings including the D-0122 section 4 refutation that
+    withdrew the document's central recommendation.
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: route_now
+  reason: head-of-compliance. Ruled the claims boundary on section 5 and the outcome-claim boundary on
+    every section 4 passage; found R6's answer superseded by R7 and false on the fact it turns on; ruled
+    no legal gate attaches to a two-tier charity price and declined to invent one.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-node2-price-architecture
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-node2-price-architecture
+  completed_before_execution: true
+  decision_surfaces:
+  - 'Whether to recommend a repeat-cohort discount. The document initially did; D-0122 section 4 refuted
+    it and the recommendation was withdrawn rather than defended. Five founder questions reach Hunter:
+    whether D-0122 rule 6''s two-group cap permits a third as a separate sequential engagement; whether
+    to publish a commercial tier or hold it behind a trigger; MFC''s stated position on the free competitor;
+    which buyer MFC is pricing for given D1-who-actually-pays and 04-THE-STRATEGY conflict; and whether
+    the Foundations floor is 8 rather than D-0121''s 3.'
+  omissions_challenged:
+  - 'researcher screened in and excluded: the brief permitted one only if a comparable R2 does not hold,
+    and this is a structural question - R2''s 23 provider pages plus the pricing case''s fresh 2026-09-06
+    external pass cover the market, and no new comparator changes how a price flexes across buyer type.
+    A-15 head-of-delivery is the closest call and its exclusion is this screen''s weakest point: the travel
+    radius term, the instalment mechanics and the multi-cohort contract form are all genuinely its subject,
+    all three are live gaps this document names, and the travel radius is the difference between Small
+    Team being viable and not. Excluded because each is a gap to be written rather than a judgement to
+    be made; naming them is what this document owes and writing them is a separate bounded task. A-11
+    head-of-research excluded despite owning P27, the one sentence that would close a sale, because filling
+    it needs a registered comparable study rather than a lens on this document. A-25 and SYS-03 screened
+    and not implicated - no committee process or capacity question is decided here.'
+  changes: []
+  unresolved:
+  - GST registration status is contradicted inside MFC's own live documents and is blocking on anything
+    buyer-facing. The travel radius term does not exist and Small Team goes below cost without it. MFC
+    cannot yet contract per D-0103's 2026-08-17 amendment. AG-325's insurance change-of-use is open since
+    July 2026 and this document makes the declared turnover of 20000 wrong. Professional indemnity is
+    not held and three of five NSW principal criteria are unevidenced. Account-management hours are unreconciled
+    between 07 and FINAL-06, now bounded rather than left open. D-0113 and 110-PRODUCT-AND-PRICING-BOOK
+    are superseded on cost basis and not marked superseded_by. No advisor has reviewed any of these numbers.
+    Zero cohorts, zero quotes, zero buyer interviews.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'The three-way cost seam is closed with a disclosed sensitivity
+  showing the conclusions survive either basis. Hunter''s Essentials-led premise was worked rather than
+  accepted: the money case''s 91-sales figure is the entry-band worst case, the binding constraint is
+  sales events not delivery hours, and the whole-organisation quote rather than the single-room quote
+  is the lever. Five claims in the existing corpus were refuted: that the ladder gives better value per
+  head; that MFC has no free-competitor answer; that the manager-session amortisation is unconditional;
+  that R6''s manager-versus-staff distinction is true; and that a repeat discount is warranted. The document''s
+  own first draft was found to breach D-0122 rule 2 against the buyer by 32% and was corrected. The review
+  clause AG-088 asked for in July 2026 became fireable.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-06-price-architecture-a-24.md
+specialists:
+- id: A-21
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-price-architecture-2026-09-06/A-21-packet.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-06-price-architecture-a-21.md
+  contribution: head-of-commercial. Owned sections 1, 2, 3, 6 and 7; reconciled the three-way cost seam
+    to 07 section 4.2 and derived the repeat-cohort indifference points. Sent the skeptic's D-0122 findings
+    for revision; had not returned when the document closed, so the corrections were applied by the builder
+    after independent verification at source.
+  learning_disposition: candidate_update
+- id: A-08
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-price-architecture-2026-09-06/A-08-packet.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-06-price-architecture-a-08.md
+  contribution: head-of-marketing. Owned section 4's six buyer passages and section 5's framing; found
+    and corrected the pricing case's false claim that MFC has no free-competitor answer sentence.
+  learning_disposition: candidate_update
+- id: H-02
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-price-architecture-2026-09-06/H-02-packet.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-06-price-architecture-h-02.md
+  contribution: head-of-compliance. Ruled the claims boundary on section 5 and the outcome-claim boundary
+    on every section 4 passage; found R6's answer superseded by R7 and false on the fact it turns on;
+    ruled no legal gate attaches to a two-tier charity price and declined to invent one.
+  learning_disposition: candidate_update
+- id: A-10
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-price-architecture-2026-09-06/A-10-packet.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-06-price-architecture-a-10.md
+  contribution: head-of-product. Ruled that no price flex may change what is delivered; found the manager-session
+    amortisation is conditional on the same managers attending, and that the Foundations design floor
+    exceeds the decision record's.
+  learning_disposition: candidate_update
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-price-architecture-2026-09-06/A-24-packet.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-06-price-architecture-a-24.md
+  contribution: skeptic. Adversarial pass, briefed that a differentiated structure is complexity a one-person
+    charity cannot administer; eight material findings including the D-0122 section 4 refutation that
+    withdrew the document's central recommendation.
+  learning_disposition: candidate_update
+outputs_summary:
+  architecture: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/21-THE-PRICE-ARCHITECTURE.md

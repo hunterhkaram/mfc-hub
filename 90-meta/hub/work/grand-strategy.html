@@ -1,0 +1,434 @@
+<title>Grand strategy — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../grand-strategy.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Grand strategy</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>Final 01 Grand Strategy</summary><div class="record-body document"><h1>Grand Strategy: What MFC Is, and Why It Exists</h1>
+<h2>Executive Summary</h2>
+<p>Mental Fitness Collective exists to make mental fitness training available to people in work settings where they need it most: in the ordinary moments, not in crisis. We teach a method, Stop, Shift, Do, that helps people notice a difficult thought or feeling in the moment it's happening and choose how to respond, rather than being carried by it.</p>
+<p>This is not therapy. This is not resilience training. This is a teachable, practisable procedure that runs in the same part of your mind that generates the moments when you're stuck, and it works because it works <em>where you already are</em>, at your desk, in a meeting, at 11pm when you can't sleep, not in a carved-out space called wellness.</p>
+<p>Our business model is simple and honest: <strong>corporates and businesses pay for Foundations (the half-day workshop), and that margin funds access for people who cannot pay</strong>. We have zero customers today. Everything below is what we will do when we do.</p>
+<hr />
+<h2>1. The Market and the Opportunity</h2>
+<h3>The Landscape</h3>
+<p>In Australia, mental health remains mostly treated as a crisis intervention problem, what you do when someone is unwell enough to need help, rather than as a skill-development problem. That gap means:</p>
+<ul>
+<li><strong>Training exists for clinical conditions</strong> (therapy, medication) and for prevention-through-awareness (resilience, mindfulness). Nothing sits in between, teaching people the <em>operational skills</em> for the moments they already live in.</li>
+<li><strong>Employers know mental health matters</strong> but most offerings position wellness as either a benefit add-on or a clinical intervention. WHS frameworks treat psychology as they do physical safety, you build the environment, you avoid hazards. You don't tell people to be fitter.</li>
+<li><strong>The regulatory landscape changed</strong> on 1 July 2026. NSW's Work Health and Safety Act now requires businesses over 20 staff to have controls in place <em>before</em> harm occurs, not just to respond after. For psychological hazards, that creates a real budget trigger, but MFC must win against the free, credible SafeWork-funded alternative (Black Dog Institute) that exists for every NSW private business under 200 staff.</li>
+</ul>
+<p><strong>The opportunity:</strong> businesses above 200 staff, councils, and community organisations that want their people to have a skill <em>they</em> carry, not a service <em>they</em> consume. This is expensive to reach, there's no free channel, but it is real. There are ~7,000 NSW businesses with 50+ staff. Roughly 1,500 have 200+ (estimate, unverified, not traced to a source in the current working-doc set).</p>
+<h3>Why Now</h3>
+<p>MFC exists because training without a measured outcome has failed for 20+ years. Every mental-health or resilience training programme in the graveyard (Black Dog, Beyondblue, Lifeline, every corporate EAP) has concluded the same thing: individual content without environmental support lacks demonstrated durable effect.</p>
+<p>MFC is built differently: <em>measurement is the constant, not the add-on.</em> Every person who goes through the method gets measured at the start, the end, and three weeks later on the exact thing the method teaches, whether they can retrieve the skill when they need it under load. No exceptions. No opt-out.</p>
+<p>That's not innovation. That's honesty about what the evidence actually says, and building around it from the start.</p>
+<hr />
+<h2>2. Business Model: Who Pays, and Why</h2>
+<h3>The Buyer Question, Decided</h3>
+<p><strong>The primary payer is the employer.</strong> This was examined against every alternative, individuals, community organisations, councils, funders, insurers. Here's why the employer wins:</p>
+<table>
+<thead>
+<tr>
+<th>Payer</th>
+<th>Has the money</th>
+<th>Has the motive</th>
+<th>Can we win</th>
+<th>Cost to reach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employer 200+</td>
+<td>Yes, above budget threshold</td>
+<td>Yes, regulatory review from 1 July 2026</td>
+<td>Difficult, we have zero track record</td>
+<td>High (direct sales)</td>
+</tr>
+<tr>
+<td>Council / community</td>
+<td>Yes, grant-funded</td>
+<td>Yes, community wellbeing</td>
+<td>Possible, grants work differently</td>
+<td>Lower (relationship-based)</td>
+</tr>
+<tr>
+<td>Funder / philanthropy</td>
+<td>Yes, but limited and dated</td>
+<td>Yes, mental health scope</td>
+<td>Possible, but we must prove delivery</td>
+<td>Lower (application-based)</td>
+</tr>
+<tr>
+<td>Individual</td>
+<td>Yes, at modest scale</td>
+<td>No, without distress trigger</td>
+<td>Untested, high CAC</td>
+<td>Prohibitive</td>
+</tr>
+<tr>
+<td>Insurer</td>
+<td>Yes, strong motive</td>
+<td>Strong, injuries cost $288k+ average (estimate, unverified, not traced to a source in the current working-doc set)</td>
+<td>Blocked, we have no validated evidence</td>
+<td>Not yet open</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Employer as primary payer is not a default.</strong> It means:</p>
+<ul>
+<li>The measurement must work in a workplace, not a clinical setting.</li>
+<li>The report goes to the party we're also protecting participants from (the employer sees the results, not the individual).</li>
+<li>We must convince a buyer to pay $2,500–$4,400 for delivery <em>and</em> evidence against a free alternative (source: the pricing research).</li>
+</ul>
+<p>We accept these constraints because they're structurally sound: <strong>if we solve for the employer channel, access to other channels becomes fundable; if we only solve for access, we run out of money before the first cohort is measured.</strong></p>
+<h3>The Cross-Subsidy Model, Decided</h3>
+<p><strong>Corporates fund access for others.</strong> Every Foundations sale carries an access levy ($400 on a $2,500+ base) (source: the pricing research). That levy funds:</p>
+<ul>
+<li>Free Introductions (capped at 20 per year, mission spend) (source: the pricing research)</li>
+<li>Pro bono Essentials and Introductions (by application, capped by the fund)</li>
+<li>Community-tier pricing (reduced fee for community organisations)</li>
+</ul>
+<p><strong>This has no source until corporate sales exist.</strong> Until the first Foundations customer is booked, access must be funded by grants and councils, not by cross-subsidy. We will be honest about that in every conversation, rather than promising an access programme we cannot yet fund.</p>
+<hr />
+<h2>3. What We Deliver, The Product Shape</h2>
+<h3>The Measurement System Is the Constant</h3>
+<p>Every MFC offering, from a 60-minute introduction to a half-day workshop, runs the same core measurement:</p>
+<ul>
+<li><strong>Baseline</strong> (before the session): Can you retrieve the skill when you notice you need it?</li>
+<li><strong>End of session</strong> (immediate): Does practice in the room move that number?</li>
+<li><strong>Three weeks later</strong> (follow-up): Does it stick?</li>
+</ul>
+<p>Plus:
+- A <em>then-test</em> (asking you to rate the baseline again at follow-up to catch response-shift bias)
+- The harm item (did this make anything worse?)
+- The referral line (if distress came up, where could you go?)</p>
+<p><strong>Every offering that cannot run this measurement is not an MFC offering.</strong> This protects the evidence base while we build multiple formats. It's what makes a ladder one thing, not a catalogue.</p>
+<h3>The Delivery Ladder</h3>
+<table>
+<thead>
+<tr>
+<th>Offering</th>
+<th>Duration</th>
+<th>Primary use</th>
+<th>Delivered to</th>
+<th>Delivered where</th>
+<th>Who measures</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundations half-day</strong></td>
+<td>4 hours in-person <em>(design specification, unverified: never delivered)</em></td>
+<td>Build and practise the full system</td>
+<td>Organisations, 15–20 people</td>
+<td>Their workplace</td>
+<td>Facilitator</td>
+<td>Revenue engine</td>
+</tr>
+<tr>
+<td><strong>Essentials 90-minute</strong></td>
+<td>90 min in-person or virtual</td>
+<td>Entry point for small teams or intro to the method</td>
+<td>Teams 6–15, or small organisations</td>
+<td>Their workplace or MFC's venue</td>
+<td>Facilitator</td>
+<td>Reach and evidence</td>
+</tr>
+<tr>
+<td><strong>Introduction 60-minute</strong></td>
+<td>60 min, booked or outreach</td>
+<td>Conversation starter, no individuals left out</td>
+<td>Anyone</td>
+<td>Community events, online, workplaces</td>
+<td>Facilitator</td>
+<td>Mission spend or free</td>
+</tr>
+<tr>
+<td><strong>Digital one-hour (V5)</strong></td>
+<td>60 min live, digitally</td>
+<td>Bottom rung, enterable by one person alone</td>
+<td>Individuals or small distributed teams</td>
+<td>MFC's scheduled cohorts or theirs</td>
+<td>Facilitator</td>
+<td>Reach / evidence</td>
+</tr>
+</tbody>
+</table>
+<p><strong>In-person is the stated preference</strong>: that's where the full method comes alive, where you can read the room, where the live rep on your own moment actually happens. But we will offer virtual because people who cannot be reached in person get something rather than nothing.</p>
+<h3>What Makes It Stick: The Client Commitment</h3>
+<p>The single most contested finding in the field is that training works <em>less</em> without environment support. So we've built three simple, measurable commitments the organisation must make for every session:</p>
+<ol>
+<li><strong>Voluntary attendance</strong>: no coercion, no recording of non-attendance</li>
+<li><strong>One named real opportunity</strong>: before the session, the organisation names one specific situation in the next three weeks where someone might use the skill</li>
+<li><strong>One named manager asks once</strong>: within three weeks, a named manager asks each person whether there was anything they wanted to use</li>
+</ol>
+<p>We <strong>do not claim to deliver an environment layer</strong>: the facilitator leaves, and the only party who stays is the manager. But we measure whether the commitment held, and we will not deliver a second cohort to an organisation that didn't hold it. That is not enforcement by penalty. That's the only power a one-facilitator charity actually has: whether it agrees to come back.</p>
+<hr />
+<h2>4. What We Are Not</h2>
+<p><strong>This is not therapy</strong>, not clinical treatment, and does not position MFC as a mental-health intervention. It's a skill. It's trainable. It runs in your own head, about your own thoughts, and you stay in control.</p>
+<p><strong>This is not resilience training.</strong> Resilience implies you're learning to suffer better. We teach retrieval, reaching what you know when you need it. That's different.</p>
+<p><strong>This is not another employee wellbeing programme</strong> that succeeds or fails based on how engaged your workforce is with content. The measure is whether people <em>do</em> it in the moments that matter, not whether they attend. Engagement is not the success metric; enactment is.</p>
+<p><strong>The measurement is not sold as a business asset to you</strong>. It's built so we can find out whether this works, honestly. If the first cohorts show no effect, you get that answer with the same prominence as a positive result. We're not selling you evidence; we're asking you to help us build it.</p>
+<hr />
+<h2>5. Funding and Sustainability, Year One Path</h2>
+<h3>Revenue to Start</h3>
+<p><strong>Corporate sales:</strong> Zero to three organisations in the founding cohort at reduced rates ($1,750–$2,500 base) (source: the founding case-study pricing research), returning to $2,500 at either three cohorts or four months' elapsed time, whichever comes first (source: the founding case-study pricing research). This is intentionally conservative, we're building a track record, not forecasting growth.</p>
+<p><strong>Grant funding:</strong> Two council grants (Camden, Parramatta: ~$9,500 total) (source: the grants research) to deliver into community settings. This is access-funding, not revenue. It buys us a first cohort with real people, measured, referenced. That cohort becomes the reference case for every other channel.</p>
+<p><strong>Philanthropic / research:</strong> One research partnership, as yet unconfirmed. An email to Black Dog and one to the active Australian research group working on this construct. No response yet, which means zero in the plan.</p>
+<h3>Cash and Runway, The Honest Version</h3>
+<p><strong>~$12,000 remaining</strong> from $20,000+ raised across two endurance events (as of 2026-08-09, per CLAUDE.md §2; vault-current, treat as time-stamped).</p>
+<p><strong>Corrected 2026-08-16, on Hunter's direct challenge.</strong> This section previously stated a monthly burn of $1,000–$1,500 and derived "four to eight months of runway" from it. <strong>That figure was an imputed estimate, not verified against any account: founder time valued at $66.10/hr plus a 40% overhead proxy, an imputed cost, not cash leaving an account.</strong> Hunter's correction: <em>"Why would funds run out? We don't have costs at this stage."</em> Unless and until the founder draws a salary, that number is not burn, and no depletion date follows from it. The same error appeared independently in the free-Introduction costing, where $8,060 of "loaded mission spend" resolved to roughly $800 of actual cash.</p>
+<p><strong>The honest position, as stated by Hunter 2026-08-16:</strong> approximately $12,000 in cash. <strong>Recurring cash costs are genuinely low</strong>: website, registration, insurance and similar. In his words: <em>"we spend a significantly low amount per year… at this rate we could last for a few years."</em> These lines are <strong>not yet itemised in this vault</strong> and must be before any treasurer- or funder-facing use.</p>
+<p><strong>The cost structure, which matters more than the balance.</strong> From end of 2026 into 2027, <strong>the founder is to be paid per session or hour facilitated</strong>: not a salary or a monthly drawing. That makes founder remuneration a <strong>variable cost tied to delivered revenue</strong>: incurred only when a session has been sold and delivered, and funded by that sale. The $66.10/hr rate (set by the half-day pricing decision) is what the founder is paid <em>out of a delivered session</em>, and must never be presented as an ongoing drain on reserves.</p>
+<p><strong>What follows is the strategically important part: MFC does not have a runway problem.</strong> Fixed costs are small enough to sustain the organisation for years at the current level, and founder pay is self-funding per engagement. <strong>Time passing does not threaten MFC.</strong> The single constraint is whether the product sells.</p>
+<p><strong>This is a stronger position than a countdown and should be stated as such</strong>: to the committee, to funders, and internally. It also puts the urgency in the right place: not <em>"we must act before the money goes,"</em> but <em>"we have the room to do this properly, and nothing happens until someone buys."</em></p>
+<p><strong>Required before any funder- or committee-facing use of a runway figure:</strong> itemise real recurring cash costs and state them separately from delivery-linked founder pay. Imputed founder time may be shown as a <em>notional</em> cost of delivery, clearly labelled, and must never be added to cash burn or used to derive a depletion date.</p>
+<p>Within that window:</p>
+<ul>
+<li>Three corporate conversations must happen (the test that the employer channel actually fires)</li>
+<li>Two grants must be submitted and awarded</li>
+<li>One research partner must be engaged</li>
+<li>And critically: <strong>the safeguarding questions must close</strong> before any session is delivered to a real person</li>
+</ul>
+<p>If any of those fails, the funding model breaks. This is not a hidden risk. It's what we're operating against, and it's tight, and it's real.</p>
+<hr />
+<h2>6. Safeguarding, The Non-Negotiable Gate</h2>
+<p>Six matters remain open, requiring:</p>
+<ol>
+<li><strong>Clinical-governance input</strong>: on distress response and referral design</li>
+<li><strong>Qualified legal input</strong>: on contract structure and liability</li>
+<li><strong>Insurer/broker confirmation</strong>: that the delivery model is insurable</li>
+<li><strong>Committee decision</strong>: on whether we proceed, and how we resource it</li>
+<li><strong>Measurement gate</strong>: whether we collect enough contact data to act on a disclosure</li>
+<li><strong>Delivery partner confirmation</strong>: that the partner we work with can handle safeguarding escalation</li>
+</ol>
+<p><strong>Nothing is delivered to a participant until all six close.</strong> That is a real gate, not a formality. The committee meets 17 August. The expectation is that items 1–2 and 4–6 will have named owners and target dates by then, not completion.</p>
+<hr />
+<h2>7. The Betting Statement</h2>
+<p>MFC is betting that:</p>
+<ul>
+<li><strong>Mental fitness is trainable, and people will pay to train it</strong>: if the first three corporate conversations produce zero interested opportunity in twelve weeks, the revenue model is wrong, not just immature.</li>
+<li><strong>Measurement matters more than everything else</strong>: if the first cohorts show no measurable enactment under load at three weeks, we have built a nice thought but not a working intervention, and we must say so.</li>
+<li><strong>The path through funders to evidence is faster than the path through corporate sales to revenue</strong>: if the first funded cohort doesn't materialise (the safeguarding review closes, grant doesn't arrive, partner doesn't show), we run out of money before we have data, and we're done.</li>
+</ul>
+<p>If all three bets hold, MFC becomes an organisation with one delivered, measured, published cohort, and that changes everything. That's the immediate goal. Revenue is secondary to that proof.</p>
+<hr />
+<h2>Related Documents</h2>
+<ul>
+<li><code>FINAL-02-pricing-strategy.md</code>, How the pricing ladder works and why each tier is priced as it is</li>
+<li><code>FINAL-04-delivery-models.md</code>, Technical detail on which formats are built and which are next</li>
+<li><code>FINAL-05-grants-and-funding.md</code>, The specific funding roadmap and grant timeline</li>
+<li><code>D1-who-actually-pays.md</code>, The full buyer analysis (this document condenses it)</li>
+<li><code>D1-what-measurement-is-for.md</code>, Why measurement is a research programme, not a product feature</li>
+</ul><p class="src">Original source: 60-projects/committee-pack-v1/FINAL-01-grand-strategy.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-01-grand-strategy.md" target="_blank">FINAL-01 Grand Strategy</a></li></ul></div></details></div>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Trail: Committee Document Consolidation</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            --accent: #0066cc;
+            --warning: #d97706;
+            --success: #059669;
+            --muted: #6b7280;
+            --light-bg: #f9fafb;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a1a;
+                --text: #f3f4f6;
+                --border: #404040;
+                --accent: #3b82f6;
+                --warning: #f59e0b;
+                --success: #10b981;
+                --muted: #9ca3af;
+                --light-bg: #262626;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            padding: 2rem;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2rem; margin: 2rem 0 1rem; }
+        h2 { font-size: 1.3rem; margin: 2rem 0 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; }
+        p { margin: 1rem 0; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--light-bg); font-weight: 600; }
+        tr:nth-child(even) { background: var(--light-bg); }
+        .agent-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-left: 4px solid var(--accent);
+            border-radius: 0.25rem;
+        }
+        .agent-name { font-weight: 700; color: var(--accent); }
+        .verdict { padding: 0.75rem; margin: 1rem 0; background: rgba(5, 150, 105, 0.1); border-left: 4px solid var(--success); }
+        .finding { padding: 0.75rem; margin: 0.5rem 0; background: rgba(217, 119, 6, 0.1); border-left: 4px solid var(--warning); }
+        ul { margin-left: 2rem; margin-top: 0.5rem; }
+        li { margin: 0.5rem 0; }
+        .metadata { font-size: 0.85rem; color: var(--muted); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decision Trail: Committee Document Consolidation Assessment</h1>
+        <p style="color: var(--muted); font-style: italic;">This document shows how the multi-specialist panel worked through the consolidation problem, what each specialist found, and where findings converged or diverged.</p>
+
+        <h2>1. Where It Started</h2>
+        <p><strong>The intake question:</strong> Hunter identified that we have 6 separate "FINAL-*.md" strategy documents (FINAL-01 through FINAL-06) in addition to a main COMMITTEE HTML/PDF document. The commitment was for "a single, concise document" by Aug 17. Why do we have 6 files?</p>
+
+        <p><strong>Ground truth read before work began:</strong></p>
+        <ul>
+            <li>Git status showing branch: task/L-058-scheduled-exemption-fix (unrelated to this task, noted)</li>
+            <li>NEXT-STEPS-2026-08-10-atlas-review.md — the primary specification document. §3 explicitly names the task: "Compress COMMITTEE to 5–7 pages, reconciling the body (§2–§5) to the actual D2 pricing figures."</li>
+            <li>R0-ground-truth-what-the-committee-actually-asked.md — verified against Fathom recordings</li>
+            <li>COMPASS review (2026-08-11) — verified the underlying D2, D5, D6, D7, D9, D10 documents against founder context and K-08 boundaries</li>
+            <li>File structure and naming: 6 FINAL-*.md files dated Aug 11 14:15; COMMITTEE HTML/PDF v1-v5 same day with multiple revisions</li>
+        </ul>
+
+        <h2>2. Step 0: Divergence Pass (Options Generation)</h2>
+        <p><strong>Agent role:</strong> Generate materially different consolidation approaches without pre-exposure to which might be favored.</p>
+
+        <p><strong>Output:</strong> Five consolidation approaches (A–E)</p>
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Structure</th>
+                <th>FINAL file handling</th>
+                <th>Ranked fit to "single, concise"</th>
+            </tr>
+            <tr>
+                <td><strong>A: Unified Integration</strong></td>
+                <td>Expand COMMITTEE to absorb FINAL-01-06 as sections; 40–60 pages</td>
+                <td>Content absorbed; files archived</td>
+                <td>#3 — satisfies "single" completely; "concise" only if ruthlessly edited</td>
+            </tr>
+            <tr>
+                <td><strong>B: Tiered Delivery</strong></td>
+                <td>COMMITTEE as 8–15 page core; FINAL-01-06 as labeled reference vault</td>
+                <td>Published as supporting material</td>
+                <td>#1 — cleanest fit; core is demonstrably single and concise</td>
+            </tr>
+            <tr>
+                <td><strong>C: Decision-Driven</strong></td>
+                <td>New 4–8 page doc organized around committee decisions; FINAL-01-06 as source only</td>
+                <td>Retained as internal source material</td>
+                <td>#4 — conditional; depends on whether decision set is well-defined</td>
+            </tr>
+            <tr>
+                <td><strong>D: Rewrite with Through-Line</strong></td>
+                <td>Single 25–40 page document with new narrative spine (Situation→Options→Recommendation); replaces COMMITTEE</td>
+                <td>Superseded; retained as working notes</td>
+                <td>#5 — lowest confidence; requires major restructuring with uncertain outcome</td>
+            </tr>
+            <tr>
+                <td><strong>E: Progressive Disclosure</strong></td>
+                <td>Interactive 5–8 page core + expandable detail sections in one document</td>
+                <td>Merged or linked from core brief</td>
+                <td>#2 — strong fit if design is solid; requires interactive format support</td>
+            </tr>
+        </table>
+
+        <p><strong>Verdict on divergence pass:</strong> Options generated; no recommendations made. All five assume consolidation is the right problem to solve.</p>
+
+        <h2>2A. Premise Audit — Distinct From Verification</h2>
+        <p><strong>Premise tested:</strong> Does the existence of six FINAL reference files plus one COMMITTEE document mean MFC has a consolidation problem that should be solved?</p>
+        <p><strong>Evidence inspected:</strong> `NEXT-STEPS-2026-08-10-atlas-review.md`, the Fathom-grounded R0 record, the six FINAL files, the current COMMITTEE document and the different intended functions of the artifacts.</p>
+        <p><strong>Finding:</strong> No. The task specification required compression of COMMITTEE to 5–7 pages and pricing reconciliation; it did not require merging the modular FINAL reference files. Treating file count as proof of a consolidation problem would solve the wrong problem and delay the actual deadline.</p>
+        <p><strong>Disposition:</strong> Premise rejected. Preserve the FINAL files as modular source/reference material and treat COMMITTEE as the concise audience-facing brief. This audit is distinct from Verity's factual verification and Compass's founder-lens review.</p>
+
+        <h2>3. Specialist Panel: Flint (Approach Contrarian)</h2>
+        <div class="agent-section">
+            <p class="agent-name">Flint (FL-02)</p>
+            <p><strong>Role:</strong> Challenge whether the entire approach is sound, not just critique wording.</p>
+
+            <p><strong>Context provided:</strong> The five options, NEXT-STEPS specification, R0 ground truth, and the four Fathom meeting commitments.</p>
+
+            <div class="verdict">
+                <strong>Verdict: The problem statement is wrong.</strong>
+                <p>All five options solve for a problem that NEXT-STEPS never posed. §3 of NEXT-STEPS is explicit: <em>"Compress COMMITTEE to 5–7 pages, reconciling the body (§2–§5) to the actual D2 pricing figures."</em> That document does not ask for consolidation of the FINAL-01-06 files.</p>
+            </div>
+
+            <div class="finding">
+                <strong>Key finding:</strong> The hard question is whether the FINAL files are supposed to merge into COMMITTEE at all, or whether they're reference materials that stay separate. If separate, there's no consolidation problem.
+            </div>
+
+            <p><strong>Implication:</strong> Options A and D directly violate the 5–7 page constraint. Options B, C, E stay in range but are solving for a problem that doesn't appear in the task spec.</p>
+
+            <p><strong>Recommendation pending:</strong> Pause and ask what's actually driving these options — a real requirement or a solution looking for a problem?</p>
+        </div>
+
+        <h2>4. Specialist Panel: Verity (Evidence Auditor)</h2>
+        <div class="agent-section">
+            <p class="agent-name">Verity (FL-03)</p>
+            <p><strong>Role:</strong> Verify every factual claim independently against primary sources.</p>
+
+            <p><strong>Context provided:</strong> All six FINAL-*.md files (full read), COMMITTEE-2026-08-11-v5 HTML (full read), D2/D5/D6/D7/D9/D10 originals (sampled), COMPASS review sourcing notes.</p>
+
+            <div class="verdict">
+                <strong>Verdict: FINAL files are sourced repackagings of D-series content already in COMMITTEE at summary level. Consolidation would duplicate, not synthesize.</strong>
+            </div>
+
+            <p><strong>Evidence:</strong></p>
+            <ul>
+                <li>Each FINAL file states its source consolidation in frontmatter (D1-D10 combinations)</li>
+                <li>FINAL files add ~30–40% more detail (full specification, reversibility notes, scenario branches) but no new strategic substance — Verity's own comparative estimate, not measured against a word/section count; working assessment, not a verified statistic</li>
+                <li>Core strategy, pricing, grant list, demand channels all already in COMMITTEE at summary level</li>
+                <li>No material contradictions between FINAL and COMMITTEE; both use current $12k figure (source: CLAUDE.md §2 / `agent-context-v1`, CURRENT as of 2026-08-09), same pricing tables, same grant opportunities</li>
+                <li>FINAL-*.md files are organized by domain (Strategy, Pricing, Marketing, etc.); consolidation into COMMITTEE would lose this modularity</li>
+            </ul>
+
+            <div class="finding">
+                <strong>Key finding:</strong> The documents serve different functions. COMMITTEE is the board-facing brief (5 sections, polished HTML). FINAL files are the working system of record with full sourcing. Merging them backwards would devalue the FINAL files by breaking their modularity—you lose the ability to quote or pull FINAL-02 without dragging unrelated content.
+            </div>
+
+            <p><strong>Recommendation:</strong> Keep them separate. COMMITTEE remains the board-facing brief. FINAL-*.md remain the working reference library. Cross-reference from COMMITTEE to FINAL where deeper read is needed.</p>
+        </div>
+
+        <h2>5. Specialist Panel: Compass (Founder Lens) — Mandatory Final Pass</h2>
+        <div class="agent-section">
+            <p class="agent-name">Compass (FL-01)</p>
+            <p><strong>Role:</strong> Genuinely separate final read asking: Would Hunter approve this recommendation? Is it the best approach for MFC?</p>
+
+            <p><strong>Context provided:</strong> All divergence options, Flint's challenge, Verity's evidence. Plus fresh read of: founder-voice guidance (11-founder-voice-agent-operating-model.md), CLAUDE.md §6a (standing autonomy), R0, NEXT-STEPS, vault state. No exposure to prior specialist reasoning.</p>
+
+            <div class="verdict">
+                <strong>Verdict: This is the wrong problem to solve.</strong>
+                <p>The real task is compress COMMITTEE to 5–7 pages, not consolidate 6 FINAL-*.md files. Consolidation would frustrate Hunter because:</p>
+                <ul>
+                    <li>It duplicates content already in COMMITTEE</li>
+                    <li>It breaks the modularity that makes FINAL docs useful</li>
+                    <li>It delays the actual deadline item (committee paper due Aug 17)</li>
+                    <li>It requires presenting options on a task that should execute autonomously (violates CLAUDE.md §6a)</li>
+                </ul>
+            </div>
+
+            <div class="finding">
+                <strong>What Hunter actually needs:</strong> A compressed COMMITTEE document, independently verified, ready for the committee by Aug 17. Not options, not process. A result.
+            </div>
+
+            <p><strong>Confidence:</strong> 95% (Compass's own self-assessed estimate, not a measured statistic). The only remaining uncertainty: whether the 3–4 page market/gap summary committed to Onno is a separate deliverable requiring additional work.</p>
+
+            <p><strong>What should be done:</strong> Compress COMMITTEE to 5–7 pages. Reconcile §2–§5 pricing figures to actual D2. Run one independent read-through. Deliver.</p>
+        </div>
+
+        <h2>6. Convergence and Disagreement</h2>
+
+        <table>
+            <tr>
+                <th>Finding</th>
+                <th>Flint</th>
+                <th>Verity</th>
+                <th>Compass</th>
+                <th>Outcome</th>
+            </tr>
+            <tr>
+                <td><strong>Is consolidation the right problem?</strong></td>
+                <td>No — NEXT-STEPS specifies compression, not consolidation</td>
+                <td>No — would duplicate and lose modularity</td>
+                <td>No — would frustrate Hunter; wrong task</td>
+                <td><strong>Unanimous convergence:</strong> consolidation is not the problem</td>
+            </tr>
+            <tr>
+                <td><strong>What is the real task?</strong></td>
+                <td>Compress COMMITTEE to 5–7 pages</td>
+                <td>Reconcile figures; keep FINAL as reference</td>
+                <td>Compress COMMITTEE; verify independently; deliver</td>
+                <td><strong>Unanimous convergence:</strong> compression + pricing reconciliation is the real task</td>
+            </tr>
+            <tr>
+                <td><strong>Should FINAL files stay separate?</strong></td>
+                <td>Implied (consolidation is wrong)</td>
+                <td>Yes — modularity and sourcing matter</td>
+                <td>Yes — preserves reference capability</td>
+                <td><strong>Unanimous convergence:</strong> keep FINAL files separate</td>
+            </tr>
+        </table>
+
+        <p><strong>No genuine disagreement.</strong> Three independent contexts reviewed the problem and all arrived at the same diagnosis and recommendation. This is a strong signal for action.</p>
+
+        <h2>7. What Was Missed</h2>
+
+        <p><strong>Who should have caught it:</strong> The executive intake intake itself, at the routing stage. The initial problem framing ("we have 6 FINAL files, should we consolidate them?") was itself misframed. A more careful intake would have asked: "Is consolidation actually necessary, or is that solving a non-problem?" and read NEXT-STEPS before options generation.</p>
+
+        <p><strong>Why it wasn't caught earlier:</strong> The divergence pass assumed consolidation was a legitimate option space. It generated five materially different approaches to consolidation without first checking whether consolidation was actually the task. That's an execution gap — Step 0 should include a "is this the right problem?" gate before generating options.</p>
+
+        <p><strong>How many errors reached Hunter before being caught:</strong> Zero. This assessment reached him as the founder result, not as a series of misdirected options or a status update. The panel caught the misframe before it became a decision he'd have to make.</p>
+
+        <h2>8. Errors in the System's Reasoning (Recorded)</h2>
+
+        <p><strong>Initial assumption:</strong> "6 separate FINAL-*.md files + 1 COMMITTEE document = consolidation problem." This was the framing I started with, without first checking whether consolidation was a real requirement.</p>
+
+        <p><strong>Where the assumption broke:</strong> Flint's challenge directly read NEXT-STEPS and found it never asked for consolidation. That should have been the first read, not something discovered after five options were generated.</p>
+
+        <p><strong>Corrective measure going forward:</strong> When a problem statement appears to have an obvious solution (consolidation), check whether the task spec actually asks for that solution before generating options. Step 0 should be "is this the right problem?" before Step 0 is "generate options for this problem."</p>
+
+        <div class="metadata">
+            <p><strong>Trail summary:</strong> This decision trail shows a real panel workflow. Three independent specialists reviewed the same problem. Flint challenged the approach, Verity verified the facts, Compass made the founder-lens call. All three converged on the same diagnosis: consolidation is a non-problem; compression is the real task. Hunter sees the result, not the internal debate — the panel's job was to resolve the debate and deliver clarity.</p>
+            <p><strong>Date created:</strong> 2026-08-12</p>
+            <p><strong>Panel members:</strong> Flint (approach contrarian), Verity (evidence auditor), Compass (founder lens, mandatory)</p>
+            <p><strong>Outcome:</strong> Founder result delivered; decision trail for learning and audit.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2674 @@
+<title>Pricing and commercial model — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../pricing.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Pricing and commercial model</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>D 0096 Half Day Pricing Rebuild</summary><div class="record-body document"><h1>D-0096 — Half-day pricing, rebuilt</h1>
+<h2>Why this exists</h2>
+<p><code>04-product-pricing.md</code> now carries a supersession notice (added same day this record was written):
+its entire cost model was built on a 3-hour session, and the flagship is now a half-day (<code>D-0094</code>).
+This rebuilds it. <strong>Structure is unchanged — base fee plus per-participant, capped at 20 — per
+Hunter's explicit confirmation, 2026-08-09, that the existing base+per-person model stays, not a
+flat fee.</strong> The original document's own reasoning for that choice (a flat fee is structurally less
+fair to smaller buyers than scaling with headcount) stands and isn't relitigated here.</p>
+<h2>1. The full line-item cost buildup</h2>
+<p><strong>Rebuilt 2026-08-09 at Hunter's direct request</strong> — Committee review needs the actual working, not
+a headline number: <em>"Rob will most definitely want to see the behind and working out as to how we
+landed there — how much it costs, time gone into it, after it (report we provide) etc."</em> This closes
+a real gap the earlier version of this record had: the report and analysis work MFC actually delivers
+back to the buyer carried <strong>zero facilitator hours</strong> anywhere in the model.</p>
+<p><strong>Rate: $66.10/hour</strong>, confirmed by Hunter 2026-08-09 (casual-loaded base doubled — the original
+document's own preferred reading, since Hunter carries no separate leave/super entitlements). This
+closes the rate question the original document left open.</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Line item</th>
+<th>Hours</th>
+<th>Why this exists</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Before</strong></td>
+<td>Prep — reviewing session materials, tailoring to the group</td>
+<td>1.5</td>
+<td>Unchanged from the original model</td>
+</tr>
+<tr>
+<td></td>
+<td>Team Pulse aggregation — reviewing Form 1 nominations, identifying anonymous themes for the shared-moment beat</td>
+<td>0.5</td>
+<td>New, <code>D-0091</code>'s redesign — a real task, not free. <strong>Flagged 2026-08-27, not resolved here:</strong> this line assumes the beat (Route B) runs every session; per <code>D-0110</code>, Route B requires its own per-engagement privacy-review approval that has never actually been cleared, so most real sessions would not incur this hour — worth Hunter's own review whether this stays a standard line item or moves to a conditional/quoted-when-applicable one</td>
+</tr>
+<tr>
+<td></td>
+<td>Travel/setup</td>
+<td>1.0</td>
+<td>Unchanged</td>
+</tr>
+<tr>
+<td><strong>During</strong></td>
+<td>Delivery — the half-day session itself</td>
+<td>4.0</td>
+<td>Elapsed time, <code>D-0094</code></td>
+</tr>
+<tr>
+<td><strong>After</strong></td>
+<td>Reviewing Form 1/2/3 responses across the cohort, compiling results</td>
+<td><em>~1.5 (estimate)</em></td>
+<td><strong>New this pass.</strong> Someone has to actually look at the data before anyone can be told what it says. Hours are this record's own reasonable estimate — adjust freely, not a researched figure</td>
+</tr>
+<tr>
+<td></td>
+<td>Preparing the findings write-up and interpretation for the organisation</td>
+<td><em>~1.5 (estimate)</em></td>
+<td><strong>New this pass.</strong> This is literally the report Hunter named — it did not exist as a costed line before today. Same caveat: an estimate, not a measured time</td>
+</tr>
+<tr>
+<td></td>
+<td>The Stage 2 "Post-Findings Partner Review" conversation with the host</td>
+<td>1.0</td>
+<td><strong>New this pass, and it's not invented</strong> — this exact touchpoint already exists in the live "MFC Workshop Forms" document (verbatim: <em>"Complete after the participant findings and MFC interpretation have been discussed with the organisation"</em>), it was simply never priced</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total facilitator hours</strong></td>
+<td><strong>11.0</strong></td>
+<td>Up from 8.0 in the version shown to Hunter earlier today, and up from 6.5 in the original 3-hour document</td>
+</tr>
+</tbody>
+</table>
+<p><strong>11.0 × $66.10 = $727.10</strong> facilitator time.</p>
+<p><strong>Materials/admin:</strong> kept at the same $150 flat assumption from the original document. <strong>Catering,
+resolved 2026-08-09 — Hunter, directly:</strong> <em>"we won't be providing catering at all — the break is
+just a coffee break, or they have the option of putting it on."</em> MFC does not budget or pay for
+morning tea; any break is either informal (no MFC cost) or the host organisation's own addition if
+they choose one. This closes what was previously the one open cost input in this record — the
+$150 materials/admin line already covers what MFC itself provides.</p>
+<p><strong>Direct cost: $727.10 + $150 = $877.10.</strong> <strong>At 40% overhead</strong> (same proxy the original document
+used, for the same unfunded categories — founder non-billable time, product/dev work, governance):
+<strong>cost basis = $877.10 × 1.4 ≈ $1,228.</strong></p>
+<p><strong>What this changes about how defensible the price is, not the price itself.</strong> The decided <strong>$2,500</strong>
+base (§2) was set as Hunter's own pricing-strategy floor plus value case, not derived from cost.
+Against the <em>real</em> cost basis of ~$1,228 — not the ~$950 an earlier pass of this record used, which
+was missing the report work entirely — the base fee margin is <strong>2.04×</strong> ($2,500 ÷ $1,228). <strong>Corrected
+2026-08-09</strong> — an independent check found this section still read "$2,000 base" and "1.63×" after §2
+raised the price the same day; both were stale arithmetic left over from the intermediate figure, not
+a live recalculation. <strong>This is the number that survives Committee scrutiny</strong>, because it's the first
+version of this model that actually accounts for everything MFC does for the fee, not just the hours
+in the room.</p>
+<h2>2. Pricing — DECIDED, 2026-08-09 (raised same day, base fee only)</h2>
+<p><strong>Final: $2,500 base + $95/participant, capped at 20. Facilitator rate confirmed at $66.10/hour.</strong>
+This closes the pricing gap this record was written to fill — not a proposal any more.</p>
+<p><strong>How it got here, in order, because the history is instructive, not just a rounding trail:</strong></p>
+<ol>
+<li><strong>First pass, wrong rate.</strong> Recalculated the cost basis at $52.88/hour → ~$800, proposed a
+   $1,450 base. An independent review then caught that this "23%" proportionality claim was measuring
+   the wrong thing (hours, not cost) and that the price undershot even the real cost increase at full
+   capacity.</li>
+<li><strong>Rate corrected.</strong> Hunter confirmed $66.10/hour, not $52.88 — the true cost basis is <strong>~$950</strong>,
+   not ~$800 (later revised again to ~$1,228 once the report/analysis work was properly costed, §1).
+   Against that real number, $1,450 was genuinely too low, exactly as Hunter judged before the
+   arithmetic caught up to him.</li>
+<li><strong>Base fee decided at $2,000 directly by Hunter</strong>, as a hard floor: <em>"I don't think people will
+   expect low... e.g. half a day workshop and we get less than $2,000 is below the entire range."</em></li>
+<li><strong>Raised to $2,500, same day, after the full cost buildup landed.</strong> Hunter, seeing that the base
+   now properly includes data tracking, the Form 1/2/3 review, and the findings report — work MHFA's
+   own product doesn't include at all — directly: <em>"we aren't charging because we believe it's
+   important — there is just a lot of service and value we're providing."</em> This is the same kind of
+   decision as step 3 — a founder pricing-strategy call about what the bundled service is worth, not
+   a further cost-plus derivation. It moves the per-person price at full capacity from $195 to $220 —
+   <strong>exactly MHFA's own floor</strong>, not below it, which is a meaningfully different market position than
+   the $2,000 figure held, addressed directly in the market-comparison note below.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>3-hour (superseded)</th>
+<th>Half-day, $2,000 (superseded same day)</th>
+<th>Half-day, $2,500 (decided)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Coverage Fee</td>
+<td>$1,200</td>
+<td>$2,000</td>
+<td><strong>$2,500</strong></td>
+</tr>
+<tr>
+<td>Per-participant</td>
+<td>$90</td>
+<td>$95</td>
+<td><strong>$95</strong></td>
+</tr>
+<tr>
+<td><strong>Total at full capacity (20)</strong></td>
+<td>$3,000</td>
+<td>$3,900</td>
+<td><strong>$4,400</strong></td>
+</tr>
+<tr>
+<td><strong>Total at a small group (8)</strong></td>
+<td>$1,920</td>
+<td>$2,760</td>
+<td><strong>$3,260</strong></td>
+</tr>
+<tr>
+<td><strong>Per-person equivalent at capacity</strong></td>
+<td>$150</td>
+<td>$195</td>
+<td><strong>$220</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrected 2026-08-09, after Hunter asked the duration question directly and the answer was run
+properly through research and a second check.</strong> Researched and checked: there is no general
+professional-services rule that a shorter engagement commands a higher hourly rate than a longer
+one — the like-for-like comparator (a consultant's day rate) actually discounts for length, not the
+other way around. <strong>MHFA was never a solid price anchor to begin with</strong> — it is a subsidised,
+accredited certification body, a different category of product from a fee-for-service half-day
+workshop, and comparing MFC's price to it (matching or undercutting its floor) is not the reason
+$2,500 is defensible. The sound comparison is commercial trainer/facilitator day rates
+($1,500–$3,500/day, $5,000–$15,000 for some half-day corporate formats), against which $2,500 sits
+comfortably inside normal range without needing any duration caveat. <strong>Decided, Hunter, 2026-08-09,
+directly ("yes agreed"): retire the MHFA comparison from external pricing messaging going forward.</strong>
+Commercial workshop/facilitator rates are the live comparison from this point on.</p>
+<p><strong>⚠ Corrected 2026-08-09, second pass, before anything reached Onno or Jake.</strong> This section
+originally cited "$1,500–$3,500/day, $5,000–$15,000 for some half-day corporate formats" and
+concluded MFC sits "comfortably inside normal range." <strong>Those figures appear nowhere in this vault
+and were carried in from a research pass without being checked against MFC's own existing
+benchmark.</strong> An independent check caught it. The vault's actual figures
+(<code>60-projects/market-intelligence-v1-1-adult-demand/05-commercial-and-buyer-pathway-model.md</code>) are
+<strong>$500–$2,000/half-day (entry), $2,000–$7,500/workshop (mid), $10,000+ (expert/keynote)</strong> — and that
+record explicitly flags them as <em>"vendor-published, single-sourced, needs a second source before use
+in a financial model."</em> <strong>Against the real numbers the conclusion partly reverses:</strong> MFC's $4,400 at
+capacity sits inside the <strong>mid-tier workshop band</strong>, above entry-level — defensible, given the
+offer includes cohort data analysis and a written report, but <strong>not</strong> "comfortably inside normal
+range, arguably conservative." Any external use must carry both the correct band and the
+single-source caveat. This is the same failure mode as the retired MHFA anchor — an unverified
+comparator doing load-bearing justification work — caught the same day, one level down.</p>
+<p>One real, modest, research-flagged consideration for messaging: keep the half-day's
+concentration visibly effortful (the report, the tracking, the materials) rather than letting four
+hours read as "less" next to MHFA's multiple days — supported by real but mixed effort-heuristic
+research, not settled science.</p>
+<p><strong>Sits inside the Committee's $3,000–$5,000 half-day steer — now toward the upper half of it, not the
+low end.</strong> At $220/person at full capacity, MFC now sits at <strong>MHFA's own published floor</strong> ($220–$462<strong>+</strong>,
+per <code>04-product-pricing.md</code> — the "+" matters and is kept here, not dropped), still never above the
+nearest comparable purchased product, and still genuinely cheaper at smaller group sizes ($408/person
+at 8, versus MHFA's own range spanning both figures).</p>
+<p><strong>Corrected 2026-08-09, after an independent check flagged this as not like-for-like.</strong> MHFA's
+product at that price point is a <strong>multi-day course with formal certification</strong> — a categorically
+different, longer product, not a half-day workshop. Matching MHFA's per-person floor in dollar terms
+is real and worth stating, but it is <strong>not</strong> the same claim as "MFC delivers equivalent value per
+contact hour" — MFC's price-per-hour of delivery is materially higher than MHFA's, and that should
+stay visible rather than be smoothed into "matches MHFA." <strong>The differentiator claim is also softened
+to match its actual source:</strong> <code>04-product-pricing.md</code> cites one <code>verified fact</code> line from
+<code>05-commercial-and-buyer-pathway-model.md</code> — "No standard built-in outcome follow-up" for MHFA. That
+supports "MHFA does not advertise a built-in outcome-tracking or report deliverable as standard." It
+does <strong>not</strong> support the stronger claim this section previously made, that MHFA "doesn't offer at any
+price" — MHFA may offer add-on evaluation services outside its standard package that this vault has
+not checked. The honest, sourced version of the value argument: <strong>MFC bundles data tracking and a
+findings report into its standard base fee, at a price matching MHFA's own standard-package floor</strong> —
+not a claim about what MHFA can or can't do at any price point.</p>
+<p><strong>Checked live, 2026-08-09:</strong> a web search for MHFA add-on evaluation or outcome-tracking services
+found no evidence either way — no purchasable follow-up/report product advertised, but also nothing
+ruling one out. <code>not found</code> (search terms: "Mental Health First Aid Australia workplace training
+outcome follow-up report evaluation add-on service", 2026-08-09) — treated as a genuine gap in what
+this vault knows, not as confirmation of the claim above.</p>
+<p><strong>Also disclosed, not previously stated here: this value bundle has never actually been delivered.</strong>
+3.0 of the 11.0 facilitator hours behind it (Form 1/2/3 review, findings write-up) are this record's
+own estimates, not measured time, and no organisation has yet received one of these reports. The
+argument for the price is real and evidence-consistent, but it is a design case, not a proven-delivery
+case — worth knowing before it's used with Rob or a buyer.</p>
+<p><strong>Why the base fee carries the increase, not the per-participant rate:</strong> unchanged reasoning from the
+original document — fixed costs and pricing-strategy decisions belong in the base, so a small booking
+isn't penalised by a rate meant to reflect what a full-capacity session is worth.</p>
+<h2>3. The staffing question — decided: one facilitator</h2>
+<p><strong>Hunter, 2026-08-09, directly:</strong> <em>"just the 1 facilitator - easier for me to do it and future
+staff."</em> Decided on the operational grounds this section already said were legitimate — simplicity of
+delivery, and simplicity of training whoever runs sessions after Hunter, matters as much as
+in-room pacing and is a real reason on its own. Consistent with §3's own conclusion that the evidence
+doesn't decide this either way, so an operational judgement was always going to settle it.</p>
+<p><strong>Consequence: the pricing in §2 is now the working figure</strong>, not one branch of a fork — it was
+built on a one-facilitator cost basis throughout. <strong>Correction, 2026-08-09:</strong> this paragraph
+previously called the facilitator rate "the only remaining open input" — stale by the time it was
+written; §1 and §4 already record the rate as decided at $66.10/hour, confirmed directly by Hunter
+the same day. The only genuinely open input, per §4, is catering/materials cost.</p>
+<h3>Original research, kept below for the record</h3>
+<p>Hunter asked directly for this to be evidence-checked, not decided on production-value instinct,
+because a second facilitator roughly doubles the delivery-time cost line above. <strong>It has been
+checked, and the honest finding is that the evidence doesn't cleanly decide it either way — stating
+that plainly is more useful than forcing a false answer.</strong></p>
+<p><strong>What exists:</strong> no meta-analysis or RCT compares solo vs. co-facilitated adult workshops on
+engagement, learning, or satisfaction. The closest quantified analogue — K-12 co-teaching — has real
+data, but it's contradictory (some comparisons favour co-teaching, g≈0.28–0.40; others favour solo
+teaching, g≈−0.66) and the population doesn't map cleanly onto a single adult workshop session
+(children with disabilities, ongoing classroom instruction over weeks, not a one-off half-day).
+Facilitation-practice consensus (not research) puts close individual attention at 8–12 people,
+degrading above ~15 — MFC's 20-person cap sits above that zone, which is <em>suggestive</em>, not evidence
+about MFC's own format specifically.</p>
+<p><strong>What Hunter's specific reasons for a second facilitator actually are, assessed separately:</strong>
+smoother pacing and fielding questions without derailing the room are <strong>operational/logistics
+claims</strong>, not learning-outcome claims — real, but a different and smaller kind of benefit than "it
+improves outcomes." "Mixing it up" is supported by real evidence (unbroken lecture loses attention
+after 10–15 minutes) — but that's evidence for <em>varying activity types</em>, which one skilled facilitator
+alternating between talking and structured activity already achieves. It is not evidence that a
+<em>second person</em> is what produces the variation.</p>
+<p><strong>Honest conclusion: this is a delivery-quality and operations judgement, not something the evidence
+resolves for or against.</strong> Recommend treating it as such rather than waiting for evidence that
+doesn't exist: if Hunter's own experience running the room says pacing and question-handling
+genuinely suffer solo at 20 people, that's a real operational reason on its own, separate from any
+outcomes claim — and it should never be marketed to a buyer as "two facilitators produce better
+results," because that specific claim isn't supported.</p>
+<p><strong>Cost consequence, if adopted on operational grounds — figure corrected to match §1's rebuilt cost
+model.</strong> The delivery and Team Pulse aggregation hours (4.5 of the 11.0 in §1) roughly double for the
+paid-time portion if two facilitators run (prep, travel, and the post-session report work may or may
+not scale the same way, genuinely unclear until the actual delivery pattern is designed). That would
+move total facilitator hours from 11.0 toward roughly <strong>15.5</strong>, and direct cost from $877.10 toward
+roughly <strong>~$1,175</strong>, with the cost basis moving proportionally. Not the operating decision — staffing
+is decided at one facilitator, §3 — kept only so the cost consequence of ever revisiting that isn't
+based on a stale, now-superseded number. <strong>Flagged 2026-08-27, not resolved here:</strong> this recalculation
+inherits §1's Team Pulse aggregation hour, which per <code>D-0110</code> is not a routine per-session cost — the
+same caveat noted on that line applies here too.</p>
+<h2>3a. Why lower than MHFA was the right starting question, and where the answer actually landed</h2>
+<p>Hunter, 2026-08-09: <em>"if we're that much lower than MHFA than maybe we need to change our pricing?
+or we have a plan to increase it."</em> That question is what drove the raise from $2,000 to $2,500 in
+§2, same day — the plan below predates this record and is now largely already acted on, not just
+stated.</p>
+<p><strong>Corrected, 2026-08-09, after §2's raise.</strong> This section originally described MFC as pricing "below
+MHFA's floor" and framed that as the deliberately-earned position for now. <strong>At $2,500, MFC sits AT
+MHFA's floor</strong> ($220/person at full capacity, matching MHFA's cheapest published tier), not below it
+— Hunter's own reasoning for the raise (<em>"we aren't charging because we believe it's important —
+there is just a lot of service and value we're providing"</em>) already answers most of what this
+section originally planned to answer later, ahead of schedule. The remaining gap to close is between
+MHFA's floor and its higher tiers ($220 vs. up to $462), not between MFC and MHFA's floor.</p>
+<p><strong>The plan, made concrete — trigger is evidence, not a session count.</strong> The original document tied
+the price rise to a specific engagement count ("the first 5–8 paid engagements"); Hunter withdrew that
+figure entirely in <code>D-0094</code> as an unfounded scarcity limit, and that withdrawal applies here too — the
+trigger below is deliberately <strong>not</strong> a count.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Condition</th>
+<th>Approximate positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Now — founding-cohort rate</strong></td>
+<td>No pilot delivered, no case study</td>
+<td>$2,500 base + $95/person (this record) — at MHFA's floor, justified by bundled value (data, tracking, report) rather than by proven track record</td>
+</tr>
+<tr>
+<td><strong>After the first genuine case study</strong></td>
+<td>At least one pilot delivered, measured outcomes, buyer consent to reference results</td>
+<td>Move toward the middle-to-upper part of MHFA's own range and the Committee's $3,000–5,000 steer — no longer selling a hypothesis</td>
+</tr>
+<tr>
+<td><strong>With a real evidence base</strong></td>
+<td>Multiple case studies, durability data from the extended check-in (<code>D-0056</code>)</td>
+<td>Approach or exceed the Committee's $5,000 ceiling, and MHFA's own upper range — <em>"not because the offer changed, but because it would no longer be unproven"</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not decided here:</strong> the exact dollar figure at each stage, and how many case studies constitute "a
+real evidence base" — both genuinely Hunter's call when the first stage is actually reached, not
+something to pre-commit to a number for today.</p>
+<h2>4. Status — fully decided; only real-world testing remains</h2>
+<ul>
+<li>~~The facilitator staffing decision~~ — <strong>decided, §3: one facilitator.</strong></li>
+<li>~~The personal facilitator rate~~ — <strong>decided: $66.10/hour</strong>, confirmed by Hunter 2026-08-09.</li>
+<li>~~The base fee and per-participant rate~~ — <strong>decided: $2,500 base + $95/participant</strong>, a direct
+  founder pricing decision, §2 (raised from an intermediate $2,000 the same day, once the full
+  value case was made explicit).</li>
+<li>~~Catering/materials cost~~ — <strong>decided, §1: MFC does not provide catering.</strong> Hunter, directly:
+  <em>"we won't be providing catering at all — the break is just a coffee break, or they have the
+  option of putting it on."</em> No cost line needed; the host may add catering at their own discretion
+  and cost.</li>
+<li><strong>No pilot has run and no buyer has seen this price.</strong> Everything here is Hunter's own pricing
+  judgement plus a cost-basis sanity check — real, but untested against an actual sale.</li>
+</ul><p class="src">Original source: 30-decisions/D-0096-half-day-pricing-rebuild.md</p></div></details><details class="record" ><summary>D 0103 Product Category Boundary And Lineup Lock</summary><div class="record-body document"><h1>D-0103, Product category, boundary, and lineup</h1>
+<p><strong>Read this as a confirmation sheet, not a document.</strong> Each item is a decision you have already
+made in conversation. Confirm, correct, or reject each one. Nothing here is settled until you do.</p>
+<p><strong>Amendment, 2026-08-17, superseding parts of this record (source: the live committee-send session
+that produced <code>FINAL-08-committee-paper.md</code> v8, sent to Onno and Jake this date).</strong></p>
+<ol>
+<li><strong>§3.2's "$95 per-seat online session, discontinued" no longer holds as written.</strong> Corrected shape:
+   the individual/stranger cohort design is what is not being pursued; the digital small-team offer
+   MFC is going forward with is the existing <strong>Introduction, digital ($450)</strong>
+   (<code>Source: 110-PRODUCT-AND-PRICING-BOOK.md</code> §4), scaled from a small team of 2 up to a larger group
+   of 10-20, not capped or treated as a new product needing separate approval.</li>
+<li><strong>§4's "MFC can price, quote and contract today" is corrected.</strong> MFC can price and quote; MFC
+   <strong>cannot yet contract</strong> -- contract structure sits behind qualified legal input (<code>D-0016</code> item 4),
+   the same gate that blocks participant-facing delivery.</li>
+<li><strong>The clinical-reviewer conflict-of-interest question (who carries out the D-0016 clinical review,
+   given the recorded candidate also sits on the committee) is no longer framed as a formal committee
+   ask.</strong> Hunter's direct instruction was to remove it from the committee paper's ask list. The
+   underlying question is <strong>not resolved</strong> by that removal and remains open outside this paper.</li>
+<li><strong>Lead-generation routes reconciled</strong>: "Community talks and events" (proven, previously run,
+   dual-purpose) replaces "Grant-funded delivery" among the three top-of-funnel routes; grant strategy
+   itself is unchanged in substance but reframed around Hunter's actual process -- a tracker of
+   opportunities and a working group (Rachel, Jake, Hunter) assessing fit case by case, not chasing
+   every open window (<code>Source: FINAL-05-grants-and-funding.md</code> §1-4, itself unchanged, this is a
+   framing correction in the committee paper only).</li>
+</ol>
+<p>Full detail and independent verification trail: <code>FINAL-08-committee-paper.md</code>'s own frontmatter
+<code>rebuild_note</code>, and this session's routing records dated 2026-08-17 in
+<code>90-meta/full-permanent-specialist-bench-v1/routing-records/</code>.</p>
+<hr />
+<h2>1. The category, derived from MFC's own definitions, not the market's boxes</h2>
+<p><strong>Why this section is written the way it is.</strong> Onno, as chair, asked what the product category is: <em>"is it a behavioural intervention? a training product? a wellbeing programme? is it WHS? It
+probably is all of it."</em> He was reaching for categories a committee already recognises, which is a
+reasonable instinct for a governance reader. <strong>But MFC has already done its own definitional work,
+and the category has to come out of that.</strong> Hunter, 2026-08-16: <em>"We know what we've already
+defined. The difference between mental health, the difference with psychological intervention and
+first aid. This is very different, and we know that."</em></p>
+<h3>1.1 The one-sentence category</h3>
+<blockquote>
+<p><strong>MFC delivers mental fitness training: teaching and rehearsing a practised procedure a person
+runs on their own state, in the ordinary moments of their own life.</strong></p>
+</blockquote>
+<h3>1.2 What that means, in the four distinctions MFC already holds</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What it does</th>
+<th>What MFC does differently</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mental health support</strong></td>
+<td>Addresses how someone <em>is doing</em>, treatment, support, recovery</td>
+<td>MFC trains what someone can <em>do</em>. Mental health is a state; mental fitness is a capability. Neither replaces the other</td>
+</tr>
+<tr>
+<td><strong>Psychological intervention / therapy</strong></td>
+<td>Requires a clinician, usually a presenting problem, and takes place in a clinical relationship</td>
+<td>MFC teaches, in a group, without diagnosis, without a clinician, and <strong>without requiring anything to be wrong</strong></td>
+</tr>
+<tr>
+<td><strong>Mental Health First Aid</strong></td>
+<td>Trains a person to recognise and respond to <strong>someone else's</strong> crisis</td>
+<td>MFC trains a person to work with <strong>their own state</strong>, in the moment, and not only in crisis</td>
+</tr>
+<tr>
+<td><strong>Wellbeing programmes</strong></td>
+<td>Deliver methods and content, mindfulness, gratitude, resilience sessions</td>
+<td>MFC trains <strong>the loop itself</strong>. Methods are what you might use; the loop is how you get to using anything at all</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why the first-aid distinction is live, not academic.</strong> The most significant new entrant to this
+market, The Working Mind, is licensed from Canada's Mental Health Commission via Mental Health First
+Aid International, with Australian delivery from 1 June 2026. <strong>A buyer will reasonably ask how MFC
+differs from it, and the answer is the third row above</strong>: that is a different job, not a weaker
+version of the same one. No claim is made here that any competitor's programme fails.</p>
+<h3>1.3 The differentiator, stated once</h3>
+<p><strong>Everyone else teaches methods. MFC trains the loop.</strong> The failure the whole sector runs into is
+not that people lack methods, it is that awareness arrives without a usable next move. Someone
+notices they are about to do the thing they always do, and does it anyway. <strong>Stop–Shift–Do is three
+steps, in the moment, always.</strong> The routes are taught so that "shift" has somewhere to go; they are
+training content, not in-moment load.</p>
+<p><em>(Status: this mechanism is founder practitioner judgement and a design premise. It is consistent
+with the transfer and implementation-intention evidence in the vault. </em><em>MFC has not demonstrated it
+in its own participants.</em><em> Do not present it as an established finding.)</em></p>
+<h3>1.4 Why the category is not "WHS training"</h3>
+<p>The regulated psychosocial hazards are environmental, workload, role clarity, support, exposure,
+bullying. <strong>Training does not remove any of them.</strong> Victoria has written this into regulation:
+information, instruction and training <em>"must not be the predominant measure (subject to reasonable
+practicability)."</em> MFC is bought <strong>alongside</strong> an employer's controls, never as one. This is already
+MFC's decided position (<code>D-0102</code>) and the 11 August paper had drifted off it.</p>
+<hr />
+<h2>2. The boundary statement, what MFC is and is not</h2>
+<p><strong>For use verbatim in the committee paper, and in any buyer-facing material once reviewed.</strong></p>
+<blockquote>
+<p><strong>Mental Fitness Collective delivers skills-based mental fitness training with measurement.</strong></p>
+<p><strong>It is not</strong> clinical care or therapy. <strong>It is not</strong> a substitute for legal or work-health-and-safety
+advice. <strong>It is not</strong> a standalone psychosocial risk management system, and it is not a control an
+employer can rely on to discharge a duty.</p>
+<p><strong>What it can do</strong> is teach a practised procedure people can use in real moments, and measure
+honestly whether they used it.</p>
+</blockquote>
+<p><strong>Two things must be said alongside it, and neither is optional:</strong></p>
+<ol>
+<li><strong>No lawyer and no WHS practitioner has reviewed any of MFC's positioning.</strong> This wording is
+   MFC's own careful drafting, not cleared advice.</li>
+<li><strong>MFC's own claim red-lines are not yet ratified.</strong> <code>K-08</code> records that the Claims Register is
+   unadopted (<code>C-15</code>/<code>C-24</code>) and all eight board decisions remain pending. The boundary statement
+   above is therefore a <em>working</em> boundary, not an approved one.</li>
+</ol>
+<p><strong>One live conflict the committee should know about (<code>C-18</code>):</strong> MFC's Framework prohibits claiming
+it prevents mental illness, while the Constitution names <em>"the prevention and control of mental
+illness"</em> as a principal activity. That needs qualified advice. <strong>No legal conclusion is drawn here.</strong></p>
+<hr />
+<h2>3. The product lineup</h2>
+<p><strong>Three products, plus one option offered after delivery.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Introduction</strong></th>
+<th><strong>Essentials</strong></th>
+<th><strong>Foundations</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>What it is</strong></td>
+<td>One hour. A room meets mental fitness and one person tries one rep</td>
+<td>90 minutes, a leader session, one online return, <strong>and a short written report</strong>. The full loop, taught on the participant's own material</td>
+<td>Half-day, plus a session for whoever leads the group, plus one in-person return at ~day 21, plus a full findings report</td>
+</tr>
+<tr>
+<td><strong>Who it's for</strong></td>
+<td>A room that has not decided MFC is worth paying for</td>
+<td>A team that cannot release half a day, including large teams with roster constraints</td>
+<td>An organisation with budget and the authority to schedule properly</td>
+</tr>
+<tr>
+<td><strong>Price</strong></td>
+<td><strong>$600</strong> booked · <strong>$0</strong> as outreach, capped (<code>Source: 110</code>)</td>
+<td>~~$950 / $1,250 / $1,500~~ <strong>$1,250</strong> (2–5) · <strong>$1,550</strong> (6–10) · <strong>$1,800</strong> (11–15) (<code>Source: 110</code>)</td>
+<td>~~$3,500 base~~ <strong>$3,900 base + $95/person</strong> (<code>Source: 110</code>)</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Content exists; deck not assembled</td>
+<td>Designed 2026-08-15; never delivered</td>
+<td>Half-day built and current; return designed, never rehearsed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What separates them is release time and scheduling authority, not budget.</strong> That is the real
+segmentation and it should be stated that way to a committee, a large, well-funded organisation
+with a rostered workforce may be an Essentials buyer, not a Foundations buyer.</p>
+<blockquote>
+<p><strong>SUPERSEDED ON TWO POINTS BY FOUNDER DECISION, 2026-08-16.</strong> Recorded here rather than silently
+reconciled, per <code>CLAUDE.md</code> §4.</p>
+<ol>
+<li>~~<strong>Essentials loses the return session and is virtual only.</strong>~~ <strong>WITHDRAWN AND REVERSED THE
+   SAME DAY, 2026-08-16, by Hunter directly:</strong> <em>"the 1.5 hr essential session isn't online. the
+   return session is online."</em> <strong>The settled shape of Essentials is a 45-minute leader briefing,
+   a 90-minute session with the team delivered IN PERSON, and a 30-minute return session delivered
+   ONLINE at about week 3.</strong> The return session is not removed. <code>110</code>'s cost model therefore stands
+   unchanged at <strong>7.25 facilitator hours</strong> (prep 1.5, travel 1.0, delivery 1.5, session admin 0.5,
+   capture classification 0.25, leader briefing 1.5, return session 1.0), travel applying to the
+   in-person session only. <code>FINAL-06</code> §7.1 and <code>FINAL-07</code>'s hours column are <strong>not</strong> stale: the
+   year-one figure of about 58 facilitator hours holds.</li>
+<li>
+<p><strong>The segmentation is organisation size and funding, not release time and scheduling
+   authority.</strong> Foundations is for organisations with a training budget; Introduction and
+   Essentials exist to reach smaller and thinner-budget organisations that this market rarely
+   reaches at all, which Hunter names as a mission reason and not only a commercial one. The
+   release-time line above is withdrawn as the stated segmentation.</p>
+</li>
+<li>
+<p><strong>The prices in §3's table are superseded by founder decision, 2026-08-16.</strong> Foundations moves
+   from $3,500 base to <strong>$3,900 base + $95/person</strong>, the per-person figure unchanged; Introduction
+   is unchanged at <strong>$600</strong> booked and <strong>$0</strong> as outreach. Essentials moved twice on the same day,
+   first to $1,150 / $1,450 / $1,700 and then, once the report below was added, to <strong>$1,250 (2–5) ·
+   $1,550 (6–10) · $1,800 (11–15)</strong>, which is the operative set. <code>110</code> carries the full recomputed
+   economics. Two consequences worth recording: <strong>Foundations now passes $5,000 at twelve people
+   rather than sixteen</strong>, and at ten people its headline <strong>$485/person sits above the $385-a-head
+   four-hour comparator</strong>, so the only like-for-like comparison is per contact hour ($92.38 against
+   $96.25), stated alongside what the MFC price covers and with no characterisation of any
+   comparator (<code>K-08</code>).</p>
+</li>
+<li>
+<p><strong>Essentials includes a short written report to the organisation. This is a product change, not
+   a wording change.</strong> Founder decision, 2026-08-16, following his own description of the mid tier
+   as the session <em>with report</em> and manager session and return session. Essentials previously
+   carried 0.5 hours of light analysis and produced no report at all. It now carries <strong>+1.0
+   facilitator hour, taking it from 7.25 to 8.25 hours</strong>, direct cost from $539 to <strong>$605</strong> and
+   loaded cost from $755 to <strong>$847</strong>. <strong>The report is deliberately lighter than the Foundations
+   one:</strong> a one to two page written summary of what was run, the themes across the group and what to
+   do next, not the interpreted findings document Foundations produces from four hours of report
+   work. Two limits carry with it and are not softened: it reports themes and not participant data,
+   because MFC's reporting floor forbids reporting participant data on a group under 20 and every
+   Essentials band is below it; and the short voluntary capture between sessions still never reaches
+   the commissioning organisation and is still deleted after the session. Whether theme-level
+   reporting is compatible with those rules is MFC's own reading and goes to the privacy read, not
+   a determination made here (<code>110</code> open item 6a).</p>
+</li>
+<li>
+<p><strong>Consequence for the year-one plan.</strong> Three Essentials in the year-one mix move from 7.25 to
+   8.25 hours each, so the plan consumes <strong>about 61 facilitator hours</strong> rather than 58, and at
+   the new prices year-one revenue is <strong>about $9,800</strong> with <strong>about $6,130</strong> kept.
+   <code>FINAL-06</code> §9.4's 42-organisation scenario carries the same +1.0 hour on each of its 24
+   Essentials and now runs at about <strong>62%</strong> of the assumed sixty hours a month rather than 58%.
+   <strong><code>FINAL-06</code> and <code>FINAL-07</code> still carry the superseded hours and money figures</strong> and were not
+   edited in this pass; <code>FINAL-08</code> is recomputed and is the current statement.</p>
+</li>
+</ol>
+<p><code>FINAL-08-committee-paper.md</code> is written to the corrected position above. This record is left
+otherwise intact.</p>
+</blockquote>
+<p><strong>Confirm:</strong> the three products, their prices, and that segmentation line.</p>
+<h3>3.1 The monthly session, an option, not a fourth product</h3>
+<p>A ~30-minute guided session, monthly, offered <strong>after</strong> an initial delivery, minimum three months,
+extending only on request. Data captured between sessions shapes what each one covers.</p>
+<p><strong>It goes into the committee paper as an option under development, not as a priced product.</strong>
+Reason, stated plainly: <strong>it has no name, no decision record, and its design changed three times on
+2026-08-15.</strong> Presenting it as settled would be the first thing a careful committee member found
+wrong.</p>
+<p><strong>Confirm:</strong> that this is the right treatment for now.</p>
+<h3>3.2 What is discontinued</h3>
+<ul>
+<li><strong>The $95 per-seat online session</strong> (<code>Source: 110-PRODUCT-AND-PRICING-BOOK</code>). Never sellable, and the most safeguarding-exposed item in the
+  lineup. Removing it closes an open exposure at no revenue cost.</li>
+<li><strong>Introduction as a paid product first.</strong> It is outreach that can be booked, not a revenue line.</li>
+</ul>
+<hr />
+<h2>4. What is explicitly NOT decided</h2>
+<p><strong>This section exists so the committee paper cannot overstate readiness.</strong></p>
+<ul>
+<li><strong>No name for the monthly session.</strong> Naming is Hunter's and comes after it has been run once.</li>
+<li><strong>Nothing has been delivered.</strong> No product in this record has been run with real participants.</li>
+<li><strong>The clinical gate is open.</strong> <code>D-0016</code>'s items remain unresolved; packs are prepared and nothing
+  has been sent since 29 July. <strong>MFC can price, quote and contract today. MFC cannot put a
+  facilitator in front of a participant until the clinical items close.</strong></li>
+<li><strong>No price has been tested with a buyer.</strong></li>
+<li><strong>Recurring annual costs are not itemised.</strong> Known to be low, website, registration, insurance, but no figure exists in the vault. Roughly a morning's work, and it blocks any runway figure going
+  to a treasurer.</li>
+<li><strong>The broader MFC strategy does not exist.</strong> This is the product and commercial strategy. Onno's
+  point stands: governance, administration and marketing belong in a wider strategy this one should
+  eventually sit inside.</li>
+</ul>
+<hr />
+<h2>5. What confirming this record authorises</h2>
+<p>Rebuilding the committee paper on these decisions, to the chair's requested structure, without
+re-deriving them. Nothing else. <strong>It does not authorise delivery, external publication of the
+boundary statement, or any claim beyond those recorded here.</strong></p>
+<hr />
+<h2>Confirmation</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Confirm / correct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. The category statement and four distinctions</td>
+<td></td>
+</tr>
+<tr>
+<td>2. The boundary statement wording</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Three products, prices, and the release-time segmentation</td>
+<td></td>
+</tr>
+<tr>
+<td>3.1 Monthly session as an option, not a product</td>
+<td></td>
+</tr>
+<tr>
+<td>3.2 What is discontinued</td>
+<td></td>
+</tr>
+<tr>
+<td>4. The not-decided list is complete and honest</td>
+<td></td>
+</tr>
+</tbody>
+</table><p class="src">Original source: 30-decisions/D-0103-product-category-boundary-and-lineup-lock.md</p></div></details><details class="record" ><summary>D 0113 Product Boundary Everything Inside The Price</summary><div class="record-body document"><h1>D-0113. What the price buys</h1>
+<h2>The decision</h2>
+<p><strong>The three-week return session, the written report to the organisation, and
+the manager session all sit INSIDE the product price.</strong> They are not optional
+extensions, not separately contracted, and not separately quoted.</p>
+<p><strong>The manager session is not separately priced.</strong> D-0111 records Hunter saying
+it "needs its own product"; that is confirmed as a statement about the
+session's <em>design seriousness and shared shape across both products</em>, not about
+its commercial packaging. It remains bundled.</p>
+<p><strong>Prices are unchanged and were never in question:</strong> Foundations $3,900 base +
+$95 per person, cap 20; Essentials $1,250 (2-5) / $1,550 (6-10) / $1,800
+(11-15); Introduction $600 booked or free as capped outreach. Founder decision
+2026-08-16, recorded in D-0103 and the Product and Pricing Book.</p>
+<h2>Why this was needed</h2>
+<p>On 29 August three service packs were written (<code>maintained_by: Codex</code>, status
+<code>proposed_for_hunter_decision</code>) defining each product's teachable core, with
+"core exclusions" that placed the manager component, the return contact and the
+routine data/report outside it. Independent verification on 2026-08-30 found:</p>
+<ul>
+<li>Read as a commercial boundary, those exclusions would move <strong>8.25 to 9.25 of
+  Foundations' 15.75 costed facilitator hours (52% to 59%)</strong> and <strong>3.5 to 3.75
+  of Essentials' 8.25 hours (42% to 46%)</strong> outside the priced product.</li>
+<li>The exclusions do <strong>not</strong> originate in D-0110 or D-0111. D-0110 excludes only
+  the return session's IMPLEMENT branch and states the TEACH/PRACTICE branches
+  "are cleared to integrate"; D-0111 upgrades rather than removes the manager
+  session.</li>
+<li>The commercial reading was nonetheless stated, not merely implied, in
+  <code>24-MEASURED-SERVICE-EXTENSIONS-v3.md</code> ("sellable candidate versions…
+  alongside—not inside—the learning minutes"; manager components recorded as
+  <code>not purchased</code> / <code>offered</code> / <code>delivered</code>).</li>
+<li><strong>No occurrence anywhere in the vault prices the manager session separately.</strong>
+  <code>FINAL-02-pricing-strategy.md</code> line 65 carries a Leaders' Session row, but its
+  price column reads "Included" and its $139 is a <em>cost</em> figure. Everywhere else it
+  is costed only as an input, at 1.5 facilitator hours inside both products.</li>
+</ul>
+<p>So a component had been described as separately purchasable without ever
+becoming a line item, while remaining charged for invisibly inside two products.</p>
+<h2>Rationale</h2>
+<p>The return and the report are the product, not extras. The Product and Pricing
+Book's competitive defence rests on them: <strong>5.25 participant-contact hours at
+$92.38 per person per contact hour at a ten-person cohort</strong> ($67.62 at fifteen),
+compared against a $3,500-$7,500 in-house Mental Health First Aid class. Stripping the return and report reduces that to
+4.0 contact hours and the differentiation argument goes with it.</p>
+<p>Reopening the price was explicitly rejected. It is decided, single-valued,
+correct in the paper the committee holds, and sits before them as ask 1 of 4.
+No buyer has ever been quoted anything. Reopening a correct price to resolve an
+internal documentation inconsistency would spend founder and committee
+credibility on a problem no external party has seen.</p>
+<h2>Consequences and required propagation</h2>
+<ol>
+<li>The 29 August service packs remain valid as <strong>facilitator scoping</strong> (what
+   happens in the room) and are <strong>declined as a commercial boundary</strong>. Their
+   "core exclusions" wording must be qualified so it cannot be read as a
+   pricing or contracting statement.</li>
+<li><code>24-MEASURED-SERVICE-EXTENSIONS-v3.md</code>'s <code>not purchased</code> manager-component
+   status is superseded; the manager session is always included.</li>
+<li>Stale worked examples computed from the superseded $3,500 base were
+   corrected in <code>110-product-pricing-onepager.html</code> on 2026-08-30
+   ($4,450 → $4,850, $4,925 → $5,325, $328 → $355 per person).</li>
+<li><code>FINAL-06-two-product-model.md</code> still carries the superseded pair in ten
+   places, and <code>FINAL-09-committee-review.md</code> records a downstream arithmetic
+   error ($5,000 − $4,450 stated as $930; the true difference at the current
+   $4,850 is $150). <strong>Open.</strong></li>
+<li><code>FINAL-02-pricing-strategy.md</code> remains stale on $2,500/$1,367. <strong>Open.</strong></li>
+<li>The Hub pricing and workshop-delivery projections need regenerating. The Hub
+   integrity check was failing on unrelated structural drift as at 2026-08-30.</li>
+</ol>
+<h2>What this decision does not do</h2>
+<p>It does not ratify any price. Committee approval of ask 1 remains outstanding
+and is a real external gate. It is not market validation: no buyer has paid any
+price and zero cohorts have run. It does not clear delivery, which remains
+blocked on the escalation and distress-response procedures.</p>
+<h2>Unit economics, confirmed 2026-08-30</h2>
+<p><strong>The manager session was already inside the price.</strong> It is costed as 1.5
+facilitator hours in Foundations (of 15.75) and 1.5 in Essentials (of 8.25).
+D-0111's upgrade from 45 to 60 minutes adds 0.25 hours, <strong>$16.53 per run at
+$66.10, or $23.14 loaded</strong>. No price increase is warranted.</p>
+<p><strong>Precision note on that +0.25.</strong> It is <em>verified</em> for Essentials: D-0111 supersedes a
+45-minute Essentials-only briefing with a ~1 hour session, and the Book's 1.5 hours
+implies roughly 0.75 delivery plus 0.75 prep, so a 15-minute delivery extension adds
+exactly 0.25. It is <em>assumed</em> for Foundations, where no source states the leader
+session was ever 45 minutes. The assumption errs conservative (it overstates cost).
+It may also understate, because D-0111 asks for "a proper meeting, a proper
+conversation" with manager-specific implementation planning, which is plausibly more
+prep rather than only more delivery. Unifying one design across both products is a
+build-time saving, not a per-run one, so no per-run credit is taken. The swing either
+way is roughly $16 to $50 a run against $3,000+ retained cash, so the conclusion holds
+under every reading.</p>
+<p>Recomputed at 16.0 hours for Foundations and 8.5 for Essentials to carry that
+upgrade:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hours</th>
+<th>Direct</th>
+<th>Loaded (x1.4)</th>
+<th>Price</th>
+<th>Charity keeps</th>
+<th>Loaded margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundations</strong>, 6 people</td>
+<td>16.0</td>
+<td>$1,207.60</td>
+<td>$1,690.64</td>
+<td>$4,470</td>
+<td>$3,262 (73%)</td>
+<td>2.64x</td>
+</tr>
+<tr>
+<td><strong>Foundations</strong>, 10</td>
+<td>16.0</td>
+<td>$1,207.60</td>
+<td>$1,690.64</td>
+<td>$4,850</td>
+<td>$3,642 (75%)</td>
+<td>2.87x</td>
+</tr>
+<tr>
+<td><strong>Foundations</strong>, 15</td>
+<td>16.0</td>
+<td>$1,207.60</td>
+<td>$1,690.64</td>
+<td>$5,325</td>
+<td>$4,117 (77%)</td>
+<td>3.15x</td>
+</tr>
+<tr>
+<td><strong>Foundations</strong>, 20 (cap)</td>
+<td>16.0</td>
+<td>$1,207.60</td>
+<td>$1,690.64</td>
+<td>$5,800</td>
+<td>$4,592 (79%)</td>
+<td>3.43x</td>
+</tr>
+<tr>
+<td><strong>Essentials</strong>, 2-5</td>
+<td>8.5</td>
+<td>$621.85</td>
+<td>$870.59</td>
+<td>$1,250</td>
+<td>$628 (50%)</td>
+<td>1.44x</td>
+</tr>
+<tr>
+<td><strong>Essentials</strong>, 6-10</td>
+<td>8.5</td>
+<td>$621.85</td>
+<td>$870.59</td>
+<td>$1,550</td>
+<td>$928 (60%)</td>
+<td>1.78x</td>
+</tr>
+<tr>
+<td><strong>Essentials</strong>, 11-15</td>
+<td>8.5</td>
+<td>$621.85</td>
+<td>$870.59</td>
+<td>$1,800</td>
+<td>$1,178 (65%)</td>
+<td>2.07x</td>
+</tr>
+<tr>
+<td><strong>Introduction</strong>, booked</td>
+<td>3.5</td>
+<td>$271.35</td>
+<td>$379.89</td>
+<td>$600</td>
+<td>$329 (55%)</td>
+<td>1.58x</td>
+</tr>
+<tr>
+<td><strong>Introduction</strong>, outreach</td>
+<td>3.5</td>
+<td>$271.35</td>
+<td>$379.89</td>
+<td>$0</td>
+<td>−$271 mission spend</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<p>Per person: Foundations $745 at 6, $485 at 10, $355 at 15, $290 at 20.</p>
+<p><strong>Every figure above is derived from the Product and Pricing Book's rate, multiplier,
+materials and prices, using hours derived from its own (15.75 and 8.25) plus the
++0.25 upgrade. It is a recomputation, not a new costing.</strong> Note that the Book
+separately records Foundations hours falling "16.0 to 15.75" when a session was cut;
+this 16.0 is a different figure arrived at for a different reason, and does not
+reinstate that session. The
+facilitator-hour estimates behind them (report writing, prep) remain
+<em>estimated</em>, not measured time, and no cohort has run.</p><p class="src">Original source: 30-decisions/D-0113-product-boundary-everything-inside-the-price.md</p></div></details><details class="record" ><summary>D 0114 Return Session Is A Checkin Branching Design Retired</summary><div class="record-body document"><h1>D-0114. The return session is a check-in</h1>
+<h2>The decision</h2>
+<p><strong>The return session exists because a skill decays if nobody comes back. It is
+a check-in, not a second lesson and not a drill.</strong></p>
+<p><strong>The first twenty minutes are identical for Essentials and Foundations:</strong>
+what today is, the room's own picture from session one (aggregate, no names, no
+counts), warm reps with an opt-out, then whatever participants said they most
+wanted to learn or were finding hard. <strong>Then Essentials goes deeper into understanding and practice, and
+Foundations goes into how the team implements it together.</strong></p>
+<p><strong>Retired, in full:</strong> the TEACH / PRACTICE / IMPLEMENT classification; the six
+modules; the five allocation rules and percentage thresholds; the
+eight-response floor; the fewer-than-five rule; candidate shared moments
+composed offline at day 19 to 20; and the private paper slip vote with its veto
+box and disposal protocol.</p>
+<h2>Why</h2>
+<p>Hunter, 2026-08-30, verbatim: <em>"I don't agree with the eight response floor...
+It should just be got four people. This is what we're doing with you. We're
+here to help. This isn't about, like, we gotta keep a fuck because this is
+crazy or really scary. We're not trying to capture. Is it a bad workplace? Tell
+us, be honest. It's like, hey, what are the things that you wanna work on as a
+group... If we can keep things digital, we can keep things simple."</em></p>
+<p><strong>The reasoning, stated so it is not lost:</strong> the anonymity apparatus was built
+for a disclosure question, and the question actually being asked is a positive
+one. A secret ballot around <em>"what shall we practise together"</em> signals danger
+the question does not carry, and so creates the fear it was meant to manage.
+The scope rule is retained: anything really about workload, safety, staffing or
+how one person behaves is not a shared moment and goes to the enabling-conditions
+column as a category. <strong>This record originally claimed the scope rule alone did
+the protective work the ballot had been carrying. The 2026-08-30 safeguarding
+review found that wrong</strong> — see the addendum. A private route to remove a
+candidate is retained, as a spoken costless exit rather than paper.</p>
+<p><strong>Second reason, delivery.</strong> The retired design asked one facilitator who has
+never rehearsed the session to classify a cohort, choose among six modules
+against five rules, compose candidates offline, run a paper ballot and sequence
+a leader beat, inside seventy-five minutes. That is a protocol, not a service.
+Every conditional branch is something that can fail live in front of a first
+paying customer.</p>
+<h2>Retained from the retired design</h2>
+<p>The reason the return exists; the leader beat and its single question
+(<em>"which one of these can you make true, and by when?"</em>, asking for a
+commitment and a date, not a verdict); the scope rule on what cannot be a
+shared moment; aggregate-only reporting; and the rule that nothing an
+individual wrote is visible when a leader enters.</p>
+<h2>Two safeguards attached at the same time</h2>
+<ol>
+<li><strong>The pre-session form goes to MFC, never to the manager.</strong> An employee
+   telling their employer through MFC that they are struggling is a disclosure
+   inside an employment relationship. The manager receives themes.</li>
+<li><strong>Data shown back to the room carries no counts, at any group size.</strong>
+   <em>"Handovers came up, and a couple of people caught it at the time"</em> is fine.
+   <em>"Two of you tried it"</em> is not, because in a small room the arithmetic
+   identifies people whatever words surround it. <strong>Corrected 2026-08-30 after the
+   safeguarding review</strong> — this originally read as a wording test, which cannot
+   catch an arithmetic failure. See the addendum.</li>
+</ol>
+<h2>Price and length consequence, modelled and deliberately not applied</h2>
+<p>Extending the Essentials return from thirty to sixty minutes adds about 0.75 of
+a facilitator hour. The Pricing Book costs Essentials at 8.25 hours; <code>D-0113</code>
+adds 0.25 for the longer manager session, giving 8.5; this change adds 0.75,
+giving 9.25 hours, direct cost $671.43 and loaded $940.00 against the book's
+$605 and $847. Retained margin at the middle band falls from 61% to 57%; roughly $100 across the bands
+($1,350 / $1,650 / $1,900) would restore it.</p>
+<p><strong>Not applied.</strong> The committee is asked on 31 August 2026 to adopt the current
+prices. This returns to them as a product improvement once built. <strong>D-0113
+continues to govern what the price includes</strong>, and nothing here changes it.</p>
+<p>Essentials moves from 2.0 to 2.5 hours of participant contact, closing the gap
+to Foundations from 2.6x to 2.1x, so <strong>Foundations earns its price on the depth
+of its teaching, the on-site return and the written report rather than on
+time.</strong> <code>D-0110</code> forbids positioning the team-shared mechanism as an active
+differentiator while its approval gate is open, so the collective piece is not
+the commercial argument.</p>
+<h2>What this decision does not do</h2>
+<p>It does not clear delivery. The escalation and distress-response procedures
+still do not exist in cleared form, so no facilitator, including Hunter, can be
+cleared to deliver. It is not evidence: no return session of any design has
+ever been run or rehearsed, and whether one contact inside the decay window is
+enough remains unevidenced.</p>
+<h2>Addendum, 2026-08-30: what the safeguarding review changed</h2>
+<p>The retirement of the classification, the six modules, the percentage rules, the
+paper ballot ceremony and the response floor on the team beat <strong>all stand</strong>.
+Three things in this record's own reasoning did not survive an adversarial read
+and are corrected in <code>121</code>:</p>
+<ol>
+<li><strong>"A sentence test replaces the response floor" was wrong.</strong> A wording test
+   cannot catch an arithmetic failure. At three people, <em>"two of you tried it"</em>
+   identifies the third by subtraction however carefully it is phrased. The fix
+   is not a floor: it is <strong>no counts at any group size</strong>. Show what happened,
+   never how many. That protects every room identically and never tells a small
+   team it is too small for something.</li>
+<li><strong>"The scope rule does the ballot's work" was wrong.</strong> They protect different
+   people from different things. The scope rule governs what may be proposed;
+   the ballot let one person remove a candidate without arguing for it in front
+   of colleagues. Without a private route, dissent in a team of four is fully
+   attributable and the predictable outcome is silence, a surviving candidate
+   and a scheduled commitment several people privately object to. Reinstated as
+   a <strong>spoken, costless exit</strong> ("tell me at the break, I'll take it off and I
+   won't say who"), which is lighter than the paper it replaces.</li>
+<li><strong>The form routing rule was right but incomplete.</strong> It needed a participant-
+   facing boundary line, the restored promise that the organisation gets nothing
+   about what anyone answered, a stated reader and deletion rule, and an honest
+   statement that the form is not monitored. It also collides with <code>110</code>'s rule
+   that the capture never reaches the organisation; that conflict is now stated
+   rather than silently reconciled.</li>
+</ol>
+<p><strong>Also caught, and not covered by any of the three claims:</strong> simplification had
+made answering aloud the default with no opt-out, which breaches <code>K-08</code> rule 6.
+The leader-free requirement for the team beat had been dropped. The <code>D-0110</code>
+approval gate was cited in metadata and contradicted in the body. And the
+enabling-conditions column, which leaders see, had no de-identification standard
+beyond "no names". All are fixed in <code>121</code>.</p><p class="src">Original source: 30-decisions/D-0114-return-session-is-a-checkin-branching-design-retired.md</p></div></details><details class="record" ><summary>110 Product And Pricing Book</summary><div class="record-body document"><blockquote>
+<p><strong>RETURN-SESSION REDIRECT, 2026-08-30 (D-0114).</strong> Any reference in this file to
+<code>120-RETURN-SESSION-DESIGN.md</code>, to the TEACH/PRACTICE/IMPLEMENT classification, to the
+module/threshold allocation rules, to the eight-response floor, or to the private paper
+slip vote is <strong>RETIRED</strong>. The current design is
+<code>12-evidence-first-rebuild/121-RETURN-SESSION-DESIGN-v2.md</code>: the return is a check-in that
+shows the room its own data and covers what participants asked to learn, with Foundations
+alone going on to the collective piece.</p>
+</blockquote>
+<h1>The Product and Pricing Book</h1>
+<p><em>What MFC sells, what each thing is, what it costs us to run once, what we charge, and what the
+charity keeps — for one run of each product. No volume assumptions anywhere in this document.</em></p>
+<hr />
+<h2>A note on "manager" throughout this book (founder direction, 2026-08-15)</h2>
+<p><strong>Every product below has a beat where the session expands from the individual out to the people
+around them</strong> — the week −1 leader session in Foundations, the 45-minute leader briefing in
+Essentials, and the last twenty minutes of session 2. <strong>That beat runs in every context MFC delivers
+in. Only the word for who that person is changes:</strong> a manager in a workplace, a nurse unit manager on
+a ward, a shift or team leader, a coordinator, a community or club leader.</p>
+<p>This book uses <strong>"the leader"</strong> for that role and prices it as one component. <strong>Corporate and
+workplace buyers are the primary near-term market — that is where the funding is, and the pricing
+below is built for them — but the product is not built on the assumption that a workplace is the only
+room it can run in.</strong> "Employer" appears only where the point is genuinely employment-specific: paid
+time, anti-detriment, WHS duties. Full statement of the correction: <code>120</code> (RETIRED, see <code>121</code>) §0.2 and
+<code>90-meta/agent-context-v1/15-founder-voice-mission-over-whs-portability.md</code> §5.</p>
+<h2>The lineup at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Duration</th>
+<th>What it is, in one sentence</th>
+<th>Price</th>
+<th>Charity keeps, per run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Introduction</strong></td>
+<td>60 min</td>
+<td>A single session where a room meets mental fitness and one person tries one rep — reach, not a paid intervention</td>
+<td><strong>$600</strong> booked · <strong>$0</strong> as outreach (capped 20/yr)</td>
+<td><strong>$329</strong> (55%) · −$271 as outreach</td>
+</tr>
+<tr>
+<td>⛔ <strong>Introduction, digital</strong> ~~$450~~</td>
+<td>60 min</td>
+<td>The same hour, delivered online</td>
+<td>⛔ <strong>STALE — see below. Use $600.</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Essentials</strong></td>
+<td>90 min + a return check-in ~3 weeks later (up to 60 min, <code>D-0114</code>), <strong>plus a short written report</strong></td>
+<td>The smallest thing an organisation buys: the full loop taught on the participant's own moment, one return check-in, and a short written summary back to the organisation</td>
+<td><strong>$1,250</strong> (2–5) · <strong>$1,550</strong> (6–10) · <strong>$1,800</strong> (11–15)</td>
+<td><strong>$645</strong> · <strong>$945</strong> · <strong>$1,195</strong> (52% / 61% / 66%)</td>
+</tr>
+<tr>
+<td><strong>Essentials, digital</strong></td>
+<td>90 min + return session + short written report</td>
+<td>The same, online, 6–15 people</td>
+<td><strong>$1,150</strong> (price not revisited on 2026-08-16)</td>
+<td><strong>$671</strong> (58%)</td>
+</tr>
+<tr>
+<td><strong>Foundations — the flagship</strong></td>
+<td>3-week programme: leader session, half-day, <strong>one 75-minute on-site return at day 21</strong></td>
+<td>The intervention. The only offering with contact inside the window where a new skill decays, and the only one whose return can become a team implementation session</td>
+<td><strong>$3,900 base + $95/person</strong>, cap 20</td>
+<td><strong>$3,659</strong> at 10 people (75%) · <strong>$4,134</strong> at 15 (78%)</td>
+</tr>
+<tr>
+<td><strong>Foundations, digital</strong></td>
+<td>Same shape, delivered online</td>
+<td>Same programme, no travel — <strong>not offered until the online variant is designed</strong></td>
+<td><strong>$3,150 base + $95/person</strong></td>
+<td><strong>$3,636</strong> at 15 (79%)</td>
+</tr>
+<tr>
+<td><strong>One-hour live digital session</strong></td>
+<td>60 min</td>
+<td>An individual can buy their way in with no organisation behind them — <strong>not safeguarding-cleared, cannot be sold today</strong></td>
+<td><strong>$95/seat</strong>, 6–12 seats</td>
+<td><strong>$618</strong> at 8 seats</td>
+</tr>
+</tbody>
+</table>
+<p><strong>"Charity keeps" means exactly what Hunter asked for:</strong> price minus the facilitator's pay for every
+hour actually worked on that engagement, minus the direct cash MFC spends (materials, travel, report
+production). It is the cash left over from one run. It is not the same as the accounting margin the
+committee sees, which also carries a 1.4× overhead allocation — both numbers appear in every table
+below, and the difference between them is explained in <em>The two ways to read these numbers</em>.</p>
+<hr />
+<h2>The two ways to read these numbers — read this before the tables</h2>
+<p>There are two honest answers to "what does MFC make on this," and confusing them is how the last
+pricing round produced a $139 discrepancy that survived four documents (see <em>Open items</em>).</p>
+<ul>
+<li><strong>Charity net (cash).</strong> Price − facilitator hours × rate − direct cash costs. This is the number
+  Hunter asked for. It is real money in the account after the person who ran the session is paid.</li>
+<li><strong>Loaded margin (governance).</strong> The same, but with every direct cost multiplied by 1.4 first, to
+  allocate the overhead MFC really carries but doesn't invoice — governance, insurance, product
+  development, unfunded founder time. This is the number that belongs in a committee paper, and it
+  is the one that enforces the standing rule that <strong>nothing is sold below loaded cost.</strong></li>
+</ul>
+<p>The cash number is always larger. Neither is wrong. Quoting the cash number to the committee, or the
+loaded number to Hunter, is.</p>
+<p><strong>MFC is not GST-registered, so every MFC price in this book is a final price.</strong> Every comparator
+quoted "+ GST" is 10% higher again to a buyer who cannot claim the credit.</p>
+<hr />
+<h2>The facilitator rate — $66.10/hour, and why that survives the market check</h2>
+<p><strong>Recommendation: keep $66.10/hour.</strong> It was set by Hunter directly on 2026-08-09 (<code>D-0096</code> §1) as a
+casual-loaded rate — the base rate doubled, on the reasoning that he carries no separate leave or
+superannuation entitlement. That was a founder judgement made without market data. It has now been
+checked against market data, and it holds.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Figure</th>
+<th>Date checked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payscale AU — <strong>Training Facilitator</strong>, hourly</td>
+<td>Median <strong>AU$44.66</strong>, 10th–90th percentile <strong>$32.80–$67.50</strong>, n = 44 profiles. Page last updated 26 June 2025</td>
+<td>2026-08-15 · https://www.payscale.com/research/AU/Job=Training_Facilitator/Salary</td>
+</tr>
+<tr>
+<td>Payscale AU — <strong>Corporate Trainer with Facilitator skills, Sydney</strong>, hourly</td>
+<td>Average <strong>AU$70.00</strong>, range <strong>$40–$102</strong></td>
+<td>2026-08-15 · https://www.payscale.com/research/AU/Job=Corporate_Trainer/Hourly_Rate/692c31cd/Sydney-Facilitator</td>
+</tr>
+<tr>
+<td>Glassdoor — Corporate Trainer, Sydney</td>
+<td><strong>$96,500/yr</strong>, ≈ <strong>A$46/hour</strong></td>
+<td>2026-08-15 · https://www.glassdoor.com/Salaries/sydney-australia-corporate-trainer-salary-SRCH_IL.0,16_IM962_KO17,34_IP2.htm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where $66.10 sits:</strong> just below the 90th percentile of the national training-facilitator band, and
+just below the Sydney corporate-trainer-with-facilitation-skills average. For a sole facilitator with
+no leave, no super, no sick pay and no guaranteed hours, that is the right end of the range to sit at
+— a casual loading exists precisely to buy those things back. It is not an outlier and it is not
+generous.</p>
+<p><strong>Two things this rate is not.</strong> It is not a wage MFC currently pays anyone; it is an imputed costing
+rate for founder time, and MFC operates on roughly $12,000. And it is not a <em>contractor</em> rate — those
+sit far higher (senior trainer day rates of <strong>US$1,500–5,000/day</strong> are quoted for the international
+market by TrainingCost.com, 2026-08-15, https://trainingcost.com/facilitator-rates — a figure MFC
+should not use, both because it is not Australian and because it prices a contractor's whole business
+overhead, which MFC's 1.4× multiplier already handles separately).</p>
+<p><strong>Not verified:</strong> no Australian modern award rate for a workplace-wellbeing facilitator was located,
+and no published figure for what a licensed MHFA instructor earns per course was found. Searches run
+2026-08-15: <em>"Australian corporate trainer facilitator day rate 2026 per day L&amp;D contractor rate"</em>;
+<em>"Mental Health First Aid Australia in-house course cost per person 2026"</em>. MHFA Australia states
+plainly that it does not employ its instructors and each sets their own fees, which is likely why no
+instructor-earnings figure is published. <code>L-034</code> applies: absence of a finding here is not evidence
+of absence.</p>
+<hr />
+<h1>The products</h1>
+<h2>1. Introduction — 60 minutes</h2>
+<h3>What it is, minute by minute</h3>
+<p>One hour, one room, one facilitator. The mental fitness definition, the Stop–Shift–Do loop taught as
+traffic lights, the four shift routes shown so "shift" has somewhere to go, and one guided rep on a
+moment from the participant's own week. <strong>It ends with the Reference Card</strong> — the same printed
+wallet-sized fold card every MFC participant receives, at every product tier, carrying Stop–Shift–Do,
+the four routes and the areas they apply to. There is no return, no report, and no follow-up.</p>
+<p><strong>Measurement is deliberately light</strong> — one matched item, one harm item, the referral line, and
+nothing else (<code>FINAL-02</code> §3.7). No linkage code, no follow-up survey.</p>
+<h3>Who it's for</h3>
+<p>An audience, not a client. Chamber slots, conference sessions, a team meeting, a community group, a
+bouldering gym. Adult community and workplace audiences only — <strong>schools and youth are excluded</strong>
+until <code>C-16</code> closes and a safeguarding lead is named.</p>
+<h3>Why this design</h3>
+<p>An hour is what you give an audience; ninety minutes is what someone buys (<code>D-0098</code>). The honest
+reason the Introduction stays an hour is that the full measurement instrument protects ten in-session
+minutes, and putting that into a 60-minute kit leaves fifty minutes of teaching in a container built
+for sixty — content cut to make room for data collection. <strong>What this product is designed to do is
+create reach and a conversation. It is not designed to produce durable change and nothing here claims
+it does</strong> — a single session with no contact afterwards sits exactly inside the pattern MFC's own
+research corpus describes, where in-room gains are common and four-week gains are not. This is the
+one product in the lineup that is honest about being a doorway.</p>
+<p><strong>It is also the only product built and tested today.</strong> Everything else needs a build pass.</p>
+<h3>Per-run economics</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Booked</th>
+<th>Outreach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td><strong>$600</strong></td>
+<td><strong>$0</strong> (capped 20/yr)</td>
+</tr>
+<tr>
+<td>Facilitator hours (prep 1.0 · travel 1.0 · delivery 1.0 · light-form admin 0.5)</td>
+<td>3.5 hrs</td>
+<td>3.5 hrs</td>
+</tr>
+<tr>
+<td>Facilitator pay @ $66.10</td>
+<td>$231.35</td>
+<td>$231.35</td>
+</tr>
+<tr>
+<td>Direct costs (materials)</td>
+<td>$40</td>
+<td>$40</td>
+</tr>
+<tr>
+<td><strong>Direct cost total</strong></td>
+<td><strong>$271.35</strong></td>
+<td><strong>$271.35</strong></td>
+</tr>
+<tr>
+<td><strong>Charity keeps (cash)</strong></td>
+<td><strong>$328.65 — 54.8%</strong></td>
+<td><strong>−$271.35 — mission spend</strong></td>
+</tr>
+<tr>
+<td>Loaded cost (×1.4)</td>
+<td>$380</td>
+<td>$380</td>
+</tr>
+<tr>
+<td>Loaded margin</td>
+<td>+$220 (1.58×)</td>
+<td>−$380</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Digital variant:</strong> drops the 1.0 travel hour, materials to $10. 2.5 hrs = $165.25 + $10 = <strong>$175.25
+direct</strong>, <strong>$245 loaded</strong>. At <strong>$450</strong>, the charity keeps <strong>$274.75 (61%)</strong>, loaded margin 1.84×.</p>
+<h3>What the buyer gets</h3>
+<p>The hour, <strong>the Reference Card for everyone in the room</strong>, and the referral line. Nothing is reported back — and
+saying so plainly at the point of sale is what stops a booked Introduction being mistaken for the
+paid product.</p>
+<hr />
+<h2>2. Essentials — 90 minutes, a return check-in of up to an hour about three weeks later, and a short written report</h2>
+<h3>What it is, session by session</h3>
+<p><strong>Session 1 — 90 minutes, on site.</strong> Everything in the Introduction, plus the part that makes it a
+product rather than a demonstration: all three steps run on the participant's <strong>own</strong> chosen moment
+rather than a generic one, the five public skills, and the ten protected minutes of in-session
+measurement. It ends with the complete usable object — one rehearsed rep and one written if-then
+sentence on their practice sheet, <strong>and the wallet Reference Card issued at the close</strong>.</p>
+<p><strong>The leader briefing — 45 minutes, included, never sold separately.</strong> Held before the session where
+scheduling allows. <strong>Whoever leads or cares for the people in the room attends</strong> — the line managers in
+a workplace, the nurse unit manager on a ward, the coordinators or committee in a community group. Charging for it separately invites the buyer to decline the mechanism the product
+depends on.</p>
+<p><strong>Session 2 — the return check-in, up to 60 minutes, remote, at about week 3.</strong> A check-in, and <strong>what it
+contains is decided by what participants said they wanted.</strong> It opens with the room's own picture from
+session 1, shown as aggregate counts with no names, then covers whatever people said they most wanted
+to learn or were finding hard, then practises it. Every participant runs the complete sequence several
+times and is corrected by a partner against the three-line rubric. It closes with the day-21
+measurement. <code>121</code> §2-3.</p>
+<blockquote>
+<p><strong>Price note, 2026-08-30.</strong> The return length moved from 30 to up to 60 minutes under <code>D-0114</code>. The
+costed model in this book carries the 8.25-hour Essentials; <code>D-0113</code> adds 0.25 for the longer
+manager session, giving 8.5. Extending the return adds a further 0.75
+of a facilitator hour (9.25 hours, $671.43 direct, $940.00 loaded), which would take about $100 a band
+to hold margin. <strong>That reprice is modelled and deliberately not applied</strong>, because the committee is
+asked on 31 August to adopt the current prices.</p>
+</blockquote>
+<p><strong>The report — short, written, and deliberately lighter than the Foundations one (added 2026-08-16 by
+founder decision).</strong> After the return session the organisation receives a short written summary: what
+was covered, what the team worked on, the themes the forms surfaced across the group, and what the
+organisation could do next to keep the practice alive. <strong>It is one to two pages, not a findings
+document.</strong> Foundations carries four hours of report work — cohort form review 1.5, findings write-up
+1.5, post-findings partner review 1.0 — and produces an interpreted findings report on that cohort's
+own measurement, followed by a conversation about it. <strong>Essentials carries one hour and produces
+neither.</strong> Two limits hold and must be stated wherever this is sold: <strong>it reports themes, not
+participant data — at every group size, not as a workaround for being under a headcount</strong> (corrected
+2026-08-19, <code>FINAL-02</code> §2); and <strong>the short voluntary capture between sessions
+still never reaches the commissioning organisation</strong> and is still deleted once the session has run.
+The report is written from what the facilitator saw and from group-level themes, and it is not a
+route around either rule. <strong>Do not describe it as a report on the team's results.</strong></p>
+<h3>Who it's for</h3>
+<p>A single organisation's team, 2–15 people. Micro-businesses (2–5) are a real and deliberately served
+segment — Hunter's own read is that they <em>"don't usually ever get the opportunity to upskill or
+learn"</em> — and they are priced as reach, not as revenue.</p>
+<h3>Why this design</h3>
+<p>The return is the whole reason this is not just a shorter Foundations. Every durable number MFC has
+is about the interval, not the room: intention converts to behaviour at roughly half its size (Webb &amp;
+Sheeran 2006), and workplace resilience effects fall from d = 0.26 proximally to d = 0.07 distally
+(Vanhove et al. 2016). A return puts a facilitator inside that interval, and it is the point where
+every participant runs the sequence out loud and gets corrected — the feedback component of
+behavioural skills training, which a single block strips out.</p>
+<p><strong>Two things about the return that must both be said.</strong> Everyone practises out loud and gets
+corrected — but the correction comes from the person they are paired with and from the facilitator
+moving between pairs, <strong>not from a one-to-one coaching session, and MFC does not claim it is the same
+thing.</strong></p>
+<p><strong>Honest status:</strong> that is a mechanism argument, not a measured one. Nothing tests a remote group return session. The return is proposed because it is cheap, safe, placed where the decay curves say
+the loss happens, and because it closes a component the literature says is required — <strong>not because
+anything shows it works.</strong></p>
+<p><strong>Why Essentials' return stays remote</strong> while Foundations' moved on site (<code>120</code> (RETIRED, see <code>121</code>) §8.1).
+Two alternatives were computed and rejected. <strong>In person</strong> adds ~1.5–2.0 facilitator hours; at the 2–5
+band that pushes loaded cost from <strong>$847 to about $1,009</strong> against the $1,250 price — <strong>about 1.24×
+loaded, which is thinner than any band in this book</strong> — and raising that band further prices out
+exactly the micro-business segment Hunter deliberately serves. <em>(At the prices in force when this was
+first computed, the same alternative came out at 1.07× loaded and broke MFC's standing floor outright.
+The rejection now rests on the margin being too thin for a product with zero delivered cohorts rather
+than on the floor, which is a weaker reason and is stated as one.)</em> <strong>Dropping the return</strong> leaves
+Essentials with no contact inside the decay window
+at all and nowhere to administer the day-21 measurement. <strong>Keeping it remote costs +0.25 hours and holds every band.</strong></p>
+<h3>Per-run economics</h3>
+<p>Facilitator hours: prep 1.5 · travel 1.0 · delivery 1.5 · session admin and light analysis 0.5 ·
+<strong>return preparation 0.25</strong> · leader briefing 1.5 · return session (delivery + scheduling and notes) 1.0 · <strong>the short written report 1.0</strong> = <strong>8.25 hours</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2–5 people</th>
+<th>6–10 people</th>
+<th>11–15 people</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price</strong></td>
+<td><strong>$1,250</strong></td>
+<td><strong>$1,550</strong></td>
+<td><strong>$1,800</strong></td>
+</tr>
+<tr>
+<td>Facilitator pay (8.25 hrs @ $66.10)</td>
+<td>$545.33</td>
+<td>$545.33</td>
+<td>$545.33</td>
+</tr>
+<tr>
+<td>Direct costs (materials)</td>
+<td>$60</td>
+<td>$60</td>
+<td>$60</td>
+</tr>
+<tr>
+<td><strong>Direct cost total</strong></td>
+<td><strong>$605</strong></td>
+<td><strong>$605</strong></td>
+<td><strong>$605</strong></td>
+</tr>
+<tr>
+<td><strong>Charity keeps (cash)</strong></td>
+<td><strong>$645 — 52%</strong></td>
+<td><strong>$945 — 61%</strong></td>
+<td><strong>$1,195 — 66%</strong></td>
+</tr>
+<tr>
+<td>Loaded cost (×1.4)</td>
+<td>$847</td>
+<td>$847</td>
+<td>$847</td>
+</tr>
+<tr>
+<td>Loaded margin</td>
+<td>+$403 (1.48×)</td>
+<td>+$703 (1.83×)</td>
+<td>+$953 (2.12×)</td>
+</tr>
+<tr>
+<td>Per person at band midpoint</td>
+<td>~$357 (at 3.5)</td>
+<td>~$194 (at 8)</td>
+<td>~$138 (at 13)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Two changes on 2026-08-16, both by founder decision, and the order matters.</strong> First, <strong>Essentials
+gained a short written report</strong>, which is a product change: +1.0 facilitator hour, so hours move
+7.25 → 8.25, direct cost $539 → $605 and loaded cost $755 → $847. Second, <strong>prices were set at
+$1,250 / $1,550 / $1,800</strong>, up from $1,150 / $1,450 / $1,700 earlier the same day and from
+$950 / $1,250 / $1,500 before that. The session shape is otherwise unchanged: 90 minutes in person,
+the 45-minute leader briefing, and the online return at about week 3 <strong>[length superseded 2026-08-30, D-0114: up to 60 minutes]</strong>. <strong>The 2–5 band moves
+from 1.26× loaded to 1.48×</strong>, which retires the thinnest margin in this book and the standing
+warning attached to it below.</p>
+</blockquote>
+<p><strong>These are new prices, and the reason is arithmetic, not ambition.</strong> <code>FINAL-02</code> prices Essentials at
+$700 / $950 / $1,200 against a loaded cost of $639. Adding the return session pushed loaded cost to
+$755, and adding the report pushes it to $847 — <strong>which puts the old $700 band well below loaded cost
+and breaks MFC's own standing rule.</strong> The bands move up.</p>
+<blockquote>
+<p><strong>The 2–5 band was the thinnest margin in this book at 1.26× loaded, and the 2026-08-16 changes take
+it to 1.48×.</strong> It is still the thinnest band and still explicitly reach and evidence spend rather
+than revenue, but it now has real headroom above loaded cost. <strong>A micro-business is the segment
+most exposed by this rise</strong>, and if the $1,250 band turns out to price them out, the honest answer
+is to fund those runs rather than to quietly discount below loaded cost.</p>
+</blockquote>
+<p><strong>Digital variant:</strong> drops 1.0 travel hour and ~0.3 hrs of room logistics, materials to $20. The
+report hour applies here too. 6.95 hrs = $459.40 + $20 = <strong>$479.40 direct</strong>, <strong>$671 loaded</strong>. At
+<strong>$1,150</strong> for 6–15, the charity keeps <strong>$670.60 (58%)</strong>, loaded margin 1.71×. <strong>The 2026-08-16
+founder decision set the three in-person bands and did not revisit the digital price</strong>, so $1,150
+stands here as the existing figure with its cost recomputed, not as a new decision. It should be
+looked at when the digital build pass runs, because it now sits below the in-person 2–5 band on price
+while carrying most of the same work.</p>
+<h3>What the buyer gets</h3>
+<p>The 90 minutes; the leader briefing; the return session with dates fixed at contracting; <strong>a printed
+wallet-sized fold card for every participant — Stop–Shift–Do, the four shift routes, the areas they
+apply to — plus a practice sheet carrying the moment each person chose and a written next move</strong>; full
+measurement collected at three points;
+a one-page team note handed to the room; <strong>and a short written report to the organisation after the
+return session, one to two pages, covering what was run, the themes that came up across the group,
+and what to do next to keep the practice alive</strong>. <strong>Their people also receive one short voluntary
+capture (~4 minutes) between the sessions</strong> — it decides what the return session contains, it never
+reaches the commissioning organisation at any group size, and it is deleted once the session has run.
+<strong>Corrected 2026-08-19: this is not a small-group workaround.</strong> The report stays at the level of
+themes and what to do next <strong>at every group size, not because Essentials bands happen to fall under a
+headcount gate</strong> — the gate is withdrawn (<code>FINAL-02</code> §2). Every organisation MFC works with gets this
+same value-focused report regardless of size. Pooled cross-cohort findings continue separately once
+20+ participants exist, unaffected. <strong>It is also not the Foundations findings report</strong>, which
+interprets a cohort's own measurement across four hours of work and is followed by a conversation
+about it. Sell the difference plainly rather than letting a buyer assume the two are the same thing.
+<strong>Flagged, not resolved here:</strong> whether Foundations' own fuller report also needs re-checking against
+Hunter's "same report regardless of numbers" instruction, or whether its extra depth is a legitimate
+product-tier difference (a half-day session simply generates more to synthesise) rather than a
+headcount gate — that's a separate question this pass didn't reopen.</p>
+<hr />
+<h2>3. Foundations — the flagship. A three-week programme.</h2>
+<h3>What it is, session by session</h3>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+<th>Who</th>
+<th>How long</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week −1</td>
+<td><strong>Leader session</strong> — how we're with people, what we normalise, what the leaders give permission for. <strong>Whoever holds that role in this context</strong></td>
+<td>The leaders</td>
+<td>2 hrs (1 hr if only one can be afforded)</td>
+<td>On site</td>
+</tr>
+<tr>
+<td>Week 0</td>
+<td><strong>The half-day.</strong> Education plus first practice. Ends with the complete usable object: one rehearsed rep, <strong>three moments on their practice sheet, and the wallet Reference Card issued at the close</strong></td>
+<td>Participants</td>
+<td>3h35 elapsed</td>
+<td>On site</td>
+</tr>
+<tr>
+<td>Days 1–18</td>
+<td><strong>One short voluntary capture</strong> — ~4 minutes, on the three moments they chose. <strong>It decides what session 2 is.</strong> Never goes to the commissioning organisation at any group size; deleted once the session has run</td>
+<td>Participants</td>
+<td>4 min</td>
+<td>Their own device</td>
+</tr>
+<tr>
+<td>Week 3, day 21</td>
+<td><strong>Session 2 — the return.</strong> A check-in whose content is decided by what participants said they wanted: <strong>the room's own picture, then the thing they asked about, then practice; and for Foundations, the collective piece.</strong> The day-21 measurement runs on arrival, outside the session. The leaders join for the last twenty minutes and commit to what has to be true around the team, with dates</td>
+<td>Participants + their leaders</td>
+<td>75 min</td>
+<td>On site</td>
+</tr>
+<tr>
+<td>Days 1–30</td>
+<td><strong>Their own words, sent back to them</strong> — the participant's own next moves returning as a reminder, scheduled by the participant, MFC holds nothing</td>
+<td>Participants</td>
+<td>—</td>
+<td>Their phone</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total staff time: 4 hours 50 minutes across three weeks, all of it in person.</strong> Three dates are
+fixed at contracting, not negotiated later — three dates agreed once is one decision; three dates
+negotiated separately is three chances to say no.</p>
+<blockquote>
+<p><strong>Corrected 2026-08-15.</strong> The previous version of this line read <em>"4 hours 30 minutes... of which 30
+minutes is remote"</em> and did not reconcile with its own components (3h35 + 30 + 60 = 5h05). The figure
+above is 3h35 + 1h15 and is stated correctly.</p>
+<p><strong>What changed, and why, on founder direction 2026-08-15.</strong> Foundations previously carried <strong>two</strong>
+returns — 30 minutes remote at day 7 and 60 minutes on site at day 21. Hunter cut it to one: <em>"I am
+concerned we're now overloading these sessions."</em> <strong>One return, at day 21, in person, with its content
+decided by the data rather than fixed in advance.</strong> Full design: <code>121-RETURN-SESSION-DESIGN-v2.md</code>.</p>
+</blockquote>
+<h3>Who it's for</h3>
+<p>An organisation buying a change in how its people handle ordinary moments with each other, with
+enough scheduling authority to release a cohort of 3–20 three times in three weeks. <strong>Retired 2026-09-03
+(<code>D-0121</code>): the previous rule — "not offered below six people at any price" — is gone. Below six the
+product is Small Team Essentials. Twenty is an absolute maximum.</strong></p>
+<h3>Why this design</h3>
+<p><strong>Total hours is the wrong variable; distribution of hours is the right one.</strong> MFC's research corpus
+searched specifically for a dose–response curve between ten minutes and half a day at a single
+occasion and found nothing. What it did find is that everything about durability is about the
+interval: decay starts immediately and is faster for cognitive, accuracy-based skills than physical
+ones (Arthur et al. 1998); in the adult single-session megastudy, 11 of 12 interventions raised
+in-room agency and 10 of 12 produced no benefit at four weeks; and supervisor support and work
+environment are among the strongest transfer predictors (Blume et al. 2010).</p>
+<p><strong>So the half-day stays intact and the new minutes go into the interval.</strong> Three specific reasons this
+shape rather than three or four separate teaching hours:</p>
+<ol>
+<li><strong>The participant leaves day zero with the whole thing.</strong> Under a split course, the Reference Card
+   and the three moments do not exist until week three — the two weeks of steepest decay spent holding a
+   half-taught skill and no plan.</li>
+<li><strong>It fails gracefully.</strong> A participant who misses the return has the whole skill and missed a
+   reinforcement. A participant who misses session two of three has a broken skill. Same absence,
+   very different damage — and this is the strongest argument in the design because it does not depend
+   on any effect size being right. <strong>Stated honestly against the cut: with one return rather than two,
+   a person who misses it now receives no facilitated contact inside the decay window at all. Graceful
+   failure still holds for the skill; it no longer holds for the reinforcement.</strong></li>
+<li><strong>The spacing argument does not apply and MFC must not use it.</strong> Distributed practice beats massed
+   practice on average, but the advantage correlates <em>negatively</em> with task complexity and disappears
+   for highly complex skills (Donovan &amp; Radosevich 1999) — which is exactly the cell a self-regulatory
+   loop sits in. The honest justification is the transfer evidence and the missing feedback component,
+   not the spacing effect.</li>
+</ol>
+<p><strong>What is demonstrated versus designed for, stated plainly.</strong> Demonstrated: that single-session
+formats reliably produce in-room gains and unreliably produce four-week gains; that decay is fast; that
+the environment around the person is a strong predictor of transfer. Designed for: that one facilitated
+return and a leader layer close enough of that gap to matter. <strong>Nobody has tested this shape, and
+nothing evidences that one contact inside the window is enough or that two would have been better.</strong>
+Zero cohorts have run.</p>
+<h3>Per-run economics</h3>
+<p>Facilitator hours: prep 1.5 · <strong>reading what participants asked to learn, building scenarios and drafting four or five candidate shared moments 1.0</strong> · travel 1.0 · half-day delivery 4.0 ·
+cohort form review 1.5 · findings write-up 1.5 · post-findings partner review 1.0 · leader session 1.5 ·
+<strong>session 2 (travel 1.0 + delivery 1.25 + notes 0.5) 2.75</strong> = <strong>15.75 hours</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>6 people</th>
+<th>10 people</th>
+<th>15 people</th>
+<th>20 (cap)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Price</strong> ($3,900 + $95/person)</td>
+<td><strong>$4,470</strong></td>
+<td><strong>$4,850</strong></td>
+<td><strong>$5,325</strong></td>
+<td><strong>$5,800</strong></td>
+</tr>
+<tr>
+<td>Facilitator pay (15.75 hrs @ $66.10)</td>
+<td>$1,041.07</td>
+<td>$1,041.07</td>
+<td>$1,041.07</td>
+<td>$1,041.07</td>
+</tr>
+<tr>
+<td>Direct costs (materials, print, report production)</td>
+<td>$150</td>
+<td>$150</td>
+<td>$150</td>
+<td>$150</td>
+</tr>
+<tr>
+<td><strong>Direct cost total</strong></td>
+<td><strong>$1,191.07</strong></td>
+<td><strong>$1,191.07</strong></td>
+<td><strong>$1,191.07</strong></td>
+<td><strong>$1,191.07</strong></td>
+</tr>
+<tr>
+<td><strong>Charity keeps (cash)</strong></td>
+<td><strong>$3,279 — 73%</strong></td>
+<td><strong>$3,659 — 75%</strong></td>
+<td><strong>$4,134 — 78%</strong></td>
+<td><strong>$4,609 — 79%</strong></td>
+</tr>
+<tr>
+<td>Loaded cost (×1.4)</td>
+<td>$1,668</td>
+<td>$1,668</td>
+<td>$1,668</td>
+<td>$1,668</td>
+</tr>
+<tr>
+<td>Loaded margin</td>
+<td>+$2,802 (2.68×)</td>
+<td>+$3,182 (2.91×)</td>
+<td>+$3,657 (3.19×)</td>
+<td>+$4,132 (3.48×)</td>
+</tr>
+<tr>
+<td><strong>Per person</strong></td>
+<td><strong>$745</strong></td>
+<td><strong>$485</strong></td>
+<td><strong>$355</strong></td>
+<td><strong>$290</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Raised 2026-08-16 by founder decision</strong>, base $3,500 → $3,900, the $95 per person unchanged.
+<strong>Foundations now crosses $5,000 at twelve people rather than sixteen.</strong> Two market positions
+change with it and are restated below rather than left to be discovered. At ten people, $4,850 is
+<strong>above</strong> the published Australian in-house half-day band of $1,300–$4,600, and what MFC sells is
+not a half day. And the headline per-head figure at ten people, <strong>$485</strong>, is above the <strong>$385 a
+head including GST for a single four-hour session</strong> a comparable charity publishes — <strong>so the only
+like-for-like comparison is per contact hour</strong>: MFC puts 5.25 participant-contact hours in front of
+each person (half day 4.0 + day-21 return 1.25), which is <strong>$92.38 per person per contact hour</strong>
+against that comparator's <strong>$96.25</strong>. The leader session, the written report and the three-point
+measurement sit outside that arithmetic entirely. <strong>State it that way, and state nothing about what
+any comparator does or does not include</strong> (<code>K-08</code>).</p>
+</blockquote>
+<p><strong>What cutting a whole session actually changed, honestly.</strong> Facilitator hours fall <strong>16.0 → 15.75</strong>, a
+saving of <strong>$16.53 in pay and $23 loaded</strong>. That is negligible, and the reason is worth stating rather
+than hiding: <strong>the day-7 session was cheap to deliver</strong> — 30 minutes remote plus scheduling, no travel.
+The 0.5-hour saving is now almost entirely offset by what the redesign adds (a longer 75-minute
+container, and <strong>60 minutes of return preparation and candidate drafting</strong> rather than 30
+minutes of tallying). <strong>The real gain from the cut is not MFC's cost. It is one less date to schedule,
+one less attendance risk, one less instrument, and no remote delivery at all.</strong></p>
+<p><strong>Updated 2026-08-15 by the card direction (<code>120</code> (RETIRED, see <code>121</code>) §0.1).</strong> Removing the live card-grouping exercise
+moved its generation step off the clock and onto the desk: <strong>+0.25 facilitator hours (15.5 → 15.75),
+and no in-room time change at all.</strong> <strong>Say it accurately if it comes up in a sales conversation: this
+change bought delivery reliability, not cost.</strong> Materials are approximately neutral — three separate
+day-0 cards become one heavier 8-panel fold card — and it removes two print SKUs. <strong>All bands still
+clear 2.4× loaded and no band moves. Price is unchanged.</strong></p>
+<p><strong>Price recommendation: $3,900 base + $95/person, raised from $3,500 on founder decision 2026-08-16.</strong> The buyer loses a 30-minute remote session and
+gains 15 minutes of on-site facilitated time plus a session shaped by what the room asked for, their team — total
+facilitated participant time moves 5h05 → 4h50, a 5% reduction, on a product priced at the <strong>bottom</strong> of
+its own indicative band with zero delivered cohorts. <strong>$3,250 + $95 was computed and rejected</strong> (6
+people: $3,820, charity keeps $2,645, 2.32× loaded — viable, but it concedes list price for a 15-minute
+reduction). <strong>If a buyer pushes on price, the concession is the founding case-study rate below, not the
+list price.</strong></p>
+<p><strong>Why $3,900 and not $2,500.</strong> <code>D-0096</code> set $2,500 for a half-day workshop with a leader briefing and
+a report. What is now being sold is a leader session, a half-day, a facilitated return that includes
+the collective piece, a three-point measurement and a written findings report across three
+weeks. That is a different category of purchase, and MFC's own format analysis put the indicative price
+at $3,500–4,500 base. $3,500 was the bottom of that band, chosen because MFC has zero delivered
+cohorts and no case study; <strong>$3,900, set by founder decision on 2026-08-16, sits in the middle of it</strong>
+and is still inside MFC's own indicative range rather than above it.</p>
+<p><strong>Digital variant</strong> (not offered until designed): drops both travel hours and ~0.2 hrs room setup;
+materials to $60. 13.3 hrs = $879.13 + $60 = <strong>$939.13 direct</strong>, <strong>$1,315 loaded</strong>. At <strong>$3,150 +
+$95/person</strong>, at 15 people the price is $4,575 and the charity keeps <strong>$3,635.87 (79%)</strong>. <strong>Note the
+digital variant now loses more than it did:</strong> with the return on site, going digital removes the only
+in-person contact inside the decay window and makes the collective build impossible — so the digital
+Foundations is structurally a different product, not a channel choice.</p>
+<p><strong>Founding case-study rate.</strong> ⛔ <strong>WITHDRAWN 2026-09-04</strong> — see
+<code>60-projects/measurement-strategy-v1/2026-09-04-MEASUREMENT-v5.md</code> §6.3. It was priced against a
+year of measurement (3-, 6- and 12-month waves) that the measurement cut deleted, so the ~13.5
+MFC hours justifying the concession no longer exist; at 20 people it gave away ~$1,850 for a
+deliverable that shrank. <strong>The recommended replacement is the standard price for the group size,
+less $500, Foundations only, no minimum, capped at the first six partners — and the rate itself is
+a founder decision, not settled here.</strong> ⚠ <strong>The no-minimum half of the rule below stands and is
+reinforced</strong>, per <code>D-0121</code>. The superseded text follows, retained as history:</p>
+<blockquote>
+<p><strong>Founding case-study rate.</strong> <code>FINAL-02</code>'s mechanism carries over, rebased: <strong>$2,450 base + $75/person,
+no minimum cohort</strong> (<code>D-0121</code>, 2026-09-03, retired the minimum of 12), for the first three Foundations bookings or four months, whichever comes first, in
+exchange for full measurement participation, a testimonial and reference permission. At 12 people that
+is $3,350, and the charity keeps <strong>$2,175.45</strong> — loaded margin <strong>2.04×</strong>. ⛔ <strong>The minimum cohort of 12
+was retired on 2026-09-03 (<code>D-0121</code>).</strong> It was a margin protection MFC invented; no advisor, committee
+resolution or external requirement asked for it, and it barred exactly the small organisations the
+case-study offer most needs. <em>("year" corrected 2026-09-04: MFC no longer sells a year of measurement.)</em> The margin risk it named is real and is managed by the loaded floor in
+<code>07</code> §4.3, which applies to every engagement regardless of headcount.</p>
+</blockquote>
+<h3>What the buyer gets</h3>
+<p>The leader session; the half-day; <strong>one facilitated 75-minute on-site return with the date fixed at
+contract</strong>; <strong>a printed wallet-sized fold card for every participant carrying Stop–Shift–Do, the four
+shift routes and the areas of life they apply to — the same card for everyone, designed to be kept —
+plus a practice sheet carrying the three moments each person chose and a next move for each</strong>;
+measurement at baseline, in session and day 21; a written findings report interpreting what happened in their cohort, <strong>following within ten
+working days</strong> — it cannot be handed over at the session that generates it; and the post-findings
+conversation after they have read it.</p>
+<p><strong>Where the return goes collective, they also get</strong> the team Radar sheet (two agreed shared moments,
+one observable move each, and what has to be true around them), <strong>two norms placed inside routines that
+already exist</strong> with named starters and review dates, and <strong>the leaders' written commitments with
+dates</strong>. <strong>The collective piece always runs in a Foundations return</strong> (<code>D-0114</code>, <code>121</code> §3). What is not
+guaranteed is that the room will agree two moments: if it cannot, no shared moment is better than a
+false one, and the time converts to practice.</p>
+<p><strong>Their people also receive one short voluntary capture (~4 minutes)</strong> between the sessions. It decides
+what the return contains, it never reaches the commissioning organisation at any group size, and it is deleted once the
+session has run.</p>
+<p><strong>The return is not optional and is not separately priced. A buyer who declines it is buying
+Essentials, not Foundations.</strong> This rule exists because the commercially tempting thing — letting a
+buyer take the half-day alone to tick a box — is precisely how the programme quietly reverts to being
+a workshop. <strong>With one return rather than two, this rule matters more, not less: there is no longer a
+second contact to fall back on.</strong></p>
+<hr />
+<h2>4. The digital layer</h2>
+<p>Three distinct things, at three different states of readiness. <strong>Two of them cannot be sold today and
+this book will not pretend otherwise.</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What it is</th>
+<th>Price</th>
+<th>Charity keeps</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⛔ <strong>Introduction, digital</strong></td>
+<td>The 60-minute hour, online</td>
+<td>~~$450~~ ⛔ <strong>STALE</strong></td>
+<td>—</td>
+<td>⛔ <strong>NOT sellable at $450.</strong> Rebuilt 2026-09-04 on the <code>07</code> §4.2 method (<code>18-DIGITAL-INTRODUCTION.md</code> §H1): digital hours are <strong>4.75</strong>, materials <strong>$0</strong>, <strong>loaded floor $439.56</strong>. <strong>$450 returns 1.02x — a margin of $10.44, or $2.20 an hour above Hunter's own pay, which is below <code>AG-094</code>'s own example of what is not viable.</strong> The $450 was built on this book's stale 3.5-hour Introduction base and was never carried into <code>D-0113</code> or <code>D-0125</code>. <strong>Recommended price: $600, identical to in person</strong> (<code>18</code> §H2) — the real cost difference is 14% of the floor and most of it is removed print, not labour. <code>AG-161</code>'s access purpose is served by <code>D-0113</code>'s free-outreach cap, which digital makes 14% cheaper to fund. <strong>Correcting this is not a founder decision; the differential question is (<code>18</code> FQ1).</strong></td>
+</tr>
+<tr>
+<td><strong>Essentials, digital</strong></td>
+<td>90 min + return + short written report, online, 6–15</td>
+<td>$1,150</td>
+<td>$670.60 (58%)</td>
+<td>Designed, needs the build pass. <strong>Price not revisited on 2026-08-16</strong></td>
+</tr>
+<tr>
+<td><strong>Foundations, digital</strong></td>
+<td>The full three-week programme, online</td>
+<td>$3,150 + $95/person</td>
+<td>$3,635.87 at 15 (79%)</td>
+<td><strong>Not offered.</strong> Virtual pricing is withdrawn from all buyer-facing material until the online variant exists with captions by default, no registration gate and redesigned pair beats</td>
+</tr>
+<tr>
+<td><strong>One-hour live digital session</strong></td>
+<td>60 min live, MFC-scheduled cohorts of 6–12 strangers, or an individual alone</td>
+<td>$95/seat</td>
+<td>$617.80 at 8 seats · $427.60 at 6</td>
+<td><strong>Not clearable today.</strong> Safeguarding preconditions are open</td>
+</tr>
+</tbody>
+</table>
+<p>One-hour live digital session, per-run: 2.0 facilitator hours = $132.20 + $10 materials = <strong>$142.20
+direct</strong>, <strong>$199 loaded</strong>. At 8 seats ($760) the loaded margin is 3.82×; at 6 seats ($570) it is 2.86×.</p>
+<p><strong>Why digital matters strategically, and it is not about reach first.</strong> It is what makes the
+recommended Foundations shape affordable at all — a 30-minute online rehearsal costs no travel, no
+room, and no release of twenty people from a floor, and in person the same contact pushes the
+programme past the point where one facilitator can deliver it. Second, it is the only way the standing
+practice room could ever work: one recurring monthly room serves the two-hundredth alumnus at the same
+cost as the first. Third, it reaches a person with no organisation sponsoring them.</p>
+<p><strong>What digital must not become.</strong> Not a self-paced asynchronous product — a distress disclosure landing
+in an unmonitored form is worse than no format at all. And not an app: a build cost, a moderation duty,
+a privacy surface and a permanent safeguarding obligation MFC cannot carry, in a market that already
+contains a free and better-evidenced one.</p>
+<hr />
+<h1>The market</h1>
+<h2>What comparable things actually cost in Australia</h2>
+<p>Every figure below was found or re-checked on 15 August 2026. <strong>Pricing in this market is mostly
+unpublished</strong> — the single most consistent finding across seven searches was that providers of
+customised in-house training direct buyers to a quote rather than a rate card. That is itself
+commercially useful: MFC will rarely be compared against a published number.</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Provider / source</th>
+<th>Published price</th>
+<th>Unit</th>
+<th>Verified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2-day accredited MHFA, <strong>in-house class of 10–20</strong></td>
+<td>Better Being; corroborated by Wellbeing Campus</td>
+<td><strong>$3,500–$7,500 per class</strong></td>
+<td>Flat, per class</td>
+<td>Two independent secondary sources, neither is MHFA's own rate card. https://betterbeing.com.au/blog/how-much-does-mental-health-first-aid-training-cost-in-australia · https://www.wellbeingcampus.com.au/blog/cost-of-mhfa-training-in-australia-what-you-need-to-know</td>
+</tr>
+<tr>
+<td>MHFA <strong>refresher</strong>, in-house class</td>
+<td>Better Being</td>
+<td><strong>$2,000–$4,000 per class</strong></td>
+<td>Flat, per class</td>
+<td><code>[SECONDARY]</code></td>
+</tr>
+<tr>
+<td>MHFA Standard, <strong>public seat</strong></td>
+<td>Wellbeing Campus</td>
+<td><strong>$399 inc GST</strong>; corporate packages "from around $350/person + GST"</td>
+<td>Per person</td>
+<td><code>[SECONDARY]</code></td>
+</tr>
+<tr>
+<td>Corporate wellbeing workshop, 1–2 hrs, 6–199 people</td>
+<td>The Wellness Workshop</td>
+<td><strong>From $1,199</strong> (some workshops from <strong>$1,399</strong>), inclusive of travel, setup, printed materials and a 32-page activity booklet</td>
+<td>Flat, per session</td>
+<td>Vendor's own published page. https://thewellnessworkshop.com.au/emotional-resilience-training-and-coping-mechanisms-workshop/</td>
+</tr>
+<tr>
+<td>Psychosocial hazards, <strong>half day</strong>, public seat</td>
+<td>Evolve WA</td>
+<td><strong>$195</strong> standard · <strong>$135</strong> not-for-profit · <strong>$87</strong> concession</td>
+<td>Per person</td>
+<td>Vendor published. https://evolvewa.com.au/courses/psychosocial-hazards-in-the-workplace/</td>
+</tr>
+<tr>
+<td>Managing psychosocial hazards, <strong>1 day</strong>, public seat</td>
+<td>CCIWA</td>
+<td><strong>$595</strong> member · <strong>$715</strong> non-member, ex GST</td>
+<td>Per person</td>
+<td>Vendor published. https://cciwa.com/product/training/safety/purchase-mental-health-in-the-workplace-managing-psychosocial-hazards/</td>
+</tr>
+<tr>
+<td>Mental Health at Work, <strong>3 hrs live online</strong>, public seat</td>
+<td>PD Training</td>
+<td><strong>$605</strong></td>
+<td>Per person</td>
+<td>Vendor published. https://pdtraining.com.au/courses/mental-health-at-work-course</td>
+</tr>
+<tr>
+<td>Workplace mental health training, NSW businesses &lt;200 FTE and NFPs of any size</td>
+<td><strong>Black Dog Institute</strong>, funded by NSW Government</td>
+<td><strong>$0</strong> — 45 min to 3 hrs, 20–25 participants, psychologist-delivered. <strong>Program ends 30 September 2026</strong></td>
+<td>Free</td>
+<td>NSW Government's own page. https://www.nsw.gov.au/employment/mental-health-at-work/free-training-and-coaching/training</td>
+</tr>
+<tr>
+<td>Keynote speaker fee bands, Australia</td>
+<td>ICMI public fee guide, reported</td>
+<td><strong>$3,000–7,000</strong> entry-level · <strong>$7,000–15,000</strong> mid · <strong>$15,000–30,000</strong> high-end, almost always ex GST</td>
+<td>Per engagement</td>
+<td><code>[SECONDARY]</code> — reported from ICMI's guide, not fetched from ICMI directly</td>
+</tr>
+<tr>
+<td>EAP, Australia</td>
+<td>Multiple 2026 pricing guides</td>
+<td><strong>$30–80/employee/year</strong> basic · <strong>$75–150</strong> mid-tier · <strong>$200+</strong> enterprise</td>
+<td>Per employee per year</td>
+<td><code>[SECONDARY]</code> — vendor-published guides. https://www.talked.com.au/costs/how-much-does-eap-cost-in-Australia</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not verified, and named so:</strong> Smiling Mind's workplace programme pricing is not published (search
+2026-08-15: <em>"workplace wellbeing app per employee per year cost Australia Smiling Mind workplace
+pricing 2026"</em> — returned no figure). Black Dog's non-subsidised commercial rate is not published.
+Suicide Prevention Australia's <em>Mental Fitness @ Work</em> pricing is not published. No published
+in-house flat-fee rate card for a psychosocial-hazard half day was located anywhere. <code>L-034</code> applies
+to all four.</p>
+<h2>Where MFC sits</h2>
+<ul>
+<li><strong>Foundations at $5,325 (15 people)</strong> sits inside MHFA's published in-house band of $3,500–7,500,
+  a little below its midpoint, and inside ICMI's entry-level keynote band. It is a serious, normal
+  in-house engagement price — not a premium one.</li>
+<li><strong>Foundations at $355/person (15 people)</strong> sits below MHFA's public seat price of $399 and below
+  CCIWA's non-member day rate of $715. <strong>At ten people the headline is $485/person, above both of
+  those, and the comparison that survives scrutiny is per contact hour:</strong> $485 buys 5.25 hours of
+  participant contact, or <strong>$92.38 per person per contact hour</strong>, against <strong>$96.25</strong> for a $385
+  four-hour seat. <strong>Lead with what the price covers</strong> — leader session, half day, day-21 return,
+  written report, measurement at three points — <strong>then compare on contact hours. Never characterise
+  what a comparator includes or omits</strong> (<code>K-08</code>).</li>
+<li><strong>Essentials at $1,550–1,800</strong> sits clearly above The Wellness Workshop's published $1,199–1,399
+  for a comparable-length session — the return session, the measurement and the written report are
+  what that price buys, but the gap is now wider again than it was, and a buyer with that quote in
+  hand will notice sooner. <strong>Lead with what the price covers, and never characterise what any
+  comparator does or does not include</strong> (<code>K-08</code>).</li>
+<li><strong>The Introduction at $600</strong> sits above nothing in particular, because there is no published
+  comparator for a booked hour. It is priced on MFC's own floor logic: $400 returned only 1.05× loaded
+  and did not survive a single cancellation.</li>
+<li><strong>The hardest competitor is free.</strong> Until 30 September 2026, NSW businesses under 200 staff and NFPs
+  of any size can get psychologist-delivered workplace mental health training from Black Dog Institute
+  at no cost, in the same duration band, to the same group size, in the same city. Any pricing
+  conversation in NSW before October has to hold that. After October, those employers lose it, remain
+  enforceable against the psychosocial Code, and no funded substitute has been announced — that is a
+  real and datable demand gap, and it is six weeks out.</li>
+</ul>
+<h2>Rob's $5,000 — the direct answer</h2>
+<p><strong>Rob is substantially right about the flagship and wrong as a general floor. Both halves matter.</strong></p>
+<p><strong>Where he is right.</strong> When Foundations is costed as what it now actually is — a leader session, a
+half-day, a 75-minute on-site return, three-point measurement and a written report across
+three weeks —
+the price lands at <strong>$5,325 at a 15-person cohort and $5,800 at capacity</strong>, arrived at from the shape
+and the cost base rather than from his number. His instinct that $2,500 was too low for this was
+correct, and MFC's own committee had already recorded the same. <strong>This document did not adopt $5,000
+as a rule; it derived a price that now passes it from twelve people upward.</strong></p>
+<p><strong>What $5,000 actually buys in this market.</strong> It buys an in-house MHFA class of 10–20 people, in the
+lower-middle of that $3,500–7,500 band. It buys an entry-level keynote speaker. It buys about seven
+public seats at CCIWA's day course. It does <strong>not</strong> buy anything that reads as premium — the
+professional-speaker market runs to $30,000 and the Big Four own the top of the compliance advisory
+market entirely. <strong>So $5,000 is not a bold price. It is a normal price for a serious engagement, and
+the reason MFC can hold it is the programme shape, not the brand.</strong></p>
+<p><strong>Where he is wrong.</strong> As a <em>minimum across the lineup</em>, $5,000 would delete the entry rungs. It would
+price a 90-minute session for a five-person business at more than four times the market, and it would
+make an Introduction unsellable. That does not just cost revenue — it costs the funnel, and it
+contradicts universality, which is definitional to MFC rather than a nice-to-have. <strong>The correct rule
+is: $5,000 is roughly where the flagship lands. It is not a floor.</strong></p>
+<p><strong>What would change this answer.</strong> One buyer conversation. Nobody has ever quoted any of these numbers
+to a real organisation, and Rob's opinion and this analysis are both, at this point, reasoning.</p>
+<hr />
+<h2>Why this is good value — the buyer's maths</h2>
+<p><strong>Foundations, 15 people, $5,325 — that is $355 per person, once.</strong></p>
+<table>
+<thead>
+<tr>
+<th>What else that person could be given</th>
+<th>Cost</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An EAP seat for a year</td>
+<td>$30–150/employee/year</td>
+<td>Reactive access to counselling for whoever chooses to use it</td>
+</tr>
+<tr>
+<td>A public MHFA seat</td>
+<td>~$399</td>
+<td>Two days, accredited, how to help <em>someone else</em> in crisis</td>
+</tr>
+<tr>
+<td>A CCIWA psychosocial day, non-member</td>
+<td>$715</td>
+<td>One day, what the law requires of the organisation</td>
+</tr>
+<tr>
+<td>A wellbeing app licence</td>
+<td>Not published for Smiling Mind</td>
+<td>Content, self-paced, no facilitator</td>
+</tr>
+<tr>
+<td><strong>MFC Foundations</strong></td>
+<td><strong>$355</strong></td>
+<td><strong>4 hours 50 minutes of facilitated training across three weeks, all in person, on their own moments, with a return session shaped by the team's own data, a leader layer, measurement at three points, and a written report to the organisation</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>What MFC includes that the comparators do not, on the evidence available:</strong> a facilitated return
+inside the decay window; measurement at baseline, in-session and day 21 with a written interpretation
+handed to the organisation; and a leader session addressing the environment the skill has to survive
+in. MFC's own research found no in-house training comparator advertising a standard follow-up-and-report
+deliverable — but that is an absence from a bounded search, not proof that none exists.</p>
+<p><strong>What this comparison is not.</strong> It is not a claim that MFC works better than an EAP, an app, or MHFA.
+They do different jobs — an EAP is reactive access, MHFA teaches you to help someone else in crisis,
+an app is self-paced content. <strong>No ROI figure appears anywhere in this document</strong>, including the 10:1
+figure attributed to Black Dog's own evaluation, which MFC's market research flags as possibly derived
+from a different study and requiring verification before use. A CFO asking "what's the return" should
+be told honestly that MFC cannot answer that yet, and that the measurement built into the product is
+how MFC intends to find out — in public, including if the answer is null.</p>
+<hr />
+<h2>The positioning language</h2>
+<h3>The paragraph, for the website</h3>
+<blockquote>
+<p>Everyone else teaches methods. We train the loop.</p>
+<p>Mindfulness, breathwork, journaling, gratitude — these are genuinely good practices. But they are
+methods: things you can do. What decides whether you do anything at all, in the moment that actually
+matters, is something underneath them — noticing, shifting, and choosing your next move on purpose.
+That is what we train, and we train it as a practised sequence rather than a library to pick from.</p>
+<p>Mental health is how you're doing. Mental fitness is what you can actually do. We teach three steps
+— Stop, Shift, Do — and nobody is asked to remember more than three. The routes are taught so that
+"shift" has somewhere to go; the question of which one works for <em>you</em> is part of what we do with
+you, and it is a question much of this field never asks.</p>
+<p>We come back. A half-day is where the learning happens; the three weeks afterwards are where it
+either survives or doesn't. So we return at day twenty-one — and what we do that day isn't decided
+in advance. It's decided by what your team tells us they actually need more of: more teaching, more
+practice, or help making it work here. We measure what changed, and we write it down for you —
+including when the answer is that nothing did.</p>
+</blockquote>
+<h3>The three sentences, for a phone call</h3>
+<blockquote>
+<p>"Most workplace mental health training teaches people methods — mindfulness, breathing, resilience
+techniques. We train the thing underneath: noticing a moment as it happens, shifting so you're
+workable, and choosing your next move on purpose — three steps, on your own real moments, not
+generic ones. And we come back three weeks later to practise it and measure what
+changed, because a workshop that nobody returns to is a workshop you're hoping about."</p>
+</blockquote>
+<h3>The one-liner</h3>
+<blockquote>
+<p><strong>Mental health is how you're doing. Mental fitness is what you can actually do — and it's trainable.</strong></p>
+</blockquote>
+<h3>The rules that bind this language</h3>
+<ul>
+<li><strong>The regulatory angle opens the conversation. It never describes the product.</strong> Every Australian
+  jurisdiction now requires employers to manage psychosocial hazards, and Victoria's Psychological
+  Health Regulations name training explicitly — that is a legitimate reason a budget exists and a
+  legitimate reason to be let in the door. <strong>If a draft reads as a compliance vendor with a workshop
+  attached, it has failed</strong>, however commercially attractive it looks.</li>
+<li><strong>Never say a competitor's programme fails or makes people worse.</strong> The honest line is about what has
+  and has not been demonstrated: programmes reporting improved wellbeing scores or in-session strategy
+  use have shown <em>reception</em>, and that is a different claim from durable behaviour change in real
+  moments.</li>
+<li><strong>MFC's critique is one it has already applied to itself.</strong> A year ago MFC was teaching what it now
+  critiques. That is credibility, not weakness, and it should be said out loud.</li>
+<li><strong>Universality is definitional.</strong> The same thing is taught to a corporate team, a community group and
+  five people at a bouldering gym, because the claim is that it applies to every human being. Any
+  positioning that only works for a corporate buyer has drifted.</li>
+<li><strong>"We can improve that likelihood"</strong> is the correct strength for the employer-facing argument. Not
+  "we will change your culture."</li>
+<li><strong>Do not claim the loop is novel.</strong> It isn't, MFC's own founder-voice record says why, and it says
+  why that doesn't matter.</li>
+</ul>
+<hr />
+<h2>The funnel — how the products relate</h2>
+<p><strong>Introduction → reach.</strong> It exists to be given away. A chamber breakfast, a conference slot, a team
+meeting someone let MFC into. The buyer risks an hour and no money, and what they get back is a
+concrete demonstration rather than a description. It is the only product MFC has built and tested
+today, which means it is the only thing that can be offered while everything else finishes its build
+pass — at zero paying customers, that matters more than its margin does.</p>
+<p><strong>Essentials → the engine.</strong> A buyer moves up when they have seen the hour and want their own team in
+the room, or when they cannot release enough people for a half-day. It is the smallest thing an
+organisation buys, and it is the first product that includes a return — so it is where MFC finds out
+whether people actually come back. It is priced to clear its own cost and a little more, not to carry
+the organisation.</p>
+<p><strong>Foundations → depth, and the revenue.</strong> A buyer moves up when the question changes from "what is
+this" to "do our people actually do this differently afterwards." That question can only be answered
+by a product with an interval architecture, which is why the returns are structural and not an add-on.
+This is the offering that funds everything else, and it is the only one that can carry the whole claim.</p>
+<p><strong>Digital → reach again, at the other end.</strong> A buyer moves here when geography, shift patterns or
+headcount make a room impossible — or when there is no buyer at all and a person wants in on their
+own.</p>
+<blockquote>
+<p><strong>Corrected 2026-08-15.</strong> This paragraph used to add that digital <em>"is what makes Foundations
+deliverable: without a remote day-7 return, one facilitator cannot run the recommended shape at more
+than one or two engagements a month."</em> <strong>Foundations has no remote session any more</strong>, so that
+argument is void for Foundations and must not be reused for it. It still holds for <strong>Essentials</strong>,
+whose return is remote and whose 2–5 band only clears loaded cost because of it. <strong>The facilitator
+capacity question it gestured at is real and is now unanswered — see open item 9.</strong></p>
+</blockquote>
+<p><strong>The one rule that protects the ladder:</strong> never let a Foundations buyer take the half-day alone at a
+lower price. If they decline the return, they are buying Essentials, and that is what it should be
+called and what it should cost.</p>
+<hr />
+<h2>Open items, honestly</h2>
+<ol>
+<li>
+<p><strong>No buyer has ever paid any of these prices.</strong> Zero cohorts have run. Every number in this book is
+   a cost calculation plus a founder pricing judgement plus a market comparison. The first three
+   quotes will tell MFC more than this entire document.</p>
+</li>
+<li>
+<p><strong>The $1,228 / $1,367 seam — reconciled, and neither number survives.</strong> <code>D-0096</code> §1 states a
+   Foundations loaded cost of <strong>~$1,228</strong>; <code>FINAL-02</code> and <code>D2</code> state <strong>~$1,367</strong>. They are not in
+   conflict: $1,228 is the half-day alone ($877.10 direct × 1.4), and $1,367 is the half-day <strong>plus the
+   bundled Leaders' Session</strong> ($877.10 + $99.15 = $976.25 × 1.4 = $1,366.75). Since the Leaders'
+   Session is included in every engagement and never sold separately, <strong>$1,367 was the correct figure
+   for the product as sold</strong> and $1,228 was a figure for a component. <strong><code>D-0096</code> §1 should be read as
+   costing the half-day, not the offering.</strong> Both are now superseded regardless: with the single day-21
+   return, Foundations costs <strong>$1,174.55 direct and $1,644 loaded</strong>, and that is the number this book
+   uses throughout. <em>The root cause is worth naming: a component cost and a product cost were given
+   the same label in two documents, and nothing forced a reconciliation because both were arithmetically
+   correct.</em></p>
+</li>
+<li>
+<p><strong>Six and a half of the fifteen and a half Foundations facilitator hours are estimates, not measured
+   time.</strong> The form review (1.5), the findings write-up (1.5), the return preparation (0.75) and
+   session 2 (2.75) have never been performed. If the report work takes twice as long as estimated, direct cost rises by about $200 and
+   the charity keeps about $200 less per run — it does not change the price, but it changes the
+   honesty of the margin.</p>
+</li>
+<li>
+<p><strong>The safeguarding position, stated accurately rather than by habit.</strong> <code>D-0016</code> is <strong>closed and
+   superseded</strong> by <code>D-0099</code> (Hunter, direct instruction, 2026-08-10) — it is no longer a gate on
+   pricing, committee decisions or the build order, and nothing in this book is held up by it. But
+   <code>D-0099</code> is explicit that closing the gate did not resolve the six matters underneath it:
+   distress-response and referral-pathway design still require qualified clinical-governance input;
+   legal exposure still requires qualified legal input; insurer confirmation of cover has not been
+   obtained. <strong>None of that blocks quoting these prices. It does bear on delivering to a real
+   participant</strong>, and the one-hour live digital session (item 5) remains the most exposed
+   configuration in the ladder.</p>
+</li>
+</ol>
+<p>4a. <strong>The community and universal-access line is not funded and not designed.</strong> MFC's own
+   market-to-product reconciliation records the honest verdict: the universality claim is true of the
+   <em>teaching</em> and not yet true of the <em>product</em> — the community variant's price is zero or donation,
+   funded by corporate margin that has no source until corporate sales exist. Say that plainly rather
+   than promise an access programme MFC cannot yet fund. The access levy inside the Foundations base
+   is a commitment that a fixed share of every paid engagement accrues to a fund, <strong>not</strong> a promise of
+   a volume of free delivery.</p>
+<ol start="5">
+<li>
+<p><strong>Two digital products cannot be sold.</strong> Foundations virtual is withdrawn from buyer-facing material
+   until the online variant is designed. The one-hour live digital session is the most
+   safeguarding-exposed configuration in the whole ladder and its preconditions are open. Their prices
+   are shown here so the model is complete, not so they can be quoted.</p>
+</li>
+<li>
+<p><strong>The Essentials 2–5 band is the thinnest in the book at 1.48× loaded</strong>, after the 2026-08-16
+   report addition and reprice took it from 1.26×. It is deliberately reach spend. If it
+   turns out to consume founder hours that Foundations needed, it should be cut rather than repriced —
+   a micro-business cannot absorb another increase.</p>
+</li>
+</ol>
+<p>6a. <strong>The Essentials report hour is an estimate, and the boundary it sits on is a judgement, not a
+   rule anyone has cleared.</strong> One hour to write a short report has never been performed and could
+   easily be 1.5. More importantly, the report is written from group-level themes while the
+   between-session capture is recorded as never reaching the commissioning organisation. <strong>Themes
+   drawn from that capture are not the capture, but that is MFC's own reading of its own rule, not a
+   privacy determination</strong>, and it should be put to whoever does the privacy read along with the rest
+   of the reporting floor. Until then, keep the report at what the facilitator observed and at
+   group-level themes, and never at anything a participant could be identified from.</p>
+<ol start="7">
+<li>
+<p><strong>This book has not been reviewed by anyone qualified.</strong> No legal, WHS, clinical, privacy, insurer
+   or research-ethics review has been obtained. Two sceptical re-reads were run and are recorded below,
+   but they were run by the same system that wrote it.</p>
+</li>
+<li>
+<p><strong>What cohort one settles almost for free.</strong> Whether people come back to session 2 at all — if fewer
+   than half a cohort attend a rostered 75-minute on-site session three weeks after the half-day, while
+   still employed by the buyer who paid, then the return thesis is in trouble and the price built on it
+   is too. <strong>This is now the design's only attendance test rather than the first of two, which makes
+   cohort one's number both cleaner and more consequential.</strong> And whether the day-21 barriers are capability-side (<em>couldn't remember it</em>) or opportunity-side
+   (<em>no time, no permission, it would look weak here</em>). The second vindicates this design. The first
+   says the minutes belong back in the room.</p>
+</li>
+<li>
+<p><strong>Foundations' facilitator capacity is now genuinely open, and the previous answer is void.</strong> With
+   both facilitated events on site, one facilitator running Foundations spends two separate site visits
+   per engagement rather than one visit plus a remote call. <strong>The old reassurance — that the remote
+   return kept the shape affordable — no longer applies.</strong> Nothing in this book models how many
+   Foundations engagements one person can run in a month, and the honest position is that it is fewer
+   than before. <strong>This does not change any price. It changes how many times a price can be charged</strong>,
+   and it should be sized before MFC commits to a sales target.</p>
+</li>
+</ol>
+<hr />
+<h2>The two sceptical re-reads, and what they changed</h2>
+<p><strong>Read one — as the buyer's CFO: "what am I actually paying, per person?"</strong></p>
+<p>The CFO does not see a programme; they see a line item next to an EAP invoice. At $5,325 for fifteen
+people, MFC costs $355 per head once, against an EAP at $30–80 per head for the whole company for a
+year. That comparison is unflattering on its face and it is the first thing a finance function will
+run.</p>
+<p><em>Three things changed.</em> A <strong>per-person row was added to every economics table</strong>, because a price a
+buyer cannot convert to a per-head figure is a price they will convert unfavourably in their own head.
+The <strong>value comparison was rewritten to state plainly that these products do different jobs</strong> rather
+than implying MFC is a better-value EAP — an EAP is reactive access for whoever uses it, and MFC is
+training for everyone in the room; comparing them on unit price alone is a comparison MFC would lose
+on volume and win on nothing honest. And <strong>every trace of an ROI argument was removed</strong>, including any
+temptation to reach for Black Dog's 10:1 figure, which MFC's own research flags as unverified and
+possibly derived from a different study. The honest CFO answer is now written into the document: MFC
+cannot yet say what the return is, and the measurement is how it intends to find out.</p>
+<p>The CFO's second question — <em>what if half my staff skip the day-21 return</em> — produced the fourth
+change: <strong>all four dates fixed at contracting</strong> is now stated as part of what the buyer gets, not left
+implicit in the design document.</p>
+<p><strong>Read two — as Rob: "why isn't this $5,000?"</strong></p>
+<p>This read did the most damage to the draft, in a useful direction. The first version of this book
+inherited $2,500 + $95 from <code>D-0096</code> and treated Rob's number as an opinion to be tested against the
+market. That was the wrong move, and Rob's question exposed why: <strong><code>D-0096</code> priced a half-day workshop,
+and the product is no longer a half-day workshop.</strong> Once the leader session, both returns, the
+measurement and the report are costed as one purchase, the price has to be re-derived, and when it is
+re-derived it lands at $5,325–5,800 at the 2026-08-16 prices — past Rob's number rather than near it,
+from the cost and positioning side rather than from his assertion.</p>
+<p><em>Two things changed.</em> <strong>Foundations was rebased from $2,500 to $3,500 + $95/person</strong>, at the bottom of
+the band MFC's own format analysis had already flagged as indicative, and was raised again to <strong>$3,900
++ $95/person</strong> by founder decision on 2026-08-16. And <strong>Essentials was repriced</strong>,
+because the same re-derivation showed the added return session pushed its loaded cost from $639 to $755
+— which put the existing $700 entry band below loaded cost and silently broke MFC's own standing rule.
+That error would have shipped. <strong>Essentials moved again later the same day</strong>, when the founder decided
+it should carry a short written report: loaded cost $755 → $847 and the bands to
+<strong>$1,250 / $1,550 / $1,800</strong>.</p>
+<p><em>One thing this read did not change, deliberately.</em> Rob's $5,000 is <strong>not</strong> adopted as a minimum. Doing
+so would delete the Introduction and price a five-person business out of Essentials entirely, which
+costs MFC the funnel and contradicts universality. The recommendation splits his claim rather than
+accepting or rejecting it: right about where the flagship lands, wrong as a floor — and that split is
+stated in the market section rather than buried here.</p>
+<hr />
+<p><em>Status: internal candidate. Not Hunter-approved, not committee-ratified. Built against the vault as
+of 2026-08-15, with the 2026-08-14 evidence-first rebuild in place. No price in this document has been
+tested against a real buyer.</em></p><p class="src">Original source: 60-projects/workshop-evidence-informed-adult/12-evidence-first-rebuild/110-PRODUCT-AND-PRICING-BOOK.md</p></div></details><details class="record" ><summary>Final 02 Pricing Strategy</summary><div class="record-body document"><h1>Pricing Strategy: The Complete Offer and Price List</h1>
+<h2>Executive Summary</h2>
+<p>Every MFC offering is priced to clear its direct cost plus a 1.4× overhead allocation. Nothing is sold below cost. The half-day Foundations session is the revenue engine and is priced to carry the organisation. Shorter formats (Essentials, Introduction, the new one-hour digital) are priced to break even or slightly above, funded from Foundations margin and access levy where they do not.</p>
+<p>For the first three organisations that book Foundations, we offer a case-study rate (source: the founding case-study pricing research; 26-29% discount, computed from that research — see §4 for how this relates to the 25–30% target range) in exchange for full measurement participation and permission to reference them. That rate still clears cost and holds a real margin. It ends after three sales or four months, whichever is first.</p>
+<p>Beyond the corporate channel, community organisations access a tiered community rate, and applications for pro bono (free) delivery are considered from community groups or micro-businesses using a dedicated access fund.</p>
+<hr />
+<h2>1. The Pricing Framework</h2>
+<h3>Cost Model</h3>
+<p><strong>Loaded cost</strong> = Facilitator hours × $66.10/hour (founder time, not salary) + materials + 1.4× overhead multiplier (source: the pricing research and the half-day pricing decision).</p>
+<ul>
+<li>Facilitator rate $66.10/hour is the imputed founder hourly rate from the half-day pricing decision (source: the pricing research)</li>
+<li>Overhead 1.4× is a standard charity proxy for facilities, insurance, governance, unfunded time (source: the pricing research, using the half-day pricing decision's proxy)</li>
+<li><strong>This is loaded cost, not cash cost.</strong> The real cash commitment for a free session is ~$600 materials + travel, and 45 hours of facilitator calendar — not the $4,570 the loaded figure might appear to show (source: the pricing research)</li>
+</ul>
+<p><strong>Every figure below shows direct cost, loaded cost, and margin.</strong> The margin exists to fund access, not to profit. MFC is not GST-registered, so every price shown is a final price.</p>
+<h3>Standing Principle</h3>
+<blockquote>
+<p>The half-day Foundations workshop is the revenue engine. Everything else is access and evidence, priced to clear its own cost or above, funded from corporate margin where it doesn't.</p>
+</blockquote>
+<p>This means:</p>
+<ul>
+<li><strong>Foundations is never discounted except in the founding case-study window.</strong> After three cohorts or four months, the price is $2,500 base + $95 per person, period.</li>
+<li><strong>Essentials and Introduction are reach and evidence, not revenue.</strong> They're priced as low as they can go while still not consuming runway.</li>
+<li><strong>Community and pro bono are explicitly subsidised</strong> by corporate margin, not treated as business lines.</li>
+</ul>
+<hr />
+<h2>2. The Complete Price List</h2>
+<p><strong>All prices, loaded costs and margins in §2's three tables are sourced from the pricing research unless individually marked otherwise.</strong></p>
+<h3>Corporate Tier</h3>
+<p><strong>All prices, loaded costs and margins in this table are sourced from the pricing research (§1 cost model) unless individually marked otherwise.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Offering</th>
+<th>Band</th>
+<th>Price</th>
+<th>Loaded cost</th>
+<th>Margin</th>
+<th>What you get</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundations half-day, in-person</strong></td>
+<td>Any</td>
+<td>$2,500 base + $95/person, capped 20</td>
+<td>~$1,367 per session</td>
+<td>+$1,608–$3,033</td>
+<td>4 hours, full workshop, written findings report, Leaders' briefing, full measurement</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Foundations half-day, virtual</strong></td>
+<td>Any</td>
+<td>$2,250 base + $95/person, capped 20</td>
+<td>~$1,130 per session</td>
+<td>+$1,620–$2,920</td>
+<td>Same, delivered online; no travel cost for MFC</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Essentials 90-minute, in-person</strong></td>
+<td>2–5 staff</td>
+<td>$700</td>
+<td>$639</td>
+<td>+$61 (1.10×)</td>
+<td>Entry point; reach-focused; no written report to group under 20</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td></td>
+<td>6–10 staff</td>
+<td>$950</td>
+<td>$639</td>
+<td>+$311 (1.49×)</td>
+<td>Same, priced for teams that can release people for 90 min</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td></td>
+<td>11–15 staff</td>
+<td>$1,200</td>
+<td>$639</td>
+<td>+$561 (1.88×)</td>
+<td>Same; top of market range vs. commercial comparators</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Essentials 90-minute, virtual</strong></td>
+<td>6–15 staff</td>
+<td>$1,000</td>
+<td>$463</td>
+<td>+$537 (2.16×)</td>
+<td>In-person price less the $176 real cost difference</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Essentials Micro — open session, MFC venue</strong></td>
+<td>Per seat</td>
+<td>$95/seat, 6–12 seats</td>
+<td>Breaks even at 8 seats</td>
+<td>Clears cost only at 8+; loses money below</td>
+<td>MFC books venue, runs cohort, handles group coordination</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Introduction 60-minute, booked</strong></td>
+<td>Any</td>
+<td>$600</td>
+<td>$380</td>
+<td>+$220 (1.58×)</td>
+<td>Conversation starter; light measurement only; no baseline/follow-up report</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Introduction 60-minute, outreach</strong></td>
+<td>Any</td>
+<td>$0, capped 20/year</td>
+<td>$380</td>
+<td>-$380</td>
+<td>Mission spend; full measurement collected, pooled with paid cohorts</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Leaders' Session</strong></td>
+<td>Included in all above</td>
+<td>Included</td>
+<td>$139</td>
+<td>Included</td>
+<td>Bundled 45-min manager briefing (the transfer mechanism)</td>
+<td>(source: pricing research)</td>
+</tr>
+</tbody>
+</table>
+<h3>Founding Case-Study Tier</h3>
+<p><strong>Figures in this table and the rest of §2's Founding Case-Study section are sourced from the founding case-study pricing research unless marked otherwise.</strong></p>
+<p><strong>For the first three Foundations bookings only, or four months from the first sale — whichever comes first.</strong> After the trigger fires, this rate is withdrawn and every subsequent sale (including to an organisation that inquired but hadn't booked) is at the standing rate.</p>
+<table>
+<thead>
+<tr>
+<th>Offering</th>
+<th>Price</th>
+<th>Loaded cost</th>
+<th>Margin</th>
+<th>Discount from standing</th>
+<th>What you additionally give</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundations half-day, case-study rate</strong> (source: founding case-study pricing research)</td>
+<td>$1,750 base + $75/person, capped 20</td>
+<td>$1,367</td>
+<td>+$758–$1,883 (1.55×–2.38×)</td>
+<td>−26–29%</td>
+<td>Full measurement participation, testimonial, reference permission, case-study review rights</td>
+<td>(source: founding case-study pricing research)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this rate and why this trigger:</strong></p>
+<ul>
+<li><strong>25–30% discount</strong> was reused from earlier pricing analysis as the defensible middle ground between "priced to carry the org" and "meaningfully accessible to an early adopter"</li>
+<li><strong>Clears loaded cost at every headcount</strong> — even the smallest cohort (5 people) returns 1.55×, a real margin, not a near-miss</li>
+<li><strong>Three cohorts or four months</strong> is the dual trigger: prevents indefinite drift (time limit) while allowing early stop if three sell fast (cohort limit). If the time limit fires before three have sold, the offer ends at whatever number sold (1 or 2) with no extension by default.</li>
+<li><strong>Case-study rate does not include the access levy</strong> (source: the pricing research; $400 on standing price), because the buyer is already receiving a steep discount for something valuable to MFC. Stacking both would blur what the discount is for.</li>
+</ul>
+<h3>Community Tier</h3>
+<p><strong>Prices, loaded costs and margins below are sourced from the pricing research (§1 cost model).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Offering</th>
+<th>Eligible</th>
+<th>Price</th>
+<th>Loaded cost</th>
+<th>Margin</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Essentials 90-minute</strong></td>
+<td>Community organisations, not-for-profits</td>
+<td>$700</td>
+<td>$639</td>
+<td>+$61 (1.10×)</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Foundations half-day</strong></td>
+<td>Community organisations, not-for-profits</td>
+<td>$1,600 base + $50/person, capped 20</td>
+<td>$1,367</td>
+<td>+$983–$1,233 (1.72×–1.90×)</td>
+<td>(source: pricing research)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No access levy on community tier</strong> — that buyer is already the subsidised party, and they are a paying segment (they pay something, even if reduced), not only a beneficiary.</p>
+<h3>Pro Bono and Access</h3>
+<p><strong>Figures below are sourced from the pricing research and this document's own access-levy model (see note below the table).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Offering</th>
+<th>Who</th>
+<th>Price</th>
+<th>How it's funded</th>
+<th>Cap</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Essentials or Introduction, pro bono</strong></td>
+<td>Community organisations and organisations under 15 staff by application</td>
+<td>$0</td>
+<td>Accrued access levy from corporate Foundations sales</td>
+<td>Availability = whatever fund holds; applications queued if fund empty</td>
+<td>(source: pricing research)</td>
+</tr>
+<tr>
+<td><strong>Free Introduction evidence programme</strong></td>
+<td>Community organisations, small workplaces, year-one only</td>
+<td>$0, 10 sessions max</td>
+<td>Founder hours + ~$600 cash in materials</td>
+<td>10 sessions, reviewed 31 Dec or after 10 delivered</td>
+<td>(source: pricing research; estimate)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The access levy:</strong> Every corporate Foundations sale carries an embedded $400 levy (already in the price, does not raise the price). At 24 Foundations sales (source: the pricing research), the levy accumulates $9,600 — enough for 15 pro bono Essentials sessions. That fund opens as corporate revenue appears; it has no source before the first paying customer.</p>
+<hr />
+<h2>3. The Nine Foundational Answers</h2>
+<p><strong>Figures throughout §3 are sourced from the pricing research's nine-answers section unless marked otherwise.</strong></p>
+<h3>1. Foundations — Repackage or New Design?</h3>
+<p><strong>Repackage.</strong> The half-day format decision already settled this. The arc works, the teaching blocks hold. Restores two breaks that the contracted version removed. No new design needed. Reverses only if a delivered half day shows the repackaged arc cannot hold four hours without new material.</p>
+<h3>2. Reporting — What Does Each Size Cohort Actually Receive?</h3>
+<p><strong>Revised 2026-08-19, Hunter, direct decision — corrected same day after a first pass wrongly kept a
+two-tier structure he explicitly rejected.</strong> There is <strong>one report format, given to every
+organisation MFC works with, regardless of group size.</strong> No size threshold, no "fuller" version that
+unlocks at a headcount, no separate barrier-diagnostic report reserved for larger cohorts. Hunter,
+directly, correcting the first pass: <em>"the detailed barrier level report isn't and can't be gated at
+20+... we have a report for every organisation that's the same regardless of numbers - a report that
+gives the team value and shows that it was worthwhile."</em></p>
+<p><strong>What the one report contains:</strong> whether the session landed, whether people generally reported
+learning something and finding it valuable — framed to demonstrate the programme was worthwhile, not
+to diagnose individual or team-level barriers. <strong>Hard limits, at every size, with no exception:</strong> no
+individual figures, no sub-group cuts, no verbatims, nothing traceable to one specific person even in
+a room of 3. Example: <em>"the session was well received; most participants said they took away
+something they intend to try."</em></p>
+<p><strong>What this replaces:</strong> the earlier two-tier idea (a coarse report below 20, a separate "fuller
+participant-data report" with barrier splits unlocked at 20+) is withdrawn. There is no second,
+larger report waiting behind a headcount gate — the same value-focused report is what every
+organisation gets, always. Data capture itself was never gated by group size and is unaffected —
+MFC still captures full measurement at every size; only what's given back changes, and it no longer
+varies by size at all.</p>
+<p><strong>Not yet resolved by this change:</strong> whether this report format is genuinely safe at the smallest end,
+n=2–3, remains the open referral to Eimear and Debra (item 3 below) — that referral is now specifically
+about the report's safety at extreme small numbers, not about whether a two-tier system exists (it
+doesn't) or whether small groups get a report at all (they do, the same one everyone gets).</p>
+<p>This was clarified in response to earlier pricing that promised reports to groups MFC's own privacy rules forbid reporting on.</p>
+<h3>3. Virtual — When Does It Launch?</h3>
+<p><strong>Withdraw virtual pricing from all buyer-facing materials until the online variant is fully designed.</strong> Prices (§2) show what virtual <em>will</em> cost; it is not offered until it exists. This restricts MFC to driving distance of one facilitator and deletes access to interstate/regional buyers until the variant is built. Reverses when: an online variant with captions-by-default, no registration gate, and redesigned pair beats exists and is reviewed.</p>
+<h3>4. Room Size — What Are the Caps?</h3>
+<p><strong>Essentials: cap at 15 (was 20).</strong> Foundations: cap at 20. These are hard limits. Reverses only if the committee explicitly overrides.</p>
+<h3>5. K6 (Knowing–Doing Gap Outcome) — Is It in Scope?</h3>
+<p><strong>Yes, approved.</strong> The construct is already measured (B-06 designs it, K-E2 is a seven-minute beat). Leaving it measured but unapproved is inconsistent. Reverses only if a later review finds it duplicates an existing outcome.</p>
+<h3>6. Schools, Youth, Public Audiences — Offered?</h3>
+<p><strong>No.</strong> Not until C-16 (the youth scope question) is reviewed and a safeguarding lead is named. The Introduction also narrows to adult community and workplace audiences only. Reverses when: safeguarding lead is named and C-16 closes.</p>
+<h3>7. Introduction Light Form — What's Measured?</h3>
+<p><strong>The primary matched item, the harm item, and the referral line. Nothing else.</strong> One matched item, one harm item, no linkage code, no follow-up. And its booked price is $600 (source: the pricing research; was $400, which was 1.05× loaded and did not cover a single cancellation). Reverses if the first three bookings price out.</p>
+<h3>8. Anonymity at n = 2–5 — How's It Handled?</h3>
+<p><strong>The anonymity claim is removed at n=2–5.</strong> We don't claim "we can't work backwards from the code to you" because we can, at that size. Instead, what runs at that size is session-level, pooled measurement only, with no individual linkage code. Foundations is not offered below six people at any price. This decision goes to qualified privacy advice before implementation (Eimear and Debra).</p>
+<h3>9. Leaders' Session — Paid Add-On or Included?</h3>
+<p><strong>Included, never sold separately.</strong> (Source: the pricing research.) Charging $350 on top invites the buyer to decline the mechanism MFC says the product depends on. Its $139 loaded cost is carried in every line above. Reverses only if buyers routinely decline the briefing anyway, which means it's a product problem, not a pricing one.</p>
+<hr />
+<h2>4. The Founding Case-Study Mechanism — Fully Specified</h2>
+<p><strong>Figures throughout §4 are sourced from the founding case-study pricing research unless marked otherwise.</strong></p>
+<h3>What the Buyer Gets</h3>
+<p>(Source: the founding case-study pricing research.) $1,750 base + $75/person (not $2,500 + $95) for the half-day workshop. Same delivery, same measurement, same Leaders' Session. The discount reflects that this is the first cohort, and MFC is building proof.</p>
+<h3>What MFC Gets</h3>
+<p>In exchange for the discounted rate, the organisation agrees to:</p>
+<ol>
+<li><strong>Full measurement participation</strong> — pre-session, post-session, three-week follow-up on MFC's standard measures, at the participation rate MFC requests</li>
+<li><strong>A testimonial</strong> — written or recorded, from a nominated representative, within four weeks</li>
+<li><strong>Reference permission</strong> — MFC names the organisation, sector, and headcount band (never individual results) in marketing, grant applications, and funder reporting (unless anonymisation is requested in writing)</li>
+<li><strong>Case-study review</strong> — MFC shares any material naming or attributing findings to the organisation at least 10 business days before external use, will not publish over an unresolved factual objection</li>
+<li><strong>Understanding of publication standards</strong> — any pooled or aggregate finding published is subject to MFC's commitment to publish null results with equal prominence to positive ones; case-study participation is evidence-generation, not a guaranteed positive write-up</li>
+</ol>
+<h3>The Trigger Back to Full Price</h3>
+<p><strong>Three case-study cohorts delivered, OR four months from the first case-study sale, whichever comes first.</strong> After the trigger:</p>
+<ul>
+<li>The case-study rate is withdrawn</li>
+<li>Every subsequent Foundations sale (including to an organisation that inquired but hadn't yet booked) is at the standing rate</li>
+<li>No cohort loses its rate retroactively</li>
+<li>No automatic extension is granted if the time limit fires before three cohorts have sold</li>
+</ul>
+<h3>Why This Mechanism Works</h3>
+<ul>
+<li><strong>It directly answers the core gap:</strong> "we're sold on promise, not proof." This is the fastest legitimate way to get proof without abandoning the premium price generally.</li>
+<li><strong>It's self-funding:</strong> every sale clears loaded cost with a real margin (1.55×–2.38×), unlike the earlier founding-rate attempt which required an undocumented subsidy.</li>
+<li><strong>It's bounded:</strong> three cohorts or four months creates natural discipline against indefinite drift.</li>
+<li><strong>It reuses proven evidence infrastructure:</strong> MFC's existing N ≥ 20 threshold and measurement instrument, not invented criteria.</li>
+</ul>
+<h3>Why It's Difficult</h3>
+<ul>
+<li><strong>It creates a visible seam:</strong> (source: the founding case-study pricing research) cohort 3 pays 26-29% less than cohort 4 for what looks like the same product. A procurement-literate buyer will ask why. The answer is transparent: it's limited to early adopters, and it ends automatically.</li>
+<li><strong>It sits close to breaking the "nothing below loaded cost" rule in spirit, even though it doesn't in letter.</strong> The rule protects MFC's floor; a rule that technically holds but is deliberately engineered down to the thinnest defensible margin for three sales in a row reads, to a skeptical reader, as finding the exception rather than respecting the rule.</li>
+<li><strong>It adds a fourth live pricing mechanism</strong> (standing, community tier, pro bono, case-study) to a document set that revised pricing twice in one day. That complexity is real and is a reputational cost, not hypothetical.</li>
+</ul>
+<p><strong>These difficulties are manageable because they are named in the offer itself.</strong> §5's copy says plainly: "first 3 organisations, then it ends." The margin is shown, not hidden. The purposes stay visibly distinct.</p>
+<hr />
+<h2>5. Marketing the Case-Study Rate</h2>
+<p><strong>Founding case-study rate — first 3 organisations</strong></p>
+<p>We're a new charity building the evidence base for mental fitness training at work. The first three organisations to book Foundations join as founding case-study partners: a reduced rate, in exchange for helping us measure what actually happens — and permission to tell your story (with your review) as we build a track record.</p>
+<p>This isn't a claim that the results are already proven — it's an invitation to help us find out, together, at a price that reflects that we're just getting started.</p>
+<hr />
+<h2>6. The Distinctions That Matter</h2>
+<h3>Case-Study Rate vs. Community Tier vs. Pro Bono — Not the Same Thing</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Community tier / pro bono</th>
+<th>Founding case-study rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solves</td>
+<td>Access — buyer can't afford standing rate</td>
+<td>Evidence — MFC has no track record</td>
+</tr>
+<tr>
+<td>Eligibility</td>
+<td>Community organisations, orgs under 15 staff (means-related)</td>
+<td>Any Foundations buyer, first 3–5 only (order-related)</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>Standing, no expiry</td>
+<td>Capped: 3 cohorts or 4 months</td>
+</tr>
+<tr>
+<td>What buyer gives</td>
+<td>Nothing beyond the fee</td>
+<td>Full measurement, testimonial, reference rights</td>
+</tr>
+<tr>
+<td>Funded from</td>
+<td>The access levy</td>
+<td>Self-funding — clears cost on every sale</td>
+</tr>
+</tbody>
+</table>
+<p>These must be presented to buyers as two separate mechanisms, not one blurred "discount" story. A corporate buyer asking for community rate by pointing at the case-study offer, or vice versa, is a sign the distinction is not clear.</p>
+<h3>Micro-Business (2–5 Staff) — Real Segment, Priced as Reach</h3>
+<p>The 2–5 staff band is a real opportunity (Hunter's judgement: "don't usually ever get the opportunity to upskill or learn") and is priced separately because it behaves differently (releasing everyone stops trading; you cannot do it).</p>
+<p>At $700 against $639 loaded (source: the pricing research), it returns 1.10× — cost recovery with a rounding error — and is explicitly labelled reach and evidence spend funded by corporate margin, not revenue (source: the pricing research).</p>
+<p><strong>What this band receives:</strong> A one-page team note handed to the room at the end of the session (what was covered, what the room committed to, the cue), <strong>plus, per the 2026-08-19 revision above, a coarse group-level report on whether the session landed and whether people generally reported learning something — no individual figures, no verbatims.</strong> They also receive the Leaders' Session and full measurement collection.</p>
+<hr />
+<h2>7. What's Still Hunter's or the Committee's to Decide</h2>
+<ol>
+<li><strong>Approve the 1–5 band as a $6,390-loaded evidence spend</strong> (source: the pricing research). This is an irreversible commitment of roughly a third of remaining cash. Committee decision.</li>
+<li><strong>Whether virtual is offered at all once designed.</strong> Access-versus-fidelity mission trade. Hunter, then committee.</li>
+<li><strong>The n=1–5 anonymity question to Eimear and Debra.</strong> Referral, not blocker. Hunter. <strong>Narrowed
+   2026-08-19:</strong> the standard below-20 report is now decided (coarse, group-level, no individual
+   content — see the reporting-floor revision above); the remaining open question for Eimear and
+   Debra is specifically whether even that coarse version is safe at the smallest end, n=2–3, not
+   whether a report exists at all.</li>
+<li><strong>Whether the case-study rate is 2 cohorts (literal "couple") or 3 (recommended).</strong> Founder judgement. Hunter.</li>
+<li><strong>The safeguarding review gates every line above.</strong> Nothing here can be delivered to a participant until the safeguarding matters close.</li>
+</ol>
+<p>Everything else in this document is decided.</p>
+<hr />
+<h2>Related Documents</h2>
+<ul>
+<li><code>FINAL-01-grand-strategy.md</code> — Why this pricing exists and what it funds</li>
+<li><code>FINAL-04-delivery-models.md</code> — What the offerings actually are and what's built</li>
+<li><code>D2-pricing-and-nine-answers.md</code> — Full detailed analysis (this document condenses it)</li>
+<li><code>D5-founding-case-study-pricing.md</code> — Complete case-study mechanism specification</li>
+</ul><p class="src">Original source: 60-projects/committee-pack-v1/FINAL-02-pricing-strategy.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0096-half-day-pricing-rebuild.md" target="_blank">pricing decision (superseded in substance, frontmatter not yet updated) (D-0096)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0103-product-category-boundary-and-lineup-lock.md" target="_blank">product category boundary and lineup lock (records the 2026-08-16 price raise) (D-0103)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0113-product-boundary-everything-inside-the-price.md" target="_blank">included product boundary and recomputed cost model (D-0113)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0114-return-session-is-a-checkin-branching-design-retired.md" target="_blank">return-session candidate cost model (unapplied) (D-0114)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/workshop-evidence-informed-adult/12-evidence-first-rebuild/110-PRODUCT-AND-PRICING-BOOK.md" target="_blank">Product and Pricing Book (current unit economics, all products)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-02-pricing-strategy.md" target="_blank">FINAL-02 Pricing Strategy (stale, still shows $2,500/$1,367)</a></li></ul></div></details></div>

@@ -1,0 +1,335 @@
+<title>Business case and WIIFM — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../wiifm.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Business case and WIIFM</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>Final 06 Wiifm Business Case</summary><div class="record-body document"><h1>What's In It For Me: The Buyer's Perspective</h1>
+<h2>For the Business Owner or HR Leader</h2>
+<p><strong>Think of the last moment you knew exactly what you should do, and didn't do it.</strong> Not a crisis — an ordinary one. You walked in the door at the end of a hard day, knowing you wanted to be present with the people you love, and instead you were somewhere else entirely. You knew you should have gone to bed — you were aware, in the moment, that the next episode was the wrong call — and you did it anyway. Everyone has one from this week. That gap between knowing and doing isn't a personal failing. It's just something nobody ever taught you to close.</p>
+<p>Here's what closing it actually gets you: being able to notice a hard feeling without it deciding what you do next. Coming back after you've got it wrong without turning it into a verdict on who you are. That's yours, first, whatever room you're standing in when you use it.</p>
+<p><strong>It also happens to be exactly what a team needs from the people in it, and what an organisation needs from its teams</strong> — people who can stay workable under pressure instead of carrying it into the next meeting, the next message, the next person. We're not asking you to buy something for your staff. We're offering your people something for themselves that your organisation also benefits from, in that order.</p>
+<h3>What This Actually Looks Like</h3>
+<p><strong>For the individual</strong> (your employee, your manager, yourself):</p>
+<ul>
+<li>You notice a hard feeling or a stuck thought happening <em>in the moment</em> — not in hindsight</li>
+<li>You can choose how to respond to it instead of being carried by it</li>
+<li>You get 90 minutes of practice doing exactly this, not a 90-minute lecture about why you should want to</li>
+<li>Three weeks later, you're using it in the moments that matter — at your desk, in a meeting, at home</li>
+</ul>
+<p><strong>For your team:</strong></p>
+<ul>
+<li>Your people recover faster from friction with each other</li>
+<li>Conversations that go badly get picked up and repaired instead of sitting</li>
+<li>You carry less unspoken tension</li>
+<li>The room has more actual capacity to think and work</li>
+</ul>
+<p><strong>For your organisation:</strong></p>
+<ul>
+<li>You spend less time managing the fallout of moments that went badly</li>
+<li>More time on the work itself</li>
+<li>An HR/WHS system that actually changes how people show up, not one that hopes they will</li>
+</ul>
+<h3>Why This Is Different From Everything Else You've Already Tried</h3>
+<p><strong>It's not therapy.</strong> You're not treated, and nobody assumes anything is wrong with you.</p>
+<p><strong>It's not another resilience programme.</strong> It's not about suffering better. It's about reaching what you already know, in the moment you need it.</p>
+<p><strong>It's not a wellbeing add-on</strong> that depends on how engaged people are with the content. Engagement is not the success metric. <em>Enactment</em> — whether people actually use it in real moments — is what matters, and that's what we measure.</p>
+<p><strong>It's not sold on promise.</strong> It's sold on evidence. The first organisations get a reduced rate in exchange for being measured completely. We publish our results whether they're good or not. If the first cohorts show nothing changes, you get that answer with the same prominence as a positive result.</p>
+<hr />
+<h2>For the Funder or Philanthropic Organisation</h2>
+<p><strong>The gap this fills:</strong></p>
+<p>Training in mental health and resilience has existed for 20+ years. Everything in that space has concluded the same thing: <strong>individual content without environmental support lacks demonstrated durable effect.</strong></p>
+<p>MFC is built different: <em>measurement is not an afterthought, it's the foundation.</em> Every person who goes through it gets measured at the start, the end, and three weeks later on the exact thing the method teaches — whether they can retrieve the skill when they need it under load.</p>
+<p><strong>Why that matters to you as a funder:</strong></p>
+<ul>
+<li>You're not funding a promise. You're funding an investigation.</li>
+<li>The same measurement discipline that makes MFC credible to employers (who ask "did my people actually use this?") makes it credible to you (who ask "what did we fund, and did it work?").</li>
+<li>MFC has built a non-clinical, skills-based intervention that sits inside your scope, not outside it — it's not therapy, it's not clinical, it's teachable and trainable.</li>
+</ul>
+<p><strong>What a funded cohort actually gets you:</strong></p>
+<ul>
+<li>A delivery site with real people, measured, referenceable</li>
+<li>A published result (even if it's limited in scope, or null)</li>
+<li>A partner in evidence-building, not just delivery</li>
+<li>A sector first: a mental-fitness training programme with an unvalidated-but-published instrument and a standing commitment to publish nulls</li>
+</ul>
+<hr />
+<h2>For the Committee or Board</h2>
+<h3>The Business Model Makes Sense</h3>
+<ul>
+<li><strong>Revenue:</strong> Corporates and businesses pay for the half-day workshop ($2,500–$4,400, source: the pricing research). That margin funds access for communities, small organisations, and individuals who cannot pay.</li>
+<li><strong>Scale:</strong> One facilitator, realistic delivery cadence of 2–3 sessions per week (estimate, unverified — source: the delivery-models research's capacity reasoning). Not a growth-at-all-costs model. A proven-delivery-then-systematise model.</li>
+<li><strong>Sustainability:</strong> Funded by grants and research partnerships until the corporate channel proves itself. Once it does, the model funds itself.</li>
+</ul>
+<h3>The Evidence Discipline Is Real</h3>
+<ul>
+<li><strong>Not overstatement:</strong> MFC does not claim to treat, cure, or diagnose anything. It teaches a skill that research supports as effective when people actually practice it.</li>
+<li><strong>Not hidden:</strong> Nulls are published. If the first cohorts show nothing, the committee knows it. If they show effect, the committee knows that too.</li>
+<li><strong>Not undersupported:</strong> the measurement research explains why measurement is a research programme carried by the product, not a product feature, and why that distinction matters to funders.</li>
+</ul>
+<h3>The Risks Are Named</h3>
+<ul>
+<li><strong>Cash runway:</strong> ~$12,000 (vault-current OBJECTIVE figure as of 2026-08-09, CLAUDE.md §2), four to eight months (estimate, unverified). If grants don't arrive or corporate sales don't start, the runway ends.</li>
+<li><strong>Evidence maturity:</strong> We have zero delivered cohorts. Everything below is what happens when we do. There is no proof yet.</li>
+<li><strong>Operational readiness:</strong> the safeguarding review has six items still open. Nothing is delivered to a participant until they close.</li>
+<li><strong>Founder dependency:</strong> Today, this is one person. Delegation and systematisation are planned, not done.</li>
+</ul>
+<p>All of these are real constraints. None of them are hidden. What you're funding is a bet that they're soluble within the window MFC has.</p>
+<hr />
+<h2>For the Individual Who Scans a QR Code or Comes to a Talk</h2>
+<p><strong>This is not for everyone.</strong></p>
+<p>If you're in crisis or distress, go to your GP or Lifeline (13 11 14). This is not clinical support.</p>
+<p>If you're looking for someone to fix you or make your problems go away, this isn't it. This is a skill you practice, not a service you consume.</p>
+<p><strong>But if you're interested in reaching what you already know, in the moments you actually live in,</strong> without having to carve out time or find a therapist or admit something's wrong — if you're interested in the gap between knowing what to do and actually doing it, in real life, at work and at home — then this is worth 60 minutes of your time.</p>
+<p>You'll get the method. You'll practice once. You'll see how it works. Then you get to decide whether you want to go further.</p>
+<p>The measurement happens regardless — we're measuring whether this works, and we publish what we find. But the skill is yours to keep.</p>
+<hr />
+<h2>The Honesty Statement</h2>
+<h3>What This Is Not a Cure For</h3>
+<p>We don't claim to fix anxiety, depression, burnout, or stress. We don't claim to make hard moments go away. We claim to give you a skill for reaching what you already know in those moments, instead of being run by them.</p>
+<p>That's smaller than "fix burnout." It's also bigger than "hope people feel better."</p>
+<h3>What We're Actually Betting</h3>
+<p>We're betting that:</p>
+<ol>
+<li><strong>The skill is trainable.</strong> If the first three corporate conversations produce zero interested opportunity in twelve weeks, the revenue model is wrong.</li>
+<li><strong>Measurement matters.</strong> If the first cohorts show no measurable enactment under load at three weeks, we have built a nice thought but not a working intervention.</li>
+<li><strong>The evidence path is faster than the revenue path.</strong> If the first funded cohort doesn't materialise, we run out of money before we have data.</li>
+</ol>
+<p>If all three bets hold, MFC becomes an organisation with one delivered, measured, published cohort. That changes everything.</p>
+<p>If any one doesn't, we have learned something real, and we'll say so.</p>
+<hr />
+<h2>The Call to Action</h2>
+<h3>For Someone Booking</h3>
+<p>Choose Foundations if you have 15–20 people in a room and budget of $2,500–$4,400 (source: the pricing research). You get the full system, a written report, and the measurement. This is the main product.</p>
+<p>Choose Essentials if you have 6–15 people or want a shorter entry point. $700–$1,200 depending on your team size (source: the pricing research). Same measurement, tighter window.</p>
+<p>Choose the one-hour digital session if you're alone or distributed. $25–35/person, once it's built (source: the delivery-models and lead-generation research). Education plus a practical tool.</p>
+<p>Choose the free Introduction if money is a barrier. Cap 20 per year (source: the pricing research). Full measurement collected and pooled with paid cohorts.</p>
+<p>Ask any question. There's a person (Hunter) on the other end.</p>
+<h3>For Someone Deciding About Funding</h3>
+<p>The case is: early investment in a founder-led proof, evidence-first design, honest claims, and real measurement of a skill training that nobody else in the space is measuring.</p>
+<p>The risk is: founder dependency, no delivered proof yet, four to eight months of cash runway (estimate, unverified — ~$12,000 runway as of 2026-08-09, CLAUDE.md §2), safeguarding items still open.</p>
+<p>The bet is: prove the method works, then systematise and scale.</p>
+<p>The timeframe is: one measured cohort by end of 2026 or early 2027. That's the milestone that changes everything.</p>
+<hr />
+<h2>The Bottom Line</h2>
+<p><strong>You already have mental fitness.</strong> You've been relying on it every day of your life — in the conversation you handled well, and the one you didn't; the moment you stayed present, and the one you weren't really there for. </p>
+<p>Nobody has to be convinced that physical fitness matters, because everyone can feel the difference between having it and not having it. This is the same thing, running underneath everything you do. </p>
+<p>The only difference is nobody ever told you it was trainable.</p>
+<hr />
+<h2>Related Documents</h2>
+<ul>
+<li><code>FINAL-01-grand-strategy.md</code> — Why MFC exists and how it works</li>
+<li><code>FINAL-02-pricing-strategy.md</code> — What it costs and why</li>
+<li><code>FINAL-04-delivery-models.md</code> — What you actually get</li>
+<li><code>FINAL-03-marketing-and-lead-generation.md</code> — How to reach us</li>
+<li><code>FINAL-05-grants-and-funding.md</code> — How we're funded</li>
+</ul><p class="src">Original source: 60-projects/committee-pack-v1/FINAL-06-wiifm-business-case.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-06-wiifm-business-case.md" target="_blank">FINAL-06 WIIFM</a></li></ul></div></details></div>

@@ -1,0 +1,217 @@
+schema_version: 2
+objective: 'Build 20-THE-PRICING-CASE.md answering Hunter 2026-09-05: price the four workshop products
+  optimally against the market, make them enticing to organisations inside the claims boundary, and determine
+  how MFC makes money. No price changed; D-0125 and D-0113 preserved.'
+task_session_id: 9f869fad-1121-47fe-b96d-3a2b99c81548
+material_prompt_fingerprint: 89e3fca77abd6e1b
+material_task_id: 89e3fca77abd6e1b-2026-09-06T11:25:09.164085+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: route_now
+  reason: head-of-marketing. Owned section 4 — the enticement problem stated exactly, five permitted-and-enticing
+    framings, honest anchoring, twelve banned sentences, and the verdict that the ROI gap is not fully
+    closable
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: route_now
+  reason: head-of-product. Owned section 3 — itemised every element inside the price with its hour cost,
+    tested each against the competitor corpus, ranked what genuinely justifies a premium, and flagged
+    four overstatements live in buyer-facing copy
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: route_now
+  reason: researcher. Owned section 1.2 — fresh external pass 2026-09-06, 26 Australian providers checked,
+    every figure read on a fetched page with URL and access date per AG-200
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: route_now
+  reason: head-of-commercial. Owned sections 1 (internal comparator set), 2 (market position of all four
+    products, AG-088/AG-089 retest, base+per-head structure finding), 5 (four money models costed against
+    one facilitator) and 6 (recommended price set, review clause, margin-per-engagement-hour ladder, confidence)
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: route_now
+  reason: skeptic. Adversarial pass against the completed paper, briefed that its strongest attack is
+    zero delivered cohorts, no outcome claim and no case study
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: route_now
+  reason: head-of-compliance. Owned section 4.7 — adjudicated eight selling moves, first ACL price-representation
+    analysis in the vault, and identified the WHS overclaim as an uninsured breach via Chubb endorsement
+    BUP026
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-node2-pricing-case
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-node2-pricing-case
+  completed_before_execution: true
+  decision_surfaces:
+  - Hunter ratifies; D-0113 records committee approval as the outstanding external gate. No price in 07-BUYER-PACK.md
+    and no D- record was changed.
+  omissions_challenged:
+  - 'A-15 (Implementation and Delivery Design, head-of-delivery) was reconsidered at length and excluded,
+    and that exclusion is contestable. Section 5 model (b) recommends reinstating a monthly retainer whose
+    blocking gaps are an SLA (AG-232), cancellation and pause terms for a recurring product, and a run
+    sheet that has never been written — all three are A-15''s subject matter, not A-21''s. Excluded because
+    this paper produces a commercial case and a recommendation, not a delivery design, and every one of
+    those gaps is named in the paper as a precondition rather than resolved inside it. If Hunter answers
+    FQ3 yes, A-15 must run before anything is quoted. A-23 (Knowledge Engineering and Source Integration,
+    head-of-research) was also excluded despite section 4 finding that P27''s missing cite is the single
+    highest-value unblock for this whole pricing case — excluded because filling it is a source-registration
+    task with its own K-09 process, not a pricing judgement, and starting it here would have produced
+    an unregistered citation inside a commercial paper. A-25 and H-01 were screened: no committee process
+    is taken here and no clinical boundary is moved, though H-01''s standing ruling on published case-study
+    quotes is carried in 4.7 item 7.'
+  changes: []
+  unresolved:
+  - 'GST registration status is contradicted inside MFC''s own documents and moves every figure by up
+    to 10% (accountant). Hunter''s available hours H, his required personal income, MFC''s fixed annual
+    costs, and any conversion rate are all NO VAULT SOURCE. No advisor has reviewed these specific numbers.
+    MFC has zero delivered cohorts and has never quoted a price to anyone. Black Dog Institute''s free
+    government-funded workplace training to NSW businesses under 200 staff is unaddressed anywhere in
+    MFC''s pricing logic. Five founder questions stand: a satisfaction condition in terms, Foundations
+    banding (a real 6-8% rise for some cohorts), a fourth priced retainer product, a partner/channel price,
+    and which buyer MFC prices for given the D1 and 04-THE-STRATEGY conflict.'
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'Established that the commissioning brief''s own premise was false:
+  R2-pricing-research.md (2026-08-10) already held a full published-price Australian comparator set, and
+  07 section 4 was built cost-up without reopening it. Second-sourced it with a fresh 2026-09-06 external
+  pass. Recommends holding every ratified price, with the money coming from multi-cohort repeat inside
+  one client (299.35 per engagement hour against 160.46) rather than from repricing.'
+no_specialist_execution_reason: null
+specialist_evidence: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+specialists:
+- id: A-21
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-pricing-case-2026-09-06/A-21-packet.yml
+  outputs:
+    review: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+  contribution: head-of-commercial. Owned sections 1 (internal comparator set), 2 (market position of
+    all four products, AG-088/AG-089 retest, base+per-head structure finding), 5 (four money models costed
+    against one facilitator) and 6 (recommended price set, review clause, margin-per-engagement-hour ladder,
+    confidence)
+  learning_disposition: candidate_update
+- id: A-10
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-pricing-case-2026-09-06/A-10-packet.yml
+  outputs:
+    review: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+  contribution: head-of-product. Owned section 3 — itemised every element inside the price with its hour
+    cost, tested each against the competitor corpus, ranked what genuinely justifies a premium, and flagged
+    four overstatements live in buyer-facing copy
+  learning_disposition: candidate_update
+- id: A-08
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-pricing-case-2026-09-06/A-08-packet.yml
+  outputs:
+    review: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+  contribution: head-of-marketing. Owned section 4 — the enticement problem stated exactly, five permitted-and-enticing
+    framings, honest anchoring, twelve banned sentences, and the verdict that the ROI gap is not fully
+    closable
+  learning_disposition: candidate_update
+- id: H-02
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-pricing-case-2026-09-06/H-02-packet.yml
+  outputs:
+    review: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+  contribution: head-of-compliance. Owned section 4.7 — adjudicated eight selling moves, first ACL price-representation
+    analysis in the vault, and identified the WHS overclaim as an uninsured breach via Chubb endorsement
+    BUP026
+  learning_disposition: candidate_update
+- id: A-17
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-pricing-case-2026-09-06/A-17-packet.yml
+  outputs:
+    review: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+  contribution: researcher. Owned section 1.2 — fresh external pass 2026-09-06, 26 Australian providers
+    checked, every figure read on a fetched page with URL and access date per AG-200
+  learning_disposition: candidate_update
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/packets-pricing-case-2026-09-06/A-24-packet.yml
+  outputs:
+    review: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md
+  contribution: skeptic. Adversarial pass against the completed paper, briefed that its strongest attack
+    is zero delivered cohorts, no outcome claim and no case study
+  learning_disposition: candidate_update
+outputs_summary:
+  pricing-case: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/20-THE-PRICING-CASE.md

@@ -1,0 +1,109 @@
+schema_version: 2
+objective: >-
+  Close the actual gap Hunter named in workshop delivery: two genuine bounded specialist panels ran
+  on the Half-Day Foundations candidate on 2026-08-13 (18 reviews in assurance-2026-08-13/, 24
+  further reviews plus an independent REVISE checker verdict in assurance-2026-08-13-evaluated-panel/)
+  but neither was ever closed by a schema-v2 routing record, so under this vault's own
+  specialist-call-contract.md neither counted as registered specialist assurance. This record verifies
+  what the two panels' corrections actually changed in the live artifact, gives a reasoned disposition
+  for all 25 registered roles, and honestly discloses what remains open rather than claiming full
+  contract completeness that was not earned. No rebuild was performed; the existing candidate was
+  reconciled, not replaced.
+task_session_id: 9a49bf6e-6231-4fca-b8eb-bc5db7dd9e7b
+material_prompt_fingerprint: 01e3d48557f7cc3f
+material_task_id: 01e3d48557f7cc3f-2026-08-17T17:28:21.759981+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+  - {id: A-07, disposition: reuse_current_evidence, reason: "Participant/facilitator journey and screen density reviewed 2026-08-13; rendered-navigation test remains open, unaffected by this closure."}
+  - {id: A-08, disposition: reuse_current_evidence, reason: "Narrative/language review 2026-08-13; ARC-03 overstated-language findings independently verified as applied to the live artifact."}
+  - {id: A-09, disposition: reuse_current_evidence, reason: "Behaviour/opportunity review 2026-08-13; findings applied, no new question arose this session."}
+  - {id: A-10, disposition: reuse_current_evidence, reason: "Learning-architecture review 2026-08-13; architecture correctly retained as unproven candidate, not reopened."}
+  - {id: A-11, disposition: reuse_current_evidence, reason: "Measurement review from the non-contract-complete evaluated-panel packet; its finding (D-0100/measurement conflict) was independently reproduced against the live artifact this session and confirmed applied (ARC-01)."}
+  - {id: A-12, disposition: reuse_current_evidence, reason: "Restricted fail-closed screen completed in both 2026-08-13 panels; human boundary correctly preserved, not an AI clearance."}
+  - {id: A-13, disposition: reuse_current_evidence, reason: "Participation-route finding from the non-contract-complete evaluated-panel packet; independently reproduced against the live artifact this session and confirmed applied (ARC-02)."}
+  - {id: A-14, disposition: defer_conditionally, reason: "Rendered/print/room evidence requires an actual render pass; no text-only review can close this and none was attempted."}
+  - {id: A-15, disposition: reuse_current_evidence, reason: "Delivery-feasibility review 2026-08-13; facilitator-load/rehearsal gate correctly left open."}
+  - {id: A-16, disposition: reuse_current_evidence, reason: "Cue/return review 2026-08-13; findings applied to closing-line language."}
+  - {id: A-17, disposition: reuse_current_evidence, reason: "Non-contract-complete packet; disciplined refusal (no live comparator claim needed) reused as-is, not reopened."}
+  - {id: A-18, disposition: reuse_current_evidence, reason: "Category-promise finding from the non-contract-complete evaluated-panel packet; independently reproduced against the live artifact this session and confirmed applied."}
+  - {id: A-19, disposition: reuse_current_evidence, reason: "Structural/population-claim finding from the non-contract-complete evaluated-panel packet; independently reproduced against the live artifact this session and confirmed applied."}
+  - {id: A-20, disposition: reuse_current_evidence, reason: "Causal-chain finding from the non-contract-complete evaluated-panel packet; independently reproduced against the live artifact this session and confirmed applied."}
+  - {id: A-21, disposition: defer_conditionally, reason: "No named host/employer/cohort exists for this candidate; correctly triggered only once one does."}
+  - {id: A-22, disposition: reuse_current_evidence, reason: "Audience-comprehension review 2026-08-13; gate correctly left open pending intended-participant testing, not a specialist-coverage gap."}
+  - {id: A-23, disposition: reuse_current_evidence, reason: "Source-identity/lineage review ran before and after correction in both panels; current hash set recorded in this session's reconciliation document."}
+  - {id: A-24, disposition: reuse_current_evidence, reason: "Independent coverage-challenge author and disconfirmation-test designer; this record's coverage_challenge is that same 2026-08-13 output."}
+  - {id: A-25, disposition: reuse_current_evidence, reason: "Non-contract-complete packet; finding (reconcile/freeze/test, do not expand) is the disposition this closure follows and matches the founder's own instruction not to rebuild."}
+  - {id: A-26, disposition: not_relevant, reason: "No public-sector/policy/government trigger is present in this candidate."}
+  - {id: H-01, disposition: human_boundary, reason: "Qualified clinical/safeguarding review remains a named, unfilled human gate in both panels; no AI disposition can close it."}
+  - {id: H-02, disposition: human_boundary, reason: "Qualified privacy/legal review remains a named, unfilled human gate in both panels; no AI disposition can close it."}
+  - {id: FL-01, disposition: reuse_current_evidence, reason: "Genuinely fresh-context Compass cold read exists (2026-08-13); its central finding (build not yet founder-decision-ready) is correctly not being claimed as resolved by this closure — see contract_deviations."}
+  - {id: SYS-03, disposition: not_relevant, reason: "Need-test for a new persistent capability role fails in both 2026-08-13 panels; existing role coverage is adequate."}
+  - {id: SYS-04, disposition: reconciliation, reason: "This record's whole-bench reconciliation and closure document."}
+coverage_challenge:
+  selector: "Original same-context design-intelligence synthesis (2026-08-13, design-intelligence.yml)"
+  selector_context: "primary-workshop-design-intelligence-2026-08-13"
+  challenger: "A-24 - Experimentation and Organisational Learning"
+  challenger_context: "workshop-coverage-challenger-2026-08-13"
+  completed_before_execution: true
+  decision_surfaces:
+    - "Candidate identity, authority and supersession (which file/decision controls; whether a claimed correction reached every frozen artifact)"
+    - "Learning architecture (education-led, experience-first, spiral or bounded hybrid)"
+    - "Participant comprehension and room journey"
+    - "Real-world behaviour and practice return"
+    - "Participation, power and shared routes"
+    - "Delivery feasibility and facilitator load"
+    - "Measurement and learning decisions"
+    - "Accessibility, safeguarding and clinical/data boundaries"
+    - "Category, structural context and impact boundary"
+    - "Strategic sufficiency and assumption testing"
+    - "Reconciliation and founder gate"
+  omissions_challenged:
+    - "A-21 Partnerships: retained conditional, triggered only on a named host/employer/cohort — not routed as a full-package reviewer for this candidate."
+    - "A-26 Policy/government: omitted for this candidate; would route immediately on a public-sector/government trigger, none of which exists."
+    - "SYS-03 Capability Factory: need-test for a new persistent role explicitly fails; existing ownership (A-04/A-24/A-23/SYS-04) already covers the gap."
+    - "H-01/H-02: upgraded from passive register entries to required human gates before delivery, not AI-cleared lenses."
+    - "FL-01: made a mandatory fresh-context final stage rather than one opinion among many."
+  changes:
+    - "A-10 promoted to accountable architecture lead rather than one opinion among many."
+    - "A-23 required to run both before and after reconciliation given a live cross-package Radar-count conflict found in the frozen corpus."
+    - "A-12 given two bounded passes (early fail-closed screen, then a regression screen on the reconciled candidate)."
+    - "A-11, A-13, A-14, A-17, A-18, A-19, A-20, A-25 downgraded from full-package reviewers to bounded/staged reviewers of a distinct decision surface, to preserve distinct judgement rather than duplicate whole-document commentary."
+  unresolved:
+    - "Pack competence remains unproven for all baseline packs (evaluation.status: not_run at the time of this challenge)."
+    - "The architecture comparison (education-led vs. experience-first vs. spiral) remains conceptual, not participant-tested."
+    - "No professional panel can answer the behavioural, comprehension and accessibility questions that require real people; these remain field-only gates."
+  reconciler: "SYS-04 - Loop Engineer"
+  reconciliation: >-
+    60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/25-half-day-whole-bench-reconciliation-and-closure.md
+    reconciles both 2026-08-13 panels' findings against the coverage challenge's decision-surface map,
+    independently re-verifies the claimed corrections against the live artifact, and gives a reasoned
+    disposition for all 25 registered roles.
+learning_disposition: candidate_update
+specialists:
+  - {id: A-07, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 bounded review remains the current relevant evidence for this decision surface; independently re-checked this session against the reconciliation doc.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-07.md}}
+  - {id: A-08, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 review's language findings independently verified as applied to the live artifact this session.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-08.md}}
+  - {id: A-09, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 review remains the current relevant evidence for this decision surface.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-09.md}}
+  - {id: A-10, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 review remains the current relevant evidence; architecture correctly retained as an unproven candidate.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-10.md}}
+  - {id: A-11, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Packet was not contract-complete, but its finding was independently reproduced against the live artifact this session (workshop-package.html meas1/meas3 views) and confirmed applied.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-11.md}}
+  - {id: A-12, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Restricted screen completed in both panels; human boundary correctly preserved and not treated as AI clearance.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-12.md}}
+  - {id: A-13, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Packet was not contract-complete, but its finding was independently reproduced against the live artifact this session (Route B disabled-by-default language) and confirmed applied.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-13.md}}
+  - {id: A-15, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 review remains the current relevant evidence; rehearsal/facilitator-load gate correctly left open.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-15.md}}
+  - {id: A-16, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 review's closing-line finding independently verified as applied to the live artifact this session.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-16.md}}
+  - {id: A-17, execution_mode: reuse_current_evidence, learning_disposition: no_new_learning, applicability_reason: "Non-contract-complete packet; disciplined refusal (no live comparator claim needed) reused as-is, not reopened.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-17.md}}
+  - {id: A-18, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Packet was not contract-complete, but its finding was independently reproduced against the live artifact this session and confirmed applied (scaled-cost/outcome promise removed).", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-18.md}}
+  - {id: A-19, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Packet was not contract-complete, but its finding was independently reproduced against the live artifact this session and confirmed applied (movement/ripple relabelled as hypothesis).", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-19.md}}
+  - {id: A-20, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Packet was not contract-complete, but its finding was independently reproduced against the live artifact this session and confirmed applied (proximal causal chain, downstream leaps removed).", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-20.md}}
+  - {id: A-22, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "2026-08-13 review remains the current relevant evidence; comprehension gate correctly left open pending intended-participant testing.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-22.md}}
+  - {id: A-23, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Ran before and after correction in both panels; current hash set recorded in this session's reconciliation document frontmatter.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-23.md}}
+  - {id: A-24, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Independent coverage-challenge author; that same output is this record's coverage_challenge and remains the current test-sequencing recommendation.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/coverage-challenge.md}}
+  - {id: A-25, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Non-contract-complete packet; finding (reconcile/freeze/test, do not expand) is the disposition this closure follows.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13/reviews/A-25.md}}
+  - {id: FL-01, execution_mode: reuse_current_evidence, learning_disposition: candidate_update, applicability_reason: "Genuinely fresh-context, independent 2026-08-13 Compass cold read. Its central finding (the build was not yet founder-decision-ready) is NOT being claimed as resolved by this closure; see contract_deviations. Its formatting predates the current review-template headings and is reused as evidence, not re-certified as a fresh contract-complete pass.", outputs: {review: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/assurance-2026-08-13-evaluated-panel/reviews/FL-01.md}}
+  - {id: SYS-04, execution_mode: reconciliation, learning_disposition: candidate_update, outputs: {reconciliation: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/25-half-day-whole-bench-reconciliation-and-closure.md}}
+outputs_summary:
+  artefact: 60-projects/workshop-evidence-informed-adult/11-two-format-build-v1/workshop-package.html
+  status: internal_candidate; corrections from both 2026-08-13 panels verified applied; Hunter has not viewed or approved
+  human_gates_preserved: "qualified clinical/safeguarding, privacy/legal, insurer, host and accessibility review; Hunter's explicit viewing and approval"
+contract_deviations:
+  - "Fourteen roles (A-11, A-13, A-17, A-18, A-19, A-20, A-21, A-23, A-24, A-25, A-26, H-01, H-02, SYS-03) have task packets/reviews from 2026-08-13 that are not contract-complete under the current five-layer/eleven-section standard. This record does not backfill or re-certify them as contract-complete. Where their substantive finding produced a concrete, independently-verifiable artifact change (A-11, A-13, A-18, A-19, A-20), that finding is trusted on the strength of this session's independent reproduction against the live artifact, not on the packet's own authority. Where it did not (A-17, A-21, A-25, A-26, SYS-03), it remains a reasoned but non-contract-complete disposition."
+  - "FL-01's 2026-08-13 review predates the current review-template heading set and would not pass a strict contract-review-mode check against today's exact section headings; it is reused as evidence under reuse_current_evidence rather than re-labelled as a fresh independent_specialist_review."
+  - "No new specialist call was executed this session. This record closes the registration gap for work already performed on 2026-08-13; it is not a claim that a fresh panel ran today."

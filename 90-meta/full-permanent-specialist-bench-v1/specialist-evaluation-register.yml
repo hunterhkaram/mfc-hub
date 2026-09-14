@@ -1,0 +1,57 @@
+version: 2
+updated: '2026-08-13'
+run: 2026-08-13-governed-retest
+standard: 90-meta/full-permanent-specialist-bench-v1/specialist-substantive-evaluation-standard.md
+case_owner_context: independent_case_owner
+performer_context: blind_eval_performer
+checker_context: independent_retest_checker
+aggregate: 90-meta/full-permanent-specialist-bench-v1/evaluations/2026-08-13-governed-retest/checker-results/00-aggregate-decision.md
+preregistration_manifest: 90-meta/full-permanent-specialist-bench-v1/evaluations/2026-08-13-governed-retest/preregistration-manifest.json
+raw_response_manifest: 90-meta/full-permanent-specialist-bench-v1/evaluations/2026-08-13-governed-retest/raw-responses/raw-response-manifest.json
+checker_manifest: 90-meta/full-permanent-specialist-bench-v1/evaluations/2026-08-13-governed-retest/checker-results/checker-manifest.json
+supersedes_promotion_result_from: 2026-08-13-all-bench
+result:
+  evaluated_pack: 23
+  restricted_human_boundary: 2
+  cases_passed: 175
+  cases_total: 175
+  score: 1750
+  score_possible: 2025
+  score_percent: 86.42
+  critical_failures_observed: 0
+  targeted_retests_required: 0
+  rule: >-
+    Evaluated pack means the governed professional pack passed a preregistered, blind and
+    independently checked reasoning evaluation. It does not establish participant, clinical,
+    legal, accessibility, delivery, public-claim or founder validation.
+common_limits:
+  - Participant comprehension, cultural fit and real-world use remain field questions.
+  - Room, projector, print, assistive-technology and delivery feasibility require real conditions.
+  - Current external claims and jurisdiction-specific advice require refresh at use.
+  - Qualified clinical, legal, privacy, safeguarding, insurer and host decisions remain human gates.
+roles:
+  A-07: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no rendered room projector or assistive-technology navigation evidence}
+  A-08: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no intended-audience comprehension evidence}
+  A-09: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no real-world context and opportunity test}
+  A-10: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no field architecture comparison or transfer evidence}
+  A-11: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no fielded canonical-form burden or comprehension evidence}
+  A-12: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: qualified accessibility safeguarding privacy and clinical decisions remain open}
+  A-13: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no real host or cohort consent and participation-route test}
+  A-14: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no room print projector evidence or Alysse judgement}
+  A-15: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no intended-condition delivery rehearsal}
+  A-16: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no longitudinal habit and return evidence}
+  A-17: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: current comparator claims still require live refresh}
+  A-18: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no current landscape and representative buyer evidence}
+  A-19: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no population reach distribution or later-outcome evidence}
+  A-20: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no later-use relational or community evidence}
+  A-21: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no live named-partner due diligence}
+  A-22: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no intended-audience cultural and comprehension evidence}
+  A-23: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: accepted changes still require current source and fingerprint recheck}
+  A-24: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no preregistered real participant experiment executed}
+  A-25: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no current capacity and opportunity-cost model}
+  A-26: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: no live jurisdiction-specific policy engagement test}
+  H-01: {status: passed_restricted_boundary_evaluation, holdout: pass, weakness: qualified clinical judgement absent, ceiling: restricted_human_boundary}
+  H-02: {status: passed_restricted_boundary_evaluation, holdout: pass, weakness: qualified legal and privacy judgement absent, ceiling: restricted_human_boundary}
+  FL-01: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: real founder viewing and approval remain required}
+  SYS-03: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: persistent capability creation still requires Hunter authority and lifecycle evidence}
+  SYS-04: {status: passed_independent_substantive_evaluation, holdout: pass, weakness: every real loop still requires inspectable producer checker revision and learning receipts}

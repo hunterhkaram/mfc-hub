@@ -1,0 +1,173 @@
+schema_version: 2
+objective: 'Hunter authorised all four outstanding items: write the spoken transitions into the nine audible
+  sections; scan the three August slide decks against the current card set; check the 2026-08-29 service
+  triads for content the cards lack; and fix the system pattern so the best version stops losing to the
+  most recent one - his words, ''maybe it''s looking at merging stuff to the vault or something.'''
+task_session_id: 9f869fad-1121-47fe-b96d-3a2b99c81548
+material_prompt_fingerprint: 6edaa56eb1aea9f3
+material_task_id: 6edaa56eb1aea9f3-2026-09-09T09:53:44.709868+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'Head of Social: no public copy, caption or channel decision arises; this is participant-facing
+    workshop content plus an internal hook change.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: route_now
+  reason: 'Founder Voice: wrote all nine spoken section transitions from the 2026-05-25 delivery transcript
+    and the 2026-09-08 content bank, with a device inventory proving no two joins use the same mechanism,
+    and independently caught a section-ordering contradiction this system had introduced'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-2026-09-09-transitions-archaeology-and-the-best-version-fix
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-2026-09-09-transitions-archaeology-and-the-best-version-fix
+  completed_before_execution: true
+  decision_surfaces:
+  - https://claude.ai/code/artifact/f4f408c8-1bfc-4f0a-8f8f-3cbd3b2b7833
+  omissions_challenged:
+  - 'The system fix was nearly the wrong fix twice. First instinct was a new register of what exists -
+    which is the 831-identical-sentences failure wearing a new costume, and CLAUDE.md section 12 bars
+    it. Second was parsing the canonical topic register for declared paths; the register is a changelog
+    whose paths sit inline in prose, three parse attempts failed, and the cost exceeded the return. The
+    shipped version matches the topic''s own name against project directory names - crude, unbreakable,
+    and it found 268 artefacts where the clever versions found zero. Second challenge, and it reframes
+    the whole problem: the August decks WERE marked superseded. The topic register says ''the former HTML
+    artefacts are rebuild inputs only.'' The marking existed in a changelog entry inside a thousand-line
+    YAML file while the files themselves said nothing, so three separate passes today found them and assumed
+    they were live. MFC does mark things - in places nobody reads. Third, self-caught and disclosed to
+    Hunter rather than buried: the nine-section architecture this system authored put ''why knowing isn''t
+    enough'' before ''what you actually do'', which reverses beats 9 and 10 of the script and contradicts
+    D-0131''s rule that nothing is reordered. Founder-voice wrote to the reversed version. Surfaced as
+    Hunter''s decision, not resolved unilaterally.'
+  changes: []
+  unresolved:
+  - The nine transitions are written but not applied to the script or the cards. The section-ordering
+    contradiction between the nine sections and D-0131's beat order is Hunter's call and is open. The
+    archaeology scan of the three August decks and the 2026-08-29 service triads was still running at
+    close - its findings are not yet reflected anywhere. The statistics from the 2026-09-08 research remain
+    unwritten to 10-sources and were never independently verified by this system; two WebFetch attempts
+    to Safe Work Australia timed out and the word verified was withdrawn. No fresh-context adversarial
+    pass has run against the card set since the six rulings of 2026-09-09.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 'The topic-start gate now prints what already exists for a topic
+  BEFORE any build begins - dated, newest first, on the allow path only, failing open on every error,
+  which was demonstrated live through three separate failures during construction. Verified: 268 artefacts
+  for workshop-delivery, twelve most recent shown. Committed at 4b8a090 along with the day''s uncommitted
+  workshop work: D-0131, the 2026-09-08 founder content bank, the amended delivery script and the A-10
+  specialist packets, all staged for up to 24 hours.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/packets-transitions-2026-09-09/A-25-output.md
+specialists:
+- id: A-25
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/packets-transitions-2026-09-09/A-25-packet.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/packets-transitions-2026-09-09/A-25-output.md
+  contribution: 'Founder Voice: wrote all nine spoken section transitions from the 2026-05-25 delivery
+    transcript and the 2026-09-08 content bank, with a device inventory proving no two joins use the same
+    mechanism, and independently caught a section-ordering contradiction this system had introduced'
+  learning_disposition: no_new_learning
+outputs_summary:
+  hook: .claude/hooks/require_topic_start_receipt.py
+  commit: 4b8a090
+  cards: https://claude.ai/code/artifact/f4f408c8-1bfc-4f0a-8f8f-3cbd3b2b7833

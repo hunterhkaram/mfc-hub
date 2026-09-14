@@ -1,0 +1,167 @@
+objective: measurement-architecture-and-research-partnership-2026-08-11
+artefact_reviewed: >
+  60-projects/committee-pack-v1/B5c-timepoints-and-the-durability-lock.md;
+  60-projects/committee-pack-v1/B5b-item-bank-literal-wording.md;
+  60-projects/committee-pack-v1/R9-research-partnership-strategy.md
+context: >
+  Hunter's direct request, 2026-08-11: the exact measurement forms and every specific question at
+  four timepoints (pre / immediate-post / 3-4 weeks / 3 months), rationale for everything, certainty
+  that the design will not need altering over time, plus the strategy for connecting with a research
+  university. Classified MFC_MATERIAL by route_mfc_intake.py and answered "yes, full executive
+  intake" at the CLAUDE.md section 9d material-choice gate, which per how-to-run-a-real-panel.md
+  mandates a real multi-specialist panel rather than a single producer/checker loop.
+  Model economy per Hunter's instruction: strategy and synthesis in Opus, all build and review work
+  delegated to Sonnet and Haiku agents.
+
+specialists:
+  - id: FL-02
+    name: Flint (approach contrarian)
+    model: sonnet
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-flint-measurement-architecture-review.md
+  - id: FL-03
+    name: Verity (evidence auditor)
+    model: sonnet
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-verity-measurement-architecture-review.md
+  - id: FL-COMMITTEE-Nell
+    name: "Simulated Nell (safeguarding / programs lens)"
+    model: sonnet
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-nell-measurement-architecture-review.md
+  - id: FL-COMMITTEE-Sable
+    name: "Simulated Sable (governance / risk lens)"
+    model: haiku
+    status: ROUTED_FULL
+    outputs:
+      review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-governance-measurement-architecture-review.md
+  - id: FL-01
+    name: Compass (founder lens)
+    model: sonnet
+    status: ROUTED_FULL
+    note: >
+      Run as a genuinely separate final pass, distinct from the producing session's own synthesis,
+      reading the three artefacts AND all four panel reviews cold. Mandatory per
+      how-to-run-a-real-panel.md step 7 as of 2026-08-11; NOT substituted this time, unlike the
+      2026-08-11 committee-paper run where it was.
+    outputs:
+      founder_lens_verdict: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-compass-measurement-architecture-review.md
+      finding_classification_list: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-compass-measurement-architecture-review.md
+      mission_fit_assessment: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-compass-measurement-architecture-review.md
+      must_fix_list: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-compass-measurement-architecture-review.md
+      genuine_founder_decision_list: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-11-compass-measurement-architecture-review.md
+
+non_routing_reasoning:
+  A-11: >
+    Measurement, evaluation and insights specialist -- genuinely the closest domain match, and
+    deliberately NOT routed. The three artefacts under review ARE that specialist's own output
+    domain; routing it would have produced a self-review of the producing frame, which is exactly
+    what L-051 identifies as the failure ("verification is not a premise audit -- a reviewer
+    checking an artefact against its sources inherits the producer's frame"). Flint was routed
+    instead to attack the premise from outside it. Stated here because omitting the most obviously
+    relevant specialist needs a reason, not silence.
+  FL-COMMITTEE-Dax: >
+    Commercial/financial lens not routed as a separate seat. The one live financial question (the
+    $4,125-$7,425 Bellberry HREC spend against a ~$12k reserve) was covered by the governance lens,
+    and Flint independently raised the broader resource-allocation question as his highest-value
+    finding. A third seat on the same ground would have been ceremony.
+  FL-COMMITTEE-Juno: >
+    Brand/messaging lens. These are internal instrument-specification and strategy documents; no
+    public-facing or brand copy is produced. Not relevant.
+  FL-COMMITTEE-Ellis: >
+    Risk/partnerships/commercial. The partnership content (R9) is a strategy for approaching
+    universities, not a commercial partnership being entered into; the conflict-of-interest question
+    it raises (Black Dog Institute) was covered by the governance lens.
+  A-25: >
+    Internal knowledge management. Not relevant to instrument design or research-partnership strategy.
+
+convergent_findings:
+  - finding: >
+      The durability lock at B5c section 4 was a written norm with nothing enforcing it.
+    raised_independently_by: [FL-02, FL-COMMITTEE-Sable]
+    strength: "2 of 4, from opposite lenses (contrarian: 'this is reassurance theatre'; governance: 'an unenforced control is a liability, not an asset')"
+    supporting_evidence_found_by_flint: >
+      This exact project already had a rule of the same shape -- "wording, options and answer key
+      must stay identical across all timepoints or the comparison is void" -- and it was silently
+      violated (B5 section 9: B-03/B-05 cut from Form 2 while kept on Form 1, stranding the
+      baseline, uncaught for three passes).
+    resolution: >
+      FIXED, not noted. Built 90-meta/session-tools-v1/verify_measurement_frozen_core.py with a
+      hashed snapshot (measurement-frozen-core.json), wired into run_all_controls.py per L-010, and
+      TESTED AGAINST A REAL TAMPER before being reported as working -- A-01's stem was altered in
+      B5, the control returned FAIL_FROZEN_CORE and exit 1, and the file was restored. Its limit is
+      stated in the script and in B5c: it verifies the specification documents, not the live form
+      tool.
+  - finding: >
+      The day-90 form has no delivery channel, and a harm disclosure on it has no reader.
+    raised_independently_by: [FL-COMMITTEE-Nell, FL-COMMITTEE-Sable, "the producing session's own B5c section 7"]
+    strength: "3 of 4, from safeguarding, governance and self-disclosure"
+    resolution: >
+      Upgraded from a footnote to a named BLOCKER at B5c section 7.1, with the two delivery options
+      tabulated against what the host learns, what MFC holds, response rate, and consent
+      implications. Explicitly recorded that NEITHER option solves the harm-disclosure path -- the
+      channel question and the distress-pathway question look like one problem and are two. Owner
+      assigned to qualified clinical governance under D-0016 items 1 and 4.
+  - finding: >
+      R9 section 4 recommended holding raw participant data past the promised retention schedule to
+      preserve a future re-consent option, without disclosing that possibility to participants.
+    raised_independently_by: [FL-COMMITTEE-Nell, FL-COMMITTEE-Sable]
+    strength: "2 of 4"
+    resolution: >
+      FIXED. R9 section 4 now carries a correction requiring the possibility to be disclosed in the
+      collection notice BEFORE fielding, a real outer date either way, and a fallback rule: if the
+      disclosure does not happen before fielding, destroy on the original schedule. The financial
+      recommendation (Option (a) over a $4,125+ review) is unchanged; how the option is kept open is
+      what changed.
+
+producer_self_caught_before_panel:
+  - >
+    D-0056 lineage. The first draft of B5c framed the four-timepoint change as amending D-0017
+    section 1 only. A direct read of D-0056 found that (a) Hunter had already approved a three-month
+    wave on 2026-08-03, (b) D-0017 section 6's second-wave exclusion had already been overridden
+    then and not now, and (c) Hunter's own 2026-08-05 correction warns verbatim that the
+    fixed-3-month framing must not "recur in a future session reading this record cold" -- which is
+    exactly what this session was doing. Surfaced prominently at B5c section 1 rather than silently
+    reconciled, per CLAUDE.md section 4.
+  - >
+    B5's own internal contradiction on H-01: sections 4 and 9 both state it is "unconditional, on
+    every form", but section 3's Form 1 table omits it. Recorded at B5c section 3.1 with the
+    non-obvious reason the answer may be the table's (at baseline "today" has no referent) and the
+    owner assigned to clinical governance.
+  - >
+    B5b's B-06 vignette used a named actor ("Priya"). Resolved to unnamed third person on a
+    measurement argument (a first-person version invites self-serving attribution), not the
+    readability-vs-neutrality trade-off the drafter had framed it as.
+
+disagreements:
+  - between: [FL-02, "the producing session"]
+    on: "whether to field four timepoints for cohort 1 or validate three first"
+    outcome: >
+      PRESERVED, NOT RESOLVED. Flint's sequenced alternative (prove the day-21 channel works before
+      adding day 90) is a legitimate untried approach and is not dismissed. The producing session's
+      counter-argument is asymmetry: if day-21 response collapses, day-90 costs nothing extra
+      because nobody responds; if it does not collapse, day-90 data cannot be obtained
+      retrospectively. Both are in front of Hunter; neither reviewer was overruled silently.
+  - between: [FL-COMMITTEE-Sable, "the record"]
+    on: "Sable finding 1 and finding 5"
+    outcome: >
+      NARROWED. Sable's finding 1 recommended "adoption of token+SGIC design" as if not yet adopted
+      -- it is already adopted at B5 section 2.1. Finding 5 stated the four-timepoint design was
+      "already built, not yet approved" -- B5c states explicitly and repeatedly that D-0100 is
+      drafted-not-adopted and that nothing is built. Both were partial misreads; the underlying
+      governance points (custody protocol; formal approval owed) are accepted and stand.
+
+what_this_run_shows: >
+  Five genuinely separate reviewers found: three factual errors in the producing session's own
+  documents (an author-count error contradicting the document's own table; an amendment claimed in
+  frontmatter and never delivered in the body; a frozen-core item count stated as eleven where the
+  table counts ten), two convergent structural gaps, and one unenforced control that was then built
+  and tamper-tested. Verity independently re-verified the single most consequential external number
+  in the work -- Bellberry's HREC fee schedule, on which a third of MFC's reserve turns -- and
+  confirmed it exactly. Offered as one further data point on the panel's value, not as proof it
+  catches everything.
+
+errors_that_reached_hunter_before_being_caught: 0

@@ -1,0 +1,223 @@
+schema_version: 2
+objective: Confirm Hunter's Kirkpatrick-scoping decision (applies where a return session exists; Introduction
+  is pre/post only), record it, propagate into the forms document, and draft an advisor-facing email introducing
+  the structure to Onno, Eimear and Debra -- checked before it goes anywhere near them.
+task_session_id: f61faad4-5196-471e-b9b4-fdfafaa88e22
+material_prompt_fingerprint: 3b1998b18ef99d49
+material_task_id: 3b1998b18ef99d49-2026-09-01T10:19:00.834096+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-08
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-09
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-12
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-14
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-10
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-11
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-13
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-15
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: SYS-03
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-16
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-17
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-18
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-19
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-20
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-21
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-22
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-23
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-24
+  disposition: route_now
+  reason: fresh-context adversarial check of the draft advisor email and D-0120's propagation before external
+    send
+- id: A-25
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-26
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: SYS-04
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: SYS-05
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-d0120-kirkpatrick-scope-and-advisor-email-check
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-d0120-kirkpatrick-scope-and-advisor-email-check
+  completed_before_execution: true
+  decision_surfaces:
+  - Whether Onno and Eimear have already met. The first email draft asserted they had not; this was checked
+    against four committee transcripts (2026-06-01, 06-15, 06-22, 08-31) and found false. Corrected before
+    send.
+  omissions_challenged:
+  - Reconsidered running A-08 (messaging) as a separate executed lens on the email tone. Excluded because
+    the load-bearing risk was factual accuracy to named real people (did Onno meet Eimear, is IMTTAQ wording
+    disclosed as placeholder), which is a verification task, not a tone task; A-24's adversarial-check
+    role covers exactly that and actually re-verified the checker's own findings against primary transcripts
+    before accepting them, which a tone pass would not have done. Also reconsidered whether D-0120 itself
+    needed a separate H-01/A-12 clinical pass; excluded because it is a scope decision about which product
+    gets which timepoints, not a participant-safety question -- no new participant-facing wording was
+    introduced.
+  changes:
+  - 'D-0120 recorded: Kirkpatrick''s structure scoped to services with a return session; Introduction
+    settled as pre/post comprehension only, no WHO-5, explicitly superseding D-0109 point 3''s self-flagged
+    inference. Propagated into MEASUREMENT-FORMS-v4.html (Introduction row, conflict section reduced from
+    two items to one resolved). D-0120 itself was independently checked and corrected twice: an offered
+    D-0115 Level-4 source was removed after being verified absent from D-0115''s actual text, and a K-08
+    attribution sentence was reworded to attribute the reasoning chain to A-11''s application rather than
+    to K-08 itself. The advisor email was rewritten after adversarial check found two send-blocking errors:
+    the false Onno/Eimear first-meeting claim, and a silent omission of the IMTTAQ-placeholder and A8/A9-open-item
+    disclosures that the draft''s own internal note had required. Both fixed in v2.'
+  unresolved:
+  - Email remains a draft for Hunter to personally edit and send -- not sent by this session. IMTTAQ wording
+    still not obtained. A8/A9 situational-judgement items still require a founder decision before entering
+    the canonical architecture. The Kirkpatrick-has-no-item-bank claim is disclosed in the email as Hunter's
+    own read rather than sourced research, since no vault citation was found for it.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: writeback_completed
+what_changed_because_a_specialist_ran: >
+  A-24's adversarial check rewrote the advisor email before any external send. It found and
+  corrected a false factual claim (the draft told Eimear Quigley that Onno van-Es had never met
+  her; four committee transcripts show them on calls together since June -- corrected to name
+  Onno and Debra Fidler as the actual first-meeting pair). It also found the draft silently
+  omitted, while asking for wording review, that six IMTTAQ items are still placeholder text and
+  that two new scenario questions are still an open design decision -- both are now disclosed in
+  the email body itself, per the check's explicit instruction that this not be left for Eimear to
+  discover on her own. It softened an overstated "architecture is settled" line, and flagged an
+  unsourced "confirmed by research" claim about Kirkpatrick having no item bank, now stated as
+  Hunter's own read rather than vault-verified fact. Separately, this same review corrected D-0120
+  itself twice before it was finalised: removed an offered D-0115 Level-4 source that does not
+  actually mention Kirkpatrick anywhere in its text, and reattributed a K-08 reasoning chain from
+  K-08 itself to A-11's application of it.
+
+  A second wave, four department heads (compliance, research, product, digital), then found five
+  further changes before the email or forms could be treated as ready. Most consequential:
+  head-of-research traced "IMTTAQ" to its origin and found the only primary source renders it
+  "IMTAC" in an auto-transcript, with the full name appearing only in a non-verbatim extract; no
+  published instrument under either name was locatable. This is an existence-unconfirmed problem,
+  not a wording-unheld one. The email's "exactly two validated instruments" claim was withdrawn
+  and replaced with a direct question to Eimear Quigley asking her to name and cite the actual
+  instrument; MEASUREMENT-FORMS-v4.html's key, item table and blocker 1 were rewritten to the same
+  effect. Head-of-compliance found the two participant disclaimers in the HTML directly
+  contradicted each other ("nobody scores you" beside "when people score low...") -- corrected to
+  "no one reviews or scores you individually." It also found D-0119's advisor-guidance table
+  overstated AG-007 as "Followed" when the implementing wording is still a draft pending Eimear's
+  review -- corrected to "addressed in draft, not yet followed," and surfaced an unchecked
+  insurance exposure (professional-indemnity exclusion BUP026) now added as a named blocker and a
+  line in the email. Head-of-digital found platform selection -- the single dependency the entire
+  no-contact linkage design rests on for its anonymity promise -- was absent from every blocker
+  list despite being flagged as open in every other source document; added as a blocker.
+  Head-of-product found D-0120 reversed D-0111's "no data capture" characterisation of Introduction
+  without surfacing the conflict, per CLAUDE.md section 4/2a; a surfacing note was added to D-0120
+  rather than silently resolving it either way.
+specialist_evidence_2: 60-projects/measurement-strategy-v1/MEASUREMENT-FORMS-v4.html
+specialist_evidence: 60-projects/measurement-strategy-v1/02-DRAFT-ADVISOR-EMAIL-kirkpatrick-and-forms.md
+specialists:
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/measurement-strategy-v1/02-DRAFT-ADVISOR-EMAIL-kirkpatrick-and-forms.md
+  outputs:
+    review: 60-projects/measurement-strategy-v1/02-DRAFT-ADVISOR-EMAIL-kirkpatrick-and-forms.md
+  contribution: fresh-context adversarial check of the draft advisor email and D-0120's propagation before
+    external send
+  learning_disposition: writeback_completed
+- id: head-of-compliance
+  execution_mode: bounded_specialist_review
+  task_packet: .claude/agents/head-of-compliance.md
+  outputs:
+    review: 30-decisions/D-0119-no-counts-scope-and-who5-disclaimer-not-clinical-apparatus.md
+  contribution: found contradictory participant disclaimers in MEASUREMENT-FORMS-v4.html section 7,
+    an overstated AG-007 status in D-0119, and an unchecked professional-indemnity insurance
+    exposure on fielding WHO-5 at scale
+  learning_disposition: writeback_completed
+- id: head-of-research
+  execution_mode: bounded_specialist_review
+  task_packet: .claude/agents/head-of-research.md
+  outputs:
+    review: 60-projects/measurement-strategy-v1/MEASUREMENT-FORMS-v4.html
+  contribution: traced IMTTAQ to its origin and found it is an unconfirmed instrument name, not
+    merely unheld wording -- the single most consequential finding of this session
+  learning_disposition: writeback_completed
+- id: head-of-product
+  execution_mode: bounded_specialist_review
+  task_packet: .claude/agents/head-of-product.md
+  outputs:
+    review: 30-decisions/D-0120-kirkpatrick-scoped-to-return-sessions-introduction-is-pre-post-only.md
+  contribution: found D-0120 reversed D-0111's "no data capture" characterisation of Introduction
+    without surfacing the conflict, plus session-sequencing and accessibility gaps for facilitator
+    scripting
+  learning_disposition: writeback_completed
+- id: head-of-digital
+  execution_mode: bounded_specialist_review
+  task_packet: .claude/agents/head-of-digital.md
+  outputs:
+    review: 60-projects/measurement-strategy-v1/MEASUREMENT-FORMS-v4.html
+  contribution: confirmed the HTML artefact itself is static and safe; found platform selection --
+    the dependency the entire no-contact linkage design's anonymity promise rests on -- was absent
+    from every blocker list
+  learning_disposition: writeback_completed
+- id: head-of-social
+  execution_mode: bounded_specialist_review
+  task_packet: .claude/agents/head-of-social.md
+  outputs:
+    review: 60-projects/measurement-strategy-v1/MEASUREMENT-FORMS-v4.html
+  contribution: confirmed a false-positive trigger. The domain match was on the literal word
+    "post" in Hunter's own phrase "pre and post" (measurement timing), not social media. Checked
+    all three artefacts directly for anything touching captions, channels, content calendar or the
+    D-0116 social lead-source, and found none. Not relevant to this task.
+  learning_disposition: no_new_learning
+outputs_summary:
+  decision: 30-decisions/D-0120-kirkpatrick-scoped-to-return-sessions-introduction-is-pre-post-only.md
+  email_draft: 60-projects/measurement-strategy-v1/02-DRAFT-ADVISOR-EMAIL-kirkpatrick-and-forms.md
+  forms: 60-projects/measurement-strategy-v1/MEASUREMENT-FORMS-v4.html

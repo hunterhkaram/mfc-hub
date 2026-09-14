@@ -1,0 +1,567 @@
+<!--
+MACHINE-READABLE SUPERSESSION MARKING.
+The fields below are line-anchored plain text, deliberately, because check_supersession.py reads
+line-anchored `superseded_by:` / `status:` / `updated:` and CANNOT parse HTML <meta> tags. This
+file's markings were previously in <meta> tags only, so the tool reported "no supersession signal
+found" on it and a condition was passed against a marking no control could see. A marking no
+control can see is not a marking.
+
+status: superseded
+updated: 2026-09-04
+superseded_by: 60-projects/measurement-strategy-v1/2026-09-04-MEASUREMENT-v5.md
+superseded_on: 2026-09-04
+supersession_note: Superseded in full 2026-09-04 by MEASUREMENT-v5, which is the single live
+  measurement artefact. This file's paired pre/post design (A1-C7, A8-B7, A9-B8) has no items left
+  under the one-touchpoint cut, so every before/after statement in its reporting table is
+  impermissible. Its C5 safety item survives verbatim and is carried into v5 as M5-S1. Retained as
+  history; do not field from it and do not send it to an advisor.
+-->
+<meta charset="utf-8">
+<meta name="mfc_topic" content="measurement">
+<meta name="artifact_role" content="candidate">
+<meta name="canonical_source" content="60-projects/workshop-evidence-informed-adult/15-current-service-definition-v1/20-MEASUREMENT-SYSTEM-v3.md">
+<meta name="created" content="2026-09-01">
+<meta name="updated" content="2026-09-04">
+<meta name="status" content="internal candidate for founder review. NOT field-ready — blockers in §8 remain open. Superseded in part, 2026-09-04, by 60-projects/measurement-strategy-v1/2026-09-04-MEASUREMENT-ARCHITECTURE-AND-COMPLETION-ENGINE.md, which resolves blocker 1 (IMTTAQ is real and retrieved) and blocker 2 (WHO-5 licence closed), and which specifies the three-layer instrument set this document predates. Item wording here is not yet updated to match.">
+<meta name="partially_superseded_by" content="60-projects/measurement-strategy-v1/2026-09-04-MEASUREMENT-ARCHITECTURE-AND-COMPLETION-ENGINE.md">
+<meta name="owner" content="hunter">
+<meta name="confidentiality" content="internal">
+<title>MFC Measurement Forms v4 — what we ask, when, and why</title>
+<style>
+  :root{
+    --bg:#fbfbfa; --fg:#20211f; --muted:#63655f; --line:#e2e2dd; --card:#fff;
+    --imttaq:#2563eb; --who5:#7c3aed; --mfc:#9ca3af;
+    --l0:#5b6875; --l1:#046a80; --l2:#036c4e; --l3:#8a5606; --l4:#b01a13;
+    --warn-bg:#fef6e7; --warn-line:#e6b45e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#17181a; --fg:#e8e8e4; --muted:#9b9d97; --line:#31333a; --card:#1e1f23;
+           --imttaq:#7ba6ff; --who5:#b18aff; --mfc:#6b7280;
+           --l0:#7d8ba0; --l1:#3bb9d4; --l2:#34c79a; --l3:#f0a93c; --l4:#f2706a;
+           --warn-bg:#2c2415; --warn-line:#8a6a2e; }
+  }
+  :root[data-theme="dark"]{ --bg:#17181a; --fg:#e8e8e4; --muted:#9b9d97; --line:#31333a; --card:#1e1f23;
+    --imttaq:#7ba6ff; --who5:#b18aff; --mfc:#6b7280;
+    --l0:#7d8ba0; --l1:#3bb9d4; --l2:#34c79a; --l3:#f0a93c; --l4:#f2706a;
+    --warn-bg:#2c2415; --warn-line:#8a6a2e; }
+  :root[data-theme="light"]{ --bg:#fbfbfa; --fg:#20211f; --muted:#63655f; --line:#e2e2dd; --card:#fff;
+    --imttaq:#2563eb; --who5:#7c3aed; --mfc:#9ca3af;
+    --l0:#5b6875; --l1:#046a80; --l2:#036c4e; --l3:#8a5606; --l4:#b01a13;
+    --warn-bg:#fef6e7; --warn-line:#e6b45e; }
+
+  body{background:var(--bg);color:var(--fg);
+    font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Inter,system-ui,sans-serif;
+    margin:0;padding:2.2rem 1.2rem 5rem;-webkit-text-size-adjust:100%;}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{font-size:1.85rem;line-height:1.2;margin:0 0 .3rem;letter-spacing:-.02em}
+  .sub{color:var(--muted);margin:0 0 2rem;font-size:1rem}
+  h2{font-size:1.28rem;margin:2.8rem 0 .5rem;letter-spacing:-.01em;
+     padding-bottom:.4rem;border-bottom:1px solid var(--line)}
+  p{margin:.6rem 0}
+  .muted{color:var(--muted)}
+  small{font-size:.845rem}
+
+  .key{background:var(--card);border:1px solid var(--line);border-radius:12px;
+       padding:1rem 1.1rem;margin:1.4rem 0 2rem}
+  .key h3{margin:0 0 .7rem;font-size:.94rem;text-transform:uppercase;
+          letter-spacing:.07em;color:var(--muted)}
+  .keyrow{display:flex;gap:.6rem;align-items:flex-start;margin:.55rem 0;flex-wrap:wrap}
+  .dot{width:13px;height:13px;border-radius:50%;flex:0 0 13px;margin-top:.32rem;display:inline-block}
+  .dot.imttaq{background:var(--imttaq)}
+  .dot.who5{background:var(--who5)}
+  .dot.mfc{background:transparent;border:1.5px solid var(--mfc)}
+  .keyrow b{font-weight:650}
+
+  .lv{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.04em;
+      padding:.1rem .42rem;border-radius:4px;color:#fff;white-space:nowrap}
+  .lv0{background:var(--l0)} .lv1{background:var(--l1)} .lv2{background:var(--l2)}
+  .lv3{background:var(--l3)} .lv4{background:var(--l4)}
+  .lvn{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+  .scroll{overflow-x:auto;outline-offset:2px;-webkit-overflow-scrolling:touch;margin:.8rem 0}
+  table{border-collapse:collapse;width:100%;min-width:660px;font-size:.9rem}
+  th,td{text-align:left;padding:.6rem .65rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+     font-weight:650;white-space:nowrap}
+  td.id{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.83rem;white-space:nowrap}
+  tr.imttaq td:first-child{box-shadow:inset 3px 0 0 var(--imttaq)}
+  tr.who5 td:first-child{box-shadow:inset 3px 0 0 var(--who5)}
+  .opts{color:var(--muted);font-size:.83rem}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+        padding:1rem 1.15rem;margin:1rem 0}
+  .warn{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:12px;
+        padding:1rem 1.15rem;margin:1.2rem 0}
+  blockquote{margin:.7rem 0;padding:.7rem 1rem;border-left:3px solid var(--line);
+             background:var(--card);border-radius:0 8px 8px 0;font-size:.94rem}
+  ul{margin:.5rem 0;padding-left:1.15rem} li{margin:.28rem 0}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em;
+       background:var(--card);border:1px solid var(--line);border-radius:4px;padding:.05em .3em}
+  .meta{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.86rem;color:var(--muted);margin:.4rem 0 0}
+
+  /* rendered form preview */
+  .form-shell{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:.3rem 0;margin:1rem 0 1.8rem;overflow:hidden}
+  .form-head{padding:1rem 1.2rem;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.4rem}
+  .form-head b{font-size:1.02rem}
+  .qcard{padding:1.1rem 1.2rem;border-bottom:1px solid var(--line)}
+  .qcard:last-child{border-bottom:none}
+  .qcard.placeholder{background:repeating-linear-gradient(135deg,transparent,transparent 10px,
+    color-mix(in srgb, var(--warn-line) 12%, transparent) 10px,
+    color-mix(in srgb, var(--warn-line) 12%, transparent) 20px)}
+  .qmeta{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;flex-wrap:wrap}
+  .qmeta .dot{margin-top:0}
+  .qid{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;color:var(--muted)}
+  .qtext{font-size:.98rem;font-weight:560;margin:.15rem 0 .6rem;line-height:1.45}
+  .qopts{display:flex;flex-direction:column;gap:.4rem}
+  .opt{display:flex;align-items:center;gap:.55rem;font-size:.88rem;color:var(--fg)}
+  .opt .rb{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--muted);flex:0 0 15px}
+  .opt.excl{color:var(--muted);font-style:italic}
+  .qscale{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.2rem}
+  .qscale span{font-size:.76rem;padding:.28rem .5rem;border:1px solid var(--line);border-radius:6px;
+    color:var(--muted)}
+  .qnum{width:64px;padding:.4rem .55rem;border:1px solid var(--line);border-radius:6px;
+    background:var(--bg);color:var(--muted);font-size:.85rem;display:inline-block}
+  .qtext-open{width:100%;min-height:2.6rem;border:1px solid var(--line);border-radius:8px;
+    background:var(--bg);color:var(--muted);font-size:.85rem;padding:.5rem .6rem;margin-top:.3rem}
+  .ph-banner{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;
+    padding:.7rem .9rem;font-size:.85rem;margin:.6rem 1.2rem 1rem}
+</style>
+
+<div class="wrap">
+
+<h1>MFC Measurement Forms v4</h1>
+<p class="sub">What we ask, when we ask it, and why — organised on Kirkpatrick's four levels.
+<br><small>1 September 2026 · candidate for founder review · <strong>not field-ready</strong> — open blockers in §8</small></p>
+
+<div class="key">
+  <h3>Key — how to read every item below</h3>
+  <div class="keyrow"><span class="dot imttaq"></span><div><b>IMTTAQ</b> — <b>working name, not yet confirmed as a real citable instrument</b> (blocker 1). Six items measuring reported transfer and whether the workplace gave them the opportunity. <span class="muted">Treat as unvalidated until the source is confirmed — do not present externally as "validated" until then.</span></div></div>
+  <div class="keyrow"><span class="dot who5"></span><div><b>WHO-5</b> — validated instrument. Five items, well-established wellbeing index with published norms. <span class="muted">Used as a context measure, never as an outcome MFC claims to have moved.</span></div></div>
+  <div class="keyrow"><span class="dot mfc"></span><div><b>MFC-designed</b> — our own questions. <span class="muted">Not validated. Unknown reliability and construct validity — which is exactly why the two above are there.</span></div></div>
+  <div class="keyrow" style="margin-top:.9rem;border-top:1px solid var(--line);padding-top:.8rem">
+    <div><b>Kirkpatrick levels:</b>
+    <span class="lv lv0">L0</span> anchor (not a level) ·
+    <span class="lv lv1">L1</span> reaction ·
+    <span class="lv lv2">L2</span> learning ·
+    <span class="lv lv3">L3</span> behaviour ·
+    <span class="lv lv4">L4</span> results ·
+    <span class="lv lvn">—</span> supporting, outside the ladder</div>
+  </div>
+</div>
+
+<h2>See the forms — every question, in order, as a participant sees it</h2>
+<p class="muted">Full detail underneath in §3–5 for wording review. This is the form itself.</p>
+
+<div class="form-shell">
+  <div class="form-head"><b>Form A — before the session</b><span class="muted">In room, pre-teaching · 8 items · ~4 min</span></div>
+
+  <div class="qcard">
+    <div class="qmeta"><span class="qid">A1</span><span class="dot mfc"></span><span class="lv lv0">L0</span></div>
+    <div class="qtext">In the past 14 days, how often have you noticed an everyday moment where you may have wanted to pause, create some space or perspective, or choose what to do next?</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span>Never</div>
+      <div class="opt"><span class="rb"></span>Once</div>
+      <div class="opt"><span class="rb"></span>2–3 times</div>
+      <div class="opt"><span class="rb"></span>4 or more times</div>
+      <div class="opt"><span class="rb"></span>Not sure</div>
+      <div class="opt excl"><span class="rb"></span>Prefer not to say</div>
+    </div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">A3–A7</span><span class="dot who5"></span><b>WHO-5</b><span class="opts">⚠ wording unverified against master, blocker 2</span></div>
+    <div class="qtext" style="margin-bottom:.3rem">Over the last two weeks:</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span><b>A3</b> — I have felt cheerful and in good spirits</div>
+      <div class="opt"><span class="rb"></span><b>A4</b> — I have felt calm and relaxed</div>
+      <div class="opt"><span class="rb"></span><b>A5</b> — I have felt active and vigorous</div>
+      <div class="opt"><span class="rb"></span><b>A6</b> — I woke up feeling fresh and rested</div>
+      <div class="opt"><span class="rb"></span><b>A7</b> — My daily life has been filled with things that interest me</div>
+    </div>
+    <div class="qscale"><span>At no time</span><span>Some of the time</span><span>Less than half</span><span>More than half</span><span>Most of the time</span><span>All of the time</span></div>
+    <p class="muted" style="margin:.6rem 0 0;font-size:.83rem">Each item scored 0–5 on that scale, every time it appears.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qmeta"><span class="qid">A8</span><span class="dot mfc"></span><span class="lv lv2">L2 · pre-half</span><span class="opts">⚠ NEW — your decision required, never comprehension-tested</span></div>
+    <div class="qtext">You are about to walk into a conversation you have been dreading, and you notice your chest tighten and your thoughts start racing. What do you do next?</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span>Notice what is happening and name it before deciding anything <span class="muted">(scored correct)</span></div>
+      <div class="opt"><span class="rb"></span>Push the feeling down and get through the conversation</div>
+      <div class="opt"><span class="rb"></span>Cancel the conversation until you feel calmer</div>
+      <div class="opt"><span class="rb"></span>Not sure</div>
+      <div class="opt excl"><span class="rb"></span>Prefer not to say</div>
+    </div>
+    <p class="muted" style="margin:.5rem 0 0;font-size:.82rem">⚠ "Notice… and name it" as the scored-correct answer sits in tension with our own rule against centring emotional labelling — worth resolving before this goes live.</p>
+  </div>
+
+  <div class="qcard">
+    <div class="qmeta"><span class="qid">A9</span><span class="dot mfc"></span><span class="lv lv2">L2 · pre-half</span><span class="opts">⚠ NEW — your decision required</span></div>
+    <div class="qtext">A moment has come up on your Radar and you have noticed it. You have about thirty seconds before you have to respond. What do you do next?</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span>Create a bit of space, then choose one next move <span class="muted">(scored correct)</span></div>
+      <div class="opt"><span class="rb"></span>Work out why you are feeling this way before doing anything</div>
+      <div class="opt"><span class="rb"></span>Wait until the feeling passes</div>
+      <div class="opt"><span class="rb"></span>Not sure</div>
+      <div class="opt excl"><span class="rb"></span>Prefer not to say</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-shell">
+  <div class="form-head"><b>Form B — immediately after the session</b><span class="muted">In room, end of session · 9 items · ~5 min</span></div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B1</span><span class="dot mfc"></span><span class="lv lv2">L2 · post-only</span></div>
+    <div class="qtext">Which best describes what a guided rehearsal was for in this session?</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span>Trying the process with a fictional or low-risk example</div>
+      <div class="opt"><span class="rb"></span>Proving I can use it in real life</div>
+      <div class="opt"><span class="rb"></span>Sharing a personal problem with the group</div>
+      <div class="opt"><span class="rb"></span>Not sure</div>
+      <div class="opt excl"><span class="rb"></span>Prefer not to say</div>
+    </div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B2</span><span class="dot mfc"></span><span class="lv lv2">L2 · post-only</span></div>
+    <div class="qtext">Which best describes a Mental Rep?</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span>Intentionally using the process in a real moment</div>
+      <div class="opt"><span class="rb"></span>Completing a guided rehearsal during the session</div>
+      <div class="opt"><span class="rb"></span>Getting every feeling under control</div>
+      <div class="opt"><span class="rb"></span>Not sure</div>
+      <div class="opt excl"><span class="rb"></span>Prefer not to say</div>
+    </div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B3</span><span class="dot mfc"></span><span class="lv lvn">—</span></div>
+    <div class="qtext">Were you offered a guided rehearsal today?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Yes</div><div class="opt"><span class="rb"></span>No</div><div class="opt"><span class="rb"></span>Not sure</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B4</span><span class="dot mfc"></span><span class="lv lvn">—</span><span class="opts">shown only if B3 = Yes</span></div>
+    <div class="qtext">Which best describes your participation?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Joined in</div><div class="opt"><span class="rb"></span>Worked privately</div><div class="opt"><span class="rb"></span>Observed</div><div class="opt"><span class="rb"></span>Passed</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B5</span><span class="dot mfc"></span><span class="lv lv1">L1</span></div>
+    <div class="qtext">How was the amount of choice about participation?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Too little</div><div class="opt"><span class="rb"></span>About right</div><div class="opt"><span class="rb"></span>Too much</div><div class="opt"><span class="rb"></span>Not sure</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B6</span><span class="dot mfc"></span><span class="lv lv1">L1</span></div>
+    <div class="qtext">Was any part of the wording, example or activity difficult to take part in?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>No</div><div class="opt"><span class="rb"></span>Wording unclear</div><div class="opt"><span class="rb"></span>Example did not fit</div><div class="opt"><span class="rb"></span>Felt uncomfortable</div><div class="opt"><span class="rb"></span>Activity hard to access</div><div class="opt"><span class="rb"></span>Another reason</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B7, B8</span><span class="dot mfc"></span><span class="lv lv2">L2 · post-half</span><span class="opts">⚠ identical to A8/A9, verbatim — the pair that makes L2 paired rather than post-only</span></div>
+    <div class="qtext">Same two scenarios as A8 and A9 above, repeated exactly.</div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">B9</span><span class="dot mfc"></span><span class="lv lv2">L2</span></div>
+    <div class="qtext">Think of a moment coming up where you might use this. What is it, and what would you do?</div>
+    <div class="qtext-open">Open text · optional · screening rule required before use (blocker 3)</div>
+  </div>
+</div>
+
+<div class="form-shell">
+  <div class="form-head"><b>Form C — day 21–28 return</b><span class="muted">Day 21–28 · 21 items · ~8–10 min</span></div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C1</span><span class="dot mfc"></span><span class="lv lv3">L3</span><span class="opts">gates C2–C6</span></div>
+    <div class="qtext">Since the session on [date], has a moment come up where you might have wanted to pause, create some space or perspective, or choose what to do next?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Yes</div><div class="opt"><span class="rb"></span>No</div><div class="opt"><span class="rb"></span>Not sure</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C2</span><span class="dot mfc"></span><span class="lv lv3">L3</span></div>
+    <div class="qtext">Thinking of one such moment, did you notice the moment and intentionally choose what to do next?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Yes</div><div class="opt"><span class="rb"></span>No</div><div class="opt"><span class="rb"></span>Not sure</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C3a–c</span><span class="dot mfc"></span><span class="lv lv3">L3</span><span class="opts"><b>primary outcome = C3b ÷ C3a</b></span></div>
+    <div class="qtext">In the last 7 days:</div>
+    <div class="qopts">
+      <div class="opt"><b>C3a</b> — how many times did a moment like the ones on your Radar actually come up? <span class="qnum">0–N</span></div>
+      <div class="opt"><b>C3b</b> — of those, in how many did you run the three steps — even partly, even badly, even too late? <span class="qnum">0–N</span></div>
+      <div class="opt"><b>C3c</b> — of those, in how many did you get all the way through? <span class="qnum">0–N</span></div>
+    </div>
+    <p class="muted" style="margin:.5rem 0 0;font-size:.82rem">If C3a=0, the rate is undefined, not zero — recorded separately.</p>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C4</span><span class="dot mfc"></span><span class="lv lv3">L3</span></div>
+    <div class="qtext">Which, if any, made this difficult? Select all that apply.</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Did not notice</div><div class="opt"><span class="rb"></span>No workable Shift</div><div class="opt"><span class="rb"></span>Next move unclear</div><div class="opt"><span class="rb"></span>Safety or relationship concern</div><div class="opt"><span class="rb"></span>Capacity or time</div><div class="opt"><span class="rb"></span>Needed support or change beyond me</div><div class="opt"><span class="rb"></span>Another reason</div><div class="opt"><span class="rb"></span>None</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C5</span><span class="dot mfc"></span><span class="lv lvn">—</span></div>
+    <div class="qtext">Did a situation arise where using this process did not feel appropriate or safe?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Yes</div><div class="opt"><span class="rb"></span>No</div><div class="opt"><span class="rb"></span>Not sure</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C6</span><span class="dot mfc"></span><span class="lv lvn">—</span></div>
+    <div class="qtext">What would make this learning more useful in everyday moments? Select any that apply.</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Clearer language</div><div class="opt"><span class="rb"></span>Different example</div><div class="opt"><span class="rb"></span>More guided practice</div><div class="opt"><span class="rb"></span>More time</div><div class="opt"><span class="rb"></span>More private participation</div><div class="opt"><span class="rb"></span>More support or environmental change</div><div class="opt"><span class="rb"></span>Nothing in particular</div><div class="opt excl"><span class="rb"></span>Not sure / Prefer not to say</div></div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C7</span><span class="dot mfc"></span><span class="lv lv3">L3</span><span class="opts">⚠ NEW — repeats A1 verbatim, closes the pair</span></div>
+    <div class="qtext">Same wording as A1 — "In the past 14 days, how often have you noticed…" — asked again.</div>
+  </div>
+
+  <div class="qcard placeholder"><div class="qmeta"><span class="qid">C8–C13</span><span class="dot imttaq"></span><span class="lv lv3">L3</span></div>
+    <div class="qtext">A training-transfer / opportunity measure — six items, working name "IMTTAQ"</div>
+    <div class="ph-banner">
+      <b>⚠ Illustrative only — not the real items, and not yet a confirmed instrument.</b>
+      Nobody has the actual wording. The only source is Eimear speaking in a meeting, transcribed
+      as "IMTAC" — the name "IMTTAQ" itself is unconfirmed. Below is what a training-transfer /
+      opportunity-to-integrate subscale <i>typically</i> looks like in this field, so you can see
+      the shape — <b>none of this text is what will actually be asked.</b>
+      <div class="qopts" style="margin-top:.6rem;opacity:.75">
+        <div class="opt"><span class="rb"></span><i>e.g. "I have had opportunities to use what I learned in this training."</i></div>
+        <div class="opt"><span class="rb"></span><i>e.g. "My workplace supports me in applying what I learned."</i></div>
+        <div class="opt"><span class="rb"></span><i>e.g. "I have used the skills from this training in my day-to-day work."</i></div>
+      </div>
+      Real items come from Eimear directly, or Debra's Measures Table — see blocker 1.
+    </div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C14–C18</span><span class="dot who5"></span><b>WHO-5</b><span class="opts">identical to A3–A7, repeated</span></div>
+    <div class="qtext">Same five items and scale as Form A, asked again — the repeat that makes the before/after comparison possible.</div>
+  </div>
+
+  <div class="qcard"><div class="qmeta"><span class="qid">C19</span><span class="dot mfc"></span><span class="lv lv3">L3</span></div>
+    <div class="qtext">Think of the most recent time a moment on your Radar came up. What happened, and what did you do?</div>
+    <div class="qtext-open">Open text · optional · screening rule required before use (blocker 3)</div>
+  </div>
+</div>
+
+<h2>1. Which services use these forms</h2>
+<div class="scroll" tabindex="0"><table>
+<tr><th>Service</th><th>Forms</th><th>Why</th></tr>
+<tr><td><b>Introduction</b></td><td>Pre/post comprehension only <span class="opts">(<code>D-0120</code>)</span></td><td>No return session exists, so nothing past Level 2 applies. Right before, right after — did people understand what was taught. No WHO-5, no IMTTAQ, no personal disclosure.</td></tr>
+<tr><td><b>Essentials&nbsp;EVAL-v1</b></td><td>A, B, C</td><td>Standard private evaluation, included when the organisation contracts the measured version.</td></tr>
+<tr><td><b>Foundations&nbsp;EVAL-v1</b></td><td>A, B, C</td><td>Same architecture; delivery record differs by version.</td></tr>
+<tr><td><b>Radar / manager session</b></td><td>Separate record</td><td>Implementation and context track. <b>Never joined</b> to participant responses.</td></tr>
+</table></div>
+
+<div class="warn">
+<p style="margin-top:0"><b>One unresolved conflict, one now resolved.</b></p>
+<ul style="margin-bottom:0">
+<li><b>WHO-5 is in this document but excluded by its own canonical source.</b> <code>D-0109</code> (25 Aug) puts WHO-5 in the routine core for every participant. Measurement System v3 (30 Aug) says <i>"WHO-5 is not in the v3 base route."</i> A decision record outranks a later build candidate, so v4 follows <code>D-0109</code> — but the conflict is real, unresolved, and it is the first thing Eimear will notice.</li>
+<li><b>Resolved, <code>D-0120</code>, 1 Sep.</b> Introduction is pre/post comprehension only — no WHO-5. This directly supersedes <code>D-0109</code> point 3, which had flagged itself as an inferred reading rather than a founder decision.</li>
+</ul>
+</div>
+
+<h2>2. When Kirkpatrick applies — and where the four levels actually live</h2>
+
+<div class="card">
+<p style="margin-top:0"><b><code>D-0120</code>: the four-level structure applies wherever a return
+session exists.</b> Essentials and Foundations, today. Not a fixed product list — if MFC ever builds
+a return touchpoint for another service, the same structure extends to it.</p>
+<p class="muted" style="margin-bottom:0">Introduction has no return session, so it gets Levels 1–2
+only, pre/post — see §1.</p>
+</div>
+
+<p>Your read was that three check-ins carry the four levels, with the third capturing the last two.
+<b>Half right, and the correction matters.</b></p>
+
+<div class="card">
+<p style="margin-top:0"><b>Levels 1–3 are the learner's evidence. Level 4 is the organisation's.</b> L4 does not come
+from the participant form at all — it comes from the delivery/fidelity record and the Radar/manager
+implementation record, which close in the same window.</p>
+<p class="muted" style="margin-bottom:0">If L4 sat on Form C, the only thing available to fill it
+would be WHO-5 — and reporting a wellbeing score as an organisational <em>result</em> is precisely
+the attribution error our claim boundary forbids. Keeping L4 on the organisation side is what makes
+it safe to have at all.</p>
+</div>
+
+<div class="scroll" tabindex="0"><table>
+<tr><th>Checkpoint</th><th>When</th><th>Levels</th><th>Items</th><th>Time</th></tr>
+<tr><td><b>Form A</b> — before</td><td>In room, pre-teaching</td><td><span class="lv lv0">L0</span> <span class="lv lv2">L2</span> <small class="muted">(pre-half)</small></td><td>8</td><td>~4 min</td></tr>
+<tr><td><b>Form B</b> — immediately after</td><td>In room, end of session</td><td><span class="lv lv1">L1</span> <span class="lv lv2">L2</span></td><td>9</td><td>~5 min</td></tr>
+<tr><td><b>Form C</b> — return</td><td>Day 21–28</td><td><span class="lv lv3">L3</span></td><td>21</td><td>~8–10 min</td></tr>
+<tr><td><b>Delivery + Radar/manager records</b></td><td>Same window</td><td><span class="lv lv4">L4</span></td><td>Staff-completed</td><td>—</td></tr>
+</table></div>
+
+<p><b>Baseline is not a Kirkpatrick level.</b> It files as <span class="lv lv0">L0</span> — the
+anchor. Its job is to turn L2 from a post-only score into a paired measurement, which is the
+difference between "they knew this at the end" and "this changed."</p>
+
+<h2>3. Form A — before the session <span class="muted" style="font-weight:400;font-size:.9rem">· 8 items · ~4 min</span></h2>
+<div class="scroll" tabindex="0"><table>
+<tr><th>ID</th><th>Question</th><th>Level</th><th>Why we ask it</th></tr>
+<tr><td class="id">A1</td><td>In the past 14 days, how often have you noticed an everyday moment where you may have wanted to pause, create some space or perspective, or choose what to do next?<div class="opts">Never / Once / 2–3 times / 4 or more / Not sure / Prefer not to say</div></td><td><span class="lv lv0">L0</span></td><td>The anchor. <b>Pairs with C7</b> — without the pair, nothing is comparable over time.</td></tr>
+<tr class="who5"><td class="id">A3–A7</td><td><b>WHO-5</b>, intact, five items. <i>"Over the last two weeks, I have felt cheerful and in good spirits…"</i><div class="opts">At no time → All of the time (0–5)<br>⚠ Wording shown is the standard published version, <b>not yet verified against the WHO Collaborating Centre master</b> — see blocker 2. Same status as IMTTAQ below.</div></td><td><span class="lv lvn">—</span></td><td>The only measure that reaches outside MFC's own vocabulary. Lets us ask whether reported use connects to anything else — <b>association, never causation</b>.</td></tr>
+<tr><td class="id">A8, A9</td><td>Two forced-choice scenarios. <i>"You are about to walk into a conversation you have been dreading, and you notice your chest tighten… What do you do next?"</i><div class="opts">⚠ <b>NEW — your decision required.</b> Never comprehension-tested. Not yet part of the architecture.</div></td><td><span class="lv lv2">L2</span></td><td>The pre-half of the learning measure. Repeated verbatim as B7/B8. <b>A8's scoring key marks "name it" correct, which sits in tension with our own rule against centring emotional labelling — worth resolving before testing.</b></td></tr>
+</table></div>
+<p class="muted"><small>A0 is the study code; A2 is system-captured. Neither is participant-facing. <b>Every MFC-designed item carries "Prefer not to say" — it is never removed to shorten a list.</b></small></p>
+
+<h2>4. Form B — immediately after <span class="muted" style="font-weight:400;font-size:.9rem">· 9 items · ~5 min</span></h2>
+<div class="scroll" tabindex="0"><table>
+<tr><th>ID</th><th>Question</th><th>Level</th><th>Why we ask it</th></tr>
+<tr><td class="id">B1, B2</td><td>Which best describes what a guided rehearsal was for? / Which best describes a Mental Rep?</td><td><span class="lv lv2">L2</span></td><td>Did the core distinction land. <b>Recognition, not unaided recall</b> — reported as such.</td></tr>
+<tr><td class="id">B3, B4</td><td>Were you offered a guided rehearsal? / Which best describes your participation?</td><td><span class="lv lvn">—</span></td><td>Offer and access coverage — tells us whether the session actually delivered what it promised.</td></tr>
+<tr><td class="id">B5, B6</td><td>How was the amount of choice about participation? / Was any part difficult to take part in?</td><td><span class="lv lv1">L1</span></td><td>Reaction, and the two things that most affect whether anyone comes back.</td></tr>
+<tr><td class="id">B7, B8</td><td><i>Identical to A8/A9, verbatim.</i><div class="opts">⚠ NEW — same decision as A8/A9</div></td><td><span class="lv lv2">L2</span></td><td>The post-half. A8→B7 is the paired learning measurement.</td></tr>
+<tr><td class="id">B9</td><td><i>"Think of a moment coming up where you might use this. What is it, and what would you do?"</i></td><td><span class="lv lv2">L2</span></td><td>Open question — required, and the only place plan quality shows.</td></tr>
+</table></div>
+
+<h2>5. Form C — day 21–28 return <span class="muted" style="font-weight:400;font-size:.9rem">· 21 items · ~8–10 min</span></h2>
+<div class="scroll" tabindex="0"><table>
+<tr><th>ID</th><th>Question</th><th>Level</th><th>Why we ask it</th></tr>
+<tr><td class="id">C1</td><td>Since the session, has a moment come up where you might have wanted to pause…?</td><td><span class="lv lv3">L3</span></td><td>Opportunity. <b>Gates everything below</b> — no opportunity is not the same as no use.</td></tr>
+<tr><td class="id">C2</td><td>Did you notice the moment and intentionally choose what to do next?</td><td><span class="lv lv3">L3</span></td><td>The single event that most directly reflects what we teach.</td></tr>
+<tr><td class="id">C3a–c</td><td>In the last 7 days: how many moments came up / in how many did you run the steps — <i>even partly, even badly, even too late</i> / in how many did you get all the way through</td><td><span class="lv lv3">L3</span></td><td><b>Primary outcome = C3b ÷ C3a.</b> <span class="opts">Two rules that must survive any rewrite: if C3a=0 the rate is <b>undefined, not zero</b> — record separately, exclude from the denominator. If C2=Yes with C3b=0 (or the reverse), flag <code>C2_C3b_inconsistent</code> and <b>do not silently recode</b>.</span> Counted events, not a frequency adverb — which is what stops it hitting a ceiling. Matches our own "count the attempt, not the outcome" definition.</td></tr>
+<tr><td class="id">C4</td><td>Which, if any, made this difficult? <span class="opts">(incl. <code>Prefer not to say</code>)</span></td><td><span class="lv lv3">L3</span></td><td>Per-moment barriers. Distinguishes a teaching failure from an environment failure.</td></tr>
+<tr><td class="id">C5</td><td>Did a situation arise where using this process did not feel appropriate or safe?</td><td><span class="lv lvn">—</span></td><td>Safety context. Never cut.</td></tr>
+<tr><td class="id">C6</td><td>What would make this learning more useful in everyday moments?</td><td><span class="lv lvn">—</span></td><td>The only accessibility-and-adaptation signal at three weeks.</td></tr>
+<tr><td class="id">C7</td><td><i>Repeats A1 verbatim.</i><div class="opts">⚠ NEW — your decision required</div></td><td><span class="lv lv3">L3</span></td><td><b>Closes the pair with A1.</b> Without it there is no MFC measure with a before and after at all.</td></tr>
+<tr class="imttaq"><td class="id">C8–C13</td><td>A training-transfer / opportunity measure, working name "IMTTAQ" — <b>expected</b> Training Transfer ×3, Opportunities to Integrate ×3<div class="opts">⚠ Not just wording unheld — the instrument's existence, correct name and this 3+3 subscale split are themselves unconfirmed. See blocker 1 and the placeholder card above. Do not read "expected" as "intact."</div></td><td><span class="lv lv3">L3</span></td><td>Did their environment even let them. If enactment is low <em>and</em> opportunity is low, that is the organisation's finding — not ours. Currently the one layer we assume rather than measure.</td></tr>
+<tr class="who5"><td class="id">C14–C18</td><td><b>WHO-5</b>, intact — identical to A3–A7 <span class="opts">⚠ wording unverified, blocker 2</span></td><td><span class="lv lvn">—</span></td><td>The repeat that makes the cross-comparison possible.</td></tr>
+<tr><td class="id">C19</td><td><i>"Think of the most recent time a moment on your Radar came up. What happened, and what did you do?"</i></td><td><span class="lv lv3">L3</span></td><td>The only item producing checkable behavioural detail — and the most persuasive material we will have for a committee or funder.</td></tr>
+</table></div>
+
+<h2>6. What each level may say in a report</h2>
+<div class="scroll" tabindex="0"><table>
+<tr><th>Level</th><th>Permitted</th><th>Never</th></tr>
+<tr><td><span class="lv lv1">L1</span></td><td>"Among respondents, n/% reported the amount of choice was about right."</td><td>Any inference about learning.</td></tr>
+<tr><td><span class="lv lv2">L2</span><br><small class="muted">post-only</small></td><td>"Among respondents, n/% selected the correct description." <span class="muted">(B1, B2 — no baseline exists for these)</span></td><td>Any before/after claim. These are asked once.</td></tr>
+<tr><td><span class="lv lv2">L2</span><br><small class="muted">paired</small></td><td>"Among linked respondents, n/% answered correctly at both points." <span class="muted">(A8/A9 → B7/B8 only)</span></td><td>Competence. It is recognition, not unaided recall.</td></tr>
+<tr><td><span class="lv lv3">L3</span></td><td>"Among respondents reporting an opportunity, n/% reported intentionally choosing what to do next."</td><td>Observed behaviour. Manager or peer ratings — <b>we do not ask for them, and we say why when an employer requests it.</b></td></tr>
+<tr><td><span class="lv lv4">L4</span></td><td>Delivery counts, response coverage, component implementation.</td><td>Attribution of any organisational change to MFC.</td></tr>
+</table></div>
+
+<div class="card">
+<p style="margin-top:0"><b>Two paragraphs appear verbatim in every report.</b></p>
+<blockquote><b>Level 3.</b> These are participant self-reports of their own use. No behaviour was observed, no individual was assessed, and no manager or colleague was asked to rate anyone. Percentages describe respondents only.</blockquote>
+<blockquote><b>Level 4.</b> These are context measures for the organisation. No change here is attributed to the MFC service. There is no comparison condition, so any movement described is descriptive only.</blockquote>
+<p class="muted" style="margin-bottom:0"><small>The Level 3 one matters more. A buyer reading "Level 3 — Behaviour: 40%" hears observed behaviour.</small></p>
+</div>
+
+<h2>7. What everyone is told — served to everyone, not triggered by any score</h2>
+<blockquote><b>About these questions</b><br><br>
+This is a workshop evaluation, not a health check. MFC is not a clinical service and we are not assessing you. No one reviews or scores you individually, nobody follows up with you, and no one at your workplace sees your answers.<br><br>
+If anything here brings something up for you, or you'd like to talk to someone, your GP is a good place to start. You can call Lifeline any time on <b>13 11 14</b>. In an emergency, call <b>000</b>.</blockquote>
+<blockquote><b>One thing worth knowing about those five questions</b><br><br>
+Those five questions come from a well-known wellbeing questionnaire called the WHO-5. It is widely used and it is not a diagnosis of anything.<br><br>
+One thing is worth saying plainly: when people score low on it, that is sometimes a sign it is worth having a proper conversation about how you have been going. <b>We do not see your score and we cannot tell you yours</b> — these answers are not linked to you, and no one at MFC or at your workplace can look them up.<br><br>
+So this is for you, not from us: if the last couple of weeks have felt flat, heavy or harder than usual, that is worth mentioning to your GP. It is a normal thing to bring up and they will know what to do with it. Lifeline is on <b>13 11 14</b> any time.</blockquote>
+<p class="muted"><small>Both drafted for Eimear to react to, not to be adopted as-is. The scoring note is deliberately softer than "indicates a need for further depression screening" — accurate to a clinician, alarming to a general adult. That calibration is hers to make.</small></p>
+
+<h2>8. Open blockers — why this is not field-ready</h2>
+<div class="warn">
+<ul style="margin:0">
+<li><b>1. IMTTAQ may not be a verifiable instrument at all — not just unheld wording.</b> Traced to source: the only primary record is an auto-transcript of Eimear speaking, rendered "IMTAC," not "IMTTAQ." The name and expansion ("Integrated Model of Training Transfer and its Associated Questionnaire") appear only in a non-verbatim extract of that meeting. No published instrument under either name has been found. <b>Do not call this "validated" or "IMTTAQ" externally until it is confirmed</b> — via Debra's Measures Table, then Eimear directly, asking her to name and cite the actual instrument.</li>
+<li><b>2. WHO-5 master wording not yet obtained, and licence position unconfirmed.</b> The five items shown are a standard published rendering, not verified against the master. Same defect class as blocker 1 — do not build from the text in this document.</li>
+<li><b>2a. Insurance not yet checked.</b> MFC's professional-indemnity exclusion (endorsement BUP026) excludes cover for anything connected to rendering professional advice or service — administering a validated wellbeing instrument at scale is exactly the class of activity that exclusion targets. Ask the broker whether this is a notifiable change in use before fielding, not after.</li>
+<li><b>3. Free-text screening rule</b> for B9 and C19 must exist before first use — identifiability lives in free text, not in the linkage field.</li>
+<li><b>4. Response rate.</b> At a cap of 20 and ~15% completion, a cohort returns 3 responses — below our own 10-respondent reporting floor. <b>The design would suppress its own output.</b> Fix is delivery mode, not item count: complete Form C inside the return session.</li>
+<li><b>5. Form length selects against the people we most need to hear from.</b> Low literacy, English as an additional language, shift work, no private device — these are the participants who drop out of a long form first. A measure only the articulate and desk-based complete is not representative, and in-session completion only partly fixes it. No EAL route, no screen-reader route and no named no-device route currently exist.</li>
+<li><b>6. No analysis plan and no named analyst.</b> The cross-comparison is the entire point of adding WHO-5, and nobody can currently run it.</li>
+<li><b>7. No hosting platform has been selected.</b> The entire no-contact, code-only linkage design is privacy-protective on paper only until a platform is checked for hidden metadata (email/login/IP/device/analytics). If a platform gets chosen by default rather than decision, it can silently break the anonymity promise this whole design rests on.</li>
+<li><b>8. Advisors have never seen this architecture.</b> They were sent a review pack on 13 July — now superseded — and it has zero comments from anyone, 50 days open. They have never seen Measurement System v3 or anything resembling these forms. The gap is larger than "awaiting a reply."</li>
+</ul>
+</div>
+<p class="muted"><small><b>None of these blocks your review of the architecture.</b> Blockers 1–3 and 5 block fielding. Blocker 7 blocks showing this to advisors as a finished thing — though sending it <i>to get</i> their review is exactly the point.</small></p>
+
+<h2>9. Beyond the workshop — the quarterly and year-later check-ins</h2>
+
+<p><code>D-0105</code> (21 Aug) already decided the <i>cadence</i> for this — one Q1 follow-up for
+every standard partner; quarterly for a full year (four touchpoints) for selected case-study
+organisations — but explicitly left the <b>content</b> undesigned: <i>"the content of the
+quarterly organisational check-in form has not yet been designed."</i> That's what this section
+builds.</p>
+
+<div class="warn">
+<p style="margin-top:0"><b>Conflict, surfaced not resolved.</b> <code>D-0115</code> §3 (31 Aug)
+separately adopted <i>"a recurring organisation check-in, monthly or quarterly"</i> for every
+partner org — cadence unfixed, uncosted, no reference to D-0105's already-decided split. Two
+decision records now say different things about who gets checked in on and how often. This
+section builds content against <b>D-0105's</b> structure, since it's the more specific, deliberated
+one with a stated claim boundary — but the two records need reconciling, and that's yours to call.</p>
+</div>
+
+<div class="card">
+<p style="margin-top:0"><b>The boundary that governs everything below, from D-0105 itself:</b>
+MFC never actually withdraws from a case-study organisation during its year of quarterly contact —
+so <b>no version of this design can show an effect surviving independently of MFC's continued
+involvement.</b> D-0105 cites RULER's own documented weakness directly: dependence on ongoing
+provider contact is what you're checking <i>for</i>, not proof against. "RULER-style" below means
+matching that shape — a light pulse, then a deeper annual read — not adopting RULER's own
+proprietary instrument, which MFC has neither licensed nor verified. Same discipline as the
+IMTTAQ finding: unconfirmed content is never presented as real.</p>
+</div>
+
+<h3 style="margin:1.6rem 0 .3rem;font-size:1.05rem">9a. Quarterly — organisation-level, not participant-facing</h3>
+<p class="muted">Manager/host completes this ahead of a scheduled conversation with MFC. Deliberately
+<b>not</b> a repeat of the participant instrument — D-0105's own reasoning: a monthly or quarterly
+participant-facing repeat would contaminate the unaided-recall measure and add fatigue for no
+return. <b>Standard partners:</b> once, after Q1. <b>Case-study partners:</b> this form, four times
+across the year.</p>
+
+<div class="form-shell">
+  <div class="form-head"><b>Quarterly organisation check-in</b><span class="muted">Manager-completed · 5 items · ~5 min</span></div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q1</span><span class="dot mfc"></span><span class="lv lv3">L3</span></div>
+    <div class="qtext">Since the session, how would you describe use of the process across your team? (Your own impression — no need to name individuals or give counts.)</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Not something I've noticed</div><div class="opt"><span class="rb"></span>A little, here and there</div><div class="opt"><span class="rb"></span>Fairly regularly, from a few people</div><div class="opt"><span class="rb"></span>It's become part of how people talk about things</div><div class="opt"><span class="rb"></span>Not sure</div></div>
+  </div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q2</span><span class="dot mfc"></span><span class="lv lvn">—</span></div>
+    <div class="qtext">What's made it easier, or harder, for people to keep using it?</div>
+    <div class="qtext-open">Open text</div>
+  </div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q3</span><span class="dot mfc"></span><span class="lv lv4">L4</span></div>
+    <div class="qtext">Has anything changed in how your team talks about workload, stress or support since the session?</div>
+    <div class="qtext-open">Open text — this is the organisation-level record, kept separate from any participant data</div>
+  </div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q4</span><span class="dot mfc"></span><span class="lv lvn">—</span></div>
+    <div class="qtext">Is there anything MFC could offer that would help right now?</div>
+    <div class="qtext-open">Open text</div>
+  </div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q5</span><span class="dot mfc"></span><span class="lv lvn">—</span><span class="opts">first touchpoint only</span></div>
+    <div class="qtext">Would you be open to us featuring your organisation as a case study? (Permissions negotiated separately — <code>AG-201</code>.)</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Yes</div><div class="opt"><span class="rb"></span>Maybe, let's talk</div><div class="opt"><span class="rb"></span>Not right now</div></div>
+  </div>
+</div>
+
+<h3 style="margin:1.6rem 0 .3rem;font-size:1.05rem">9b. The individual form that feeds it — 3 months, and repeated at 12 for case studies</h3>
+<p class="muted">D-0105 point 5: <i>"individual participant forms at 3 months feed the first quarterly
+discussion."</i> This is a lighter repeat of Form C's core — the enactment pair and WHO-5 — not
+the full return-session form. No IMTTAQ repeat; KN-0006 places that at the return session only.</p>
+
+<div class="form-shell">
+  <div class="form-head"><b>3-month individual check-in</b><span class="muted">No-contact, same code · 11 items · ~5 min · repeated at 12 months for case-study cohorts</span></div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q1</span><span class="dot mfc"></span><span class="lv lv3">L3</span></div>
+    <div class="qtext">Since your last check-in, has a moment come up where you might have wanted to pause, create some space or perspective, or choose what to do next?</div>
+    <div class="qopts"><div class="opt"><span class="rb"></span>Yes</div><div class="opt"><span class="rb"></span>No</div><div class="opt"><span class="rb"></span>Not sure</div><div class="opt excl"><span class="rb"></span>Prefer not to say</div></div>
+  </div>
+  <div class="qcard"><div class="qmeta"><span class="qid">Q2a–c</span><span class="dot mfc"></span><span class="lv lv3">L3</span><span class="opts">same construction as C3a–c</span></div>
+    <div class="qtext">In the last 7 days: how many such moments came up / in how many did you run the three steps / in how many did you get all the way through</div>
+    <div class="qopts"><div class="opt">Three numeric fields, same denominator rule as Form C</div></div>
+  </div>
+  <div class="qcard placeholder" style="background:none"><div class="qmeta"><span class="dot who5"></span><b>WHO-5</b></div>
+    <div class="qtext">Same five items and scale as Forms A/C, repeated — the third timepoint, giving MFC an actual trend line rather than one before/after pair.</div>
+  </div>
+</div>
+
+<h3 style="margin:1.6rem 0 .3rem;font-size:1.05rem">9c. Year-end — case-study organisations only, the "RULER-style" deeper read</h3>
+<div class="form-shell">
+  <div class="form-head"><b>12-month organisation reflection</b><span class="muted">Manager-completed, longer conversation · ~20 min</span></div>
+  <div class="qcard"><div class="qmeta"><span class="dot mfc"></span><span class="lv lv4">L4</span></div>
+    <div class="qtext">Everything in the quarterly form (9a), plus:</div>
+    <div class="qopts">
+      <div class="opt"><span class="rb"></span>Looking back over the whole year, what's actually stuck — and what faded?</div>
+      <div class="opt"><span class="rb"></span>Would this still be here in six months if MFC disappeared tomorrow? <span class="muted">(asked directly, because the honest answer is the boundary paragraph above, not a claim)</span></div>
+      <div class="opt"><span class="rb"></span>Is there a specific story or moment you'd be willing to have written up?</div>
+    </div>
+  </div>
+</div>
+
+<p class="warn" style="display:block;padding:.8rem 1rem"><b>Required boundary paragraph for any report drawing on 9a–9c:</b>
+<i>"These findings come from organisations MFC maintained contact with throughout the period
+described. They cannot show whether use continues after MFC's involvement ends, because in every
+case it had not."</i></p>
+
+<p class="meta">
+<span>Sources: <code>D-0100</code> · <code>D-0105</code> · <code>D-0109</code> · <code>D-0114</code> · <code>D-0115</code> · <code>D-0119</code> · <code>D-0120</code> · <code>KN-0006</code> · Measurement System v3 · R3 measurement research · Advisor Guidance Register</span>
+</p>
+<p class="muted"><small>Built from three executed specialist lenses (measurement architecture; advisor-guidance retrieval; participant safety and accessibility), each recorded under <code>90-meta/full-permanent-specialist-bench-v1/specialist-evidence/</code>. Then independently checked in a fresh context, which returned NOT READY with nine findings — all applied here, including a WHO-5/IMTTAQ double standard and three proposals presented as settled. No claim of clinical, legal, ethics or committee approval is made anywhere in this document.</small></p>
+
+</div>

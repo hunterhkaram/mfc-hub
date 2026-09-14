@@ -1,0 +1,235 @@
+schema_version: 2
+objective: 'Redesign MFC lead generation into a ranked priority model reconciling the committee-sent FINAL-03
+  strategy with the 20 Aug 2026 working session: a recurring free public offer with an explicit exchange,
+  and a social/content plus comment-reply capture layer FINAL-03 does not contain. Ultimate goal is organisations
+  paying MFC to deliver.'
+task_session_id: 70388b64-8328-48f7-9f1b-18ed5b9c98b7
+material_prompt_fingerprint: 0bed3455cdb0514a
+material_task_id: 0bed3455cdb0514a-2026-08-24T10:18:32.487857+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-08
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-09
+  disposition: route_now
+  reason: bounded behavioural review; behaviour chain, show-up mechanisms, internal-advocacy artefact
+- id: A-12
+  disposition: route_now
+  reason: bounded safeguarding/privacy/inclusion screen; all eight triggers fired; insurer confirmation
+    and the comment-to-DM distress failure mode
+- id: A-14
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-10
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-11
+  disposition: route_now
+  reason: bounded measurement review; falsification tests, instrument rulings, retirement of the 3000/78/66
+    figures
+- id: A-13
+  disposition: route_now
+  reason: bounded participation-design review; run-sheet, cold start, participation ladder
+- id: A-15
+  disposition: route_now
+  reason: bounded delivery-feasibility review; operating load and retrieval of the prior D9 webinar rejection
+- id: SYS-03
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-16
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-17
+  disposition: route_now
+  reason: bounded market/comparator review of the free-masterclass pattern and the small-org revenue thesis
+- id: A-18
+  disposition: route_now
+  reason: bounded category/narrative review; rejected the masterclass naming, defined the free/paid boundary
+- id: A-19
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-20
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-21
+  disposition: route_now
+  reason: bounded partnerships/funding review; page-verified the NSW/Black Dog free-training withdrawal
+    and corrected FINAL-03 referral-fee wording
+- id: A-22
+  disposition: route_now
+  reason: bounded audience/cultural review; framing test, friction analysis, social disclosure barrier
+- id: A-23
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: A-24
+  disposition: route_now
+  reason: mandatory W5a coverage and premise challenge; overturned two panel conclusions
+- id: A-25
+  disposition: route_now
+  reason: bounded board/mission review; governance classification and 90-day allocation
+- id: A-26
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+- id: SYS-04
+  disposition: not_relevant
+  reason: No question in this role's domain arose in this task.
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-lead-generation-v2-ranked-model
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-lead-generation-v2-ranked-model
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'A-24 independently challenged omissions and inclusions. Omissions reconsidered and CONCEDED: A-20
+    theory-of-change and A-16 habit design were excluded as product lenses and should have run - A-20
+    would have named the attendee-to-budget-holder persuasion step as the load-bearing untested assumption
+    rather than letting it be slipped in as an asset, A-16 would have named Hunter''s own adherence rather
+    than audience attendance as the cadence risk. Both are now reflected in the deliverable. A-19 conceded
+    as a point: distress risk sits in the tail and scales with promotion reach, so safeguarding and social-reach
+    are one decision, though A-12''s controls already cover the operational response. STILL EXCLUDED after
+    reconsideration: A-07, A-10, A-14, A-23, A-26, SYS-03 - no audience-facing UI, learning journey, visual
+    identity, knowledge-structure or government-pathway decision is being made here. H-01 and H-02 were
+    routed through A-12 rather than executed; disclosed as routing, not counted as coverage. INCLUSION
+    challenged: A-24 argued A-25 added nothing and substituted itself for MFC''s real committee per L-064,
+    and that A-18/A-22 overlapped. The A-25 challenge partly lands - its governance conclusion was in
+    fact overturned - but its free/paid-boundary finding was accepted. The A-18/A-22 overlap objection
+    is not conceded; each produced distinct accepted output.'
+  changes:
+  - Priority order inverted. A-24 established at source that nobody has ever been asked to buy anything
+    (FINAL-08 line 82), so the panel had redesigned a strategy never executed once and had attached an
+    unfalsifiable causal claim to the Black Dog programme. Running the existing ask became priority 1;
+    the causal claim was struck from the deliverable.
+  - A-25's classification of the free session as blocked pending a committee scope ruling was overturned.
+    FINAL-03 channels 4 and 5, in the same pack to the same committee on the same day, instruct free 45-60
+    minute facilitated tasters with dated success criteria; a blocker firing only on new proposals is
+    not a control. D-0099 had already removed D-0016 as a gate by direct founder decision. Verified at
+    source by the orchestrating context rather than accepted on either agent's word.
+  - Free-session cadence narrowed from publish-twelve-dates to one invited session, then three at cadence
+    unannounced, then announce.
+  - 'Data exchange redesigned: organisation field optional, pre-form replaced by an in-session live poll,
+    post-form moved on-screen to minute 28, monthly co-design form deferred to session two and capped.'
+  - Free session reclassified from MFC-hosted acquisition channel to co-hosted conversion and evidence
+    instrument fed by the ranked referral channels.
+  unresolved:
+  - Zero cohorts, zero sales, zero asks - nothing here is validated against a real market; it is reasoning,
+    not evidence.
+  - Insurance cover for free public online sessions is unconfirmed; written broker confirmation is the
+    one genuinely non-negotiable pre-session item.
+  - Facilitator distress-response and referral pathway require qualified clinical input; D-0016's six
+    substantive matters remain unresolved per D-0099's own text.
+  - Whether MFC is a health service provider under s6FB and therefore loses the small-business privacy
+    exemption requires qualified legal input; the drafted AG-03/s6FB question remains unsent.
+  - 'Control-state contradiction surfaced not reconciled: CLAUDE.md section 8 states the D-0016 safeguarding
+    gate as current while D-0099 closed it as a gate on 2026-08-10. Flagged to Hunter per precedence rules.'
+  - 'Founder decision open under section 6a condition 6: earned-revenue primary versus grant-funded free
+    delivery, given the pivot toward the segment least able to pay.'
+  - Three proposed lessons named in the decision trail are not yet written to 80-learning/.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+specialists:
+- id: A-17
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-17-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-17-review.md
+  contribution: bounded market/comparator review of the free-masterclass pattern and the small-org revenue
+    thesis
+  learning_disposition: candidate_update
+- id: A-21
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-21-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-21-review.md
+  contribution: bounded partnerships/funding review; page-verified the NSW/Black Dog free-training withdrawal
+    and corrected FINAL-03 referral-fee wording
+  learning_disposition: candidate_update
+- id: A-12
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-12-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-12-review.md
+  contribution: bounded safeguarding/privacy/inclusion screen; all eight triggers fired; insurer confirmation
+    and the comment-to-DM distress failure mode
+  learning_disposition: candidate_update
+- id: A-15
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-15-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-15-review.md
+  contribution: bounded delivery-feasibility review; operating load and retrieval of the prior D9 webinar
+    rejection
+  learning_disposition: candidate_update
+- id: A-22
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-22-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-22-review.md
+  contribution: bounded audience/cultural review; framing test, friction analysis, social disclosure barrier
+  learning_disposition: candidate_update
+- id: A-18
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-18-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-18-review.md
+  contribution: bounded category/narrative review; rejected the masterclass naming, defined the free/paid
+    boundary
+  learning_disposition: candidate_update
+- id: A-13
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-13-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-13-review.md
+  contribution: bounded participation-design review; run-sheet, cold start, participation ladder
+  learning_disposition: candidate_update
+- id: A-09
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-09-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-09-review.md
+  contribution: bounded behavioural review; behaviour chain, show-up mechanisms, internal-advocacy artefact
+  learning_disposition: candidate_update
+- id: A-11
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-11-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-11-review.md
+  contribution: bounded measurement review; falsification tests, instrument rulings, retirement of the
+    3000/78/66 figures
+  learning_disposition: candidate_update
+- id: A-25
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-25-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-25-review.md
+  contribution: bounded board/mission review; governance classification and 90-day allocation
+  learning_disposition: candidate_update
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 60-projects/lead-generation-v2/packets/A-24-packet.yml
+  outputs:
+    review: 60-projects/lead-generation-v2/specialist-outputs/A-24-review.md
+  contribution: mandatory W5a coverage and premise challenge; overturned two panel conclusions
+  learning_disposition: candidate_update
+outputs_summary:
+  founder-result: 90-meta/RESULT-2026-08-24-lead-generation.html
+  decision-trail: 90-meta/TRAIL-2026-08-24-lead-generation.html
+  task-packet: 60-projects/lead-generation-v2/00-task-packet.yml

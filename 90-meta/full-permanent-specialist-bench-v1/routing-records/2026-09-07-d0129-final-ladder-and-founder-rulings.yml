@@ -1,0 +1,179 @@
+schema_version: 2
+objective: Apply Hunter's three rulings of 2026-09-07 — check-ins offered rather than contracted, the
+  digital Introduction as the entry rung, and GST registration to be pursued — recompute the Essentials
+  ladder on the resulting contracted basis, and record it as a decision.
+task_session_id: 9f869fad-1121-47fe-b96d-3a2b99c81548
+material_prompt_fingerprint: ba061097a3ddd5a9
+material_task_id: ba061097a3ddd5a9-2026-09-07T10:06:22.900594+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: The buyer-page wording changed is a factual price ladder and one conditional sentence, both
+    checked against AG-028 and AG-040 in the adversarial pass.
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: No brand or creative direction changed; the product rename was settled earlier this session
+    against the run sheet.
+- id: A-10
+  disposition: reuse_current_evidence
+  reason: The Introduction rename and the Essentials-to-Foundations point of difference produced earlier
+    this session are reused unchanged; no product content moved.
+  applicability_reason: The Introduction rename and the Essentials-to-Foundations point of difference
+    produced earlier this session are reused unchanged; no product content moved.
+- id: A-11
+  disposition: not_relevant
+  reason: No measurement instrument changed.
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: The missing half-day-plus-package comparator remains recorded as unresolved and no external
+    claim rests on it.
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: route_now
+  reason: Adversarial pass on the final ladder before it became a decision Hunter would quote from. Rebuilt
+    every figure independently from the 66.10 x 1.4 basis.
+- id: A-25
+  disposition: reuse_current_evidence
+  reason: The cost build-up, band structure and market comparison produced earlier this same session under
+    task 8a7322241068e37a are reused unchanged; the rulings removed hours from contracted scope rather
+    than changing the method.
+  applicability_reason: The cost build-up, band structure and market comparison produced earlier this
+    same session under task 8a7322241068e37a are reused unchanged; the rulings removed hours from contracted
+    scope rather than changing the method.
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: Hunter receives the result directly in the same turn and the two remaining questions are put
+    to him as decisions rather than resolved on his behalf.
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-d0129-final-ladder-and-founder-rulings
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-d0129-final-ladder-and-founder-rulings
+  completed_before_execution: true
+  decision_surfaces:
+  - 'Two founder decisions remain open and are put to Hunter rather than resolved: accepting the strategic
+    exit from the under-twenty-staff segment that retiring Small Team creates, and reconciling the primary-segment
+    conflict between D1-who-actually-pays and 04-THE-STRATEGY.'
+  omissions_challenged:
+  - 'A-24 executed fresh-context against the final ladder and reproduced all sixteen band figures, all
+    eight per-head figures, the digital and in-person Introduction economics and the Foundations comparison
+    to within a cent, confirming that the Introduction 40 dollar and Foundations 150 dollar materials
+    lines are published in 07 section 4.3 and were not reverse-engineered to fit. It then refuted the
+    draft''s load-bearing claim: presenting Essentials 16-20 at 163.31 per hour as level with Foundations
+    compared one product''s ceiling to another''s floor, and like for like Essentials blends to 120.13
+    against Foundations'' 186.36. The claim was withdrawn and replaced with the 70 percent improvement
+    on D-0128''s own figure. A-24 further established that promised-not-contracted removes contract exposure
+    but not Australian Consumer Law s4 exposure, that a disclaimer contradicting the seller''s spoken
+    representation worsens rather than improves the position, that the digital Introduction at 33.78 per
+    hour is below Hunter''s own unloaded rate and must be named a customer-acquisition rung rather than
+    a product to plan volume on, that 36000 dollars remains unreachable at 14395 to 28790 of margin against
+    the ratified sales ceiling, that the even four-band blend is the optimistic case rather than the neutral
+    one, and that retiring Small Team is an explicit strategic exit from the under-twenty-staff segment
+    rather than a scope simplification.'
+  changes:
+  - 'D-0129 written and D-0128 marked superseded. 07-BUYER-PACK ladder rebuilt: Small Team retired, Essentials
+    banded, the Introduction renamed The Mental Fitness Hour, the check-in sentence added once, ex-GST
+    stated, and the section 4.4 floor-clearance table restated with retired and superseded rows struck
+    through rather than deleted.'
+  unresolved:
+  - Committee ratification not sought; external_gate OPEN. The concession lane is not set by D-0129 and
+    is being rebuilt after the prior draft breached the floor on a regional engagement. The travel-radius
+    term still does not exist. AG-095's minimum-wage-times-four test is not met and is stated rather than
+    absorbed. AG-029's published price anchor is knowingly not followed. D-0113 and 110-PRODUCT-AND-PRICING-BOOK
+    still need superseded_by on their cost sections. 21-THE-PRICE-ARCHITECTURE line 158's gaming arithmetic
+    is stale and now points the wrong way.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: The withdrawn parity claim was replaced with the defensible 70
+  percent improvement. The universal 14.17-hour realistic basis was withdrawn because D-0105 limits check-ins
+  to selected clients. The buyer wording avoids the word promise on A-24's consumer-law reasoning. The
+  digital Introduction is named a customer-acquisition rung rather than an entry product.
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/specialist-outputs/2026-09-07-essentials-rescope/A-24.md
+specialists:
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/task-packets/2026-09-07-essentials-rescope/A-24.md
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/specialist-outputs/2026-09-07-essentials-rescope/A-24.md
+  contribution: Adversarial pass on the final ladder before it became a decision Hunter would quote from.
+    Rebuilt every figure independently from the 66.10 x 1.4 basis.
+  learning_disposition: no_new_learning
+outputs_summary:
+  decision: 30-decisions/D-0129-essentials-rescoped-and-repriced-check-ins-offered-not-sold-digital-introduction-is-the-entry-rung.md
+  buyer_pack: 60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/07-BUYER-PACK.md
+  artifact: https://claude.ai/code/artifact/99096bde-340a-4931-92ed-b7bcadbe093b

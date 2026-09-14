@@ -1,0 +1,308 @@
+version: 1
+status: controlled-pilot
+updated: '2026-08-13'
+authority: Hunter explicit direction 2026-08-13
+purpose: >-
+  Source-graded professional equipment for every registered MFC specialist. This register supplies
+  reusable professional knowledge; specialist-knowledge-index.yml supplies current MFC positions;
+  specialist-bench.yml supplies role identity and authority. No source grants approval authority.
+
+source_classes:
+  primary_research: Original peer-reviewed study or formal evidence synthesis.
+  authoritative_guidance: Current standard or guidance from a responsible public or standards body.
+  practitioner_framework: Useful professional method that is not treated as scientific proof.
+  comparator_primary: A comparator's own current description; authoritative only about its offer or claim.
+  mfc_analysis: MFC synthesis, decision, observation or founder correction; not external evidence.
+
+catalogue:
+  wcag22:
+    title: Web Content Accessibility Guidelines (WCAG) 2.2
+    class: authoritative_guidance
+    url: https://www.w3.org/TR/WCAG22/
+    use: Perceivable, operable, understandable and robust digital content; testable success criteria.
+    limit: Web conformance does not establish room, print, cognitive, cultural or participant accessibility.
+    refresh: Check when W3C publishes a newer Recommendation or MFC changes delivery medium.
+  design_double_diamond:
+    title: The Double Diamond
+    class: practitioner_framework
+    url: https://www.designcouncil.org.uk/resources/the-double-diamond/
+    use: Separate discovery/definition from development/delivery and keep iteration visible.
+    limit: A process map, not evidence that a specific design works.
+    refresh: Biennial or if Design Council materially revises the framework.
+  cdc_clear_communication:
+    title: CDC Clear Communication Index
+    class: authoritative_guidance
+    url: https://www.cdc.gov/ccindex/tool/index.html
+    use: Main message, language, information design, behavioural recommendation and numerical clarity.
+    limit: A scoring aid; audience comprehension still requires testing with intended people.
+    refresh: Annual.
+  comb_2011:
+    title: The behaviour change wheel — COM-B model
+    class: primary_research
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3096582/
+    use: Diagnose capability, opportunity and motivation before selecting intervention functions.
+    limit: A general framework; it does not identify the active mechanism or effect size for MFC.
+    refresh: Five-year evidence review or material model update.
+  retrieval_review_2020:
+    title: The critical role of retrieval practice in long-term retention
+    class: primary_research
+    url: https://www.annualreviews.org/content/journals/10.1146/annurev-psych-010419-051019
+    use: Retrieval can strengthen later retention; task form, feedback, spacing and context matter.
+    limit: Retention is not real-world transfer, wellbeing change or habit formation.
+    refresh: Five-year synthesis review.
+  cosmin:
+    title: COSMIN tools for outcome-measure selection
+    class: authoritative_guidance
+    url: https://www.cosmin.nl/cosmin-tools/
+    use: Define construct and population, inspect validity/reliability/responsiveness, feasibility and burden.
+    limit: Primarily health measurement; application outside validated populations requires caution.
+    refresh: Annual and whenever an instrument is selected or changed.
+  iap2_spectrum:
+    title: IAP2 Spectrum of Public Participation
+    class: practitioner_framework
+    url: https://www.iap2.org/resource/resmgr/pillars/Spectrum_8.5x11_Print.pdf
+    use: Match participation promise and method to actual influence over the decision.
+    limit: Does not itself establish inclusion, safety, representativeness or ethical consent.
+    refresh: Biennial.
+  codesign_review:
+    title: Co-design processes and outcomes — systematic review
+    class: primary_research
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6060529/
+    use: Co-design quality depends on power, process, participant role and implementation, not the label alone.
+    limit: Heterogeneous health-service studies; outcomes and transferability vary.
+    refresh: Five-year synthesis review.
+  abs_cald:
+    title: Standards for Statistics on Cultural and Language Diversity
+    class: authoritative_guidance
+    url: https://www.abs.gov.au/statistics/standards/standards-statistics-cultural-and-language-diversity/latest-release
+    use: Avoid treating culture and language as one proxy; use fit-for-purpose measures and explicit definitions.
+    limit: Statistical standards do not replace qualitative cultural insight or community authority.
+    refresh: Annual.
+  cfir_2022:
+    title: Consolidated Framework for Implementation Research — updated framework
+    class: practitioner_framework
+    url: https://cfirguide.org/what-is-cfir
+    use: Examine innovation, setting, people and process determinants of implementation.
+    limit: A determinant framework, not a product-development recipe or proof of effectiveness.
+    refresh: Biennial.
+  fidelity_2007:
+    title: A conceptual framework for implementation fidelity
+    class: primary_research
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2213686/
+    use: Distinguish adherence, dose, delivery quality, participant responsiveness and moderating context.
+    limit: Framework application must be operationalised for the actual intervention and setting.
+    refresh: Five-year synthesis review.
+  lally_habit:
+    title: How are habits formed — modelling habit formation in the real world
+    class: primary_research
+    url: https://onlinelibrary.wiley.com/doi/abs/10.1002/ejsp.674
+    use: Repetition in a stable context may increase automaticity; trajectories and time vary substantially.
+    limit: Small self-selected sample and simple behaviours; cannot justify a fixed habit-formation deadline.
+    refresh: Five-year synthesis review.
+  who_ottawa:
+    title: Ottawa Charter for Health Promotion
+    class: authoritative_guidance
+    url: https://www.who.int/publications/i/item/WH-1987
+    use: Health promotion includes skills, supportive environments, community action and healthy policy.
+    limit: A foundational charter, not evidence that an MFC workshop changes population outcomes.
+    refresh: Five-year policy-context review.
+  oecd_evaluation:
+    title: Evaluating development co-operation
+    class: authoritative_guidance
+    url: https://www.oecd.org/en/publications/development-co-operation-tips-tools-insights-practices_be69e0cf-en/evaluating-development-co-operation_5602e1f7-en.html
+    use: Make causal assumptions, evaluation purpose, users, criteria, evidence limits and use explicit.
+    limit: High-level guidance; an MFC theory of change still requires local evidence and proportionate methods.
+    refresh: Biennial.
+  esomar_code:
+    title: ICC/ESOMAR International Code on Market, Opinion and Social Research and Data Analytics
+    class: authoritative_guidance
+    url: https://esomar.org/code-and-guidelines/icc-esomar-code
+    use: Separate research from promotion, protect participants and report methods and limitations transparently.
+    limit: Ethical/method guidance does not validate competitor claims or guarantee market completeness.
+    refresh: Annual.
+  ruler_primary:
+    title: RULER Approach — Yale Center for Emotional Intelligence
+    class: comparator_primary
+    url: https://rulerapproach.org/
+    use: Verify RULER's own current implementation architecture and stated offer.
+    limit: Developer-owned source; not independent comparative effectiveness evidence and school context differs.
+    refresh: At every material external use or six months.
+  acnc_governance:
+    title: ACNC Governance Standards
+    class: authoritative_guidance
+    url: https://www.acnc.gov.au/for-charities/manage-your-charity/governance-hub/governance-standards
+    use: Mission, lawful operation, accountability and responsible governance boundaries for an Australian charity.
+    limit: General regulator guidance, not legal advice for a specific decision.
+    refresh: At each governed decision or quarterly.
+  acnc_advocacy:
+    title: Charities, campaigning and advocacy
+    class: authoritative_guidance
+    url: https://www.acnc.gov.au/tools/guides/charities-campaigning-and-advocacy
+    use: Distinguish mission-linked advocacy from party-political or disqualifying purposes and manage perception.
+    limit: General federal guidance; jurisdiction-specific electoral and lobbying rules may also apply.
+    refresh: At every policy/campaign task and before elections.
+  fia_code:
+    title: Fundraising Institute Australia Code
+    class: authoritative_guidance
+    url: https://fia.org.au/wp-content/uploads/2018/12/CodeFINAL-2018.6.28-GR.pdf
+    use: Public trust, transparency, donor respect, non-exploitation, privacy and accountable fundraising practice.
+    limit: Self-regulatory member code and not a replacement for applicable law or current local requirements.
+    refresh: At every material fundraising use; verify the current FIA version first.
+  prov_o:
+    title: PROV-O — W3C Provenance Ontology
+    class: authoritative_guidance
+    url: https://www.w3.org/TR/prov-o/
+    use: Model entities, activities, agents, derivation and responsibility without collapsing them.
+    limit: A technical representation standard; it does not decide organisational authority or truth.
+    refresh: Five-year or W3C status change.
+  fair_2016:
+    title: FAIR Guiding Principles for scientific data management and stewardship
+    class: primary_research
+    url: https://www.nature.com/articles/sdata201618
+    use: Improve findability, accessibility, interoperability and reuse through metadata and provenance.
+    limit: Designed for scientific data stewardship; access must still respect privacy, consent and security.
+    refresh: Five-year synthesis review.
+  cos_prereg:
+    title: Center for Open Science — preregistration
+    class: practitioner_framework
+    url: https://www.cos.io/initiatives/prereg
+    use: Separate a priori questions, outcomes and analysis from exploratory interpretation.
+    limit: Preregistration reduces some bias but does not rescue a weak design or inappropriate measure.
+    refresh: Biennial.
+  nhmrc_ethics_2025:
+    title: National Statement on Ethical Conduct in Human Research 2025
+    class: authoritative_guidance
+    url: https://www.nhmrc.gov.au/about-us/publications/national-statement-ethical-conduct-human-research-2025
+    use: Respect, research merit/integrity, justice and beneficence in Australian human research.
+    limit: Requires contextual interpretation and, where applicable, institutional ethics/governance review.
+    refresh: At every research decision; annual version check.
+  nhmrc_consumer:
+    title: Statement on Consumer and Community Involvement in Health and Medical Research
+    class: authoritative_guidance
+    url: https://www.nhmrc.gov.au/about-us/publications/statement-consumer-and-community-involvement-health-medical-research
+    use: Plan meaningful involvement, relationship, support and influence rather than extractive consultation.
+    limit: Research-context guidance; participation design still requires local community agreement.
+    refresh: Annual.
+  who_pfa:
+    title: Psychological first aid — guide for field workers
+    class: authoritative_guidance
+    url: https://www.who.int/publications/i/item/9789241548205
+    use: Humane, practical, dignity- and culture-respecting support following serious distress.
+    limit: PFA guidance is not psychotherapy, diagnosis, clinical governance or an MFC crisis protocol.
+    refresh: Annual guidance check and at every support-protocol use.
+  oaic_app:
+    title: Australian Privacy Principles guidelines
+    class: authoritative_guidance
+    url: https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines
+    use: Collection, notice, use/disclosure, security, access and correction of personal information.
+    limit: General regulator guidance; applicability and sensitive/health information questions need qualified advice.
+    refresh: At every data-system or instrument change and quarterly.
+  nist_ai_rmf:
+    title: NIST AI Risk Management Framework 1.0 and current resource page
+    class: authoritative_guidance
+    url: https://www.nist.gov/itl/ai-risk-management-framework
+    use: Govern, map, measure and manage AI risks across lifecycle with evidence and accountability.
+    limit: Voluntary US framework currently under revision; it does not set MFC authority or Australian law.
+    refresh: Quarterly while the framework is under revision.
+
+role_equipment:
+  A-07:
+    sources: [wcag22, design_double_diamond, cdc_clear_communication]
+    professional_summary: Design the participant/facilitator journey around their jobs; test hierarchy, navigation, switching cost and rendered use, not document completeness.
+    failure_modes: [optimising screen count instead of task flow, treating WCAG conformance as total accessibility, accepting author intent instead of observed use]
+  A-08:
+    sources: [cdc_clear_communication, codesign_review]
+    professional_summary: Lead with human recognition and the main message; distinguish evidence, organisational position and founder voice; verify comprehension with intended audiences.
+    failure_modes: [generic wellbeing language, polishing an unsupported claim, attributing invented language to Hunter]
+  A-09:
+    sources: [comb_2011, who_ottawa]
+    professional_summary: Diagnose capability, opportunity and motivation while keeping social, structural and power conditions visible; never infer behaviour from intention or in-room performance.
+    failure_modes: [individualising unsafe conditions, selecting a technique before diagnosing barriers, claiming downstream behaviour change]
+  A-10:
+    sources: [retrieval_review_2020, design_double_diamond]
+    professional_summary: Select and sequence learning mechanisms against defined capability and transfer; distinguish retention evidence from transfer and compare plausible architectures before converging.
+    failure_modes: [content coverage as learning, unsupported exact ratios or slide counts, treating retrieval as proof of real-world use]
+  A-11:
+    sources: [cosmin, nhmrc_ethics_2025]
+    professional_summary: Start with the decision and construct, use fit-for-population measures where possible, calculate burden and keep descriptive pilot signals within their design limits.
+    failure_modes: [measuring because it is interesting, inventing instruments without validity review, causal claims from uncontrolled self-report]
+  A-12:
+    sources: [wcag22, who_pfa, nhmrc_ethics_2025, oaic_app]
+    professional_summary: Run a fail-closed AI screen across access, choice, disclosure, distress, support and data pathways while preserving qualified-human authority.
+    failure_modes: [calling an AI screen approval, reducing accessibility to contrast, writing an unapproved crisis or referral protocol]
+  A-13:
+    sources: [iap2_spectrum, codesign_review, nhmrc_consumer]
+    professional_summary: Match the promise of participation to actual influence, make contribution voluntary and reciprocal, and surface power, representation and safe non-participation.
+    failure_modes: [attendance as consent, shared visibility as authentic community, co-design language without shared power]
+  A-14:
+    sources: [design_double_diamond, wcag22]
+    professional_summary: Use visual and experiential form to carry meaning across room, screen, print and facilitation; prototype and test conditions instead of decorating final copy.
+    failure_modes: [aesthetic polish as evidence, colour-only meaning, treating slides as the entire experience]
+  A-15:
+    sources: [cfir_2022, fidelity_2007]
+    professional_summary: Translate the design into people, setting, resources, core components, permitted adaptations, recovery paths and observable implementation evidence.
+    failure_modes: [paper feasibility, rigid scripts mistaken for fidelity, ignoring facilitator and host capability]
+  A-16:
+    sources: [comb_2011, lally_habit]
+    professional_summary: Design feasible, cued repetitions and return after lapses; treat identity carefully and never convert variable habit evidence into a fixed promise.
+    failure_modes: [21-day claims, motivation-only plans, blaming participants when context removes opportunity]
+  A-17:
+    sources: [esomar_code, ruler_primary]
+    professional_summary: Verify comparator facts at the primary source, separate description from inference, inspect implementation and business conditions, and refresh before external use.
+    failure_modes: [developer claim as independent evidence, stale market snapshot, copying a visible feature without its implementation system]
+  A-18:
+    sources: [esomar_code, ruler_primary]
+    professional_summary: Test distinctiveness against real alternatives and audience language; treat category frameworks as strategic lenses and do not use novelty as the only defence.
+    failure_modes: [category assertion without buyer evidence, implying every component is novel, confusing memorable language with market demand]
+  A-19:
+    sources: [who_ottawa, cfir_2022]
+    professional_summary: Connect skills to supportive settings, community and policy conditions; specify reach, implementation and distribution before making prevention or population claims.
+    failure_modes: [workshop attendance as prevention, structural issues reframed as personal skills, aspiration presented as population impact]
+  A-20:
+    sources: [oecd_evaluation, nhmrc_ethics_2025]
+    professional_summary: Trace activities through mechanisms and proximal outcomes to impact, state rival explanations, and match evidence and evaluation effort to the decision.
+    failure_modes: [skipping causal links, attribution from contribution, adding features with no theory-of-change job]
+  A-21:
+    sources: [fia_code, acnc_governance]
+    professional_summary: Assess mutual value, mission fit, trust, donor/partner power, delivery obligations and opportunity cost; keep fundraising claims transparent and non-exploitative.
+    failure_modes: [visibility mistaken for value, partner money overriding mission or capacity, promises that delivery cannot support]
+  A-22:
+    sources: [abs_cald, cdc_clear_communication, codesign_review, nhmrc_consumer]
+    professional_summary: Distinguish audience groups and contexts, test comprehension with intended people, and treat cultural insight as evidence and relationship rather than a demographic proxy.
+    failure_modes: [persona assumptions as participant evidence, CALD as a single group, internal review clearing cultural fit]
+  A-23:
+    sources: [prov_o, fair_2016]
+    professional_summary: Preserve source identity, derivation, authority, version and access conditions; update canonical truth before generated views and retain rejected/superseded reasoning.
+    failure_modes: [newest file as authority, copied summaries becoming truth stores, provenance without authority classification]
+  A-24:
+    sources: [cos_prereg, design_double_diamond, nhmrc_ethics_2025]
+    professional_summary: Identify decision-reversing assumptions, predefine success/failure and interpretation, select the smallest ethical discriminating test and separate confirmatory from exploratory learning.
+    failure_modes: [testing everything, satisfaction as product validation, changing thresholds after results]
+  A-25:
+    sources: [acnc_governance, oecd_evaluation]
+    professional_summary: Compare choices on charitable purpose, beneficiary value, evidence, capacity, risk and opportunity cost; reserve protected mission and board decisions for humans.
+    failure_modes: [urgent work as strategy, optimism without capacity case, AI making board-reserved choices]
+  A-26:
+    sources: [acnc_advocacy, acnc_governance]
+    professional_summary: Classify policy, advocacy, campaigning and government engagement; trace mission purpose, independence, public perception, electoral exposure and decision authority.
+    failure_modes: [party alignment, advocacy without mission trace, general guidance treated as legal clearance]
+  H-01:
+    sources: [who_pfa, nhmrc_ethics_2025]
+    professional_summary: AI may identify clinical-adjacent claims, distress scenarios and missing care pathways; only a qualified accountable human can approve clinical or care-boundary conclusions.
+    failure_modes: [diagnosis, treatment advice, invented referral pathways, AI clinical sign-off]
+  H-02:
+    sources: [oaic_app, nhmrc_ethics_2025, acnc_governance, acnc_advocacy]
+    professional_summary: AI may map issues and questions across privacy, consent, research, charity and advocacy obligations; qualified legal/privacy/regulatory humans retain conclusions.
+    failure_modes: [legal advice, assuming APP coverage or exemption, silent cross-jurisdiction generalisation]
+  FL-01:
+    sources: [cdc_clear_communication, design_double_diamond]
+    professional_summary: Independently test the finished recommendation against direct Hunter evidence, mission, audience clarity and human language; distinguish founder trace from scientific truth.
+    failure_modes: [invented founder preference, reviewing with builder rationale, treating Hunter approval as professional evidence]
+  SYS-03:
+    sources: [nist_ai_rmf, prov_o]
+    professional_summary: Add or change capabilities only for distinct recurring gaps with defined inputs, authority, evaluation, ownership and lifecycle; prefer fixing instructions, knowledge or controls first.
+    failure_modes: [new agent as prestige, duplicated responsibility, capability deployed without evaluation or retirement conditions]
+  SYS-04:
+    sources: [prov_o, nist_ai_rmf]
+    professional_summary: Reconcile disagreement without averaging it, record authority and disposition, propagate accepted corrections into artifacts and memory, and verify changed future behaviour.
+    failure_modes: [reports without artifact changes, disagreement erased, activity counts presented as learning]

@@ -1,0 +1,423 @@
+schema_version: 2
+objective: 'Review and revise the content and story flow of the six example moments in the MFC website''s
+  fictional interactive Radar demonstration: for each scene produce the nine required fields (Direction,
+  Radar moment, why it is recognisable, scene setup, three thought fragments, what the Radar makes visible,
+  four optional Shift routes, three unranked possible next moves, what must not be implied), map each
+  to a CONTEXTUAL-RECOMMENDATION-MODEL profile, report the five evaluation tests pass/fail per moment,
+  and deliver a cross-scene duplication audit, a flow audit with a named screen count, a per-scene confidence
+  rating, and only those decisions that genuinely cannot be inferred.'
+task_session_id: d367dbe6-c1ad-4008-b357-0a055ad5ab98
+material_prompt_fingerprint: 149e7d992195fc89
+material_task_id: 149e7d992195fc89-2026-09-05T20:56:43.765261+10:00
+topic_ids:
+- website
+- framework-integrity
+topic_start_receipts:
+- MFC-TOPIC-RECONCILIATION website started 2026-09-05T20:59:05+10:00
+- MFC-TOPIC-RECONCILIATION framework-integrity started 2026-09-05T21:03:17+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: route_now
+  reason: 'head-of-digital and head-of-product. UX and IA: reduced seven screens to five (six states),
+    measured a four-screen version at ~130 words plus three controls (~2.5 mobile viewports) and rejected
+    it, wrote the six tile labels, moved the moment-naming onto the frozen frame instead of a separate
+    caption card, collapsed the Shift beside the moves rather than giving it its own screen, and set the
+    per-scene depictability build rules (never show the message body in Scene 2; two-beat cut in Scene
+    4; arc-not-numeral in Scene 6; 375px crops throughout).'
+- id: A-08
+  disposition: route_now
+  reason: head-of-marketing. Wrote every shipping sentence in plain Australian English. Deleted twenty-four
+    hedge clauses that told the visitor each Shift would probably not work, replacing them with one licensed
+    line once, per AG-028. Applied AG-027 by leading with what the visitor gets and moving the disclaimer
+    to screen 5 footer type. Held AG-292/AG-293 open by keeping the permitted benefit line on the CTA
+    rather than letting compliance hollow the page out.
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: route_now
+  reason: head-of-compliance with head-of-people on blame framing. Found that every structural protection
+    (disability, caring load, unsafe homes, night shifts, no ten minutes available) lived only in the
+    authoring-only 'what must not be implied' field and never reached the visitor; promoted them into
+    shipping copy. Caught that breath had become the Shift strategy in four of six body options with the
+    optional carve-out on only one, and cut it to the single scene that carries the carve-out. Caught
+    that Scene 3's support line, correct as an authoring protection, inverts into 'this is yours alone'
+    when said to the reader, breaching the moment-writing standard's boundary 4.
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): the brief explicitly excluded visual world design and
+    detailed art direction. Depictability constraints were handled by A-07 as an interaction question,
+    not as creative direction.'
+- id: A-10
+  disposition: route_now
+  reason: 'head-of-product. Learning and behaviour design: kept the moment separate from the response
+    throughout, added the transfer step the draft did not have anywhere (picking a move for a fictional
+    situation is comprehension; naming your own is the capability), and removed the old summary screen
+    because a recap of a story that ended well is a moral and generalises a single fictional instance
+    by the act of summarising it. Also removed the consolation line that appeared only on the do-nothing
+    option in two of six scenes, which ranked the three moves.'
+- id: A-11
+  disposition: route_now
+  reason: head-of-research. Swept every sentence for implied evidence and found eight asserting a mechanism,
+    a frequency or a comparative efficacy ('the reach happens before the choice does', 'attention can
+    snap back', 'retelling can keep it going', 'sound works as well as breath', 'that's normal', 'it repeats
+    most days', 'about ten seconds long', 'often not enough'). All eight rewritten into description. Concluded
+    the demo's evidence burden is zero and it ships as illustration, and stated that manufacturing an
+    evidence requirement for fiction would be the internally-generated gate CLAUDE.md 4a exists to stop
+    building.
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): nothing is being scheduled, booked or facilitated;
+    this is website content, not a delivered session.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: route_now
+  reason: 'head-of-framework. Held Radar, optional Shift, possible next move, Direction, mental rep and
+    the five public skill labels to K-07 exactly, and confirmed no rival framework was substituted. Caught
+    a live claims breach: ''Doing this in a real moment is what we call a mental rep'' is a fourth wording
+    of a construct where only three are permitted, and the demo now avoids naming the construct on the
+    outcome at all. Reworded Scene 5''s direction, because ''make room to meditate more often'' named
+    a scheduled method as the goal and a method on a schedule is not itself a Radar moment.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no category, campaign or policy surface in
+    this artefact; the CTA carries one registered permitted-claims line and makes no category argument.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: route_now
+  reason: 'head-of-marketing, audience lens. Broke batch-level tells at four levels after measuring them
+    against the moment-drafting threshold of four: the moment sentences ran one contrast formula 6/6,
+    and so did the ''what this moment is'' lines, the scene setups, and the thought fragments (the resigned
+    turn landed third in all six). Wrote the six tile labels so that none names a direction, a state or
+    a fix and none contains an adjective about the person, making selection recognition rather than self-diagnosis.'
+- id: A-23
+  disposition: route_now
+  reason: 'Source integration. Found and resolved the live conflict between MOMENT-WRITING-STANDARD-001
+    (When/Before/After opener, 8-22 words) and the moment-drafting empirical analysis of the fifteen confirmed-real
+    bank entries (present-participle opener dominant, ''you'' never the opening subject, 5-25 words).
+    Resolved on scope rather than authority: the standard governs the widget''s 608 starter moments in
+    a scannable pick-list, the empirical analysis governs Moment Bank entries met one at a time, and these
+    six are the second kind. Ruling bounded to the six, neither document superseded, and both flagged
+    as needing the one-line scope statement neither currently has. Also identified the seam where the
+    live widget instructs visitors to write their own moments as ''When I...'', three clicks after the
+    demo teaches a different shape.'
+- id: A-24
+  disposition: same_context_role_lens
+  reason: 'Adversarial pass commissioned as the skeptic against the converged six scenes and flow, briefed
+    to refute rather than confirm, and specifically aimed at: whether any Radar moment embeds its own
+    solution or narrates a successfully executed coping move (the 2026-08-27 correction); whether any
+    scene blames the individual for a structural constraint; whether the outcome screen implies the Radar
+    caused the result; whether the six territories had collapsed into fewer shapes; whether Scene 2''s
+    unknown intent survives on the reader''s side as well as the sender''s; and whether Scene 5''s breath
+    instruction stayed optional. Findings were routed back to head-of-marketing and head-of-product, not
+    forward to Hunter.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no committee, constitutional or statutory question. Routing
+    it would have produced a second internal governance opinion on public copy, the redundant-governance-layer
+    failure L-064 names.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. The disclaimer wording is drafted to the shape of Eimear Quigley's
+    AG-003/AG-004 guidance; she has not seen this demo and an AI pass never supplies that clearance itself.
+    Recorded as an open limit in the deliverable rather than treated as satisfied.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. No regulatory determination about MFC was made or needed here; the
+    claim-safety work is content-level and governed by the permitted-claims register, and two sentences
+    that ship on every outcome are flagged for registration before build rather than assumed compliant.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): reconsidered for inclusion and excluded deliberately. The
+    founder-voice question on this task is answerable from captured verbatim records rather than from
+    an inferred lens, because Scenes 3 and 6 derive from M-01 and M-02 in the moment bank and are anchored
+    to Hunter''s own words. The two residual founder questions (whether to trade a scene for a win or
+    a workplace moment, and the status of the lost M-06 running moment) are escalated to Hunter verbatim
+    rather than answered by an inferred reading of what he would want, per the moment bank''s standing
+    no-invention rule.'
+- id: SYS-04
+  disposition: route_now
+  reason: 'Loop Engineer. Ran the produce/check/revise loop: seven heads blind and in parallel, then A-24
+    as skeptic, then findings routed back to the responsible head and the copy rewritten before anything
+    reached Hunter. Reconciled the coverage screen and the exclusions.'
+- id: SYS-05
+  disposition: route_now
+  reason: Chief of Staff. Selected the heads, stated and justified the six exclusions in one line each,
+    convened the round table, and converged seven separate outputs into one deliverable rather than a
+    list of findings.
+coverage_challenge:
+  selector: .claude/hooks/head_trigger_map.py — automated department selection at prompt time
+  selector_context: trigger-map-automated-selection
+  challenger: SYS-04 — Loop Engineer, executed by the primary session context pre-dispatch
+  challenger_context: pre-dispatch-coverage-challenge-radar-demo-six-moments
+  completed_before_execution: true
+  completed_before_execution_note: 'True as recorded, and scoped precisely. The trigger map named eight
+    departments automatically. Before any head was dispatched, that selection was challenged from a separate
+    context: head-of-framework was ADDED because the task turns on Radar / optional Shift / possible next
+    move / mental rep / Direction terminology exactness and the map had not named it; head-of-compliance''s
+    brief was widened from a ban list to a permitted-claim set; six heads were named for exclusion with
+    a one-line stated reason required for each rather than silent omission; and A-12''s scope was flagged.
+    All of that completed before execution. A-24''s adversarial pass ran AFTER production and is a skeptic
+    pass, not a coverage challenge; it is recorded under specialists and is not counted here. The earlier
+    draft of this record conflated the two and is corrected.'
+  decision_surfaces:
+  - 'Which wording rule governs the six Radar moment sentences: MOMENT-WRITING-STANDARD-001''s When/Before/After
+    opener, or the moment-drafting empirical analysis of Hunter''s fifteen confirmed-real bank entries.
+    Resolved on scope, not authority: the standard governs the widget''s 608 scannable starter moments,
+    the empirical analysis governs bank entries met one at a time, and these six are the second kind.
+    The ruling is bounded to the six so it does not license rewriting 608 starter moments. Neither document
+    is marked superseded; both are flagged as needing a scope statement.'
+  - 'Whether to substitute a workplace or win-shaped scene for one of Hunter''s six territories, given
+    that all six are solo, domestic and about friction, that MFC''s own moment-writing standard forbids
+    making every positive direction a problem, and that the buyer is an organisation. Not resolved internally:
+    the six territories are Hunter''s and the moment bank''s standing rule forbids inventing a replacement
+    from scratch. Escalated with a moderate-confidence recommendation to keep all six for launch and add
+    a seventh later.'
+  - 'How the outcome screen demonstrates that noticing makes another response more available without implying
+    the Radar caused the result (AG-001, AG-008). Resolved by inverting the re-run mechanic: it holds
+    the move constant and varies the landing, because varying the choice and showing two endings is the
+    canonical structure for demonstrating causation. Every outcome carries the same two fixed lines with
+    ''nothing'' as the subject of the change verb.'
+  omissions_challenged:
+  - The trigger map's own selection was the first thing challenged. It named eight departments and did
+    not name head-of-framework, on a task whose central risk is terminology drift in MFC's own constructs.
+    That omission was caught pre-dispatch and corrected, and A-16 went on to find a live claims breach
+    (a fourth wording of the mental rep construct where only three are permitted) that no other lens was
+    looking for. An automated map that fires on department keywords will under-select on a task whose
+    subject IS the framework, and this is the worked instance.
+  - 'A-14 (Brand and Creative Direction) was reconsidered and stayed excluded: the brief explicitly ruled
+    out visual world design and detailed art direction, and the depictability constraints that did arise
+    are interaction questions belonging to A-07, not creative direction. Including A-14 would have produced
+    exactly the output the founder asked not to receive.'
+  - FL-01 (Founder and Mission Lens) was reconsidered and stayed excluded, and this is the sharpest coverage
+    decision on the task. Two of the six scenes derive from verbatim bank entries M-01 and M-02, so the
+    founder question is answerable from captured record rather than from an inferred lens; and the moment
+    bank's standing rule requires asking Hunter rather than reconstructing what he would say. Running
+    FL-01 would have risked producing an inferred founder answer to precisely the two questions the standing
+    rule says must go to him. Both are escalated verbatim instead.
+  - A-12 (Accessibility, Inclusion and Safeguarding) was nearly under-scoped. It was initially briefed
+    as a light-touch blame-framing check and was widened to full route_now once the review found that
+    every structural protection in the draft sat in an authoring-only field the visitor never sees. That
+    widening produced the single largest change in the deliverable.
+  - 'A-25 (Board and Mission Strategy), A-13 (Community), A-17 (Market Intelligence), A-18 (Category),
+    A-21 (Partnerships) and A-15 (Delivery) were each screened against the artefact and found absent:
+    this is one page of public content with a single CTA, no pricing, no partner decision, no gathering,
+    no session being scheduled, and no category argument.'
+  changes:
+  - Outcome screen written from nothing. The prior draft recorded 'show the outcome on both paths' as
+    the fix for the causation risk and then wrote no outcome copy at all; eighteen strings now exist,
+    four of the twelve variants are outcomes where the move did not work, and Scene 3 carries one where
+    no move was available and the noticing counted anyway.
+  - Structural protections promoted from the authoring-only 'must not be implied' field into shipping
+    copy across all six scenes.
+  - Breath cut from four of six body Shift options to one, the scene that carries the optionality carve-out.
+  - 'Twenty-four hedge clauses deleted and replaced by one line once, per AG-028: ''It''s a capacity,
+    not perfection. You will miss moments.'''
+  - 'Batch tells broken at four levels: moment sentences, ''what this moment is'' lines, scene setups
+    and thought fragments, each of which had run a single formula 6/6 against a threshold of four.'
+  - The do-nothing consolation line removed and replaced by one flow-level sentence applying equally to
+    all three moves.
+  - Seven screens reduced to five (six states), with the four-screen version measured and rejected.
+  - A transfer step added on screen 5, which the draft did not have anywhere, deliberately written without
+    'you' so the last screen does not turn an observation into an instruction.
+  - 'A live claims breach fixed: a fourth wording of the mental rep construct where only three are permitted.'
+  - Eight sentences asserting a mechanism, frequency or comparative efficacy rewritten into description,
+    reducing the demo's evidence burden to zero.
+  unresolved:
+  - 'Two founder questions escalated verbatim: whether to trade one of the six territories for a win-shaped
+    or workplace moment (recommendation at moderate confidence is to keep all six and add a seventh later,
+    and if one must go it is Scene 5), and whether the lost M-06 running moment should be supplied or
+    formally treated as lost so it stops sitting open in the bank.'
+  - The four moment sentences not derived from M-01 and M-02 are drafts awaiting Hunter's specific approval
+    and must not be logged into the moment bank.
+  - Two sentences that ship on every outcome ('This is one way it could go.' and 'Nothing here made that
+    happen...') are not yet in the permitted-claims register, and they are the two doing the claim-safety
+    work. Registration is required before build.
+  - No participant, lived-experience or accessibility review has run on any of it, which is the review
+    MOMENT-WRITING-STANDARD-001 itself asks for. Eimear Quigley has not seen the demo or the disclaimer
+    wording. Every advisor position this rests on is pending-approval.
+  - MOMENT-WRITING-STANDARD-001 and the moment-drafting analysis both still lack the scope statement the
+    conflict resolution depends on, and the live widget's 'When I...' authoring instruction still differs
+    from the demo's sentence shape.
+  - 'Pre-existing hub drift observed during the topic receipts and NOT caused by this task: reconciliation
+    failures on measurement, framework-integrity, pricing, committee and operations-governance, plus an
+    orphaned hub/team.html. Named, not fixed, and out of scope here.'
+  reconciler: SYS-05 — Chief of Staff
+  reconciliation: Coverage retained as challenged, with head-of-framework added and A-12 widened from
+    light-touch to full review once the authoring-field defect surfaced. Contributions recorded as they
+    actually occurred, at the execution mode that actually occurred. Exclusions carry stated reasons,
+    and the two genuinely arguable ones (A-14, FL-01) carry reasoning rather than a formula.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: The outcome screen, which carried the entire AG-001/AG-008 causation
+  risk, went from a recorded intention with no copy to eighteen written strings with the re-run mechanic
+  inverted so it holds the move constant and varies the landing. Every structural protection for disability,
+  caring load, unsafe homes and night shifts moved out of an authoring-only field the visitor never sees
+  and into shipping copy. Breath went from four of six body options to one. Twenty-four hedge clauses
+  became one line. A single sentence formula running 6/6 was broken at four separate levels. Seven screens
+  became five after a four-screen version was measured and rejected. A live claims breach (a fourth wording
+  of the mental rep construct) and eight sentences asserting unsourced mechanisms were caught and rewritten.
+  A transfer step that did not exist anywhere was added.
+no_specialist_execution_reason: null
+specialist_evidence: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+specialist_evidence_note: Single converged deliverable rather than per-role review files. The heads ran
+  blind and in parallel inside one chief-of-staff round table and their findings were routed back and
+  merged before output, so no per-role artefact was produced. Recorded as it happened rather than reconstructed
+  into per-role packets after the fact; the per-role packet requirement was retired from the Stop-hook
+  path on 2026-09-01 under the CLAUDE.md section 12 governance freeze.
+specialists:
+- id: A-07
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'head-of-digital and head-of-product. UX and IA: reduced seven screens to five (six states),
+    measured a four-screen version at ~130 words plus three controls (~2.5 mobile viewports) and rejected
+    it, wrote the six tile labels, moved the moment-naming onto the frozen frame instead of a separate
+    caption card, collapsed the Shift beside the moves rather than giving it its own screen, and set the
+    per-scene depictability build rules (never show the message body in Scene 2; two-beat cut in Scene
+    4; arc-not-numeral in Scene 6; 375px crops throughout).'
+  learning_disposition: candidate_update
+- id: A-08
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: head-of-marketing. Wrote every shipping sentence in plain Australian English. Deleted
+    twenty-four hedge clauses that told the visitor each Shift would probably not work, replacing them
+    with one licensed line once, per AG-028. Applied AG-027 by leading with what the visitor gets and
+    moving the disclaimer to screen 5 footer type. Held AG-292/AG-293 open by keeping the permitted benefit
+    line on the CTA rather than letting compliance hollow the page out.
+  learning_disposition: candidate_update
+- id: A-12
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: head-of-compliance with head-of-people on blame framing. Found that every structural protection
+    (disability, caring load, unsafe homes, night shifts, no ten minutes available) lived only in the
+    authoring-only 'what must not be implied' field and never reached the visitor; promoted them into
+    shipping copy. Caught that breath had become the Shift strategy in four of six body options with the
+    optional carve-out on only one, and cut it to the single scene that carries the carve-out. Caught
+    that Scene 3's support line, correct as an authoring protection, inverts into 'this is yours alone'
+    when said to the reader, breaching the moment-writing standard's boundary 4.
+  learning_disposition: candidate_update
+- id: A-10
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'head-of-product. Learning and behaviour design: kept the moment separate from the response
+    throughout, added the transfer step the draft did not have anywhere (picking a move for a fictional
+    situation is comprehension; naming your own is the capability), and removed the old summary screen
+    because a recap of a story that ended well is a moral and generalises a single fictional instance
+    by the act of summarising it. Also removed the consolation line that appeared only on the do-nothing
+    option in two of six scenes, which ranked the three moves.'
+  learning_disposition: candidate_update
+- id: A-11
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: head-of-research. Swept every sentence for implied evidence and found eight asserting
+    a mechanism, a frequency or a comparative efficacy ('the reach happens before the choice does', 'attention
+    can snap back', 'retelling can keep it going', 'sound works as well as breath', 'that's normal', 'it
+    repeats most days', 'about ten seconds long', 'often not enough'). All eight rewritten into description.
+    Concluded the demo's evidence burden is zero and it ships as illustration, and stated that manufacturing
+    an evidence requirement for fiction would be the internally-generated gate CLAUDE.md 4a exists to
+    stop building.
+  learning_disposition: candidate_update
+- id: A-16
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'head-of-framework. Held Radar, optional Shift, possible next move, Direction, mental
+    rep and the five public skill labels to K-07 exactly, and confirmed no rival framework was substituted.
+    Caught a live claims breach: ''Doing this in a real moment is what we call a mental rep'' is a fourth
+    wording of a construct where only three are permitted, and the demo now avoids naming the construct
+    on the outcome at all. Reworded Scene 5''s direction, because ''make room to meditate more often''
+    named a scheduled method as the goal and a method on a schedule is not itself a Radar moment.'
+  learning_disposition: candidate_update
+- id: A-22
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'head-of-marketing, audience lens. Broke batch-level tells at four levels after measuring
+    them against the moment-drafting threshold of four: the moment sentences ran one contrast formula
+    6/6, and so did the ''what this moment is'' lines, the scene setups, and the thought fragments (the
+    resigned turn landed third in all six). Wrote the six tile labels so that none names a direction,
+    a state or a fix and none contains an adjective about the person, making selection recognition rather
+    than self-diagnosis.'
+  learning_disposition: candidate_update
+- id: A-23
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'Source integration. Found and resolved the live conflict between MOMENT-WRITING-STANDARD-001
+    (When/Before/After opener, 8-22 words) and the moment-drafting empirical analysis of the fifteen confirmed-real
+    bank entries (present-participle opener dominant, ''you'' never the opening subject, 5-25 words).
+    Resolved on scope rather than authority: the standard governs the widget''s 608 starter moments in
+    a scannable pick-list, the empirical analysis governs Moment Bank entries met one at a time, and these
+    six are the second kind. Ruling bounded to the six, neither document superseded, and both flagged
+    as needing the one-line scope statement neither currently has. Also identified the seam where the
+    live widget instructs visitors to write their own moments as ''When I...'', three clicks after the
+    demo teaches a different shape.'
+  learning_disposition: candidate_update
+- id: A-24
+  execution_mode: same_context_role_lens
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'Adversarial pass commissioned as the skeptic against the converged six scenes and flow,
+    briefed to refute rather than confirm, and specifically aimed at: whether any Radar moment embeds
+    its own solution or narrates a successfully executed coping move (the 2026-08-27 correction); whether
+    any scene blames the individual for a structural constraint; whether the outcome screen implies the
+    Radar caused the result; whether the six territories had collapsed into fewer shapes; whether Scene
+    2''s unknown intent survives on the reader''s side as well as the sender''s; and whether Scene 5''s
+    breath instruction stayed optional. Findings were routed back to head-of-marketing and head-of-product,
+    not forward to Hunter.'
+  learning_disposition: candidate_update
+- id: SYS-04
+  execution_mode: reconciliation
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: 'Loop Engineer. Ran the produce/check/revise loop: seven heads blind and in parallel,
+    then A-24 as skeptic, then findings routed back to the responsible head and the copy rewritten before
+    anything reached Hunter. Reconciled the coverage screen and the exclusions.'
+  learning_disposition: candidate_update
+- id: SYS-05
+  execution_mode: reconciliation
+  outputs:
+    review: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+  contribution: Chief of Staff. Selected the heads, stated and justified the six exclusions in one line
+    each, convened the round table, and converged seven separate outputs into one deliverable rather than
+    a list of findings.
+  learning_disposition: candidate_update
+outputs_summary:
+  content_revision: 60-projects/mfc-website/rebuild-v2/radar-widget-v1/reviews-2026-09-05/INTERACTIVE-MOMENT-DEMO-CONTENT-REVISION.md
+execution_mode_note: Recorded as same_context_role_lens, not bounded_specialist_review. The heads ran
+  in parallel as sub-agents within one chief-of-staff round table and were merged into a single converged
+  deliverable, so no per-role task packet and no per-role review artefact were written. Claiming the bounded
+  mode would assert artefacts that do not exist. SYS-04 and SYS-05 are recorded as reconciliation, which
+  is their actual function on this task.

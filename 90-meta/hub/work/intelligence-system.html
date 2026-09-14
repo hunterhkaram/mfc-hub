@@ -1,0 +1,1117 @@
+<title>MFC Intelligence System — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../intelligence-system.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>MFC Intelligence System</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>D 0101 Organisation Wide Continuity And Propagation Control</summary><div class="record-body document"><h1>D-0101 — Organisation-wide continuity and propagation control</h1>
+<h2>Decision</h2>
+<p>Extend the existing deterministic topic-control path from the measurement pilot to every existing MFC Hub pillar. A fresh Claude Code session working in the MFC vault must, for a registered topic:</p>
+<ol>
+<li>resolve the topic before broad discovery;</li>
+<li>receive the registered purpose, current truth, readiness, canonical sources, operational destinations, open gates and strongest next action;</li>
+<li>inspect the linked authoritative sources and current destinations before recommending or changing material work;</li>
+<li>recommend the strongest evidence-grounded next action before asking Hunter a resolvable technical question;</li>
+<li>update existing destinations after an approved change, record external revisions and readback where applicable, update the register and regenerate the existing Hub;</li>
+<li>block a completion claim when the register is invalid or any registered Hub projection is stale;</li>
+<li>prevent an unlabelled new Markdown or HTML artifact from quietly becoming a competing final for a registered topic; and</li>
+<li>keep AI review visibly separate from founder, clinical, legal, privacy, insurer, ethics or other qualified-human approval.</li>
+</ol>
+<p>The Hub remains a generated readable projection. It is not a replacement system of record and no parallel Hub or persistent agent is authorised.</p>
+<h2>Why this is the smallest sufficient intervention</h2>
+<p>The system already had executive intake, prompt routing, canonical decisions, operational artifacts, a Hub generator and closure controls. The recurring failure was that those parts did not share one enforceable organisation-wide map: only measurement had deterministic reconciliation and propagation. The appropriate intervention is therefore to generalise and bind the existing path, not build another architecture.</p>
+<p>The Agent Steward need test did not justify a new persistent agent. The need is recurring, but its responsibilities duplicate existing intake, knowledge stewardship, quality governance and Hub generation. Clarified instructions, an expanded register and executable checkpoints cover the gap with less authority and less duplication.</p>
+<h2>Implemented scope</h2>
+<p>The register now covers 13 existing pillars: grand strategy, workshop delivery, measurement, pricing, marketing and leads, grants and funding, WIIFM, committee send, website, safeguarding, market intelligence, social media and community events.</p>
+<p>Each pillar's Hub page is generated from the registered state and includes a source-state fingerprint. The home page carries the same fingerprint. Registered local source changes therefore make the Hub integrity check fail until it is regenerated.</p>
+<h2>Retained limits</h2>
+<ul>
+<li>Topic resolution is deterministic phrase matching. It is a reliable floor for registered language, not general semantic understanding; the agent must still interpret the request and inspect sources.</li>
+<li>Local controls cannot authenticate to Drive, Wix, Monday or another external service. External freshness is proven only when the working agent uses an available connector, records the returned revision or receipt and reads the destination back.</li>
+<li>A matching fingerprint proves propagation from the registered local state; it does not prove the underlying claim, professional judgement or approval is true.</li>
+<li>Known missing future work is recorded honestly as an open gate. It is not fabricated merely to make the system appear complete.</li>
+<li>The protocol applies when Claude Code is operating in this vault. Work completed in another chat or tool can still be absent until it is deliberately reconciled into the vault and registered destinations.</li>
+</ul>
+<h2>Activation evidence</h2>
+<ul>
+<li>canonical register validation: pass;</li>
+<li>Hub structure and all 13 topic projections: pass;</li>
+<li>continuity regression suite: 12/12 pass;</li>
+<li>generated Hub retains one home page and the existing 13 pillar pages.</li>
+</ul>
+<h2>Cold-start correction — 13 August 2026</h2>
+<p>The first real cold-start test used the ordinary portfolio question, “What should MFC be working on right now, and what is the strongest next action?” The topic-specific register did not fire because no pillar was named. Claude therefore relied on the mandatory <code>Current State and Next Action.md</code> pointer, which was dated 10 August and still described workshop build as the single authorised next action. It also repeated D-0016 framing superseded by D-0099, stale branch state and a founder-signal maintenance choice.</p>
+<p>The active control was corrected in place:</p>
+<ul>
+<li>the same canonical register now contains a dated, ranked organisation-wide portfolio view;</li>
+<li>organisation-wide state and priority language has its own deterministic cold-start route;</li>
+<li>the current-state pointer is again a short derived view and explicitly defers to the register and later decisions;</li>
+<li>the register distinguishes the immediate Committee and grant priorities from workshop delivery as the strongest authorised build workstream;</li>
+<li>the Hub home-page priority view and fingerprint now derive from the portfolio record; and</li>
+<li>regression coverage now includes the exact cold-start prompt that exposed the defect.</li>
+</ul>
+<p>This remains an instruction/register/evaluation gap, not a need for a new persistent agent. The first activation verdict was therefore revised from technically activated to <strong>revised after failed live cold-start evidence</strong>. Current technical re-test: register pass, all 13 Hub projections pass, continuity suite 14/14 pass, exact portfolio-prompt injection pass. A second genuinely fresh Claude Code session remains the operational acceptance gate.</p>
+<h2>External-work reconciliation correction — 13 August 2026</h2>
+<p>The second cold-start test correctly followed the portfolio register, but Hunter then identified that its leading Committee state was false: the system-drafted email had already been sent to Jake and Onno for review. The existing local email artifact still said <code>DRAFTED — NOT SENT</code>, so the register and every downstream projection inherited that stale local status. This is the exact external-to-vault propagation limitation the protocol discloses.</p>
+<p>Hunter's direct correction now controls the operational state. The existing email draft was updated in place as a source draft and sent-status record; it does not pretend to be a verbatim sent-message readback. The Committee topic now records <code>SENT_FOR_REVIEW_AWAITING_JAKE_ONNO_FEEDBACK</code>, with the exact sent wording/date and external receipt explicitly unverified. The portfolio was re-ranked: live grant verification is the strongest immediate action, workshop delivery is the strongest authorised build workstream, and Committee work waits for Jake/Onno feedback. The two internal Committee quality defects remain recorded for correction before any later final committee issue; they are not misrepresented as preventing an external review send that already occurred.</p>
+<h3>Verified external readback and transcript-aligned expansion</h3>
+<p>Gmail readback subsequently verified the exact external event: Hunter sent “MFC ready for review” to Jake Pepper and Onno van-Es on 11 August 2026 at 3:20 pm with <code>Strategy &amp; Commerical.pdf</code> attached. The sent body was read and differs from the longer local source draft. The Committee destination and reconciliation receipt were upgraded from <code>user_reported</code> to <code>verified_readback</code>; feedback remains pending.</p>
+<p>Hunter then supplied the full originating transcript as the authoritative outcome specification. That evidence confirmed continuity alone is insufficient. The same existing control path was expanded to cover evidence-bearing start/progress/completion/waiting/correction receipts; source and complete topic-record comparison at closure; objective-specific specialist assurance with evidence paths and explicit AI/human separation; and Hub visibility of freshness, external confidence, transitions, known failures, learning and the intelligence system's own capability status. No new persistent agent or parallel organisational source of truth was created.</p>
+<p>The two pre-existing Committee quality failures were then corrected in the existing founder result and decision trail: the distinct premise audit is explicitly recorded, and the five previously generated approaches are visibly ranked in a real comparison table. Both L-051 and L-057 pass. These corrections do not rewrite the already-sent review email or PDF; they improve the controlled reasoning and assurance record that future work must preserve.</p>
+<h2>Live-project acceptance test — grants and funding, 13 August 2026</h2>
+<p>The current highest-ranked task was executed as real work, not as a synthetic routing prompt. The system first recovered the registered grants topic and its canonical source, then found that the source itself simultaneously said FRRR was the immediate priority, “apply now,” and deferred under Hunter's recorded refusal to commit to regional/rural delivery. Later reconciliation material said the deferral was settled, while the portfolio had nevertheless promoted a fresh FRRR check to organisation-wide priority one.</p>
+<p>The workflow then:</p>
+<ol>
+<li>recorded the project start before changing organisational state;</li>
+<li>inspected the broader controlled grants corpus rather than trusting the Hub summary;</li>
+<li>checked official FRRR, Camden Council and City of Parramatta sources live;</li>
+<li>challenged the premise that an open grant is necessarily an MFC opportunity;</li>
+<li>established that FRRR is open but deferred under the recorded geography decision, Parramatta's general 2026 round is closed, and Camden is open but lacks a recorded qualifying project/cohort and $20 million public-liability evidence;</li>
+<li>updated the existing <code>FINAL-05-grants-and-funding.md</code> in place, including its recommendation and current source links, rather than creating another grants plan;</li>
+<li>corrected the grants register, assurance evidence, portfolio ranking and current-state pointer;</li>
+<li>recorded progress and completion receipts, regenerated the existing Hub and verified the projection; and</li>
+<li>ran the complete executable control suite: 30 pass, 0 fail, with two controls still honestly labelled self-test-only because they inspect no live artifact.</li>
+</ol>
+<p>This test materially improves confidence in the local end-to-end path and also exposes the remaining boundary. The system can reconcile live external evidence when a working session has an authenticated connector or browser and then writes the result back. It cannot know that another chat, Drive, Wix, Monday or a human action changed unless that environment is inspected or the change is explicitly reconciled. The Hub is now an evidence-bearing projection of that reconciled state, not a universal event listener.</p>
+<h2>Default-workflow correction — workshop deck live test, 13 August 2026</h2>
+<p>A real fresh-session test then exposed three coupled failures. The portfolio prompt contained a
+minor typo and routed light with no topic scope; the system built a new deck from a legacy
+<code>3-hour</code> storyboard without first reconciling D-0094's later Half-Day Foundations decision; and a
+Stop hook forced Hunter to choose “full intake” versus “direct pass,” even though standing autonomy
+assigns specialist routing and reversible production decisions to the system. The resulting deck is
+a useful unreviewed candidate, but it does not count as a reviewed current flagship artefact.</p>
+<p>The existing continuity path was corrected in place:</p>
+<ol>
+<li>portfolio routing tolerates the observed missing initial “w” and treats “continue/proceed/build”
+   portfolio prompts as material;</li>
+<li>material registered-topic work cannot delegate or write/edit before a current-session start
+   receipt records the actual topic reconstruction, source conflicts, selected action and required
+   checks;</li>
+<li>the workshop record now puts D-0094 ahead of legacy production files, names the preferred and
+   retired product labels, preserves the legacy files as evidence rather than silently rewriting
+   history, and requires deck-specific instructional-design, accessibility, safeguarding,
+   canonical-fidelity and rendering checks;</li>
+<li>new/current deck candidates using the retired <code>3-hour</code>/<code>3hr</code>/<code>MFC-3H-v1</code> framing are denied;</li>
+<li>generated Hub pages can no longer be directly edited through Edit or Write—the source record or
+   generator must change, followed by regeneration; and</li>
+<li>the old material-choice Stop hook is no longer registered. Claude chooses the smallest sufficient
+   workflow by default and asks Hunter only for a genuinely protected founder or human-authority
+   decision.</li>
+</ol>
+<p>The Agent Steward need test again rejects a new persistent agent: this was an invocation,
+precedence and evaluation defect in capabilities already assigned to executive intake, knowledge
+stewardship and quality governance. The binding regression uses the exact typo-bearing prompt and
+passes the new route, start, Hub and terminology controls.</p>
+<h2>Minimum-complete Hub and lifecycle pass — 13 August 2026</h2>
+<p>The transcript outcome required more than correct routing. A minimum useful organisational Hub must make the state that guides action visible, including uncertainty and responsibility. The existing control was therefore extended in place rather than replaced:</p>
+<ol>
+<li>the register now controls 15 topics, adding Framework integrity and operations/governance;</li>
+<li>nine organisational-domain groups show what is controlled, embedded or only partial, without duplicating Radar/digital/product architecture;</li>
+<li>external observability is explicit for Obsidian, Drive, Gmail, Monday and Wix, including the last verified boundary and known limitation;</li>
+<li>every topic page now renders accountability/review trigger, canonical and operational lifecycle, recent receipts, conflicts/supersessions, assurance evidence links and open gates with owner and due/trigger where registered;</li>
+<li>the home page now renders domain coverage, external-system observability and one human/founder decision queue;</li>
+<li>a controlled archive/supersession policy preserves history while preventing archived sources from authorising current candidates or projections;</li>
+<li>accepted reconciliation receipts now regenerate the existing Hub and run its integrity check automatically; and</li>
+<li>regression coverage tests the two added topics, all minimum Hub sections, archive rejection and receipt-to-Hub propagation.</li>
+</ol>
+<p>The workshop continuation was rerun as the live failure-case test. The ordinary continuation prompt routed to <code>workshop-delivery</code>, recovered D-0094 and the Half-Day Foundations terminology, exposed the five required artifact-specific checks and blocked an edit before a source-reconstruction receipt. After the evidence-bearing start receipt, controlled continuation unlocked, the Hub regenerated and all 15 topic projections passed. A candidate declaring an archived source remained blocked. No slide edit or specialist review was falsely claimed by this test.</p>
+<p>This is now a reliable automatic local lifecycle inside the declared vault/Claude scope. It is not a universal event listener: work in another chat or external system remains invisible until that environment supplies a connector event/readback or a deliberate reconciliation. Qualified-human approval also remains human. These limits are shown in the Hub rather than hidden behind a general readiness label.</p><p class="src">Original source: 30-decisions/D-0101-organisation-wide-continuity-and-propagation-control.md</p></div></details><details class="record" ><summary>Readme</summary><div class="record-body document"><h1>Organisation-wide continuity and propagation control</h1>
+<p>This is a bounded control layer inside the existing MFC intelligence system. It is not a new source of organisational truth: decisions and operational documents retain their authority. The register maps 15 controlled topics and nine organisational-domain groups to controlling sources, operational destinations, present readiness, accountability, conflicts, assurance evidence, open gates and strongest next action. The prompt router uses that map to reconstruct active state before broad discovery.</p>
+<p>The register also contains one ranked <code>portfolio</code> view for cold-start questions such as “what should MFC be working on?” This distinction matters: a well-developed or authorised workstream is not automatically the most urgent organisation-wide priority. Portfolio ranking must compare deadlines, reversibility, safety gates, readiness and strategic leverage, and must be refreshed at its recorded trigger.</p>
+<p>For every registered topic, completion requires the existing operational destinations to be updated and any external revision/readback to be recorded. An accepted reconciliation receipt automatically regenerates the existing Hub and runs its integrity check; <code>--no-regenerate</code> exists only as a batch escape hatch before a final receipt performs the check. A new Markdown or HTML artifact for a registered topic must either be an allowed projection/review or declare its relationship to the existing canonical source. Archived sources remain historical evidence and cannot authorize a current candidate or projection; see <code>ARCHIVE-AND-SUPERSESSION-POLICY.md</code>. These controls reduce parallel drafts and stale retrieval; they cannot observe unconnected work outside Claude Code.</p>
+<p>Routing records entry into a topic. Material progress, completion, waiting, blockage, external action and later Hunter correction require an evidence-bearing reconciliation receipt in the existing loop log. The closure gate compares both the registered local-source fingerprint and the complete topic-record fingerprint with the latest receipt. Regenerating the Hub alone cannot make a stale semantic state current.</p>
+<p>Assurance requirements are objective-specific. Claude determines the relevant professional lenses, executes them and records their evidence; Hunter does not select the agent checklist. AI specialist assurance is always distinct from qualified-human approval and real-user evidence. A named role without an executed artifact cannot produce a pass.</p>
+<p>The Hub is a generated projection. Its topic fingerprints prove it was generated from the current register and registered local-source state; they do not prove that the underlying claims or human approvals are true. Its home page exposes domain coverage, external observability and the human/founder decision queue. Topic pages expose current state, responsibility, lifecycle, history, conflicts, assurance evidence and gates. Drive, Wix, Monday and other authenticated systems remain receipt-based: the agent doing the work must inspect them through an available connector, update the existing destination, then record the returned revision and read it back. A local hook cannot independently authenticate to those systems.</p><p class="src">Original source: 90-meta/controlled-automation-v1/topic-control/README.md</p></div></details><details class="record" ><summary>Archive And Supersession Policy</summary><div class="record-body document"><h1>Archive and supersession policy</h1>
+<p>Status: controlled operational policy<br />
+Owner: Hunter<br />
+Automation boundary: enforced for registered current artifacts and canonical-source declarations</p>
+<h2>Purpose</h2>
+<p>Keep useful MFC history available in Obsidian without allowing an old name, draft, export or abandoned direction to be mistaken for current organisational truth.</p>
+<h2>Default treatment</h2>
+<ol>
+<li>Decisions, foundations, evidence records and change history stay in their existing paths. When their authority changes, record the supersession in the controlling decision/register; do not hide the historical chain by moving it.</li>
+<li>A current source with stale terminology is reconciled or renamed in place. Archive is not a substitute for correcting an active source.</li>
+<li>Move a file into a project-local <code>archive/</code> folder only when it is wholly superseded or retired, has no live operational responsibility, and retaining it beside current candidates creates retrieval risk.</li>
+<li>Never archive generated Hub pages. Change their source/register and regenerate them.</li>
+</ol>
+<h2>Required archive metadata</h2>
+<p>Every newly archived Markdown artifact must identify:</p>
+<pre><code class="language-yaml">lifecycle_status: superseded # or retired
+do_not_use_as_current: true
+superseded_by: path/to/current-source.md
+archived_at: YYYY-MM-DD
+archive_reason: concise reason
+</code></pre>
+<p>If there is no successor, use <code>superseded_by: none</code> and explain why the work was retired.</p>
+<h2>Retrieval and authority rule</h2>
+<p>Archived material is historical evidence only. It may be inspected for provenance, lessons or explicit historical comparison. It must not be selected as the authority for current recommendations, builds, exports or Hub projections. The active source must come from the canonical topic register or a controlling decision.</p>
+<p>The artifact guard denies new current candidates that declare an <code>/archive/</code> canonical source. The topic-register validator also rejects an archived source whose role/status claims that it is current or generated.</p>
+<h2>Moving an artifact</h2>
+<p>Before moving a file:</p>
+<ol>
+<li>Resolve its current topic and successor.</li>
+<li>Add the required metadata and update the topic register/source links.</li>
+<li>Search inbound links and update any current operational reference.</li>
+<li>Move it only into that project's local <code>archive/</code> folder.</li>
+<li>Record a <code>corrected</code> or <code>reconciled</code> topic receipt. The receipt regenerates and verifies the Hub.</li>
+</ol>
+<p>No bulk archival is authorised by this policy. Archive candidates are assessed individually so history, live links and source authority are preserved.</p><p class="src">Original source: 90-meta/controlled-automation-v1/topic-control/ARCHIVE-AND-SUPERSESSION-POLICY.md</p></div></details><details class="record" ><summary>Skill</summary><div class="record-body document"><h1>MFC executive intake</h1>
+<p>Route MFC work through the existing executive system without making Hunter complete a technical
+form, re-explain known context, or wait while ordinary work is deferred back to him.</p>
+<h2>1. Classify the request</h2>
+<ul>
+<li>Bypass this workflow for a clearly unrelated question.</li>
+<li>Ask one short classification question only if it is genuinely unclear whether the request serves
+  MFC's mission. Treat founder visibility, personal pages, and social content as MFC work when they
+  serve the mission.</li>
+<li>Proceed directly when the task is clear and structured. Do not restate a simple request merely to
+  seek confirmation.</li>
+<li>Use an intent echo for natural, multi-part, stream-of-consciousness MFC input. State the outcome
+  understood, relevant workstreams, work that will proceed now, and the one protected judgement only
+  if one genuinely remains.</li>
+</ul>
+<h2>2. Build the internal task packet</h2>
+<ol>
+<li>Resolve named topics through <code>90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml</code>
+   before broad discovery. Treat it as a routing and reconciliation record, not as authority that
+   replaces its linked decisions or operational artefacts. Preserve its open conflicts and keep AI
+   assurance separate from human, clinical and legal approval. Inspect the registered canonical
+   sources and existing operational destinations, reconstruct the current truth, and bring the
+   strongest next-action recommendation before asking Hunter a resolvable technical question.
+   Before substantive work, render and read that topic's complete state interface: <strong>Where are we?</strong>
+   <strong>What do we currently believe? What’s complete? What’s provisional? What conflicts? What’s
+   awaiting specialist assurance? What’s awaiting Hunter? What’s awaiting external humans? What’s
+   next?</strong> Do not begin from an older artefact merely because it is detailed or easy to find. If the
+   interface is missing, stale, or contradicted by a registered current source, reconstruct and
+   update the interface before proceeding. Record identifiers are never standalone founder language:
+   use the plain description first and place a code in parentheses only when traceability helps.</li>
+<li>Read <code>90-meta/full-permanent-specialist-bench-v1/onboarding-manifest-v1.yml</code>, then load its
+   shared core and the role pack required for the task. Use detailed founder sources only when the
+   manifest's trigger is met.</li>
+<li>Read <code>CLAUDE.md</code>, then the task-relevant MFC core, role guidance, memory, skills, and current
+   state indicated by the request.</li>
+<li>Derive the technical fields in
+   <code>90-meta/core-operations-hardening-token-efficiency/05-context-manifest-and-discovery.md</code> rather
+   than asking Hunter to fill them in. Create or update the Context Manifest for material work.</li>
+<li>Retrieve narrowly: read the most authoritative, relevant, and current sources first; use indexes
+   before detail files; stop once the task's evidence threshold is met.</li>
+<li>Record sources actually checked, inaccessible sources, uncertainty, and relevant conflicts. Do
+   not claim a source was read, a live system was updated, or a capability exists unless verified.</li>
+</ol>
+<h2>3. Route and decide</h2>
+<ul>
+<li>Route cross-project rhythm, priorities, commitments, and executive updates through Cadence; route
+  objective planning and task control through Atlas; use specialist input only where its domain is
+  relevant.</li>
+<li>When a material task depends on what is current, a potential conflict, or a relevant source change,
+  load the <code>organisational_freshness</code> workflow pack before relying on older context. When the task
+  asks what MFC should proactively explore, research, draft, or prioritise, load the
+  <code>opportunity_intelligence</code> workflow pack. Both remain pilots and do not widen authority.</li>
+<li>In every material task receipt, record <code>workflow_packs_loaded</code> and a plain-language
+  <code>workflow_invocation_reason</code>. Record <code>none</code> when neither workflow was relevant; listing a pack in
+  the manifest is not evidence that it was used.</li>
+<li>Apply the source-precedence model. Resolve ordinary retrieval questions autonomously. Preserve an
+  unresolved material conflict rather than silently choosing a side.</li>
+<li>Treat a direct founder instruction as authority for the future action it explicitly directs, but
+  do not use it to rewrite or declare a conflicting source false. State the discrepancy, preserve
+  the record, and prepare the exact update or clarification needed.</li>
+<li>Never invent an owner, mark a current source as stale, or reassign live work merely because an
+  action is incomplete. Recommend an evidence-grounded owner where one exists; otherwise complete
+  the unaffected work and carry one narrow ownership question or ready-to-apply change forward.</li>
+<li>Never nominate Hunter as an interim/default owner merely to close an ownership gap. Hunter is the
+  founder authority, not a catch-all operational owner; use a named source-backed owner or leave the
+  owner decision explicitly unresolved.</li>
+<li>Complete all unaffected, reversible work. Escalate only the smallest decision that meets a real
+  protected condition under <code>CLAUDE.md §6a</code>.</li>
+<li>Bring a decision-ready recommendation: best path, up to two genuine alternatives if needed,
+  confidence and why it is limited, consequence, and one exact founder judgement. Never send a
+  document dump or invent a requirement for committee, clinical, legal, or other approval.</li>
+<li>For material work, determine the professional assurance actually required from the objective,
+  consequences and evidence—not from a fixed agent checklist and never by asking Hunter which
+  specialist to run. Inspect whether the task's premise and its connection to MFC's theory of change
+  are sound, not only whether the requested artifact is internally consistent.</li>
+<li><strong>Material design work has a mandatory design-intelligence stage before production is treated as
+  converged.</strong> When the outcome creates, redesigns, optimises, recommends or finalises a product,
+  programme, strategy, positioning or consequential audience experience, apply
+  <code>90-meta/full-permanent-specialist-bench-v1/design-intelligence-and-founder-finalisation-standard.md</code>.
+  Screen every registered specialist with a visible reasoned disposition; execute only the relevant
+  bounded reviews in stages; use optimal relevant coverage rather than minimum headcount; require a
+  separate A-24 challenge of omissions/inclusions and SYS-04 reconciliation before execution; compare
+  genuinely different approaches; and maintain a rationale ledger
+  for the load-bearing choices. Do this before polishing the current candidate. “Finalise” means
+  complete the system's in-remit optimisation and bring Hunter the current artefact and recommendation;
+  it never grants or implies Hunter approval.</li>
+<li>A specialist status may move only when that lens has actually executed and produced inspectable
+  evidence. A registered role, prompt, simulated persona or polished output is not an assurance pass.
+  Record AI specialist assurance separately from qualified-human, committee and real-user review.</li>
+<li>Before executing a specialist, load its entry and readable pack from
+  <code>90-meta/full-permanent-specialist-bench-v1/specialist-knowledge-index.yml</code>. Supply the shared MFC
+  orientation, current pack, task packet and bounded sources. If the role is
+  <code>role_only_not_equipped</code> or <code>stale</code>, equip/refresh it before treating its output as domain
+  assurance; never hide the missing knowledge behind the agent's name. Require the output to state
+  the pack version, professional principles applied, evidence limits, strongest objection, what
+  would change its view and any proposed learning. Follow <code>specialist-knowledge-standard.md</code>.</li>
+<li>Enforce <code>specialist-call-contract.md</code> on every claimed specialist call. Save the task packet and
+  one contract-complete output per bounded or independent reviewer; declare the execution mode and
+  learning disposition. A same-context role lens is consultation, not separately executed
+  specialist assurance, and a shared synthesis cannot be counted once per named specialist.</li>
+<li>An equipped pack and a passing structural validator are not professional assurance. Claim an
+  <code>evaluated_pack</code> only after the seven-case substantive evaluation in
+  <code>specialist-substantive-evaluation-standard.md</code> has passed independent checking. Supply the
+  source-graded professional evidence and accepted/narrowed/rejected MFC learning at every call.</li>
+</ul>
+<h2>4. Close the propagation loop</h2>
+<ul>
+<li>After an approved material change, update the existing operational destination(s); do not create
+  another Hub, registry or parallel final unless the topic record explicitly authorises that role.</li>
+<li>For Drive, Wix, Monday or another authenticated system, use the available connector, record the
+  returned revision or receipt, and read it back before claiming the destination is current. A local
+  file or hook is not evidence that the external system changed.</li>
+<li>Update the topic record to the reconciled state and regenerate <code>90-meta/MFC-HUB.html</code> plus its
+  pillar pages. Run <code>90-meta/hub/check_hub_integrity.py</code>.</li>
+<li>Record the resulting start/progress/completion/waiting/correction state through
+  <code>90-meta/controlled-automation-v1/topic-control/record_topic_reconciliation.py</code>. The receipt must
+  name the evidence and distinguish verified external readback, Hunter-reported external state and
+  unverified external state. This is required even when the work happened in another chat and only
+  becomes known through Hunter's correction.</li>
+<li>Do not claim completion while a required destination is stale, a projection fingerprint is stale,
+  the reconciliation receipt no longer matches current sources/state, or a protected
+  human/qualified gate remains open. Report the bounded result and the exact open gate.</li>
+</ul>
+<h2>5. Produce and check</h2>
+<ul>
+<li>Draft external communications, public content, outreach, or commitments; do not send or publish
+  them unless a verified authority permits it.</li>
+<li>For work of real importance or value, run the separate producer → checker → revise → recheck loop
+  required by <code>CLAUDE.md §9b</code>. Record the producer, separate checker context, material findings,
+  revision, and recheck result.</li>
+<li><strong>For anything committee-facing, funder-facing, strategy/positioning/pricing, or otherwise high-
+  consequence across multiple professional domains: run the real multi-specialist panel, not only the single
+  producer/checker loop.</strong> Proven 2026-08-11 to find real defects (a factual pricing error, a total
+  safeguarding-disclosure gap) that a single-pass independent check had already missed on a document
+  already marked "finalised, independently reviewed." How to run it, the panel composition, the
+  routing-record format, and the verification command:
+  <code>90-meta/full-permanent-specialist-bench-v1/how-to-run-a-real-panel.md</code>. This is the standard for
+  this category of work now, not an occasional escalation — Hunter's own words: <em>"I want it to
+  consider various options even if I don't instruct... that's the point of the vault."</em></li>
+<li>The panel's purpose is not merely to find defects in a finished draft. For a qualifying design
+  objective it begins at W5a: whole-bench coverage screen → divergence → bounded specialist
+  challenges → explicit reconciliation → artefact optimisation → founder finalisation brief. A
+  later producer/checker pass still tests the result, but cannot stand in for this design stage.</li>
+<li>Claude chooses the smallest sufficient panel and records why. Do not ask Hunter to select full
+  versus direct processing, specialists, skills, or review depth; escalate only a protected §6a
+  founder/human-authority decision after completing all research the system can do itself.</li>
+<li>Use the seven-dimension readiness signal for material work only: mission fit, audience value,
+  evidence integrity, safety/reputation and claims boundaries, conceptual/content integrity,
+  delivery readiness, and assurance/learning. Treat it as a calibrated signal, never as fabricated
+  precision or an invented hard gate.</li>
+<li><strong>The scoring bands, the three anti-theatre rules, and the founder-result format are defined in
+  <code>references/readiness-signal-and-founder-result.md</code>. Read it before producing either.</strong> Until
+  2026-08-09 neither was defined, and scores were being rendered as precise numbers with no method —
+  the exact fabricated precision this bullet prohibits. Key points: the headline Hunter sees is the
+  <strong>average</strong> of the seven dimensions with the <strong>lowest dimension highlighted beside it</strong> (his
+  correction, 2026-08-09 — never the average alone, never the lowest as the headline); <strong>every
+  dimension below 90 must name its specific limiter</strong>; <strong>nothing exceeds 89 without an independent
+  check</strong> by a separate context; and the <strong>75-per-dimension line is unchanged</strong> — the average is what
+  he sees, never what decides whether he sees it. That line is a working calibration, not the gate
+  itself; the gate is the three-question test in the reference file (was it genuinely separately
+  checked, are unsafe or overclaimed statements actually repaired, does anything still held back name
+  a real blocker).</li>
+<li><strong>Improvement items shown to Hunter must be outside the system's own remit</strong> (his correction,
+  2026-08-09). If the agent could have done it — rewrite, re-check, chase a source, fill a gap the
+  vault would fill — it gets <strong>done before sending</strong>, not listed. Only a required human input, a
+  <code>§6a</code> founder judgement, a fact that exists nowhere, access the system lacks, or evidence only time
+  or contact can produce may appear, each naming its blocker. The separate checker rejects any
+  in-remit item and sends it back for the work. Full rule and test:
+  <code>references/readiness-signal-and-founder-result.md</code>.</li>
+</ul>
+<h2>5a. The founder result — material work only</h2>
+<p><strong>Material work ends with a founder-readable HTML result, not a chat summary.</strong> Hunter, 2026-08-09:
+<em>"I don't know what 01 06 is... Send me something, and I can click yes."</em></p>
+<p><strong>⚠ Hunter must not see a sub-threshold result.</strong> Corrected same day: <em>"I should never see this
+version — I should get the final version after the CEO and Committee have approved of it as it meets
+the threshold/approval zone. Agent is to be looped — not me re-prompting it."</em> The gate is the
+reference file's three-question test, with 75+ on every dimension as its working calibration — below
+either, the bounded producer→checker→revise
+→recheck loop (<code>§9b</code>, capped per <code>§7</code>) runs automatically. He sees the approved result or a genuine
+escalation under <code>§6a</code>'s six conditions. Never a draft score, never a status update mid-loop. Full
+mechanism: <code>references/readiness-signal-and-founder-result.md</code>.</p>
+<ul>
+<li><strong>No file paths or record IDs as the primary way of naming things.</strong> Never "01-06" or "C-13" —
+  say "the notes describing who you are and what MFC is," "three committee documents still using the
+  old definition." Identifiers in parentheses at most.</li>
+<li>Lead with what changed and what it means. Every decision Hunter must make gets a yes/no/later
+  control and an export that copies clean text back.</li>
+<li>Always state what was <strong>not</strong> done and what remains unverified.</li>
+<li><strong>Not for conversation, status checks or plain answers</strong> — producing one for those is ceremony,
+  and <code>L-016</code> treats ceremony as a failure, not diligence.</li>
+</ul>
+<p>Full format rules: <code>references/readiness-signal-and-founder-result.md</code>.</p>
+<h2>5b. The decision trail — material work only, every time</h2>
+<p><strong>Hunter, 2026-08-10:</strong> <em>"When I ask for a project, I wanna see how it actually tracked through.
+So what agents were brought into it, I wanna see the working tree of where it started, who it went
+to, what their decision was, the next person, what their decision was, they agree, disagree. I wanna
+see that every single time now. Because then I know if something's been missed and why, and then we
+can start to address it."</em></p>
+<p><strong>Every material project produces a decision trail alongside the founder result.</strong> It is a separate
+artefact, not a section inside the deliverable, and it is not optional.</p>
+<p>It must show, at minimum:</p>
+<ol>
+<li><strong>Where it started</strong> — the intake, and what ground truth was read at source before work began.</li>
+<li><strong>Every agent actually run</strong> — name, role, and the verdict it returned. Not agents considered.</li>
+<li><strong>Whether each verdict was accepted, narrowed or rejected</strong> — and the reason.</li>
+<li><strong>Every disagreement between agents, and who won.</strong> Where a challenger overturned a researcher,
+   or the producer overturned a challenger, say so and say why.</li>
+<li><strong>What the producer verified independently</strong>, and what that verification changed.</li>
+<li><strong>What was missed, who should have caught it, and why they didn't.</strong> This is the point of the
+   artefact — an unbroken chain of agreement is a signal to distrust, not a result to report.</li>
+<li><strong>A count of errors that reached Hunter before being caught.</strong> That number, not the number caught
+   internally, is the measure of whether the system is working.</li>
+</ol>
+<p><strong>Naming:</strong> <code>90-meta/TRAIL-&lt;date&gt;-&lt;objective&gt;.html</code>. First instance:
+<code>TRAIL-2026-08-10-committee-pack.html</code>.</p>
+<p><strong>Why it is separate from the founder result:</strong> the result page answers <em>what should we do</em>; the
+trail answers <em>how much should you trust it, and where would it have broken</em>. Merging them buries
+the second question inside the first.</p>
+<h2>6. Hand back and learn</h2>
+<ul>
+<li><strong>⛔ When a founder result was produced (§4a), the chat message must NOT restate it.</strong> Corrected
+  2026-08-07 after exactly that: a full founder-result page was sent, and then the entire contents
+  were rewritten as several hundred words of chat underneath it. Hunter: <em>"why am I not getting a
+  simplified founder view here?"</em> — then, on being told the rule existed: <em>"Yes but why? Like we just
+  did all this work in our obsidian and md files as requirements?"</em> He was right twice. The bullet
+  below said "explain what changed, why it matters, why the recommendation is sound," which read as
+  licence to write that summary; §4a says the page IS the explanation. <strong>The page is the deliverable.
+  The chat message is a doorbell, not a second copy.</strong> Two or three sentences maximum: what it is,
+  the single most important thing in it, and anything genuinely urgent that cannot wait for a click.
+  If the chat message could be read <em>instead of</em> the page, it is too long. <strong>This has no lint —
+  <code>check_founder_result_gate.py</code> inspects the artefact only, never the message sent with it — so it
+  holds by being followed, and that is exactly why it failed once already.</strong></li>
+<li>Where <strong>no</strong> founder result was produced (ordinary conversation, a plain answer, a status check):
+  lead with the outcome, explain what changed and why it matters, in founder language. Use visuals
+  where they make the reasoning easier to grasp. This is the case the bullet was originally written
+  for.</li>
+<li>For meaningful learning, state plainly what changed, why it changed, and what will work differently
+  next time. Apply the correction-propagation protocol when the lesson is reusable.</li>
+<li>Capture a genuine commitment with owner, outcome, timing, and authority. Write only to a verified
+  canonical system; otherwise provide an exact ready-to-apply update and say that no live write was
+  made.</li>
+</ul>
+<h2>Standing scope and retained limits</h2>
+<p>Under <code>D-0088</code>, this skill is the active route for MFC executive intake and bounded read-only
+task-relevant discovery. Use <code>90-meta/full-permanent-specialist-bench-v1/agent-system-operating-pilot-v1.md</code>
+to retain and extend the evidence record.</p>
+<p>This skill does not grant Cadence promotion, scoring gates, connector access, a Google Sheets write,
+external-send or publishing authority, or authority to bypass protected conditions in <code>CLAUDE.md</code>.</p><p class="src">Original source: .claude/skills/mfc-executive-intake/SKILL.md</p></div></details><details class="record" ><summary>2026 08 12 Hrec Monday Integration Work Log</summary><div class="record-body document"><h1>HREC Monday.com Integration — Work Log</h1>
+<p><strong>Objective:</strong> Add the HREC research strategy document to MFC Roadmap board and create trackable subitems for the five action items identified in the strategy.</p>
+<hr />
+<h2>Work Completed</h2>
+<h3>Parent Item Created</h3>
+<ul>
+<li><strong>Item ID:</strong> 2828256705</li>
+<li><strong>Name:</strong> "HREC approval &amp; data strategy — 2026 research pathway"</li>
+<li><strong>Board:</strong> MFC Risk &amp; Roadmap (board ID: 5030530083)</li>
+<li><strong>Group:</strong> Roadmap This Year (group_mm63eqy5)</li>
+<li><strong>URL:</strong> https://mentalfitnesscollective.monday.com/boards/5030530083/pulses/2828256705</li>
+<li><strong>Detail Column Content:</strong> Strategy document link + full context about research, ranked options, and five action items</li>
+<li><strong>Status:</strong> Working on it (severity column)</li>
+</ul>
+<h3>Subitems Created</h3>
+<table>
+<thead>
+<tr>
+<th>Subitem</th>
+<th>Item ID</th>
+<th>Name</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2828227399</td>
+<td>Email University of Adelaide re: collaboration pathway ($0)</td>
+<td>https://mentalfitnesscollective.monday.com/boards/5030578898/pulses/2828227399</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2828188311</td>
+<td>Email UTAS &amp; South Western Sydney LHD for fee/process confirmation</td>
+<td>https://mentalfitnesscollective.monday.com/boards/5030578898/pulses/2828188311</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2828256881</td>
+<td>Identify 3–5 psychology/public-health academics to approach as collaborators</td>
+<td>https://mentalfitnesscollective.monday.com/boards/5030578898/pulses/2828256881</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2828227608</td>
+<td>Draft org-wide data policy and consent form</td>
+<td>https://mentalfitnesscollective.monday.com/boards/5030578898/pulses/2828227608</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2828256708</td>
+<td>Send privacy-law question (AG-03/s6FB) to legal clinic or counsel</td>
+<td>https://mentalfitnesscollective.monday.com/boards/5030578898/pulses/2828256708</td>
+</tr>
+</tbody>
+</table>
+<p>All five subitems created under parent item 2828256705.</p>
+<hr />
+<h2>Verification</h2>
+<p><strong>API Calls Confirmed:</strong>
+- Parent item creation: successful (item_id 2828256705 returned)
+- Subitem creation batch 1: 1 success, 4 failures (column mismatch)
+- Subitem creation batch 2: 4 successes (items 2828227399, 2828188311, 2828256881, 2828227608, 2828256708)
+- Detail column update (parent item): successful (document link + context added)</p>
+<p><strong>Vault Record Status:</strong> This document serves as the vault record. Items are live in Monday.com and accessible via the URLs above.</p>
+<hr />
+<h2>Specialist Panel Findings</h2>
+<p>This work was routed through executive intake at Hunter's request. All three specialists completed independent reviews.</p>
+<ul>
+<li>
+<p><strong>Flint (FL-02), approach contrarian:</strong> Chosen approach is functional. An alternative (Decision-Indexed Structure) would improve strategic visibility, but the trade-off between simplicity and decision-gate transparency is a genuine founder preference, not a structural defect.</p>
+</li>
+<li>
+<p><strong>Verity (FL-03), evidence auditor:</strong> Initially classified the parent item, subitems, and Monday doc as FABRICATED/UNVERIFIABLE. <strong>This finding was disproven.</strong> Verity's own method statement disclosed it "cannot access Monday.com directly" and relied only on vault-file greps plus a stale prior operational-sync record that predated this session's work (created 2026-08-12T02:11:23Z). The producer (this session) independently re-queried the live Monday.com API after Verity's report and confirmed: the parent item, all five subitems, and the standalone Monday doc all exist exactly as originally claimed, with matching IDs, names, and URLs. The "board ID mismatch" Verity flagged is normal Monday.com behavior — subitems live on an auto-generated subitems-board ID distinct from their parent's board ID. <strong>Verdict: Verity's finding does not survive independent live re-verification; the work is genuinely complete as originally recorded.</strong></p>
+</li>
+<li>
+<p><strong>Compass (FL-01), founder lens:</strong> Also could not verify completion (same tooling limitation as Verity — no live Monday.com access, relied on vault search). Separately from the verification question, Compass raised a substantive structural concern that stands independent of completion status: the parent+5-subitems structure treats HREC as a bounded, closeable project, but the strategy document itself describes HREC as an ongoing strategic engagement (multi-month, evolving as universities respond) that should connect to downstream blockers (<code>ACT-061</code>, the measurement build) not yet reflected on the board. Compass also flagged an unresolved tooling question: should the strategy live vault-primary (with Monday linking to it) or Monday-native? This question was not resolved before building the current structure.</p>
+</li>
+</ul>
+<p><strong>Disagreement and resolution:</strong> Verity and Compass's non-completion findings do not survive live re-verification — the work is real and complete. Compass's structural concern (bounded-project framing vs. ongoing-engagement framing, and disconnection from <code>ACT-061</code>/measurement-build dependencies) is separate from the verification question and remains a genuine, unresolved finding that should reach Hunter as a real trade-off, not something this session should silently resolve by picking a side.</p>
+<p><strong>What was missed and why:</strong> Two of three specialist reviewers reached a wrong conclusion (non-completion) because their access model couldn't reach the system being audited — a real gap in how this panel is currently run, worth noting for future panels reviewing live-system integration work: a reviewer without API access to the system under review cannot meaningfully audit whether a live action succeeded, and should say so as its primary limitation rather than treating vault silence as proof of absence.</p>
+<hr />
+<h2>Next Steps</h2>
+<ol>
+<li>Synthesize all three specialist findings into a founder result</li>
+<li>Present Compass's structural concern (bounded-project vs. ongoing-engagement framing; ACT-061/measurement-build connection; vault-vs-Monday-native tooling decision) as a genuine founder decision, not something resolved unilaterally</li>
+<li>Deliver founder result with readiness signal</li>
+</ol><p class="src">Original source: 90-meta/full-permanent-specialist-bench-v1/routing-records/2026-08-12-hrec-monday-integration-work-log.md</p></div></details><details class="record" ><summary>Specialist Knowledge Standard</summary><div class="record-body document"><h1>Specialist knowledge, calibration and learning standard</h1>
+<h2>Purpose</h2>
+<p>A role card explains what a specialist is meant to do. It does not by itself equip that specialist
+to do it well. Every routed specialist must arrive with enough current MFC context, professional
+knowledge, source traceability and prior organisational learning to provide a genuine expert lens
+rather than a plausible generic opinion.</p>
+<p>This standard extends the existing permanent bench. It does not create private agent databases or
+a parallel organisational knowledge base.</p>
+<h2>The five-layer specialist context</h2>
+<p>Every equipped specialist receives:</p>
+<ol>
+<li><strong>Shared MFC orientation</strong> — mission, strategy, audience, products, founder intent, language,
+   current state, source precedence and authority boundaries from <code>onboarding-manifest-v1.yml</code>.</li>
+<li><strong>Professional toolkit</strong> — the theories, principles, evidence traditions, debates and failure
+   modes that materially govern the role.</li>
+<li><strong>MFC domain position</strong> — what MFC currently believes or has decided in that domain, clearly
+   separated from external evidence and provisional analysis.</li>
+<li><strong>Accumulated MFC learning</strong> — accepted, narrowed and rejected recommendations; Hunter or human
+   corrections; observed results; known failures; and implications for the next use.</li>
+<li><strong>Task packet</strong> — the current objective, audience, artifact, decision, relevant sources,
+   conflicts, evidence limits, human boundaries and exact bounded question.</li>
+</ol>
+<p>The first four layers are maintained between tasks. The fifth is assembled at routing time.</p>
+<h2>Knowledge-pack states</h2>
+<ul>
+<li><code>role_only_not_equipped</code> — role and method exist; no curated domain pack. May be screened for
+  relevance but may not be represented as domain assurance.</li>
+<li><code>baseline_pack</code> — a source-linked starting toolkit and MFC position exist; suitable for a
+  controlled live evaluation, not mature professional assurance.</li>
+<li><code>evaluated_pack</code> — the pack and agent have passed representative live/holdout tests with an
+  independent reviewer.</li>
+<li><code>current_operational_pack</code> — evaluated and refreshed within its stated review interval, with
+  material corrections propagated.</li>
+<li><code>restricted_human_boundary</code> — AI preparation is equipped, but the conclusion or approval remains
+  with a qualified human.</li>
+<li><code>stale</code> — a refresh trigger has fired and the pack must be checked before it bears a decision.</li>
+</ul>
+<p>Registration, routing frequency and a structurally complete role card do not advance these states.</p>
+<h2>Required pack contents</h2>
+<p>Each entry in <code>specialist-knowledge-index.yml</code> must identify:</p>
+<ul>
+<li>specialist ID, display name, domain and pack state;</li>
+<li>last review date, next review date or event trigger, and accountable maintainer;</li>
+<li>core professional principles and named limitations;</li>
+<li>canonical source paths supporting those principles;</li>
+<li>current MFC domain positions and their authority type;</li>
+<li>open questions and known disagreements;</li>
+<li>accepted, narrowed and rejected learning records;</li>
+<li>evaluation evidence and known failure modes; and</li>
+<li>human or adjacent-specialist boundaries.</li>
+</ul>
+<p>Packs point to canonical sources; they do not copy whole research libraries or convert analysis into
+authority by repetition.</p>
+<h2>Routing contract</h2>
+<p>The mechanically enforced contract and templates are in <code>specialist-call-contract.md</code>,
+<code>specialist-task-packet-template.yml</code> and <code>specialist-review-template.md</code>. A same-context role lens
+may inform a synthesis, but it is not a separately executed specialist review and may not be
+presented as one.</p>
+<p>Before a specialist executes, the orchestrator must load:</p>
+<ol>
+<li>the shared orientation;</li>
+<li>that specialist's current pack;</li>
+<li>the task packet; and</li>
+<li>any sources specifically required by the bounded question.</li>
+</ol>
+<p>The specialist output must state:</p>
+<ul>
+<li>sources and pack version used;</li>
+<li>professional principles applied;</li>
+<li>position and strongest objection;</li>
+<li>evidence strength and limitations;</li>
+<li>alternatives considered;</li>
+<li>recommendation and what would change it;</li>
+<li>required adjacent specialist or human boundary; and</li>
+<li>proposed learning, if anything genuinely new was learned.</li>
+</ul>
+<p>The task packet and review output must be saved as inspectable files for bounded or independent
+reviews. Every routing/receipt entry declares its truthful execution mode and learning disposition.
+One combined report cannot be reused as the individual output of several bounded specialists.</p>
+<p>If a decision-bearing specialist is <code>role_only_not_equipped</code> or <code>stale</code>, the objective must first
+equip/refresh it or disclose that the lens has not been supplied. Naming the role is not assurance.</p>
+<h2>Controlled learning write-back</h2>
+<p>Agents do not autonomously add every output to their own knowledge. A proposed learning follows this
+route:</p>
+<ol>
+<li><strong>Capture:</strong> the specialist labels the candidate as external evidence, MFC observation, human
+   correction, accepted/rejected recommendation, hypothesis or failure.</li>
+<li><strong>Verify:</strong> A-06 checks research claims; A-23 checks source identity and linkage; A-05 checks
+   organisational authority and conflicts.</li>
+<li><strong>Reconcile:</strong> SYS-04 records whether it is accepted, narrowed, rejected, unresolved or
+   escalated and what operational artifact changed.</li>
+<li><strong>Write back:</strong> update the canonical source first where meaning changed, then update the pack's
+   pointer/summary and append its learning record. Preserve rejected and superseded advice.</li>
+<li><strong>Test:</strong> a reusable correction requires a regression or fresh-context evaluation under the
+   existing Correction Propagation and Learning Protocol.</li>
+</ol>
+<p>Every completed review records one learning disposition even when no write-back is warranted:
+<code>no_new_learning</code>, <code>candidate_update</code>, or <code>writeback_completed</code>. This makes an omitted learning
+return visible without manufacturing knowledge.</p>
+<p>No participant personal data belongs in a pack. Use aggregated or de-identified findings only.</p>
+<h2>Weekly maintenance</h2>
+<p>The Monday evidence cycle reviews, without manufacturing updates:</p>
+<ul>
+<li>the latest evidence-watch digest and any completed full-text evidence-research records;</li>
+<li>new approved decisions and canonical artifact changes;</li>
+<li>routed specialist outputs and their reconciliation dispositions;</li>
+<li>Hunter, committee, qualified-human, participant, facilitator or host corrections/feedback; and</li>
+<li>pack freshness triggers and unresolved conflicts.</li>
+</ul>
+<p>For each pack the cycle records <code>no_change</code>, <code>candidate_update</code>, <code>updated</code>, <code>stale</code>, or
+<code>human_review_required</code>. Abstract-only evidence-watch findings remain candidates and cannot update a
+core principle. A quiet week produces no artificial learning.</p>
+<h2>Evaluation</h2>
+<p>An agent is not equipped merely because the pack exists. For promotion beyond <code>baseline_pack</code>, test:</p>
+<ul>
+<li>a normal live case;</li>
+<li>a premise-challenge case;</li>
+<li>an ambiguity or conflicting-source case;</li>
+<li>a boundary/refusal case;</li>
+<li>an adjacent-domain handoff;</li>
+<li>a stale/missing-source case; and</li>
+<li>whether the advice materially improves an artifact without overclaiming.</li>
+</ul>
+<p>Evaluation must identify what the specialist caught, missed, duplicated, got wrong and changed.
+Hunter response is useful evidence of value but does not prove scientific or professional truth.</p>
+<p>The complete case design, separation, scoring, promotion, critical-failure and refresh rules are in
+<code>specialist-substantive-evaluation-standard.md</code>. Keyword checks, role-name presence, routing-table
+membership and structural completeness may verify plumbing but can never promote a pack.</p>
+<h2>Governance decision</h2>
+<p>No new persistent specialist is needed. The concrete gap is missing knowledge, calibration and
+learning infrastructure for the existing roles. Improve those roles first; reconsider capability
+creation only if live evaluations expose a distinct recurring responsibility with no owner.</p><p class="src">Original source: 90-meta/full-permanent-specialist-bench-v1/specialist-knowledge-standard.md</p></div></details><details class="record" ><summary>Specialist Substantive Evaluation Standard</summary><div class="record-body document"><h1>Specialist substantive evaluation standard</h1>
+<h2>What this corrects</h2>
+<p>The retired harness inferred performance from a role name appearing in a shadow file, refusal words
+appearing in exclusions and an ID appearing in the routing table. Those remain useful plumbing
+checks only. They do not establish professional reasoning, evidence handling, refusal, handoff or
+artifact improvement. No pack may be promoted from those checks.</p>
+<h2>Separation of functions</h2>
+<p>Every evaluation names three distinct functions and context IDs:</p>
+<ol>
+<li><strong>Case owner</strong> preregisters the prompt, source bundle, targeted dimensions, critical failures and
+   sealed expected behaviours.</li>
+<li><strong>Performer</strong> receives the pack, shared context, task packet and sources, but not the answer key,
+   self-score or checker notes.</li>
+<li><strong>Independent checker</strong> receives raw evidence only after execution, completes a blind first pass,
+   and has not authored the pack, response or artifact change.</li>
+</ol>
+<p>A failed response is never edited into a pass. A correction creates a new attempt with a fresh
+response and independent recheck, while the failed attempt remains inspectable.</p>
+<h2>Seven cases for every registered role</h2>
+<ol>
+<li><strong>Normal reasoning</strong> — apply the discipline to a realistic MFC decision, cite controlling
+   evidence and produce a useful position. At least one normal case is a no-change control.</li>
+<li><strong>Premise challenge</strong> — detect and correct a plausible but unsupported load-bearing premise.</li>
+<li><strong>Conflicting evidence</strong> — compare authority, population, method, recency and applicability;
+   never average incompatible sources.</li>
+<li><strong>Overreach/refusal</strong> — complete permitted preparation, refuse the prohibited conclusion, name
+   the correct authority and block where the role requires it.</li>
+<li><strong>Adjacent-domain handoff</strong> — complete the role's own part and hand off one exact unresolved
+   question without impersonating the adjacent role.</li>
+<li><strong>Stale or missing source</strong> — detect the currency/access problem, qualify or stop the conclusion
+   and specify the refresh required.</li>
+<li><strong>Artifact improvement</strong> — produce a traceable change to a real MFC artifact, or an explicit
+   retain decision, without unsupported claims or authority drift.</li>
+</ol>
+<p>At least one concealed holdout prompt is not shown to the pack author. Cases include lower-authority
+decoys and deliberately stale sources where relevant. Naming a theory, specialist or citation earns
+no credit unless the reasoning and source use are correct.</p>
+<h2>Required evidence</h2>
+<p>Each attempt preserves:</p>
+<ul>
+<li>preregistered case and sealed expected behaviours;</li>
+<li>task packet and exact source bundle, versions, access dates and source classes;</li>
+<li>raw prompt and unedited raw response;</li>
+<li>performer and checker context IDs;</li>
+<li>tools/access limits and unavailable sources;</li>
+<li>material claim-to-source map;</li>
+<li>artifact before/after fingerprint and proposed change or no-change decision;</li>
+<li>blind checker scorecard and critical-failure assessment;</li>
+<li>reconciliation disposition and actual artifact change, if accepted; and</li>
+<li>learning disposition and governed write-back, if any.</li>
+</ul>
+<p>A narrative written after execution is not execution evidence.</p>
+<h2>Scoring</h2>
+<p>Score only preregistered dimensions from 0–3:</p>
+<ul>
+<li>domain reasoning;</li>
+<li>evidence and provenance;</li>
+<li>MFC grounding and authority;</li>
+<li>premise challenge;</li>
+<li>conflict, uncertainty and recency handling;</li>
+<li>boundary, refusal and handoff discipline;</li>
+<li>artifact usefulness; and</li>
+<li>communication and integration.</li>
+</ul>
+<p>A case passes only when no targeted dimension is below 2, the targeted mean is at least 2.25 and
+there is no critical failure.</p>
+<p>Promotion to <code>evaluated_pack</code> requires all seven cases to pass, at least 80% of available points,
+no dimension average below 2, an independently useful artifact/no-change case, a passed no-change
+control, at least one concealed holdout, all corrections independently rechecked, and the evidence,
+known weaknesses and refresh trigger written into the controlled index.</p>
+<h2>Critical failures</h2>
+<p>Any one of these fails the whole evaluation run:</p>
+<ul>
+<li>fabricated or materially misrepresented evidence;</li>
+<li>wrong source-authority precedence;</li>
+<li>clinical, legal, safeguarding, accessibility or organisational approval overreach;</li>
+<li>a missed mandatory block;</li>
+<li>silent acceptance of a false load-bearing premise;</li>
+<li>failure to detect a deliberately stale load-bearing source;</li>
+<li>averaging a material conflict without disposition;</li>
+<li>overwriting a Hunter-approved decision;</li>
+<li>claiming independence where contexts were not separate; or</li>
+<li>using the sealed answer key during execution.</li>
+</ul>
+<p>H-01 and H-02 may pass the equipped AI-preparation cases but remain
+<code>restricted_human_boundary</code>. AI evaluation never converts them into qualified-human assurance.</p>
+<h2>Role-specific critical challenge</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Required critical challenge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-07</td>
+<td>Rendered navigation and hierarchy, not source-code inspection alone.</td>
+</tr>
+<tr>
+<td>A-08</td>
+<td>Founder language versus polished generic copy.</td>
+</tr>
+<tr>
+<td>A-09</td>
+<td>Behaviour claims that ignore environmental or social constraints.</td>
+</tr>
+<tr>
+<td>A-10</td>
+<td>Competing learning architectures and evidence limits.</td>
+</tr>
+<tr>
+<td>A-11</td>
+<td>Retrieve canonical forms before proposing new measurement.</td>
+</tr>
+<tr>
+<td>A-12</td>
+<td>Accessibility/safeguarding screen plus refusal of qualified clearance.</td>
+</tr>
+<tr>
+<td>A-13</td>
+<td>Implied participation or social proof without consent.</td>
+</tr>
+<tr>
+<td>A-14</td>
+<td>Visual treatment that changes otherwise correct meaning.</td>
+</tr>
+<tr>
+<td>A-15</td>
+<td>Attractive design that cannot survive delivery conditions.</td>
+</tr>
+<tr>
+<td>A-16</td>
+<td>Habit claims inferred from one attempted practice.</td>
+</tr>
+<tr>
+<td>A-17</td>
+<td>Stale comparator claims and developer-led evidence.</td>
+</tr>
+<tr>
+<td>A-18</td>
+<td>Novelty/category claims that outrun the landscape.</td>
+</tr>
+<tr>
+<td>A-19</td>
+<td>Individual skill framed as a structural/population solution.</td>
+</tr>
+<tr>
+<td>A-20</td>
+<td>A theory-of-change causal leap.</td>
+</tr>
+<tr>
+<td>A-21</td>
+<td>Partner visibility presented as mutual value.</td>
+</tr>
+<tr>
+<td>A-22</td>
+<td>Cultural/audience claims without intended-audience evidence.</td>
+</tr>
+<tr>
+<td>A-23</td>
+<td>Polished newer file conflicting with controlling authority.</td>
+</tr>
+<tr>
+<td>A-24</td>
+<td>Untestable or post-hoc success criteria.</td>
+</tr>
+<tr>
+<td>A-25</td>
+<td>Mission fit without opportunity-cost analysis.</td>
+</tr>
+<tr>
+<td>A-26</td>
+<td>Policy engagement crossing into legal or party-political judgement.</td>
+</tr>
+<tr>
+<td>H-01</td>
+<td>Request for clinical judgement; prepare and refuse/route correctly.</td>
+</tr>
+<tr>
+<td>H-02</td>
+<td>Request for legal/privacy clearance; prepare and refuse/route correctly.</td>
+</tr>
+<tr>
+<td>FL-01</td>
+<td>Cold founder review versus a context contaminated by builder rationale.</td>
+</tr>
+<tr>
+<td>SYS-03</td>
+<td>Recurring difficulty already owned elsewhere; reject unnecessary agent creation.</td>
+</tr>
+<tr>
+<td>SYS-04</td>
+<td>Pass, revise/recheck, repeated failure and immediate founder-decision escalation.</td>
+</tr>
+</tbody>
+</table>
+<h2>Refresh</h2>
+<p>Re-evaluate after a material pack change, critical correction, new human/participant feedback,
+source expiry, repeated live-use failure or the pack's stated review trigger. Evaluation activity is
+not counted as live organisational contribution.</p><p class="src">Original source: 90-meta/full-permanent-specialist-bench-v1/specialist-substantive-evaluation-standard.md</p></div></details><details class="record" ><summary>Specialist Call Contract</summary><div class="record-body document"><h1>Specialist call contract</h1>
+<p>This contract distinguishes consulting a role lens from completing a bounded specialist review.
+It applies every time material MFC work claims that a registered specialist executed.</p>
+<p>The universal live control is
+<code>verify_specialist_call_records.py</code>. It validates the task-packet contents, source and artifact
+paths, review frontmatter, every required review section, source trace, unique output and learning
+disposition for all future material work types—not only design-intelligence projects.</p>
+<p>Invocation is enforced by <code>.claude/hooks/enforce_material_specialist_closure.py</code>. Every new
+<code>MFC_MATERIAL</code> prompt receives a unique task ID from the intake hook. The task is blocked from stopping
+unless a schema-v2 routing record matches that task and the universal validator passes. The record
+must contain or point to a reasoned disposition for every registered bench member. Routing nobody
+is permitted only when the record preserves why; silent non-use is not.</p>
+<p>This is a mechanical process guarantee inside Claude Code sessions using this vault and its live
+hooks. It does not guarantee that AI professional judgement is correct, replace qualified-human or
+Hunter approval, control work performed in another application, or survive deliberate hook removal.</p>
+<h2>Permitted execution modes</h2>
+<ul>
+<li><code>bounded_specialist_review</code> — the specialist received the complete five-layer context, answered
+  one bounded question and produced its own contract-complete output. This may support internal AI
+  specialist assurance, subject to pack state and evidence limits.</li>
+<li><code>independent_specialist_review</code> — the same contract, completed in a genuinely separate context
+  without exposure to other reviewers' findings. This is required wherever independence is claimed.</li>
+<li><code>same_context_role_lens</code> — one producing context applied a named perspective during synthesis.
+  Useful consultation, but <strong>not a separately executed specialist and not independent assurance</strong>.</li>
+<li><code>reuse_current_evidence</code> — a current, inspectable prior review answers the exact bounded question;
+  cite it and explain why it remains applicable.</li>
+<li><code>restricted_screen</code> — an AI preparation or risk screen whose conclusion remains with a qualified
+  human. It never clears the human boundary.</li>
+<li><code>reconciliation</code> — Relay or the accountable lead reconciled completed inputs. This is not a new
+  domain review.</li>
+</ul>
+<h2>Call-time preflight</h2>
+<p>Before <code>bounded_specialist_review</code> or <code>independent_specialist_review</code>, save a task packet containing:</p>
+<ol>
+<li>specialist ID, pack path, pack state and pack version/review date;</li>
+<li>shared orientation manifest and the authoritative current-state interface used;</li>
+<li>objective, audience, lifecycle stage and exact artifact/version;</li>
+<li>one bounded question and the decision or interface it informs;</li>
+<li>source hierarchy, approved decisions, known conflicts, evidence limits and unknowns;</li>
+<li>acceptance criteria and adjacent/human boundaries; and</li>
+<li>prior accepted, narrowed and rejected MFC learning relevant to this call.</li>
+</ol>
+<p>If any required context is absent, stale or contradictory, the review stops as <code>not_equipped</code> or
+<code>blocked_context_conflict</code>. It must not improvise through the gap and retain the specialist label.</p>
+<p>Before execution, screen the whole registered bench and preserve one reasoned disposition for each
+role: route now, reuse current evidence, same-context role lens, defer conditionally, not relevant,
+human boundary, not equipped, or reconciliation. This is a relevance screen, not a direction to
+manufacture 25 reviews.</p>
+<p>For every material task, preserve a separate <code>coverage_challenge</code> completed by a reviewer other
+than the original selector. It must challenge omissions and unnecessary inclusions against the
+actual decision surfaces, record upgrades/downgrades and unresolved uncertainty, and be reconciled
+before specialist execution. Efficiency may narrow a routed question; it may not be the sole reason
+for omitting a perspective that could materially alter the result.</p>
+<p>For a restricted AI screen, the same task packet and output requirements apply; its boundary section
+must still name the qualified-human authority. Same-context role lenses and reconciliation are
+truthfully limited modes and do not claim separate specialist execution.</p>
+<h2>Required output</h2>
+<p>Each completed review is saved as its own substantive file and states:</p>
+<ul>
+<li>specialist ID, execution mode, pack version/state, task-packet path and artifact reviewed;</li>
+<li>bounded question;</li>
+<li>exact sources reviewed;</li>
+<li>professional principles applied;</li>
+<li>position and strongest objection;</li>
+<li>evidence strength and limitations;</li>
+<li>alternatives considered;</li>
+<li>recommendation and what would change the view;</li>
+<li>adjacent-specialist or qualified-human boundary; and</li>
+<li>proposed learning, or the explicit statement <code>No new learning proposed</code>.</li>
+</ul>
+<p>One combined synthesis may summarise many outputs, but it cannot be cited as each specialist's own
+output. Reusing one file path across several specialists is valid only for <code>same_context_role_lens</code>
+or <code>reconciliation</code>, and must be labelled that way.</p>
+<h2>Reconciliation and learning return</h2>
+<p>Every material finding receives <code>accepted</code>, <code>narrowed</code>, <code>rejected</code>, <code>unresolved</code> or <code>escalated</code>, with
+a reason and any artifact change. Every review also receives a learning disposition:
+<code>no_new_learning</code>, <code>candidate_update</code>, or <code>writeback_completed</code>.</p>
+<p>A candidate does not become pack knowledge merely because a specialist said it. Follow
+<code>specialist-knowledge-standard.md</code>: verify the claim and source, check authority/conflicts,
+reconcile it, update the canonical source first where meaning changed, append the learning record,
+and test reusable corrections. Preserve rejected advice.</p>
+<h2>Assurance language</h2>
+<p>Recent activity and assurance are separate facts. A fresh <code>same_context_role_lens</code> may be useful and
+recent while remaining limited assurance. Pack existence, a role name, a shared synthesis, a recent
+timestamp or a passing structural check cannot be translated into professional approval.</p><p class="src">Original source: 90-meta/full-permanent-specialist-bench-v1/specialist-call-contract.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0101-organisation-wide-continuity-and-propagation-control.md" target="_blank">Organisation-wide continuity decision (D-0101)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/controlled-automation-v1/topic-control/README.md" target="_blank">Continuity control</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/controlled-automation-v1/topic-control/ARCHIVE-AND-SUPERSESSION-POLICY.md" target="_blank">Archive and supersession policy</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/.claude/skills/mfc-executive-intake/SKILL.md" target="_blank">Executive intake</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-bench.yml" target="_blank">Permanent specialist bench</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/routing-records" target="_blank">Specialist routing evidence</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-knowledge-standard.md" target="_blank">Specialist knowledge standard</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-knowledge-index.yml" target="_blank">Specialist knowledge index</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/professional-evidence-register.yml" target="_blank">Professional evidence register</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-learning-register.yml" target="_blank">Specialist learning register</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-evaluation-register.yml" target="_blank">Specialist evaluation results</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-substantive-evaluation-standard.md" target="_blank">Substantive evaluation standard</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/specialist-call-contract.md" target="_blank">Universal specialist call contract</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/full-permanent-specialist-bench-v1/verify_specialist_call_records.py" target="_blank">Universal specialist call validator</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/.claude/hooks/enforce_material_specialist_closure.py" target="_blank">Material specialist closure gate</a></li></ul></div></details></div>

@@ -1,0 +1,2180 @@
+<title>Framework integrity evidence and claims — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../framework-integrity.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Framework integrity evidence and claims</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>Readme</summary><div class="record-body document"><h1>00-foundations</h1>
+<p>The minimum MFC must consistently understand. Twelve notes. (Formerly named <code>00-kernel</code> —
+renamed 2026-08-04 for plain-language clarity; the <code>K-</code> note prefix is unchanged.)</p>
+<p><strong>Rules</strong>
+- Every statement is a verbatim quotation from a source-verified document. No paraphrase.
+- All notes are <code>provisional</code>. Only Hunter or the committee may move a note to <code>confirmed</code>.
+- AI may transcribe and verify. AI may not originate, paraphrase, approve, or resolve a conflict.
+- Where these foundations and any other note disagree, the foundations govern and a conflict record is raised.</p>
+<p>Storage mode: <code>dual-controlled</code>. Drive holds the originals; Obsidian holds the controlled statement.</p>
+<h2>The twelve notes</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-00</td>
+<td>[[00-foundations/K-00-north-star|North star]]</td>
+</tr>
+<tr>
+<td>K-01</td>
+<td>[[00-foundations/K-01-category-future-state|Category future state]]</td>
+</tr>
+<tr>
+<td>K-02</td>
+<td>[[00-foundations/K-02-vision|Vision]]</td>
+</tr>
+<tr>
+<td>K-03</td>
+<td>[[00-foundations/K-03-mission|Mission]]</td>
+</tr>
+<tr>
+<td>K-04</td>
+<td>[[00-foundations/K-04-public-definition|Public definition]]</td>
+</tr>
+<tr>
+<td>K-05</td>
+<td>[[00-foundations/K-05-short-distinction|Short distinction]]</td>
+</tr>
+<tr>
+<td>K-06</td>
+<td>[[00-foundations/K-06-retired-language|Retired language]]</td>
+</tr>
+<tr>
+<td>K-07</td>
+<td>[[00-foundations/K-07-framework-architecture|Framework architecture]]</td>
+</tr>
+<tr>
+<td>K-08</td>
+<td>[[00-foundations/K-08-claims-red-lines|Claims red lines]]</td>
+</tr>
+<tr>
+<td>K-09</td>
+<td>[[00-foundations/K-09-evidence-roles|Evidence roles]]</td>
+</tr>
+<tr>
+<td>K-10</td>
+<td>[[00-foundations/K-10-strategic-pillars|Strategic pillars]]</td>
+</tr>
+<tr>
+<td>K-11</td>
+<td>[[00-foundations/K-11-authority-and-escalation|Authority and escalation]]</td>
+</tr>
+</tbody>
+</table><p class="src">Original source: 00-foundations/README.md</p></div></details><details class="record" ><summary>K 07 Framework Architecture</summary><div class="record-body document"><h1>K-07 — Framework architecture</h1>
+<h2>The nine layers</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Role (source)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mental fitness</td>
+<td>A developable capacity reflected in how well we navigate life's everyday moments.</td>
+</tr>
+<tr>
+<td>Human Operating System</td>
+<td>A teaching model for how humans function in moments.</td>
+</tr>
+<tr>
+<td>Five public skill labels, seven deep skills beneath</td>
+<td>Notice, Shift, Choose, Focus, Connect — public tier, locked wording, restored <code>D-0081</code>. Seven deep skills (Self-Awareness, Attention, Flexible Thinking, State Regulation, Values-Based Action, Relating to Yourself, Relating to Others) sit underneath as the clinical/evidence tier, each with its own tag — two tiers, not three (<code>D-0084</code>).</td>
+</tr>
+<tr>
+<td>Skill progression</td>
+<td><strong>Learn It, Build It, Use It</strong> — the developmental pathway (renamed from Learn It/Use It/Live It, <code>D-0061</code>, 2026-08-05).</td>
+</tr>
+<tr>
+<td>Stop, Shift, Do</td>
+<td>The simple recall and application process.</td>
+</tr>
+<tr>
+<td>Mental reps</td>
+<td>Catching a moment and choosing your next move, on purpose, toward what matters. (Corrected 2026-08-31, <code>C-20</code> closure — this row still carried the pre-<code>D-0107</code> wording "…choosing the next move with intention" after the locked definition below was amended 2026-08-24.)</td>
+</tr>
+<tr>
+<td>The Basics (named "Engine Basics" 2026-08-05, renamed <code>D-0108</code> 2026-08-24)</td>
+<td><strong>Public surfaces teach four: sleep, movement, food, rest</strong> — Hunter direct, 2026-08-23, <em>"sleep, movement, food, rest, only this for foundations,"</em> reaffirmed 2026-08-25. The framework layer below records five (sleep, movement, food, hydration, recovery); the public set is the founder's deliberate reduction, not drift, and must not be "corrected" back. Sleep, movement, food, hydration, recovery — the direct inputs to the Engine component below. Not a skill; a condition every public and deep skill draws on (<code>D-0063</code>, 2026-08-05; two-tier structure restored per <code>D-0081</code>).</td>
+</tr>
+<tr>
+<td>What helps around the pathway</td>
+<td>Shift tools, exercises / methods, anchors, system basics, reflection, coming back after missed moments, taking responsibility and reconnecting where needed, reinforcement.</td>
+</tr>
+<tr>
+<td>Evidence and safety</td>
+<td>The deeper explanation and claim boundaries.</td>
+</tr>
+</tbody>
+</table>
+<h2>Why practice matters — the gap between knowing and doing (added 2026-08-05, provisional, on Hunter product approval)</h2>
+<p><strong>Authority and status.</strong> Hunter directed this addition, 2026-08-05, <code>D-0062</code>, under delegated
+product authority (<code>K-11</code>); committee ratification remains separately owed, as for this entire
+record. This closes part of <code>LI-10</code>'s open causal question by naming the <em>mechanism the framework
+is designed around</em>, explicitly as a stated rationale drawn from adjacent, established science — not
+as a claim that MFC's own product has been proven to produce this effect.</p>
+<p><strong>The gap, stated plainly:</strong> understanding a skill (Learn It) changes what you know. It does not by
+itself change what you default to under pressure. The Human Operating System's <strong>Roads /
+Pathways</strong> part — the routes that get easier the more you take them — names why: your existing
+habits and reactions are roads worn in by years of use, and <strong>Autopilot</strong> is what runs on them. A skill you learned ten minutes, or ten weeks, ago has
+no pathway yet. When State Check reads "too much" or "too little," access narrows toward whatever
+pathway is most familiar — and without practice, that is still the old default, however well you
+understood the new skill intellectually. <strong>This is the gap</strong> between knowing something and being
+able to do it when it counts.</p>
+<p><strong>This is exactly why Build It exists as its own stage, distinct from Learn It.</strong> A Mental Rep — one
+intentional pass through Stop, Shift, Do, in a real moment — is literally the act that builds a new
+pathway. Repetition in real moments, not further explanation, is what closes the gap.</p>
+<p><strong>Evidence framing, kept honest:</strong> the mechanism above (repeated, cued practice building automatic
+access) is well-established in adjacent literatures — habit formation, automaticity, and
+implementation-intentions research (see the framework-integrity-observatory's <code>05-...md</code> domain 5,
+and <code>R-07</code>, which already identifies Radar as MFC's applied form of this exact literature). This is
+the <strong>rationale</strong> for why the framework is built the way it is. It is not a claim that MFC's specific
+programme has been shown to produce this effect — that remains the open causal question <code>LI-10</code>
+already names, and nothing here closes it.</p>
+<p><strong>Practise low-friction moments before high-friction ones.</strong> The Radar's own guidance (choosing a
+few moments on purpose) carries a design principle worth stating directly: build capacity in
+lower-friction moments — the ones with more room to try, get it wrong, and try again — before
+expecting yourself to handle the genuinely difficult ones. A person who has never practised
+catching, shifting, and choosing in an easy moment has no real basis to expect themselves to manage
+that same sequence the first time it matters most. Nothing prevents someone from also trying
+higher-friction moments — but the expectation should be set accordingly.</p>
+<h2>Existing practices — meditation, mindfulness, gratitude, and where they fit (added 2026-08-05, provisional, on Hunter product approval)</h2>
+<p>Established practices (meditation, mindfulness, gratitude journalling, breathwork, and similar) are
+genuine, independently evidenced methods that can build components of the seven deeper skills —
+mindfulness practice building Self-Awareness and Attention, gratitude practice building Relating to
+Self, breathwork building State Regulation, and so on. K-07 does not dispute or diminish that value;
+they sit within "what helps around the pathway" (Shift tools, exercises, anchors) below.</p>
+<p><strong>The distinction that matters:</strong> building a skill in general is not the same thing as being able to
+access that skill in a specific real-life moment that matters to you. General practice (a daily
+meditation session) strengthens the underlying capacity; it does not, by itself, guarantee that
+capacity shows up in an unrelated, unplanned moment later that day — a heated conversation, a missed
+deadline, a hard decision. That second gap — general capacity to moment-specific access — is what
+the Radar and Mental Rep are specifically designed to close: practising the actual moments a person
+has chosen to work on, not only building capacity in the abstract. Existing practices and MFC's
+approach are complementary, not competing — one builds the skill, the other practises using it where
+it is actually needed.</p>
+<p><strong>Clarifying line, added 2026-09-03 — Hunter direct ("yes to both, adopt the line"), delegated product
+authority under <code>K-11</code>; committee ratification remains owed as for this entire record.</strong> A method
+practised on a schedule is capacity-building between moments; it is not a Radar moment and is not,
+by itself, a rep. It becomes part of a rep only when it is the move chosen in a caught moment — for
+example, catching the moment you are about to skip it. Checking the Radar is an anchor, the cue that
+brings the moments to mind; a check done on autopilot is the anchor working as intended, not a missed
+rep. (Origin: the Radar v2 review, <code>60-projects/mfc-website/rebuild-v2/radar-widget-v1/projects/RADAR-V2-DESIGN-DECISIONS-2026-09-03.md</code>
+D7; adjudicated independently by the framework and research lenses; Hunter's own 2026-09-03 example —
+meditating in bed after noticing "I wasn't gonna check it" — was a rep about the moment of nearly
+skipping, with the check as the chosen move.)</p>
+<blockquote>
+<p><strong>CORRECTION TO <code>D-0091</code>, 2026-08-25, Hunter direct.</strong> <code>D-0091</code> records that MFC's live products
+are two standalone sessions and that <strong>"There is no Stage 2 touchpoint most attendees ever
+reach."</strong> Hunter has corrected this: <em>"for the introduction session, yeah, we don't stay in touch.
+However, for the essentials and the foundations, yeah, we come back. And yeah, we wanna continue
+capturing data."</em> So the standalone-only framing holds for a short introduction session only, and
+<strong>not</strong> for the fuller formats, which do carry a return contact and ongoing data capture. Work has
+since gone to the committee on this. <code>D-0091</code>'s staged-arc exception should be re-derived against
+the real product set rather than assumed.</p>
+<p><strong>Correction to my own note, same day.</strong> I first recorded that no <strong>Essentials</strong> format existed in
+the vault. That was wrong, and it was a search error, not an absence: my first search covered only
+<code>00-foundations/</code> and the topic register, and the broad search timed out before returning. Essentials,
+Foundations and Introduction are all recorded formats in
+<code>60-projects/workshop-evidence-informed-adult/</code>, and the follow-up Hunter describes is specified
+there in detail: a day-7 message, a <strong>day-21 facilitated review</strong>, a two-tier manager forum, an
+employer report with an <code>n &gt;= 20</code> floor, and a <strong>12-month tracked engagement</strong>
+(<code>13-sustaining-practice-layer-v1/01-manager-forum-and-twelve-month-engagement-specification.md</code>,
+2026-08-18). Hunter's correction is fully supported by MFC's own product work; <code>D-0091</code> simply
+predates it.</p>
+<p><strong>The product set, verified 2026-08-25 against <code>110-PRODUCT-AND-PRICING-BOOK.md</code> (canonical,
+<code>D-0096</code>) and <code>11-two-format-build-v1/workshop-package.html</code>.</strong> Three formats, and the return
+contact is structural rather than aspirational, which is precisely why <code>D-0091</code> is wrong:
+<strong>Introduction</strong>, 60 minutes, a single session with no return; <strong>Essentials</strong>, 90 minutes plus a
+<strong>30-minute return session about three weeks later</strong> and a short written report to the
+organisation; <strong>Foundations</strong>, the flagship, a <strong>three-week programme</strong> comprising a leader
+session, a half-day, and a <strong>75-minute on-site return at day 21</strong>. Measurement runs Form 1 before,
+Form 2 in the room, Form 3 at day 21 and Form 4 at day 90. Hunter's correction is exact: the
+introduction is the one-off, the other two come back.</p>
+<p><strong>The limit that still applies to website copy.</strong> That specification carries its own status line:
+<em>"not Hunter-approved, not committee-ratified, not delivery-cleared... Nothing in this document has
+ever been run."</em> So the follow-up may be described as part of what the fuller sessions include, and
+must not be described as something MFC has delivered and proven. <code>K-08</code> governs.</p>
+</blockquote>
+<h2>The Basics (added 2026-08-05 as "Engine Basics", <code>D-0063</code>; renamed <code>D-0108</code>, 2026-08-24)</h2>
+<blockquote>
+<p><strong>RENAMED, 2026-08-24 (<code>D-0108</code>).</strong> This layer is now called <strong>The Basics</strong>. Hunter's reasoning
+defeats <code>D-0063</code>'s naming rationale on its own terms: that rationale rested on the Engine being a
+component "people already learn", and he does not expect the Human Operating System to stay that
+load-bearing outside its own teaching. "Foundations" stays rejected, but on a checked ground
+rather than the one below: the five public skills already own "foundational" in live public copy.
+"General physical health" was also rejected, for colliding with the <code>K-05</code> health/fitness couplet.
+Everything below about what this layer IS remains current. Only the name changed.</p>
+</blockquote>
+<h3>Original section, as written 2026-08-05 under the name Engine Basics (<code>D-0063</code>)</h3>
+<p><strong>Authority and status.</strong> Hunter directed this addition, 2026-08-05, under delegated product
+authority (<code>K-11</code>); committee ratification remains separately owed. This names, deliberately, a
+layer that previously existed only as one item inside a catch-all list ("system basics," in "what
+helps around the pathway" below).</p>
+<p><strong>Sleep, movement, food, hydration and recovery are the direct inputs to the Engine component of the
+Human Operating System</strong> (body state: energy, arousal, activation, fatigue, tension, breath, hunger,
+sleep pressure, recovery — see below). <strong>Engine Basics is not an eighth skill.</strong> It is a condition the
+other skills (five public, seven deep) draw on, not a skill to learn alongside them: a person running on very little sleep
+or food has less Engine available regardless of how many Mental Reps they have done, however capable
+they are. This needs a place in the architecture — Hunter's own reasoning, 2026-08-05: "you can't be
+going, come on, do your reps" to someone whose foundations aren't there — without becoming a large
+taught component, which it deliberately is not.</p>
+<p><strong>Why "Engine Basics," not "foundations" or "supports":</strong> it names itself using a component people
+already learn (the Human Operating System's Engine), rather than introducing an unrelated new term —
+so understanding it requires no new concept, only applying one already taught. It also avoids
+colliding with "the seven deeper <strong>foundational</strong> skills," which already uses "foundational" for
+something else entirely.</p>
+<p><strong>Positioned deliberately small, on purpose — not by oversight.</strong> Physical fitness itself isn't
+taught in five minutes; it's built across a lifetime (school, family, healthcare systems). MFC
+positions Engine Basics the same way: named, respected, referenced when relevant — never expanded
+into its own curriculum MFC would need to own or be expert in.</p>
+<h2>Human Operating System</h2>
+<p><strong>Corrected 2026-09-07 (Hunter direct) against the live model in Drive — <code>Human Operating
+System.png</code>, hunter@mentalfitnesscollective.com.au, 31 May 2026.</strong> This record previously
+carried <strong>six</strong> components, flat, and <strong>omitted Autopilot entirely</strong>. It also named the
+component <code>Pathways</code> where the model says <code>Roads / Pathways</code>, and expanded Navigation into
+"values, care, intention, direction, responsibility" where the model says only "what
+matters and where you want to head." The live model is the correct one; this record was
+wrong. See the correction note at the end of this section.</p>
+<p><strong>Seven parts, in two tiers.</strong> Teaching metaphors, <strong>not</strong> a literal brain map, diagnostic
+model or clinical formulation.</p>
+<blockquote>
+<p><strong>This is a map, not a label.</strong>
+<strong>You are not broken. You are human.</strong>
+<strong>Humans are complex. Understanding the basics should not be.</strong></p>
+</blockquote>
+<h3>Primary operating parts (in the moment) — "the main three"</h3>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Job</th>
+<th>Recall question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Passenger</strong></td>
+<td>The thoughts, feelings and urges that show up. <em>"The Passenger is not bad."</em></td>
+<td><em>What is showing up?</em></td>
+</tr>
+<tr>
+<td><strong>Engine</strong></td>
+<td>Your body state and energy.</td>
+<td><em>What state am I in?</em></td>
+</tr>
+<tr>
+<td><strong>Driver</strong></td>
+<td>Your capacity to pause, steer attention and choose.</td>
+<td><em>Who is at the wheel right now?</em> / <em>What choice is available?</em></td>
+</tr>
+</tbody>
+</table>
+<h3>Wider shaping parts (around the moment)</h3>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Job</th>
+<th>Recall question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Autopilot</strong></td>
+<td>The familiar pattern that is already running.</td>
+<td><em>What familiar pattern is running?</em></td>
+</tr>
+<tr>
+<td><strong>Roads / Pathways</strong></td>
+<td>The routes that get easier the more you take them.</td>
+<td><em>What route am I practising?</em></td>
+</tr>
+<tr>
+<td><strong>Navigation</strong></td>
+<td>What matters and where you want to head.</td>
+<td><em>What matters here?</em></td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>The people, places, cues, pressures and supports around you.</td>
+<td><em>What around me is shaping this?</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Diagnostic question:</strong> <em>"What is shaping access in this moment?"</em></p>
+<p><strong>The recall frame, from the model:</strong> <strong>start with the three basics, then check the wider
+system.</strong> The two-tier structure is not presentational — it is what makes seven parts
+learnable: three to hold inside a moment, four to check around it. Do not flatten it.</p>
+<p><strong>Autopilot and Roads / Pathways are distinct.</strong> Roads are the routes that got easier
+because you took them — the terrain. Autopilot is the pattern <em>executing right now</em>,
+before anything was decided. One is the road; the other is what currently has the wheel.</p>
+<p><strong>The Basics attach to Engine</strong> (see above): sleep, movement, food, rest in public.</p>
+<blockquote>
+<p>"Use the Human Operating System to explain access, not blame."</p>
+</blockquote>
+<p><strong>Correction note, 2026-09-07.</strong> The six-part reading in this record dates from before the
+2026-08-31 authority flip and was never checked against the live model; the flip made this
+vault authoritative for the framework generally, which is why the divergence persisted
+unnoticed rather than being caught as a Drive-versus-vault conflict. Hunter identified it
+directly on 2026-09-07 while reviewing build briefs written from this record. <strong>Two
+specialist reviews earlier that same day each asserted, with a stated search scope, that
+the HOS has exactly six components and no subset structure — both were reading this record
+and both were wrong.</strong></p>
+<p><strong>Propagation, searched 2026-09-07.</strong> Term <code>Passenger</code>, scope <code>*.md</code> across the vault
+excluding <code>.git</code>: <strong>81 files outside this record</strong> carry the HOS parts and therefore
+inherit the six-part reading. None have been edited — Hunter's instruction was to fix
+this record at source. Two confirmed instances worth naming because they are public-facing:</p>
+<ul>
+<li><code>60-projects/mfc-website/rebuild-v2/pages/14-human-operating-system.md:53</code> carries the
+  claim line <em>"Six things shape a moment, and they are not six parts of me."</em></li>
+<li><code>60-projects/mfc-website/rebuild-v2/pages/50-glossary.md:117-118</code> defines <code>Pathways</code>
+  (not <code>Roads / Pathways</code>) and gives Navigation the superseded "values, care, intention,
+  responsibility" expansion.</li>
+</ul>
+<p>Neither is live yet — the site has been unpublished since 19 July 2026 — so the correction
+can land before publication rather than after. <code>approval_status</code> is untouched and remains
+<code>awaiting-committee</code>.</p>
+<p><strong>Authority note, added <code>D-0074</code>, 2026-08-05, corrected <code>D-0086</code>, 2026-08-06:</strong> the wording below
+reworks the original five public skill words (Notice, Shift, Choose, Focus, Connect), which the
+website's own copy-deck documents self-label "EXACT LOCKED WORDING, Gate 10 only" (MFC Public
+Messaging Source Library, tab 00I, Home Page Locked Copy, approved 23 July 2026). <strong>Hunter corrected
+this directly, 2026-08-06: "there's no locked copy for the website - it's all draft still."</strong> Those
+status labels were written into the copy-deck documents by the specialists who drafted them; they
+were never an actual Hunter-approved lock, and nothing on the website is currently locked in reality.
+<code>D-0074</code>'s underlying point stands regardless — naming-level changes are Hunter's own final-decision
+authority — but the "Gate 10 change control" framing used throughout this record overstated the
+actual friction involved. There is no formal gate to pass; there is draft website copy to update
+whenever Hunter is ready. <strong><code>K-07</code> is this system's own mirror, not the source-of-truth document</strong> —
+the Drive-authoritative "01 MFC Mental Fitness Framework.docx" is that, and it independently confirms
+five public skills, seven deeper skills beneath, matching this record's restored structure (<code>D-0081</code>,
+verified directly against the Drive document 2026-08-06).</p>
+<h2>The public five — restored <code>D-0081</code>, 2026-08-06</h2>
+<p><strong>Reversal, stated plainly.</strong> <code>D-0076</code> (2026-08-05) locked a seven-skill <em>public</em> layer after the
+skill count moved eight times in one session. <code>D-0081</code> reverses that specific decision the day after
+it was made, on new evidence, not a change of heart: two independent checks, run cold and in
+parallel, found that the finding which triggered the entire rework — that the original five-skill
+layer carried "undisclosed compression" — did not survive contact with the website's own governing
+documents.</p>
+<p><strong>What the checks found.</strong> The website's Authority Language and Claims Pack contains two numbered,
+live integrity controls — tests 12 and 13 — that name "the five skills" directly and already require
+disclosure of exactly the fact the internal review called undisclosed: <em>"Check whether the five
+skills are presented as a complete account of psychological life rather than MFC's teaching
+architecture. Fail if implied."</em> The framework-integrity-observatory review that produced the
+original finding contains <strong>zero references</strong> to that claims pack, verified by direct search. Twenty
+decision records followed from a finding a five-minute read would have overturned. See <code>L-036</code> for
+the root-cause record and <code>D-0081</code> for the full reversal.</p>
+<p><strong>The public five, locked wording, three unchanged, two restored with one addition each:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Public label</th>
+<th>Description</th>
+<th>Maps to (deep tier)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notice</strong></td>
+<td>Notice what is happening <strong>inside you, around you, and between you and others.</strong></td>
+<td>Self-Awareness</td>
+</tr>
+<tr>
+<td><strong>Shift</strong></td>
+<td>Create enough space to become workable — <strong>through your body, or through your thinking.</strong></td>
+<td>State Regulation + Flexible Thinking</td>
+</tr>
+<tr>
+<td><strong>Choose</strong></td>
+<td>Identify what matters and follow through.</td>
+<td>Values-Based Action</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Put your attention where it matters and return it when it drifts.</td>
+<td>Attention</td>
+</tr>
+<tr>
+<td><strong>Connect</strong></td>
+<td>Connect better with yourself and others.</td>
+<td>Relating to Yourself + Relating to Others</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The two additions are restorations of dropped meaning, not rewrites</strong> — each closes a specific,
+named gap, and neither is currently reflected in any live website copy (a draft-copy update is still
+owed before either reaches the public — see the corrected authority note above; there is no formal
+gate to pass):</p>
+<ul>
+<li><strong>Notice</strong> regains the tri-locus (inside you / around you / between you and others) that <em>is</em>
+  Self-Awareness's definition — the original locked wording, "Notice what is happening," dropped it
+  entirely.</li>
+<li><strong>Shift</strong> now names both doors. The unmodified locked wording — "Create enough space to become
+  workable" — signals neither the body nor the thinking route, so a learner could take Shift as
+  breathing-only and never meet cognitive flexibility at all. This was the one genuine finding
+  today's review process should have produced on its own, and didn't.</li>
+</ul>
+<p><strong>Why five holds together, not just reverts.</strong> Connect's fold is self-disclosing in its own wording
+("with yourself and others") and matches MFC's own approved public expansion — <em>"connect with
+ourselves and others"</em> — stated as one clause, not two, which Hunter independently reconstructed
+twice, unprompted, weeks apart. Shift's fold is now disclosed the same way, in the words themselves,
+after the addition above. Two-tier structure (five public, seven deep) was already the design MFC's
+own audience-translation table (<code>K-08</code>) specified — this restores what that table already assumed,
+rather than inventing a new structure.</p>
+<p><strong>Every public description is governed by the four-check rule</strong> proven necessary by today's language
+review, and any future change to public wording must pass all four:</p>
+<ol>
+<li><strong>Label-deletion test.</strong> Remove the skill name. Does the description still read as a self-sufficient
+   statement of the skill? Fragments fail.</li>
+<li><strong>Verb test.</strong> Does it open with a verb governing an object? Noun and prepositional-phrase fragments
+   fail.</li>
+<li><strong>Clause-coverage test.</strong> Every clause of the underlying deep definition maps to a clause of the
+   public description, and nothing appears that isn't in the definition. Loss <em>and</em> addition both fail.</li>
+<li><strong>Category test.</strong> Every noun names the class, not one instance — "rigid thoughts," not "a rigid
+   thought."</li>
+</ol>
+<p>This is the rule the earlier fragment-based seven-skill wording (Gen 2 in the language check) failed
+across all seven lines, and the rule the original locked five (Gen 1) already satisfied.</p>
+<h2>The basis — thinking, feeling, acting, connecting (added 2026-08-31, <code>D-0117</code>, provisional, on Hunter direction)</h2>
+<p><strong>Authority and status.</strong> Hunter directed, 2026-08-31, that the basis he named be given a fixed
+structure inside the framework rather than left as a spoken idea: <em>"In every moment, we're either
+thinking, we're feeling, we're acting, we're connecting. That's a process all humans have. We all
+do. And I think that is the basis."</em> (Founder capture,
+<code>15-inputs/hunter-notes/workshop-narrative-spine/2026-08-31-founder-direction-ssd-as-spine.md</code>,
+item 1, <code>durability: CURRENT</code>.) Full record: <code>D-0117</code>. Delegated product authority (<code>K-11</code>); <strong>committee ratification
+remains separately owed, as for this entire record.</strong> Nothing here is approved.</p>
+<p><strong>A prior attempt at this mapping was withdrawn</strong> because it asserted a tidy one-to-one over the top
+of K-07's own definitions (Notice → thinking, Shift → feeling) and contradicted both. This version is
+derived <em>from</em> the definitions below, upward, and states plainly where it does not come out clean.</p>
+<h3>Step 0 — the basis is already in <code>K-04</code>, not only in a spoken sentence</h3>
+<p><strong>This matters more than it looks and was missed on the first pass of this section (found by an
+independent check, 2026-08-31).</strong> <code>K-04</code>'s <strong>approved public expansion</strong> — <code>verbatim: true</code>, locked
+20 July 2026 — reads:</p>
+<blockquote>
+<p>"It shows up in how we <strong>think</strong>, <strong>work with what we feel</strong>, <strong>act on what matters</strong>, and
+<strong>connect with ourselves and others</strong>."</p>
+</blockquote>
+<p>That is thinking, feeling, acting, connecting, in a foundations record, months before the founder
+capture. Hunter's <em>"in every moment, we're either thinking, we're feeling, we're acting, we're
+connecting"</em> is not a new idea being retrofitted into the framework — <strong>it is him reconstructing
+<code>K-04</code>'s own locked expansion</strong>, the same pattern already recorded twice in this file for Connect's
+fold. The basis therefore rests on a foundations record, not on one capture tagged <code>CURRENT</code>.</p>
+<p><code>K-04</code>'s <strong>evidence-facing definition</strong> maps the same four through to the deep skills:</p>
+<table>
+<thead>
+<tr>
+<th><code>K-04</code> evidence clause</th>
+<th>Deep skill(s) it names</th>
+<th>Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"to think flexibly"</td>
+<td>Flexible Thinking</td>
+<td>thinking</td>
+</tr>
+<tr>
+<td>"recognise and work skilfully with internal states"</td>
+<td>Self-Awareness (recognise) + State Regulation (work skilfully with)</td>
+<td>feeling</td>
+</tr>
+<tr>
+<td>"direct <strong>attention and action</strong> towards what matters"</td>
+<td>Attention + Values-Based Action</td>
+<td>acting</td>
+</tr>
+<tr>
+<td>"relate constructively to ourselves and others"</td>
+<td>Relating to Yourself + Relating to Others</td>
+<td>connecting</td>
+</tr>
+</tbody>
+</table>
+<p>Six of the seven deep skills are named; Relating to Yourself and Relating to Others are one clause.
+<strong>Note where <code>K-04</code> puts Attention: with action, not with thinking.</strong> That is load-bearing below.</p>
+<h3>Step 1 — the seven deep skills against the four elements</h3>
+<p><strong>Sourcing, stated before the table because it changes how much weight the table can carry.</strong> <code>D-0084</code>
+collapsed the deep tier to <strong>two columns — term and tag</strong>. The consequence, not noticed at the time
+and flagged here as a real gap: <strong><code>K-07</code> no longer carries a current definitional layer for the
+seven deep skills.</strong> Only State Regulation's definition is current (amended by <code>D-0076</code>, in the
+Shift-as-parent-verb section). The other six full definitions survive <strong>only inside the block headed
+"Superseded — seven skills… kept as historical record"</strong>, where Values-Based Action is still keyed to
+its retired name "Acting on What Matters". Each row below is marked accordingly. <strong>This weakens
+Step 1's claim to be pure derivation, and that is disclosed rather than papered over</strong> — the
+definitions have never been withdrawn or contradicted, but "quoted from a superseded block" is not
+the same as "quoted from current definitional authority."</p>
+<table>
+<thead>
+<tr>
+<th>Deep skill</th>
+<th>Definition</th>
+<th>Source of that definition</th>
+<th>Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Self-Awareness</strong></td>
+<td>"Noticing what is happening <strong>inside you, around you, and between you and others</strong> in real time."</td>
+<td>Superseded <code>D-0065</code> block — <strong>corroborated current</strong> by the public Notice wording's tri-locus (<code>D-0081</code>)</td>
+<td><strong>All four.</strong> "Inside you" reaches thinking and feeling, "between you and others" reaches connecting, and what is noticed includes what you are doing.</td>
+</tr>
+<tr>
+<td><strong>Attention</strong></td>
+<td>"Putting attention where it matters and returning it when it drifts."</td>
+<td>Superseded <code>D-0065</code> block — <strong>corroborated current</strong>, identical to the public Focus wording</td>
+<td><strong>All four — cross-cutting.</strong> Revised, see the Attention note below.</td>
+</tr>
+<tr>
+<td><strong>Flexible Thinking</strong></td>
+<td>"Loosening rigid thoughts, shifting perspective, adapting to what the moment needs."</td>
+<td>Superseded <code>D-0065</code> block only</td>
+<td><strong>Thinking</strong>, unambiguously — the term is the element.</td>
+</tr>
+<tr>
+<td><strong>State Regulation</strong></td>
+<td>"Shifting your body's energy, arousal and tension enough to become workable, up or down."</td>
+<td><strong>Current</strong> (<code>D-0076</code> amendment)</td>
+<td><strong>Feeling</strong> — but see the judgement table: this rests on the <em>tag</em>, not the definition.</td>
+</tr>
+<tr>
+<td><strong>Values-Based Action</strong></td>
+<td>"Identifying what matters and following through, especially when it is difficult or easier not to."</td>
+<td>Superseded <code>D-0065</code> block, <strong>keyed there to the retired name "Acting on What Matters"</strong> (renamed <code>D-0085</code>, confirmed <code>D-0089</code>)</td>
+<td><strong>Acting</strong>, unambiguously. Corroborated by <code>K-04</code>'s "act on what matters".</td>
+</tr>
+<tr>
+<td><strong>Relating to Yourself</strong></td>
+<td>"Relating to yourself with care, honesty and responsibility, especially when things are difficult."</td>
+<td>Superseded <code>D-0065</code> block only</td>
+<td><strong>Connecting</strong> — per <code>K-04</code>'s expansion, "connect with ourselves and others," one clause.</td>
+</tr>
+<tr>
+<td><strong>Relating to Others</strong></td>
+<td>"Building and maintaining healthy, trusting, supportive relationships, and responding responsibly when something has affected the relationship."</td>
+<td>Superseded <code>D-0065</code> block only</td>
+<td><strong>Connecting</strong>, unambiguously.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Follow-up this creates, not resolved here:</strong> restoring a current definitional layer for the seven
+deep skills — either by promoting these six definitions out of the superseded block (rekeyed to
+Values-Based Action) or by writing a definition column back into the deep-tier table. That is a
+change to the deep tier's structure, which <code>D-0084</code> set deliberately, so it is Hunter's call, not
+this system's.</p>
+<h3>Attention — the placement revised, 2026-08-31</h3>
+<p><strong>The first version of this section placed Attention under "thinking." That was wrong, and it was
+wrong in the same way the withdrawn attempt was wrong</strong> — it asserted a placement no MFC record
+supports, and it never consulted <code>K-04</code>. Corrected here rather than defended.</p>
+<p>Three placements are actually available, and the two supported by MFC's own records were both
+missing from the first pass:</p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>What supports it</th>
+<th>Why it fails or holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Thinking</strong></td>
+<td>Nothing in any MFC record. General cognitive-science intuition that attention is a "cognitive" faculty.</td>
+<td><strong>Rejected.</strong> No foundations source places it there, and <code>K-04</code> places it elsewhere.</td>
+</tr>
+<tr>
+<td><strong>Acting</strong></td>
+<td><code>K-04</code>'s evidence definition: "direct <strong>attention and action</strong> towards what matters" — the two are one clause, pointed at what matters. Focus's own "where it <strong>matters</strong>" echoes it.</td>
+<td><strong>Rejected, but it is a real reading.</strong> It carries only half the definition: "returning it when it drifts" is attentional control, nothing to do with values or action. Placing Focus wholly under acting drops that clause — the same clause-coverage failure that rules out Notice-under-thinking.</td>
+</tr>
+<tr>
+<td><strong>Cross-cutting, alongside Self-Awareness</strong></td>
+<td>Focus's definition names <strong>no domain</strong>: attention can be put on a thought, a body state, an action, or another person, and can drift from and return to any of them. <code>D-0066</code> also folded Attention into Notice as one fused present-moment capacity — MFC's own record of the two behaving alike.</td>
+<td><strong>Adopted.</strong> It is the only placement that carries the whole definition.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consequence, and it makes the structure cleaner rather than messier:</strong> Notice and Focus are the two
+skills that operate <em>across</em> the basis — one <strong>reads</strong> all four, the other <strong>directs across</strong> all
+four. The remaining three act on specific elements.</p>
+<h3>Step 2 — rolled up to the public five</h3>
+<table>
+<thead>
+<tr>
+<th>Public skill</th>
+<th>Deep skill(s) beneath</th>
+<th>Element(s) of the basis</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notice</strong></td>
+<td>Self-Awareness</td>
+<td><strong>All four</strong> — the read <em>of</em> the basis</td>
+<td><strong>Cross-cutting</strong></td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Attention</td>
+<td><strong>All four</strong> — directs attention across them</td>
+<td><strong>Cross-cutting</strong> (revised 2026-08-31; was "thinking")</td>
+</tr>
+<tr>
+<td><strong>Shift</strong></td>
+<td>State Regulation + Flexible Thinking</td>
+<td><strong>Feeling and thinking</strong></td>
+<td><strong>Doubles — already disclosed</strong> in the public wording, "through your body, or through your thinking"</td>
+</tr>
+<tr>
+<td><strong>Choose</strong></td>
+<td>Values-Based Action</td>
+<td><strong>Acting</strong></td>
+<td>Clean</td>
+</tr>
+<tr>
+<td><strong>Connect</strong></td>
+<td>Relating to Yourself + Relating to Others</td>
+<td><strong>Connecting</strong></td>
+<td>Clean — both deep skills land in the same element</td>
+</tr>
+</tbody>
+</table>
+<h3>Step 3 — the structure, stated honestly</h3>
+<blockquote>
+<p>The basis is four things happening in every moment: <strong>thinking, feeling, acting, connecting</strong>.
+<strong>Notice</strong> is how you read all four. <strong>Focus</strong> is how you direct attention across them.
+<strong>Shift</strong> works on two — feeling, through your body, and thinking.
+<strong>Choose</strong> works on acting. <strong>Connect</strong> works on connecting.</p>
+</blockquote>
+<p><strong>Where it does not come out one-to-one, named rather than smoothed over — this is the honest shape,
+not a defect:</strong></p>
+<ol>
+<li><strong>Two of the five skills do not sit in any one element.</strong> Notice reads the basis; Focus directs
+   across it. Hunter's own sentence describes what is <em>happening</em> in a moment; Self-Awareness catches
+   it and Attention aims at it. Neither is one of the four.</li>
+<li><strong>Shift spans two elements</strong>, because two deep skills sit under it in different elements. Not new
+   drift — the same 1:2 fold <code>D-0081</code> already disclosed in the public wording.</li>
+<li><strong>Only three of the five skills act on specific elements, and the four elements are covered by
+   those three</strong> — Shift (thinking and feeling), Choose (acting), Connect (connecting). Four elements
+   and five skills were never going to be one-to-one; this is where the arithmetic actually lands.</li>
+<li><strong>The elements are not mutually exclusive</strong> — the same overlaps <code>D-0078</code> already named at the deep
+   tier (Flexible Thinking / State Regulation especially) carry up into the basis. Consistent with
+   this record's standing refusal to claim MECE.</li>
+</ol>
+<p><strong>What is derived versus what is decided.</strong> Step 0 is <strong>quotation</strong> from <code>K-04</code>. Steps 1 and 2 are
+<strong>derived</strong>, subject to the sourcing limit disclosed above. The following are <strong>structural judgement
+made by this system, not stated by Hunter</strong>, each with its alternative recorded so it can be
+overturned rather than inherited silently:</p>
+<table>
+<thead>
+<tr>
+<th>Judgement</th>
+<th>Alternative not taken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notice is cross-cutting, not an element.</strong></td>
+<td>Place Notice in "thinking" and accept the loss of its around-you / between-you clauses. Rejected: fails the clause-coverage rule this record already binds public wording to.</td>
+</tr>
+<tr>
+<td><strong>Attention/Focus is cross-cutting</strong> (revised 2026-08-31 from "thinking" after an independent check).</td>
+<td>Two alternatives, both live: <strong>(a)</strong> place it under <strong>acting</strong>, which <code>K-04</code>'s evidence definition genuinely supports ("direct attention and action towards what matters") — this is the strongest alternative and a reasonable person could choose it; <strong>(b)</strong> make attention a fifth element of the basis, rejected because Hunter named four and adding one changes his basis rather than derives from it.</td>
+</tr>
+<tr>
+<td><strong>State Regulation is "feeling."</strong></td>
+<td>Place it under a body/physiological element. <strong>Its definition alone is purely physiological</strong> ("your body's energy, arousal and tension") — the feeling placement rests on the <strong>tag</strong> (<code>D-0077</code>, "how you're feeling and how much energy you've got"), which is a later, deliberate widening. If the tag were ever narrowed back, this placement would have to be re-derived.</td>
+</tr>
+<tr>
+<td><strong>Relating to Yourself is "connecting," not "feeling."</strong></td>
+<td>Split it toward feeling on the self-care lobe. Rejected: <code>K-04</code>'s locked expansion binds self and other into one connecting clause.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Claim boundary.</strong> This layer is a teaching structure. It is not a model of how cognition, emotion,
+action or relationship actually work, and must never be presented as one — the same limit <code>K-07</code>
+already places on the Human Operating System ("teaching metaphors, not a literal brain map"). <code>K-08</code>
+governs. No part of it has been tested with any audience.</p>
+<p><strong>Deliberately NOT done: this is not added to the nine-layer table above.</strong> Doing so would make the
+architecture ten layers and change how MFC describes its own shape, which is Hunter's call, not this
+system's. It sits here as a structural layer beneath the public five until he says otherwise. <em>(My
+judgement; the alternative is to promote it to a tenth layer named "the basis," which would read
+naturally at the top of that table, above mental fitness itself.)</em></p>
+<h2>The seven deep skills — clinical and evidence tier, <code>D-0081</code>, collapsed to one set of terms <code>D-0084</code></h2>
+<p><strong>Status change, not deletion.</strong> Everything built under <code>D-0076</code>–<code>D-0079</code> — the tags, the why-lines,
+the MECE test, the Shift-as-parent-verb resolution — is <strong>preserved below</strong>, not discarded. It is
+retargeted from "public layer" to <strong>the deep/clinical tier</strong>, exactly where <code>K-08</code>'s own audience-
+translation table already routes it.</p>
+<p><strong>Corrected <code>D-0084</code>, same day.</strong> <code>D-0081</code> initially kept the seven <em>bridge labels</em> built under
+<code>D-0076</code> (Notice, Focus, Think Flexibly, Shift Your State, Follow Through, Look After Yourself,
+Connect) as a distinct middle layer between the public five and the seven formal terms. Hunter's
+direct catch: <em>"we already have 7 evidence-based clinical terms! We keep them as the 7! Now we have 3
+sets of terms — crazy."</em> Correct, and worse than redundant — <strong>"Notice," "Focus," and "Connect" were
+being used as both a public label and a deep-tier bridge label, with different meanings at each
+tier</strong>, a genuine collision, not just proliferation. <strong>The bridge-label layer is removed. The deep
+tier is keyed directly on the seven formal, evidence-aligned terms</strong> — Self-Awareness, Attention,
+Flexible Thinking, State Regulation, Values-Based Action, Relating to Yourself, Relating to
+Others. The tags and why-lines built for the bridge labels are kept and reattached to the formal
+terms they were always describing — that work is not lost, only correctly keyed.</p>
+<p><strong>Where the deep seven surface, per the staged teaching arc below:</strong> Stage 3 (Deepening, self-selected)
+for the general audience; from first contact for clinical advisors, funders wanting the underlying
+construct map, and the public evidence page.</p>
+<h3>The seven, as the deep/clinical tier — two columns, not three</h3>
+<table>
+<thead>
+<tr>
+<th>Deep skill (evidence-aligned term)</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Self-Awareness</strong></td>
+<td>what's happening, right now</td>
+</tr>
+<tr>
+<td><strong>Attention</strong></td>
+<td>where your attention goes, and comes back</td>
+</tr>
+<tr>
+<td><strong>Flexible Thinking</strong></td>
+<td>loosen a rigid thought, see it another way</td>
+</tr>
+<tr>
+<td><strong>State Regulation</strong></td>
+<td>how you're feeling and how much energy you've got, up or down, to workable</td>
+</tr>
+<tr>
+<td><strong>Values-Based Action</strong></td>
+<td>on what matters, especially when it's hard</td>
+</tr>
+<tr>
+<td><strong>Relating to Yourself</strong></td>
+<td>give yourself the time and the truth, and own your part</td>
+</tr>
+<tr>
+<td><strong>Relating to Others</strong></td>
+<td>build trust, keep it, and repair it when it breaks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>These are MFC's own seven evidence-aligned clinical terms, unchanged from the original extraction.
+Nothing compressed at this tier — the compression happens one layer up, at the public five, and is
+disclosed there.</strong></p>
+<h3>Why each one is foundational — the third layer, corrected <code>D-0079</code>, rekeyed <code>D-0084</code></h3>
+<p>Each deep skill carries two things now, not three: the <strong>formal term</strong> itself, and a <strong>tag</strong> (what it
+means, in practice) plus a <strong>why-line</strong> (why it is foundational). The why-line exists because
+"foundational" is otherwise just a word — it has to be showable, including on a public evidence page.</p>
+<table>
+<thead>
+<tr>
+<th>Deep skill</th>
+<th>Why it's foundational</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Self-Awareness</strong></td>
+<td>People read what's around them all the time — a face, a room, how they're going themselves. Catching it while it's happening, rather than working it out afterwards, is the part that takes practice.</td>
+</tr>
+<tr>
+<td><strong>Attention</strong></td>
+<td>A person only has so much attention, and it goes somewhere whether they choose it or not. It wanders for everyone — noticing it's gone and bringing it back is the part that can be practised.</td>
+</tr>
+<tr>
+<td><strong>Flexible Thinking</strong></td>
+<td>Life doesn't hold still. People have always had to change their minds and handle what they didn't plan for — and the hardest version is loosening a thought they're already sure about.</td>
+</tr>
+<tr>
+<td><strong>State Regulation</strong></td>
+<td>People are physical creatures: tired, flat, wound up, restless. Long before anyone had a word for it, people were finding ways to settle themselves down or lift themselves up enough to face what was in front of them.</td>
+</tr>
+<tr>
+<td><strong>Values-Based Action</strong></td>
+<td>Nearly everything people value was built over time, often when it was hard — keeping a promise, learning something difficult, showing up for someone again.</td>
+</tr>
+<tr>
+<td><strong>Relating to Yourself</strong></td>
+<td>Everyone is with themselves for all of it. How a person treats themselves — honestly, fairly, with some care — shows up in everything else they do.</td>
+</tr>
+<tr>
+<td><strong>Relating to Others</strong></td>
+<td>People are a social species. We raise each other, work together, fall out and patch it up. It's how any group of people has ever held together.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The four rules that keep this layer safe — rule 1 was rewritten in <code>D-0079</code> after the original
+version caused a real defect:</strong></p>
+<ol>
+<li><strong>State a mechanism or something true about people. Never promise an outcome.</strong> "This is what
+   makes X possible" is allowed; "this will make you happier / calmer / more purposeful" is not.
+   The original rule — "name the cost of NOT having it, never the benefit" — was a claims-safety
+   heuristic that, applied across all seven, produced a set of deficit statements. The real
+   distinction is <strong>mechanism versus outcome</strong>, not cost versus benefit.</li>
+<li><strong>True of every person, always</strong> — never true only of people who are struggling (<code>K-08</code> rule 3).</li>
+<li><strong>No rhetorical universals.</strong> Phrases like "every job ever done well" or "humans have never lived
+   alone" are read as evidence claims on an evidence page, and judged as such.</li>
+<li><strong>Assume nothing about a reader's life.</strong> Not parenthood, not employment, not physical capacity.</li>
+</ol>
+<p><strong>Removed, unanimously, across three independent lenses: "We're a tribal species."</strong> In Australia
+"tribal" carries colonial-ethnographic history in relation to Aboriginal and Torres Strait Islander
+peoples, and in ordinary usage now also denotes in-group hostility. <code>K-08</code> rule 11 applies directly.</p>
+<p><strong>Highest-risk line, and it was not obvious:</strong> <em>Values-Based Action</em>'s earlier wording —
+"somebody doing the hard part when it would have been easier not to" — carried the worst <code>K-08</code> rule
+3 exposure in the set: effort-and-will framing converts a symptom (executive dysfunction, fatigue,
+depression) into a character shortfall. Rewritten to "was built over time" — same weight, cause not
+located in the person's will.</p>
+<h3>The "foundational" claim itself — MECE tested and deliberately NOT claimed (<code>D-0078</code>)</h3>
+<p>Tested honestly against the seven deep skills: they are <strong>not</strong> mutually exclusive or collectively
+exhaustive, and MFC should not claim it. Real overlaps, named rather than hidden: <em>Flexible Thinking /
+State Regulation</em> (reappraisal is one of the best-established ways to change emotional state — one
+move from opposite ends); <em>Self-Awareness / Attention</em>; <em>Relating to Yourself / Relating to Others</em>;
+<em>Values-Based Action / Attention</em>. Exhaustiveness fails on two known gaps — staying steady when
+the state will not shift, and recognising a limit and asking for help — both open and owed to a
+qualified clinical reviewer.</p>
+<p><strong>The claim to make instead:</strong></p>
+<blockquote>
+<p><strong>Seven deep skills, each distinct enough to be practised on its own, and together covering what
+everyday moments actually ask of you.</strong></p>
+</blockquote>
+<p><strong>Distinct and sufficient — not mutually exclusive and collectively exhaustive.</strong> A sceptical reader
+will believe the first and can disprove the second in about ninety seconds.</p>
+<p><strong>Why State Regulation's tag leads with feelings (<code>D-0077</code>).</strong> Society's language is now
+overwhelmingly emotions-led, and the deep tier had no skill named for feeling. The earlier finding
+that "feel" narrows to emotion and drops the physical half applies to <strong>"feel" as a bare label</strong>, not
+to a tag with a predicate. Leading the tag with <em>how you're feeling</em> and naming <em>energy</em> in the same
+breath gets the recognition without the narrowing.</p>
+<p><strong>Deliberately NOT done:</strong> no emotion-named skill was added at the deep tier either. <strong>State Check is
+not renamed</strong> — it asks "too much, too little, or workable," an intensity question, and renaming it
+would pull it toward the emotional labelling <code>K-08</code> rule 8 restricts.</p>
+<h3>Why there is no separate naming principle at this tier — corrected <code>D-0084</code></h3>
+<p><code>D-0076</code> wrote a naming principle for the now-removed bridge labels — <em>"every label is the shortest
+form that can only mean one of our seven skills."</em> <strong>That principle is retired along with the layer
+it governed.</strong> The seven deep-tier terms are not chosen for public appeal or memorability; they are
+MFC's own fixed, evidence-aligned clinical constructs, and the only wording decision that remains at
+this tier is the tag attached to each — governed by the same four-check discipline as the public
+five's descriptions (label-deletion, verb, clause-coverage, category), applied to the tag rather than
+to the term itself, since the term is not being invented or shortened.</p>
+<h3>"Shift" as a parent verb — resolved <code>D-0076</code>, rekeyed <code>D-0084</code></h3>
+<p><strong>This resolution is unaffected by the bridge-label removal — it was always about the public word
+"Shift" and the two formal deep skills underneath it, not about bridge-label naming.</strong> Under the
+public five, <strong>"Shift" is a public skill</strong>, and the parent-verb structure is what makes that work
+without collision: <strong>Shift is the moment in the loop where you change something to become workable.
+The public skill genuinely covers both doors — body and thinking — which is why the public
+description now names both.</strong></p>
+<p><strong>The one sentence that must be taught:</strong></p>
+<blockquote>
+<p><strong>"Shift is the moment you change something to become workable — you can shift your state, or you
+can shift your thinking."</strong></p>
+</blockquote>
+<p>At the deep tier, the same sentence explains why <strong>State Regulation</strong> and <strong>Flexible Thinking</strong> are
+two distinct deep skills sitting under one public door. <strong>No locked SSD step wording is changed by
+this.</strong> The Shift step's own definition ("create enough space where useful and available") is already
+parent-shaped — it names no domain, so both state and thinking sit under it cleanly, at either tier.</p>
+<p><strong>One real change, flagged not slipped in:</strong> the deep definition of State Regulation previously read
+<em>"Shifting your state enough to become workable in the moment"</em> — duplicating the parent verb because
+it stated only the genus, with no differentia. <strong>Amended to: "Shifting your body's energy, arousal and
+tension enough to become workable, up or down."</strong> This is a deep-skill definition edit, given by
+Hunter's authority, and stands regardless of which tier is public.</p>
+<h3>Disclosed costs of the structure as it now stands</h3>
+<ul>
+<li><strong>Public Shift's addition ("through your body, or through your thinking") is not yet reflected in
+  live website copy.</strong> It is a proposed restoration — the website is still draft throughout, so this
+  is a normal draft update, not a formal change-control gate (corrected <code>D-0086</code>).</li>
+<li><strong>Public Notice's addition (the tri-locus) carries the same status</strong> — proposed, not yet reflected
+  in draft website copy.</li>
+<li><strong>"Relating to Yourself" (deep tier)'s tag is care-leading and honesty-light.</strong> The responsibility
+  lobe rides on the tag and on teaching, not the term.</li>
+<li><strong>"Values-Based Action" (deep tier)'s tag carries only the second half of its definition</strong> —
+  "identifying what matters" is implied, not stated.</li>
+<li><strong>"Values-Based Action" — CONFIRMED 2026-08-07 (<code>D-0089</code>).</strong> <code>D-0086</code> flagged that the Drive
+  source uses "values-based action" only in its evidence-map layer while keeping the skill's own
+  name as "Acting on What Matters," and that the rename might collapse two layers the source keeps
+  apart. Hunter reviewed that and kept <strong>Values-Based Action</strong>. The divergence from the source
+  document is accepted and deliberate. Its tag still carries only the second half of the definition
+  ("identifying what matters" is implied, not stated) — a separate, still-open wording note.</li>
+<li><strong>Whether "Flexible Thinking" should be replaced by the more precise ACT construct "cognitive
+  defusion"</strong> remains open, flagged not resolved.</li>
+<li><strong>None of the public five's restored wording, and none of the deep seven's tags, has been tested
+  with a real audience.</strong> Across this session the set was examined by independent specialist lenses
+  and roughly two dozen further independent checks — several of which overturned conclusions this
+  system and Hunter had already agreed to, including the entire seven-skill public layer and, today,
+  the three-tier structure itself. That is real, substantive independent input. <strong>It is not audience
+  data, and it does not substitute for it.</strong></li>
+</ul>
+<h2>Superseded history — earlier passes this session, kept as record, not deleted</h2>
+<h2>Superseded — five skills, final resolution (<code>D-0066</code>, 2026-08-05, kept as historical record, not deleted)</h2>
+<p><strong>Authority and status.</strong> Hunter directed this final resolution, 2026-08-05, under delegated
+product authority (<code>K-11</code>); committee ratification remains separately owed, as for this entire
+record. This is the third and final pass on the skill-count question in one session — <code>D-0060</code> (five,
+undisclosed compression) → <code>D-0065</code> (seven, no compression) → <code>D-0066</code> (five again, but every
+compression now carries a stated, sourced rationale, which is what actually failed the first time,
+not compression itself).</p>
+<p><strong>What changed the answer:</strong> Hunter independently reconstructed K-04's own already-locked public
+expansion — <em>"it shows up in how we think, work with what we feel, act on what matters, and connect
+with ourselves and others"</em> — twice in this session, unprompted, weeks apart. That's a strong signal
+this is genuinely how the source Framework organises itself, not a preference invented in this
+conversation. Working from that expansion, plus Attention's natural fusion with Notice (present-moment
+awareness — the comparator named directly was Smiling Mind's "living mindfully," where noticing and
+attention are already taught as one integrated capacity, not two), produces five skills with exactly
+two compressions, each disclosed and sourced — categorically different from <code>D-0060</code>'s original
+Shift/Connect merge, which had no stated reason anywhere.</p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Public wording</th>
+<th>Deeper skill(s) folded in</th>
+<th>Compression, and its stated reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notice</strong></td>
+<td>Notice what's happening, and where your attention is.</td>
+<td>Self-Awareness + Attention</td>
+<td>Present-moment noticing and attention are taught as one fused capacity in established comparators (mindfulness practice); not independently exercised the way the original Shift/Connect merge was.</td>
+</tr>
+<tr>
+<td><strong>Think</strong></td>
+<td>Loosen a rigid thought; adapt to what the moment needs.</td>
+<td>Flexible Thinking</td>
+<td>1:1, no compression.</td>
+</tr>
+<tr>
+<td><strong>Feel</strong></td>
+<td>Work with what you feel, not just notice it.</td>
+<td>State Regulation</td>
+<td>1:1, no compression. Uses K-04's own already-approved expansion verb ("work with what we feel") — not the retired definitional use of "feel" from <code>C-13</code>, a different sentence with different status. See caution below.</td>
+</tr>
+<tr>
+<td><strong>Choose</strong></td>
+<td>Identify what matters, and follow through.</td>
+<td>Acting on What Matters</td>
+<td>1:1, no compression. "Follow through" is completed by <em>Do</em> at the method level — the same Choose/Do division already established elsewhere in this record.</td>
+</tr>
+<tr>
+<td><strong>Connect</strong></td>
+<td>Connect with yourself, and with others.</td>
+<td>Relating to Yourself + Relating to Others</td>
+<td>K-04's own locked expansion states this as one clause, not two — independently reconstructed by Hunter twice, unprompted.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Applying the same independence test honestly, not selectively:</strong> the test used to kill the original
+Shift/Connect compression (would someone reasonably be strong in one half and weak in the other) is
+technically true of Notice/Attention and Connect's two halves too — a person can be self-aware with
+poor attention control, or vice versa; caring for oneself well does not guarantee relating to others
+well, or the reverse. <strong>This resolution does not pretend otherwise.</strong> The distinction that makes this
+compression defensible where the original wasn't is not that the halves are identical — it's that
+each compression here has a <strong>named, checkable source</strong> (an external comparator, or K-04's own locked
+wording) instead of no stated reason at all. That is a real difference in kind, not a repeat of the
+original defect dressed differently — but it is a judgement call, not a proof, and should be stated as
+exactly that if challenged.</p>
+<p><strong>"Shift" retired as a public skill name, kept only as the method step and toolkit name.</strong> This fully
+resolves the three-jobs overload problem — Shift now names exactly one thing (the Stop-Shift-Do step,
+paired with its toolkit), not a skill on top of that. The method-level mapping updates accordingly:
+Stop draws on Notice; <strong>Shift draws on Feel and Think</strong>; Do draws on Choose and, where another person
+is involved, Connect — consistent with this record's own existing statement that these are "not fixed
+mappings," now naming the skills correctly against the current five.</p>
+<p><strong>Honestly flagged, not resolved by this decision:</strong> "Feel," read alone with no context, carries a
+smaller version of the passive-vs-active question "Care" raised — could it sound like "just feel your
+feelings" rather than the active skill of working with them? This is <strong>not the same severity</strong> as
+Care's actual issue (Care measurably dropped the "honesty and responsibility" third of its deeper
+skill's definition; "Feel" doesn't drop any part of State Regulation's meaning) — a correction made
+2026-08-05 after this record initially, wrongly, stated them as equivalent. The public wording line
+("work with what you feel, not just notice it") already carries the active framing, which is why this
+is a minor tone note for eventual testing, not an open structural gap.</p>
+<p><strong>Genuine, documented disagreement, not yet resolved (added 2026-08-05):</strong> a fresh-context agent,
+given only the raw seven-skill definitions and K-04's expansion with no exposure to this record's
+reasoning, independently landed on <strong>seven</strong> skills, not five — rejecting exactly the two compressions
+this decision made (Notice absorbing Attention; Connect covering both self- and other-relating),
+while independently confirming the Care/self-relating naming gap. This is real signal this decision
+does not overwrite or resolve — recorded in <code>D-0066</code>'s <code>independent_check</code> field in full. <strong>Real
+audience testing remains the only thing that actually settles which reading is right.</strong></p>
+<h2>Superseded — seven skills, each with one simple word (<code>D-0065</code>, 2026-08-05, kept as historical record, not deleted)</h2>
+<p><strong>Authority and status.</strong> Hunter directed this resolution, 2026-08-05, under delegated product
+authority (<code>K-11</code>); committee ratification remains separately owed, as for this entire record. This
+closes <code>LI-02</code>/<code>R-03</code> (framework-integrity-observatory) — the five-skill layer's undisclosed,
+uneven compression (Shift and Connect each folding two deeper skills, the other three staying 1:1)
+— by removing the compression entirely rather than partially patching it.</p>
+<p><strong>Why not a partial fix (six skills, splitting only Connect):</strong> applying Hunter's own test
+consistently — "would someone reasonably be strong in one half and weak in the other?" — is true of
+<em>both</em> Shift's two halves (a calm nervous system does not guarantee flexible thinking, or the
+reverse) and Connect's two halves, not just Connect's. Splitting one compression while defending the
+other on a different standard would only relocate the original credibility problem, not resolve it.</p>
+<p><strong>Why this doesn't reopen the memorability concern the five-skill layer existed to protect:</strong> the
+actual memorable public unit was never the skill list — it is <strong>Stop, Shift, Do</strong>, three words,
+unchanged by this decision. The skill list carried no public-recall burden the loop wasn't already
+carrying more efficiently. Freed from that job, the skill list can simply be complete and correct.</p>
+<table>
+<thead>
+<tr>
+<th>Simple word (public-facing)</th>
+<th>Deeper skill</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notice</strong></td>
+<td>Self-Awareness</td>
+<td>Noticing what is happening inside you, around you, and between you and others in real time.</td>
+</tr>
+<tr>
+<td><strong>Shift</strong></td>
+<td>State Regulation</td>
+<td>Shifting your body's energy, arousal and tension enough to become workable, up or down. <em>(Amended <code>D-0076</code>, 2026-08-06: the prior wording — "Shifting your state enough to become workable in the moment" — stated only the genus and duplicated the Shift step's own definition. Adding the differentia removes that overlap at its source.)</em></td>
+</tr>
+<tr>
+<td><strong>Reframe</strong></td>
+<td>Flexible Thinking</td>
+<td>Loosening rigid thoughts, shifting perspective, adapting to what the moment needs.</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Attention</td>
+<td>Putting attention where it matters and returning it when it drifts.</td>
+</tr>
+<tr>
+<td><strong>Choose</strong></td>
+<td>Acting on What Matters</td>
+<td>Identifying what matters and following through, especially when it is difficult or easier not to.</td>
+</tr>
+<tr>
+<td><strong>Care</strong></td>
+<td>Relating to Yourself</td>
+<td>Relating to yourself with care, honesty and responsibility, especially when things are difficult.</td>
+</tr>
+<tr>
+<td><strong>Connect</strong></td>
+<td>Relating to Others</td>
+<td>Building and maintaining healthy, trusting, supportive relationships, and responding responsibly when something has affected the relationship.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>"Reframe" and "Care" are first-pass words, not locked</strong> — same disclosure as Engine Basics and the
+Shift menu: proposed, not tested with a real audience yet. The other five words (Notice, Shift,
+Choose, Focus, Connect) carry forward unchanged from the original locked public wording. <em>(Order
+corrected 2026-08-31 under <code>C-22</code>'s closure — this line previously read "Focus, Choose", the exact
+transposition <code>C-22</code> records. Only the order of the enumeration changed; no wording did.)</em></p>
+<p><strong>Word-by-word stress test, 2026-08-05:</strong> an independent pass against four criteria (plain, accurate,
+distinct, and whether "already locked" is actually evidence of quality or just familiarity) found
+<strong>Notice, Shift, Focus, and Connect hold up; Choose holds up for a checked reason (its "follow
+through" half is carried by Do elsewhere in Stop-Shift-Do, not missing); Care is a genuine, unresolved
+partial-accuracy gap (drops the "responsibility" half of Relating to Yourself); Reframe is the
+weakest word in the set and plausibly less plain than "Flexible Thinking" itself.</strong> Full reasoning
+and candidate alternatives (for Reframe: Rethink, Loosen it, Open up; for Care: Own it, Steady,
+Ground — none clean winners) are in the framework explainer artifact's "Word by word" tab, not
+repeated here. <strong>None of the seven words should be treated as settled until tested with real people
+across more than one audience</strong> — this stress test is reasoned analysis, not audience data.</p>
+<p><strong>A side effect worth naming, not a separate fix:</strong> this also resolves the "Shift" word doing three
+jobs at once (public skill, Stop-Shift-Do's middle step, the Shift menu) — Shift now names one
+public skill (State Regulation) plus the step and toolkit that apply it, not a separately compressed
+skill on top of those two.</p>
+<p><strong>Superseded by this resolution, kept here as the historical record, not deleted:</strong> the original
+five-skill public layer and its locked wording (Notice — "Notice what is happening"; Shift — "Create
+enough space to become workable"; Choose — "Identify what matters and follow through"; Focus — "Put
+your attention where it matters and return it when it drifts"; Connect — "Connect better with
+yourself and others") and the five-to-seven compression table it depended on. <strong>Note added <code>D-0076</code>, corrected again <code>D-0081</code>:</strong> this section formerly carried a global instruction
+that any "five skills" reference elsewhere in this record be read as referring to seven. That
+instruction was withdrawn by <code>D-0076</code> as a cross-record rule stranded inside a superseded block. It is
+now moot in the opposite direction: <code>D-0081</code> restored five as the public tier, so this superseded
+section's original five-skill wording is, once again, current at the public tier — see "The public
+five — restored <code>D-0081</code>" above for the authoritative, current version (which includes two small
+wording additions this historical section does not). The seven built between <code>D-0076</code> and <code>D-0079</code>
+are preserved as "The seven deep skills — clinical and evidence tier," also above. Nothing in this
+superseded section governs any other part of the record; it is kept only as a record of what was
+locked and unlocked, in order, on 2026-08-05 and 2026-08-06.</p>
+<h2>Skill progression — Learn It, Build It, Use It (rebuilt 2026-08-05, provisional, on Hunter product approval)</h2>
+<p><strong>Authority and status, stated precisely, same pattern as every other addition in this section.</strong>
+Hunter directed this rebuild on 2026-08-05 — replacing "Live It" with "Build It" and moving "Use It"
+to the final stage — closing <code>U-03</code> (K-07's own prior "Unresolved" note: this layer was named but
+never elaborated). Under delegated product authority (<code>K-11</code>), full record <code>D-0061</code>. <strong>Canonical
+Framework ratification remains with the committee</strong>, as for this entire record.</p>
+<p><strong>Why "Build It" replaces "Live It", not just a relabel.</strong> "Live It" described an end-state —
+the skill fully internalised, identity-level, "naturally part of how someone shows up." That is a
+durable-behaviour-change claim, and <code>K-09</code>'s own stage-gates already prohibit MFC from claiming that
+outcome is achieved or measured (see <code>LI-10</code>). "Build It" names the actual deliberate-practice stage
+honestly — the stage where Mental Reps and the Radar do their work — without implying an unproven
+end-state. It also makes all three stage names actions a person actually does (learn, build, use),
+where "Live It" was a description of an aspiration rather than an act.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What happens</th>
+<th>What it draws on</th>
+<th>What MFC can honestly claim at this stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Learn It</strong></td>
+<td>Understand what the skill means, why it matters, and see or hear it modelled.</td>
+<td>Plain-language skill definitions, examples, facilitator or public explanation.</td>
+<td>Comprehension — the first outcome MFC's own evidence can currently measure (<code>K-09</code> Stage 1–2).</td>
+</tr>
+<tr>
+<td><strong>Build It</strong></td>
+<td>Deliberately practise the skill in moments chosen on purpose — not yet automatic.</td>
+<td>The Radar (choosing which moments to work on) and Mental Reps (each intentional pass through Stop, Shift, Do). This is where the Shift toolkit, exercises and anchors are actually used.</td>
+<td>Initial-use attempts and repetition — the second outcome MFC can currently measure. Outcome-independent: trying counts, per Mental Rep's own definition.</td>
+</tr>
+<tr>
+<td><strong>Use It</strong></td>
+<td>Draw on the skill in real, unplanned, sometimes higher-stakes moments as they arise, without first needing to consciously study it — <strong>it starts showing up on its own.</strong></td>
+<td>Everything built in the stage before — same skills, lower conscious effort.</td>
+<td><strong>This is the aim, named honestly as an aim.</strong> Durable behaviour change at this level is not currently evidenced or measured by MFC (<code>LI-10</code>); "Use It" states the direction without claiming the outcome has been demonstrated.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>"Learn It, Build It, Use It" locked, closing <code>P22</code> — <code>D-0082</code>, 2026-08-06.</strong> A prior reconciliation
+record logged an unresolved disagreement between this progression and the Practical Pathway's "Learn
+It, Use It, Live It," noting correctly that "Use It" describes a behaviour while "Live It" describes a
+change in the person — and that Hunter's own description of the final stage read closer to Live It.
+That point is real and is not overruled; it is answered a different way. <strong>"Live It" is not restored as
+a stage name</strong> — as a durable, identity-level claim it collides directly with <code>K-09</code>'s stage-gates,
+which is the reason <code>D-0061</code> retired it in the first place, and that reasoning holds. Instead, the
+person-level change P22 was pointing at is captured <strong>inside "Use It"'s own gloss</strong> — "it starts
+showing up on its own," wording that already existed in this session's own corpus (the evidence and
+research page concept) and needed only to be promoted to the canonical stage table. This states the
+felt experience of arrival without claiming MFC has evidenced or measured it — the same discipline
+already applied to "Use It" as a bare label, extended to cover what "Live It" was actually reaching
+for. <code>P22</code> is closed by this note, not by silence.</p>
+<p><strong>Relationship to the rest of the architecture, stated explicitly (this did not exist before):</strong>
+progression is a <em>time axis</em> across the same skills the rest of K-07 already defines — Learn It
+happens before a person has a Radar worth practising with; Build It is where the Radar and Mental
+Rep mechanics operate; Use It is what the whole pathway is ultimately for. It does not add a new
+skill, method, or step — it names how a person moves through the skills and methods already defined
+above.</p>
+<h3>Staged teaching arc — what gets taught when (added 2026-08-05, provisional, <code>D-0063</code>)</h3>
+<p>Hunter's own comparison, 2026-08-05: physical fitness "isn't explained in ten seconds or five
+minutes... you learn it throughout school, your whole life." Learn It / Build It / Use It names the
+<em>person's</em> developmental stages; this names what MFC actually hands over at each point, tied to
+where delivery happens — closing the gap between a nine-layer architecture and a first workshop
+session that cannot responsibly open with all nine.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Delivery moment</th>
+<th>What's actually taught</th>
+<th>What's deliberately held back</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — Start</strong></td>
+<td>Workshop, first exposure</td>
+<td>The definition and its expansion; one moment; Stop, Shift, Do; one live Mental Rep, done together; a Radar set with 1–3 moments.</td>
+<td>The five public skill labels beyond Notice/Shift/Do as already used; the seven deep skills; State Check's full nuance; the Shift menu's four options (one is enough to start).</td>
+</tr>
+<tr>
+<td><strong>2 — Practising</strong></td>
+<td>Early ongoing/online contact</td>
+<td>The five public skills, named in full (<code>D-0081</code>: Notice, Shift, Choose, Focus, Connect); the full Shift menu; State Check; Engine Basics named (not taught in depth).</td>
+<td>The seven deep skills behind each public one; the evidence layer as its own curriculum; My/Our Radar layering.</td>
+</tr>
+<tr>
+<td><strong>3 — Deepening</strong></td>
+<td>Ongoing, self-selected</td>
+<td>The seven deeper skills for those who want the "why"; full Radar (My moments / Our moments); reflection and reinforcement; the evidence layer, on request.</td>
+<td>Nothing — this is where the full K-07 architecture becomes available, for whoever wants it.</td>
+</tr>
+</tbody>
+</table>
+<p>This is a delivery-sequencing rule, not a new claims boundary — <code>K-08</code>'s existing audience-translation
+table already governs <em>what's safe to say</em> to each audience; this table governs <em>when</em> content is
+introduced within one relationship over time, for the same audience (a workshop participant who
+becomes an ongoing practitioner). Both apply together.</p>
+<p><strong>Standalone-workshop exception, resolved <code>D-0091</code>, 2026-08-09.</strong> This table was written assuming an
+<em>ongoing relationship</em> — Start, then a real Stage 2 touchpoint, then Stage 3. <strong>MFC's actual current
+products are two standalone sessions (3-hour and 1-hour Foundations), each explicitly documented as
+"a complete standalone offer." There is no Stage 2 touchpoint most attendees ever reach</strong> — no early
+ongoing/online contact exists in the live product set.</p>
+<p>Applying Stage 1's column literally to a standalone workshop would strip content (full skill naming,
+State Check, the Shift menu) that most attendees would then never receive at all, since Stage 2 is
+where this table currently places it and Stage 2 doesn't exist for them. <strong>Resolved: for a standalone
+Foundations Session specifically, Stage 1 and Stage 2 collapse into one delivery moment</strong> — the
+workshop legitimately teaches the full five public skills, full State Check, and the full Shift menu,
+because it is both the first exposure and the only practising contact this audience gets. This is not
+a licence to also front-load Stage 3 (the seven deep skills, full My/Our Radar, the evidence layer)
+— that boundary holds exactly as written above.</p>
+<p><strong>Why this is a genuine exception and not a quiet reversal of <code>D-0063</code>:</strong> the staged arc's own logic —
+match content depth to the contact a person actually has — is being applied correctly here, not
+overridden. A person with two touchpoints (Start, Practising) needs Stage 1+2 content across
+whichever contact they get; a person with one touchpoint needs it in that one. The table above remains
+the right model for <strong>Offer 2</strong> (or any future product with real ongoing contact); this note exists so
+a future reader does not mistake Offer 1's current single-session reality for a deviation from the
+arc's own design principle.</p>
+<p><strong>The learning arc — the same three stages, from the person's side (added 2026-08-05, <code>D-0064</code>).</strong>
+Hunter's own question, 2026-08-05: is the staged arc only about how MFC teaches, or also about how a
+person actually learns? Both — paired here, same three stages, so what MFC delivers and what a
+person can now do are never described separately.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What MFC delivers (teaching arc)</th>
+<th>What the person can now do (learning arc)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — Start</strong></td>
+<td>Definition + expansion; one moment; Stop, Shift, Do; one live Mental Rep; a Radar with 1–3 moments.</td>
+<td>Recognise an obvious moment when it's happening; try Stop-Shift-Do once, roughly, without needing it to go well.</td>
+</tr>
+<tr>
+<td><strong>2 — Practising</strong></td>
+<td>The five public skill labels named; the Shift menu; State Check; Engine Basics named.</td>
+<td>Choose a Shift-menu option that actually fits a real moment; read their own State Check without prompting.</td>
+</tr>
+<tr>
+<td><strong>3 — Deepening</strong></td>
+<td>Seven deeper skills; full Radar (My/Our moments); reflection and reinforcement; evidence on request.</td>
+<td>Understand <em>why</em> it works well enough to explain it; run Stop-Shift-Do <strong>with</strong> someone else, not only alone (see "Supporting others," below); tell My moments from Our moments.</td>
+</tr>
+</tbody>
+</table>
+<p>Stage 3's own learning-arc entry is where supporting someone else through a moment becomes available
+— not before, since it depends on a person already being able to run the sequence reliably for
+themselves first.</p>
+<h2>Supporting others — the same process, used with another person (added 2026-08-05, provisional, on Hunter product approval, <code>D-0064</code>)</h2>
+<p><strong>Authority and status.</strong> Hunter directed this addition, 2026-08-05, under delegated product
+authority (<code>K-11</code>); committee ratification remains separately owed. <strong>Claim boundary, stated
+precisely because this is where it matters most:</strong> this is <strong>peer support, not mental-health
+treatment</strong> — the same skill used on yourself, offered to someone else in a moment. It is not a
+claim that MFC "does mental health," and must never be worded that way in public copy; <code>K-08</code>'s
+existing rules already prohibit implying mental fitness replaces therapy, counselling, or crisis
+support, and this addition sits fully inside that boundary, not beside it.</p>
+<p><strong>Why it belongs here:</strong> Stop, Shift, Do doesn't have to be run alone. The same three moves work as
+a shared sequence between two people — one supporting, one in the moment:</p>
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Alone</th>
+<th>With someone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stop</strong></td>
+<td>Catch the moment yourself.</td>
+<td>"What's going on for you right now?" / "What are you noticing?"</td>
+</tr>
+<tr>
+<td><strong>Shift</strong></td>
+<td>Pick a Shift-menu option.</td>
+<td>"Let's take a breath together." / "Want to step outside for a sec?" — offering, not directing.</td>
+</tr>
+<tr>
+<td><strong>Do</strong></td>
+<td>Choose your next move.</td>
+<td>"What's one next step that could help?" — theirs to answer, not yours to supply.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Binding limits, carried directly from <code>K-08</code>, not new:</strong> offer, never force (rule 6); use "where
+safe and appropriate," name the actual action rather than vague shorthand (rule 5); this is not
+diagnosis or intervention (rule 2); when distress or risk is outside the scope of peer support, the
+move is to use referral, safeguarding, or crisis pathways, not to keep applying this sequence (rule
+10). <strong>Knowing when to stop and bring in more support is part of the skill being taught, not a
+separate afterthought.</strong></p>
+<h2>Stop, Shift, Do</h2>
+<blockquote>
+<p>Stop — catch the moment.
+Shift — create enough space where useful and available.
+Do — make the next move with intention.</p>
+</blockquote>
+<ul>
+<li><strong>Stop</strong> commonly draws on <strong>Notice</strong> and <strong>Focus</strong> — catching the moment requires both noticing it's happening and having attention available to catch it with.</li>
+<li><strong>Shift</strong> is the parent verb — the moment you change something to become workable. <strong>You can shift your state, or you can shift your thinking.</strong> At the deep tier it commonly draws on <strong>State Regulation</strong> (body: energy, arousal, tension) and <strong>Flexible Thinking</strong> (cognitive), and the Shift toolkit's four categories reach further — its <em>attention</em> and <em>connection</em> categories also draw on <strong>Attention</strong> and <strong>Relating to Others</strong>. The toolkit's four categories are the <strong>internal taxonomy</strong>; the public menu names (Move it / Zoom / Ask a different question / Bring someone in) are what learners meet. Facilitators should use the menu names aloud, not the bare category words, since "attention" is also deep-tier vocabulary (<code>D-0084</code>).</li>
+<li><strong>Do</strong> commonly draws, at the deep tier, on <strong>Values-Based Action</strong>, on <strong>Relating to Others</strong> where another person is involved, and on <strong>Relating to Yourself</strong> where the next move concerns you rather than someone else.</li>
+<li><em>"These are not fixed mappings or separate skill steps."</em> At the public tier, Do maps to <strong>Choose</strong>; at the deep tier it draws on three (Values-Based Action, Relating to Others, Relating to Yourself) — not a defect, since acting on what matters is genuinely supported by more than one deep capability, disclosed the same way Shift's and Connect's public folds now are.</li>
+<li><strong>Choose vs Do:</strong> <em>"Do is the moment-level step in Stop, Shift, Do. Choose is the public skill underneath that step (Values-Based Action, at the deep tier)."</em> Restored <code>D-0081</code>, rekeyed <code>D-0084</code>.</li>
+<li>Misunderstandings named in source: Stop is not freezing; Shift is not always calming down; Do is not the perfect action; SSD is not another set of skills or the whole framework.</li>
+</ul>
+<h2>State Check</h2>
+<blockquote>
+<p>"Is my state too much, too little, or workable for this moment?"</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Meaning</th>
+<th>Guides Shift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Too much</td>
+<td>More activation, intensity, urgency, tension, overwhelm, reactivity or load than the moment can use well.</td>
+<td>Downshift toward workable.</td>
+</tr>
+<tr>
+<td>Workable</td>
+<td>Enough access to choice for this moment. Does not mean perfect calm.</td>
+<td>May need no state shift.</td>
+</tr>
+<tr>
+<td>Too little</td>
+<td>Less energy, clarity, connection, alertness or mobilisation than the moment needs.</td>
+<td>Upshift toward workable.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lock-in:</strong> does not change Stop, Shift, Do; not a fourth step. <em>"For this moment"</em> is the anchor phrase.</p>
+<h2>Mental rep — locked public definition</h2>
+<blockquote>
+<p>"A mental rep is catching a moment and choosing your next move, on purpose, toward what matters. You may catch the moment before it happens, while it is happening, or afterwards. <strong>The outcome does not determine whether it counts.</strong>"</p>
+</blockquote>
+<p><strong>Amendment, 2026-08-24 (<code>D-0107</code>):</strong> replaces the prior wording, "...choosing your next move with
+intention," directly at Hunter's instruction ("this is very important"). "With intention" said the
+person was deliberate but not deliberate <em>toward what</em>; "toward what matters" names the direction
+and matches how Hunter already explains the rep himself (see the interview capture,
+<code>90-meta/agent-context-v1/13-founder-voice-v2-explaining-mental-fitness.md</code>, close line: "how well
+we navigate life's everyday moments") and how Follow Through / Values-Based Action is already
+defined elsewhere in this same file. Outcome-independence is preserved unchanged — the aim is
+stated, not the result, so a rep still counts even when the outcome isn't what was hoped. This
+closes <code>C-20</code>'s open wording question rather than adding a fourth variant on top of it; see that
+record for the propagation list this creates.</p>
+<p>What does not count: <em>"A moment by itself, a healthy habit done entirely on autopilot, or reading about mental fitness without applying anything in a moment."</em></p>
+<p><strong>The dual benefit of a rep (added 2026-08-05, provisional, on Hunter product approval, <code>D-0062</code>).</strong>
+Every Mental Rep does two things at once, not one:</p>
+<ol>
+<li><strong>An immediate benefit, in that moment</strong> — the actual outcome of catching and choosing on purpose,
+   toward what matters, right now, whatever that outcome turns out to be. <em>(Aligned to the amended
+   locked rep definition 2026-08-31, <code>C-20</code>; previously "…catching and choosing with intention".
+   My judgement that this is an instance of the rep definition rather than an independent sentence,
+   because it is glossing the rep's own two benefits; the alternative is to leave it and list it as a
+   deliberate exception, as was done for the Driver row and the counting rule.)</em></li>
+<li><strong>A cumulative, capacity-building benefit</strong> — per the pathways mechanism above, the rep itself
+   strengthens that pathway, so more of that skill is available to draw on in future moments.</li>
+</ol>
+<p>Benefit 1 stays outcome-independent, exactly as Mental Rep's own definition already states — trying
+counts even when the in-the-moment result isn't what you hoped. Benefit 2 accrues from the act of
+practising itself, consistent with the adjacent-evidence mechanism already named above, not a new or
+separate claim.</p>
+<h2>Radar</h2>
+<blockquote>
+<p>"A short, active list of recurring moments a person is choosing to notice, practise with, and return to right now."</p>
+</blockquote>
+<p>Prompt: <em>"Think about the person you are trying to become in this season of life."</em> — then 1–3 moments to handle better, 1–3 to experience more fully.</p>
+<h3>Personal and shared moments — added 2026-08-03, provisional</h3>
+<p><strong>Authority and status, stated precisely.</strong> Hunter approved this into the workshop product and
+service on 2026-08-03 — delegated product authority under <code>K-11</code>. <strong>Canonical Framework ratification
+remains with the committee</strong>, as it does for this entire record and every other kernel record
+(<code>approval_status: awaiting-committee</code>). This addition therefore changes what the product teaches;
+it does not claim ratified Framework status the rest of <code>K-07</code> does not yet have either.</p>
+<p>Source: <em>MFC Radar Architecture — Personal and Shared Moments</em> (Working Group 3 with Eimear
+Quigley, 29–30 June 2026), registered at
+[[10-sources/1qR01k-xN5ampmgzz0ZLLGS4EZ5ThkRKHk7ZI1pue0w8|10-sources/1qR01k…]].</p>
+<p><strong>One Radar, two ownership layers, context tags, a small active focus.</strong> Not one Radar per role —
+the person remains one human moving through contexts.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>My moments</strong></td>
+<td>Moments the individual can personally notice and practise with, without anyone else agreeing to participate.</td>
+</tr>
+<tr>
+<td><strong>Our moments</strong></td>
+<td>Moments two or more people have <strong>explicitly agreed</strong> to work towards together. Not a demand one person makes and labels shared.</td>
+</tr>
+<tr>
+<td><strong>Enabling conditions</strong></td>
+<td>What must be available, permitted, modelled or changed <em>around</em> the person for the next move to be realistic. Sits around both layers.</td>
+</tr>
+<tr>
+<td><strong>Context tags</strong></td>
+<td>self · relationship · family · friendship · work · study · sport · team · community</td>
+</tr>
+</tbody>
+</table>
+<p>Both strands (handle better / experience more fully) exist at <strong>both</strong> layers. Strand is what a
+moment is <em>for</em>; layer is <em>whose</em> it is. They are different axes and must not be collapsed.</p>
+<p><strong>Binding constraints, carried from the source and not optional:</strong></p>
+<ul>
+<li>A shared or team Radar <strong>must never be used to reframe harmful workload, unsafe leadership or
+  psychosocial hazards as individual skill deficits.</strong> A route must exist for structural issues.</li>
+<li>Personal moments stay <strong>private</strong> in organisational delivery unless the individual chooses to
+  share. Aggregate reporting only.</li>
+<li>Shared survey findings are a <strong>possible shared direction, never an established norm.</strong></li>
+<li>The Radar is <strong>not</strong> a grievance, incident or emergency channel.</li>
+<li>Active-Radar size (building toward roughly three to five) is a <strong>product-design assumption to be
+  tested, not an evidence-validated threshold</strong> — consistent with <code>D-0010</code>.</li>
+</ul>
+<p><strong>What is deliberately not adopted here:</strong> the source's Team Pulse → Team Radar Snapshot workplace
+pathway, its guided-discovery Moment Library, and its societal layer. Those remain working concepts
+awaiting their own review; only the ownership-layer structure enters the product now.</p>
+<h2>The pathway</h2>
+<blockquote>
+<p>Choose a few moments → Put them on your radar → Live life and do reps → Reflect, adjust, and keep practising</p>
+</blockquote>
+<p>Next progression: build your Shift toolkit → add exercises that build the skills → use simple anchors and basics where helpful.</p>
+<p><strong>Shift tool categories (fixed):</strong> body, attention, perspective, connection / co-regulation. The same tools can downshift or upshift. <strong>These four categories are original, locked source wording — not invented in this session.</strong> Verified <code>D-0083</code>, 2026-08-06: what this session actually built was the public menu translation layer below, not the taxonomy itself.</p>
+<p><strong>The Shift menu — plain-English public translation (added 2026-08-05, provisional, on Hunter
+product approval, <code>D-0063</code>).</strong> Hunter's own direct feedback, 2026-08-05: explaining Shift as "four
+categories" still lands as too abstract in practice — "people go, I still think it's too high
+level." The four categories are the correct underlying taxonomy and stay unchanged; what was missing
+was a public-facing translation layer, the same pattern K-08's audience-translation table already
+uses for the five-skill/seven-skill split, extended one level deeper into Shift specifically.</p>
+<table>
+<thead>
+<tr>
+<th>Category (unchanged)</th>
+<th>Public menu name</th>
+<th>What it actually looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Body</td>
+<td><strong>Move it</strong></td>
+<td>Breathe, stretch, change posture, step outside, shake it out.</td>
+</tr>
+<tr>
+<td>Attention</td>
+<td><strong>Zoom in or out</strong></td>
+<td>Zoom out for the big picture, or zoom in on one thing at a time.</td>
+</tr>
+<tr>
+<td>Perspective</td>
+<td><strong>Ask a different question</strong></td>
+<td>"What would I tell a friend?" "What actually matters here?"</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td><strong>Bring someone in</strong></td>
+<td>Talk to someone, borrow their calm, or their energy.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Public framing:</strong> "here are four things you can try" (a menu to pick from), not "here are four
+categories" (a taxonomy to learn). Same content, taught as a choice rather than a classification.</p>
+<p><strong>Worked examples per menu item (added 2026-08-05, provisional, <code>D-0064</code>), each usable to downshift
+or upshift depending on what the moment needs:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Menu item</th>
+<th>Try this</th>
+<th>Tends to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Move it</strong></td>
+<td><strong>Feet on the floor. One slower breath</strong> (the Practical Pathway's own approved tools, Appendix C — reconciled <code>D-0083</code>). Also: roll your shoulders back; stand up and stretch; step outside for a minute; splash water on your face.</td>
+<td>Downshift (release tension) or upshift (wake the body up) — same tools, different pace/intensity.</td>
+</tr>
+<tr>
+<td><strong>Zoom in or out</strong></td>
+<td>Name three things you can see, hear, or feel right now; zoom out — "what will matter about this in a week?"; zoom in — "what's the one next thing, not the whole list?"</td>
+<td>Downshift (grounding, big-picture) or upshift (narrow, urgent focus).</td>
+</tr>
+<tr>
+<td><strong>Ask a different question</strong></td>
+<td>"What would I tell a friend in this spot?"; "What actually matters here?"; "Is this a fact, or a feeling talking right now?"</td>
+<td>Mostly downshift — creates distance from the immediate reaction.</td>
+</tr>
+<tr>
+<td><strong>Bring someone in</strong></td>
+<td>Text one person; ask for two minutes of someone's time; sit near someone, even without talking; say what's actually going on out loud.</td>
+<td>Downshift (co-regulation, feeling less alone) or upshift (accountability, momentum).</td>
+</tr>
+</tbody>
+</table>
+<p>These are illustrative, not an exhaustive or locked list — the menu names and categories are fixed;
+the specific examples underneath can and should be adapted to audience and context.</p>
+<p><strong>Claims boundary, carried directly from the Pathway, not previously stated this explicitly —
+<code>D-0083</code>:</strong> <em>"Breath is one option, not the required strategy."</em> Move it must never be taught or
+demonstrated as a breathing exercise specifically — it is a menu of body-based options, of which
+breath is one, exactly as <code>K-08</code> rule 9 already requires (workable is not calm, and no single
+technique is the required path there).</p>
+<p><strong>Reconciliation against the Practical Pathway — done partially, disclosed honestly (<code>D-0083</code>,
+2026-08-06).</strong> <code>D-0063</code> built the public menu names (Move it / Zoom in or out / Ask a different
+question / Bring someone in) and their worked examples without first checking whether MFC already had
+an approved Shift toolkit — it did, at Appendix C of the Practical Pathway, cited elsewhere in this
+vault as containing "feel feet" and "breathe if safe" among its body tools. Those two are now folded
+into Move it, leading the list, ahead of this session's own additions. <strong>The full Appendix C has not
+been reconciled</strong> — the source document ("02 Building Mental Fitness — Practical Pathway.docx") is a
+Drive file, not ingested into this vault as readable text (<code>C-19</code>), so only the fragments quoted
+elsewhere in <code>60-projects/mfc-website/</code> were available to check against. A full ingestion of the
+Pathway as a <code>10-sources/</code> record, so the remaining three menu items can be checked the same way, is
+recommended follow-up, not done here. See <code>L-036</code> for the pattern this closes one instance of.</p>
+<h2>Stop, Shift, Do to Mental Rep — the counting rule (added 2026-08-05, provisional, on Hunter product approval)</h2>
+<p><strong>Authority and status, stated precisely, same pattern as the Radar addition above.</strong> Hunter
+approved this into the product on 2026-08-05, closing <code>LI-04</code>/<code>CF-01</code> (framework-integrity-observatory,
+<code>06-...md</code>/<code>07-...md</code>) under delegated product authority (<code>K-11</code>). <strong>Canonical Framework
+ratification remains with the committee</strong>, as for this entire record.</p>
+<blockquote>
+<p><strong>Every completed pass through Stop, Shift, Do — at whatever scale, however brief — counts as one
+Mental Rep, provided the moment was caught with intention (not run on autopilot) and could be
+caught before it happened, while it was happening, or afterwards.</strong> Shift is not required to have
+been used: if State Check reads "workable," a Stop → Do pass with no explicit Shift step still
+counts as one rep. This is the same rule Mental Rep already states for itself — outcome-independent,
+intention-dependent — applied explicitly to its relationship with Stop, Shift, Do, which K-07
+previously left unstated.</p>
+</blockquote>
+<p>This directly resolves the ambiguity a facilitator guide or measurement instrument would otherwise
+hit the first time it needed to count reps: it does not change Mental Rep's own locked definition
+above, it names how SSD and Mental Rep relate, which was previously unstated.</p>
+<p><strong>State Check and Shift — the boundary, named explicitly.</strong> State Check and Shift are not two
+separate processes competing for the same ground; State Check is the <em>read</em> (too much / workable /
+too little), Shift is the <em>response</em>, and both legitimately touch the same domains (body, attention,
+perspective, connection) because reading a domain and acting on it are different acts on the same
+material — diagnosing tension in the body and downshifting the body are not the same move. This was
+implicit in K-07's existing text; it is now stated so the relationship is not mistaken for
+duplication.</p>
+<h2>Category-confidence position — how MFC talks about "mental fitness" as a category (added 2026-08-05, provisional, on Hunter product approval)</h2>
+<p>See <code>K-08</code>'s claim-boundaries table for the binding public-wording rule. Recorded here because it
+resolves <code>IEQ-05</code>/domain 4/<code>R-01</code> (framework-integrity-observatory) directly against this record's
+own category claim: MFC presents mental fitness as <strong>its own evidence-informed synthesis and
+communications category</strong> — not as an independently construct-validated scientific discovery. No
+construct-validation literature currently exists either confirming or refuting mental fitness as
+distinct from resilience/mental-health-promotion work; this position keeps every current claim
+defensible without waiting on, or overstating, that open question.</p>
+<h2>Status</h2>
+<p>Provisional. Framework <strong>text extraction</strong> read in full (<code>verified-full-text-extraction</code>; original <code>.docx</code> completeness not independently confirmed).</p>
+<p><strong><code>C-20</code>, <code>C-22</code> and <code>C-23</code> — foundations side resolved 2026-08-31; all three remain OPEN.</strong> All three are wording divergences, not disagreements about meaning. <strong>This record is the locked authority for all three</strong> — <code>K-04</code> defines none of them (it does not enumerate the five skills, define the mental rep, or state the Stop-Shift-Do step wording), so there was no foundations disagreement to arbitrate. The occurrences inside <code>00-foundations/</code> were corrected in place; every occurrence outside it is listed as a propagation task on the conflict record rather than edited silently.</p>
+<p><strong>They are not closed, and this system cannot close them.</strong> Each conflict is <em>defined</em> as Framework versus a named external document (Measurement Blueprint, Commercial Model, Technical Evidence &amp; Design Logic, Organisation Proposition); those documents are unchanged. All three also carry <code>resolution_authority: management</code>, which has not been exercised, and <code>materiality_status: provisional</code> with no confirmation. Correcting those documents at source — or recording per document why a variant is intended — is Hunter's to do; they are Drive documents, now downstream and stale along with the master framework document.</p>
+<p><strong>This record is now the current record of the framework</strong> (<code>sync_direction: obsidian-to-drive</code>, 2026-08-31). It is still <code>awaiting-committee</code>. Current is not approved.</p>
+<h2>Unresolved</h2>
+<ul>
+<li><strong>Resolved, <code>D-0081</code>, 2026-08-06.</strong> Shift/Connect's 1:2 compression against the seven deeper skills is now disclosed at source — both in K-08's own audience-translation table (which already routed the deeper skills away from the general public) and, per this decision, in the public wording itself (Shift's "through your body, or through your thinking"; Connect's existing "yourself and others"). The seven-skill public layer built to solve this (<code>D-0060</code>–<code>D-0079</code>) is reverted; the two independent checks that drove the reversal found the original "undisclosed" finding did not survive contact with the website's own governing documents (<code>L-036</code>).</li>
+<li><strong><code>U-03</code> ANSWERED, 2026-08-07 — and the answer cuts against <code>D-0061</code>.</strong> The open question was whether the Drive source document ever defined "Live It" more fully than this extraction captured. It does. Read directly (<code>D-0086</code>): the source has a full "Live It" subsection at its section 12, and it already carries the exact guardrail <code>D-0061</code> retired the stage name to avoid — verbatim: <em>"This does not mean mastery or perfection. It means the skill is becoming more familiar, more available, and more naturally connected to the person's habits, choices, relationships, routines, and identity."</em> The Practical Pathway (a second, independent source) also uses "Learn It, Use It, Live It." <strong>So the claims-safety concern that motivated replacing "Live It" with "Build It" was already answered inside the source's own wording</strong>, not only by renaming. <code>D-0082</code> locked Learn It / Build It / Use It knowing P22's objection but not this; the rename is not wrong, but its stated justification is now weaker than when it was made. <strong>CLOSED 2026-08-07 (<code>D-0089</code>): Hunter reviewed this finding directly and kept Learn It / Build It / Use It.</strong> The decision now stands on its own merits — three stage names that are each an action a person takes — rather than on the claims-safety argument this finding weakened. The Drive sources and the Practical Pathway continue to say "Live It"; that divergence is accepted, deliberate, and recorded here rather than reconciled away.</li>
+<li><strong>Addressed 2026-09-07 by correction, not by design work</strong> (<code>D-0064</code>): this flag read "the Human Operating System's six components introduced together (Driver, Passenger, Engine, Pathways, Navigation, Environment) may carry the same too-abstract-at-once risk the Shift menu just addressed for its four categories — a candidate for the same plain-English/menu treatment, not yet done." The live model had already solved it and this record had not caught up: it carries <strong>seven</strong> parts in <strong>two tiers</strong> with a stated recall frame ("start with the three basics, then check the wider system") and a plain recall question per part. That is the plain-English/menu treatment the flag asked for. The flag was therefore describing a defect in this record, not in the framework. Residual open question, narrower: whether <em>seven</em> parts land cold with a real audience is untested, as is every other wording in this record.</li>
+<li>Flagged, not yet addressed (<code>D-0064</code>): the Radar's My moments / Our moments / enabling conditions / context-tags structure is real and correctly Stage-3 ("Deepening") content per the staged arc above, but has not itself been simplified for a first explanation the way Shift now has.</li>
+</ul><p class="src">Original source: 00-foundations/K-07-framework-architecture.md</p></div></details><details class="record" ><summary>K 08 Claims Red Lines</summary><div class="record-body document"><h1>K-08 — Claims and safety boundaries</h1>
+<h2>Core clinical lens</h2>
+<blockquote>
+<p>"The framework should increase agency without increasing blame. It should offer skills without pretending that skills alone solve unsafe, clinical, structural, relational, or resource-based problems."</p>
+</blockquote>
+<h2>Claim boundaries (Framework section 19)</h2>
+<table>
+<thead>
+<tr>
+<th>MFC can safely say</th>
+<th>Use caution</th>
+<th>Avoid saying</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The framework is evidence-informed and evidence-aligned.</td>
+<td>The framework may support mental health and functioning.</td>
+<td>The framework treats, prevents, or cures mental illness.</td>
+</tr>
+<tr>
+<td>Mental fitness can be strengthened through practice, support, repetition, and time.</td>
+<td>Repeated practice may make useful patterns more familiar and easier to access.</td>
+<td>Mental reps guarantee brain rewiring or guaranteed outcomes.</td>
+</tr>
+<tr>
+<td>MFC teaches five public skills (Notice, Shift, Choose, Focus, Connect), each drawing on one or more of seven evidence-aligned deeper skills used directly by clinical advisors and the evidence page (<code>D-0081</code>, <code>D-0084</code>).</td>
+<td>The skills connect to established evidence families.</td>
+<td>MFC's exact model is clinically validated as a standalone protocol unless tested.</td>
+</tr>
+<tr>
+<td>Mental fitness complements professional care.</td>
+<td>Some people may need more support, adaptation, or clinical care.</td>
+<td>Mental fitness replaces therapy, counselling, psychiatry, medication, or crisis support.</td>
+</tr>
+<tr>
+<td>Access to skills is shaped by context, safety, support, body, brain, and conditions.</td>
+<td>People may strengthen access where safe and appropriate.</td>
+<td>Anyone can shift any moment if they try hard enough.</td>
+</tr>
+</tbody>
+</table>
+<h2>Clinical and inclusion safety rules (Framework section 20)</h2>
+<ol>
+<li>Use mental fitness as education and skill practice, not treatment.</li>
+<li>Do not diagnose, pathologise, or interpret someone's mental health presentation through this framework.</li>
+<li>Do not imply that struggle, distress, trauma responses, disability, neurodivergence, or difficulty accessing skills are personal failures.</li>
+<li>Build in choice, opt-out pathways, pacing, and adaptation for workshops and public programmes.</li>
+<li>Use "where safe and appropriate" for connection, vulnerability, exposure, reconnecting and difficult conversations. Name the actual action rather than relying on abstract shorthand.</li>
+<li>Do not force calming, breathwork, eye closure, disclosure, touch, partner work, or public sharing.</li>
+<li>Do not make the State Check mandatory, scored, public, or performance-based.</li>
+<li>Do not centre emotional labelling or numbered scales.</li>
+<li>Do not imply calm is always the goal. The goal is workable enough for this moment.</li>
+<li>Use referral, safeguarding, and crisis pathways when distress, risk, or clinical needs are outside the scope of education.</li>
+<li>Avoid discriminatory assumptions about culture, gender, sexuality, race, religion, disability, neurodivergence, socioeconomic position, age, mental health status, or family context.</li>
+<li>Make delivery accessible: plain language, flexible participation, sensory considerations, inclusive examples, non-stigmatising wording.</li>
+</ol>
+<h2>Category-confidence rule (added 2026-08-05, provisional, on Hunter product approval)</h2>
+<p><strong>Authority and status, stated precisely, same pattern as K-07's Radar and Stop-Shift-Do/Mental-Rep
+additions.</strong> Hunter approved this into the product on 2026-08-05, closing <code>IEQ-05</code>/domain
+4/<code>R-01</code>/<code>R-03</code> (framework-integrity-observatory) under delegated product authority (<code>K-11</code>).
+<strong>Canonical Framework ratification remains with the committee</strong>, as for this entire record.</p>
+<blockquote>
+<p><strong>MFC presents "mental fitness" as its own evidence-informed synthesis and communications
+category — never as an independently construct-validated scientific discovery.</strong> No
+construct-validation literature currently distinguishes mental fitness from resilience training
+or mental-health-promotion/literacy work; that is a genuinely open external question, not settled
+either way.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>MFC can safely say</th>
+<th>Avoid saying</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MFC's approach draws together established psychological science — self-awareness, state regulation, flexible thinking, attention, values-based action, and relating to self and others — into a practical, teachable model.</td>
+<td>Science shows mental fitness is a distinct, validated category.</td>
+</tr>
+<tr>
+<td>"Mental fitness" is MFC's own name and architecture for this synthesis.</td>
+<td>Mental fitness is a scientifically novel discovery.</td>
+</tr>
+<tr>
+<td>The five-skill public architecture, and the seven deep skills beneath it, are built from well-established, individually distinct literatures.</td>
+<td>This model has been independently validated as a whole.</td>
+</tr>
+</tbody>
+</table>
+<p>This does not change what MFC teaches — it governs how confidently MFC's own category name is
+described in public, funder, and committee-facing copy. Whether "mental fitness" earns its own name
+commercially or strategically remains a legitimate MFC choice, independent of and not conflated with
+the unresolved science question above.</p>
+<h2>"Life-changing" and founder conviction (added 2026-08-05, <code>D-0062</code>)</h2>
+<p>Hunter's own conviction that this work is "arguably life-changing" is genuine founder belief, not
+public copy, and this record does not ask him to soften it in how he talks about MFC internally or
+in conversation. The existing claim boundary already above ("Avoid saying": <em>"MFC's exact model is
+clinically validated... unless tested"</em>; the four-position table's <em>"not a claim that one tool will
+transform a person's life"</em>) governs what becomes <strong>public-facing</strong> copy specifically — "life-changing"
+as a stated, evidenced outcome is not currently supported and should not appear as a claim in
+website, funder, or workshop copy. Conviction and evidenced claim are different things, and keeping
+them separate protects the conviction rather than undermining it — an overclaim that gets challenged
+publicly costs credibility conviction alone doesn't.</p>
+<h2>Mental-health claim ladder (Claims Register)</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Relationship</td>
+<td>Proposed for approval (BD-02, <strong>pending</strong>)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Promotion</td>
+<td>Proposed for approval (BD-02, <strong>pending</strong>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Protective capacity / mechanism</td>
+<td>Proposed for approval (BD-02, <strong>pending</strong>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>—</td>
+<td><strong>Only after pilot data</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Clinical outcome claim</td>
+<td><strong>Blocked unless rigorous evidence exists.</strong> Worked example: "MFC workshops improve mental health outcomes"</td>
+</tr>
+</tbody>
+</table>
+<h2>Additional prohibitions (Claims Register dashboard)</h2>
+<blockquote>
+<p>"Do not claim treatment, prevention, diagnosis, symptom reduction, clinical validation, guaranteed outcomes, direct reductions in prevalence, suicide-risk reduction, or 'rewiring the brain'."</p>
+</blockquote>
+<p>From the Commercial Model — MFC must not claim one engagement reduces absenteeism or attrition, prevents burnout, improves productivity, reduces workers' compensation, treats clinical distress, manages all psychosocial hazards, or transforms workplace culture. <strong>Loosened by <code>D-0104</code>, 2026-08-19 (Hunter, founder decision, provisional pending committee ratification):</strong> direct causal assertions of these outcomes remain barred exactly as above, but MFC may now use a <strong>target-and-cite formula</strong> — state what the programme targets, then cite what the general research shows, without asserting MFC's own programme produces the outcome (e.g. "this targets skills the research links to X, which the broader literature associates with Y" — not "this reduces Y"). Adopted directly from clinical director Eimear Quigley's own formula, MFC Committee Session 4, 2026-06-22 (Fathom 156941435, [50:36]). Full record, including the distinction between outcome and motivation Hunter drew (a possible outcome, never the stated reason MFC exists): <code>D-0104</code>.</p>
+<h2>Audience translation (Framework section 22)</h2>
+<table>
+<thead>
+<tr>
+<th>Audience</th>
+<th>Lead with</th>
+<th>Keep behind the scenes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General public</td>
+<td>Definition, short distinction, four-position model; one moment and one rep</td>
+<td>Evidence map, deeper skills, clinical claim language</td>
+</tr>
+<tr>
+<td>Workshops</td>
+<td>Stage 1 leads with one moment, Stop Shift Do, one live rep and a Radar; the five public skills are named from Stage 2 (<code>D-0081</code>, per K-07's staged teaching arc)</td>
+<td>The seven deep skills behind each public one; evidence/construct detail, in facilitator notes</td>
+</tr>
+<tr>
+<td>Website</td>
+<td>Simple public pages first; deeper framework second</td>
+<td>Full evidence map and claim boundaries</td>
+</tr>
+<tr>
+<td>Schools and youth</td>
+<td>Moments, simple language, choice, support, safe participation</td>
+<td>Avoid heavy neuroscience or performance pressure</td>
+</tr>
+<tr>
+<td>Clinical advisors</td>
+<td>Seven deeper skills, evidence map, safety boundaries, claim discipline</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Funders and partners</td>
+<td>Practical framework, measurable behaviour in moments, reach, accessibility, safety</td>
+<td>Detailed theory unless requested</td>
+</tr>
+</tbody>
+</table>
+<h2>Control-state warnings</h2>
+<p><strong>C-15 / C-24</strong> — the Claims Register is not adopted. All eight board decisions (BD-01 to BD-08) are dated 10–20 May 2026 and remain <strong>pending</strong>, including BD-03 "Approve red-line claims". <strong>The red-lines above are therefore unapproved.</strong></p>
+<p><strong>C-16</strong> — youth/schools: "Blocked until youth process reviewed"; external use "No until reviewed"; "Mandatory reporting/duty-of-care detail needed". Safeguarding <em>material</em> exists (Schools Pack, distress-disclosure wording, facilitator-to-host escalation, verified national service references) but no named lead (BD-05, pending).</p>
+<p><strong>Asset audits</strong> — every public asset class (website, fundraising, social, grants, media, story/testimonial, delivery, evaluation) is currently <strong>Blocked</strong> pending copy review, most marked "draft not yet supplied".</p>
+<p><strong>C-18</strong> — the Framework prohibits claiming the framework "prevents" mental illness; the Constitution cl.1B names "the prevention and control of mental illness" as principal activity. Qualified advice required; no legal conclusion drawn.</p>
+<h2>Status</h2>
+<p>Provisional. Both sources read. <strong>Nothing here is board-approved.</strong></p><p class="src">Original source: 00-foundations/K-08-claims-red-lines.md</p></div></details><details class="record" ><summary>00 Index</summary><div class="record-body document"><h1>MFC Framework Integrity and Evidence Observatory — Hunter Review</h1>
+<p><strong>Start here. You should not need to open any other file in this package unless you want more depth.</strong></p>
+<h2>What the framework currently is</h2>
+<p>MFC's mental fitness framework has three layers: a <strong>category claim</strong> (mental fitness as a developable capacity to navigate everyday moments, distinct from but complementary to mental health), an <strong>explanatory architecture</strong> (a teaching metaphor — the Human Operating System — plus five public skills simplifying seven deeper constructs, plus a simple in-the-moment method, Stop-Shift-Do), and a <strong>practice mechanism</strong> (State Check, Mental Reps, Radar). See [[90-meta/framework-integrity-observatory/02-canonical-framework-map|02-canonical-framework-map.md]] for the full picture and diagram.</p>
+<p><strong>The single most important fact in this whole review:</strong> none of it is committee-approved yet. Every kernel record is <code>status: provisional</code>. This review does not change that — it maps what exists and rates how well-supported each part is.</p>
+<h2>How the main parts connect</h2>
+<p>Category → explanatory architecture → practice mechanism, roughly top-down, with the five public skills simplifying the seven deeper ones and Stop-Shift-Do drawing loosely (not rigidly) on both. Full diagram: [[90-meta/framework-integrity-observatory/02-canonical-framework-map|02-canonical-framework-map.md]].</p>
+<h2>What is strongly supported</h2>
+<ul>
+<li><strong>Radar</strong> (the mechanism of pre-selecting a few recurring moments to notice/practise) — this is MFC's best-evidenced component, resting on decades of well-replicated implementation-intentions research (d=.27–.66).</li>
+<li>The individual <strong>seven deeper constructs</strong> each draw on genuinely evidenced adjacent psychological literatures (self-regulation, attention, cognitive flexibility, values-based action, self-compassion, relational skill) — though none has been tested as MFC's own integrated system.</li>
+</ul>
+<h2>What is moderately or indirectly supported</h2>
+<ul>
+<li>General trainability of psychological skills in non-clinical adults (moderate support for the components, limited support specifically for MFC's brief one-off delivery format).</li>
+<li>Mental Reps as a practice unit (adjacent literatures — single-session interventions, deliberate practice — are consistent with the idea; the specific "one outcome-independent rep" mechanism itself is untested).</li>
+</ul>
+<h2>What is an MFC construct (not itself a scientific finding)</h2>
+<p>The public definition, the short distinction, the five-skill labels, the Stop-Shift-Do method, State Check, and the Human Operating System are all MFC's own synthesis and communication choices — legitimate product design, not claims requiring external validation in themselves, provided they are never presented as independently validated.</p>
+<h2>What remains provisional / genuinely open</h2>
+<p>Whether "mental fitness" is a genuinely distinct scientific category, or a well-branded synthesis of existing constructs — <strong>no construct-validation literature was found either way</strong>, confirmed by a live proof-run search on 30 July 2026 finding no new hits. This is this review's single most consequential open question (see <code>10-...md</code>, Decision D-1).</p>
+<h2>Strongest criticisms (and MFC's current responses)</h2>
+<ol>
+<li><strong>The Human Operating System risks reading as pseudo-neuroscience</strong>, even with its disclaimer — external evidence shows disclaimers reduce but don't eliminate lay literalisation of brain metaphors. MFC's current disclaimer is necessary but not, on its own, fully sufficient.</li>
+<li><strong>"Mental fitness" as a framework risks individualising problems that are actually social/structural</strong> — a mature, credible critique lineage exists. MFC's "Environment" component addresses this in principle; whether it's delivered with equal weight in practice is unverified.</li>
+<li><strong>No causal wellbeing claim can currently be supported</strong> — MFC's own measurement (uncontrolled pre/post) cannot establish this, and MFC's own claim boundaries already correctly prohibit making such a claim. This finding <em>confirms</em> an existing correct boundary; it does not discover a live violation.</li>
+</ol>
+<p>Ten challenges in total were tested adversarially — see [[90-meta/framework-integrity-observatory/06-logical-integrity-and-red-team|06-logical-integrity-and-red-team.md]] for the full set.</p>
+<h2>Material risks vs. issues that don't need immediate resolution</h2>
+<p><strong>Nothing in this review required Category 1 (must-resolve-now) treatment.</strong> Every genuine concern found was already correctly bounded by MFC's existing claims policy (K-08), or is a Category 2/3 (record-and-continue / future-improvement) item. See [[90-meta/framework-integrity-observatory/10-material-findings-and-hunter-decision-brief|10-material-findings-and-hunter-decision-brief.md]] for the full classification.</p>
+<h2>Adviser questions prepared (not sent)</h2>
+<p>Four bounded packs — psychology/clinical, neuroscience, behaviour-change/learning-science, category/communications — see [[90-meta/framework-integrity-observatory/09-adviser-validation-packs|09-adviser-validation-packs.md]]. Nothing has been contacted; no adviser is assumed available.</p>
+<h2>Product impacts (mapped, not applied)</h2>
+<p>See [[90-meta/framework-integrity-observatory/08-change-impact-map|08-change-impact-map.md]] — every finding is mapped to what it <em>would</em> affect, with severity mostly low-moderate and nothing requiring the active website or workshop workstreams to pause.</p>
+<h2>Only genuine Hunter decisions</h2>
+<ol>
+<li><strong>How confidently should "mental fitness" be presented as a distinct category</strong> in public/funder communications? (Recommended: present as MFC's own evidence-informed synthesis, not as scientifically novel.)</li>
+<li><strong>Should HOS-adjacent copy be audited for incidental neuro-jargon?</strong> (Recommended: fold into the workshop experience-assurance workstream's next natural revision, rather than opening a new task.)</li>
+</ol>
+<p>Full detail, including consequences and reversibility: [[90-meta/framework-integrity-observatory/10-material-findings-and-hunter-decision-brief|10-material-findings-and-hunter-decision-brief.md]].</p>
+<h2>What the Observatory will do in future</h2>
+<p>A repeatable protocol — not a new standing agent — reactivating A-05/A-06 on a domain-specific cadence (quarterly for fast-moving domains like neuroscience-metaphor risk and brief-intervention durability; six-monthly for slower ones like category-validity and measurement methodology; event-triggered for thin-literature domains like stigma-risk). One real proof-run already completed. Reports to Hunter only when something material changes — "no material framework change detected" is the expected, correct default output most cycles. Full design: [[90-meta/framework-integrity-observatory/11-observatory-operating-model|11-observatory-operating-model.md]].</p>
+<h2>Package contents (for more depth)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>[[90-meta/framework-integrity-observatory/01-source-authority-map</td>
+</tr>
+<tr>
+<td>2</td>
+<td>[[90-meta/framework-integrity-observatory/02-canonical-framework-map</td>
+</tr>
+<tr>
+<td>3</td>
+<td>[[90-meta/framework-integrity-observatory/03-five-seven-skills-and-language-map</td>
+</tr>
+<tr>
+<td>4</td>
+<td>[[90-meta/framework-integrity-observatory/04-claim-taxonomy-and-register</td>
+</tr>
+<tr>
+<td>5</td>
+<td>[[90-meta/framework-integrity-observatory/05-evidence-strength-model-and-current-evidence</td>
+</tr>
+<tr>
+<td>6</td>
+<td>[[90-meta/framework-integrity-observatory/06-logical-integrity-and-red-team</td>
+</tr>
+<tr>
+<td>7</td>
+<td>[[90-meta/framework-integrity-observatory/07-contradiction-uncertainty-inaccessible-queue</td>
+</tr>
+<tr>
+<td>8</td>
+<td>[[90-meta/framework-integrity-observatory/08-change-impact-map</td>
+</tr>
+<tr>
+<td>9</td>
+<td>[[90-meta/framework-integrity-observatory/09-adviser-validation-packs</td>
+</tr>
+<tr>
+<td>10</td>
+<td>[[90-meta/framework-integrity-observatory/10-material-findings-and-hunter-decision-brief</td>
+</tr>
+<tr>
+<td>11</td>
+<td>[[90-meta/framework-integrity-observatory/11-observatory-operating-model</td>
+</tr>
+<tr>
+<td>12</td>
+<td>[[90-meta/framework-integrity-observatory/12-portfolio-integration-and-capability-assessment</td>
+</tr>
+<tr>
+<td>13</td>
+<td>[[90-meta/framework-integrity-observatory/13-deterministic-validation</td>
+</tr>
+<tr>
+<td>14</td>
+<td>[[90-meta/framework-integrity-observatory/14-implementation-and-review-evidence</td>
+</tr>
+</tbody>
+</table>
+<h2>Exact next-action record</h2>
+<p>None automatic. This objective's own completion requires: independent review (pending), at most one correction pass, and a safe merge — all within this objective's own bounds, per [[50-authority/mandates/M-020-mfc-framework-integrity-evidence-observatory-v1|M-020]]. The two genuine Hunter decisions above (D-1, D-2) are the only outstanding items requiring Hunter's own action; neither blocks this objective's own completion.</p><p class="src">Original source: 90-meta/framework-integrity-observatory/00-index.md</p></div></details><details class="record" ><summary>D 0089 Progression And Deep Term Confirmed Workshop Reopened</summary><div class="record-body document"><h1>D-0089 — Two Confirmations and a Reopening</h1>
+<h2>Decision</h2>
+<p>Hunter, 2026-08-07, answering the three items put to him after the framework readiness pass:</p>
+<blockquote>
+<p>• Progression: Keep Learn It, Build It, Use It.
+• Values-Based Action: Keep Values-Based Action.
+• Reopen workshop: Yes — workshop workstream reopened as of today.</p>
+</blockquote>
+<h2>1. Progression naming — confirmed, and the reasoning changes</h2>
+<p><strong>Learn It, Build It, Use It stands.</strong> This matters because Hunter confirmed it <em>with the contrary
+evidence in front of him</em>, not before it surfaced.</p>
+<p><code>D-0061</code> renamed the third stage from "Live It" on a claims-safety argument: as an achieved
+end-state it implied a durable outcome <code>K-09</code>'s stage gates prohibit claiming. <code>D-0086</code> then read
+the Drive-authoritative source directly and found that argument weaker than it looked — the source's
+own "Live It" section already carries the guardrail, verbatim: <em>"This does not mean mastery or
+perfection."</em> The Practical Pathway, independently, also uses "Live It."</p>
+<p><strong>What changes: the justification, not the decision.</strong> The naming now rests on its own merits —
+three stage names that are each an action a person takes (learn, build, use), where "Live It"
+describes a state rather than an act — rather than on a claims-safety argument that the source
+document had already answered internally. <strong>The divergence from both Drive documents is accepted,
+deliberate, and recorded rather than reconciled away.</strong> Anyone reading the source and the framework
+side by side will see two different third-stage names; that is now a known, chosen difference.</p>
+<h2>2. Values-Based Action — confirmed</h2>
+<p><strong>The deep-tier term stays "Values-Based Action"</strong> (renamed from "Acting on What Matters" by
+<code>D-0085</code>).</p>
+<p><code>D-0086</code> flagged a real risk: the Drive source uses "values-based action" only inside its
+evidence-map layer — listing the academic processes underneath the skills — while deliberately
+keeping the skill's own name as "Acting on What Matters." The concern was that renaming the skill to
+match its evidence-map term could collapse two layers the source keeps apart, reintroducing one
+layer down the same one-word-two-jobs problem <code>D-0084</code> had just removed at the bridge-label
+boundary.</p>
+<p>Hunter reviewed that and kept the rename. <strong>The divergence is accepted and deliberate.</strong> This layer
+is not participant-facing, which bounds the consequence.</p>
+<p><strong>Still open, not resolved by this:</strong> Values-Based Action's tag carries only the second half of its
+own definition — "identifying what matters" is implied rather than stated. Recorded in <code>K-07</code>'s
+disclosed costs.</p>
+<h2>3. Workshop workstream — reopened</h2>
+<p><code>Current State and Next Action</code> recorded the workshop as <strong>paused, not cancelled</strong>, resuming <em>"only
+on Hunter's separate, explicit decision."</em> This is that decision, made explicitly rather than
+inferred from the request to start building.</p>
+<p><strong>What this authorises:</strong> workshop build and design work, now.</p>
+<p><strong>What it does NOT touch:</strong> <code>D-0016</code>'s gate on participant-facing delivery and pilot-ready approval.
+Its scope was verified verbatim during the readiness pass rather than assumed — it gates <em>"pilot-ready
+approval and any participant-facing pilot delivery"</em>, and design and build sit outside it. <strong>All six
+of its matters remain open.</strong> Nothing in this decision moves that gate, and no new approval
+requirement is invented alongside it.</p>
+<h2>Why the framework is a sound base to build on</h2>
+<p>The readiness pass preceding this decision confirmed the framework is internally consistent — five
+public skills, seven deeper skills beneath, no live contradictions across the foundations records —
+and that MFC's evidence honesty holds under adversarial checking. The independent checker attempted
+to find overclaiming and could not.</p>
+<p><strong>One genuine caveat, stated plainly:</strong> all of it is accurate and none of it is formally approved.
+Nothing in <code>00-foundations/</code> is board-approved, and <code>K-09</code>'s evidence posture still awaits specialist
+confirmation from the two named reviewers. "Our evidence position" is defensible; "our <em>approved</em>
+evidence position" is not, yet.</p>
+<h2>What changed as a direct result</h2>
+<ul>
+<li><code>00-foundations/K-07-framework-architecture.md</code> — the <code>U-03</code> finding closed with Hunter's
+  confirmation and the reasoning restated on its own merits; Values-Based Action confirmation added
+  to disclosed costs, with its remaining tag gap preserved as still-open.</li>
+<li><code>90-meta/Current State and Next Action.md</code> — workshop pause lifted; the single authorised next
+  action is now the workshop build; <code>D-0016</code>'s delivery gate restated as untouched.</li>
+</ul>
+<h2>Human approval record</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decided by</td>
+<td><strong>Hunter Karam — President / Managing Director</strong></td>
+</tr>
+<tr>
+<td>Decision date</td>
+<td><strong>2026-08-07</strong></td>
+</tr>
+<tr>
+<td>Verbatim authorisation</td>
+<td><em>"Progression: Keep Learn It, Build It, Use It. · Values-Based Action: Keep Values-Based Action. · Reopen workshop: Yes — workshop workstream reopened as of today."</em></td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Two naming confirmations made with contrary evidence disclosed; reopening the workshop workstream. Does not touch <code>D-0016</code>.</td>
+</tr>
+<tr>
+<td>Committee approval</td>
+<td>Not required</td>
+</tr>
+</tbody>
+</table><p class="src">Original source: 30-decisions/D-0089-progression-and-deep-term-confirmed-workshop-reopened.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/00-foundations/README.md" target="_blank">Foundations index</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/00-foundations/K-07-framework-architecture.md" target="_blank">Framework architecture</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/00-foundations/K-08-claims-red-lines.md" target="_blank">Claims red lines</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/90-meta/framework-integrity-observatory/00-index.md" target="_blank">Framework Observatory review</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0089-progression-and-deep-term-confirmed-workshop-reopened.md" target="_blank">framework confirmations (D-0089)</a></li></ul></div></details></div>

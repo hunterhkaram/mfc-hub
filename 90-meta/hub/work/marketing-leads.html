@@ -1,0 +1,705 @@
+<title>Marketing and lead generation — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../marketing-leads.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Marketing and lead generation</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>D 0127 D0116 Withdrawn Lead Generation Replanned From Founder Direction</summary><div class="record-body document"><h1>D-0127. D-0116 is withdrawn</h1>
+<h2>The decision</h2>
+<p>Hunter, 2026-09-05, verbatim: <em>"remove D-0116."</em></p>
+<p><code>D-0116</code> (2026-08-31) fixed the lead engine as social media first, MFC's own free online
+Leadership Community second, and being in rooms third. <strong>That ordering no longer stands.</strong> Lead
+generation is re-planned from the founder direction below, and nothing in <code>D-0116</code> is carried
+forward by default.</p>
+<h2>The founder direction that replaces it, verbatim</h2>
+<ol>
+<li><em>"Not our actual community - joining other communities and going to explain or simply teach
+   mental fitness (reps)."</em> — The rooms channel is walking into gatherings that already exist and
+   teaching a rep in five to fifteen minutes. It is not founding a community.</li>
+<li><em>"180,000 followers is my friend Tom D (is interested) in being an ambassador - so the strategy
+   is to incorporate an ambassador program."</em></li>
+<li><em>"make the strategy for our instagram having 8800 followers now, and a few hundred on linked
+   In. I also have socials which i am not active on at the moment. And don't want to be too active
+   - although open to it if evidence supports this move/approach."</em></li>
+<li><em>"If community build (our own) is the best approach or one of... then i am open to entertaining
+   it. is it virtual, in real life? how do we reach people - perhaps track data etc?"</em> — MFC's own
+   community is <strong>an option to be evaluated</strong>, not the engine.</li>
+<li><em>"i can give five hours to lead gen a week - thats at this stage, could be more if we need to
+   sell the services or less if its up and running and orgs and communities are reaching out."</em></li>
+</ol>
+<h2>What this does and does not change</h2>
+<ul>
+<li><strong><code>D-0111</code> §3 is unaffected.</strong> MFC's own community remains not authorised for build. <code>D-0127</code>
+  authorises its <em>evaluation</em> inside the lead-generation plan, nothing more.</li>
+<li><strong><code>FINAL-03</code> is not reissued.</strong> The committee holds the 17 August paper. The reconciled position
+  returns to them as part of the consolidated strategy, as <code>D-0116</code> itself said it would.</li>
+<li><strong>The ambassador programme draft</strong> (<code>90-meta/PROGRAMME-2026-08-25-ambassador-v1.html</code>) and the
+  Tom debrief stand as the starting point. Nothing about Tom is public and no agreement exists.</li>
+<li><strong><code>R1</code>'s finding</strong> — that personal-profile social posting is a trust asset rather than lead
+  generation — is no longer overridden by a founder ordering. It is evidence the plan must weigh,
+  which is what Hunter asked for: <em>"open to it if evidence supports this move/approach."</em></li>
+</ul>
+<h2>Propagation</h2>
+<ul>
+<li><code>D-0116</code> frontmatter: <code>status: superseded</code>, <code>superseded_by: D-0127</code>. Done in this commit.</li>
+<li>The <code>marketing-leads</code> topic record and Hub: updated when the plan lands, not before.</li>
+</ul><p class="src">Original source: 30-decisions/D-0127-d0116-withdrawn-lead-generation-replanned-from-founder-direction.md</p></div></details><details class="record" ><summary>Final 03 Marketing And Lead Generation</summary><div class="record-body document"><h1>Marketing and Lead-Generation Strategy</h1>
+<blockquote>
+<p><strong>READ THIS FIRST. FOUNDER CORRECTION, 2026-08-31 (<code>D-0116</code>).</strong> The lead engine
+is <strong>consistent social media, the free fortnightly online leadership community
+with pre-recorded sessions, and speaking at events that already happen.</strong> WHS
+consultants, EAPs, brokers, peak bodies and CEO peer groups are retained as
+<strong>organisation-reach routes, not the primary lead source.</strong></p>
+<p><strong>Corrections applied at sections 3, 4 and 7.</strong> The Executive Summary below,
+section 1's Funnel A and Funnel C first-contact rows, and section 6's line
+that Channel 1 <em>"is the one that proves the revenue model"</em> <strong>all still
+describe the pre-correction ordering and were deliberately left unedited</strong> so
+the original reasoning and its date remain visible. Read them as history.</p>
+<p><strong>Nothing here has produced a sale, a booked conversation or a run session.</strong></p>
+</blockquote>
+<p><strong>Addendum, 19 August 2026:</strong> Section 8 below (Message Design Evidence) was added after this
+document's 11 August send to committee — reconciled in from newly screened marketing-science
+research (<code>10-sources/</code>), not part of the original committee-approved content. Nothing above this
+note has been altered.</p>
+<h2>Executive Summary</h2>
+<p>MFC reaches people through three parallel funnels, each with a single recommended next step: organisations get Foundations, small teams get Essentials or V5, individuals get the digital one-hour session or a free Introduction.</p>
+<p>The ladder itself is a lead-generation mechanism, tested against choice-overload literature and used with discipline: a room hears one flagship (Foundations for an organisation that can host it) and one accessible entry (the short digital session for anyone), not a confusing menu.</p>
+<p>Lead generation happens through six channels: WHS consultants and brokers (#1), peak bodies (CCWT, NCOSS, NDS), local government/StateCover, co-working spaces, community talks and events, and Vistage peer groups. This is not a marketing budget problem — it is a relationship and referral problem. <strong>Nothing is sold cold.</strong> Everything starts with someone who has already met Hunter or has been introduced.</p>
+<hr />
+<h2>1. The Three Funnels — Not One Ladder</h2>
+<p>Different products need different entry points. The brief is right about this, and the research backs it up: a lone individual and a fifteen-person employer cannot be routed through the same door.</p>
+<h3>Funnel A: Organisations (Foundations)</h3>
+<p><strong>Typical buyer:</strong> HR/WHS leader in a 50–300 person NSW organisation</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What it is</th>
+<th>What moves them forward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Unaware</strong></td>
+<td>Never heard of MFC</td>
+<td>A channel touch: WHS consultant referral, peak-body mention, StateCover contact, a room Hunter is in</td>
+</tr>
+<tr>
+<td><strong>2. Aware, not qualified</strong></td>
+<td>Knows MFC exists but no live trigger (no inspector contact, no budget open)</td>
+<td>External trigger: regulatory deadline, inspector contact, survey result, claim cost. MFC's job: be visible and credible when it fires</td>
+</tr>
+<tr>
+<td><strong>3. Qualified conversation</strong></td>
+<td>A trigger exists and MFC is in the room (via referral, peak-body intro, direct approach naming the trigger)</td>
+<td>Hunter uses the demand-generation research's proven line: <em>"we tell you, ninety days later, whether they actually used it — and we give you that in writing, because from 1 July your controls have to be reviewed and evidenced."</em> Never lead with "resilience training"</td>
+</tr>
+<tr>
+<td><strong>4. Proposal</strong></td>
+<td>Org has headcount and session shape in mind</td>
+<td>One-page pitch: price by band, measurement report, case-study rate and exchange terms (if applicable)</td>
+</tr>
+<tr>
+<td><strong>5. Booked</strong></td>
+<td>Signed, headcount confirmed, date set</td>
+<td>Foundations delivery begins</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key constraint:</strong> This buyer does not manufacture urgency. The regulation change (1 July 2026) created a real trigger, but it's still "should review" not "must act." The budget also has to open. MFC reaches them when both are true.</p>
+<h3>Funnel B: Small Team / Community Organisation (Essentials)</h3>
+<p><strong>Typical buyer:</strong> Manager in a 6–15 person team or a community organisation with budget authority</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What moves them</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1–2 Unaware/aware</strong></td>
+<td>Same channels as Funnel A, but weighted toward peak bodies (CCWT, NCOSS, NDS) and community grant-funded delivery</td>
+</tr>
+<tr>
+<td><strong>3. Qualified</strong></td>
+<td>A small team with a manager who can approve $700–$1,200 (source: the pricing research) without committee/procurement — the demand-generation research calls this "single conversation, not a committee" buyer</td>
+</tr>
+<tr>
+<td><strong>4→5</strong></td>
+<td>Direct booking, often faster than Funnel A because there's no committee to clear</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key constraint:</strong> This buyer has less budget authority but faster decision-making. The payoff is lower dollar value per session but higher conversion speed.</p>
+<h3>Funnel C: Individual (V5, Introduction, Pro Bono)</h3>
+<p><strong>Typical entry:</strong> A person at a co-working space, a community event, a scanned code, a conference</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What moves them</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Unaware</strong></td>
+<td>Person at a co-working space, community event, scanned QR code, conference hallway</td>
+</tr>
+<tr>
+<td><strong>2. Aware</strong></td>
+<td>The "scan and ask a question, I will reply" mechanism (designed separately) or direct conversation with Hunter</td>
+</tr>
+<tr>
+<td><strong>3. Interested</strong></td>
+<td>They want more than conversation but are not a Foundations buyer — this is the honest destination for most people this funnel reaches. Solo founder in a co-working space is "not a Foundations buyer now or later" (source: the delivery-models research), costed as mission spend</td>
+</tr>
+<tr>
+<td><strong>4. Booked</strong></td>
+<td>V5 once it exists ($25–35/seat, source: the lead-generation funnel and delivery-models research), capped free Introduction, or pro bono by application</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key constraint:</strong> This is honest reach and evidence volume, not pipeline to revenue. The delivery-models research is explicit: don't present it internally as sales pipeline.</p>
+<hr />
+<h2>2. Why the Ladder Is a Lead-Gen Mechanism</h2>
+<h3>The Problem It Solves</h3>
+<p>Hunter's own brief: <em>"they don't need to be the people that are paying it necessarily"</em> — and <em>"if you're a founder in a co-working space, they will never look at a ladder of services you have to qualify for; that's not fair."</em></p>
+<p>The ladder answers by offering <strong>one clear recommendation per person</strong>, not a confusing menu:</p>
+<ul>
+<li><strong>For an organisation:</strong> Foundations</li>
+<li><strong>For a small team:</strong> Essentials or V5 depending on setting</li>
+<li><strong>For an individual:</strong> V5 or the free Introduction</li>
+</ul>
+<p><strong>The whole ladder is visible.</strong> You're not hidden from the Foundations option if you're an individual, and you're not forced into it either. But you hear one flagship (the half day "where we can really teach") and one accessible entry ("education plus a practical tool").</p>
+<h3>Tested Against Choice Overload</h3>
+<p>The choice-overload literature says: more options <em>can</em> hurt, but only under specific conditions. Scheibehenne et al.'s meta-analysis (50 experiments) (source: the donor-model research, citing Scheibehenne, Greifeneder and Todd 2010) found the effect is <strong>zero on average</strong> and depends on:</p>
+<table>
+<thead>
+<tr>
+<th>Moderator</th>
+<th>MFC's situation</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preference uncertainty</strong></td>
+<td>High — most people at a community event have never bought this before</td>
+<td>Could overload</td>
+</tr>
+<tr>
+<td><strong>Decision difficulty</strong></td>
+<td><strong>Low — if the ladder structure is preserved</strong></td>
+<td>Mitigates overload</td>
+</tr>
+<tr>
+<td><strong>Similarity of options</strong></td>
+<td>Low — a half day, 90 min, and one hour are not interchangeable</td>
+<td>Mitigates overload</td>
+</tr>
+<tr>
+<td><strong>Options actually presented</strong></td>
+<td><strong>One per person</strong> — the "how many people" question returns one answer</td>
+<td>Mitigates overload</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict: the ladder is not the classic failure mode.</strong> The classic failure is a nine-row price list with no recommendation. MFC's actual buyer-facing motion (per the delivery-models research and OFFERINGS) already avoids that configuration, provided it's never presented any other way.</p>
+<p><strong>What this adds:</strong> A room hears one flagship and one accessible entry, not five formats. That is the same "one recommendation, others visible behind it" structure the research supports.</p>
+<hr />
+<h2>3. The Channels — Ranked, Planned, and Concrete</h2>
+<blockquote>
+<p><strong>FOUNDER CORRECTION, 2026-08-31 (<code>D-0116</code>). The ranking below is superseded as
+a statement of where leads come from.</strong> Hunter's position, given directly:
+<em>"when we talk about leads, it's the posting, it's the connection, it's the
+online virtual leadership community. That's where everything for leads is."</em></p>
+<p><strong>The lead engine is three things that feed each other:</strong></p>
+<ol>
+<li><strong>Consistent social media.</strong> How people first hear of MFC and how they
+   connect. Over 9,000 followers (<code>Source: founder-reported, 2026-08-17, not
+   independently verified</code>).</li>
+</ol>
+<p><strong>The tension here must be stated, not buried.</strong> This pack's own research
+   (<code>R1</code>, and §6 below) finds organic LinkedIn company-page reach close to
+   worthless, and goes further: posting from Hunter's personal profile <em>"is a
+   slow trust-building asset, </em><em>not lead generation</em><em>, and should be treated
+   as a by-product of the rooms he is already in."</em> <strong><code>D-0116</code> places social
+   first on founder judgement, against that finding.</strong> The judgement may be
+   right, and it is not evidenced. Anyone relying on this ordering should know
+   the only research MFC holds on the question points the other way.
+2. <strong>The free online leadership community.</strong> Fortnightly, for anyone managing
+   or leading other people, plus pre-recorded sessions people sign up for in
+   their own time. <strong>This is where the people who hear of us actually meet
+   us</strong>, and it is what builds a contact list. Never run, nothing scheduled,
+   not authorised for build (<code>D-0111</code> §3). Cadence, pre-recorded element and
+   the any-size rationale: the 2026-08-31 addendum to the Leadership Community
+   record.
+3. <strong>Being physically in rooms.</strong> Speaking at events that already happen,
+   five to fifteen minutes, which is Channel 6 below and was ranked sixth.</p>
+<p><strong>What changes for Channels 1, 2, 3 and 7</strong> (WHS consultants, EAPs and
+brokers; peak bodies; StateCover and local government; CEO peer groups):
+<strong>they are retained as organisation-reach routes, not as the primary source of
+leads.</strong> They are how MFC gets in front of an organisation that already has a
+budget and a reason. They are not how a person first encounters MFC.</p>
+<p><strong>What has not changed:</strong> nothing is sold cold, every route still begins with
+someone who has already come across MFC, and <strong>no channel here has produced a
+sale or a booked conversation.</strong> Zero community sessions have run. This is a
+statement of where MFC believes leads will come from, not evidence that they do.</p>
+<p><strong>Divergence to hold in view:</strong> the committee paper sent 17 August 2026 (§5.1)
+names three routes to market as consultants and peak bodies, warm direct sales,
+and community talks. <strong>The committee holds that document and it has not been
+reissued.</strong> Do not present this ranking and that paper as the same position.</p>
+</blockquote>
+<p>Ranked order follows the demand-generation research, Part 6. Each entry states: first action, owner/timeline, what a yes looks like, what it converts to.</p>
+<h3>Channel 1: WHS Consultants, EAPs and Brokers — Rank #1</h3>
+<p><strong>First action:</strong> Build a one-page partner proposition (see §4). Identify 10 named NSW WHS consultancies/EAPs/brokers from the demand-generation research's list (Safety Australia Group, iHR Australia, Lockton, mid-tier EAPs) plus 10 more using the demand-generation research's search pattern.</p>
+<p><strong>Owner/timeline:</strong> Hunter, direct outreach (email + LinkedIn), 10 approaches within 2 weeks.</p>
+<p><strong>What a yes looks like:</strong> A reply that leads to a call. The demand-generation research's falsification test: fewer than 3 partner conversations from 15 approaches within 6 weeks means the route is not firing.</p>
+<p><strong>The gap to solve first:</strong> No commission, referral fee, or reciprocal arrangement is designed yet. <strong>This is the first task of the channel, not an afterthought.</strong> A partner needs an answer to "what's in it for me" before a proposition lands. Recommend: a simple named-referral acknowledgement (client attribution in published findings) rather than a cash fee, which risks compliance complications for a charity.</p>
+<p><strong>Converts to:</strong> Funnel A (organisations), occasionally Funnel B if the referred organisation is small.</p>
+<h3>Channel 2: Peak Bodies — CCWT, NCOSS, NDS — Rank #2</h3>
+<p><strong>First action:</strong> Phone CCWT directly (02) 9281 8822 / ccwt@ccwt.edu.au, framed as "filling a gap in your existing short-course catalogue," not a cold pitch. In parallel, one email each to NCOSS's capacity-building function and NDS's partner-offers enquiry.</p>
+<p><strong>Owner/timeline:</strong> Hunter, within 2 weeks. No proposal document required for the first conversation, only a follow-up if they ask for one.</p>
+<p><strong>What a yes looks like:</strong> A named contact who agrees to a follow-up meeting within 4 weeks. A "we develop training in-house" answer is a real no, not a stall — it disconfirms the broker-model assumption for that body.</p>
+<p><strong>Converts to:</strong> Funnel B primarily (member organisations are typically 6–15 staff, community-tier eligible); Funnel A for larger peak-body members.</p>
+<h3>Channel 3: StateCover / Local Government — Rank #3</h3>
+<p><strong>First action:</strong> One direct enquiry to StateCover (statecover.com.au) asking whether they have an external-provider pathway for WHS/wellbeing services to member councils. One parallel enquiry to LGNSW Networks.</p>
+<p><strong>Owner/timeline:</strong> Hunter, within 2 weeks (single email each, ~6–8 hours total).</p>
+<p><strong>What a yes looks like:</strong> Confirmation StateCover has an external-provider list, or a clean "no, we do this in-house" — either is useful.</p>
+<p><strong>Converts to:</strong> Funnel A (councils are large employers with mature procurement).</p>
+<h3>Channel 4: Co-Working Spaces — Rank #4 (Founder Addition)</h3>
+<p><strong>First action:</strong> Identify 3–5 Sydney co-working spaces (spread across the city) willing to host a free short session — a Leaders' Session-length (45 min) or Introduction-length (60 min) taster at no cost.</p>
+<p><strong>Owner/timeline:</strong> Hunter, direct approach to each space's community manager, within 3 weeks.</p>
+<p><strong>What a yes looks like:</strong> One confirmed free session booked within 6 weeks.</p>
+<p><strong>Converts to:</strong> Funnel C almost entirely. Solo founder in a co-working space is not a Foundations buyer now or later. Realistic conversion: V5 booking (once built) or a Leaders' Session conversation, occasionally a lead to their employer if they hold budget authority elsewhere.</p>
+<h3>Channel 5: Local Sydney Pro-Bono Outreach — Rank #5 (Founder Addition)</h3>
+<p><strong>First action:</strong> Same identification-and-spread logic as Channel 4, applied to community organisations — capped pro-bono route (Introduction and Essentials only, by application, funded from the accrued access levy). Distinct from Channel 2's community-tier <em>paid</em> offer.</p>
+<p><strong>Owner/timeline:</strong> Hunter, 2–3 named community organisations identified and approached within 3 weeks.</p>
+<p><strong>What a yes looks like:</strong> One delivered pro bono session within 8 weeks, with full measurement run exactly as a paid session would be.</p>
+<p><strong>Converts to:</strong> Not a product sale. This is Route 4 in the demand-generation research's terms ("rank 4 as sales route, rank 1 as an enabler"). It produces the evidence and named reference material that make every other channel credible.</p>
+<h3>Channel 6: Community Talks and Events — Rank #6 (Real Miss, Caught 2026-08-11)</h3>
+<p><strong>The gap:</strong> The original workspace named this "the strongest one" of all lead-gen ideas, and it never made it into the plan as its own channel — only surfacing obliquely. Corrected here.</p>
+<p><strong>What it is:</strong> Attend an event, meeting, or gathering that already exists — a community group, business network, school, local chamber event, conference — and deliver a <strong>5–15 minute overview and interactive activity</strong>: the problem named plainly, Stop-Shift-Do introduced, one live rep run with the room. Not a pitch — a genuine, standalone piece of value whether or not anyone ever buys anything.</p>
+<p><strong>First action:</strong> Identify three recurring, already-existing gatherings within reach and ask each for a 10–20 minute speaking slot in their next session.</p>
+<p><strong>Owner/timeline:</strong> Hunter or an ambassador in the "delivering a talk" lane, within the next month. This needs no build, no new asset, costs only the time of showing up.</p>
+<p><strong>What a yes looks like:</strong> A confirmed slot at a recurring gathering, delivered, with attendees offered a direct route to book V5 or Essentials afterward.</p>
+<p><strong>Converts to:</strong> Primarily Funnel C (V5, Introduction) for individuals; Funnel A/B when an attendee holds budget authority at their own organisation and follows up.</p>
+<h3>Channel 7: Vistage / CEO Peer Groups — Rank #7</h3>
+<p><strong>First action:</strong> Submit one Vistage speaker application (SpeakerRelations@vistage.com). The donor-model research already has the full brief.</p>
+<p><strong>Owner/timeline:</strong> Hunter, within the next 2 weeks.</p>
+<p><strong>What a yes looks like:</strong> Confirmation as a speaker at one 2026 Vistage chair meeting.</p>
+<p><strong>Converts to:</strong> Funnel A (Vistage members are typically business owners with 20–300 staff; high procurement authority, longer decision cycle than Funnel B but higher deal value).</p>
+<p><strong>Why this is #7 not #1:</strong> The barrier is timing and speaker-slot availability, not demand. But the buyer is high-value and relationship-gated, so it's worth pursuing in parallel with Channels 1–3.</p>
+<hr />
+<h2>4. The Assets That Don't Exist Yet</h2>
+<blockquote>
+<p><strong>FOUNDER CORRECTION, 2026-08-31 (<code>D-0116</code>). The asset priorities below were
+written for a consultant-first ordering and are re-sequenced.</strong></p>
+<p><strong>What the lead engine actually needs first:</strong></p>
+<ol>
+<li><strong>A working website.</strong> Nothing else functions without it. Everything social
+   and every event conversation points here. <strong>Status: first draft close, not
+   live.</strong></li>
+<li><strong>Contact capture that works from a phone.</strong> The "Scan and Ask" mechanism
+   below, which was ranked third and blocking, is now <strong>first-order</strong>: it is
+   how a person met through social or in a room becomes someone MFC can
+   contact. <strong>Status: not designed.</strong></li>
+<li><strong>The community session's own assets</strong> — registration form, session shape,
+   where pre-recorded sessions are hosted, and the consent and privacy wording
+   that goes with an email capture. <strong>Status: not built, and gated.</strong> The
+   community is not authorised for build (<code>D-0111</code> §3) and its pre-session
+   gates have not closed. <strong>The pre-recorded element raises questions the live
+   session's gates do not cover</strong>, including distress-response wording on a
+   surface with no facilitator present.</li>
+<li><strong>A short speaking ask</strong> for events that already happen. Low effort, no
+   build, needed before Channel 6 runs.</li>
+</ol>
+<p><strong>The one-page partner proposition and the one-page pitch document remain
+needed</strong>, but as organisation-reach assets rather than lead-engine assets. They
+are no longer "this week before Channel 1 outreach".</p>
+<p><strong>Data position first.</strong> MFC has no privacy or data-handling determination.
+Anything that captures an email or a form response waits on it.</p>
+</blockquote>
+<h3>The One-Page Partner Proposition</h3>
+<p><strong>For WHS consultants, EAPs, brokers:</strong> What does MFC offer them, and what's in it for them?</p>
+<p><strong>What it should cover:</strong> What MFC delivers, who it's for, what the referral path looks like, what the partner gets back (attribution in findings, testimonial rights, case-study material, repeat referral volume estimate).</p>
+<p><strong>Status:</strong> Not built. ~~Should be drafted this week before Channel 1 outreach.~~ <strong>Superseded 2026-08-31 (<code>D-0116</code>): this is an organisation-reach asset, not a lead-engine asset, and is no longer first.</strong></p>
+<h3>The One-Page Pitch Document</h3>
+<p><strong>For prospects who ask "what's the cost?"</strong> A simple one-pager naming:</p>
+<ul>
+<li>Price by band (from the pricing research)</li>
+<li>What's measured (the report, the follow-up)</li>
+<li>Case-study rate and exchange terms (for the first three)</li>
+<li>Timeline and next steps</li>
+</ul>
+<p><strong>Status:</strong> Not built. Needed before Channel 1 closes a conversation.</p>
+<h3>The "Scan and Ask" Mechanism</h3>
+<p><strong>For Funnel C (individuals):</strong> A QR code or link that routes someone to "ask Hunter a question" and get a reply. The donor-model research names this as the cheapest, fastest way to reach individuals reached via co-working spaces and events.</p>
+<p><strong>What it should do:</strong> Capture a question, route it to Hunter, capture contact info, provide a V5 booking link or Introduction availability once Hunter responds.</p>
+<p><strong>Status:</strong> Not designed. Blocks Funnel C from converting.</p>
+<hr />
+<h2>5. The Donor Cost-Per-Person Framing</h2>
+<h3>What the Donor Hears</h3>
+<p><em>"For every dollar you give, this is the number of people we can reach. This is what your money means."</em></p>
+<p>This is a legitimate fundraising mechanic — it gives a donor a concrete, checkable unit of impact. But it must be used with discipline:</p>
+<p><strong>The numbers, from the delivery-models research (reused as verified there):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>$ per person (attendance)</th>
+<th>$ per person (follow-up completion)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V12 Introduction, booked</td>
+<td>~$8 (source: the delivery-models research)</td>
+<td>Not computed</td>
+</tr>
+<tr>
+<td>V5 one-hour digital, org-booked</td>
+<td>~$13 (source: the delivery-models research)</td>
+<td>~$26 at 50% response (50% is a working assumption, unverified — the delivery-models research states no source in the pack gives a measured response rate for this format)</td>
+</tr>
+<tr>
+<td>V5 one-hour digital, individual-booked</td>
+<td>~$13 (source: the delivery-models research)</td>
+<td>~$85 at 15% response (15% is a working assumption, unverified — same caveat as above; the delivery-models research labels this its worst-case scenario)</td>
+</tr>
+<tr>
+<td>V1 Foundations</td>
+<td>~$91 (source: the delivery-models research)</td>
+<td>~$182 at 50% response (50% is a working assumption, unverified — see also the founding case-study pricing research's correction that no Foundations-specific response rate exists in the pack)</td>
+</tr>
+</tbody>
+</table>
+<h3>The Risk</h3>
+<p><strong>It invites a race to the cheapest format.</strong> A donor optimising for cost-per-person will fund V5/Introduction over Foundations — exactly the formats MFC says teach least. <strong>A donor whose target cost-per-person becomes the format-selection criterion is steering MFC's delivery mix by a number that was built to describe the mix, not direct it.</strong></p>
+<p><strong>Mitigation:</strong> Always pair the cost-per-person number with the mission statement: "We reach people at entry points that suit them, not just the cheapest ones. The metric tells us how far your gift goes; it doesn't tell us which format to prioritize."</p>
+<hr />
+<h2>6. The Lead-Gen Funnel: What Works, What Doesn't</h2>
+<h3>What Works</h3>
+<ul>
+<li><strong>Relationship-gated.</strong> WHS consultants, peak bodies, Vistage — none of these are cold outreach. They're "I have a contact" or "I'm in a room with them" situations.</li>
+<li><strong>One recommendation per person.</strong> The ladder is visible, but the buyer hears one next step.</li>
+<li><strong>Free to reach.</strong> Co-working spaces, community events, communities — these cost Hunter's time only, not paid ads.</li>
+<li><strong>Evidence-first.</strong> The pro-bono channel (Channel 5) produces the reference material every other channel needs. It's not pipeline; it's enablement.</li>
+</ul>
+<h3>What's Hard</h3>
+<ul>
+<li><strong>Channel 1 (WHS) is the highest-value but slowest.</strong> Direct sales, long procurement cycles, zero delivered sessions yet. This is the one that proves the revenue model, and it's also the hardest to close without proof.</li>
+<li><strong>No paid acquisition.</strong> The demand-generation research found MFC's LinkedIn/company-page organic reach is close to worthless. Paid advertising exists but is expensive for a charity at this stage. MFC is betting entirely on relationships.</li>
+<li><strong>The individual channel (Funnel C) is the one that scales fastest but has the least revenue.</strong> The delivery-models research is explicit: a solo founder in a co-working space is not a customer and should not be presented as one.</li>
+</ul>
+<hr />
+<h2>7. Timeline and Dependencies</h2>
+<blockquote>
+<p><strong>FOUNDER CORRECTION, 2026-08-31 (<code>D-0116</code>). The week-by-week plan below is
+superseded. Its dates are past and it sequences the consultant route first.</strong></p>
+<p><strong>The current sequence. It does NOT match the committee paper's first three
+months, and that difference is the point:</strong> the paper's 3-month test is twenty
+organisations approached, ten conversations and five quotes issued, with
+<em>"top-of-funnel outreach begins here: named consultants and peak bodies
+approached."</em> <strong>This sequence cannot produce that test</strong>, because it puts that
+outreach alongside rather than first. <strong>A second divergence:</strong> the paper says
+the recurring session is monthly; <code>D-0116</code> says fortnightly.</p>
+<ul>
+<li><strong>Website live.</strong> Everything else waits on it.</li>
+<li><strong>Contact capture built</strong>, once a data and privacy position exists.</li>
+<li><strong>Social running consistently</strong>, which is the cheapest thing MFC can do and
+  the way people first hear of it. Through posting and personal connection,
+  <strong>not</strong> company-page reach (§6).</li>
+<li><strong>Speaking slots requested</strong> at three recurring gatherings that already
+  happen (Channel 6, unchanged and now higher priority than its rank suggests).</li>
+<li><strong>The community session prepared but not launched</strong> until <code>D-0111</code> §3
+  authorisation and its pre-session gates close.</li>
+<li><strong>Organisation-reach outreach</strong> to consultants, peak bodies and CEO groups
+  runs alongside, not first.</li>
+</ul>
+<p><strong>The falsification test below still stands and still matters</strong>, and a second
+one belongs beside it: <strong>six community sessions with no paid conversations
+means it is mission activity to be funded as such, not lead generation.</strong></p>
+<p><strong>Nothing here has been executed.</strong> No approach has been made, no session has
+run, no sale exists.</p>
+</blockquote>
+<h3>Week 1 (By 17 August), SUPERSEDED 2026-08-31</h3>
+<ul>
+<li>[ ] Build one-page partner proposition</li>
+<li>[ ] Build one-page pitch document</li>
+<li>[ ] Begin Channel 1 outreach (10 WHS consultants, first 5 approaches)</li>
+<li>[ ] Make Channel 2 calls (CCWT, NCOSS, NDS)</li>
+<li>[ ] Make Channel 3 calls (StateCover, LGNSW)</li>
+<li>[ ] Identify 3–5 co-working spaces and community organisations (Channels 4 &amp; 5)</li>
+</ul>
+<h3>Week 2 (By 24 August), SUPERSEDED 2026-08-31</h3>
+<ul>
+<li>[ ] Complete Channel 1 outreach (all 15 approaches)</li>
+<li>[ ] Complete Channel 4 co-working space outreach</li>
+<li>[ ] Complete Channel 5 community organisation outreach</li>
+<li>[ ] Begin Channel 7 Vistage application</li>
+<li>[ ] Identify 3 recurring community events and request speaking slots (Channel 6)</li>
+</ul>
+<h3>Ongoing (Monitor for Responsiveness), SUPERSEDED 2026-08-31 except the falsification test</h3>
+<ul>
+<li>[ ] Falsify test for Channel 1: fewer than 3 partner conversations from 15 approaches within 6 weeks = route not firing</li>
+<li>[ ] Track response rate and booking conversion from each channel</li>
+<li>[ ] Build V5 and the "scan and ask" mechanism (required before Funnel C can convert)</li>
+</ul>
+<hr />
+<h2>8. Message Design Evidence — Addendum, 19 August 2026</h2>
+<p>Newly screened marketing-science research — covering category entry, social norms, campaign
+comparisons, and the Australian audience specifically (full detail:
+<code>60-projects/mfc-master-strategy-v1/17-rationale-message-design-emotional-resonance.md</code>) —
+confirms and extends what this document already gets right, and names two risks not yet addressed
+anywhere in it.</p>
+<p><strong>Confirms existing practice.</strong> Section 1's "never lead with resilience training" instruction and
+Section 6's "free to reach, relationship-gated" channel design both match the evidence directly:
+Golder &amp; Tellis (1993) found market pioneers who lead with an abstract category concept fail
+disproportionately (Source: 10-sources/2026-08-19-golder-tellis-1993-pioneer-advantage.md — 47% failure rate; durable winners entered ~13 years after the pioneer); Grunseit et al. (2020) found
+parkrun's no-budget success came from format properties — fixed time, one checkable act, social
+obligation — not message content, matching this document's own channel logic
+(<code>10-sources/2026-08-19-grunseit-et-al-2020-parkrun-format-evidence.md</code>).</p>
+<p><strong>Two risks not currently addressed anywhere in this document:</strong></p>
+<ol>
+<li><strong>Social-norms messaging should not be used as a standalone tactic.</strong> A technique the pitch or
+   channel copy might reach for instinctively (e.g. "most leaders are more stretched than they
+   admit") has a poor evidence base — Foxcroft et al. (2015, Cochrane, 70 RCTs, n=44,958) found no
+   substantive benefit; Papakonstantinou et al. (2025) found the effect drops to d=0.01 after
+   correcting for publication bias — and a real backfire risk: Schultz et al. (2007) found
+   descriptive-norm messages can produce the opposite of the intended effect depending on the
+   audience's starting position. (<code>10-sources/2026-08-19-foxcroft-et-al-2015-social-norms-cochrane.md</code>,
+   <code>10-sources/2026-08-19-papakonstantinou-et-al-2025-social-norms-meta-analysis.md</code>,
+   <code>10-sources/2026-08-19-schultz-et-al-2007-descriptive-norms-boomerang.md</code>)</li>
+<li><strong>Australian-audience permission structures should be used deliberately in buyer/public copy.</strong>
+   Self-deprecation functions as an entry token, not a style choice, given tall poppy syndrome
+   (Peeters, 2004); humour is a documented, under-used asset (Source: 10-sources/2026-08-19-proudfoot-et-al-2015-humour-reframing-australian-men.md) — 41.1% of Australian men already use
+   it to reframe difficult emotions (Proudfoot et al., 2015).
+   (<code>10-sources/2026-08-19-peeters-2004-tall-poppy-syndrome.md</code>,
+   <code>10-sources/2026-08-19-proudfoot-et-al-2015-humour-reframing-australian-men.md</code>)</li>
+</ol>
+<p><strong>Status of the underlying evidence:</strong> all 8 source records above are marked <code>draft</code> /
+<code>awaiting-specialist</code> — verification inherited from the originating specialist reviews, not a fresh
+primary-source check. Treat this section as evidence-informed guidance for the one-page pitch and
+partner proposition documents (Section 4, not yet built), not as a claim that current MFC copy has
+already been checked against it.</p>
+<hr />
+<h2>Related Documents</h2>
+<ul>
+<li><code>FINAL-01-grand-strategy.md</code> — Why these channels matter</li>
+<li><code>FINAL-04-delivery-models.md</code> — What each funnel converts to</li>
+<li><code>FINAL-02-pricing-strategy.md</code> — Pricing for each funnel</li>
+<li><code>D6-lead-generation-marketing-funnel.md</code> — Full operational detail (this document condenses it)</li>
+<li><code>D4-lead-generation-and-donor-model.md</code> — Choice-overload testing and donor framing</li>
+<li><code>60-projects/mfc-master-strategy-v1/17-rationale-message-design-emotional-resonance.md</code> — Full detail behind Section 8's addendum</li>
+</ul><p class="src">Original source: 60-projects/committee-pack-v1/FINAL-03-marketing-and-lead-generation.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0127-d0116-withdrawn-lead-generation-replanned-from-founder-direction.md" target="_blank">approved founder direction withdrawing D-0116 (D-0127)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/committee-pack-v1/FINAL-03-marketing-and-lead-generation.md" target="_blank">FINAL-03 Marketing and Lead Generation</a></li></ul></div></details></div>

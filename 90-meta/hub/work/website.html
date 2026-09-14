@@ -1,0 +1,1366 @@
+<title>Website — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../website.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Website</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>Mfc Website Source And Status Note</summary><div class="record-body document"><h1>MFC Website Source and Status Note</h1>
+<p>This note exists so that every statement in the Website handoff package can be traced to something that was actually read, and so that anything not read is visible rather than implied. It approves nothing and changes nothing.</p>
+<h2>1. Repository state at the start of this objective</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree</td>
+<td><code>/Users/hunterkaram/Documents/MFC-founder-decision-rationale-system-v1</code></td>
+</tr>
+<tr>
+<td>Branch</td>
+<td><code>ops/founder-decision-rationale-system-v1</code></td>
+</tr>
+<tr>
+<td>Branch HEAD at start</td>
+<td><code>eac3253dfc48d22db1e5e07820c0980d33afbe2d</code></td>
+</tr>
+<tr>
+<td><code>main</code> HEAD</td>
+<td><code>538bd9c35931c5891ee7c7a8e151cd84b1bbbca2</code></td>
+</tr>
+<tr>
+<td>Working tree at start</td>
+<td>Clean</td>
+</tr>
+<tr>
+<td>Commits after <code>eac3253</code> on the branch</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Branch merged into <code>main</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Hunter decisions recorded</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Stage 11</td>
+<td>Not started</td>
+</tr>
+<tr>
+<td>Superseding objective</td>
+<td>None found</td>
+</tr>
+</tbody>
+</table>
+<p>All ten pre-edit verification checks required by the objective were performed and all ten matched the expected state. No later Website work was found that would supersede this objective, and no recorded Hunter decision conflicts with this brief.</p>
+<h2>2. Controlling sources read directly this session</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Location</th>
+<th>Depth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MFC Public Messaging Source Library, tab 00I "Home Page Locked Copy - 23 July 2026"</td>
+<td>Drive <code>1MyOBjAGKl6dfWduJd7obGnstexjUDF5iI2JYhqHTK-w</code></td>
+<td>100 per cent, verbatim, retrieved and extracted in full</td>
+</tr>
+<tr>
+<td>Same file, tab 00E "Hunter Decision List, Current"</td>
+<td>Same</td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Same file, tab 00F "Controlled Glossary v1"</td>
+<td>Same</td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Same file, tab 00G "Website Messaging Decision Gate v1"</td>
+<td>Same</td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Same file, tab map and structure for all 21 tabs</td>
+<td>Same</td>
+<td>Header scan; tabs 00A, 00B, 00C, 00D, 00H and 01 to 09 located but not read in full this pass</td>
+</tr>
+<tr>
+<td>MFC Audience Intelligence System, Master sheet, tab START - Website Audiences</td>
+<td>Drive <code>1-j01MZC1eZHW2wnWQ0rshPNMrKmTskaC9bStbm3NEGc</code></td>
+<td>WA01 to WA07 rows read in full, all 21 columns; plus Default Panel, Selection Rules, Review Workflow and Master Prompt</td>
+</tr>
+<tr>
+<td>MFC kernel K-00 to K-11</td>
+<td>Repository <code>00-foundations/</code></td>
+<td>100 per cent, all twelve notes</td>
+</tr>
+<tr>
+<td>Website verified baseline</td>
+<td>Repository <code>60-projects/founder-decision-rationale/32-website-verified-baseline.md</code></td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Website Founder Decision Report V3</td>
+<td>Repository <code>.../42-website-founder-decision-report-v3.md</code></td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Website technical appendix V3</td>
+<td>Repository <code>.../42b-website-technical-appendix-v3.md</code></td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Founder Decision Agenda V1.1, Website and cross-project sections</td>
+<td>Repository <code>.../MFC Founder Decision Agenda V1.1.md</code></td>
+<td>Part 1 (FD-01 to FD-04), FD-07, Part 4 (FD-15 to FD-17) and Part 5 (CB-01 to CB-07) read in full</td>
+</tr>
+<tr>
+<td>27 July 2026 Hunter and Alysse discussion</td>
+<td>Repository <code>.../08a-27-july-transcript-source-record.md</code> and <code>.../08b-transcript-reconciliation-matrix.md</code></td>
+<td>100 per cent of both; the underlying Fathom transcript was read in full by the prior objective and is relied on through those two controlled records</td>
+</tr>
+<tr>
+<td>Current sitemap and page-purpose record</td>
+<td>Repository <code>60-projects/mfc-website/03-sitemap-and-page-purpose-matrix.md</code></td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Wix inspection findings, prior pass</td>
+<td>Repository <code>60-projects/mfc-website/14-wix-inspection-findings.md</code></td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Brand and visual experience principles</td>
+<td>Repository <code>60-projects/mfc-website/stage-3/09-brand-visual-experience-principles.md</code></td>
+<td>100 per cent</td>
+</tr>
+<tr>
+<td>Dashboard and exact resume state</td>
+<td>Repository <code>90-meta/Current State and Next Action.md</code></td>
+<td>Current-stage block and resume statement read; the full 215 KB history was not re-read</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Read-only Website and platform inspection</h2>
+<p><strong>Method.</strong> Wix connector <code>GetSiteContext</code> for platform metadata, and browser inspection of the published site for content, routes, navigation and mobile rendering. <strong>No write call of any kind was made at any point.</strong> Nothing was edited, published, created, submitted, configured or contacted. No form was submitted. No setting was changed.</p>
+<p><strong>Environment: WIX STUDIO PREVIEW / EDITOR-SIDE CURRENT SITE, not LIVE PRODUCTION.</strong> All inspection was of a <code>wixstudio.com</code> test address on a free plan. <strong>MFC's production domain was never inspected</strong>, so nothing in this package describes MFC's live public website. Hunter has confirmed Share Your Rep is not live.</p>
+<p><strong>Confirmed platform facts.</strong> One site, ID <code>8639395c-8d07-45de-8ea8-4a3c7fdac647</code>, name "(CURRENT) Site", reachable at <code>https://contact435546.wixstudio.com/mfc-test</code>. Free plan. Wix Studio editor. Velo enabled. Created 14 June 2026, updated 25 July 2026. Locale en, country AU, timezone Australia/Sydney, currency AUD. Apps installed: Promote SEO, Wix Blog, Wix Forms, Wix Invoices, Wix Members Area.</p>
+<p><strong>Confirmed page inventory.</strong> Twenty-two routes resolve, including Home, Radar, Quick Check In, Skill Assessment, Learn the Basics, Start Here, Try a Moment, Our Mission, Start Building, Human Operating System, Methods tools supports and foundations, Foundational Human Skills, Share Your Rep and Stop. Shift. Do., plus <code>/blog</code> and a members-area route.</p>
+<p><strong>Findings recorded in full in the handoff.</strong> The seven findings H1 to H7 are stated in the primary handoff and in the Build Readiness Register. In summary: every page slug is an auto-generated duplicate chain with no human-readable URL; the current Wix site homepage does not implement the locked copy; Start Building exists in draft, correcting four prior passes that recorded it absent; the draft Start Building page carries visible copy defects; the Human Operating System is publicly reachable; Share Your Rep is built to an operational state while formally deferred, in a non-live environment; and mobile rendering shows no horizontal overflow, a correct viewport meta tag, a single H1 and alt attributes on all images, but no meta description.</p>
+<p><strong>Not inspected, and therefore untested rather than adequate.</strong> The Wix editor's own page tree; hidden or unpublished pages; CMS and content-collection configuration; form field configuration and submission destinations; Members Area configuration and whether visitor accounts are enabled; Velo code; analytics configuration; colour-contrast and keyboard-navigation conformance; the Drive-side website audit spreadsheet's page-by-page inventory.</p>
+<p><strong>Conclusions that depend on a future technical inspection.</strong> Whether the free plan and Velo support private per-visitor storage for saved Radar moments. Whether Wix Forms can deliver the Workshops enquiry with the required privacy handling. Whether the auto-generated slugs can be changed without breaking existing links. Whether the Members Area is a viable route to an optional account without forcing one.</p>
+<h2>4. Sources deliberately not re-read</h2>
+<p>The objective directed use of the minimum relevant authoritative corpus and prohibited broad rereading of unrelated Framework or Workshop files. The following were consulted through controlled repository records rather than re-retrieved from Drive, because a current, verified record already existed and re-retrieval would have added cost without adding accuracy:</p>
+<ul>
+<li>The MFC Mental Fitness Framework, relied on through kernel notes K-04 to K-08, which record it as read in full by text extraction on 26 July 2026.</li>
+<li>The Claims and Evidence Register, relied on through K-08, which carries the standing warning that all eight board decisions remain pending.</li>
+<li>"Why Mental Fitness, Why Now", relied on through the Website verified baseline, which read approximately 56 per cent directly.</li>
+<li>The Year 1 Diffusion and Participation Strategy, relied on through the Website verified baseline, which read it in full.</li>
+<li>"Building Mental Fitness, The Practical Pathway". <strong>Update, 31 July 2026: this gap is closed.</strong> The controlling copy, Drive ID <code>1NPnwqQ04REMAmkYxGG0q88pnReE7stlF</code>, last modified 23 July 2026, was read in full in the final assurance pass. It was previously the weakest link in the chain. The direct read <strong>confirmed and strengthened</strong> the assumption that Start Building is an assembly job, and surfaced three matters not previously visible: the Pathway carries pre-lock definitional wording; it teaches the Human Operating System as Part 1 starter content, which is material to FD-07; and it names Return, Reflection and Repair but not Reward. See <code>Practical Pathway Website Reconciliation.md</code>.</li>
+<li>The full MFC Website UX Foundation and Expert Review Brief, approximately 202,000 characters, relied on through the Stage 2 records that already summarise its Gate 2 output.</li>
+<li>Fathom transcripts other than 27 July, relied on through the Stage 2 Fathom source log.</li>
+</ul>
+<h2>5. Known conflicts carried, not resolved here</h2>
+<table>
+<thead>
+<tr>
+<th>Conflict</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-01, vision wording with or without "for everyone"</td>
+<td>Open. The locked homepage uses the "for everyone" form, so the Website inherits a resolved-in-practice position while the underlying conflict remains</td>
+</tr>
+<tr>
+<td>C-14, superseded mission in both Strategic Direction files</td>
+<td>Open. The Website uses the current mission as locked in HOME-01-BODY-01</td>
+</tr>
+<tr>
+<td>C-13, three live definition formulations</td>
+<td>Open. Correction bundle item CB-01 addresses it. The Website uses the locked 20 July definition throughout</td>
+</tr>
+<tr>
+<td>C-22, five-skill ordering discrepancy</td>
+<td>Open. The Website uses the locked homepage order: Notice, Shift, Choose, Focus, Connect</td>
+</tr>
+<tr>
+<td>Five foundational skills versus five public skills</td>
+<td>Open, and flagged by the locked homepage's own record as an open controlled issue. FD-04</td>
+</tr>
+<tr>
+<td>Claims Register adoption</td>
+<td>All eight board decisions BD-01 to BD-08 remain pending. No red-line claim is board-approved</td>
+</tr>
+<tr>
+<td>Movement versus programmes weighting</td>
+<td>Open. Not an architecture question, and the four parallel routes serve both readings</td>
+</tr>
+</tbody>
+</table>
+<h2>6. What this package changes</h2>
+<p>Nothing. No MFC authority, product, page, copy, setting or record outside this handoff directory has been changed. The locked homepage wording is reproduced exactly and is unchanged. No Hunter decision has been recorded. No implementation has occurred. The branch remains unmerged.</p>
+<h2>6a. Final assurance pass, 31 July 2026</h2>
+<p>After the package was released at commit <code>f04c17a</code>, a bounded assurance pass closed four gaps. The controlling Practical Pathway was read directly. The final released copy deck received its own isolated independent review against a confirmed hash. The published homepage was compared section by section against the locked authority. The live Share Your Rep feature was assessed read-only. <strong>No live change of any kind was made in that pass</strong>, no form was submitted and no personal submission was accessed. Records: <code>Practical Pathway Website Reconciliation.md</code>, <code>Final Released Copy Deck Review Record.md</code>, <code>Published Homepage Authority Comparison.md</code>, <code>Share Your Rep Governance and Risk Brief.md</code>, <code>Targeted Correction Record.md</code>.</p>
+<h2>7. Retrieval date</h2>
+<p>31 July 2026. Any statement about what MFC's records currently say is bounded to that date.</p><p class="src">Original source: 60-projects/mfc-website/website-design-handoff/MFC Website Source and Status Note.md</p></div></details><details class="record" ><summary>Mfc Website Authority Language And Claims Pack V1</summary><div class="record-body document"><h1>MFC Website Authority, Language and Claims Pack V1</h1>
+<p>Prepared by: Specialist 1 (Authority, messaging and category integrity), bounded MFC Website objective.
+Date: 31 July 2026. Status of this pack: internal controlling reference, prepared not approved as a pack, even though many passages it reproduces are themselves locked or approved.</p>
+<p>Formatting note: house style prohibits em dashes in this pack's own prose. Where a source register uses an em dash purely as a presentational separator between a label and a line (for example, the five skill lines in tab 00I), this pack presents the same words using a full stop or colon instead. No word of any locked passage has been changed; only that one separator mark has been adapted to comply with house style.</p>
+<p>Amendment, 2026-08-06 (<code>D-0086</code>/<code>D-0087</code>): sections 3.11 and 3.12 (Notice, Shift) and the <code>HOME-05-SKILL-01</code>/<code>02</code> table rows updated. The locked wording for Notice and Shift changed to restore meaning the original 23 July lines dropped, verified directly against the Drive-authoritative "01 MFC Mental Fitness Framework.docx". No other passage in this pack was touched.</p>
+<hr />
+<h2>1. Purpose, scope and how to use this pack</h2>
+<p>This pack collects MFC's language authority for website copy in one place: what is locked and must be reproduced exactly, what is approved and usable with care, what is provisional, and what is genuinely unresolved. It exists so a drafter or reviewer does not have to re-derive wording judgements from first principles on every page.</p>
+<p><strong>What this is not.</strong> It approves nothing: nothing moves from provisional to approved, or from awaiting-committee to confirmed, by appearing here. It changes no MFC authority and adjudicates no open conflict (C-01, C-13, C-14, C-20, C-22, C-23 and others named below); where the corpus has not settled something, this pack says so and names who must. It does not design pages, write page copy or propose user experience; illustrative wording is always labelled under Section 4's status system, never presented as approved. It does not touch Wix or any Drive or repository file outside itself.</p>
+<p><strong>How to use it.</strong> Before drafting or reviewing a page, check Section 3 for every MFC term the page uses. Before publishing a claim, check it against Section 5's claims boundary and the mental-health claim ladder. Before sign-off, run Section 7's category integrity tests over the whole draft, not only sentences that quote MFC terms directly, since drift usually enters through paraphrase. Where Section 8 records a decision as genuinely open, do not resolve it by picking the version that reads best; escalate to the named decision-maker. Where Section 2's hierarchy does not resolve an apparent disagreement (three such cases are named as control-state warnings), treat the passage as unsettled.</p>
+<p><strong>Provenance.</strong> Drawn from the orchestrator-retrieved <code>AUTHORITY-INPUTS.md</code> (retrieved 31 July 2026 from Drive, the MFC repository kernel, and a read-only Wix inspection) and, for added precision, direct reads of <code>00-foundations/K-02-vision.md</code>, <code>K-03-mission.md</code>, <code>K-04-public-definition.md</code>, <code>K-06-retired-language.md</code>, <code>K-07-framework-architecture.md</code>, <code>K-08-claims-red-lines.md</code>, and <code>60-projects/founder-decision-rationale/32-website-verified-baseline.md</code> and <code>42b-website-technical-appendix-v3.md</code>. Nothing here was re-retrieved independently or contradicts those sources. Quotations are exact; summaries are marked as such.</p>
+<hr />
+<h2>2. Authority hierarchy for website language</h2>
+<p>The Website Messaging Decision Gate (tab 00G) states its own control hierarchy. The table reproduces its seven ranks; notes below add where the kernel and Drive sit, without inventing an eighth rank.</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Source</th>
+<th>Governs</th>
+<th>Authority status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Current mission, vision and public definition (Drive: "MFC Vision &amp; Mission, Final Review"; "MFC Strategic Direction and Priorities"; mirrored at K-02, K-03, K-04)</td>
+<td>Vision, mission, public definition and expansion</td>
+<td>Awaiting committee confirmation. Two live wording conflicts sit here, warnings 2 and 3 below</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MFC Mental Fitness Framework (mirrored at K-04, K-06, K-07, K-08, K-09)</td>
+<td>Distinction, four-position model, physical-health comparison, five and seven skills, Stop Shift Do, mental rep, Human Operating System, State Check, Radar, pathway, claim boundaries, safety rules</td>
+<td>Provisional. Three internal divergences open: C-20, C-22, C-23</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gina-integrated core messaging (tab 00C)</td>
+<td>Editorial integration into public narrative voice</td>
+<td>Subordinate to ranks 1 to 2; phrasing, not substance</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Controlled Glossary v1 (tab 00F)</td>
+<td>Term-by-term public definitions</td>
+<td>Subordinate to ranks 1 to 3; cannot originate a new distinction, skill, process or claim</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Evidence and claims sources (Framework sections 19 to 22; Claims Register; "Why Mental Fitness, Why Now")</td>
+<td>What may be asserted, to whom, with what qualification</td>
+<td>The Claims Register is not adopted, warning 1 below</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Audience Intelligence System (WA01 to WA07, v3)</td>
+<td>Who a page is for and what must not be said to them</td>
+<td>Targeting and exclusions, not category wording</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Page or channel brief (the locked homepage, tab 00I, is the fullest instance)</td>
+<td>Implementation wording for one named page, once it passes Gates 1 to 9</td>
+<td>Once locked, wording is controlling for that page and reopens only through Gate 10, despite being rank 7 in original authorship</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Drive governs; the repository mirrors.</strong> Every kernel file used here carries <code>authoritative_location: drive</code>, <code>mirror_location: 00-foundations/...</code>, <code>sync_direction: drive-to-obsidian</code>. If Drive and the repository ever appear to differ, Drive governs. A kernel file's own "provisional" or "awaiting committee" status is Drive's position, mirrored faithfully, not this pack's caution. K-11: any AI-authored layer has "no independent standing."</p>
+<p><strong>A lock overrides its own ancestry once made.</strong> Ranks 1 to 4 can, in principle, be paraphrased or shortened under Gate 9's standing permission. That stops applying once a passage is locked at rank 7. <code>HOME-01-H1</code> is word for word the rank-1 vision statement, but once locked, Gate 10 governs any change to it, not a fresh appeal to rank 1. Do not "correct" locked wording by re-deriving it from the Strategic Direction file; that step already happened and is recorded.</p>
+<h3>Three control-state warnings</h3>
+<p><strong>Warning 1, no red-line claim is board-approved.</strong> The Claims Register's eight board decisions (BD-01 to BD-08, dated 10 to 20 May 2026) remain pending, including BD-03, "Approve red-line claims." K-08: "the red-lines above are therefore unapproved." Every public asset class, website included, is marked Blocked pending copy review. Section 5's claims boundary is built from the Framework's own stated design and safety rules (rank 2), real and governing for drafting, but not the same tier as a ratified red line.</p>
+<p><strong>Warning 2, the vision wording conflict, C-01.</strong> Locked <code>HOME-01-H1</code>: "A world where building mental fitness is a normal part of life for everyone." A competing wording without "for everyone" appears in "MFC Vision &amp; Mission, Final Review": "Our vision is a world where building mental fitness is a normal part of life." Weight of evidence favours "for everyone": both Strategic Direction files, the Document Register, its Decisions tab entry dated 29 June 2026 marked Decided, the Management Business and Operating Plan, the Committee Business Plan, the Commercial Model, and predominantly the Messaging Library. The difficulty: the outlier document is the one purporting to record the approval decision, and both were last modified 29 June 2026 roughly ninety minutes apart. Not resolved here. For the website, this is lower stakes than it looks: the lock already uses "for everyone," so the site carries a resolved-in-practice instance regardless of how K-02 is eventually confirmed. Do not use the "for everyone" free variant anywhere on the site.</p>
+<p><strong>Warning 3, the superseded mission, C-14.</strong> Locked <code>HOME-01-BODY-01</code>: "Our mission is to help people understand and strengthen their mental fitness through education and lifelong practice." Both Strategic Direction files still carry an earlier formulation, "Our mission is to build public understanding of mental fitness through education and create practical ways for people to strengthen it throughout life," and an even earlier one, "Build the category, public education and practical pathways that help everyone develop mental fitness throughout life." The Document Register lists Strategic Direction as last updated 29 June 2026, the date of the mission decision, yet neither file reflects it. For the website, the risk is a future writer drafting the mission from a Strategic Direction file rather than the lock or K-03, reintroducing retired wording. Check new mission copy against <code>HOME-01-BODY-01</code> or K-03 only.</p>
+<hr />
+<h2>3. The core deliverable, term-by-term language bank</h2>
+<p>Forty entries, in the brief's order. Each carries the same fields. Where a field does not apply, that is stated rather than left blank.</p>
+<h3>3.1 Mental Fitness Collective</h3>
+<ul>
+<li>Term: Mental Fitness Collective, or MFC. Proper noun, always capitalised.</li>
+<li>Source/status: organisational identity, uncontested.</li>
+<li>Meaning: the organisation stewarding the mental fitness category, the Framework and this website.</li>
+<li>Locked wording: none at passage level; the name itself is fixed.</li>
+<li>Public line: "MFC" after first use as "Mental Fitness Collective (MFC)."</li>
+<li>Evidence-facing: same.</li>
+<li>Paraphrase: no, for the name; surrounding description varies by audience.</li>
+<li>Prohibited drift: presenting MFC as sole owner rather than steward. Hunter, 27 July: "a person should be able to go to our page and go, well, I want to understand this more" is invitation, not gatekeeping.</li>
+<li>Claims boundary: do not claim MFC invented mental fitness; its claim is a definition, an educational structure and a practical pathway (<code>HOME-06-CONTRIBUTION</code>).</li>
+</ul>
+<h3>3.2 Mission</h3>
+<ul>
+<li>Term: "mission," lowercase in running text, capitalised only at a sentence start or as a heading.</li>
+<li>Source/status: rank 1, locked as <code>HOME-01-BODY-01</code>. Kernel mirror K-03, provisional. See warning 3, C-14.</li>
+<li>Meaning: what MFC exists to do.</li>
+<li>Locked wording: "Our mission is to help people understand and strengthen their mental fitness through education and lifelong practice."</li>
+<li>Public line: the locked sentence is already public level.</li>
+<li>Evidence-facing: same; none separate stated.</li>
+<li>Paraphrase: no for the locked instance; elsewhere, only if "education" and "lifelong practice" are both retained.</li>
+<li>Prohibited drift: drafting from a Strategic Direction file (two superseded formulations exist, warning 3); presenting it as a heading styled "Our Mission Is."</li>
+<li>Claims boundary: a purpose statement, not an outcome guarantee; do not follow it with an implied promise.</li>
+</ul>
+<h3>3.3 Vision</h3>
+<ul>
+<li>Term: "vision," lowercase in running text.</li>
+<li>Source/status: rank 1, locked as <code>HOME-01-H1</code>. Kernel mirror K-02, provisional. See warning 2, C-01.</li>
+<li>Meaning: the world state MFC works toward.</li>
+<li>Locked wording: "A world where building mental fitness is a normal part of life for everyone."</li>
+<li>Public line: as above; no shorter approved form.</li>
+<li>Evidence-facing: same.</li>
+<li>Paraphrase: no for the locked instance; elsewhere only with "for everyone" retained.</li>
+<li>Prohibited drift: the competing wording without "for everyone" is the outlier form and must not appear on the site.</li>
+<li>Claims boundary: aspirational; do not let copy imply population-level normalisation has already happened, or commit to a timeline.</li>
+</ul>
+<h3>3.4 Mental fitness</h3>
+<ul>
+<li>Term: "mental fitness," lowercase always, generic term.</li>
+<li>Source/status: rank 1 to 2. Public definition locked 20 July 2026; evidence-facing definition in K-04, awaiting committee.</li>
+<li>Meaning: a developable human capacity reflected in how a person navigates everyday moments, not a tool, activity, mood or judgement of worth.</li>
+<li>Locked wording: "Mental fitness is how well we navigate life's everyday moments." Expansion: "It shows up in how we think, work with what we feel, act on what matters, and connect with ourselves and others."</li>
+<li>Public line: the locked definition and expansion together.</li>
+<li>Evidence-facing: "MFC conceptualises mental fitness as a developable capacity to access and coordinate relevant human skills across changing situations: to think flexibly, recognise and work skilfully with internal states, direct attention and action towards what matters, and relate constructively to ourselves and others." Both forms describe "the same construct at different levels of resolution," not competing definitions.</li>
+<li>Paraphrase: yes with constraints generally; no for the locked instance.</li>
+<li>Prohibited drift: the retired "how well we feel" must never define it again; K-06 records this as a retirement, not a style choice. Also prohibited: "use mental fitness" where the meaning is "strengthen" or "build" it, see 3.23.</li>
+<li>Claims boundary: not a fixed identity, a judgement of worth or a promise of control; access "changes with health, state, previous learning, habits, relationships, support, environment, power, safety, and the demands of the situation" (K-04). Not identical to wellbeing; not a diagnostic construct.</li>
+<li>Unresolved: whether the evidence-facing definition may appear in committee papers, Section 8.</li>
+</ul>
+<h3>3.5 Mental health</h3>
+<ul>
+<li>Term: "mental health," lowercase always.</li>
+<li>Source/status: rank 1 to 2, via the distinction (K-05, locked).</li>
+<li>Meaning: on the website, defined only relationally through the distinction; no standalone clinical definition is authored here.</li>
+<li>Locked wording: none standalone; appears only within the distinction (3.6) and claims (Section 5).</li>
+<li>Public line: "Mental health is how we are doing," never used alone without its pair.</li>
+<li>Evidence-facing: same; K-04 labels the distinction "an educational distinction, not a complete clinical definition."</li>
+<li>Paraphrase: no for the half-sentence; the site should not attempt a fuller clinical definition at all.</li>
+<li>Prohibited drift: collapsing mental health and mental fitness into synonyms; describing mental fitness content as diagnosing, treating or assessing mental health.</li>
+<li>Claims boundary: never claim treatment, prevention, cure, diagnosis or symptom reduction of a mental health condition.</li>
+</ul>
+<h3>3.6 The mental-health/mental-fitness distinction</h3>
+<ul>
+<li>Term: no fixed short name, "the distinction," lowercase.</li>
+<li>Source/status: rank 1, locked, used verbatim at <code>HOME-04-DISTINCTION</code>.</li>
+<li>Meaning: related but distinct constructs, one describing state, the other capacity.</li>
+<li>Locked wording: "Mental health and mental fitness are related, but they are not the same." "Mental health is how we are doing. Mental fitness is what we are able to do."</li>
+<li>Public line: the two locked sentences together, not shortened to one, since "related, not the same" prevents readers hearing synonyms.</li>
+<li>Evidence-facing: same, with "an educational distinction, not a complete clinical definition" carried alongside it.</li>
+<li>Paraphrase: no for the two sentences; yes with constraints for material built on them, provided direction is not reversed.</li>
+<li>Prohibited drift: swapping the two halves; dropping "related" or dropping "not the same."</li>
+<li>Claims boundary: do not extend into a claim that mental fitness work has no bearing on mental health, or conversely guarantees mental-health outcomes; see the claim ladder, Section 5.</li>
+</ul>
+<h3>3.7 The physical-health comparison</h3>
+<ul>
+<li>Term: no fixed short name, "the physical-health comparison" or "the fitness analogy," lowercase.</li>
+<li>Source/status: rank 2. Hunter names it directly, 27 July, as his preferred way to teach the definition.</li>
+<li>Meaning: physical health and fitness relate the way mental health and mental fitness relate; the comparison teaches shape, not mechanism.</li>
+<li>Locked wording: "The comparison is explanatory, not literal: the mind is not a muscle, and practice does not solve every problem."</li>
+<li>Public line: introduce the comparison, then move to mental-fitness-specific wording; do not let it run on.</li>
+<li>Evidence-facing: same constraint, made more explicit.</li>
+<li>Paraphrase: yes with constraints; the non-literal caveat must travel with it wherever used prominently.</li>
+<li>Prohibited drift: saying or implying the mind is a muscle; implying effort guarantees outcomes.</li>
+<li>Claims boundary: do not imply anyone can achieve any outcome through sufficient effort; this contradicts the K-04 boundary directly.</li>
+</ul>
+<h3>3.8 The four-position relationship model</h3>
+<ul>
+<li>Term: "the four-position relationship model," lowercase. Avoid "quadrant" outside internal shorthand, Gate 10 names quadrant labels as always material.</li>
+<li>Source/status: rank 1 to 2, locked, full table in K-04.</li>
+<li>Meaning: two independent dimensions, doing well or struggling, and relevant skills easier or harder to access, producing four non-fixed positions, not four types of person.</li>
+<li>Locked wording (table): doing well with skills easier to access: "Doing well and drawing on relevant skills." Doing well with skills harder to access: "Doing well while some relevant skills remain harder to access." Struggling with skills easier to access: "Struggling while still drawing on significant skill." Struggling with skills harder to access: "Struggling with fewer skills, supports, or safe options available." Caveat: "These positions are not fixed categories, diagnoses, or person-level scores. A person can move between them across time, situations, and areas of life."</li>
+<li>Public line: present as something that moves, using a concrete example rather than a static grid.</li>
+<li>Evidence-facing: same table.</li>
+<li>Paraphrase: yes with constraints, provided both dimensions stay independent and the non-fixed caveat is retained wherever shown.</li>
+<li>Prohibited drift: "skilled" and "unskilled" as axis labels are explicitly prohibited by the Glossary in favour of "relevant skills easier to access" and "relevant skills harder to access"; "mentally fit" and "mentally unfit" as whole-person labels; rendering the model as a quiz result assigning a visitor permanently to one box.</li>
+<li>Claims boundary: not a diagnostic instrument or scored assessment. Live-site Finding H2 notes a rendered version already exists off-lock; any such table must carry the caveat.</li>
+</ul>
+<h3>3.9 Moments</h3>
+<ul>
+<li>Term: "moment(s)," lowercase always.</li>
+<li>Source/status: rank 1 to 4, central to <code>HOME-02</code>, corroborated as genuine founder language throughout the 27 July meeting.</li>
+<li>Meaning: a specific part of life as it is happening.</li>
+<li>Locked wording: "We do not experience a year, a relationship or a life all at once. We experience conversations, decisions, reactions, pauses, distractions, connections and ordinary moments as they happen." Callout: "The lives we want are shaped through these moments."</li>
+<li>Public line: use concrete, recognisable examples over the abstract definition. Approved founder-generated examples: phone-scrolling, late-night Netflix, saying something regrettable to a friend.</li>
+<li>Evidence-facing: same plain-language device throughout.</li>
+<li>Paraphrase: yes with constraints, keeping examples everyday, not clinical or extreme.</li>
+<li>Prohibited drift: coining a capitalised label for "moment" instead of plain phrases such as "one moment that matters." The "snapping at someone in traffic" example is not from the 27 July transcript and should not be attributed to Hunter or Alysse.</li>
+<li>Claims boundary: a unit of everyday experience, not a crisis event; keep illustrative moments away from content needing a safeguarding response.</li>
+</ul>
+<h3>3.10 Five foundational skills, the set</h3>
+<ul>
+<li>Term: "five foundational skills," lowercase in running text, capitalised only as a heading.</li>
+<li>Source/status: rank 1 to 2, locked as the homepage's primary skill language. The lock itself discloses mixed Framework usage of "five public skills" and "foundational skills" as a separate, unreconciled issue.</li>
+<li>Meaning: the five plain-language skills MFC teaches as its primary public architecture, Notice, Shift, Choose, Focus, Connect.</li>
+<li>Locked wording: "MFC focuses on five foundational skills. They work together, and different moments may draw on one or several of them."</li>
+<li>Public line: the five, each with one locked line (3.11 to 3.15); the seven deeper areas are not introduced on general public surfaces.</li>
+<li>Evidence-facing: the seven-skill mapping, see 3.16.</li>
+<li>Paraphrase: yes with constraints for the introductory sentence; no for the individual skill lines.</li>
+<li>Prohibited drift: implying strict sequence or that every moment draws on all five; the Decision Gate prohibits implying "every rep must visibly use all five skills or all three cues."</li>
+<li>Claims boundary: not a complete inventory of human function; mastery of all five does not guarantee any outcome.</li>
+<li>Unresolved: FD-04, foundational versus public naming, Section 8.</li>
+</ul>
+<h3>3.11 Notice</h3>
+<ul>
+<li>Term: "Notice," capitalised as a named skill.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-SKILL-01</code>. <strong>Wording updated <code>D-0086</code>/<code>D-0087</code>, 2026-08-06.</strong> Verified directly against the Drive-authoritative framework document, which now reads as below; this is a restoration, not a new decision, closing the gap this section's own "prohibited drift" note had already flagged (see next line).</li>
+<li>Meaning: becoming aware of what is happening within us, around us and in our interactions.</li>
+<li>Locked wording: "Notice what is happening inside you, around you, and between you and others." (Previously "Notice what is happening." Dropped the tri-locus; restored to match Self-Awareness's own definition below.)</li>
+<li>Public line: as above, already simplest form.</li>
+<li>Evidence-facing: maps to "Self-Awareness," "Noticing what is happening inside you, around you, and between you and others in real time."</li>
+<li>Paraphrase: no for the locked line; yes for surrounding sentences.</li>
+<li>Prohibited drift: narrowing Notice to feelings only. <strong>Now resolved by the wording itself</strong>, which explicitly spans within, around and interactions rather than only implying it.</li>
+<li>Claims boundary: does not alone resolve a difficult situation; usually paired with other skills in a rep.</li>
+</ul>
+<h3>3.12 Shift</h3>
+<ul>
+<li>Term: "Shift," capitalised as a named skill and within Stop, Shift, Do; lowercase "a shift" for a single instance.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-SKILL-02</code>. One of the highest drift-risk terms in this pack. <strong>Wording updated <code>D-0086</code>/<code>D-0087</code>, 2026-08-06.</strong> Verified directly against the Drive-authoritative framework document, closing the gap this section's own "public line" note had already flagged (see next line).</li>
+<li>Meaning: changing something that may help state or situation fit the moment better; "a shift" is one action within Stop, Shift, Do, not the process's name.</li>
+<li>Locked wording: "Create enough space to become workable — through your body, or through your thinking." (Previously stopped after "workable." Named neither door; restored so a reader cannot take Shift as body-only.) A shift: "An intentional change involving the body, attention, perspective, connection or surroundings."</li>
+<li>Public line: as locked. <strong>The wording itself now names both routes</strong>, reducing but not eliminating the need to separately explain the four categories (body, attention, perspective, connection) so readers do not infer breathing alone.</li>
+<li>Evidence-facing: maps to "State Regulation" and "Flexible Thinking."</li>
+<li>Paraphrase: no for the locked line; yes with constraints elsewhere, without reducing the four tool categories to one.</li>
+<li>Prohibited drift, highest risk in the pack: "calm" is not the goal of Shift, K-06 verbatim, "Workable is not always calm." Breath is not THE Shift strategy, K-06 verbatim, "Breath is one Shift option, not the Shift strategy... it should never be required." No Shift technique may ever be made mandatory (safety rule 6).</li>
+<li>Claims boundary: a shift changes access to state or perspective, not the external situation; no outcome guarantee.</li>
+</ul>
+<h3>3.13 Choose</h3>
+<ul>
+<li>Term: "Choose," capitalised as a named skill.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-SKILL-03</code>. Carries open divergence C-23.</li>
+<li>Meaning: recognising what matters and identifying the next realistically available response.</li>
+<li>Locked wording: "Identify what matters and follow through."</li>
+<li>Public line: as locked.</li>
+<li>Evidence-facing: maps to "Values-Based Action" (renamed from "Acting on What Matters", <code>D-0085</code>), "Identifying what matters and following through, especially when it is difficult or easier not to."</li>
+<li>Paraphrase: no for the locked line; yes elsewhere.</li>
+<li>Prohibited drift: conflating Choose with the "Do" step. K-07: "Do is the moment-level step in Stop, Shift, Do. Choose is the skill underneath that step." A technical evidence document orders the five as Notice, Shift, Focus, Choose, Connect against the locked order, an open divergence, C-22; public copy follows the locked order.</li>
+<li>Claims boundary: "realistically available" is load-bearing; do not imply an option is always available regardless of context or safety.</li>
+<li>Unresolved: C-22, C-23, not resolved here.</li>
+</ul>
+<h3>3.14 Focus</h3>
+<ul>
+<li>Term: "Focus," capitalised as a named skill.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-SKILL-04</code>.</li>
+<li>Meaning: putting attention where it matters and returning it when it drifts.</li>
+<li>Locked wording: "Put your attention where it matters and return it when it drifts."</li>
+<li>Public line: as locked, already simplest form.</li>
+<li>Evidence-facing: maps to "Attention," worded identically.</li>
+<li>Paraphrase: no for the locked line; yes elsewhere.</li>
+<li>Prohibited drift: presenting Focus as permanent unbroken attention; the locked line assumes and normalises drifting.</li>
+<li>Claims boundary: does not guarantee eliminated distraction; a returning skill, not an unbroken state.</li>
+</ul>
+<h3>3.15 Connect</h3>
+<ul>
+<li>Term: "Connect," capitalised as a named skill.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-SKILL-05</code>.</li>
+<li>Meaning: relating to ourselves and others with understanding, honesty and care.</li>
+<li>Locked wording: "Connect better with yourself and others."</li>
+<li>Public line: as locked.</li>
+<li>Evidence-facing: maps to "Relating to Yourself" and "Relating to Others."</li>
+<li>Paraphrase: no for the locked line; yes elsewhere.</li>
+<li>Prohibited drift: using "connect" as an unexplained abstraction (Gate 3); implying connection always requires disclosure, vulnerability or physical contact (safety rules 5 and 6).</li>
+<li>Claims boundary: does not guarantee relationship repair; an orientation and a skill, not an outcome.</li>
+</ul>
+<h3>3.16 Seven deeper skill areas</h3>
+<ul>
+<li>Term: "seven deeper skill areas," lowercase; individual names (Self-Awareness, State Regulation, Flexible Thinking, Attention, Values-Based Action, Relating to Yourself, Relating to Others) capitalised. <strong>Updated <code>D-0085</code>:</strong> "Acting on What Matters" renamed to "Values-Based Action", the precise ACT construct.</li>
+<li>Source/status: rank 1 to 2, scoped by the homepage's terminology note and Hunter Decision List item 8.</li>
+<li>Meaning: the evidence-aligned technical architecture beneath the five, for evidence alignment, programme design and evaluation, not primary public vocabulary.</li>
+<li>Locked wording: "The seven technical areas are referred to as 'seven deeper skill areas' for evidence alignment, programme design and evaluation." K-07: "Public-facing practice should be taught through the five skills first. The seven skills can be used when deeper explanation is needed, but they should not become the main public practice menu."</li>
+<li>Public line: do not introduce the seven on general pages; link to Framework and Evidence instead.</li>
+<li>Evidence-facing: the full seven-skill table with definitions is appropriate there and in technical or professional material.</li>
+<li>Paraphrase: yes with constraints for the framing sentence; no placement license regardless of phrasing.</li>
+<li>Prohibited drift: letting the seven become default public vocabulary anywhere outside Framework and Evidence and technical material; silently resolving the Framework's own mixed "five public skills" and "foundational skills" usage.</li>
+<li>Claims boundary: not an independently validated diagnostic or measurement instrument.</li>
+<li>Unresolved: FD-04, Section 8.</li>
+</ul>
+<h3>3.17 Mental Rep</h3>
+<ul>
+<li>Term: "a mental rep" / "mental reps," lowercase. Note: this pack's brief capitalised it, but every locked and approved source uses it lowercase; treat lowercase as controlling.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-REP-DEFINITION</code>, identical in Glossary and K-07.</li>
+<li>Meaning: catching a moment and choosing your next move, on purpose, toward what matters, regardless of timing or outcome.</li>
+<li>Locked wording: "A mental rep is catching a moment and choosing your next move, on purpose, toward what matters. You may catch the moment before it happens, while it is happening, or afterwards. The outcome does not determine whether it counts." Repetition line: "Repeated mental reps can make the skills, the Stop, Shift, Do process and possible responses more familiar over time."</li>
+<li>Public line: as locked.</li>
+<li>Evidence-facing: what does not count, K-07, "A moment by itself, a healthy habit done entirely on autopilot, or reading about mental fitness without applying anything in a moment."</li>
+<li>Paraphrase: no for the locked definition; the outcome clause must never be dropped.</li>
+<li>Prohibited drift: implying every rep visibly uses all five skills or all three cues; any streak or quota framing, which contradicts outcome-independence directly. An open divergence exists elsewhere ("more intention" versus locked "with intention," C-20); do not import it into website copy.</li>
+<li>Claims boundary: no claim of a specific result from a specific number of reps; no "rewires the brain" language, use Section 5's substitution instead.</li>
+</ul>
+<h3>3.18 Stop, Shift, Do</h3>
+<ul>
+<li>Term: "Stop, Shift, Do," all three words capitalised.</li>
+<li>Source/status: rank 1 to 2, locked at <code>HOME-05-SSD-INTRO</code> and <code>HOME-05-SSD</code>.</li>
+<li>Meaning: a simple, repeatable recall process for using relevant skills while life is happening, without a long sequence.</li>
+<li>Locked wording: "Stop, Shift, Do gives us a simple recall and application process. Instead of having to search through a long list of skills in the moment, it helps us retrieve and use what is relevant while life is happening." Steps: "Stop: Catch the moment. Shift: Create enough space. Do: Make the next move with intention."</li>
+<li>Public line: as locked.</li>
+<li>Evidence-facing: K-07 gives Shift a fuller qualifier, "create enough space where useful and available," since Shift is not mandatory every pass.</li>
+<li>Paraphrase: no for the three step-lines; yes for framing around them.</li>
+<li>Prohibited drift, flagged not corrected: the Glossary's own entry currently reads "Do means choose the next move with more intention," not matching the locked "with intention," no "more." Draft new copy from the locked line, not the Glossary paraphrase. Also prohibited, verbatim from the Decision Gate: "do not describe Stop, Shift, Do as only a practice tool for future performance." Named misunderstandings: Stop is not freezing; Shift is not always calming down; Do is not the perfect action; it is not another set of skills or the whole framework.</li>
+<li>Claims boundary: does not guarantee a good outcome from any moment.</li>
+</ul>
+<h3>3.19 State Check</h3>
+<ul>
+<li>Term: "State Check," both words capitalised.</li>
+<li>Source/status: rank 2, defined in K-07 and the Glossary; no permanent homepage ID yet.</li>
+<li>Meaning: a simple, optional reflection on whether current state fits the moment.</li>
+<li>Locked wording: two current, approved phrasings: "A simple reflection: What state am I in, and does this state work for this moment?" and "Is my state too much, too little, or workable for this moment?" "For this moment" is the fixed anchor in both.</li>
+<li>Public line: too much, workable, too little, never a numbered scale.</li>
+<li>Evidence-facing: same; no separate clinical version exists or should exist.</li>
+<li>Paraphrase: yes with constraints, keeping the anchor phrase and the three-way framing.</li>
+<li>Prohibited drift: State Check must never be a fourth Stop, Shift, Do step, a mandatory ritual, a Mood Meter replacement, an emotional-labelling task, or a numbered scale, all named directly in K-06.</li>
+<li>Claims boundary: never scored, mandatory, public or performance-based, safety rule 7.</li>
+</ul>
+<h3>3.20 Workable</h3>
+<ul>
+<li>Term: "workable," lowercase always.</li>
+<li>Source/status: rank 2, Glossary and K-07's State Check table.</li>
+<li>Meaning: a state or situation with enough energy, steadiness or clarity for what the moment requires.</li>
+<li>Locked wording: "A state or situation that gives us enough energy, steadiness or clarity for what the moment requires. Workable does not mean perfectly calm, comfortable or in the middle."</li>
+<li>Public line: as locked.</li>
+<li>Evidence-facing: same.</li>
+<li>Paraphrase: yes with constraints, keeping the "not perfectly calm" caveat.</li>
+<li>Prohibited drift: equating workable with calm, one of the two highest-risk substitutions in this pack; "Workable is not always calm" (K-06).</li>
+<li>Claims boundary: not a required precondition before a person may act; a lens, not a gate.</li>
+</ul>
+<h3>3.21 Radar</h3>
+<ul>
+<li>Term: "Mental Fitness Radar" in full on first use, "Radar" capitalised thereafter.</li>
+<li>Source/status: rank 2, Glossary and K-07; no permanent homepage ID. Carries FD-01, do not settle the count, Section 8.</li>
+<li>Meaning: a short, active, optional list of recurring moments a person is choosing to notice, practise with and return to.</li>
+<li>Locked wording: "An optional tool that helps a person or group keep visible the moments they want to handle better or experience more fully." Prompt: "Think about the person you are trying to become in this season of life."</li>
+<li>Public line: describe by function, not by a fixed count, given FD-01.</li>
+<li>Evidence-facing: framed within "the pathway": choose a few moments, put them on the Radar, live life and do reps, reflect, adjust, keep practising.</li>
+<li>Paraphrase: yes with constraints, staying optional and count-free.</li>
+<li>Prohibited drift: stating a fixed entry count in new copy, three or four contradictory counts currently exist in MFC's own material; presenting the Radar as a required first step, tab 00C states directly it is not.</li>
+<li>Claims boundary: not a diagnostic or scored instrument, and not a gate before other content.</li>
+<li>Unresolved: FD-01, Section 8.</li>
+</ul>
+<h3>3.22 Learn It, Use It, Live It</h3>
+<ul>
+<li>Term: "Learn It, Use It, Live It," all words capitalised.</li>
+<li>Source/status: rank 2, named in K-07 as an architectural layer. K-07 discloses a content gap directly: "not elaborated in the sections read. Whether fuller definition exists elsewhere is unknown."</li>
+<li>Meaning: "A simple developmental model for how each skill becomes familiar, available in moments, and more naturally part of how someone shows up" (K-07, the fullest definition available).</li>
+<li>Locked wording: as quoted above; no further locked detail on the three stages individually was found.</li>
+<li>Public line: use the one-sentence definition; do not invent detail for the three stages.</li>
+<li>Evidence-facing: same sentence; related framing elsewhere states "the aim is not to label the person."</li>
+<li>Paraphrase: yes with constraints for the overall sentence; no license to author the missing stage detail.</li>
+<li>Prohibited drift: presenting the three stages as a fixed ladder with pass or fail gates, or using them to label a person as stuck.</li>
+<li>Claims boundary: not measured, tested or scored.</li>
+<li>Unresolved: fuller elaboration of the three stages is content required from MFC, not merely a choice between options.</li>
+</ul>
+<h3>3.23 Building and strengthening</h3>
+<ul>
+<li>Term: approved verbs are build, strengthen, practise, develop, lowercase.</li>
+<li>Source/status: rank 1, drawn from the vision and mission wording, reinforced by house style.</li>
+<li>Meaning: mental fitness is built, strengthened, practised or developed over time; it is a capacity that grows, not a tool deployed on a task.</li>
+<li>Locked wording: vision, "building mental fitness"; mission, "strengthen their mental fitness"; K-04, "A way to strengthen access to foundational human skills."</li>
+<li>Public line: build and strengthen are interchangeable; practise describes the ongoing activity.</li>
+<li>Evidence-facing: "developable" is the technical-register equivalent.</li>
+<li>Paraphrase: yes with constraints among the approved verbs; no license to substitute "use."</li>
+<li>Prohibited drift, named directly in house style: do not write "use mental fitness" where the meaning is "strengthen mental fitness." "Use" is acceptable for a shift, a tool or a strategy, never for mental fitness itself as the object of "use."</li>
+<li>Claims boundary: do not imply building it is linear, guaranteed, or independent of health, environment, support and safety.</li>
+</ul>
+<h3>3.24 Return</h3>
+<ul>
+<li>Term: "return," lowercase, part of the Return, Reflection, Repair, Reward quartet, Framework section 14.</li>
+<li>Source/status: rank 2, not yet mirrored in K-07. A "Reflect and return" step appears in the unfinished, unreconciled draft Start Building page.</li>
+<li>Meaning: coming back after missing a moment, drifting, stopping or forgetting, without shame.</li>
+<li>Locked wording: "coming back after missing a moment, drifting, stopping, or forgetting... normalise missed moments without shame."</li>
+<li>Public line: frame as expected and ordinary, not recovery from failure.</li>
+<li>Evidence-facing: operationalised at programme level by a two-week follow-up survey; not a website feature.</li>
+<li>Paraphrase: yes with constraints, never dropping the no-shame framing.</li>
+<li>Prohibited drift: streaks, quotas, daily targets, comparative scores or public rankings attached to any return mechanism, ruled out directly by the outcome-independent rep definition; any failure or missed-day messaging, safety rule 3.</li>
+<li>Claims boundary: do not imply a person who has not returned recently has failed or lost prior progress.</li>
+</ul>
+<h3>3.25 Reflection</h3>
+<ul>
+<li>Term: "reflection," lowercase, part of the Return, Reflection, Repair, Reward quartet.</li>
+<li>Source/status: rank 2, Framework section 14, not yet mirrored in K-07.</li>
+<li>Meaning: looking back on a moment or period of practice to learn from it.</li>
+<li>Locked wording: "looking back to learn... should not become rumination, guilt, or self-criticism."</li>
+<li>Public line: short and learning-oriented, what helped, what got in the way, what to try next.</li>
+<li>Evidence-facing: same; no separate technical form.</li>
+<li>Paraphrase: yes with constraints, honouring the anti-rumination caveat.</li>
+<li>Prohibited drift: a prompt or feature that reads as rumination or invites guilt or self-criticism.</li>
+<li>Claims boundary: not a measurement or scoring of practice.</li>
+</ul>
+<h3>3.26 Repair</h3>
+<ul>
+<li>Term: "repair," lowercase. Internal shorthand only, not approved for unexplained public use, one of the highest-risk terms here.</li>
+<li>Source/status: rank 2 and rank 4, both agree.</li>
+<li>Meaning: putting things right after harm or a mistake, acknowledging, taking responsibility, apologising, listening, reconnecting where safe and appropriate.</li>
+<li>Locked wording: "'Repair' is internal shorthand only... Public communication should name the action rather than rely on this label."</li>
+<li>Public line: never use the bare word publicly; name the actual actions instead.</li>
+<li>Evidence-facing: internal and facilitator material may use "Repair" as shorthand.</li>
+<li>Paraphrase: not applicable in the usual sense; the rule is to always unpack the word in public copy.</li>
+<li>Prohibited drift: Gate 3 names "repair" directly as an unexplained phrase public copy must not rely on; no page section or heading may simply say "Repair."</li>
+<li>Claims boundary: "where safe and appropriate" must accompany any mention of reconnecting.</li>
+</ul>
+<h3>3.27 Reward</h3>
+<ul>
+<li>Term: "reward," lowercase, fourth of the quartet.</li>
+<li>Source/status: rank 2, Framework section 14, not yet mirrored in K-07.</li>
+<li>Meaning: noticing progress and reinforcing useful patterns.</li>
+<li>Locked wording: "noticing progress and reinforcing useful patterns."</li>
+<li>Public line: personal noticing, not an externally issued reward.</li>
+<li>Evidence-facing: same; no separate form.</li>
+<li>Paraphrase: yes with constraints, no scoring or comparison mechanism.</li>
+<li>Prohibited drift: streaks, badges, points, quotas or daily targets; these contradict the outcome-independent rep definition directly, and the Messaging Library separately names a permanent streak or daily quota as something the framework explicitly is not.</li>
+<li>Claims boundary: no comparative scores, public rankings or performance-based reinforcement.</li>
+</ul>
+<h3>3.28 Human Operating System</h3>
+<ul>
+<li>Term: "Human Operating System" capitalised in full; "HOS" is internal or technical shorthand, unsuitable for general public copy pending FD-07.</li>
+<li>Source/status: rank 2. Finding H5 confirms a page with this title is currently live and linked from navigation, higher exposure than earlier planning assumed.</li>
+<li>Meaning: MFC's teaching model for what may be shaping access in a moment; a metaphor, not a literal brain map.</li>
+<li>Locked wording: "MFC's practical teaching model for understanding what may be happening within and around us in a moment... It is not a literal map of the brain." Governing line: "Use the Human Operating System to explain access, not blame." Six components, all teaching metaphors: Driver (access to awareness, attention, pausing, choice, the next move), Passenger (thoughts, emotions, urges, protective reactions, "not bad"), Engine (body state), Pathways (familiar routes made easier by repetition), Navigation (values, care, intention), Environment (people, place, demands, culture). Diagnostic question: "What is shaping access in this moment?"</li>
+<li>Public line: where a general surface needs the idea, use the diagnostic question without the mechanical metaphor, FD-07's recommended direction, not yet decided.</li>
+<li>Evidence-facing: the full six-component model, by name, for deeper and technical material.</li>
+<li>Paraphrase: yes with constraints for the plain sentence; no license to present any version as a literal brain map.</li>
+<li>Prohibited drift, highest risk in this pack: K-06 verbatim, "Do not use the Human Operating System as a literal brain map or clinical formulation." Lay audiences reliably literalise this kind of metaphor even with a disclaimer present; correction training only moved mistaken belief from about 68 percent to about 46 percent.</li>
+<li>Claims boundary: never a diagnostic instrument, clinical formulation, or claim about actual neurological structure.</li>
+<li>Unresolved: FD-07, Section 8.</li>
+</ul>
+<h3>3.29 Framework</h3>
+<ul>
+<li>Term: "the Framework," capitalised, shorthand for the MFC Mental Fitness Framework; lowercase "framework" only as an ordinary word.</li>
+<li>Source/status: rank 2, mirrored across K-04 to K-09, provisional, internal divergences open, C-20, C-22, C-23.</li>
+<li>Meaning: MFC's complete category and practice architecture.</li>
+<li>Locked wording: K-07's summary is the clearest compact description: "Mental fitness is the developable capacity. The Human Operating System explains what may shape access in a moment. The five public skills describe the capacities being strengthened, and the seven deeper skills provide the evidence-aligned architecture underneath them. Stop, Shift, Do makes those capacities easier to recall and coordinate while life is happening. A mental rep is one intentional application in a real moment."</li>
+<li>Public line: the Framework and Evidence page is the approved place for this explanation, Gate 5B; general pages should link, not reproduce.</li>
+<li>Evidence-facing: that page must show the seven-to-five mapping, provide citations and Zotero access, distinguish underlying-principle evidence from MFC-specific evidence, and state what MFC still needs to test.</li>
+<li>Paraphrase: yes with constraints for general description; no claiming elements the Framework does not contain.</li>
+<li>Prohibited drift: presenting the Framework as finished, final or fully validated.</li>
+<li>Claims boundary: K-09, "the complete MFC synthesis has not yet been independently validated." Citation density does not equal validation of MFC's own model as a whole.</li>
+<li>Unresolved: FD-04, the five-versus-seven terminology reconciliation, sits inside the Framework itself.</li>
+</ul>
+<h3>3.30 Practical Pathway</h3>
+<ul>
+<li>Term: "the Practical Pathway," capitalised, formal title "Building Mental Fitness, The Practical Pathway."</li>
+<li>Source/status: rank 2, current core document, most recently modified 23 July 2026.</li>
+<li>Meaning: the practice-facing companion to the Framework, choosing moments, using the Radar, doing reps, returning to practice.</li>
+<li>Locked wording: none standalone found; FD-03 states its content "largely exists already... this is scoping and assembly, not authoring."</li>
+<li>Public line: treat as the source material for Start Building's practical steps.</li>
+<li>Evidence-facing: same document; no separate technical form identified.</li>
+<li>Paraphrase: yes with constraints, consistent with drawing on this source rather than inventing new steps.</li>
+<li>Prohibited drift: authoring parallel practical-step language instead of assembling from this source.</li>
+<li>Claims boundary: standard boundary applies, Section 5; educational, not clinical or therapeutic.</li>
+<li>Unresolved: whether "P2 Starter Guide" in the Framework's document-role table refers to this document or to superseded material, per K-04.</li>
+</ul>
+<h3>3.31 Workshop, Mental Fitness Foundations</h3>
+<ul>
+<li>Term: "Workshops," capitalised, the page and navigation label. "Mental Fitness Foundations," capitalised, the formal programme name.</li>
+<li>Source/status: rank 1, <code>HOME-06-ROUTE-02</code>, and the sitemap.</li>
+<li>Meaning: Workshops is the page for organisational, educational and community delivery; Mental Fitness Foundations is the programme it explains.</li>
+<li>Locked wording: "Bring mental fitness into your setting." "Learn about Mental Fitness Foundations for workplaces, education, sport and community settings." "Explore workshops."</li>
+<li>Public line: the locked route text for the homepage card; fuller explanation lives on the Workshops page.</li>
+<li>Evidence-facing: lead with the five skills, Radar, Stop Shift Do, mental reps and examples; keep the seven deeper skills in facilitator notes.</li>
+<li>Paraphrase: yes with constraints for page explanation; no for the locked route text.</li>
+<li>Prohibited drift: presenting delivery as a two-way transaction. Hunter, 27 July: "this isn't a two-way transaction. You're helping us. Thank you. But you guys are also benefiting."</li>
+<li>Claims boundary, load-bearing here specifically: from the Commercial Model, do not claim one engagement reduces absenteeism or attrition, prevents burnout, improves productivity, reduces workers' compensation claims, treats clinical distress, manages all psychosocial hazards, or transforms workplace culture.</li>
+<li>Unresolved: the Workshops enquiry mechanism is a build question, FD-16, not addressed here.</li>
+</ul>
+<h3>3.32 Organisation</h3>
+<ul>
+<li>Term: "organisation," lowercase, generic noun, Australian spelling. Not a stand-in proper noun for MFC.</li>
+<li>Source/status: rank 1, <code>HOME-06-BODY-02</code>.</li>
+<li>Meaning: any setting, alongside families, teams, schools, workplaces and communities, shaping whether people have time, language, encouragement and support.</li>
+<li>Locked wording: "Families, teams, schools, workplaces, organisations and communities influence whether people have the time, language, encouragement and support needed to learn and use these skills."</li>
+<li>Public line: generic use for any workplace, institution or structured group.</li>
+<li>Evidence-facing: WA02's decision chain, participants, People and Culture or L&amp;D champion, executive or HR budget owner, procurement, legal, risk, WHS, privacy, safeguarding, employee reps, clinical or evidence advisors, evaluators.</li>
+<li>Paraphrase: yes, freely, generic word.</li>
+<li>Prohibited drift: using "organisation" as a synonym for MFC itself in a way that could confuse the speaker's identity.</li>
+<li>Claims boundary: in workplace-commercial contexts, the Commercial Model prohibitions at 3.31 apply.</li>
+</ul>
+<h3>3.33 Community</h3>
+<ul>
+<li>Term: "community" / "communities," lowercase, generic noun.</li>
+<li>Source/status: rank 1, <code>HOME-06-BODY-02</code>.</li>
+<li>Meaning: a collective of people, one of the settings shaping access to skills.</li>
+<li>Locked wording: see 3.32's quotation.</li>
+<li>Public line: generic use; avoid implying MFC represents any specific community without stated basis.</li>
+<li>Evidence-facing: WA05, institutional, community and delivery partners, is the relevant audience tier.</li>
+<li>Paraphrase: yes, freely.</li>
+<li>Prohibited drift: using "community" as a vague stand-in for engagement without a concrete referent.</li>
+<li>Claims boundary, binding: Gate 5A, "Any First Nations-facing page, programme, campaign or adaptation requires real Indigenous governance and appropriately paid co-design. Synthetic personas or generic inclusion review cannot authorise it."</li>
+</ul>
+<h3>3.34 Individual and collective benefit</h3>
+<ul>
+<li>Term: no fixed name, "individual benefit" and "collective benefit," lowercase.</li>
+<li>Source/status: mixed. The collective half is locked at rank 1 (<code>HOME-06</code>). The instruction to build the two as separate beats is genuine, repeated founder agreement from 27 July, real but not itself Decision Gate-locked, and lower in this pack's hierarchy than the locked homepage text it discusses.</li>
+<li>Meaning: MFC's benefit case runs at two levels that should not be collapsed: what building mental fitness does for a person, and what it does for society.</li>
+<li>Locked wording: "Mental fitness includes individual learning and practice, but responsibility cannot sit with the individual alone."</li>
+<li>Public line: not applicable as a fixed phrase; a structural instruction about sequencing, not wording.</li>
+<li>Evidence-facing: not applicable.</li>
+<li>Paraphrase: not applicable to wording; the sequencing steer should guide any "why this matters" narrative.</li>
+<li>Prohibited drift: merging "why this matters for you" and "why this matters for everyone" into one paragraph, a recurring weakness the founders identified in earlier drafts.</li>
+<li>Claims boundary: individual practice does not alone resolve collective, structural or societal problems, K-08's core lens.</li>
+<li>Unresolved: not formalised through the Decision Gate; founder intent, not yet a Gate requirement.</li>
+</ul>
+<h3>3.35 Environment and conditions</h3>
+<ul>
+<li>Term: "environment" and "conditions," lowercase.</li>
+<li>Source/status: rank 1 and rank 4.</li>
+<li>Meaning: external circumstances, safety, workload, expectations, culture, time, resources and environment, shaping access to skills, distinct from the skills themselves.</li>
+<li>Locked wording: "safety, workload, expectations, culture, time, resources and environment" (Glossary). "People need skills, and environments need to support them."</li>
+<li>Public line: the locked pairing, skills need supportive conditions, is already public level.</li>
+<li>Evidence-facing: K-04's boundary lists environment, power, safety and the demands of the situation among shaping factors.</li>
+<li>Paraphrase: yes with constraints, keeping the pairing intact.</li>
+<li>Prohibited drift: letting environment language excuse an institution from its own contribution while placing all adaptation burden on the individual.</li>
+<li>Claims boundary: MFC's education alone does not change conditions; responsibility "cannot sit with the individual alone."</li>
+</ul>
+<h3>3.36 Support</h3>
+<ul>
+<li>Term: "support," lowercase.</li>
+<li>Source/status: rank 4, Glossary; referenced throughout the claim boundaries.</li>
+<li>Meaning: people, relationships, resources, routines, professional care and practical assistance, broader than clinical care alone.</li>
+<li>Locked wording: "Support, people, relationships, resources, routines, professional care and practical assistance."</li>
+<li>Public line: use as the broad umbrella; be specific about which kind of support a sentence means.</li>
+<li>Evidence-facing: the website audience row keeps deeper evidence material behind simple public pages; support language belongs in the public layer.</li>
+<li>Paraphrase: yes, freely, within the definition.</li>
+<li>Prohibited drift: using "support" as an unexplained abstraction, Gate 3 names this risk directly, alongside "repair."</li>
+<li>Claims boundary: do not present MFC's offering as a substitute for professional support, see 3.39.</li>
+</ul>
+<h3>3.37 Evidence-informed</h3>
+<ul>
+<li>Term: "evidence-informed" and "evidence-aligned," lowercase, hyphenated.</li>
+<li>Source/status: rank 2 and rank 5.</li>
+<li>Meaning: the Framework draws on external evidence in traceable ways; this does not mean MFC's complete model is itself independently validated.</li>
+<li>Locked wording: "The framework is evidence-informed and evidence-aligned." "Why Mental Fitness, Why Now": "Mental fitness is used here as an evidence-informed capacity frame rather than as a diagnostic construct or already validated intervention model."</li>
+<li>Public line: "evidence-informed" is plain enough for general pages; link to Framework and Evidence for sourcing.</li>
+<li>Evidence-facing: K-09's four evidence roles, foundational principle, representative source, claim-specific evidence, MFC-specific evidence, should not be blurred. K-09: "the complete MFC synthesis has not yet been independently validated."</li>
+<li>Paraphrase: yes with constraints; never upgraded to "evidence-based," "clinically proven" or "scientifically validated" without new evidence and approval.</li>
+<li>Prohibited drift: presenting citation volume as validation of MFC's specific model.</li>
+<li>Claims boundary: not "clinically validated as a standalone protocol unless tested."</li>
+</ul>
+<h3>3.38 Category claims</h3>
+<ul>
+<li>Term: no single fixed term; what MFC may assert about mental fitness as a category, distinct from claims about its own programmes.</li>
+<li>Source/status: rank 1 to 2, and Hunter's stated 27 July position, genuine but a meeting position, not itself Gate-locked.</li>
+<li>Meaning: MFC may assert mental fitness is a distinct, teachable category with a precise definition; it may not claim exclusive ownership or that its own framework is the sole valid account.</li>
+<li>Locked wording: Hunter, verbatim: "a big part of our strategy is category stewardship... a person should be able to go to our page and go, well, I want to understand this more." "Why Mental Fitness, Why Now," Appendix C: "Mental fitness should not become a vague marketing label. If the term is stretched to mean everything good for a person, it will lose the precision that gives it public value."</li>
+<li>Public line: position MFC as a clear place to understand the category, not its gatekeeper; keep the definition precise.</li>
+<li>Evidence-facing: add the K-09 evidence-roles distinction so category evidence is not mistaken for MFC-specific validation.</li>
+<li>Paraphrase: yes with constraints, preserving stewardship-not-ownership and the precision warning.</li>
+<li>Prohibited drift: letting "mental fitness" become a loose synonym for wellbeing, happiness or success in general, the named dilution failure.</li>
+<li>Claims boundary: category enthusiasm may not slide into clinical validation, prevention or outcome claims. Note also C-18, unresolved: the Framework prohibits claiming it "prevents" mental illness while the Constitution names "the prevention and control of mental illness" as a principal activity, a legal question, not resolved here.</li>
+</ul>
+<h3>3.39 The support and professional-care boundary</h3>
+<ul>
+<li>Term: no fixed short name, "the care boundary," lowercase.</li>
+<li>Source/status: rank 1, locked at <code>HOME-04-CARE-BOUNDARY</code>.</li>
+<li>Meaning: mental fitness sits alongside professional care, adding to it, never substituting for it.</li>
+<li>Locked wording: "Mental fitness can complement professional care. It does not compete with or replace it."</li>
+<li>Public line: the locked sentence, present or linked on any page that could read as addressing a mental health difficulty.</li>
+<li>Evidence-facing: K-04's fuller boundary, not "Therapy, counselling, psychiatry, diagnosis, treatment, or crisis support."</li>
+<li>Paraphrase: no for the locked sentence; yes with constraints around it, keeping both directions of "complement, not compete or replace."</li>
+<li>Prohibited drift: WA01's qualification, "Do not imply therapy, diagnosis or crisis support. People needing clinical or urgent support require an appropriate referral route."</li>
+<li>Claims boundary: safety rule 10, use referral, safeguarding and crisis pathways when needs are outside education's scope. Build-state note: the "Need urgent support?" footer utility is currently blocked pending Decision 9 safeguarding; do not imply a working referral pathway exists before it is live.</li>
+</ul>
+<h3>3.40 Lifelong practice</h3>
+<ul>
+<li>Term: "lifelong practice," lowercase.</li>
+<li>Source/status: rank 1, locked within <code>HOME-01-BODY-01</code>; defined separately in the Glossary; corroborated as genuine, repeated founder language, 27 July.</li>
+<li>Meaning: continuing to learn, practise, reflect and try again across stages, roles and moments of life.</li>
+<li>Locked wording: "...through education and lifelong practice." Glossary: "Continuing to learn, practise, reflect and try again across different stages, roles and moments of life. It does not mean constant self-monitoring or endless self-improvement."</li>
+<li>Public line: the Glossary sentence.</li>
+<li>Evidence-facing: same; no separate technical form.</li>
+<li>Paraphrase: yes with constraints outside the locked mission sentence, keeping the anti-self-monitoring caveat.</li>
+<li>Prohibited drift: letting the phrase read as an obligation to monitor oneself constantly or pursue endless self-improvement.</li>
+<li>Claims boundary: do not imply a pause in practice is a failure of "lifelong practice," which would contradict the shame-free Return framing.</li>
+<li>Unresolved: Hunter used the phrase repeatedly and informally beyond the mission sentence, "come practice, come learn, come build," genuine founder language not yet developed into a named campaign phrase; a real opportunity, not a decision, and any wider use would be new copy needing ordinary sign-off.</li>
+</ul>
+<h3>Proposed optimised expressions, clearly separated, proposals only</h3>
+<p>Illustrating Section 4's optimised-expression status; none is approved copy.
+1. A standalone lifelong-practice line built from Hunter's own words: "Come learn. Come practise. Come build." Meaning impact: none to the locked mission sentence, which is untouched; this is new copy. Change control: ordinary Gate 1 to 9 review before any use.
+2. A metaphor-free rendering of the Human Operating System's diagnostic question for general surfaces: "Notice what might be shaping how you're showing up right now." Meaning impact: preserves the anti-blame diagnostic function while dropping the six-component metaphor, consistent with FD-07's recommended direction. Change control: FD-07 must be decided first; even then this sentence needs its own Gate 2 and Gate 9 check.
+3. A first-use gloss for "workable": "just right for what this moment needs, not necessarily calm." Meaning impact: states the meaning and the most common misreading in one breath. Change control: a plain-language shortening of approved meaning, so Gate 9 would not require Hunter review, provided a reviewer confirms it does not narrow "workable" to calm states only.</p>
+<hr />
+<h2>4. The language-status system</h2>
+<p>House style fixes six labels. Every significant passage in a draft should carry exactly one.</p>
+<p><strong>EXACT LOCKED WORDING.</strong> Carries a permanent ID and a stated character-for-character rule; only Gate 10 can alter it. Example: <code>HOME-01-H1</code>, "A world where building mental fitness is a normal part of life for everyone." The control rule: "the words may not be rewritten, shortened or replaced without a recorded copy decision."</p>
+<p><strong>APPROVED WORDING.</strong> A sanctioned Framework, Glossary or kernel formulation, correct and safe, without a per-page lock. Example: the Glossary's Shift definition, "The skill of changing something that may help our state or situation fit the moment better," usable wherever Shift needs defining.</p>
+<p><strong>APPROVED MEANING, OPTIMISED EXPRESSION.</strong> A fresh form of an already-approved meaning, explicitly labelled, never used as if already approved. Example: the three items in Section 3's proposed optimised expressions, each with its meaning impact and change control step stated.</p>
+<p><strong>EVIDENCE-SUPPORTED PROPOSAL.</strong> A recommendation resting on named evidence, offered to a decision-maker, not decided. Example: FD-07's recommendation to move the Human Operating System off general surfaces, resting on the stated finding that disclaimers only partially reduce mistaken literal belief in lay audiences.</p>
+<p><strong>PLACEHOLDER PENDING DECISION.</strong> Copy depends on a live, unresolved decision with no safe default. Example: the Radar's entry count, FD-01, marked "DO NOT SETTLE. Design so the count can change without redesigning the experience."</p>
+<p><strong>CONTENT REQUIRED FROM MFC.</strong> A named gap; do not invent detail to fill it. Example: the individual definitions of Learn It, Use It and Live It, which K-07 states were "not elaborated in the sections read."</p>
+<p><strong>Choosing between them.</strong> Does the passage carry a permanent ID or exact-reproduction rule? Use EXACT LOCKED WORDING. Is it a sanctioned formulation without a per-instance lock? APPROVED WORDING. Rewording something approved, meaning unchanged? APPROVED MEANING, OPTIMISED EXPRESSION, always stating meaning impact and change control. Recommending on evidence MFC has not adopted? EVIDENCE-SUPPORTED PROPOSAL, naming the evidence. Depends on an undecided live question? PLACEHOLDER PENDING DECISION, written to survive either answer. No source material exists? CONTENT REQUIRED FROM MFC, naming the gap and who must supply it. Never leave a significant passage unlabelled; never assign a higher-certainty label than it has earned.</p>
+<hr />
+<h2>5. The claims boundary set, as a website-usable instrument</h2>
+<p>This turns K-08's claim table and safety rules into four practical instruments. Per warning 1, none of this is board-approved; it is MFC's own stated design position, real for drafting purposes but a lower tier than a ratified red line.</p>
+<h3>5.1 What any page may say</h3>
+<p>The framework is evidence-informed and evidence-aligned. Mental fitness can be strengthened through practice, support, repetition and time. The five public skills simplify seven deeper foundational human skills. Mental fitness complements professional care. Access to skills is shaped by context, safety, support, body, brain and conditions.</p>
+<h3>5.2 What requires qualification, and the exact language to use</h3>
+<table>
+<thead>
+<tr>
+<th>Statement type</th>
+<th>Required qualifying language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mental health or functioning benefit</td>
+<td>"may support how you function in moments," not "will fix"</td>
+</tr>
+<tr>
+<td>Repeated practice changing patterns</td>
+<td>"may make useful patterns more familiar and easier to access over time," not "guarantees" or "rewires"</td>
+</tr>
+<tr>
+<td>Skills connecting to external research</td>
+<td>"connect to established evidence families," not "clinically validated"</td>
+</tr>
+<tr>
+<td>Alongside professional care</td>
+<td>"some people may need more support, adaptation, or clinical care," paired with the locked care-boundary sentence</td>
+</tr>
+<tr>
+<td>Ability to shift or access a skill</td>
+<td>"may strengthen access where safe and appropriate," never an unqualified "you can always"</td>
+</tr>
+<tr>
+<td>Connection, vulnerability, reconnecting</td>
+<td>"where safe and appropriate," naming the actual action</td>
+</tr>
+<tr>
+<td>The Framework's evidence status overall</td>
+<td>"the complete MFC synthesis has not yet been independently validated," not implied whole-framework validation</td>
+</tr>
+<tr>
+<td>State Check or a state lens</td>
+<td>anchored to "for this moment," never scored</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 What no page may say</h3>
+<p>That the framework treats, prevents or cures mental illness; that mental reps guarantee brain rewiring or guaranteed outcomes; that MFC's exact model is clinically validated as a standalone protocol unless tested; that mental fitness replaces therapy, counselling, psychiatry, medication or crisis support; that anyone can shift any moment if they try hard enough. Also, verbatim from the Claims Register dashboard: "Do not claim treatment, prevention, diagnosis, symptom reduction, clinical validation, guaranteed outcomes, direct reductions in prevalence, suicide-risk reduction, or 'rewiring the brain'." Commercial-context extension, binding on Workshops and similar copy: no claim that one engagement reduces absenteeism or attrition, prevents burnout, improves productivity, reduces workers' compensation claims, treats clinical distress, manages all psychosocial hazards, or transforms workplace culture.</p>
+<h3>5.4 The five-level mental-health claim ladder, and its status</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Relationship</td>
+<td>Proposed for approval, BD-02, pending</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Promotion</td>
+<td>Proposed for approval, BD-02, pending</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Protective capacity or mechanism</td>
+<td>Proposed for approval, BD-02, pending</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Not named in source</td>
+<td>Only after pilot data, not yet reached</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Clinical outcome claim</td>
+<td>Blocked unless rigorous evidence exists, worked example given in source: "MFC workshops improve mental health outcomes"</td>
+</tr>
+</tbody>
+</table>
+<p>Because BD-02 remains pending, no level of this ladder is currently approved for use on the website, including Level 1. Describe the mental health and mental fitness relationship only through the locked distinction (3.6) and 5.2's qualified language, not through any ladder-level assertion, until BD-02 is resolved.</p>
+<h3>5.5 Approved translation substitutions</h3>
+<p>Reproduced verbatim from Framework section 21, mirrored at K-06.</p>
+<table>
+<thead>
+<tr>
+<th>Instead of</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>This will fix your mental health.</td>
+<td>This can help you practise skills that may support how you function in moments.</td>
+</tr>
+<tr>
+<td>Control your emotions.</td>
+<td>Notice your state and create enough space to become workable.</td>
+</tr>
+<tr>
+<td>Rewire your brain.</td>
+<td>Repeated practice can help useful patterns become more familiar and easier to access over time.</td>
+</tr>
+<tr>
+<td>Just choose differently.</td>
+<td>Catch the moment and choose your next move with intention, where you have enough access and support to do so.</td>
+</tr>
+<tr>
+<td>Everyone can do this.</td>
+<td>This is universal in principle and adaptive in practice.</td>
+</tr>
+<tr>
+<td>Be resilient.</td>
+<td>Build skills and supportive conditions that help you adapt, take responsibility where needed, reconnect where appropriate, and continue safely.</td>
+</tr>
+<tr>
+<td>Calm down.</td>
+<td>Move toward workable. Sometimes that means downshifting. Sometimes that means upshifting.</td>
+</tr>
+<tr>
+<td>Score your state.</td>
+<td>Use a simple lens: too much, workable, too little for this moment.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Locked wording register</h2>
+<h3>6.1 HOME-01 to HOME-06</h3>
+<p>Source for every row: MFC Public Messaging Source Library, tab 00I, "Home Page Locked Copy, 23 July 2026," status LOCKED WEBSITE COPY, approved 23 July 2026. Change-control trigger for every row: any rewording, shortening or replacement is material and requires a Gate 10 decision; the developer implements by permanent ID, checked character for character after normalising HTML entities and whitespace. <code>HOME-01-H1</code> carries the C-01 wording risk, warning 2; <code>HOME-01-BODY-01</code> carries the C-14 wording risk, warning 3.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Exact locked wording</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HOME-01-H1</code></td>
+<td>A world where building mental fitness is a normal part of life for everyone.</td>
+</tr>
+<tr>
+<td><code>HOME-01-BODY-01</code></td>
+<td>Our mission is to help people understand and strengthen their mental fitness through education and lifelong practice.</td>
+</tr>
+<tr>
+<td><code>HOME-01-CTA-PRIMARY</code></td>
+<td>What is mental fitness? (to Mental Fitness page)</td>
+</tr>
+<tr>
+<td><code>HOME-01-CTA-SECONDARY</code></td>
+<td>Start building (to Start Here)</td>
+</tr>
+<tr>
+<td><code>HOME-02-H2</code></td>
+<td>Life is lived in moments.</td>
+</tr>
+<tr>
+<td><code>HOME-02-BODY-01</code></td>
+<td>We do not experience a year, a relationship or a life all at once. We experience conversations, decisions, reactions, pauses, distractions, connections and ordinary moments as they happen.</td>
+</tr>
+<tr>
+<td><code>HOME-02-BODY-02</code></td>
+<td>Some moments are difficult. Some are ordinary. Some are joyful, meaningful or easy to miss.</td>
+</tr>
+<tr>
+<td><code>HOME-02-BODY-03</code></td>
+<td>But, together, they shape how we experience our lives, how we relate to other people and the direction we take.</td>
+</tr>
+<tr>
+<td><code>HOME-02-CALLOUT</code></td>
+<td>The lives we want are shaped through these moments.</td>
+</tr>
+<tr>
+<td><code>HOME-03-H2</code></td>
+<td>Knowing what to do is not the same as being able to do it when it matters.</td>
+</tr>
+<tr>
+<td><code>HOME-03-BODY-01</code></td>
+<td>Most of us recognise the gap between how we wanted to respond and what actually happened.</td>
+</tr>
+<tr>
+<td><code>HOME-03-BODY-02</code></td>
+<td>We wanted to listen but became defensive. We wanted to focus but our attention kept being pulled elsewhere. We wanted to ask for help, say what mattered or set a boundary, but the words did not come. We wanted to be present with someone we cared about, but pressure from somewhere else followed us into the room.</td>
+</tr>
+<tr>
+<td><code>HOME-03-BODY-03</code></td>
+<td>That does not mean we are broken. It shows the gap between knowing what may help and being able to draw on it while life is happening.</td>
+</tr>
+<tr>
+<td><code>HOME-03-H3</code></td>
+<td>We are often taught the outcome, not the skill.</td>
+</tr>
+<tr>
+<td><code>HOME-03-BODY-04</code></td>
+<td>People are regularly told what helps: be present, communicate better, set boundaries, look after yourself, manage stress, ask for help, be kind, be grateful, focus, sleep better and connect more. These instructions describe the behaviours people want to see. But they do not necessarily help someone practise those behaviours in the moments where life actually happens.</td>
+</tr>
+<tr>
+<td><code>HOME-03-BODY-05</code></td>
+<td>We expect people to handle pressure, focus, communicate, make decisions and navigate relationships, but we do not consistently teach the skills involved.</td>
+</tr>
+<tr>
+<td><code>HOME-03-CLOSING</code></td>
+<td>That is where mental fitness comes in.</td>
+</tr>
+<tr>
+<td><code>HOME-04-H2</code></td>
+<td>Mental fitness is how well we navigate life's everyday moments.</td>
+</tr>
+<tr>
+<td><code>HOME-04-BODY-01</code></td>
+<td>It shows up in how we think, work with what we feel, act on what matters, and connect with ourselves and others.</td>
+</tr>
+<tr>
+<td><code>HOME-04-BODY-02</code></td>
+<td>Across life, the same person may be a partner, parent, friend, learner, worker, leader, carer, athlete and member of a community, sometimes several in the same day.</td>
+</tr>
+<tr>
+<td><code>HOME-04-BODY-03</code></td>
+<td>Each setting may ask something different, but the same foundational skills help us navigate them.</td>
+</tr>
+<tr>
+<td><code>HOME-04-DISTINCTION-INTRO</code></td>
+<td>Mental health and mental fitness are related, but they are not the same.</td>
+</tr>
+<tr>
+<td><code>HOME-04-DISTINCTION</code></td>
+<td>Mental health is how we are doing. Mental fitness is what we are able to do.</td>
+</tr>
+<tr>
+<td><code>HOME-04-CARE-BOUNDARY</code></td>
+<td>Mental fitness can complement professional care. It does not compete with or replace it.</td>
+</tr>
+<tr>
+<td><code>HOME-04-CTA</code></td>
+<td>Learn about mental fitness (to Mental Fitness page)</td>
+</tr>
+<tr>
+<td><code>HOME-05-H2</code></td>
+<td>Five foundational skills</td>
+</tr>
+<tr>
+<td><code>HOME-05-BODY-01</code></td>
+<td>MFC focuses on five foundational skills. They work together, and different moments may draw on one or several of them.</td>
+</tr>
+<tr>
+<td><code>HOME-05-SKILL-01</code></td>
+<td>Notice</td>
+</tr>
+<tr>
+<td><code>HOME-05-SKILL-02</code></td>
+<td>Shift</td>
+</tr>
+<tr>
+<td><code>HOME-05-SKILL-03</code></td>
+<td>Choose</td>
+</tr>
+<tr>
+<td><code>HOME-05-SKILL-04</code></td>
+<td>Focus</td>
+</tr>
+<tr>
+<td><code>HOME-05-SKILL-05</code></td>
+<td>Connect</td>
+</tr>
+<tr>
+<td><code>HOME-05-PRACTICE-H3</code></td>
+<td>Bringing the skills within reach</td>
+</tr>
+<tr>
+<td><code>HOME-05-BODY-02</code></td>
+<td>Knowing a skill does not guarantee that we will remember or be able to use it when the moment arrives.</td>
+</tr>
+<tr>
+<td><code>HOME-05-SSD-INTRO</code></td>
+<td>Stop, Shift, Do gives us a simple recall and application process. Instead of having to search through a long list of skills in the moment, it helps us retrieve and use what is relevant while life is happening.</td>
+</tr>
+<tr>
+<td><code>HOME-05-SSD</code></td>
+<td>Stop: Catch the moment. Shift: Create enough space. Do: Make the next move with intention.</td>
+</tr>
+<tr>
+<td><code>HOME-05-REP-DEFINITION</code></td>
+<td>A mental rep is catching a moment and choosing your next move, on purpose, toward what matters. You may catch the moment before it happens, while it is happening, or afterwards. The outcome does not determine whether it counts.</td>
+</tr>
+<tr>
+<td><code>HOME-05-REPETITION</code></td>
+<td>Repeated mental reps can make the skills, the Stop, Shift, Do process and possible responses more familiar over time.</td>
+</tr>
+<tr>
+<td><code>HOME-06-H2</code></td>
+<td>People need skills, and environments need to support them.</td>
+</tr>
+<tr>
+<td><code>HOME-06-BODY-01</code></td>
+<td>Mental fitness includes individual learning and practice, but responsibility cannot sit with the individual alone.</td>
+</tr>
+<tr>
+<td><code>HOME-06-BODY-02</code></td>
+<td>Families, teams, schools, workplaces, organisations and communities influence whether people have the time, language, encouragement and support needed to learn and use these skills.</td>
+</tr>
+<tr>
+<td><code>HOME-06-CONTRIBUTION</code></td>
+<td>This combination is MFC's contribution: a shared public language, an educational structure, practical pathways for real-life application and a collective approach to making the skills more normal throughout life.</td>
+</tr>
+<tr>
+<td><code>HOME-06-ROUTES-H3</code></td>
+<td>Choose your next step</td>
+</tr>
+<tr>
+<td><code>HOME-06-ROUTE-01-TITLE/BODY/CTA</code></td>
+<td>Start building. Explore practical ways to understand your mental fitness, identify moments that matter and begin practising in real life. Start here (to Start Here)</td>
+</tr>
+<tr>
+<td><code>HOME-06-ROUTE-02-TITLE/BODY/CTA</code></td>
+<td>Bring mental fitness into your setting. Learn about Mental Fitness Foundations for workplaces, education, sport and community settings. Explore workshops (to Workshops)</td>
+</tr>
+<tr>
+<td><code>HOME-06-ROUTE-03-TITLE/BODY/CTA</code></td>
+<td>Explore the framework and evidence. See how MFC defines mental fitness, how the framework fits together and what informs the approach. Explore our approach (to Framework and Evidence)</td>
+</tr>
+<tr>
+<td><code>HOME-06-ROUTE-04-TITLE/BODY/CTA</code></td>
+<td>Partner with MFC. Work with MFC to test, strengthen or expand access to mental fitness education and practice. Partner with us (to Get Involved)</td>
+</tr>
+<tr>
+<td><code>HOME-06-SUPPORTER-ROUTE</code></td>
+<td>Want to support the mission? Get involved or donate. (to Get Involved and Donate)</td>
+</tr>
+</tbody>
+</table>
+<p>Note: the four <code>HOME-06-ROUTE</code> rows above combine each route's title, body and CTA sub-IDs into one row for compactness; each sub-ID (for example <code>HOME-06-ROUTE-02-TITLE</code>, <code>-BODY</code>, <code>-CTA</code>) remains individually addressable by the developer and individually subject to Gate 10.</p>
+<p><strong>Routing hierarchy, its own locked passage:</strong> "1. The public Start Building route is dominant. 2. Workshops, Framework &amp; Evidence and Partnership are supporting routes. 3. Get Involved and Donate remain visible but secondary. 4. Share a Rep, Help Shape It and Open a Door are not equal-weight homepage cards and should sit within more appropriate journeys." Any change to this stated priority is itself material.</p>
+<h3>6.2 Other locked or approved-exact passages without a permanent ID</h3>
+<p>These carry the same do-not-silently-reword status even without an assigned ID. Most are quoted in full in Section 3 and are cross-referenced here rather than repeated: the evidence-facing definition and boundary text (3.4), the physical-health comparison caveat (3.7), the four-position model and its caveat (3.8), the retired-language statement and whole-person label prohibition (3.4, 3.8), the Human Operating System's governing line and literal-map prohibition (3.28), the State Check core question (3.19), the Radar definition and pathway (3.21), the Return definition (3.24), and the core clinical lens (Section 5's introduction). Two further passages not quoted in full elsewhere: the retired and prohibited language block from the Website Messaging Decision Gate, "do not define mental fitness as 'how well we feel'; do not label people skilled or unskilled, mentally fit or mentally unfit; do not describe Stop, Shift, Do as only a practice tool for future performance; and do not imply that every rep must visibly use all five skills or all three cues," source tab 00G, any relaxation always Hunter-reviewed; and the twelve clinical and inclusion safety rules, Framework section 20, summarised throughout Sections 3 and 5, any relaxation always Hunter-reviewed. The eight translation substitutions (5.5) and the Controlled Glossary's definitions (used throughout Section 3) are likewise approved-exact and are not repeated a third time here.</p>
+<hr />
+<h2>7. Category integrity tests</h2>
+<p>Run over a complete draft page, not only sentences quoting MFC terms directly. Drift enters mainly through paraphrase and worked examples.</p>
+<p><strong>Generic-wellbeing drift.</strong> (1) Search for "how well we feel" or close paraphrases used to define mental fitness. Fail if mental fitness is defined by mood rather than navigating moments. (2) Search for "wellbeing" used as a synonym for "mental fitness." Fail if used interchangeably anywhere. (3) Check whether "mental fitness" is used as a general positive adjective ("a mentally fit team") rather than a developable capacity being practised. Fail if found. (4) Check any "what mental fitness helps with" list for scope creep toward "everything good in life." Fail if the term is stretched beyond recognisable, moment-level examples.</p>
+<p><strong>Clinical-implication drift.</strong> (5) Search for treats, prevents, cures, diagnoses, or reduces symptoms of, applied to mental fitness, the Framework or a programme. Fail if any appear. (6) Check whether the care-boundary sentence, or a link to it, appears on any page discussing distress or difficulty. Fail if absent. (7) Check any Human Operating System content for language read as literal brain anatomy or a diagnostic tool. Fail if the components read as structures rather than metaphors. (8) Check whether State Check is mandatory, scored, numbered, public or performance-framed. Fail if any apply. (9) Check reconnection, disclosure or repair-adjacent content for "where safe and appropriate" and a named action. Fail if missing, or if "repair" appears unexplained as a public label. (10) Check whether any page implies a working referral or crisis pathway exists before the urgent-support utility is actually built and live. Fail if implied.</p>
+<p><strong>Category-dilution drift.</strong> (11) Check whether mental fitness is presented as MFC's exclusive property rather than a stewarded category. Fail if copy implies no one else may define or use the term. (12) Check whether the five skills are presented as a complete account of psychological life rather than MFC's teaching architecture. Fail if implied. (13) Check rep or moment examples for "always" or "every time" language around the five skills or three cues. Fail if found. (14) Check the physical-health comparison for literal physiological claims. Fail if found. (15) Check evidence language for citation volume implying MFC's complete framework, not its underlying principles, has been validated. Fail if a reader could reasonably conclude MFC's own model is proven rather than its principles well evidenced. (16) Search for "skilled/unskilled" or "mentally fit/unfit" applied to a person, and check any quiz-like feature for a permanent typing into one of the four positions. Fail if either appears.</p>
+<hr />
+<h2>8. Open terminology and unresolved items</h2>
+<p>Five items are genuinely unresolved. None is resolved here.</p>
+<p><strong>8.1 Foundational versus public skills, FD-04.</strong> Unresolved: whether the public skill set is "five foundational skills" or "five public skills," and how to address the Framework's own mixed internal usage, disclosed by the lock itself rather than corrected by it. Who must settle: Hunter, per Gate 9, feeding into committee confirmation of the Framework. Options: adopt "foundational," matching the current lock, and correct the Framework in one controlled pass, FD-04's own recommendation; adopt "public" everywhere instead; or keep both with an explicit rule for when each applies. What changes: every occurrence across the site, Glossary and Framework; the third option adds explanatory copy wherever the distinction matters.</p>
+<p><strong>8.2 Human Operating System placement, FD-07.</strong> Unresolved: whether the six-component model and its name belong on general public surfaces at all, given Finding H5 shows a live page already using the full name and navigation entry. Who must settle: Hunter, per Gate 9. Options: FD-07's recommendation, move the model and label off general surfaces, keep it for deeper and facilitator material, retain only the metaphor-free diagnostic question publicly; retain the current live page as is; or retain it with strengthened disclaimers, noting the cited evidence found disclaimers only partially reduce mistaken literal belief. What changes: whether the live "Human Operating System" page and its navigation entry stay, move behind a deeper-content gate, or are rebuilt.</p>
+<p><strong>8.3 The Radar count, FD-01.</strong> Unresolved: how many moments the Radar should hold; three or four contradictory values exist across current MFC material. Who must settle: Hunter, and explicitly marked do not settle in the founder decision agenda itself, meaning a drafter should not resolve it even informally. Options as recorded: the Framework's one to three plus one to three; Hunter's 29 July decision of exactly three with one next move each; the live Workshop Forms count of one; the live Working Deck count of one to five. What changes: Radar-facing copy, any visual representation, and the Start Building flow; copy should describe function, not commit to a number, until settled.</p>
+<p><strong>8.4 The vision wording variant, C-01.</strong> Unresolved: whether the vision includes "for everyone," at K-02's own committee-confirmation level. Who must settle: the committee. Options: confirm "for everyone," favoured by weight of evidence across both Strategic Direction files, the Document Register, its Decisions tab, the Management Business and Operating Plan, the Committee Business Plan, the Commercial Model and predominantly the Messaging Library; confirm the outlier form from "MFC Vision &amp; Mission, Final Review"; or issue a reconciling form given both documents were edited within about ninety minutes of each other on 29 June 2026. What changes: mainly documents outside the website; the site itself is not blocked, per warning 2, since the lock already uses "for everyone," and would only need Gate 10 change control if the committee confirmed the outlier form instead.</p>
+<p><strong>8.5 Whether the evidence-facing definition may appear in committee papers.</strong> Unresolved: K-04 names this directly. Who must settle: committee or Hunter, a governance-circulation question more than a public-copy one. Options: keep it advisor and researcher-facing only, consistent with the website's own audience-translation row, "simple public pages first, deeper framework second," full evidence map "behind the scenes"; or extend it to committee papers without extending it to the public. What changes: internal governance practice; if circulation widens, the Framework and Evidence page could note committee awareness as a minor added credibility signal for researcher visitors, not a change to any website wording.</p>
+<hr />
+<p>This pack covers the forty specified terms, the six-status language system, the claims boundary set with its translation substitutions, the locked wording register, sixteen testable integrity checks, and the five items genuinely left open. For a term not covered here, apply Section 2's hierarchy to find the governing source, and Section 4's rule to label the result honestly.</p><p class="src">Original source: 60-projects/mfc-website/website-design-handoff/MFC Website Authority Language and Claims Pack V1.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/mfc-website/website-design-handoff/website-build-readiness-v1.yml" target="_blank">Website build readiness register</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/mfc-website/website-design-handoff/MFC%20Website%20Source%20and%20Status%20Note.md" target="_blank">Website source and status note</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/60-projects/mfc-website/website-design-handoff/MFC%20Website%20Authority%20Language%20and%20Claims%20Pack%20V1.md" target="_blank">Website authority language and claims pack</a></li></ul></div></details></div>

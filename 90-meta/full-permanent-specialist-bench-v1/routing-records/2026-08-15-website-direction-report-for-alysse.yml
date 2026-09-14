@@ -1,0 +1,292 @@
+schema_version: 2
+objective: 'Take ownership of MFC''s overall website direction and produce one report Hunter can give
+  directly to Alysse Curran so she can improve the website''s structure, flow and page experience. Independently
+  reconstruct the strongest MFC website from the full corpus rather than summarising or implementing the
+  14 August 2026 Hunter x Alysse meeting. Solve the stated problem: the site communicates MFC''s framework
+  better than it makes a person understand why mental fitness matters to them, the gap MFC exists to close,
+  what is distinctive, how the ideas connect, what they can do, what is free, where to go next, and why
+  MFC as an organisation matters.'
+task_session_id: a6685940-17d1-4eb2-ad44-e3440ed9f809
+material_prompt_fingerprint: 766b6fa94c1164c4
+material_task_id: 766b6fa94c1164c4-2026-08-15T16:20:37.606855+10:00
+coverage_screen_source: design-intelligence-and-founder-finalisation-standard.md W5a
+bench_relevance_screen:
+- id: A-07
+  disposition: route_now
+  reason: Site architecture, page responsibility, progressive disclosure, duplication and handoff failures.
+    Core to the objective.
+- id: A-23
+  disposition: same_context_role_lens
+  reason: 'Executed as a same-context lens inside the A-07 bounded review rather than as a separate call.
+    Cross-site terminology coherence: glossary linking rule, proper-nounification, the Shift three-job
+    collision, the Engine Basics term drift.'
+- id: A-18
+  disposition: route_now
+  reason: The central diagnosis is a strategic-narrative problem. Owned the seven-beat spine, the sequencing
+    resolution and the non-comparative distinctiveness paragraph.
+- id: A-08
+  disposition: same_context_role_lens
+  reason: Executed as a same-context lens inside the A-18 bounded review rather than as a separate call.
+    Narrative flow, headings-as-specification, category-discipline test on live copy lines.
+- id: A-22
+  disposition: route_now
+  reason: Cold-visitor traces, audience route design, whether audience-specific pages are justified against
+    the WA01-WA07 split test.
+- id: A-09
+  disposition: same_context_role_lens
+  reason: Executed as a same-context lens inside the A-22 bounded review rather than as a separate call.
+    Free-offer visibility, action design, WIIFM ordering and its grammar constraint.
+- id: A-10
+  disposition: same_context_role_lens
+  reason: Executed as a same-context lens inside the A-22 bounded review rather than as a separate call.
+    Whether a website can teach Stop-Shift-Do retrievably; Radar ordering as a criterion-before-generation
+    question.
+- id: A-16
+  disposition: same_context_role_lens
+  reason: Executed as a same-context lens inside the A-22 bounded review rather than as a separate call.
+    Return and continuation design under the streak/score prohibition; the rep-as-countable-unit argument.
+- id: A-12
+  disposition: route_now
+  reason: Care boundary, deep-page search entry exposure, non-diagnostic rules, private-by-default, cognitive
+    load, and the preserved human gates.
+- id: A-20
+  disposition: same_context_role_lens
+  reason: Executed as a same-context lens inside the A-12 bounded review rather than as a separate call.
+    Theory of change (found Hunter's described chain is the untested A4 arrow), case for existence, Donate
+    unit defensibility, funder trust.
+- id: A-24
+  disposition: route_now
+  reason: Adversarial challenge of the finished report plus the formal coverage challenge of this screen.
+    Returned SOUND WITH MATERIAL FIXES; six material defects and the shared-prior blind spot, all reconciled
+    into the artefact.
+- id: FL-01
+  disposition: route_now
+  reason: Founder-lens and pre-publish independent review (L-017). Returned PUBLISH AFTER FIXES; five
+    blocking issues including a measurement overclaim, all fixed.
+- id: SYS-04
+  disposition: reconciliation
+  reason: Reconciled the four lens outputs, the A-24 challenge and the pre-publish review into one artefact;
+    resolved the three genuine inter-lens conflicts.
+- id: A-11
+  disposition: route_now
+  reason: 'Initially excluded; the A-24 coverage challenge upheld the dispute and the lens was then EXECUTED
+    as remediation rather than written around, per L-066. It materially changed the artefact. Excluded
+    initially (a website measurement plan exists). A-24 disputed this and was right: the report asserted
+    six "testable" experience criteria and a claim-line completeness gate with no instrument or failure
+    mode. Reconciled into the artefact rather than by a further run: section 2 now states which criteria
+    are observable in build versus only in moderated sessions, and section 9 states the claim-line falsification
+    rule.'
+- id: A-13
+  disposition: not_relevant
+  reason: Share Your Rep deferred and confirmed not live; Get Involved routes already settled. A-24 flagged
+    that section 8.7 is a participation model unseen by this lens; rated medium and accepted as a residual
+    limit.
+- id: A-14
+  disposition: route_now
+  reason: 'Initially excluded; the A-24 coverage challenge upheld the dispute and the lens was then EXECUTED
+    as remediation rather than written around, per L-066. It materially changed the artefact. Excluded
+    to preserve Alysse''s design-execution authority. A-24 disputed this as self-serving, and was partly
+    right: the report claims the heading layer. Reconciled by rewriting section 9 to frame headings and
+    claim lines as proposals Alysse may overrule, not as a governance claim.'
+- id: A-15
+  disposition: not_relevant
+  reason: Workshop delivery design, not website architecture.
+- id: A-17
+  disposition: not_relevant
+  reason: Competitor position captured fresh 2026-08-09 after four correction passes and an independent
+    check; reused restrictively and only for what it forbids MFC from claiming. No live competitor check
+    run on any date, and the report says so.
+- id: A-19
+  disposition: not_relevant
+  reason: Excluded on a WA06 audience rationale. A-24 disputed this and was right for section 5.12, which
+    carries population-level structural-forces figures. Reconciled by restoring the dropped "government"
+    qualifier, attributing the figures to MFC's own record, presenting the counterfactual as MFC's position
+    rather than fact, and requiring primary citations before publication.
+- id: A-21
+  disposition: not_relevant
+  reason: Donate and Get Involved locked secondary by the routing hierarchy; no fundraising strategy decision
+    has been made. Donate treatment is a claims question, handled by A-20.
+- id: A-25
+  disposition: not_relevant
+  reason: 'Excluded on the same WA06 rationale. A-24 partly disputed. Reconciled: the constitutional "advisory
+    committee" naming and the governance-page accuracy question are surfaced as Hunter/committee items
+    (10.6), not resolved by AI.'
+- id: A-26
+  disposition: not_relevant
+  reason: Policy and government engagement is not a website-architecture question; WA06 self-navigates
+    via About and Evidence.
+- id: SYS-03
+  disposition: not_relevant
+  reason: Capability provisioning; no new capability was registered or built.
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. Named and preserved as an open gate in the report (clinical governance;
+    legal, privacy, insurance and the constitutional prevention tension). AI review prepared the questions
+    and supplied no clearance.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. Named and preserved as an open gate in the report (clinical governance;
+    legal, privacy, insurance and the constitutional prevention tension). AI review prepared the questions
+    and supplied no clearance.
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-website-direction-report-2026-08-15
+  challenger: A-24 - Experimentation and Organisational Learning
+  challenger_context: fresh-context adversarial challenge of the finished artefact and of this screen
+  completed_before_execution: false
+  completed_after_production_before_publication: true
+  decision_surfaces:
+  - Is the central diagnosis (taxonomy not argument) correct, or is the real defect unfinished copy and
+    AI-regressed headings?
+  - Does the seven-beat spine survive search-entry traffic, and does splitting Why This Matters from Mental
+    Fitness recreate the duplication it claims to remove?
+  - Which bench exclusions would materially change the result?
+  omissions_challenged:
+  - 'A-11 Measurement: the report invented two evaluative constructs (six testable experience criteria,
+    the claim-line gate) with no instrument and no failure mode.'
+  - 'A-14 Brand and Creative Direction: excluded to protect Alysse, but the report then claimed the heading
+    layer, which is the primary creative surface.'
+  - 'A-19 Public Health and A-25 Board and Mission: excluded on an audience rationale that does not reach
+    section 5.12 population-level claims or the constitutional governance question.'
+  - 'A-13 Community and Participation: section 8.7 is a participation model no participation lens reviewed.
+    Rated medium, accepted as residual.'
+  changes:
+  - Section 1 downgraded from settled finding to proposition with a stated falsification test, and Alysse's
+    conceded heading diagnosis restored to first position.
+  - 'The shared-prior limitation disclosed in the Appendix: all lenses were issued the diagnosis as a
+    premise, so their convergence is not independent corroboration.'
+  - The beat rule rewritten from "no page may repeat another page's beat" to "one page argues each beat;
+    others may restate in a line and must not re-argue", resolving its contradiction with the required
+    deep-page orientation head.
+  - Home reduced to restating beats 1-5 and arguing none; Mental Fitness demoted from primary nav and
+    Why This Matters promoted in its place, resolving the buried-flagship-page defect.
+  - 'Measurement overclaim removed: "we measure whether the skill actually got used" replaced with comprehension
+    plus attempted-and-repeated, per K-07.'
+  - Two competitor-absence claims removed ("nobody else in Australia publishes", "nobody else is funded
+    to do").
+  - 'Structural-forces figures: "government" qualifier restored, source attributed, primary citation required
+    before publication.'
+  - The Shift reconciling sentence quoted verbatim from K-07 instead of referenced.
+  - The moment bank named by filename with an instruction to Alysse to request it, since the report's
+    most-repeated instruction was otherwise unexecutable.
+  - 'Glossary framing corrected: "has not been built" removed as unsearched and contradicted by the vault''s
+    own review manifest.'
+  - Certification removed from section 7 Remove and left solely as Hunter's decision in section 10.
+  - Depth levels L1-L4 defined; internal jargon glossed for a non-vault reader; mobile made an explicit
+    design constraint.
+  - 'Section 11 added: build order and the first three things, for a solo designer at a charity with roughly
+    $12k.'
+  - A short 5.9 added for The Five Skills, where the assessment tension will land in the build.
+  - 'Speaker attribution limitation disclosed: the transcript carries one speaker label and all attributions
+    are contextual inferences.'
+  - Eight em dashes removed (house style).
+  - 'A-11 executed: section 2 check table rewritten (five of six criteria are build-observable, criterion
+    4 was misclassified), section 1 falsification test made discriminating via a two-version stimulus,
+    claim-line gate made falsifiable, section 11 measurement plan added, and the measurement sentence
+    corrected a second time to remove the present tense entirely.'
+  - 'A-14 executed: section 9 ownership split reversed (strategy owns the claim line, the designer owns
+    every word the reader sees), the approved "you were never taught how to" construction rescued from
+    the Remove list, the missing win register named and given an owner, the "Why This Matters" nav label
+    released to Alysse as failing the category test, red/amber/green named as a candidate cross-medium
+    system, and first-screen moment and orientation head restated as defaults rather than mandates.'
+  unresolved:
+  - The central diagnosis remains a proposition. Five moderated mobile sessions and a read of the actual
+    page drafts would settle it.
+  - No live-site inspection since 31 July 2026, and that was a Wix Studio preview, not production.
+  - The methods-versus-loop frame survived the correction that killed its public sentence, and was never
+    itself stress-tested.
+  reconciler: SYS-04 - Loop Engineer
+  reconciliation: 'Four bounded lens reviews executed in parallel from a five-layer packet, then one adversarial
+    coverage challenge (A-24) and one independent fresh-context pre-publish review (FL-01 / L-017) executed
+    in parallel against the finished artefact. Both returned material findings; all blocking and material
+    findings were reconciled into the artefact before publication, including three disputed exclusions
+    which were closed by changing the artefact rather than by additional runs. Three genuine inter-lens
+    conflicts resolved: Radar page-versus-component (resolved to page, on the lead-generation and shareable-URL
+    grounds the handoff never modelled); Human Operating System component set (resolved to demotion off
+    the main route, with Environment retained against Hunter''s proposed cut because it carries the anti-individual-optimisation
+    position); and Why This Matters placement (resolved to primary nav, replacing the framework-named
+    label, which applies the report''s own diagnosis to its own navigation).'
+  deviation_disclosed: 'HONEST DEVIATION, NOT RETROFITTED. The whole-bench relevance screen was performed
+    before execution, but the A-24 coverage challenge of that screen was run AFTER the four bounded reviews
+    and after the artefact was produced, in parallel with the pre-publish review, rather than before execution
+    as the standard requires. This record states false rather than fabricating a pass. The challenge did
+    do its job: it disputed three exclusions (A-11, A-14, A-19/A-25) and all three were reconciled by
+    changing the artefact, along with the shared-prior blind spot it found. But it ran late, which means
+    the four bounded reviews were commissioned against an unchallenged screen. Root cause: the screen
+    and the parallel dispatch were composed in the same step to save a round trip, and the challenge was
+    treated as a review of the output rather than a gate on the coverage. Recorded as a learning candidate.'
+  remediation_performed: A-11 and A-14 were executed after the challenge upheld their exclusions, so for
+    those two lenses the coverage challenge genuinely preceded execution. Both materially changed the
+    artefact, which is the clearest available evidence that the challenge should have gated the original
+    dispatch. A-19/A-25 was remediated at artefact level only (citation and framing corrections) and that
+    weaker remedy is disclosed rather than presented as coverage.
+learning_disposition: learning_candidates_recorded
+specialists:
+- id: A-07
+  execution_mode: bounded_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-07-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-07-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-07-packet.yml
+- id: A-18
+  execution_mode: bounded_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-18-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-18-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-18-packet.yml
+- id: A-22
+  execution_mode: bounded_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-22-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-22-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-22-packet.yml
+- id: A-12
+  execution_mode: bounded_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-12-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-12-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-12-packet.yml
+- id: A-24
+  execution_mode: independent_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-24-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-24-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-24-packet.yml
+- id: FL-01
+  execution_mode: independent_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-fl-01-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-fl-01-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-fl-01-packet.yml
+- id: A-11
+  execution_mode: bounded_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-11-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-11-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-11-packet.yml
+- id: A-14
+  execution_mode: bounded_specialist_review
+  learning_disposition: candidate_update
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-14-review.md
+    task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-14-packet.yml
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-15-website-a-14-packet.yml
+outputs_summary:
+  artefact: 60-projects/mfc-website/WEBSITE-DIRECTION-REPORT-FOR-ALYSSE-2026-08-15.md
+  status: candidate for Alysse; Hunter has not yet reviewed or approved it
+  human_gates_preserved: clinical governance, legal and privacy, insurance, accessibility audit, Share
+    Your Rep governance, and Alysse's design-execution authority
+contract_deviations:
+- 'coverage_challenge.completed_before_execution is false. Disclosed, not fabricated: the whole-bench
+  screen was done before execution but the A-24 challenge of that screen ran after the four bounded reviews,
+  in parallel with the pre-publish review. It still changed the artefact in sixteen recorded ways, but
+  it reviewed the output instead of gating the coverage.'
+- Six roles (A-23, A-08, A-09, A-10, A-16, A-20) were executed as same-context lenses inside four bounded
+  reviews rather than as separate calls, and are recorded as such.

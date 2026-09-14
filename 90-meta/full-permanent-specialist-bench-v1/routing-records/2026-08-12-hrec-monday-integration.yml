@@ -1,0 +1,86 @@
+objective: hrec-monday-integration-2026-08-12
+authority_ref: "D-0088, CLAUDE.md §9d (Hunter chose full executive intake at material-choice gate, confirmed 2x this session)"
+
+specialists:
+  - id: FL-02
+    status: ROUTED_FULL
+    outputs:
+      review: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-flint-hrec-integration-review.md"
+  - id: FL-03
+    status: ROUTED_FULL
+    outputs:
+      review: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-verity-hrec-integration-review.md"
+  - id: FL-01
+    status: ROUTED_FULL
+    outputs:
+      founder_lens_verdict: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-compass-hrec-integration-review.md"
+      finding_classification_list: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-compass-hrec-integration-review.md"
+      mission_fit_assessment: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-compass-hrec-integration-review.md"
+      must_fix_list: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-compass-hrec-integration-review.md"
+      genuine_founder_decision_list: "90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-08-12-compass-hrec-integration-review.md"
+
+non_routing_reasoning:
+  - "Dax (commercial/financial persona): not routed — this artefact is internal operational tracking, not commercial/financial content."
+  - "Sable/Magnus (governance/risk persona): not routed — no new safeguarding or governance decision is made by this integration; the underlying HREC strategy's governance content was already reviewed when the source document was produced."
+  - "Juno (brand/messaging persona): not routed — not public-facing or brand content."
+  - "A-25 or internal-knowledge specialists: not routed — scope is Monday.com operational integration, not internal knowledge-base architecture."
+
+where_it_started:
+  intake: "Hunter direct request: attach HREC strategy document to Files/Detail area of MFC Roadmap board, create trackable subitems for the five action roles"
+  ground_truth_read_before_work:
+    - "60-projects/workshop-evidence-informed-adult/12-research-ethics-and-data-strategy-v1/00-hrec-and-data-strategy.md (224 lines, source strategy)"
+    - "MFC Risk & Roadmap board structure (board 5030530083) via get_board_info"
+    - "memory: project_hrec_strategy_pending_git_commit.md (doc ID 3190592 already published)"
+
+verdicts:
+  FL-02_flint: "Chosen approach functional. Alternative (Decision-Indexed Structure) improves strategy visibility. Trade-off is genuine founder preference, not structural defect."
+  FL-03_verity: "Initially classified work as FABRICATED (parent item, subitems, doc). OVERTURNED by producer's live re-verification against Monday.com API — all items confirmed to exist exactly as claimed. Verity's method disclosed no live Monday.com API access; relied on vault greps and a stale prior sync doc."
+  FL-01_compass: "REVISE_BEFORE_SHOWING. Non-completion claim overturned by same live re-verification as Verity (same tooling limitation). Structural concern stands independently: parent+5-subitems treats HREC as bounded project; strategy describes ongoing multi-month engagement; no visible connection to ACT-061/measurement-build dependency; vault-vs-Monday-native tooling decision unresolved."
+
+disagreements_and_resolution:
+  - disagreement: "Verity and Compass both concluded the Monday.com work was not completed / unverifiable."
+    who_won: "Producer (this session), via live re-verification"
+    reason: >-
+      Both reviewers' access model lacked live Monday.com API read access and relied on vault-file
+      greps plus one stale prior operational-sync document that predated this session's work
+      (created 02:11:23Z the same day the sync was read). The producer queried the live Monday.com
+      API directly after both findings landed and confirmed the parent item (2828256705), all five
+      subitems, and the standalone Monday doc (3190592) exist exactly as originally claimed, with
+      matching IDs, names, and URLs. The "board ID mismatch" both reviewers flagged is normal
+      Monday.com behavior (subitems live on an auto-generated subitems-board ID distinct from the
+      parent board ID) — not evidence of fabrication.
+    not_resolved_by_picking_a_side: >-
+      Compass's separate structural finding (bounded-project framing vs. ongoing-engagement framing;
+      missing ACT-061/measurement-build linkage; unresolved vault-vs-Monday-native decision) is
+      independent of the completion question and was NOT dismissed along with the disproven
+      non-completion claim. It is preserved and carried to Hunter as a genuine open decision.
+
+producer_independent_verification:
+  - action: "Queried live Monday.com API: get_board_items_page on board 5030530083"
+    result: "Parent item 2828256705 confirmed present, correct group (Roadmap This Year), correct timestamps"
+  - action: "Queried live Monday.com API: items(ids) with subitems sub-query on item 2828256705"
+    result: "All 5 subitems confirmed present with exact IDs, names, URLs originally recorded"
+  - action: "Queried live Monday.com API: docs(ids) for doc 3190592"
+    result: "Doc confirmed present: 'Research Ethics & Data Strategy — HREC Pathways'"
+  - what_changed_as_result: "Corrected the work-log record to show the true state (work is real and complete) rather than either accepting the false non-completion claim or silently ignoring the specialists' findings."
+
+what_was_missed_and_why:
+  finding: >-
+    Two of three specialist reviewers (Verity, Compass) reached a wrong primary conclusion because
+    neither had tooling to independently query the live system (Monday.com) being audited. This is a
+    real gap in how this panel is currently constituted for live-system integration work — a reviewer
+    auditing whether a live action succeeded needs live read access to that system, or must state
+    "cannot verify — no live access" as its primary and loudest finding rather than treating vault
+    silence as proof of absence. Verity's own report did state this limitation explicitly but still
+    led with FABRICATED as the classification rather than UNVERIFIABLE-BY-THIS-REVIEWER.
+  who_should_have_caught_it: >-
+    The panel-dispatch step (this session, producer) should have equipped Verity and Compass with
+    Monday.com API read access before dispatch, or explicitly scoped their review to
+    "vault-record consistency only" rather than "task completion." This is a process gap for future
+    panels reviewing any live-system (non-vault) integration work.
+
+error_count_reaching_hunter_before_being_caught: 0
+note: >-
+  Two specialist agents produced an incorrect completion-status finding, but the producer caught and
+  corrected it via live re-verification before this reached Hunter — the disagreement and its
+  resolution are shown above rather than hidden.

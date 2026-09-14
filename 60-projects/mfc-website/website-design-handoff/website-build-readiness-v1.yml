@@ -1,0 +1,125 @@
+---
+# MFC Website Build Readiness Register, Version 1, machine-readable companion.
+# Authorises no build. Every "ready" means ready to be designed, not ready to publish.
+meta:
+  version: "1.0"
+  created: 2026-07-31
+  authority_ref: D-0031
+  mandate_ref: M-031
+  owner: hunter
+  status: prepared-not-approved
+  inspection_date: 2026-07-31
+  inspection_method: read-only
+  write_calls_made: 0
+
+status_vocabulary:
+  READY: "Authority exists, content exists or can be assembled, no unresolved dependency"
+  READY_ON_DECISION: "Everything in place except one named founder decision"
+  BLOCKED: "Cannot proceed until a named external input arrives"
+  LIVE_DEFECT: "Already published and should be corrected regardless of design"
+  LATER: "Deliberately deferred, not blocked"
+
+live_defects:
+  - id: BR-01
+    severity: critical
+    subject: share-your-rep
+    finding: "Live and reachable, linked from Start Building, while formally deferred pending consent, moderation, withdrawal, retention and data-use governance"
+    action: "Reduce to private-save-only or remove the route until governance exists"
+    owner: hunter
+    needs: safeguarding-input
+  - id: BR-02
+    severity: critical
+    subject: homepage-implementation
+    finding: "Published homepage does not implement the locked copy. Mission line absent, OUR VISION label added, HOME-05 section absent, four locked routes replaced by three cards"
+    action: "Record the divergence, then decide whether the page comes to the lock or the lock reopens"
+    owner: hunter
+    control_breach: "Change-control step 2, character-for-character staging comparison, not satisfied"
+  - id: BR-03
+    severity: major
+    subject: start-building-copy-defects
+    finding: "Published typos and placeholder duplication, including two identical moment lists and a card with the wrong call to action"
+    action: "Correct under existing change control, independent of design work"
+    owner: hunter
+  - id: BR-04
+    severity: critical
+    subject: url-slugs
+    finding: "Every page slug is an auto-generated duplicate chain. No human-readable URL exists"
+    action: "Plan a slug scheme with redirects before further pages are built"
+    owner: hunter-with-developer
+    unconfirmed: "Whether Wix Studio permits the change without breaking existing links"
+  - id: BR-05
+    severity: major
+    subject: human-operating-system
+    finding: "Publicly reachable at its own page while FD-07 remains open"
+    action: "Settle FD-07 before designing the dependent Mental Fitness section"
+    owner: hunter
+  - id: BR-06
+    severity: minor
+    subject: seo
+    finding: "No meta description on the inspected page"
+    action: "Include in the SEO pass"
+
+pages:
+  - {name: Home, status: READY_ON_DECISION, blocking: [FD-15]}
+  - {name: Mental Fitness, status: READY_ON_DECISION, blocking: [FD-07], note: "Only one section depends on FD-07"}
+  - {name: Start Building, status: READY_ON_DECISION, blocking: [FD-03, FD-02, platform-persistence]}
+  - {name: Workshops, status: READY, blocking: [], caveats: ["Longer format must be shown as proposed", "Education safeguarding unresolved", "Facilitator credibility content required"]}
+  - {name: For Organisations, status: READY, blocking: [], note: "Section within Workshops, not a separate page. Enquiry mechanism unbuilt"}
+  - {name: Framework and Evidence, status: READY, blocking: [], caveats: ["Gate 5B mandates contents", "Zotero public access unconfirmed"]}
+  - {name: About MFC, status: READY, blocking: [], content_required: [governance, team, charity-details]}
+  - {name: Get Involved, status: READY, blocking: [], content_required: [volunteer-roles, session-details]}
+  - {name: Donate, status: BLOCKED, blocking: [payment-platform, what-donations-enable], rule: "No invented impact claims, figures or allocations"}
+  - {name: "Need urgent support?", status: BLOCKED, blocking: [safeguarding-decision], note: "Structurally required at launch in every footer; content cannot be authored here"}
+  - {name: Contact, status: READY, blocking: [], unconfirmed: [form-configuration, submission-destination]}
+  - {name: Privacy, status: BLOCKED, blocking: [data-behaviour-decision]}
+  - {name: Accessibility, status: BLOCKED, blocking: [content-required-from-mfc]}
+  - {name: Terms, status: BLOCKED, blocking: [content-required-from-mfc]}
+
+features:
+  - {name: first-action-no-account, status: READY_ON_DECISION, blocking: [FD-03]}
+  - {name: radar-structure, status: READY_ON_DECISION, blocking: [], note: "Count-agnostic by design; FD-01 does not block"}
+  - {name: radar-persistence, status: BLOCKED, blocking: [platform-capability], risk: "Most likely late failure in the design"}
+  - {name: user-chosen-reminder, status: BLOCKED, blocking: [privacy-position, sending-mechanism]}
+  - {name: rotating-prompt, status: READY_ON_DECISION, blocking: [FD-17], note: "A prompt nobody rotates is worse than none"}
+  - {name: check-in, status: LATER, blocking: []}
+  - {name: share-your-rep-public, status: BLOCKED, blocking: [consent, moderation, withdrawal, retention, data-use]}
+  - {name: workshops-enquiry, status: READY_ON_DECISION, blocking: [], unconfirmed: [form-configuration, privacy-handling]}
+  - {name: donation-module, status: BLOCKED, blocking: [platform, fees, receipting, refunds, privacy]}
+  - {name: optional-account, status: LATER, blocking: [], rule: "No first action may ever require it"}
+
+preconditions_before_first_page_built:
+  - "FD-15 answered"
+  - "FD-03 answered"
+  - "Editor-side platform inspection completed, covering page tree, content collections, form configuration and private per-visitor storage"
+  - "BR-01 dealt with"
+  - "A slug scheme exists"
+
+platform_confirmed:
+  site_id: 8639395c-8d07-45de-8ea8-4a3c7fdac647
+  url: https://contact435546.wixstudio.com/mfc-test
+  published: true
+  plan: free
+  editor: wix-studio
+  velo: enabled
+  locale: en-AU
+  apps: [promote-seo, wix-blog, wix-forms, wix-invoices, wix-members-area]
+  routes_resolving: 22
+  mobile: {horizontal_overflow: false, viewport_meta: correct, lang_attribute: en, single_h1: true, images_with_alt: all}
+
+platform_unconfirmed:
+  - private-per-visitor-storage
+  - wix-forms-privacy-handling
+  - slug-change-without-breaking-links
+  - members-area-optional-account
+  - editor-page-tree
+  - content-collections
+  - velo-code
+  - analytics
+  - colour-contrast-conformance
+  - keyboard-navigation-conformance
+
+excluded_from_this_register:
+  - testing-plan
+  - participant-numbers
+  - research-protocol
+  - test-calendar

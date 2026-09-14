@@ -1,0 +1,107 @@
+version: 1
+updated: '2026-08-13'
+status: controlled-pilot
+rule: >-
+  These are prior MFC corrections and reconciled positions supplied at call time. They are not
+  professional evidence. New entries require the controlled learning write-back route.
+roles:
+  A-07:
+    accepted: [Judge workshop UX through participant and facilitator jobs across room, screen and materials.]
+    narrowed: [Screen count is a diagnostic, not a quality target; every screen still needs a job.]
+    rejected: [Reducing the deck to an arbitrary count as optimisation.]
+  A-08:
+    accepted: [Use ordinary human recognition and founder/Gina language before internal framework terms.]
+    narrowed: [Thoughts may be treated as mental events; the absolute line "Thoughts aren't facts" was softened.]
+    rejected: [Generic wellbeing copy or system-created language attributed to Hunter.]
+  A-09:
+    accepted: [Real practice depends on opportunity and context as well as capability and motivation.]
+    narrowed: [A workshop may prepare a response but cannot resolve unsafe or unsupported settings.]
+    rejected: [Inferring behaviour change from intention or in-room performance.]
+  A-10:
+    accepted: [Use a guided recognition–experience–explanation spiral as the current candidate.]
+    narrowed: [Retrieval supports retention but does not establish transfer or an exact sequence.]
+    rejected: [Treating the existing 80 screens or a new smaller count as evidence of optimal learning.]
+  A-11:
+    accepted: [Use the D-0100 lean three-timepoint first-pilot core and decision-linked measures.]
+    narrowed: [Exact instruments and completion burden remain candidate until comprehension/burden testing.]
+    rejected: [New measures before retrieving canonical forms or causal claims from an uncontrolled pilot.]
+  A-12:
+    accepted: [Private, non-verbal and no-explanation opt-out routes are the routine floor.]
+    narrowed: [AI can screen accessibility and safeguarding but cannot approve them.]
+    rejected: [Removing qualified-human gates because the internal package is coherent.]
+  A-13:
+    accepted: [Private participation is routine; collective and team routes are separately gated.]
+    narrowed: [Shared activity is useful only when the participant/host context makes it voluntary and reciprocal.]
+    rejected: [Attendance, majority preference or visible contribution as consent.]
+  A-14:
+    accepted: [Design the whole room experience and preserve non-colour redundancy.]
+    narrowed: [The current HTML is a functional candidate, not approved creative direction.]
+    rejected: [Visual polish or exactly 80 screens as creative assurance.]
+  A-15:
+    accepted: [Timed room/projector rehearsal and recovery observation are required.]
+    narrowed: [A detailed facilitator guide is useful but does not prove deliverability.]
+    rejected: [Calling a paper-complete package delivery-ready.]
+  A-16:
+    accepted: [Attach small reps to ordinary cues and make lapse/return normal.]
+    narrowed: [Identity can support practice but must not create blame.]
+    rejected: [Fixed habit deadlines or one attempted use as durable habit.]
+  A-17:
+    accepted: [Learn from RULER's implementation architecture without copying its school tools.]
+    narrowed: [Comparator websites are primary for current claims, not independent effectiveness proof.]
+    rejected: [Wholly novel Stop–Shift–Do claims or stale competitor facts used externally.]
+  A-18:
+    accepted: [MFC distinctiveness sits in accessible capability framing and integrated moment-based practice.]
+    narrowed: [Distinctiveness need not mean every component is novel.]
+    rejected: [Category ownership asserted without market/audience evidence.]
+  A-19:
+    accepted: [Keep relational, workplace and structural conditions visible beside individual capability.]
+    narrowed: [Movement and ripple pathways are early hypotheses.]
+    rejected: [One workshop presented as prevention, population impact or structural change.]
+  A-20:
+    accepted: [Trace workshop mechanisms to proximal outcomes and decision signals.]
+    narrowed: [MFC may claim a plausible contribution pathway, not demonstrated attribution.]
+    rejected: [Skipping causal links from participation to social change.]
+  A-21:
+    accepted: [Mutual mission/beneficiary value and deliverable obligations precede visibility.]
+    narrowed: [Fundraising or partner opportunity is conditional until verified and authorised.]
+    rejected: [Named commitments or relationship decisions inferred by AI.]
+  A-22:
+    accepted: [Internal review cannot substitute for intended-participant comprehension and cultural evidence.]
+    narrowed: [Personas and CALD variables organise inquiry but do not confer lived authority.]
+    rejected: [Treating a broad audience label as evidence that wording or format is inclusive.]
+  A-23:
+    accepted: [Canonical sources update before generated views; preserve provenance and supersession.]
+    narrowed: [Packs hold pointers/summaries, not private competing truth stores.]
+    rejected: [Newer or more polished files automatically overriding controlling decisions.]
+  A-24:
+    accepted: [Separate architecture, usability, facilitator load, comprehension and later-use tests.]
+    narrowed: [Run the smallest discriminating ethical test for a real decision.]
+    rejected: ['"Pilot it" without predeclared success/failure and interpretation.']
+  A-25:
+    accepted: [Finish a credible testable flagship before expanding products.]
+    narrowed: [Optimisation remains bounded by mission, capacity, evidence and opportunity cost.]
+    rejected: [Polish, urgency or sunk effort as strategic priority.]
+  A-26:
+    accepted: [Policy/government activity must be classified, purpose-linked and explicitly authorised.]
+    narrowed: [General regulator guidance prepares a decision but is not legal clearance.]
+    rejected: [Party-political positioning or jurisdiction-free recommendations.]
+  H-01:
+    accepted: [AI may prepare clinical-adjacent risks and exact questions for a qualified reviewer.]
+    narrowed: [Current official support information must still be approved for the actual cohort.]
+    rejected: [AI diagnosis, treatment, clinical clearance or invented referral protocols.]
+  H-02:
+    accepted: [AI may map data flows, sources, assumptions and questions for qualified advice.]
+    narrowed: [Official guidance is necessary context but applicability remains a human judgement.]
+    rejected: [AI legal advice, privacy clearance or inferred exemptions.]
+  FL-01:
+    accepted: [Hunter receives the visible artifact, alternatives, rationale, limits and exact decision requested.]
+    narrowed: [Compass predicts founder fit only from direct sources and requires a cold context.]
+    rejected: [Silence as approval or builder rationale contaminating an independent founder read.]
+  SYS-03:
+    accepted: [Strengthen existing roles, knowledge, tools and controls before adding capabilities.]
+    narrowed: [A future new role needs a distinct recurring unowned responsibility and lifecycle.]
+    rejected: [Creating agents because work is difficult or to compensate for unevaluated packs.]
+  SYS-04:
+    accepted: [Every finding receives a disposition and accepted changes reach artifact and memory.]
+    narrowed: [Reconciliation preserves authority and disagreement rather than averaging.]
+    rejected: [Separate reports, usage counts or repeated nudges presented as organisational learning.]

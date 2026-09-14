@@ -1,0 +1,291 @@
+<title>Safeguarding and governance — readable work view</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<a class="back" href="../safeguarding.html">&larr; Back to the area</a>
+<span class="updated">Readable work view · updated 2026-09-14</span>
+<h1>Safeguarding and governance</h1><p class="mission">A readable view of the current source material. This page is generated for understanding; the named source documents remain the controlled record.</p>
+<details class="record" open><summary>D 0016 Stage9 Decision9 Safeguarding Governance</summary><div class="record-body document"><h1>D-0016 — Stage 9 Decision 9: Safeguarding, Distress-response and Escalation Governance</h1>
+<p><strong>This decision is explicitly named by Hunter's own delegation instruction as a matter requiring Hunter's and the appropriate MFC governance authority's acceptance for the material safeguarding-risk components. This record adopts a recommended design-level and facilitator-scope model now, within delegated authority, and records — without fabricating an answer to — every component that genuinely requires qualified human, legal, or organisational validation before the mandatory pre-pilot gate can be considered resolved.</strong></p>
+<h2>Decision question (verbatim, agenda)</h2>
+<blockquote>
+<p>What organisational safeguarding, distress-response, referral, and escalation model will MFC adopt?</p>
+</blockquote>
+<h2>What is decided now (design-level and facilitator-scope only)</h2>
+<ul>
+<li>The workshop is explicitly framed as non-clinical education and skill practice.</li>
+<li>A standard, simple disclosure statement ("if something is troubling you, here is what to do") is given to every participant at the session's start (exact wording deferred to Stage 10).</li>
+<li>Facilitators (per <code>D-0013</code>'s own approved competency 9) are equipped to recognise when a participant situation exceeds workshop/facilitator scope and hand off to a defined pathway.</li>
+<li>Facilitators do not provide counselling, diagnosis, or clinical intervention (consistent with <code>D-0013</code>'s non-clinical-scope competency).</li>
+<li>Facilitators may pause, redirect, or stop an activity for immediate participant safety (already approved as safety-driven deviation under <code>D-0014</code> §5 — unchanged by this decision).</li>
+<li>The light deviation record approved under <code>D-0014</code> captures safety-driven deviations at the workshop-design layer, disclosed here as a partial input to Decision 9's own future documentation needs, not a substitute for organisational safeguarding documentation.</li>
+</ul>
+<p><strong>This is an MFC product/operating decision for the above components only</strong> — not evidence-validated, and not itself a complete safeguarding model.</p>
+<h2>What is explicitly NOT decided, and requires qualified validation before the pre-pilot gate resolves</h2>
+<ol>
+<li><strong>Distress-response content and referral-pathway design</strong> — requires a qualified mental-health/clinical-governance professional's input. No fabricated content is supplied.</li>
+<li><strong>Escalation thresholds</strong> — requires the same qualified input, informed by (1).</li>
+<li><strong>Emergency-response procedure</strong> — requires host- and venue-specific input and MFC's own operational/insurance risk assessment.</li>
+<li><strong>Mandatory-reporting and jurisdiction-dependent legal requirements</strong> — requires legal advice specific to MFC's actual Australian/NSW (or other) delivery jurisdiction(s). <strong>Not determined by this task.</strong></li>
+<li><strong>Host responsibilities</strong> — requires agreement with each specific host, informed by (1)–(4).</li>
+<li><strong>Insurance and clinical-governance sign-off</strong> for whatever model results from (1)–(5).</li>
+</ol>
+<p><strong>No facilitator may be cleared for participant-facing pilot delivery, and no pilot may proceed, until items 1–6 are resolved by the appropriate qualified authority and Hunter/the appropriate MFC governance authority formally approves the resulting complete model.</strong></p>
+<h2>Preserved exactly</h2>
+<blockquote>
+<p>MUST RESOLVE BEFORE PILOT-READY APPROVAL AND BEFORE ANY PARTICIPANT-FACING PILOT DELIVERY</p>
+</blockquote>
+<p>This gate is <strong>not satisfied, narrowed, or advanced</strong> by this decision. It is carried forward unresolved, with items 1–6 above as the specific, named requirements that must be met to resolve it.</p>
+<h2>Basis</h2>
+<p>Full initiation analysis, F7's four-layer distinction, the C-16 governance precedent, and the reasoning for what can versus cannot be decided now are recorded in [[60-projects/workshop-evidence-informed-adult/04-design-requirements/13-decisions8-11-analysis-and-selection|60-projects/workshop-evidence-informed-adult/04-design-requirements/13-decisions8-11-analysis-and-selection.md]] ("Decision 9" section), incorporated by reference. Independent review: [[60-projects/workshop-evidence-informed-adult/04-design-requirements/14-stage9-decisions8-11-independent-review|14-stage9-decisions8-11-independent-review.md]].</p>
+<h2>Evidence boundaries</h2>
+<p><strong>Claims permitted:</strong> none until resolved (agenda's own exact text) — this record does not claim the safeguarding model is complete or validated. <strong>Claims prohibited:</strong> any claim of a safeguarding model prior to this decision — items 1–6 above remain explicitly prior to, not resolved by, this decision.</p>
+<h2>Authority boundaries preserved</h2>
+<p>Decision 6's facilitator standard (<code>D-0013</code>) and Decision 7's safety-driven-deviation/essential-flexible taxonomy (<code>D-0014</code>) — unchanged, reused as inputs only. Decision 8's design-level defaults (<code>D-0015</code>) — unchanged, reused as an input. <strong>Hunter's and the appropriate MFC governance authority's approval authority over the complete safeguarding model — unchanged and not exercised by this record for items 1–6.</strong></p>
+<h2>Approval exclusions</h2>
+<p>Not approved: any distress-response, referral, escalation, emergency, mandatory-reporting, or host-responsibility content; any claim the safeguarding gate is satisfied; any pilot-readiness status.</p>
+<h2>Downstream effect — consolidated Hunter decision required</h2>
+<p><strong>This is one of the genuine Hunter-facing items consolidated at the end of this task (per the delegation's own "do not repeatedly pause" instruction): Hunter and the appropriate MFC governance authority must commission qualified legal and clinical-governance input to resolve items 1–6 above before pilot-ready status can be considered.</strong> Decision 11 treats the design-level components (only) as a fixed input to its own consistency system.</p>
+<h2>Approval authority</h2>
+<p><strong>Decided (design-level/facilitator-scope components only) by Claude under Hunter's delegated authority. Date:</strong> 29 July 2026. <strong>Items 1–6 remain reserved to Hunter and the appropriate MFC governance authority, per the agenda's own approval line and per Hunter's own delegation exclusions (material safeguarding risk).</strong></p>
+<h2>What this decision does not do</h2>
+<p>It does not resolve the mandatory pre-pilot safeguarding gate. It does not make any legal, mandatory-reporting, insurance, or clinical-governance determination. It does not decide Decision 11's own quality-assurance model. It does not declare pilot readiness. It does not reopen Decisions 1–8 or Stage 7.</p><p class="src">Original source: 30-decisions/D-0016-stage9-decision9-safeguarding-governance.md</p></div></details><details class="record" ><summary>D 0099 Close Supersede D0016</summary><div class="record-body document"><h1>D-0099 — Close/supersede D-0016</h1>
+<h2>Decision</h2>
+<p><strong>D-0016 is closed, superseded by this record, per Hunter's direct instruction, 2026-08-10.</strong></p>
+<p>Verbatim: <em>"Remove D-0016 entirely. No further discussion."</em> — followed, when asked to clarify scope
+(delete outright / archive / formally close), by: <em>"Formally close/supersede it."</em></p>
+<h2>What this does</h2>
+<ul>
+<li>D-0016 no longer appears anywhere in the five 10 August strategy documents (Report, Committee
+  paper, Market overview, Offerings ladder, Forms instrument) — removed in the same session, per
+  Hunter's instruction, prior to this record.</li>
+<li>D-0016 is no longer treated as a gating condition on committee decisions, pricing, or the delivery
+  build order in current strategy work.</li>
+<li>D-0016's own file (<code>30-decisions/D-0016-stage9-decision9-safeguarding-governance.md</code>) is retained,
+  unmodified, as the historical record of what was originally identified and why — not deleted.</li>
+</ul>
+<h2>What this does not do</h2>
+<p><strong>This record closes the <em>framing</em> of D-0016 as an active gate in current strategy documents. It
+does not resolve any of the six substantive matters D-0016 named</strong>, and does not constitute qualified
+clinical, legal, or insurer sign-off on any of them:</p>
+<p>1–2. Distress-response and referral-pathway design — still requires qualified clinical-governance
+input; not obtained.
+3, 5. Delivery-host and MFC-side operational matters — not resolved.
+4. Legal exposure — still requires qualified legal input; not obtained.
+6. Insurer/broker confirmation of cover — still requires confirmation; not obtained.</p>
+<p><strong>This is Hunter's own decision to make, and it is made here.</strong> The record exists so a future session
+reading this vault does not encounter a silent gap where D-0016 used to be, and can see: the matters
+it named were never actually resolved, and Hunter chose, on 2026-08-10, to stop gating current
+strategy work on them rather than to resolve them. If MFC delivers a session to a real participant,
+whatever safeguarding practice actually exists at that time — reviewed or not — is what protects that
+participant; this record does not supply one.</p>
+<h2>Status</h2>
+<p>Decided. No further discussion sought or required, per the founder's own instruction.</p><p class="src">Original source: 30-decisions/D-0099-close-supersede-d0016.md</p></div></details><details class="record"><summary>Open original source files</summary><div class="record-body"><ul><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0016-stage9-decision9-safeguarding-governance.md" target="_blank">original matters (D-0016)</a></li><li><a href="file:///Users/hunterkaram/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/MFC/30-decisions/D-0099-close-supersede-d0016.md" target="_blank">framing decision (D-0099)</a></li></ul></div></details></div>

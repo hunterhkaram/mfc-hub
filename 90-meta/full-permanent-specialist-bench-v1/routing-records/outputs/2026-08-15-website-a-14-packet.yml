@@ -1,0 +1,57 @@
+schema_version: 1
+specialist_id: A-14
+execution_mode: bounded_specialist_review
+pack:
+  path: 90-meta/full-permanent-specialist-bench-v1/knowledge-packs/A-14-indigo.md
+  state: baseline_equipped
+  version_or_review_date: '2026-08-13'
+shared_context:
+  orientation_manifest: CLAUDE.md
+  state_interface: 90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml
+objective: Remediate an exclusion that the A-24 coverage challenge upheld as wrong, by executing the lens
+  rather than writing around it (L-066).
+audience: Alysse Curran, MFC design lead, via Hunter.
+lifecycle_stage: candidate_production_post_challenge_remediation
+artifact:
+  path: 60-projects/mfc-website/WEBSITE-DIRECTION-REPORT-FOR-ALYSSE-2026-08-15.md
+  version_or_fingerprint: 766b6fa94c1164c4-2026-08-15-r2
+bounded_question: Is the strategy-versus-craft ownership split defensible, does the report over-reach
+  into creative territory, and would the proposed direction produce a distinctive brand experience or
+  merely a well-organised one?
+lens: Brand and Creative Direction
+decision_or_interface_informed: The website topic state interface, and whether the coverage challenge
+  findings are remediated by execution or only by artefact edits.
+source_hierarchy:
+- 60-projects/mfc-website/website-brief-for-alysse-2026-08-09.md
+- 60-projects/mfc-website/website-design-handoff/MFC Website Sitemap and User Journey System V1.md
+- 90-meta/agent-context-v1/13-founder-voice-v2-explaining-mental-fitness.md
+- 00-foundations/K-07-framework-architecture.md
+approved_decisions:
+- D-0097 five public skills locked
+- D-0086 there is no locked website copy
+- D-0099 D-0016 closed as an active gate without resolving its six matters
+known_conflicts:
+- This lens was excluded from the original dispatch; the A-24 coverage challenge upheld the dispute
+evidence_limits:
+- No live-site inspection since 31 July 2026
+- No user data, analytics or moderated sessions
+- Meeting attributions are contextual inferences
+unknowns:
+- Whether the Default Public Review Panel is available as a participant pool
+prior_mfc_learning:
+  accepted:
+  - L-066 the coverage challenge must gate dispatch, not review the output
+  - L-034 absence claims need a stated search
+  narrowed:
+  - Reconciling a disputed exclusion by editing the artefact is a disclosed weaker remedy than executing
+    the lens
+  rejected:
+  - That excluding a lens protects another professional's authority
+acceptance_criteria:
+- Findings specific to MFC
+- No K-08 breach
+- Human and designer authority preserved
+adjacent_or_human_boundaries:
+- Legal and privacy for any stored visitor text
+- Accessibility audit
+- Alysse's design-execution authority

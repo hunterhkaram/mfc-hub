@@ -1,0 +1,142 @@
+---
+type: current-state-pointer
+status: active-derived-view
+owner: hunter
+updated: 2026-09-10
+last_verified: "2026-09-10"
+verification_scope: "2026-09-10 workshop-delivery rewritten from the 16-from-scratch-redesign-v1 build files and Hunter's own recorded decisions, read directly rather than from any summary. Committee, grants, measurement and website retain their 2026-09-04 scope and are NOT re-verified here."
+authority: D-0101
+canonical_portfolio_control: 90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml
+confidentiality: internal
+---
+
+# Current State and Next Action
+
+This is a compact derived resume pointer, not independent authority. For an organisation-wide priority question, resolve the `portfolio` section of `90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml`, inspect the leading topics' linked sources and compare the whole portfolio. Approved decisions and canonical operational artifacts retain their own authority.
+
+## Strongest organisation-wide next action
+
+⚑ **Build the final services plan with Hunter, then implement his 2026-09-10 decisions into the
+Foundations script.** He asked for exactly this at the end of the 10 September session: *"I then want
+to come up with a final plan to improve and complete the services build."* **That plan is the next
+conversation and nothing else should displace it.**
+
+**Where the services build actually is, as of 10 September 2026.** The live build surface is
+`60-projects/workshop-evidence-informed-adult/16-from-scratch-redesign-v1/` (49 files).
+⛔ **It supersedes `15-current-service-definition-v1` as the working build**, and an older pointer
+saying Foundations is 270 minutes is stale — **the current structure file is 240 minutes** and says so
+in its own title.
+
+**Four products on one spine — four movements over fourteen beats** (`D-0130`, `D-0131`). Duration is a
+per-product setting and never part of the structure.
+
+| Product | State |
+|---|---|
+| **Introduction, 60 min** | Full delivery script, 14 beats. `03-DELIVERY-SCRIPT-INTRODUCTION-60.md` |
+| **Essentials, 90 min** | Full delivery script. ⚠ **No measurement instrument exists for it** |
+| **Foundations, 240 min** | Structure plus fifteen activities. `31-FOUNDATIONS-240-STRUCTURE.md` |
+| **Manager session** | Twelve beats, four movements, its own shape. `30-MANAGER-SESSION-v2.md` |
+
+**Hunter's decisions, both recorded from the decision pages' own stores rather than retyped:**
+`46-HUNTERS-ACTIVITY-CHOICES-2026-09-10.md` (14 of 15 activity picks) and
+`48-HUNTERS-SESSION-DECISIONS-2026-09-10.md` (six session-level decisions).
+
+⛔ **Decided and not to be re-pitched.** Foundations cut to twelve activities — **11, 12 and 16 come
+out**, which destroys his own 11B and 12A picks and he took that trade knowingly. The teach-back
+becomes **three versions on the wall, one of them the *calm down* error, voted on with fingers**. The
+moment gallery corpus **gets built**. The manager session **keeps its own twelve beats**; whether it is
+sold as an add-on or as a separately named product is flagged as a pricing decision and is NOT decided.
+**The fold-and-hold is withdrawn by Hunter** — `D-0131` §4 item 1 amended by him on 10 September, both
+prior options closed, no agent may reopen it.
+
+⚑ **The two things genuinely still open, and the first is a founder decision waiting on him:**
+
+1. ⛔ **The spine grouping.** Two live definitions of the same fourteen beats. `D-0131` §2 says
+   **I 1–5 · II 6–8 · III 9–12 · IV 13–14**; all three scripts implement **I 1–4 · II 5–7 · III 8–10 ·
+   IV 11–14**. **Recommendation already made to him: adopt the scripts' grouping, mark beat 11
+   never-cut, and amend the record** — his grouping leaves the trainability movement with no protected
+   beat while three of the seven scheduled cuts land inside it, and all three existing breaks would
+   need rescheduling in two products. **He has not ruled. Do not implement either side until he does.**
+2. ⛔ **The moment corpus conflicts with the moment-writing standard.** The gallery sorts moments by
+   *which part of the response is hard*; `MOMENT-WRITING-STANDARD-001` boundary 1 **forbids a moment
+   carrying any trace of the response.** Two live MFC artefacts disagree. **Surfaced, not resolved.**
+
+⚑ **A correction that must not be lost, because it blocked his chosen option for a day.** The gallery
+corpus was reported as five entries with none workplace. **That was the 18-entry founder copywriting
+bank read in place of the Radar corpus, which holds 608 moments, 128 of them workplace.** The build job
+is **curation and tagging of a 50-moment subset**, not creation — and a wall-readability test comes
+first, because nobody has checked whether a moment written for a phone reads at two metres.
+
+**Committee work remains live in parallel but is no longer the leading action.** The grouped
+Committee-feedback decision map described below has not been superseded; it simply sits behind the
+services build now, and its own state was last verified 2026-09-04, not today.
+
+## Immediate parallel work
+
+1. **Safeguarding:** prepare commission-ready briefs for qualified clinical-governance, legal/privacy and insurer review. These protections remain required before participant delivery, but `D-0099` removed `D-0016` as a formal blocker on strategy, pricing and build order.
+2. **Grants:** do not draft FRRR, Parramatta or Camden applications from the current evidence. Reconcile genuine pre-existing Camden project/cohort and $20 million public-liability evidence if it exists; otherwise defer and monitor later rounds.
+3. **Committee review:** prepare the grouped founder decision map for the Calendar-scheduled 7 September 7:30pm catch-up and retain the written-feedback route. Do not redraft or resend until Hunter decides. Mixed RSVP statuses do not prove attendance, feedback or an outcome. Present Onno's pending recommendation to obtain Rob and Rachel's input before finalisation as a founder decision, not a pre-existing binding condition.
+
+## Material state corrections
+
+- **Workshop:** ⛔ **superseded 2026-09-10.** The live build is
+  `16-from-scratch-redesign-v1/`, not `15-current-service-definition-v1`, and Foundations is **240
+  minutes, not 270**. `D-0113` still keeps the return session, written report and `D-0111` manager
+  session inside Essentials' and Foundations' price. Hunter has now personally chosen every activity
+  and six session-level decisions; **his choices are decisions, not proposals, and a later pass may
+  not quietly delete one.** Participant delivery still sits behind the registered qualified-review
+  and participant-testing gates — **no room has ever run any of this.**
+- **Measurement:** `D-0100` remains controlling for the routine first-pilot core. The current working direction from Hunter's 24 August discussion with Eimear Quigley and Debra Fidler is captured in [[20-knowledge/KN-0006-intervention-and-measurement-current-working-direction-2026-08-24]]. It separates three parts of the intervention: Stop–Shift–Do teaching, Radar/Mental Reps practice design, and environment/implementation conditions. The leading proposal is MFC mechanism questions plus the intact six-item IMTTAQ transfer/opportunity module at later follow-up for workplace cohorts. WHO-5 is re-opened only as a possible research/case-study context measure; D-0100's licence, clinical-response, privacy, analysis and ethics gates still apply. No form is field-ready.
+- **Grants:** official pages were checked on 13 August. FRRR Round 12 closes 18 August but is deferred under the recorded geography decision; Camden closes 7 September but lacks a recorded qualifying project/cohort and $20 million public-liability evidence; Parramatta's general 2026 Community Round is closed. Older artifacts saying “apply now” are dated analysis, not current authority.
+- **Website:** substantial handoff, copy and assurance work exists. The live Wix site's parity with those sources is unverified; do not describe the website as a blank or merely early wireframe.
+- **Founder Signal Register:** the four recurring themes are already described as bound to `L-052`/`L-053`, while the executable report still labels them `OVERDUE`. Treat that as an internal control inconsistency to diagnose—not a reason to ask Hunter whether another lesson should be written during mission work.
+- **Git state:** verify the current branch and working tree live. Do not reuse the branch name or commit from an older pointer.
+
+## Controlled portfolio
+
+The register now covers 15 controlled topics: grand strategy, Framework integrity, workshop delivery, measurement, pricing, marketing and leads, grants and funding, WIIFM, committee send, website, safeguarding, market intelligence, social media, community events, and operations/governance. Product/Radar/digital formats remain embedded in their controlling Framework and delivery topics rather than being duplicated as standalone architectures.
+
+The Hub is a generated projection of this state, but its main experience is now founder-facing. Its
+home page leads with current priorities and the decisions or approvals that need people. Every topic
+page now gives the same complete state interface: where we are, what we currently believe, what is
+complete, what is provisional, what conflicts, what awaits specialist assurance, what awaits Hunter,
+what awaits external humans and what happens next. Claude's MFC intake must read that interface before
+substantive work, so an older or more detailed artefact cannot silently become the starting point.
+Detailed state codes, sources, change history and assurance records remain available inside an
+expandable evidence section. Every topic has a readable generated HTML view of its current Markdown
+sources; structured system records remain available as clearly named originals rather than appearing
+as the founder reading surface. The Workshop page opens the current service definition and clearly
+labelled legacy source material. A recorded lifecycle receipt still regenerates and
+verifies the Hub automatically.
+
+The permanent Hub views are Overview, Mission & Strategy, Movement & Ripples, Important Updates,
+Work Areas and Intelligence System. Individual projects remain inside Work Areas rather than taking
+permanent navigation space. The Intelligence System view shows what each
+registered role is meant to provide, the inputs it needs, the latest use evidenced in routing records,
+the recorded contribution and the supporting evidence. It does not infer use from registration.
+Routing records are the single source of truth for specialist usage, latest evidenced contribution
+and freshness. The permanent bench defines each role's expertise, limits and routing requirements;
+its retained observability use counters are explicitly non-authoritative and are not read by the Hub.
+
+The Movement & Ripples view is an explicitly early theory-of-change surface, not another work area
+and not a claim that MFC has created a movement. It separates the social change sought, hypothesised
+ripple pathways, genuinely observed signals, emerging opportunities, cautions and the next test.
+No participant, workplace, community or population ripple evidence is currently recorded.
+
+Important Updates is controlled by the existing topic register. A daily freshness run adds or changes
+an item only when a verified development affects direction, priority, readiness, risk, evidence, an
+opportunity or an external response. Monday and Thursday cadence also regenerates the Intelligence
+System contribution view from inspectable routing evidence. Quiet days produce no artificial Hub
+update. The active Codex heartbeat and Claude Cadence scheduled-task instructions now contain this
+routing-evidence and Hub-integrity requirement.
+
+The explicit partial domain is operations: no single verified finance, cash-runway, people, delivery-administration or cross-system operating ledger is currently registered. This is a visible gap to reconcile from existing records, not authority to create another database.
+
+Re-rank the portfolio after Jake or Onno responds, a verified grant-status change, another external response or another approved priority decision. Do not silently replace this pointer with a new dashboard or parallel architecture.
+
+## Retained boundaries
+
+- No external email, publication, financial commitment or participant delivery without the registered human authority.
+- AI review does not constitute clinical, legal, privacy, insurer, ethics or participant approval.
+- Drive, Wix, Monday and other external systems are current only when inspected through an available authenticated connector and verified by revision/receipt plus readback.
+- Work completed in another chat is not organisational state until it is reconciled into the vault and the registered operational destinations.
