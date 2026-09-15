@@ -1,0 +1,199 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>MFC — the working team</title>
+<style>
+ :root { --ink:#15202b; --mut:#5b6b7b; --line:#e3e8ee; --ok:#0a7d4f; --warn:#b45309;
+          --bad:#b42318; --bg:#fbfcfd; }
+ * { box-sizing:border-box; }
+ body { margin:0; padding:2.2rem 1.4rem 4rem; font:16px/1.55 -apple-system,BlinkMacSystemFont,
+        "Segoe UI",Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+ .wrap { max-width:1180px; margin:0 auto; }
+ h1 { font-size:1.9rem; margin:0 0 .3rem; letter-spacing:-.02em; }
+ .sub { color:var(--mut); margin:0 0 2rem; }
+ h2 { font-size:1.15rem; margin:2.4rem 0 .9rem; padding-bottom:.4rem;
+       border-bottom:2px solid var(--line); }
+ .flow { display:flex; flex-wrap:wrap; gap:.5rem; align-items:stretch; margin:.5rem 0 1rem; }
+ .step { flex:1 1 150px; background:#fff; border:1px solid var(--line); border-radius:9px;
+          padding:.75rem .8rem; }
+ .step b { display:block; font-size:.83rem; text-transform:uppercase; letter-spacing:.04em;
+            color:var(--mut); margin-bottom:.25rem; }
+ .step span { font-size:.9rem; }
+ .grid { display:grid; gap:.7rem; grid-template-columns:repeat(auto-fill,minmax(258px,1fr)); }
+ .card { background:#fff; border:1px solid var(--line); border-left:4px solid var(--ok);
+          border-radius:9px; padding:.8rem .9rem; }
+ .card.pending { border-left-color:var(--warn); }
+ .card.sup { border-left-color:#3b5bdb; }
+ .card h3 { margin:0 0 .3rem; font-size:1rem; text-transform:capitalize; }
+ .blurb { margin:0 0 .5rem; font-size:.88rem; color:var(--mut); }
+ .trig { margin:0 0 .5rem; font-size:.78rem; color:var(--mut); }
+ .roles { list-style:none; margin:0; padding:0; font-size:.8rem; }
+ .roles li { display:inline-block; margin:0 .45rem .2rem 0; }
+ code { background:#eef2f6; padding:.05rem .3rem; border-radius:4px; font-size:.78rem; }
+ .ran { color:var(--ok); font-weight:600; }
+ .never { color:var(--bad); }
+ .none { color:var(--mut); font-style:italic; }
+ .state { margin:.55rem 0 0; font-size:.74rem; color:var(--mut);
+           text-transform:uppercase; letter-spacing:.04em; }
+ .stats { display:flex; flex-wrap:wrap; gap:.7rem; margin:.4rem 0 0; }
+ .stat { flex:1 1 170px; background:#fff; border:1px solid var(--line);
+          border-radius:9px; padding:.8rem .9rem; }
+ .stat b { display:block; font-size:1.5rem; letter-spacing:-.02em; }
+ .stat span { font-size:.82rem; color:var(--mut); }
+ ul.plain { font-size:.9rem; }
+ footer { margin-top:2.6rem; padding-top:1rem; border-top:1px solid var(--line);
+           color:var(--mut); font-size:.82rem; }
+ @media (prefers-color-scheme: dark) {
+   :root { --ink:#e6edf3; --mut:#9aa7b4; --line:#2a333d; --bg:#0f141a; }
+   body { background:var(--bg); }
+   .card,.step,.stat { background:#161d25; }
+   code { background:#222c36; }
+ }
+</style>
+<div class="wrap">
+<h1>MFC — the working team</h1>
+<p class="sub">Generated 2026-09-01 from what is actually on disk
+(<code>b23ac8a</code>). Every count below is read from the real routing records, not typed in.</p>
+
+<h2>How a request moves</h2>
+<div class="flow">
+  <div class="step"><b>1 · You speak</b><span>A voice transcript is normal input. Nobody asks you to rephrase.</span></div>
+  <div class="step"><b>2 · Triage</b><span>Chief of staff reads <i>every</i> prompt: direct, single head, or round table.</span></div>
+  <div class="step"><b>3 · Round 1</b><span>Chosen heads work blind to each other, so agreement means something.</span></div>
+  <div class="step"><b>4 · Dissent</b><span>The draft position goes back to every head: “anything wrong from your domain?”</span></div>
+  <div class="step"><b>5 · Skeptic</b><span>Briefed to refute. Findings go back to the head — not forward to you.</span></div>
+  <div class="step"><b>6 · Founder lens</b><span>Would you actually accept this?</span></div>
+  <div class="step"><b>7 · You</b><span>The converged result, or one genuine decision.</span></div>
+</div>
+
+<h2>System state</h2>
+<div class="stats">
+  <div class="stat"><b>13</b><span>departments</span></div>
+  <div class="stat"><b>5/40</b><span>of the last 40 material tasks ran a specialist</span></div>
+  <div class="stat"><b>952</b><span>routing records all-time</span></div>
+  <div class="stat"><b>25</b><span>active bench roles</span></div>
+</div>
+
+<h2>Departments</h2>
+<div class="grid"><article class="card dept ok">
+  <h3>marketing</h3>
+  <p class="blurb">Messaging, brand, audience, category, public copy</p>
+  <p class='trig'><b>Fires on:</b> <em>copy</em>, <em>headline</em>, <em>tagline</em>, <em>messag</em>, <em>brand</em>, <em>tone of voice</em>…</p>
+  <ul class="roles"><li><code>A-08</code> <span class="ran">2×</span></li><li><code>A-14</code> <span class="ran">1×</span></li><li><code>A-18</code> <span class="ran">2×</span></li><li><code>A-22</code> <span class="ran">4×</span></li><li><code>K-08</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>social</h3>
+  <p class="blurb">Social channels, content, cadence, the ~8–9k following</p>
+  <p class='trig'><b>Fires on:</b> <em>social media</em>, <em>instagram</em>, <em>linkedin</em>, <em>tiktok</em>, <em>facebook</em>, <em>youtube</em>…</p>
+  <ul class="roles"><li><code>A-08</code> <span class="ran">2×</span></li><li><code>K-08</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>movement</h3>
+  <p class="blurb">Category, advocacy, Mental Fitness Month, public health, policy</p>
+  <p class='trig'><b>Fires on:</b> <em>movement</em>, <em>category</em>, <em>mental fitness month</em>, <em>advocacy</em>, <em>public health</em>, <em>(public</em>…</p>
+  <ul class="roles"><li><code>A-18</code> <span class="ran">2×</span></li><li><code>A-19</code> <span class="never">0×</span></li><li><code>A-22</code> <span class="ran">4×</span></li><li><code>A-26</code> <span class="never">0×</span></li><li><code>C-18</code> <span class="never">0×</span></li><li><code>K-08</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>community</h3>
+  <p class="blurb">Leadership Community, ambassadors, events, members, volunteers</p>
+  <p class='trig'><b>Fires on:</b> <em>communit</em>, <em>leadership community</em>, <em>manager community</em>, <em>webinar</em>, <em>meetup</em>, <em>ambassador</em>…</p>
+  <ul class="roles"><li><code>A-13</code> <span class="ran">2×</span></li><li><code>A-16</code> <span class="ran">1×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>product</h3>
+  <p class="blurb">Workshop design, learning, exercises, participant experience</p>
+  <p class='trig'><b>Fires on:</b> <em>workshop</em>, <em>session</em>, <em>facilitat</em>, <em>curriculum</em>, <em>slide</em>, <em>deck</em>…</p>
+  <ul class="roles"><li><code>A-07</code> <span class="ran">1×</span></li><li><code>A-10</code> <span class="ran">2×</span></li><li><code>A-12</code> <span class="ran">7×</span></li><li><code>A-13</code> <span class="ran">2×</span></li><li><code>A-15</code> <span class="ran">1×</span></li><li><code>A-16</code> <span class="ran">1×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>delivery</h3>
+  <p class="blurb">Running it — bookings, contracts, SLAs, venue, follow-up</p>
+  <p class='trig'><b>Fires on:</b> <em>schedul</em>, <em>booking</em>, <em>book a</em>, <em>client onboarding</em>, <em>contract</em>, <em>service level</em>…</p>
+  <ul class="roles"><li class="none">no bench role mapped</li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>research</h3>
+  <p class="blurb">Evidence, measurement, instruments, ethics, sources</p>
+  <p class='trig'><b>Fires on:</b> <em>evidence</em>, <em>research</em>, <em>stud(y</em>, <em>ies)</em>, <em>literature</em>, <em>measur</em>…</p>
+  <ul class="roles"><li><code>A-09</code> <span class="ran">3×</span></li><li><code>A-11</code> <span class="ran">6×</span></li><li><code>A-23</code> <span class="ran">3×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>commercial</h3>
+  <p class="blurb">Pricing, unit economics, partnerships, funding, board strategy</p>
+  <p class='trig'><b>Fires on:</b> <em>pric</em>, <em>cost</em>, <em>revenue</em>, <em>margin</em>, <em>p&amp;l</em>, <em>profit</em>…</p>
+  <ul class="roles"><li><code>A-17</code> <span class="ran">3×</span></li><li><code>A-20</code> <span class="never">0×</span></li><li><code>A-21</code> <span class="ran">2×</span></li><li><code>A-25</code> <span class="ran">2×</span></li><li><code>A-26</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>compliance</h3>
+  <p class="blurb">Clinical boundaries, claim limits, regulatory, insurance</p>
+  <p class='trig'><b>Fires on:</b> <em>claim</em>, <em>claims</em>, <em>evidence says</em>, <em>we can say</em>, <em>outcome</em>, <em>efficacy</em>…</p>
+  <ul class="roles"><li><code>H-01</code> <span class="never">0×</span></li><li><code>H-02</code> <span class="ran">1×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>governance</h3>
+  <p class="blurb">Committee, AGM, constitution, statutory obligations</p>
+  <p class='trig'><b>Fires on:</b> <em>committee</em>, <em>board meeting</em>, <em>agm</em>, <em>constitution</em>, <em>minutes</em>, <em>resolution</em>…</p>
+  <ul class="roles"><li><code>A-25</code> <span class="ran">2×</span></li><li><code>H-02</code> <span class="ran">1×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>framework</h3>
+  <p class="blurb">What mental fitness means — terminology, constructs</p>
+  <p class='trig'><b>Fires on:</b> <em>mental fitness</em>, <em>framework</em>, <em>stop.?shift.?do</em>, <em>mental rep</em>, <em>the radar</em>, <em>pillar</em>…</p>
+  <ul class="roles"><li><code>A-09</code> <span class="ran">3×</span></li><li><code>A-10</code> <span class="ran">2×</span></li><li><code>BD-03</code> <span class="never">0×</span></li><li><code>K-08</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>digital</h3>
+  <p class="blurb">Website, Radar widget, forms, data capture, integrations</p>
+  <p class='trig'><b>Fires on:</b> <em>website</em>, <em>wix</em>, <em>page</em>, <em>widget</em>, <em>radar</em>, <em>form</em>…</p>
+  <ul class="roles"><li><code>A-07</code> <span class="ran">1×</span></li><li><code>A-23</code> <span class="ran">3×</span></li><li><code>K-08</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card dept ok">
+  <h3>people</h3>
+  <p class="blurb">Who does what — capacity, facilitators, volunteers, succession</p>
+  <p class='trig'><b>Fires on:</b> <em>hir(e</em>, <em>ing)</em>, <em>recruit</em>, <em>volunteer</em>, <em>staff</em>, <em>employee</em>…</p>
+  <ul class="roles"><li class="none">no bench role mapped</li></ul>
+  <p class="state">live</p>
+</article></div>
+
+<h2>Support roles</h2>
+<div class="grid"><article class="card sup ok">
+  <h3>chief of staff</h3>
+  <p class="blurb">Triages every prompt. Convenes the table. Closes the loop.</p>
+  
+  <ul class="roles"><li><code>A-07</code> <span class="ran">1×</span></li><li><code>A-08</code> <span class="ran">2×</span></li><li><code>A-09</code> <span class="ran">3×</span></li><li><code>A-10</code> <span class="ran">2×</span></li><li><code>A-11</code> <span class="ran">6×</span></li><li><code>A-12</code> <span class="ran">7×</span></li><li><code>A-13</code> <span class="ran">2×</span></li><li><code>A-14</code> <span class="ran">1×</span></li><li><code>A-15</code> <span class="ran">1×</span></li><li><code>A-16</code> <span class="ran">1×</span></li><li><code>A-17</code> <span class="ran">3×</span></li><li><code>A-18</code> <span class="ran">2×</span></li><li><code>A-20</code> <span class="never">0×</span></li><li><code>A-21</code> <span class="ran">2×</span></li><li><code>A-22</code> <span class="ran">4×</span></li><li><code>A-23</code> <span class="ran">3×</span></li><li><code>A-25</code> <span class="ran">2×</span></li><li><code>A-26</code> <span class="never">0×</span></li><li><code>FL-01</code> <span class="ran">22×</span></li><li><code>H-01</code> <span class="never">0×</span></li><li><code>H-02</code> <span class="ran">1×</span></li><li><code>SYS-04</code> <span class="ran">2×</span></li><li><code>SYS-05</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card sup ok">
+  <h3>skeptic</h3>
+  <p class="blurb">Attacks the result before Hunter sees it.</p>
+  
+  <ul class="roles"><li><code>A-24</code> <span class="ran">7×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card sup ok">
+  <h3>founder lens</h3>
+  <p class="blurb">Would Hunter actually accept this?</p>
+  
+  <ul class="roles"><li><code>FL-01</code> <span class="ran">22×</span></li></ul>
+  <p class="state">live</p>
+</article><article class="card sup ok">
+  <h3>researcher</h3>
+  <p class="blurb">Scans the web and current literature on demand.</p>
+  
+  <ul class="roles"><li><code>K-08</code> <span class="never">0×</span></li></ul>
+  <p class="state">live</p>
+</article></div>
+
+<h2>Bench roles with no owning department</h2>
+<ul class="plain"><li>None — every active bench role that has ever executed now has an owning department.</li></ul>
+
+<h2>Retired</h2>
+<ul class="plain"><li><code>SYS-03</code> Capability Factory and Agent Provisioner</li></ul>
+
+<h2>Active but never executed</h2>
+<p class="sub" style="margin:.2rem 0 .6rem">Dormant is not the same as useless — clinical safety and
+policy engagement are not daily work. Listed so the distinction stays visible.</p>
+<ul class="plain"><li><code>A-19</code> Public Health, Prevention and Systems Change</li><li><code>A-20</code> Impact, Theory of Change and Philanthropy</li><li><code>A-26</code> Policy, Government and Systems Engagement</li><li><code>H-01</code> Clinical Safety and Care Boundaries</li><li><code>SYS-05</code> Chief of Staff</li></ul>
+
+<footer>
+Generated by <code>90-meta/hub/generate_team_page.py</code>. Never hand-edit this page — it is
+overwritten on every run. If a number here looks wrong, the source is wrong, not the page.
+</footer>
+</div>

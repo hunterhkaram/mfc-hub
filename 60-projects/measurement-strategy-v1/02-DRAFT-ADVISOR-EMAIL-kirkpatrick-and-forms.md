@@ -1,3 +1,9 @@
+> ⛔ **SUPERSEDED 2026-09-15. Do not send or quote from this.** It carries two stale doubts that
+> are now settled: the training-transfer instrument's name was verified directly against Crossref
+> (Intervention and Multiphase Training Transfer Assessment Questionnaire, DOI 10.1037/ocp0000420),
+> and nothing in the measurement plan now waits on Eimear's confirmation of anything.
+> Current: `12-THE-FORMS-BUILD-READY.md` and `form-set/INDEX.html`.
+
 ---
 mfc_topic: measurement
 artifact_role: candidate

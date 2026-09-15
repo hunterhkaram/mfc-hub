@@ -1,0 +1,244 @@
+<title>Pricing and commercial model — MFC Hub</title>
+<meta charset="utf-8">
+<meta name="mfc-topic-fingerprint" content="6856294f1dd5cff2">
+<style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="active" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav>
+<a class="back" href="../MFC-HUB.html">&larr; Back to the home page</a>
+<span class="updated">MFC Hub · updated 2026-09-16</span>
+<span class="status done">Locked for all three products, sent to committee as ask 1 of 4, awaiting formal approval</span>
+<h1>Pricing and commercial model</h1>
+<p class="mission">Foundations $3,900+$95pp, Essentials $1,250-1,800, Introduction $600/$0, all founder-decided 2026-08-16; FINAL-08 asks the committee to formally adopt these prices (ask 1 of 4), not yet approved; no buyer has paid any of it yet either.</p>
+
+<div class="worklinks"><a class="viewwork" href="90-meta/hub/work/pricing.html" target="_blank" rel="noopener">Open the readable work view <span class="arrow">&rarr;</span></a></div>
+<div class="next"><h2>What’s next?</h2><p>Await the committee&#x27;s formal response to ask 1 (adopt the three products at these prices). In parallel, reconcile the Product and Pricing Book&#x27;s older $1,644/$847 rows to D-0113&#x27;s included-manager recomputation without changing price; do not apply D-0114&#x27;s modelled Essentials increase unless the return candidate is authorised and built. Real buyer testing and controlled product build do not need to wait on committee approval. Optionally, tidy D-0096&#x27;s frontmatter and update or retire FINAL-02 so it does not keep showing $2,500/$1,367.</p></div>
+<div class="box"><h4>Why this area matters</h4><p>Keep one controlled price and cost logic that can be tested in real buyer conversations.</p></div>
+<div class="box"><h4>Where are we?</h4><p>Prices are decided for all three products by direct founder decision, most recently 2026-08-16, and are what was sent to the committee in FINAL-08: Foundations $3,900 base + $95/person, cap 20; Essentials $1,250/$1,550/$1,800 by group size (2-5/6-10/11-15); and Introduction $600 booked or $0 as capped outreach. recorded decision (D-0113) confirms that the return, written report and manager session are included in Essentials and Foundations; prices do not change. It recomputes the included-manager model at $1,690.64 loaded for Foundations and $870.59 for Essentials. The older $1,644/$847 rows in the Product and Pricing Book must not be reused without reconciliation. recorded decision (D-0114) models a higher Essentials cost if Return Session v2 is built, but explicitly does not apply a price or current-cost change while that design remains an internal candidate. recorded decision (D-0096)&#x27;s earlier $2,500 base and $1,228 component cost are superseded in substance.
+</p></div>
+<div class="box"><h4>What do we currently believe?</h4><p>Price and loaded-cost unit economics are locked for Introduction, Essentials and Foundations. This is not just informational, FINAL-08&#x27;s ask 1 of 4 formally asks the committee to adopt these three products at these prices, so committee approval is now a real, named external gate, distinct from and in addition to buyer/market validation.</p></div>
+<div class="box"><h4>What’s complete?</h4><ul><li>Founder decided the current price for all three products, most recently 2026-08-16 (Foundations $3,500 to $3,900, product changed to include the day-21 return).</li><li>The $1,228/$1,367 loaded-cost seam is explained (component vs bundled-product cost, not a real conflict) and superseded by current figures in 110-PRODUCT-AND-PRICING-BOOK.md.</li><li>The current prices are already reflected in FINAL-08-committee-paper.md, sent to Onno and Jake 2026-08-17, as ask 1 of 4 (&quot;Adopt the three products at the prices in section 3&quot;).</li><li>recorded decision (D-0113) confirms that the return, written report and manager session sit inside Essentials and Foundations; it leaves all current prices unchanged.</li></ul></div>
+<div class="box"><h4>What’s provisional?</h4><ul><li>The committee has not yet formally approved ask 1; no feedback has been recorded on this send.</li><li>No buyer has tested or paid any of these prices; zero cohorts have run. This remains open regardless of committee approval, committee sign-off is not market validation.</li><li>Several facilitator-hour estimates behind the loaded-cost figures (report writing, session prep) are unmeasured, not measured time.</li><li>recorded decision (D-0096)&#x27;s own frontmatter still says superseded_by=none, which is stale; it has not been formally marked superseded despite being superseded in substance.</li><li>110-PRODUCT-AND-PRICING-BOOK.md&#x27;s own status field says &quot;internal candidate, not Hunter-approved&quot; even though its Foundations price specifically was confirmed by founder decision (recorded decision (D-0103)); the broader document&#x27;s other recommendations remain open.</li><li>recorded decision (D-0113)&#x27;s included-manager recomputation ($1,690.64 Foundations / $870.59 Essentials loaded) has not yet been reconciled into the older $1,644/$847 rows in the Product and Pricing Book.</li><li>recorded decision (D-0114)&#x27;s Return Session v2 modelled Essentials cost is deliberately unapplied while the candidate has not been built, rehearsed or delivery-cleared; it is not a reason to change price now.</li></ul></div>
+<div class="box"><h4>What conflicts?</h4><ul><li>recorded decision (D-0113) recomputes the included-manager cost model at $1,690.64 loaded for Foundations and $870.59 for Essentials, while the Product and Pricing Book retains older $1,644/$847 rows. Prices are unchanged; reconcile the source rows before reusing a cost or margin figure.</li></ul></div>
+<div class="box"><h4>What’s awaiting specialist assurance?</h4><ul><li>No specialist assurance is currently outstanding.</li></ul></div>
+<div class="box"><h4>What’s awaiting Hunter?</h4><ul><li>Nothing is currently waiting on Hunter alone.</li></ul></div>
+<div class="box"><h4>What’s awaiting external humans?</h4><ul><li>Nothing is currently waiting on an external person.</li></ul></div>
+
+<details class="record"><summary>Evidence, sources and change record</summary><div class="record-body"><h3>System status</h3><p><strong>Unit economics decided awaiting committee approval</strong> · Founder decided sent as formal committee ask not yet approved.</p><h3>Freshness record</h3><p><strong>Current</strong> · completed · 2026-09-07T10:18:20.974227+10:00</p><p>D-0129 written and D-0128 marked superseded. Essentials banded at 1950/2100/2400/2750 on an unchanged 1048.26 floor, because the manager session and report were already inside the 10.42 hours and the check-ins are offered rather than sold. Top band improves 70 percent, from 96.14 to 163.31 per engagement hour. Small Team retired, Introduction renamed The Mental Fitness Hour with its digital version as the entry rung, prices stated ex GST pending registration. 07-BUYER-PACK ladder and section 4.4 floor table rebuilt; the guided-minutes overstatement corrected earlier today stands at 56/141/269. A-24 executed fresh-context, reproduced every figure and forced withdrawal of the Essentials-level-with-Foundations claim. Two founder decisions remain open: accepting the exit from the under-twenty-staff segment, and reconciling the primary-segment conflict. Committee ratification not sought; external_gate OPEN.</p><p>External evidence: not applicable. Last routed activity: 2026-09-15T22:23:28.671150+10:00.</p><h3>Sources and operational versions</h3><p><strong>Canonical/current sources</strong></p><ul><li>pricing decision (superseded in substance, frontmatter not yet updated) (D-0096): superseded controlling decision</li><li>product category boundary and lineup lock (records the 2026-08-16 price raise) (D-0103): controlling decision</li><li>included product boundary and recomputed cost model (D-0113): controlling commercial boundary and cost recomputation</li><li>return-session candidate cost model (unapplied) (D-0114): candidate cost model not current price</li><li>Product and Pricing Book (current unit economics, all products): current operational costing</li><li>FINAL-02 Pricing Strategy (stale, still shows $2,500/$1,367): stale reference</li></ul><p><strong>Operational versions/destinations</strong></p><ul><li><b>Pricing decision (superseded, kept for history)</b>: superseded frontmatter not updated</li><li><b>Product and Pricing Book</b>: current</li><li><b>Pricing strategy (stale)</b>: stale</li><li><b>Committee paper carrying current prices</b>: current sent</li><li><b>Pricing Hub projection</b>: generated</li></ul><h3>Conflicts and superseded work</h3><ul><li><b>D-0113 recomputes the included-manager cost model at $1,690.64 loaded for Foundations and $870.59 for Essentials, while the Product and Pricing Book retains older $1,644/$847 rows. Prices are unchanged; reconcile the source rows before reusing a cost or margin figure.</b><br>open reconciliation<br><span class='src'>Record reference: PRICING-COST-ROWS-D0113</span><br><span class='src'>Controlling source: 30-decisions/D-0113-product-boundary-everything-inside-the-price.md</span></li></ul><h3>Recent change history</h3><ul><li><b>completed</b> · 2026-09-07T10:18:20.974227+10:00<br>D-0129 written and D-0128 marked superseded. Essentials banded at 1950/2100/2400/2750 on an unchanged 1048.26 floor, because the manager session and report were already inside the 10.42 hours and the check-ins are offered rather than sold. Top band improves 70 percent, from 96.14 to 163.31 per engagement hour. Small Team retired, Introduction renamed The Mental Fitness Hour with its digital version as the entry rung, prices stated ex GST pending registration. 07-BUYER-PACK ladder and section 4.4 floor table rebuilt; the guided-minutes overstatement corrected earlier today stands at 56/141/269. A-24 executed fresh-context, reproduced every figure and forced withdrawal of the Essentials-level-with-Foundations claim. Two founder decisions remain open: accepting the exit from the under-twenty-staff segment, and reconciling the primary-segment conflict. Committee ratification not sought; external_gate OPEN.</li><li><b>started</b> · 2026-09-07T10:07:06.049928+10:00<br>Founder decisions 2026-09-07: (1) quarterly check-ins are promised, not contracted; (2) the digital Introduction becomes the entry rung; (3) MFC will work toward GST registration. Consequence: the 3.75 check-in hours leave contracted scope, so the Essentials cost floor returns to 10.42h and 1048.26 while the higher band prices stand on scope-versus-market rather than on those hours. Sources inspected: 07-BUYER-PACK section 4, 21-THE-PRICE-ARCHITECTURE lines 158 and 693, 20-THE-PRICING-CASE lines 84 and 466, D-0105, D-0113, D-0115, D-0121, D-0122, D-0123, D-0125, D-0128, AG-088/093/094. Action: recompute both bases, run one adversarial check on the final ladder, write the decision records, update the buyer pack ladder and cost build-up. Required checks: arithmetic reproduced from hour counts on both the contracted and the realistic-delivery basis, and the promise wording checked so it cannot read as a contracted term.</li><li><b>started</b> · 2026-09-07T09:31:48.688080+10:00<br>Founder rulings 2026-09-07: Essentials scope expands to include the manager session, written report and quarterly check-ins; Small Team Essentials removed; Introduction published at 600 and everything else quoted; unadvertised concession lane across all three. Sources inspected: 07-BUYER-PACK section 4 (authoritative cost basis 66.10x1.4, Essentials 10.42h floor 1048.26), 21-THE-PRICE-ARCHITECTURE, D-0125, D-0128, D-0122, D-0123, advisor AG-088/AG-093/AG-094/AG-082/AG-083. Conflict: the 10.42h basis no longer matches the product as scoped, so the floor is stale and must be rebuilt. Action: head-of-commercial recosts and reprices, head-of-product answers the Essentials-vs-Foundations point of difference, skeptic checks before anything reaches Hunter. Required checks: arithmetic reproduced from hour counts, market comparables, concession floor above cost.</li><li><b>started</b> · 2026-09-06T11:27:04.966935+10:00<br>Hunter, 2026-09-05: &#x27;we&#x27;ve not actually got you to price this optimally perhaps? What will ensure this is a great product and is profitable for us but also enticing for organisations... how do we make money?&#x27; He is right about the gap: MFC&#x27;s prices were built bottom-up from cost (hours x $66.10 x 1.4 loaded, then a margin) in 07-BUYER-PACK s4 and were never tested against market comparables or willingness to pay. Sources to inspect: 07-BUYER-PACK s4 (loaded floors 511.30 / 816.92 / 1048.26 / 1907.18), 15-THE-MONEY-CASE (minimum viable ~36k, per-engagement-hour returns Foundations 160, Essentials 38, Small Team 22), D-0125 (Hunter ratified prices as MFC&#x27;s recommendation), D-0113 (committee approval outstanding external gate), market-and-competitor-intelligence-v1 (05-commercial-platforms, 07-market-access-and-procurement, 02/03 profiles - may already hold comparator prices), 04-THE-STRATEGY and its review, AG-088 below-market and review clause, AG-093/094/095 build from all hours and price-test, AG-029 anchor, AG-082/083 never free, AG-084 buyers buy ROI, AG-081 path to sustainability. Conflict to solve or state honestly: AG-084 says buyers buy return on investment while K-08 and AG-001 forbid any outcome claim. Action: build the pricing case with real sourced comparables, where MFC sits, what justifies a higher price, the enticement framing inside the claims boundary, three or four money models costed against one facilitator, and a recommended price set with a review clause. Checks: head-of-commercial and head-of-product mandatory as real calls, marketing on framing, compliance on claims, researcher for comparables, skeptic briefed that any price above the market floor is asked for on promise alone with zero cohorts.</li><li><b>started</b> · 2026-09-02T11:02:23.959821+10:00<br>Hunter has redirected the segmentation and asked for a root-cause analysis of why the build produced its gaps. Sources: 07-BUYER-PACK.md, 110-PRODUCT-AND-PRICING-BOOK.md, D-0113, D-0116 for the community as lead channel, and the advisor register AG-080 through AG-094 on segments-before-model, commercial sustainability and charge rates. His position: Essentials must be the attractive product for small organisations of roughly three to six people, because most Australians do not work for large organisations and raising that price confines MFC to big buyers only, contradicting the reach the charity exists for; small teams probably do not want a report at all, so their offer should not be built around one; large organisations with budget are where margin comes from and should be steered to the top tier; single founders and lone managers route to the free fortnightly leadership community rather than to a paid product. He also wants the year-long measurement rhythm framed as a case study organisations join, with a diffusion incentive -- an organisation can say it is committed to practising and tracking mental fitness, employees see an employer investing in their whole life, and that visibility is what recruits the next organisation. Conflicts surfaced not resolved: this segmentation runs against AG-080, Rob Dooley&#x27;s position that a small organisation must direct scarce resources at one segment and cannot boil the ocean, and against AG-088&#x27;s review clause to lift the 1500 price once there is momentum. Hunter&#x27;s reach argument and Rob&#x27;s focus argument are both real and the tension is commercial judgement, not arithmetic. Action: feed the segmentation, manager value proposition and diffusion incentive into the running round table rather than opening a competing pricing effort, and separately commission a root-cause analysis of why the beats lacked the education layer, why the SLA was invented, why the manager session was mis-framed and why a reporting floor became a pricing floor. Required checks: adversarial pass on whether the small-organisation price still clears the floor that covers Hunter&#x27;s rate, and on whether the diffusion incentive creates any claim MFC cannot support.</li></ul><h3>Review boundary</h3><p><strong>Internal/AI review:</strong> internal review complete: Pricing was internally checked multiple times across D-0096 and 110-PRODUCT-AND-PRICING-BOOK.md.</p><p><strong>Human or qualified review:</strong> founder decided: Direct founder decisions 2026-08-09 and 2026-08-16; no buyer acceptance implied.</p><h3>When this must be reviewed again</h3><p>Await the committee&#x27;s formal response to ask 1 (adopt the three products at these prices). In parallel, reconcile the Product and Pricing Book&#x27;s older $1,644/$847 rows to D-0113&#x27;s included-manager recomputation without changing price; do not apply D-0114&#x27;s modelled Essentials increase unless the return candidate is authorised and built. Real buyer testing and controlled product build do not need to wait on committee approval. Optionally, tidy D-0096&#x27;s frontmatter and update or retire FINAL-02 so it does not keep showing $2,500/$1,367.</p><h3>All source documents</h3><p class="src"><a href="30-decisions/D-0096-half-day-pricing-rebuild.md" target="_blank" rel="noopener">pricing decision (superseded in substance, frontmatter not yet updated) (D-0096)</a> · <a href="30-decisions/D-0103-product-category-boundary-and-lineup-lock.md" target="_blank" rel="noopener">product category boundary and lineup lock (records the 2026-08-16 price raise) (D-0103)</a> · <a href="30-decisions/D-0113-product-boundary-everything-inside-the-price.md" target="_blank" rel="noopener">included product boundary and recomputed cost model (D-0113)</a> · <a href="30-decisions/D-0114-return-session-is-a-checkin-branching-design-retired.md" target="_blank" rel="noopener">return-session candidate cost model (unapplied) (D-0114)</a> · <a href="60-projects/workshop-evidence-informed-adult/12-evidence-first-rebuild/110-PRODUCT-AND-PRICING-BOOK.md" target="_blank" rel="noopener">Product and Pricing Book (current unit economics, all products)</a> · <a href="60-projects/committee-pack-v1/FINAL-02-pricing-strategy.md" target="_blank" rel="noopener">FINAL-02 Pricing Strategy (stale, still shows $2,500/$1,367)</a></p></div></details>
+
+<div class="foot">
+  <p>This page is part of <a href="../MFC-HUB.html">the MFC Hub</a>. It gives the founder-facing
+  view first; detailed evidence and system records remain available above when needed.</p>
+</div>
+</div>

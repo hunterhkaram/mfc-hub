@@ -1,0 +1,278 @@
+<title>Important updates — MFC Hub</title><meta charset="utf-8"><style>
+  /* MFC brand palette — Blue #0034FF and Navy #151039, sampled from the official
+     logo files (brand-assets/), per .claude/skills/mfc-document-branding. --accent
+     is the brand Blue: structural, on-brand, no independent meaning of its own.
+     --ink/--ink-2/--ink-3 descend from Navy. --good/--amber/--flag stay distinct
+     hues because they carry real, separate meaning (done/attention/blocked) that
+     a blue tint cannot express — the one case the skill's colour rule reserves
+     for a colour outside the brand pair. Sand (#EFEFED) is not used: it is the
+     reversed on-dark logo tint and is close to invisible on a light background. */
+  :root{
+    --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF;
+    --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14;
+    --flag:#A8482F; --flag-soft:#A8482F12;
+    --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --alt:#0034FF; --alt-soft:#0034FF1F;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+      --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+      --amber:#D6A25C; --amber-soft:#D6A25C1c; --flag:#E08A6C; --flag-soft:#E08A6C1c;
+      --good:#7FBF8C; --good-soft:#7FBF8C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  }
+  :root[data-theme="dark"]{ --paper:#0E0C22; --ink:#ECEBF7; --ink-2:#B3AFD1; --ink-3:#8681A8;
+    --rule:#2B2748; --card:#17142E; --accent:#5C7CFF; --accent-soft:#5C7CFF1c;
+    --amber:#D6A25C; --amber-soft:#D6A25C1c; --good:#7FBF8C; --good-soft:#7FBF8C1c;
+    --flag:#E08A6C; --flag-soft:#E08A6C1c; --alt:#5C7CFF; --alt-soft:#5C7CFF1c; }
+  :root[data-theme="light"]{ --paper:#F7F7FB; --ink:#151039; --ink-2:#49456A; --ink-3:#7B77A0;
+    --rule:#E2E1F0; --card:#FFFFFF; --accent:#0034FF; --accent-soft:#0034FF0F;
+    --amber:#93611F; --amber-soft:#93611F14; --good:#3F7A4A; --good-soft:#3F7A4A14;
+    --flag:#A8482F; --flag-soft:#A8482F12; --alt:#0034FF; --alt-soft:#0034FF1F; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 22px 100px}
+  .home-wrap{max-width:1240px}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;gap:5px;align-items:center;overflow-x:auto;
+    padding:10px;margin:-12px -10px 26px;background:color-mix(in srgb,var(--paper) 94%,transparent);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .topnav a{flex:0 0 auto;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:6px;font-size:14px;font-weight:600}
+  .topnav a:hover,.topnav a.active{background:var(--accent-soft);color:var(--accent)}
+  .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:20px;align-items:stretch;margin:4px 0 24px}
+  .hero-main{padding:8px 4px}.hero h1{font-size:36px;letter-spacing:-.025em;max-width:19ch}
+  .spotlight{background:var(--accent);color:#fff;border-radius:12px;padding:22px}
+  .spotlight .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.76;margin-bottom:8px}
+  .spotlight h2,.spotlight p{color:#fff}.spotlight h2{font-size:17px}.spotlight p{font-size:14px;opacity:.88}
+  .area-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:18px;scrollbar-width:thin}
+  .area-tab{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:8px 12px;
+    color:var(--ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+  .area-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-3);
+    text-decoration:none;margin-bottom:18px}
+  .back:hover{color:var(--accent)}
+  .updated{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent);border-radius:5px;
+    padding:6px 12px;display:inline-block;margin-bottom:16px}
+  h1{font-size:26px;line-height:1.24;margin:0 0 8px;font-weight:600}
+  .mission{font-size:17px;color:var(--ink-2);max-width:68ch;margin-bottom:22px}
+  h2{font-size:19px;margin:0 0 12px;font-weight:600}
+  .section{margin:38px 0 0;padding-top:20px;border-top:2px solid var(--rule)}
+  .section:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 12px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  a{color:var(--accent)}
+  a[href^="file://"]::after{content:" (local file)";font-size:11px;color:var(--ink-3)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;color:var(--ink-3)}
+  ul{margin:0 0 12px;padding-left:19px;color:var(--ink-2)}
+  li{margin-bottom:6px}
+  .document{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:16px 0}
+  .document h1{font-size:23px}.document h2{font-size:19px;margin-top:28px}.document h3{font-size:16px;margin-top:22px}
+  .document table{width:100%;border-collapse:collapse;display:block;overflow:auto;margin:14px 0}
+  .document th,.document td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+  .document pre{overflow:auto;background:var(--paper);border:1px solid var(--rule);padding:12px;border-radius:6px}
+
+  .status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:4px;
+    white-space:nowrap;display:inline-block;margin-bottom:14px}
+  .status.done{background:var(--good-soft);color:var(--good);border:1px solid var(--good)}
+  .status.progress{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+  .status.blocked{background:var(--flag-soft);color:var(--flag);border:1px solid var(--flag)}
+  .status.early{background:var(--alt-soft);color:var(--alt);border:1px solid var(--alt)}
+  .status.attention{background:transparent;color:var(--ink-3);border:1px dashed var(--ink-3)}
+  .agent-ref{color:var(--ink-2);font-style:italic}
+
+  .rule{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:0 0 6px}
+  .rule h3{margin:0 0 6px;font-size:15.5px}
+  .rule p:last-child{margin-bottom:0}
+
+  .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:12px 0}
+  .box h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--ink-3)}
+  .box p,.box li{color:var(--ink)}
+  .box p:last-child,.box ul:last-child{margin-bottom:0}
+  .plan{background:var(--paper);border:1px dashed var(--rule);border-radius:6px;padding:12px 15px;margin:12px 0;font-size:14.5px}
+  .plan b{color:var(--ink)}
+  .src{font-size:13px;color:var(--ink-3);margin-top:14px}
+  .src a{color:var(--ink-3);text-decoration:underline;text-decoration-style:dotted}
+  .src a:hover{color:var(--accent)}
+  .viewwork{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;
+    font-weight:600;color:var(--paper);background:var(--accent);border:1px solid var(--accent);
+    border-radius:6px;padding:11px 18px;text-decoration:none;margin:4px 8px 10px 0}
+  .viewwork:hover{opacity:.9}
+  .viewwork .arrow{font-size:14px}
+  .worklinks{margin:4px 0 18px}
+  .next{background:var(--accent-soft);border:1px solid var(--accent);border-radius:9px;
+    padding:18px 21px;margin:20px 0 26px}
+  .next h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 7px}
+  .next p{font-size:17px;color:var(--ink);margin:0}
+  details.record{margin:30px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+  details.record>summary{cursor:pointer;padding:15px 18px;font-weight:600;color:var(--ink)}
+  details.record[open]>summary{border-bottom:1px solid var(--rule)}
+  .record-body{padding:6px 18px 18px;font-size:14.5px;color:var(--ink-2)}
+  .record-body h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--ink-3);margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  .record-body h3:first-child{margin-top:12px;border-top:none;padding-top:0}
+  .record-body li{margin-bottom:10px}
+  .record-body .src{display:block;margin-top:4px}
+  .check{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;
+    text-decoration:none;display:block;color:inherit;transition:.12s}
+  .card:hover{border-color:var(--accent)}
+  .card-top{display:block;margin-bottom:9px}
+  .card h3{margin:0;font-size:15.5px;color:var(--ink)}
+  .card .one{font-size:13.5px;color:var(--ink-3);margin:0}
+  .card .status{white-space:normal;max-width:100%;line-height:1.35;margin:9px 0 0;overflow-wrap:anywhere}
+  .card .meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;
+    color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  .ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:18px 0 8px}
+  .metric{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:13px 15px}
+  .metric b{display:block;font-size:19px;color:var(--ink)}
+  .metric span{font-size:12px;color:var(--ink-3)}
+  .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0}
+  details.agent{border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+  details.agent>summary{cursor:pointer;list-style:none;padding:15px 17px}
+  details.agent>summary::-webkit-details-marker{display:none}
+  .agent-name{font-weight:700;color:var(--ink);display:block}.agent-role{font-size:12px;color:var(--ink-3);display:block;margin-top:2px}
+  .agent-body{padding:0 17px 17px;border-top:1px solid var(--rule)}
+  .agent-body h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin:16px 0 5px}
+  .agent-body p,.agent-body li{font-size:14px}
+  .notice{border-left:4px solid var(--amber);background:var(--amber-soft);padding:15px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .signal{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.04em;padding:4px 8px;border-radius:999px;margin-top:8px}
+  .signal:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .signal.strong{color:var(--good);background:var(--good-soft)}
+  .signal.recent{color:var(--amber);background:var(--amber-soft)}
+  .signal.historical{color:var(--alt);background:var(--alt-soft)}
+  .signal.limited{color:var(--amber);background:var(--amber-soft)}
+  .signal.restricted{color:var(--flag);background:var(--flag-soft)}
+  .signal.none{color:var(--ink-3);background:var(--paper)}
+  .update{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .update:last-child{border-bottom:none}.update-date{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .update h3{font-size:17px;margin:0 0 6px}.update p{font-size:14.5px;margin-bottom:7px}
+  .pathway{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--rule)}
+  .pathway:last-child{border-bottom:none}.pathway h3{font-size:15px;margin:0}.pathway p{font-size:14px;margin:0}
+
+  .tl{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:14px}
+  .tl-row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--rule)}
+  .tl-row:last-child{border-bottom:none}
+  .tl-when{background:var(--card);padding:12px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;color:var(--ink-3);border-right:1px solid var(--rule)}
+  .tl-items{padding:12px 16px;background:var(--paper)}
+  .tl-item{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item b{color:var(--ink)}
+  .tl-item.crit{color:var(--flag)}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero h1{font-size:29px}.spotlight{padding:18px}}
+  @media (max-width:560px){body{font-size:16px} h1{font-size:22px} .wrap{padding:18px 17px 80px}
+    .update,.pathway{grid-template-columns:1fr;gap:5px}
+    .tl-row{grid-template-columns:1fr} .tl-when{border-right:none;border-bottom:1px solid var(--rule)}}
+
+  /* --- action layer --- */
+  .act-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .act-saved{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3)}
+  .act-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:14px 0 18px}
+  .act-strip div{background:var(--card);padding:11px 13px}
+  .act-strip .l{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .act-strip .v{font-weight:600;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .act-strip .v.due{color:var(--flag)}
+  .act-strip .s{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+  .act-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .act-tab{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:7px 14px;color:var(--ink-2);font-size:13px;cursor:pointer;font-family:inherit}
+  .act-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .act-tab:focus-visible,.act-tick:focus-visible,.act-del:focus-visible,.act-add:focus-visible,.act-f:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .act-grp{margin-bottom:18px}
+  .act-grp h4{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;font-weight:600}
+  ul.act-list{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+  li.act{display:grid;grid-template-columns:22px 1fr auto;gap:11px;background:var(--card);border:1px solid var(--rule);border-left-width:3px;border-radius:8px;padding:11px 13px}
+  li.act.hot{border-left-color:var(--flag)} li.act.warm{border-left-color:var(--amber)} li.act.norm{border-left-color:var(--rule)}
+  li.act.done{opacity:.45} li.act.done .act-t{text-decoration:line-through}
+  .act-tick{width:18px;height:18px;margin-top:3px;border:1.5px solid var(--ink-3);border-radius:4px;background:transparent;cursor:pointer;padding:0;display:grid;place-items:center;color:var(--accent);font-size:12px;line-height:1}
+  .act-tick:hover{border-color:var(--accent)}
+  .act-t{font-weight:600;margin:0 0 3px;color:var(--ink)}
+  .act-m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:3px 13px;font-variant-numeric:tabular-nums}
+  .act-m .w{color:var(--accent);font-weight:600}
+  .act-m .d{font-weight:600} .act-m .d.hot{color:var(--flag)} .act-m .d.warm{color:var(--amber)}
+  .act-n{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:72ch}
+  .act-del{border:none;background:transparent;color:var(--ink-3);cursor:pointer;font-size:17px;line-height:1;padding:0 3px;align-self:start}
+  .act-del:hover{color:var(--flag)}
+  .act-adder{background:var(--card);border:1px dashed var(--rule);border-radius:10px;padding:15px}
+  .act-fields{display:grid;grid-template-columns:1fr 170px 150px;gap:8px;margin-bottom:8px}
+  .act-f{font-family:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink);width:100%}
+  textarea.act-f{resize:vertical;min-height:40px;margin-bottom:9px}
+  .act-add{font-size:13px;padding:9px 18px;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
+  .act-empty{color:var(--ink-3);font-size:14px;padding:12px 0}
+  @media (max-width:640px){.act-fields{grid-template-columns:1fr}}
+</style><div class="wrap">
+<nav class="topnav" aria-label="MFC Hub sections"><a class="" href="../MFC-HUB.html#overview">Overview</a><a class="" href="../../60-projects/mfc-master-strategy-v1/mfc-strategy.html">Strategy</a><a class="" href="mission-strategy.html">Mission & strategy</a><a class="" href="movement-ripples.html">Movement & ripples</a><a class="active" href="important-updates.html">Important updates</a><a class="" href="../MFC-HUB.html#actions">Actions</a><a class="" href="../MFC-HUB.html#areas">Work areas</a><a class="" href="intelligence-system.html">Intelligence system</a></nav><a class="back" href="../MFC-HUB.html">&larr; Back to the overview</a>
+<span class="updated">MFC Hub · updated 2026-09-16</span><h1>Important updates</h1>
+<p class="mission">Material changes and things arising—explained by what they mean for MFC, not listed as technical activity.</p><div class="notice"><strong>What belongs here.</strong> Only a change that affects direction, priority, readiness, risk, evidence, an opportunity or an external response. Routine file edits and agent activity stay out unless they alter an organisational conclusion. Quiet days should remain quiet.</div><div class="section"><article class="update"><div class="update-date">2026-09-12<br>correction</div><div>
+<h3>Lead-generation control corrected: D-0116 is superseded; the 11 September working session is planning, not execution</h3><p><strong>Why it matters:</strong> The live topic register still presented D-0116&#x27;s withdrawn lead engine as current. D-0127 is an approved founder direction dated 5 September, so later work must use it as the controlling source without treating the candidate plan as landed. This is a narrow provenance correction, not a lead-plan propagation. The new Hunter–Jake recording gives a useful next internal step, but must not silently become a price, launch, outreach, community, calendar or tool decision.</p>
+<p><strong>What it changes:</strong> D-0127 withdrew D-0116 and directs a re-plan through existing gatherings, an ambassador programme, evidence-grounded low-activity social and evaluation—not construction—of MFC&#x27;s own community. The v3 definition of done, candidate plan and independent review exist but are not an adopted execution plan; they retain material founder choices and a named pre-execution gap. In the 11 September recorded working session, Hunter and Jake said warm-lead organisation collation had not been done and should first be defined internally before wider input. They also discussed a possible early offer, community formats, a DM tool and a Monday discussion. Those are ideas or intentions only: no outreach, discount, sale, launch, calendar booking, community build, tool choice or external action was verified. No Hub projection was regenerated; affected social and community projections are explicitly marked pending regeneration, and no Hub is current control for this correction.</p><p><strong>What happens next:</strong> Use the v3 candidate plan and its review to close only named internal gaps, define the warm-lead exercise before broadening it, and prepare Hunter a short adopt/revise/hold recommendation. D-0127 directs the marketing-leads topic record and Hub to update when the plan lands, not before. The current evidence and candidate plan do not authorise organisational contact, discounts, publication, scheduling, an MFC-owned community build, DM automation or treating the recorded discussion as an approved plan.</p>
+<p class="src">Who: Hunter for any strategy, pricing, offer or external-action decision; MFC intelligence system for source reconciliation and bounded internal planning · Confidence: Direct read of approved D-0127, the frozen v3 definition of done, candidate plan and independent review, plus the verbatim 11 September Fathom transcript. The recording establishes discussion and intent only; live external execution was not read back.</p></div></article><article class="update"><div class="update-date">2026-09-11<br>source conflict</div><div>
+<h3>Business-name renewal details conflict across current MFC sources; official verification is needed before 14 September</h3><p><strong>Why it matters:</strong> A live internal action record places a possible renewal deadline within three days and marks the work Not started. The system can safely verify the source now, but it must not turn either internal record into a financial action or a claimed official deadline.</p>
+<p><strong>What it changes:</strong> Live MFC Homepage Action Register entry ACT-016 says renew MFC&#x27;s business name before 14 September 2026, offers one year for $99 or three years for $189, and is Not started. In the raw 9 September Fathom discussion, Hunter reported a possible seven-day window and $50 per year. The Action Register is direct current internal operational readback, but neither source is an official registration notice or account record. Two narrow Gmail searches for business-name and renewal subjects after 1 August returned no matching messages; that is a search-bounded access limit, not proof that no official notice exists. The date, cost and renewal status are preserved as an unresolved conflict.</p><p><strong>What happens next:</strong> Read the official business-name registration notice or account today. Then give Hunter a short recommendation with the verified expiry, available terms, exact cost and required action. Hunter decides any purchase; do not renew, pay, schedule or claim resolution before that readback.</p>
+<p class="src">Who: Hunter for any financial decision; MFC intelligence system for source verification and a concise recommendation · Confidence: Direct live MFC Homepage ACT-016 and raw 9 September Fathom readback establish the conflicting internal records. Official registration evidence is unavailable in this run; Gmail absence is limited to the two exact searches.</p></div></article><article class="update"><div class="update-date">2026-09-10<br>external response</div><div>
+<h3>Hunter and Onno&#x27;s 9 September governance follow-up is recorded; discussed next steps remain unverified proposals</h3><p><strong>Why it matters:</strong> The recording gives the system current planning context for Committee triage and an operational-plan draft. It does not turn discussed dates, AGM matters, board materials, measurement follow-up or business-name renewal into approved work.</p>
+<p><strong>What it changes:</strong> The Fathom recording captures Hunter and Onno discussing proposed dates and a possible monthly rhythm, AGM preparation, governance roles, board-paper templates, a possible measurement conversation and a reported business-name renewal window. The checked primary Calendar has no matching Committee event in the bounded October–December search. No constitution, ACNC or official business-name registration record, formal resolution, ratification, payment, renewal or external action was read back. A scoped Gmail query returned no incoming Rob message after 7 September, excluding spam and trash; that is not all-channel non-response, consent, approval or a decision. The live Action Register&#x27;s status distribution remains 16 Complete, 21 In progress, 20 Not started and 1 Waiting; it remains a queue, not proof of outcomes.</p><p><strong>What happens next:</strong> Prepare a compact founder decision map and operational-planning draft. Verify the official business-name registration record before reporting a deadline or recommending renewal. Retain Rob&#x27;s feedback route and do not schedule, renew, spend, send or infer approval from the recorded discussion or a non-response.</p>
+<p class="src">Who: Hunter for a financial, strategy or governance decision; MFC intelligence system for source-grounded synthesis · Confidence: Direct Fathom recording readback plus bounded live Calendar, Gmail and MFC Homepage reads. Claims about schedule, constitution/ACNC, registration, renewal, payment, formal governance and full-channel correspondence remain deliberately unverified.</p></div></article><article class="update"><div class="update-date">2026-09-08<br>external response</div><div>
+<h3>7 September Committee catch-up was recorded; no Rob reply was visible in checked Gmail evidence</h3><p><strong>Why it matters:</strong> The feedback conversation is now a verified recorded input rather than a scheduled event. It adds material advisory positions for founder triage, without changing the strategy or turning meeting discussion into approval.</p>
+<p><strong>What it changes:</strong> The raw Fathom recording verifies Hunter, Rachel Willis, Onno van-es and Jake Pepper participated; no Rob speaker appears. The Advisor Guidance Register now holds 378 captured entries plus one withdrawn unsourced entry, including 52 M12 advisory positions from the catch-up; all remain pending Hunter approval. Hunter&#x27;s same-day follow-up offers Rob verbal or written feedback and states an intended Friday timing point. No Rob reply was visible in the checked Gmail evidence. The live Action Register&#x27;s status distribution is unchanged: 16 Complete, 21 In progress, 20 Not started and 1 Waiting; it remains a queue, not proof of outcomes.</p><p><strong>What happens next:</strong> Prepare a compact founder decision map and operational-plan draft using M12 only as pending advice. Retain Rob&#x27;s feedback route through the stated timing point. Do not treat a non-response, meeting discussion or advisory support as approval, consent or strategy finalisation.</p>
+<p class="src">Who: Hunter for any approval or strategy decision; MFC intelligence system for source-grounded synthesis · Confidence: Direct raw Fathom transcript and Gmail full-message readback; Advisor Guidance Register and live MFC Homepage bounded-range readback. Participation evidence is recording-based, and the no-reply observation is limited to the checked Gmail evidence.</p></div></article><article class="update"><div class="update-date">2026-09-04<br>external response</div><div>
+<h3>Committee feedback catch-up is scheduled for 7 September, 7:30pm; individual RSVPs are mixed</h3><p><strong>Why it matters:</strong> The practical feedback conversation now has a live time and Meet link, so the system can prepare against a real next step rather than a tentative option. It does not change the commercial strategy or turn the meeting into an approval gate.</p>
+<p><strong>What it changes:</strong> The live Calendar schedules ‘MFC Committee Meeting Catch-up — Commercial Strategy Review’ for 7 September, 7:30–8:30pm Australia/Sydney. Hunter, Onno and Rachel Willis at rachelwillis.ccc@outlook.com have accepted; Rob, Jake and Rachel at rachel@theplanningandpracticehub.com.au are still marked needsAction. Rachel&#x27;s calendar-acceptance email confirms her RSVP. No substantive Rob or Rachel feedback, approval, consensus or policy decision is verified.</p><p><strong>What happens next:</strong> Prepare the compact founder decision map for the scheduled catch-up and retain the written-feedback route. Treat RSVP status as invitation response only; do not claim who will attend, that the meeting will occur, or that AG-225 has become a binding condition.</p>
+<p class="src">Who: Hunter for any meeting outcome or policy decision; MFC intelligence system for source-grounded synthesis · Confidence: Direct Calendar full-event readback verifies the scheduled time, Meet link and current RSVP statuses; Rachel&#x27;s acceptance email independently confirms her RSVP.</p></div></article><article class="update"><div class="update-date">2026-09-03<br>external response</div><div>
+<h3>Committee follow-up advanced: Rob and Rachel are available for 7 September; 6:30pm is proposed, not booked</h3><p><strong>Why it matters:</strong> Both people can now use the same feedback option. That makes a short conversation practical if Hunter chooses it, without changing the strategy, creating a booking, or turning Onno&#x27;s advice into a binding condition.</p>
+<p><strong>What it changes:</strong> At the 3 September check, Rachel replied that she can do 7 September and asked whether 6:30pm is the intended time. Together with Rob&#x27;s availability, that established a possible time only. Primary-calendar searches for MFC and Rob, bounded to 7 September, found no event for the call. No substantive Rob or Rachel feedback, approval, consensus or policy decision was verified at that check.</p><p><strong>What happens next:</strong> Keep the compact founder decision map moving. If Hunter chooses to use the candidate 7 September 6:30pm time, arrange it through the normal human-controlled path; otherwise continue the existing written-feedback route. Do not claim a booked meeting or that AG-225 has been satisfied.</p>
+<p class="src">Who: Hunter for any meeting or policy decision; MFC intelligence system for source-grounded synthesis · Confidence: Direct Gmail full-message readback verifies Rob&#x27;s and Rachel&#x27;s availability and Rachel&#x27;s question. The no-booking observation is limited to the primary-calendar MFC and Rob searches bounded to 7 September.</p></div></article><article class="update"><div class="update-date">2026-09-02<br>external response</div><div>
+<h3>Committee follow-up advanced: Rob is available for the 7 September option; no meeting or approval is confirmed</h3><p><strong>Why it matters:</strong> Hunter&#x27;s request for commercial-strategy feedback now has a direct response. It makes a possible feedback conversation easier to arrange without changing the strategy, creating a booking, or turning Onno&#x27;s advice into a binding condition.</p>
+<p><strong>What it changes:</strong> Rob replied that 7 September works for him. At the 2 September check, no Rachel reply was found in the checked Gmail evidence and no MFC calendar event was found in the 1–3 September search. Onno&#x27;s chair-authored written notes are now recorded as advisory source material; they are not formal signed minutes, a policy decision, or approval.</p><p><strong>What happens next:</strong> Keep the compact founder decision map moving. If Hunter chooses to use the 7 September option, arrange it through the normal human-controlled path; otherwise continue to collect written feedback. Do not claim a booked meeting or finalisation prerequisite from the current evidence.</p>
+<p class="src">Who: Hunter for any meeting or policy decision; MFC intelligence system for source-grounded synthesis · Confidence: Direct Gmail readback verifies Hunter&#x27;s request and Rob&#x27;s availability. The no-booking statement is limited to the checked 1–3 September MFC calendar search; no substantive Rob or Rachel feedback is yet verified.</p></div></article><article class="update"><div class="update-date">2026-09-01<br>external response</div><div>
+<h3>Committee feedback is captured for founder triage; no new strategy has been adopted</h3><p><strong>Why it matters:</strong> The 31 August Committee meeting and Eimear&#x27;s same-day email now have a controlled home. The Advisor Guidance Register contains 326 captured entries, one withdrawn as unsourced; every remaining entry is pending Hunter approval. This makes the feedback usable without turning it into policy by accident.</p>
+<p><strong>What it changes:</strong> The system proposes feedback triage as the first short-term operational focus; it does not adopt a new portfolio strategy. The response highlights a benefit-first tone, one clear caveat location, clearer product presentation and proportionate non-clinical framing as feedback to assess—not decisions already made. Onno&#x27;s pending feedback recommends obtaining Rob and Rachel&#x27;s input before commercial-strategy finalisation.</p><p><strong>What happens next:</strong> Prepare a compact founder decision map grouped by change type, with a recommendation and exact source basis for each bundle. Do not redraft or send the paper until Hunter decides; keep qualified delivery safeguards distinct from the paper&#x27;s non-clinical framing. If Hunter elects to finalise the strategy, use a controlled return path for Rob and Rachel&#x27;s input and then the full Committee.</p>
+<p class="src">Who: Hunter for approval; MFC intelligence system for source-grounded synthesis · Confidence: Verified against the current Advisor Guidance Register, current Committee topic record, live Committee-calendar read and Eimear email readback. Transcript attribution remains an acknowledged limit; email attribution is direct.</p></div></article><article class="update"><div class="update-date">2026-08-31<br>founder strategy decision</div><div>
+<h3>D-0116 reorders where leads come from; D-0115 fixes the group cap at twenty and adds a price review clause</h3><p><strong>Why it matters:</strong> The lead engine is now consistent social media, the free fortnightly online leadership community with pre-recorded sessions, and speaking at events that already happen. WHS consultants, brokers, peak bodies and CEO peer groups are retained as organisation-reach routes rather than the primary lead source. Nothing here has produced a sale, no community session has run, and the community is not authorised for build.</p>
+<p><strong>What it changes:</strong> FINAL-03 carries a document-level pointer plus dated correction blocks at sections 3, 4 and 7; its Executive Summary and section 1 first-contact rows deliberately still show the pre-correction ordering and are flagged rather than retro-edited. The marketing-leads, social-media and community-events topic records are updated. D-0115 separately fixes the group cap at twenty for Essentials and Foundations regardless of co-facilitation, with Introduction uncapped, adds Rob Dooley&#x27;s price review clause revisiting in about six months, adopts a monthly or quarterly organisation check-in, and retires the under-twenty reporting floor in favour of D-0114&#x27;s no-counts rule.</p><p><strong>What happens next:</strong> Regenerate the Hub and clear its integrity check, then run social and events only. The community cannot launch until D-0111 s3 authorisation and its pre-session gates close. Four divergences from the committee paper sent 2026-08-17 remain unreconciled: the demotion of consultants, the free community as the engine, the paper&#x27;s three-month test of five quotes issued via consultant outreach which this ordering cannot produce, and monthly versus fortnightly cadence. Separately R1 and FINAL-03 section 6 find personal-profile posting is a slow trust-building asset and NOT lead generation; D-0116 places social first against that finding on founder judgement, so R1 must not be cited in support of it.</p>
+<p class="src">Who: Hunter · Confidence: Founder decision recorded and propagated; not independently evidenced and no channel has produced a sale.</p></div></article><article class="update"><div class="update-date">2026-08-30<br>founder product decision</div><div>
+<h3>D-0114 replaces the branching return design with a check-in candidate; D-0113 clarifies what the product includes</h3><p><strong>Why it matters:</strong> The 29 August triads remain the checked participant-core teaching definition, but they cannot be read as a commercial exclusion. Essentials and Foundations include a return session, written report and manager session in their current price; the new return design is still an internal candidate, not delivery clearance.</p>
+<p><strong>What it changes:</strong> D-0113 leaves prices unchanged and treats the triad exclusions as facilitator scoping only. D-0114 retires TEACH/PRACTICE/IMPLEMENT classification, allocation thresholds, the response floor and the paper ballot. Return Session v2 uses a shared check-in opening, then deeper practice for Essentials and a conditional Foundations collective piece. Three propagation reviews and a separate adversarial safeguarding review corrected the candidate&#x27;s internal reasoning; this is not clinical, legal, privacy, insurer, rehearsal or participant evidence.</p><p><strong>What happens next:</strong> Rebuild only the relevant materials from the participant-core triads plus the current return candidate, preserve D-0110&#x27;s per-engagement gate on the Foundations collective piece, and resolve the pre-session form routing boundary before any use. Keep ACT-039 marked as stale until an authorised external reconciliation occurs.</p>
+<p class="src">Who: MFC intelligence system for controlled reconciliation; Hunter and qualified reviewers retain their respective decisions · Confidence: verified against d0113 d0114 return session v2 and independent review records</p></div></article><article class="update"><div class="update-date">2026-08-29<br>product definition</div><div>
+<h3>Current participant-core service triads now define Introduction, Essentials and Foundations internally</h3><p><strong>Why it matters:</strong> MFC now has one checked participant-core source for each current service, rather than treating older HTML packages and decks as live delivery definitions. The separately governed manager component remains outside those triads.</p>
+<p><strong>What it changes:</strong> The 60-Minute Introduction, 90-Minute Essentials and 270-Minute Foundations are each defined by a final service pack, a named facilitator packet and a shared Operations specification. The navigation record is an entry point; a service pack alone is not the complete triad. Section, cross-pack and fresh-context independent checks are recorded. The 90/100 score is internal artefact quality only; it is not a delivery, governance, participant-effectiveness or founder-approval result. The live MFC Homepage ACT-039 remains stale against this definition and was not edited.</p><p><strong>What happens next:</strong> Hunter reviews the triads as the internal baseline. Any deck, guide or participant material then rebuilt from them needs the registered re-checks; qualified delivery gates and any participant-testing decision remain separate.</p>
+<p class="src">Who: MFC intelligence system for controlled reconciliation; Hunter and qualified reviewers retain their respective decisions · Confidence: verified against current internal definition independent review and google sheets readback</p></div></article><article class="update"><div class="update-date">2026-08-28<br>correction</div><div>
+<h3>Separate manager-session and first Introduction and Essentials deck candidates were built; delivery remains gated</h3><p><strong>Why it matters:</strong> The 28 August handover records build progress that remains useful as historical evidence. The 29 August controlled triads now supersede those artefacts as the current participant-core definition, so this update must not imply that the separate manager component or legacy decks are current delivery sources.</p>
+<p><strong>What it changes:</strong> The handover records a shared approximately 60-minute manager session for Essentials and Foundations as a separate internal candidate under D-0111, plus first Introduction and Essentials deck candidates. None is delivery-cleared. The current internal definition is now the 29 August service triads; the former HTML artefacts are rebuild inputs only.</p><p><strong>What happens next:</strong> If a manager component or former deck is progressed, re-ground it in D-0111 and the current triads, then run the registered material checks and rehearsal. Keep qualified safeguarding review, participant testing and founder delivery sign-off separate.</p>
+<p class="src">Who: MFC intelligence system for internal reconciliation; Hunter and qualified reviewers retain their respective gates · Confidence: verified against 2026 08 28 handover decisions and live artifacts</p></div></article><article class="update"><div class="update-date">2026-08-17<br>external response</div><div>
+<h3>FINAL-08 circulated to the full committee; chair-approved, feedback expected at the 31 August meeting</h3><p><strong>Why it matters:</strong> The committee paper is no longer waiting on the chair or on Hunter to send it. It is now genuinely with the full 7-person committee, and the system holds Gmail-verified evidence of the send, not just a user report.</p>
+<p><strong>What it changes:</strong> Onno (chair) reviewed the rebuilt FINAL-08 and confirmed by Gmail-verified reply (2026-08-17T09:09:55Z) that it captures the committee&#x27;s four questions well and should go out as-is. Hunter then circulated FINAL-08 to all 7 committee members (Gmail-verified, 2026-08-17T09:50:56Z) with a calendar invite for the next meeting, Mon 31 Aug 2026 7:30-8:30pm AEST, sent to the same list. The FINAL-13 market-gap companion was not attached to this circulation (Onno and Jake only, by Hunter&#x27;s choice).</p><p><strong>What happens next:</strong> Await committee feedback, expected live at the 31 August meeting; reconcile it into the register when it arrives.</p>
+<p class="src">Who: Full MFC Committee; Hunter retains founder authority · Confidence: verified gmail readback</p></div></article><article class="update"><div class="update-date">2026-08-17<br>correction</div><div>
+<h3>Pricing was stale in the register; corrected to the current founder-decided figures and registered as a formal committee ask</h3><p><strong>Why it matters:</strong> The register had shown Foundations at its original $2,500 base and flagged a cost seam as unreconciled, when Hunter had already raised it twice since (most recently 2026-08-16) to $3,900 base + $95/person, and it was already sent to the committee inside FINAL-08 as a formal approval ask, not just informational content.</p>
+<p><strong>What it changes:</strong> Foundations, Essentials and Basics unit economics were verified directly against D-0103, 110-PRODUCT-AND-PRICING-BOOK.md and FINAL-08 and rewritten to current reality; D-0096&#x27;s own frontmatter (incorrectly self-described as not superseded) was corrected; pricing is now explicitly tracked as a live committee approval ask, not background context.</p><p><strong>What happens next:</strong> Await the committee&#x27;s response to the pricing ask alongside the rest of FINAL-08 at the 31 August meeting.</p>
+<p class="src">Who: MFC intelligence system; Hunter retains founder finalisation · Confidence: verified against primary sources</p></div></article><article class="update"><div class="update-date">2026-08-17<br>intelligence system</div><div>
+<h3>A complete HREC and data-governance strategy existed since 12 August but was invisible on the Hub</h3><p><strong>Why it matters:</strong> The work was real and independently checked, but because it was never linked into the measurement topic&#x27;s canonical sources, the Hub could not show it existed — a control not connected to its own register fails exactly as hard as one that was never built.</p>
+<p><strong>What it changes:</strong> The HREC pathways and data-strategy record, plus its Monday.com tracker, are now registered under the measurement topic&#x27;s canonical_sources and operational_destinations and appear on its Hub page.</p><p><strong>What happens next:</strong> Complete the registered human-review gates for measurement before freezing a cohort version, as already tracked.</p>
+<p class="src">Who: MFC intelligence system; Hunter retains founder finalisation · Confidence: verified from local records</p></div></article><article class="update"><div class="update-date">2026-08-13<br>workshop design intelligence</div><div>
+<h3>The first Half-Day role-lens synthesis changed the build; its assurance has now been corrected</h3><p><strong>Why it matters:</strong> The synthesis found real Radar, retrieval, language and participation issues, but a corrective audit found that one shared report had been counted as many specialist executions.</p>
+<p><strong>What it changes:</strong> The artifact corrections remain. The run is now labelled as same-context consultation, not a bounded or independent panel; full scores are withheld, five reusable findings are learning candidates only, and new calls must preserve a five-layer task packet and unique contract-complete output.</p><p><strong>What happens next:</strong> Run a small contract-complete fresh-context panel, reconcile it and return verified learning before Compass, Hunter review and rehearsal.</p>
+<p class="src">Who: MFC intelligence system; Hunter retains founder finalisation · Confidence: useful artifact corrections limited specialist assurance contract test pending</p></div></article><article class="update"><div class="update-date">2026-08-13<br>intelligence system</div><div>
+<h3>Twenty specialists now have governed starting toolkits</h3><p><strong>Why it matters:</strong> A registered role no longer has to arrive with only a job description; its professional principles, MFC position, source links, open questions and learning state can be loaded and maintained.</p>
+<p><strong>What it changes:</strong> All 25 roles show an equipment state. Twenty roles have source-linked baselines, two remain qualified-human boundaries and three conditional roles are explicitly not yet equipped. Weekly evidence can create governed update candidates, but no baseline is represented as professional accreditation.</p><p><strong>What happens next:</strong> Evaluate pack quality across additional live, ambiguity, refusal and stale-source cases; preserve only reconciled learning.</p>
+<p class="src">Who: A-05, A-06, A-23 and SYS-04 under Hunter authority · Confidence: structurally verified live evaluation pending</p></div></article><article class="update"><div class="update-date">2026-08-13<br>external response</div><div>
+<h3>Jake and Onno now have the committee material</h3><p><strong>Why it matters:</strong> The committee work is no longer waiting to be sent; the next meaningful change is their response.</p>
+<p><strong>What it changes:</strong> Committee send is now an external-review wait state, not MFC&#x27;s strongest active action.</p><p><strong>What happens next:</strong> Reconcile their feedback into the existing material when it arrives; do not redraft in the meantime.</p>
+<p class="src">Who: Jake and Onno · Confidence: verified</p></div></article><article class="update"><div class="update-date">2026-08-13<br>delivery readiness</div><div>
+<h3>The Half-Day package has useful role-lens corrections, but its specialist contract is not yet complete</h3><p><strong>Why it matters:</strong> The earlier handback treated internal agreement too much like completion; the system must now determine and explain the strongest design before asking Hunter to finalise it.</p>
+<p><strong>What it changes:</strong> The system compared three architectures and applied real corrections, then corrected its own overstatement—one shared-context synthesis is not many bounded specialist reviews.</p><p><strong>What happens next:</strong> Run the small contract-complete panel and learning return, then Compass and Hunter viewing before rehearsal.</p>
+<p class="src">Who: MFC intelligence system; Hunter retains finalisation authority · Confidence: useful corrections verified specialist assurance partial</p></div></article><article class="update"><div class="update-date">2026-08-13<br>funding</div><div>
+<h3>No current grant application is recommended</h3><p><strong>Why it matters:</strong> Live verification removed the false urgency created by older funding material.</p>
+<p><strong>What it changes:</strong> FRRR is deferred, Parramatta is closed and Camden remains conditional on evidence not held in the vault.</p><p><strong>What happens next:</strong> Reconcile genuine pre-existing Camden eligibility evidence if it exists; otherwise monitor later opportunities.</p>
+<p class="src">Who: MFC · Confidence: current primary sources checked</p></div></article><article class="update"><div class="update-date">2026-08-13<br>intelligence system</div><div>
+<h3>Agent activity now has one evidence source</h3><p><strong>Why it matters:</strong> Hunter can see what each registered role provides and what routed evidence says it contributed.</p>
+<p><strong>What it changes:</strong> The Hub and the open-questions tool now read the same validated routing records; the bench&#x27;s retained use counters are explicitly non-authoritative.</p><p><strong>What happens next:</strong> Record genuinely material specialist work in a linked routing record, then let the existing Hub cycle validate and display it.</p>
+<p class="src">Who: MFC Intelligence System · Confidence: verified from local records</p></div></article></div><div class="foot"><p>This is a generated view of the controlled MFC record. It explains the current position; it does not create a second source of truth.</p></div></div>
