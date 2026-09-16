@@ -52,6 +52,36 @@ amendment_note: "2026-09-16 (Hunter direct, founder thesis capture): ONE section
 | What helps around the pathway | Shift tools, exercises / methods, anchors, system basics, reflection, coming back after missed moments, taking responsibility and reconnecting where needed, reinforcement. |
 | Evidence and safety | The deeper explanation and claim boundaries. |
 
+## The three rep types (added 2026-09-16, `D-0136`, provisional, on Hunter product approval)
+
+**Authority and status.** `D-0136`, decided by Hunter 2026-09-16, named this as a consequence.
+Adopted under delegated product authority (`K-11`); committee ratification owed, as for this whole
+record. Verbatim source: Hunter's 2026-08-31 capture, where the three types were already articulated
+and never given a home.
+
+**The locked rep definition is unchanged.** A moment may be caught *"before it happens, while it is
+happening, or afterwards"*, and *"the outcome does not determine whether it counts."* This names
+three forms inside that definition rather than narrowing it.
+
+| Type | What it is | Counts? |
+|---|---|---|
+| **Live** | The moment is caught while it is happening, and the next move is chosen in it | Yes. **The full form** |
+| **Rehearsal** | The routine is run against a moment that is expected but not yet here | Yes |
+| **Reflection** | The moment has passed and is caught afterwards, with the next move named | Yes |
+
+**Why only the first is called the full form, and why the other two still count.** Naming a
+hierarchy without excluding anything is the point. **Live is what the practice is for. Rehearsal and
+reflection are how someone gets there**, and a person who only ever manages reflection is practising,
+not failing.
+
+**What this replaces.** MFC had begun describing the practice as *drilled*, which imports a
+performance standard the permissive definition deliberately refuses, and which MFC cannot observe or
+measure. `D-0136` retired that language. **The comparative argument now rests on the practice being
+cued by a real moment in the person's own life**, which is true of all three types and does not need
+the word.
+
+**Claims boundary.** `K-08` unchanged. None of this claims an effect; it names forms of an attempt.
+
 ## Why catching comes first — attention, and what it produces (added 2026-09-16, provisional, on Hunter product approval)
 
 **Authority and status.** Hunter directed this addition, 2026-09-16, in a single unbroken voice
