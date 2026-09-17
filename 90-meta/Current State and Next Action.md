@@ -2,9 +2,9 @@
 type: current-state-pointer
 status: active-derived-view
 owner: hunter
-updated: 2026-09-10
-last_verified: "2026-09-10"
-verification_scope: "2026-09-10 workshop-delivery rewritten from the 16-from-scratch-redesign-v1 build files and Hunter's own recorded decisions, read directly rather than from any summary. Committee, grants, measurement and website retain their 2026-09-04 scope and are NOT re-verified here."
+updated: 2026-09-17
+last_verified: "2026-09-17"
+verification_scope: "2026-09-17 grand-strategy rewritten from the consolidation build. Workshop-delivery section retains its 2026-09-10 scope and is NOT re-verified here."
 authority: D-0101
 canonical_portfolio_control: 90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml
 confidentiality: internal
@@ -14,7 +14,44 @@ confidentiality: internal
 
 This is a compact derived resume pointer, not independent authority. For an organisation-wide priority question, resolve the `portfolio` section of `90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml`, inspect the leading topics' linked sources and compare the whole portfolio. Approved decisions and canonical operational artifacts retain their own authority.
 
-## Strongest organisation-wide next action
+## ⚑ Strongest organisation-wide next action, 2026-09-17
+
+**The consolidated strategy exists. Two documents, both built today:**
+
+- `05-ready-to-share/strategy/THE-MFC-STRATEGY.md` — the reference, 14pp. Consolidates the 6 July
+  Committee Business Plan, the 16 August committee paper reviewed on 31 August, the 19 August
+  strategy page, and the market assessment of 14 September.
+- `05-ready-to-share/strategy/THE-MFC-BOARD-PAPER.md` — 6pp, drawn from it, nine component asks.
+
+**What changed today, and it matters for anything reading older files:**
+
+| | |
+|---|---|
+| **April is not a source** | Founder ruling. `C-03` and `C-14` closed on that basis. The April Strategic Direction is history |
+| **The pillars were rebuilt on 19 August** | Message and Movement · Education and Evidence · Organisation · Commercial Sustainability. `K-10` is superseded on the names; its thirteen sub-priorities are the approved April wording and are carried across. Crosswalk at `60-projects/mfc-master-strategy-v1/PILLAR-CROSSWALK-2026-09-17.html` |
+| **`C-04` is resolved** | The Commercial Model FY2026-27 Drive family is outdated. **`60-projects/committee-pack-v1/FINAL-08-committee-paper.md` is the authoritative commercial document**, with pricing superseded by `D-0129` |
+| **`C-18` is live again** | The 17 August deferral was lifted by the founder on 17 September |
+| **Safeguarding has an owner-shaped hole** | April named it; the current pillar 3 did not carry it. It is now named in the strategy and is ask 8 to the committee |
+
+**⛔ Three things that have caught three separate sessions today. Do not repeat them.**
+
+1. **People at Work is being decommissioned.** Platform access ends **2 October 2026**. Any plan
+   naming it needs rewriting.
+2. **The manager-forum lead-generation model was withdrawn 5 September** (`D-0127`). The live plan is
+   `60-projects/lead-generation-v3/`.
+3. **Do not call the ANU thirteen-item enactment scale validated.** Its authors call it bespoke and it
+   failed to detect its own intervention. Instrument choice goes to Eimear and Debra.
+
+**⚑ Two founder decisions still block the product build**, and the product is step one of everything:
+the spine grouping (`D-0131` versus the three delivery scripts) and the moment gallery's corpus, which
+does not exist. Both are laid out with evidence in
+`60-projects/mfc-master-strategy-v1/DECISIONS-FOR-HUNTER-2026-09-17.html`.
+
+---
+
+## Workshop delivery, as at 2026-09-10 (not re-verified today)
+
+### Prior leading action, 2026-09-10
 
 ⚑ **Build the final services plan with Hunter, then implement his 2026-09-10 decisions into the
 Foundations script.** He asked for exactly this at the end of the 10 September session: *"I then want
