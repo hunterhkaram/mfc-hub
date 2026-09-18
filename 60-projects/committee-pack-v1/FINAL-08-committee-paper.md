@@ -1,4 +1,5 @@
 ---
+superseded_in_part_by: D-0140 (2026-09-18) - the product line-up and every price
 mfc_topic: committee-send
 artifact_role: candidate
 canonical_source: 60-projects/committee-pack-v1/FINAL-06-two-product-model.md
@@ -73,6 +74,17 @@ claims_boundary: >
   productivity effects, because it cannot collect that data.
 status: internal candidate, not committee-ratified, not legally reviewed, not privacy-reviewed, not delivery-cleared.
 ---
+
+> ## PRICES AND PRODUCTS SUPERSEDED, 2026-09-18, by `D-0140`
+>
+> **This is the paper the committee saw on 16 August and reviewed on 31 August, and it is not edited.**
+> It remains MFC's authoritative commercial document for its reasoning, its structure and its asks.
+>
+> **What has changed since.** MFC goes to market with **two products, not three**; Essentials is
+> retired as a sold product; **measurement is not removable**; the hour is banded at $600, $800 and
+> $1,000; materials are $50 and $25; and the half-day loaded floor is **$1,767.18**.
+>
+> **Read it for the model. Take no price or product line-up from it.**
 
 # Executive summary
 

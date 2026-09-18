@@ -14,6 +14,29 @@ confidentiality: internal
 
 This is a compact derived resume pointer, not independent authority. For an organisation-wide priority question, resolve the `portfolio` section of `90-meta/controlled-automation-v1/topic-control/canonical-topic-register.yml`, inspect the leading topics' linked sources and compare the whole portfolio. Approved decisions and canonical operational artifacts retain their own authority.
 
+
+**⚑ COMMERCIAL MODEL REBUILT, 2026-09-18. `D-0140`.**
+
+| | |
+|---|---|
+| **Two products, not three** | A half day for organisations, a one-hour session for talks and communities. **Essentials is retired as a sold product** |
+| **The half day** | **$3,900 + $95 a person**, capped at 20. Loaded floor **$1,767.18** |
+| **The hour** | **$600** up to 20, **$800** to 50, **$1,000** above. $1,000 is a ceiling |
+| **Measurement is not removable** | It is what MFC is. The return session is required on the half day. The hour is the only exception |
+| **What comes off** | The manager session, with managers then attending the half day. The report, at 2.5 hours not 4 |
+| **Materials** | **$50** half day, **$25** hour, costed from what a session needs |
+| **Reports** | Half day only |
+| **GST** | Being registered. Every published figure restates when it lands |
+
+**⛔ Superseded in part by `D-0140`, all marked:** `D-0129`, `D-0128`, `D-0125`, `D-0098`,
+`110-PRODUCT-AND-PRICING-BOOK.md`, `07-BUYER-PACK.md`. **Do not take a price or a product line-up
+from any of them.**
+
+**Working documents:** `60-projects/mfc-master-strategy-v1/UNIT-ECONOMICS.md` for costs and the
+floor, `THE-COMMERCIAL-CASE.md` for why the model changed.
+
+---
+
 ## ⚑ Strongest organisation-wide next action, 2026-09-17
 
 **The consolidated strategy exists. Two documents, both built today:**
