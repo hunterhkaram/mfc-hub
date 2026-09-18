@@ -460,9 +460,33 @@ def is_scheduled_task(prompt_text):
     the correct outcome, since that file is exactly what a head would be reviewing.
 
     The routing-record requirement is untouched either way. This governs the trigger half only.
+
+    BROADENED 2026-09-18, after this exemption silently stopped working. It only ever
+    matched the `<scheduled-task ...>` wrapper emitted by the Claude Code app's own task
+    runner. On 2026-09-16 the sweep migrated to a launchd job that invokes
+    `claude -p "Follow this skill exactly:\n\n$(cat SKILL.md)"` -- which never produces
+    that wrapper. So the exemption stopped firing without failing, and the same misfire it
+    was built to prevent came back: three separate unattended runs on 2026-09-18 each spent
+    the bulk of their time writing routing records and arguing five or six heads into
+    irrelevance for sweeps that captured nothing. That is precisely the governance friction
+    this system is meant to remove, and it was being spent on a job nobody was watching.
+
+    Both invocation shapes are now recognised. The bound that makes this safe is unchanged
+    and is not the wrapper: it is the no-artefact gate at the call site. A scheduled or
+    unattended run that actually writes or edits a file still triggers its heads normally.
     """
     t = (prompt_text or "").lstrip()
-    return "<scheduled-task" in t[:400]
+    head = t[:400]
+    if "<scheduled-task" in head:
+        return True
+    # launchd/CLI form: the runner scripts prefix the piped-in SKILL.md with a plain
+    # sentence (the CLI's arg parser treats a leading "---" as an option flag).
+    if head.lower().startswith("follow this skill exactly"):
+        return True
+    # Defensive: a skill file inlined with its YAML frontmatter intact, however prefixed.
+    if "---" in head and "\nname:" in head and "\ndescription:" in head:
+        return True
+    return False
 
 
 def declared_irrelevant(head, assistant_text):
