@@ -1,4 +1,5 @@
 ---
+superseded_in_part_by: D-0140 (2026-09-18) - products, prices, materials
 mfc_topic: pricing
 artifact_role: candidate
 canonical_source: 30-decisions/D-0096-half-day-pricing-rebuild.md
@@ -54,6 +55,16 @@ claims_boundary: >
 > `12-evidence-first-rebuild/121-RETURN-SESSION-DESIGN-v2.md`: the return is a check-in that
 > shows the room its own data and covers what participants asked to learn, with Foundations
 > alone going on to the collective piece.
+
+> ## SUPERSEDED IN PART, 2026-09-18, by `D-0140`
+>
+> **MFC now goes to market with two products, not three. Essentials is retired as a sold product.**
+> Measurement is not removable from the half day. The Hour is banded at $600 up to twenty, $800 to
+> fifty, $1,000 above that. **Materials are $50 for a half day and $25 for the Hour**, which lowers
+> the half-day loaded floor from $1,907.18 to **$1,767.18**.
+>
+> **Read this document for its reasoning and its method, which stand. Do not take a price, a product
+> line-up or a materials figure from it.**
 
 # The Product and Pricing Book
 

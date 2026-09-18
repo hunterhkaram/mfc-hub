@@ -1,4 +1,5 @@
 ---
+superseded_in_part_by: D-0140 (2026-09-18) - products, prices, materials
 id: D-0098
 type: decision-record
 title: "The 60-Minute Introduction and the 90-Minute Essentials Are Two Products, Not Two Lengths"
@@ -16,6 +17,16 @@ related: [D-0003, D-0004, D-0017, D-0056, D-0091, D-0094, D-0096, K-07]
 supersedes: none
 superseded_by: "D-0103 (2026-08-16) — Essentials pricing table below is stale, superseded by D-0103's $1,250/$1,550/$1,800 (2–5/6–10/11–15). This record's product-split reasoning (Introduction vs. Essentials as two products) is otherwise still current; only the price figures below are outdated. Corrected 2026-08-27 after an audit found the supersession was previously visible only from D-0103's side, not from here."
 ---
+
+> ## SUPERSEDED IN PART, 2026-09-18, by `D-0140`
+>
+> **MFC now goes to market with two products, not three. Essentials is retired as a sold product.**
+> Measurement is not removable from the half day. The Hour is banded at $600 up to twenty, $800 to
+> fifty, $1,000 above that. **Materials are $50 for a half day and $25 for the Hour**, which lowers
+> the half-day loaded floor from $1,907.18 to **$1,767.18**.
+>
+> **Read this document for its reasoning and its method, which stand. Do not take a price, a product
+> line-up or a materials figure from it.**
 
 # D-0098 — Two short formats, two jobs
 
