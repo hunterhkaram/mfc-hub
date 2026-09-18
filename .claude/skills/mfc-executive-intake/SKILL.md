@@ -114,7 +114,7 @@ form, re-explain known context, or wait while ordinary work is deferred back to 
 
 - After an approved material change, update the existing operational destination(s); do not create
   another Hub, registry or parallel final unless the topic record explicitly authorises that role.
-- For Drive, Wix, Monday or another authenticated system, use the available connector, record the
+- For Drive, Wix or another authenticated system, use the available connector, record the
   returned revision or receipt, and read it back before claiming the destination is current. A local
   file or hook is not evidence that the external system changed.
 - Update the topic record to the reconciled state and regenerate `90-meta/MFC-HUB.html` plus its

@@ -395,6 +395,15 @@ def unmet_heads(session_id, hook_input):
             return []
         calls = []
         last_assistant_text = ""
+        # Every assistant turn in this session, not only the most recent. A declared
+        # irrelevance is a fact about the TASK, not about one message: once the reason
+        # has been given, re-reciting it on every later turn is ritual, and the turn
+        # that forgets gets blocked for saying nothing new. Observed 2026-09-18, when
+        # a two-line reply about a background agent was blocked on a head that had
+        # been excluded with reasons three turns earlier and again two turns earlier.
+        # Silence still does not clear a head: the reason must have been given
+        # somewhere in this session, which is what the offer in the block message says.
+        all_assistant_text = []
         for line in Path(tp).read_text(encoding="utf-8", errors="replace").splitlines():
             if '"tool_use"' not in line and '"text"' not in line:
                 continue
@@ -413,12 +422,15 @@ def unmet_heads(session_id, hook_input):
                     texts.append(str(block.get("text", "")))
             if texts:
                 last_assistant_text = "\n".join(texts)
+                all_assistant_text.append(last_assistant_text)
         if is_scheduled_task(prompt) and not any(
                 name in ARTEFACT_TOOLS for name, _ in calls):
             return []  # a sweep that wrote nothing has no work product to review
 
         missing = htm.unmet(prompt, calls)
-        return [(h, why) for h, why in missing if not declared_irrelevant(h, last_assistant_text)]
+        session_text = "\n\n".join(all_assistant_text)
+        return [(h, why) for h, why in missing
+                if not declared_irrelevant(h, session_text)]
     except Exception:
         return []
 

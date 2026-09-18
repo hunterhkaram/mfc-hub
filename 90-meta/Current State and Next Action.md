@@ -28,8 +28,9 @@ This is a compact derived resume pointer, not independent authority. For an orga
 | **Reports** | Half day only |
 | **GST** | Being registered. Every published figure restates when it lands |
 
-**⛔ Superseded in part by `D-0140`, all marked:** `D-0129`, `D-0128`, `D-0125`, `D-0098`,
-`110-PRODUCT-AND-PRICING-BOOK.md`, `07-BUYER-PACK.md`. **Do not take a price or a product line-up
+**⛔ Superseded in part by `D-0140`, all marked:** `D-0129`, `D-0128`, `D-0125`, `D-0098`, `K-12`,
+`FINAL-08-committee-paper.md`, `110-PRODUCT-AND-PRICING-BOOK.md`, `07-BUYER-PACK.md`,
+`mfc-strategy.html`, `THE-MODULE-STRUCTURE.md`. **Do not take a price or a product line-up
 from any of them.**
 
 **Working documents:** `60-projects/mfc-master-strategy-v1/UNIT-ECONOMICS.md` for costs and the
@@ -52,7 +53,7 @@ floor, `THE-COMMERCIAL-CASE.md` for why the model changed.
 |---|---|
 | **April is not a source** | Founder ruling. `C-03` and `C-14` closed on that basis. The April Strategic Direction is history |
 | **The pillars were rebuilt on 19 August** | Message and Movement · Education and Evidence · Organisation · Commercial Sustainability. `K-10` is superseded on the names; its thirteen sub-priorities are the approved April wording and are carried across. Crosswalk at `60-projects/mfc-master-strategy-v1/PILLAR-CROSSWALK-2026-09-17.html` |
-| **`C-04` is resolved** | The Commercial Model FY2026-27 Drive family is outdated. **`60-projects/committee-pack-v1/FINAL-08-committee-paper.md` is the authoritative commercial document**, with pricing superseded by `D-0129` |
+| **`C-04` is resolved** | The Commercial Model FY2026-27 Drive family is outdated. **`60-projects/committee-pack-v1/FINAL-08-committee-paper.md` is the authoritative commercial document** for its model and its asks, **with its product line-up and every price superseded by `D-0140`** |
 | **`C-18` is live again** | The 17 August deferral was lifted by the founder on 17 September |
 | **Safeguarding has an owner-shaped hole** | April named it; the current pillar 3 did not carry it. It is now named in the strategy and is ask 8 to the committee |
 
