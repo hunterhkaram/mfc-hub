@@ -1,0 +1,183 @@
+schema_version: 2
+objective: 'Rewrite section 5 of THE-CONSOLIDATED-STRATEGY as what each focus area is and is working towards
+  rather than a build list, and apply Hunter''s directed global removals: every D- and K- reference, all
+  delegated-authority attribution, the measurement spend, the safeguarding-owner gate, and the returns-to-committee
+  label. Correct the cap of twenty to bind Foundations only. Commission the WHS positioning research he
+  asked for.'
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: 6c32c8af2d5963f9
+material_task_id: 6c32c8af2d5963f9-2026-09-22T15:23:55.597362+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: route_now
+  reason: Public Health, Prevention and Systems Change, run as bounded external research on what MFC may
+    and may not say about NSW work health and safety duties, the SafeWork NSW psychosocial code, and where
+    training sits in the hierarchy of controls. Commissioned this turn at Hunter's explicit request; still
+    running at the time of writing.
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-section-5-rewrite-and-founder-directed-removals
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-section-5-rewrite-and-founder-directed-removals
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-compliance and the Eimear lens were the hardest exclusions and are the ones worth stating
+    plainly. Last turn I withheld the cap-of-twenty correction on L-088 grounds, reading D-0140''s ''set
+    with the committee and a clinical adviser'' as an external basis. Hunter corrected that directly and
+    he is right: D-0140 was written when an Essentials product existed, the line is now Introduction plus
+    Foundations, and twenty was the Essentials and Foundations number. CLAUDE.md s2a is explicit that
+    a later founder answer supersedes silently and must not be cited back at him, and s10a is explicit
+    that MFC''s real committee governs safeguarding rather than this vault. Continuing to hold the paper
+    against a superseded reading was the failure, not the fix. The same reasoning covers closing the safety
+    items, which is Hunter''s and the committee''s call and not an AI lens''s. head-of-governance was
+    reconsidered because removing the returns-to-committee label narrows the Chair''s own section 11 cell;
+    excluded because Hunter ruled on it directly and the Chair reads the paper himself in the pre-read
+    window. A-25 and A-08 were reconsidered for the section 5 prose; excluded because the wording came
+    from Hunter''s own review and rewriting it through a lens would have replaced his voice with a composed
+    one.'
+  changes: []
+  unresolved:
+  - The WHS research was still running when this closed; its findings have not yet been read or applied,
+    and AG-011 (HARD) binds how any of it may be used. Sections 6, 7, 8, 10 and 11 still need their rewrites
+    from Hunter's review. The measurement-spend removal has not yet propagated to THE-MFC-STRATEGY and
+    THE-MFC-BOARD-PAPER, which still carry it as the single largest planned outlay. D-0140 still records
+    the cap as absolute on every product and now disagrees with the paper; the record needs a supersession
+    note.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 'Section 5 rewritten: each focus area now states what it is and
+  what MFC is working towards, the order-of-work paragraph removed, Organisation widened from founder
+  dependency to systems and governance in Hunter''s own words, and the two builds kept without the costing.
+  Seventeen D- and K- references removed and replaced with plain language. Section 12 rebuilt with the
+  Decided-by column deleted entirely, so the paper no longer tells the committee which decisions were
+  the founder''s alone; Gina''s appointment, the order-of-work reset and the Rob and Rachel blocker removed;
+  commerciality and unit economics, the glossary, the sustainable plan and the mission and vision review
+  added. Measurement spend removed from all five occurrences. The cap of twenty corrected to a Foundations
+  number with the Eimear referral removed, unblocking the Hour''s  and ,000 bands. Measurement kept in
+  the Hour at two or three questions each end. The safeguarding-owner gate removed from sections 1, 5,
+  6, 10 and 11. Three labels collapsed to two and the returns table replaced by a single line about professional
+  indemnity. Paper is now 12 pages, down from 13. check_paper_consistency.py''s label check was rewritten
+  in the same change: it hard-coded the three-label model and was failing the paper for Hunter''s decision,
+  reporting an author''s choice as a defect; it now checks the paper against its own key.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-19-whs-positioning-research.md
+specialists:
+- id: A-19
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-A-19-whs-positioning-research.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-19-whs-positioning-research.md
+  contribution: Public Health, Prevention and Systems Change, run as bounded external research on what
+    MFC may and may not say about NSW work health and safety duties, the SafeWork NSW psychosocial code,
+    and where training sits in the hierarchy of controls. Commissioned this turn at Hunter's explicit
+    request; still running at the time of writing.
+  learning_disposition: no_new_learning
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md
+  pdf: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf
+  control: 90-meta/session-tools-v1/check_paper_consistency.py

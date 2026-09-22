@@ -1,0 +1,168 @@
+schema_version: 2
+objective: 'Hunter: the email''s tone was wrong. It should be thanks, here is what I am implementing,
+  and once done I will send the final forms for one yes from each of you. Plus two genuine questions:
+  how we word the clinical and safety side, and whether MFC needs professional indemnity insurance, with
+  the case put both ways.'
+task_session_id: bff32e54-09cf-446a-a6d3-6049140f4d7b
+material_prompt_fingerprint: 95e1a24495f7afe1
+material_task_id: 95e1a24495f7afe1-2026-09-22T17:14:56.970033+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: route_now
+  reason: 'head-of-compliance: wrote the professional indemnity paragraph and determined who can actually
+    answer it'
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-2026-09-22-advisor-email-rewritten-and-the-indemnity-question
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-2026-09-22-advisor-email-rewritten-and-the-indemnity-question
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-commercial was reconsidered and excluded, and the reasoning matters because the conclusion
+    is commercial. Professional indemnity has a price and the finding is that the gap costs MFC contracts
+    rather than claims, which looks like a commercial call. It was excluded because the question Hunter
+    is putting to his advisers is not what PI costs or whether it pays for itself: it is whether what
+    MFC delivers is professional service in the sense the policy exclusion means. That is a compliance
+    and clinical-boundary reading, and pricing only becomes the question after a yes. lens-onno-van-es
+    and lens-eimear-quigley were excluded for the same reason as the previous turn: the email asks these
+    two real people a question, and simulating their answer before asking it would be worse than useless.
+    head-of-governance was excluded because the committee''s risk appetite is exactly what the email is
+    asking the Board Chair to supply, not something to decide on his behalf.'
+  changes: []
+  unresolved:
+  - The email is drafted and unsent. The broker email to Osman Insurance Brokers has not been sent and
+    is the item that retires the disclosure risk and the certificate gap; a brief already exists at 50-authority/insurance-broker-brief-2026-09-01.md
+    but its current contents were not re-verified in this pass. Declared turnover of 20000 becomes wrong
+    on first material paid delivery. The clinical and safety wording question is deliberately deferred
+    in the email until the advisers can see the actual words rather than a description.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 'head-of-compliance changed the email in three ways and reframed
+  the whole item. It removed Debra Fidler from the insurance question entirely: her authority is evidence
+  design and measurement and none of it bears on whether MFC carries a policy, so the email now says so
+  plainly rather than addressing her by default. It corrected the framing from exposure to procurement
+  readiness, on the grounds that MFC holds more public liability than most organisations its size, bought
+  through a broker and committee-approved, and that the PI gap is far more likely to cost a contract than
+  a claim. And it surfaced two things more urgent than the PI debate that Hunter had not asked about:
+  the policy''s declared occupation describes a community health centre rather than paid training in client
+  workplaces, which if undisclosed risks the cover MFC does hold being argued down at claim time, and
+  no certificate of currency has ever been filed despite a July 2025 committee action, which procurement
+  asks for before it asks about PI. Both are broker questions and neither depends on the advisers'' answer.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-H-01-professional-indemnity-question.md
+specialists:
+- id: H-01
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-head-of-compliance-indemnity-question.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-H-01-professional-indemnity-question.md
+  contribution: 'head-of-compliance: wrote the professional indemnity paragraph and determined who can
+    actually answer it'
+  learning_disposition: no_new_learning
+outputs_summary:
+  draft: gmail-draft-1a0c7fa6c7f318e5

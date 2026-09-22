@@ -1,0 +1,173 @@
+schema_version: 2
+objective: 'Produce defensible arguments Hunter can hold under questioning from two clinical psychologists
+  at the 21 Sep 6pm measurement-forms sign-off: IMTTAQ subscale validity, the Introduction post-only design,
+  Kirkpatrick implementation for the board chair, WHO-5 placement, consistency rules, and the evidence-library
+  admission rubric.'
+task_session_id: bff32e54-09cf-446a-a6d3-6049140f4d7b
+material_prompt_fingerprint: c404632529b44b86
+material_task_id: c404632529b44b86-2026-09-21T13:53:42.597178+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: same_context_role_lens
+  reason: UX and Information Architecture via head-of-digital; ran earlier this session, reused not re-run
+- id: A-08
+  disposition: not_relevant
+  reason: no buyer-facing or public messaging surface; internal advisor review of research instruments
+- id: A-09
+  disposition: same_context_role_lens
+  reason: Behavioural and Social Context via head-of-framework; ran earlier this session, reused not re-run
+- id: A-12
+  disposition: not_relevant
+  reason: form accessibility and safeguarding covered by the H-01 reuse; no new participant-facing safeguarding
+    surface
+- id: A-14
+  disposition: not_relevant
+  reason: no brand or creative surface; the artefacts are research instruments
+- id: A-10
+  disposition: route_now
+  reason: Learning and Behaviour Design. Executed as head-of-product, which declares A-07/A-10/A-12/A-13/A-15/A-16.
+    Produced the Form 1 post-only rationale, the then-test literature assessment both directions, and
+    the delivery-format recommendation with its time cost.
+- id: A-11
+  disposition: route_now
+  reason: Measurement, Evaluation and Insights. Executed as head-of-research, which declares A-09/A-11/A-23
+    as its bench mapping. Produced the IMTTAQ subscale-validity argument, the Kirkpatrick paragraph, WHO-5
+    placement, ten consistency rules with eight named live violations, and the evidence-library rubric
+    delta.
+- id: A-13
+  disposition: not_relevant
+  reason: 'via head-of-community: no Leadership Community, ambassador, event or member-experience surface,
+    so D-0116 and D-0111 risk is not engaged'
+- id: A-15
+  disposition: not_relevant
+  reason: Implementation and Delivery Design; covered inside the A-10 review, same head-of-product mapping,
+    not separately commissioned
+- id: SYS-03
+  disposition: not_relevant
+  reason: no new capability provisioned
+- id: A-16
+  disposition: not_relevant
+  reason: habit and identity design settled when the question set was approved; this task argues for existing
+    items
+- id: A-17
+  disposition: not_relevant
+  reason: no competitor, market or ecosystem question in an instrument-validity review
+- id: A-18
+  disposition: not_relevant
+  reason: no category or narrative positioning decision
+- id: A-19
+  disposition: not_relevant
+  reason: no public-health or systems-change surface; single-organisation evaluation design
+- id: A-20
+  disposition: not_relevant
+  reason: no theory-of-change or philanthropic reporting decision tonight
+- id: A-21
+  disposition: not_relevant
+  reason: no partnership or fundraising decision; researcher outreach deliberately deferred until the
+    advisors approve the measurement approach
+- id: A-22
+  disposition: not_relevant
+  reason: no audience or cultural-insight question; the audience is two clinical psychologists and a board
+    chair
+- id: A-23
+  disposition: not_relevant
+  reason: Knowledge Engineering and Source Integration; covered inside the A-11 review, same head-of-research
+    mapping, not separately commissioned
+- id: A-24
+  disposition: not_relevant
+  reason: experimentation question answered inside A-11 scope; the disconfirming-test design was not reopened
+- id: A-25
+  disposition: not_relevant
+  reason: no board or mission-strategy decision; Onno attends but the Kirkpatrick paragraph is an evidence
+    question
+- id: A-26
+  disposition: not_relevant
+  reason: no policy or government engagement surface
+- id: H-01
+  disposition: same_context_role_lens
+  reason: Clinical Safety and Care Boundaries via head-of-compliance; ran earlier this session on the
+    same advisor pack, reused not re-run
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: founder lens not run; Hunter is live on this thread and has corrected the format twice himself,
+    so an inferred founder verdict adds nothing
+- id: SYS-04
+  disposition: not_relevant
+  reason: loop run directly rather than delegated; producer-checker-revise ran across four heads plus
+    my own verification passes
+- id: SYS-05
+  disposition: not_relevant
+  reason: routing performed directly; the trigger map had already identified the relevant heads
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-advisor-signoff-arguments-imttaq-kirkpatrick-form1-rubric
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-advisor-signoff-arguments-imttaq-kirkpatrick-form1-rubric
+  completed_before_execution: true
+  decision_surfaces:
+  - 'Requires the advisors and Hunter tonight, not Claude: whether the participant code design stands
+    given the vault rules it out; minimum in-scope n for the IMTTAQ subscales; consent panel versus a
+    separate participant statement; the publication-disclosure wording; the recall blank-rate conversion
+    rule; Form 4 item 9 on both forms or neither; who owns sending and chasing Form 4.'
+  omissions_challenged:
+  - 'Head outputs were contradicted against primary sources rather than averaged, three times, and a fourth
+    contradiction reversed advice already given to Hunter. (1) head-of-compliance asserted MFC records
+    do not establish whether the six IMTTAQ items are complete subscales; MEASUREMENT-v5 3.1 reports alpha
+    at three-item subscale level and the 2026-08-24 working-group record says intact three-item subscales,
+    so compliance made a false absence claim. (2) head-of-research reported Form 5 carries no return-session
+    branch citing zero string matches; the string is present as an instruction and the grep was wrong.
+    (3) My own earlier statement that no facilitator escalation procedure exists was wrong; it exists
+    in 04-POCKET-RUN-SHEET-INTRODUCTION-60.md. (4) Verified directly: 05-MEASUREMENT-PROJECT-PLAN lines
+    243-245 rules out recipe codes built from personal facts as reconstructible by a colleague with probability
+    approximately 1, and all five built forms field exactly that design while the paper defends it only
+    against collision risk; neither 31-THE-QUESTION-SET-v2 nor 33-DECISIONS-APPLIED reinstates it. This
+    reverses my earlier advice that the code design was sound.'
+  changes:
+  - No form, question, paper or workshop artefact edited.
+  unresolved:
+  - 'The participant-code contradiction. LTSI sub-licence, the proprietary instrument and the only one
+    with real exposure. WHO-5''s CC BY-NC-SA non-commercial licence against paid workshops, sharper than
+    the whole IMTTAQ chain. Form-delivery platform pending a raw-export IP inspection. AG-195 email-security
+    controls unimplemented. verify_evidence_library.py staged and uncommitted. Control defect: the specialist
+    bench predates the 2026-09-01 heads, so enforce_material_specialist_closure.py demands a roster head_trigger_map.py
+    cannot satisfy; this record bridges it using the mappings the head agent files declare themselves,
+    but the two rosters should be reconciled.'
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: Verified the participant-code contradiction and corrected earlier
+  advice. Established the evidence library is a live verified 109 papers, not the 108 in the 2026-09-18
+  build record. Located the researcher candidate register, corrected the recollection that it holds emails,
+  and surfaced Lucy Chapple's Mental Fitness in the Law Program at Macquarie under Monique Crane plus
+  the Caputi 2015 Delphi study.
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-21-A-11-measurement-instruments-review.md
+specialists:
+- id: A-11
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-21-head-of-research-advisor-signoff.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-21-A-11-measurement-instruments-review.md
+  contribution: Measurement, Evaluation and Insights. Executed as head-of-research, which declares A-09/A-11/A-23
+    as its bench mapping. Produced the IMTTAQ subscale-validity argument, the Kirkpatrick paragraph, WHO-5
+    placement, ten consistency rules with eight named live violations, and the evidence-library rubric
+    delta.
+  learning_disposition: candidate_update
+- id: A-10
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-21-head-of-product-form1-premeasure.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-21-A-10-introduction-premeasure-review.md
+  contribution: Learning and Behaviour Design. Executed as head-of-product, which declares A-07/A-10/A-12/A-13/A-15/A-16.
+    Produced the Form 1 post-only rationale, the then-test literature assessment both directions, and
+    the delivery-format recommendation with its time cost.
+  learning_disposition: candidate_update
+outputs_summary:
+  findings: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-21-advisor-signoff-findings.md
+  walkthrough: 60-projects/measurement-strategy-v1/37-ADVISOR-SIGNOFF-WALKTHROUGH-2026-09-21.html

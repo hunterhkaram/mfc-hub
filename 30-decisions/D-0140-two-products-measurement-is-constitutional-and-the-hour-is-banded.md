@@ -3,6 +3,7 @@ title: "D-0140. Two products, measurement is constitutional, and the Hour is ban
 id: D-0140
 date: 2026-09-18
 status: decided
+superseded_in_part_by: "Hunter Karam, 2026-09-22: the cap of twenty binds Foundations only; the Hour is uncapped"
 decided_by: Hunter Karam
 decision_authority: founder, delegated product and pricing authority under K-11
 mfc_topic: pricing
@@ -129,6 +130,20 @@ loaded floor.
 **The cap of twenty blocks the Hour's bands.** Twenty is recorded as absolute on every product, set
 with the committee and a clinical adviser. **Whether it applies to a talk is a clinical judgement, not
 a pricing one**, and it goes to Eimear Quigley.
+
+> **SUPERSEDED, 2026-09-22, by Hunter Karam directly.** The paragraph above no longer states MFC's
+> position and must not be cited as if it did. **The cap of twenty binds Foundations only. The
+> Introduction, the Hour, is not capped**, and its $800 and $1,000 bands are live rather than
+> blocked. Hunter's reasoning, in his own words: twenty was set when an Essentials product existed,
+> and *"it was for the essentials and the foundations. We no longer have an essentials product."* A
+> half day works on people's own situations in a room small enough to do that; an hour is a talk,
+> and a talk can be given to a hall. This is not a clinical judgement awaiting Eimear Quigley, and
+> the referral to her on this point is withdrawn.
+>
+> Carried into `60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md` s4 and the
+> glossary on the same date. Per `CLAUDE.md` s2a a later founder answer supersedes silently; this
+> note exists so a future session reading the paragraph above does not "correct" the paper back to
+> a position Hunter has withdrawn.
 
 **The travel radius still does not exist as a term.** An in-person Hour at twenty people with a
 regional trip floors at $768 against $600. **0.78×, and underwater today.**

@@ -1,0 +1,170 @@
+schema_version: 2
+objective: 'Hunter, directly: no advisor emails, no comprehension test, build the forms. Set the five
+  placeholder values he said he did not understand, generate six working participant forms from the approved
+  question set, and resolve where they are hosted and where responses land.'
+task_session_id: bff32e54-09cf-446a-a6d3-6049140f4d7b
+material_prompt_fingerprint: de497b776405d278
+material_task_id: de497b776405d278-2026-09-22T11:20:31.476642+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: route_now
+  reason: 'head-of-digital: hosting, data residency and submission endpoint'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-2026-09-22-build-the-six-measurement-forms-v2
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-2026-09-22-build-the-six-measurement-forms-v2
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-compliance was reconsidered and deliberately NOT run as a gate on this build. Hunter said
+    build. Convening a compliance lens before a single form existed would have reproduced exactly the
+    internally-generated gate CLAUDE.md section 12 and L-064 exist to stop, and it would have been the
+    third such gate in this session, the same error head-of-digital just found inside D-0133 itself. The
+    two questions that genuinely need that lens are recorded as open before a participant sees a form:
+    whether a six-character code inside a single-employer cohort is de-identified or only pseudonymised,
+    and who monitors the withdrawal inbox the consent panel now promises. head-of-research was excluded
+    because no question changed: the generator renders the already-approved set and refuses to build if
+    any of the seventeen verbatim pairs has drifted. head-of-governance was excluded from the build, but
+    its subject matter is now live: D-0133 needs amending rather than deleting, and Rachel Willis should
+    see the residency finding first.'
+  changes: []
+  unresolved:
+  - Nobody monitors a withdrawal inbox and the consent panel now promises a 90-day window. Whether the
+    participant code is genuinely de-identified inside a single-employer cohort is head-of-compliance's
+    call against the instrument. D-0133's residency clause should be amended rather than deleted, with
+    the reasoning recorded so it is not re-derived. The Apps Script CORS path is unverified and is the
+    first thing to test on deployment. Account ownership must sit with an MFC-owned Google account and
+    a second admin at setup.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 'head-of-digital''s execution changed the hosting decision outright.
+  The recommendation moved from a LimeSurvey instance on a Sydney VPS at about AU$220 a year to Cloudflare
+  Pages plus an Apps Script endpoint at AU$0, and the Australian data-residency clause in D-0133 that
+  had excluded Google infrastructure was shown to have no external basis at all. Its silent-data-loss
+  warning produced two runtime changes that would not otherwise exist: the payload is written to localStorage
+  before the POST and cleared only on a confirmed 200, and a failed send now says so instead of showing
+  the thank-you screen. Separately, the build itself: the five placeholder values are set with reasoning,
+  the three retention objects collapse to one 90-day date because withdrawal is verified against the cohort
+  email list and cannot outlive it, and form-set-v2 generates all six forms from the markdown source and
+  refuses to build on verbatim-pair drift. The hand-built form-set is marked superseded. Three defects
+  were found by running the forms rather than reading them: Form 5 rendered MFC''s reporting rules to
+  participants as questions, source line-wraps broke the consent panel mid-sentence six times, and a loop
+  counter shared between two functions meant WHO-5 stored W1 and silently dropped W2 to W5 while both
+  IMTTAQ subscales stored one item of three.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-07-forms-hosting-and-residency.md
+specialists:
+- id: A-07
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-head-of-digital-forms-hosting.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-07-forms-hosting-and-residency.md
+  contribution: 'head-of-digital: hosting, data residency and submission endpoint'
+  learning_disposition: no_new_learning
+outputs_summary:
+  forms: 60-projects/measurement-strategy-v1/form-set-v2/README.md

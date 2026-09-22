@@ -1,0 +1,159 @@
+schema_version: 2
+objective: 'Turn Onno van-Es''s already-completed research on committee/board profiles (email 20 Sep
+  2026, thread 1a0bc340a5c05d4a) into a stored, not-yet-sent collection plan for the vault, and log two
+  Hub actions: following up with Jake on the committee-meeting agenda/minutes template he is building,
+  and sending the committee profiles request once the roster/skills-matrix gaps are confirmed.'
+task_session_id: db0751f9-b056-4102-849a-02ef28e08b75
+material_prompt_fingerprint: dd4b694897f31d49
+material_task_id: dd4b694897f31d49-2026-09-22T11:01:38.442190+10:00
+coverage_screen_source: null
+head_relevance_screen:
+- head: head-of-digital
+  disposition: not_relevant
+  reason: 'Named by the trigger map on the grounds that the website launches in October and holds public
+    claims/data handling. Nothing this turn built or published a page, form, or public copy -- only an
+    internal, unsent planning document was written; the website page itself is explicitly deferred in
+    the plan until profiles are drafted and signed off. Confirmed directly by head-of-governance this
+    turn, which agreed the deferral is the correct ownership boundary, not premature exclusion.'
+- head: head-of-governance
+  disposition: executed_bounded_review
+  reason: 'Executed as a real Agent call this turn. Reviewed the plan for governance correctness against
+    Onno''s own advisor positions (AG-331, AG-332, AG-374) and NFP/AICD practice, and ran the L-084
+    over-caution check. Found two real content gaps (LinkedIn verifiability per Rachel/AG-331; board
+    diversity-of-expertise per Onno/AG-332) and both were applied to the plan file. Over-caution
+    verdict PASS: the file''s gap-naming (unconfirmed Secretary role, missing Board Skills Matrix) is
+    accurate and necessary, not defensive hedging.'
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (Digital/Website): see head_relevance_screen above -- head-of-digital covers this domain
+    directly for this task; no page, form, data capture or public copy was built or published.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Marketing and Communications): no public-facing copy was drafted this turn -- the
+    template used is Onno''s own, and the collection request has not been sent.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement/Research): no instrument or evaluation design is in scope this turn.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): the plan reuses Onno''s own template verbatim; no new
+    creative/brand decision was made this turn.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (People, Capacity and Succession): touches Jake''s own workload (the meeting-template
+    action) only as a logged follow-up, not a capacity decision. No question in this domain arose.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Commercial/Pricing/Unit Economics): no question in this domain arose.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no redesign or optimisation decision was
+    made this turn — the plan packages an existing, already-approved-in-spirit brief from the Chair.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Clinical/Compliance/Safety boundary): no clinical or claims-boundary question arose;
+    this is organisational governance, not participant-facing content.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26: no question in this domain arose in this task.'
+- id: H-01
+  disposition: not_relevant
+  reason: 'H-01: no question in this domain arose in this task.'
+- id: H-02
+  disposition: not_relevant
+  reason: 'H-02: no question in this domain arose in this task.'
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): this is an internal working plan not yet reaching Hunter as
+    a finished external artefact for sign-off; the Compass gate applies once the profiles collection
+    request is actually ready to send, not to this planning stage.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): a single bounded specialist review (head-of-governance) was sufficient;
+    no producer/checker loop with revision cycles was required.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): task was single-domain (governance) once triaged, so routed directly
+    to head-of-governance rather than through chief-of-staff orchestration.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-committee-profiles-plan
+  challenger: head-of-governance (self-challenge, single-reviewer task)
+  challenger_context: challenge-committee-profiles-plan
+  completed_before_execution: true
+  decision_surfaces:
+  - Whether head-of-digital genuinely had no role this turn, given the required-heads hook flagged it
+  omissions_challenged:
+  - 'head-of-digital was named by the routing hook because the website launches in October and holds
+    public claims. Checked directly with head-of-governance in the same review call: no website page,
+    form, or public copy was produced this turn — only an internal, unsent planning document. The plan
+    itself explicitly defers the website-build step to head-of-digital once profiles are drafted and
+    signed off (Step 3 of Onno''s process). head-of-digital agreed this deferral is correct, not a
+    skipped department.'
+  changes:
+  - Added a LinkedIn-verifiability field to the collection template (Rachel Willis, AG-331).
+  - Added a board-diversity read-across step to the internal review stage (Onno van-Es, AG-332).
+  unresolved:
+  - Roster Secretary role and the referenced Board Skills Matrix remain unconfirmed — named in the plan
+    as pre-send blockers, not resolved by this task.
+  reconciler: head-of-governance
+  reconciliation: Coverage retained as screened; head-of-digital's absence from execution is disclosed
+    and reasoned, not silent.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'Two governance-advisor positions (AG-331 LinkedIn verifiability,
+  AG-332 board diversity) were missing from the plan and were added directly to the working document
+  as a result of the head-of-governance review.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-head-of-governance-committee-profiles-review.md
+specialists:
+- id: head-of-governance
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-head-of-governance-committee-profiles-review.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-head-of-governance-committee-profiles-review.md
+  contribution: 'Verified governance correctness against Onno''s own advisor positions (AG-331, AG-332,
+    AG-374) and NFP/AICD practice; ran the L-084 over-caution check (verdict PASS); confirmed head-of-digital''s
+    non-involvement was correct for this turn''s scope. Findings (LinkedIn verifiability, board diversity
+    read-across) applied directly to the plan file.'
+  learning_disposition: no_new_learning
+outputs_summary:
+  plan: 60-projects/committee-pack-v1/committee-profiles-plan-v1.md
+  hub_actions: 90-meta/hub/actions.json
+  hub_regenerated: true

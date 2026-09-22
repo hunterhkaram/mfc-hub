@@ -1,0 +1,164 @@
+schema_version: 2
+objective: Bring THE-CONSOLIDATED-STRATEGY's body to the 11 pages Hunter and the Board Chair agreed (appendices
+  may take the pack to 15), add the focus-area column Onno's section 6 cell requires, fix section 10's
+  severity ranking, delete the duplicate Appendix B decisions table, and correct section 2's over-promise
+  about Appendix A.
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: c94cdf556370af2f
+material_task_id: c94cdf556370af2f-2026-09-22T11:31:44.153083+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: reuse_current_evidence
+  reason: earlier same-session read run as the Jake Pepper lens on concision, clarity, structure and no-new-content;
+    its eleven wording fixes verified still present and unregressed
+  applicability_reason: earlier same-session read run as the Jake Pepper lens on concision, clarity, structure
+    and no-new-content; its eleven wording fixes verified still present and unregressed
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: route_now
+  reason: run as the Board Chair lens; cell-by-cell read of all twelve sections against STRUCTURE-FOR-ONNO.md,
+    table arithmetic and page budget; produced the four findings actioned here
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-consolidated-strategy-onno-cell-compliance-and-page-budget
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-consolidated-strategy-onno-cell-compliance-and-page-budget
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-digital was named mandatory by the trigger map and was excluded: the artefact is a committee
+    pre-read PDF with no website surface, no form, no data capture and no integration, so there is nothing
+    in its remit to review. head-of-governance and A-12 were reconsidered at greater length, because the
+    paper is committee-facing and section 12 records committee resolutions; excluded because Hunter scoped
+    this read explicitly to Onno and Jake on 2026-09-22 (''it is going to look from a governance and safety
+    lens which is too much for what we''re needing here''), the committee governs those matters directly
+    per CLAUDE.md s10a, and no edit in this task changes a governance position - the decisions table was
+    moved, not altered. A-17 and head-of-commercial were reconsidered because the task touches tabled
+    money and census figures; excluded because no figure was recomputed or changed, only relocated and
+    reordered.'
+  changes: []
+  unresolved:
+  - A concurrent session edited the same file at 11:03-11:04 today. Those edits were verified and built
+    upon, not overwritten, but two sessions on one deliverable remains the shadow-workspace hazard already
+    logged. Hunter has been told to close the other session.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: Body reduced from ~13.5 to exactly 11 pages (pack 15 to 13) by
+  moving the twenty-term glossary out of the body to Appendix B, which Onno's spec allocates no body pages
+  to; no content cut to reach the number. Focus-area column added to all three section 6 tables. Section
+  10 reordered to the severity ranking its own header claims, both tables renumbered in step, closing
+  cross-reference corrected to 'Risks 1 and 4'. Old Appendix B deleted per Onno's either/or cell for section
+  12. Section 2's Appendix A promise corrected.
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-lens-onno-van-es-consolidated-strategy-cell-compliance.md
+specialists:
+- id: A-25
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-lens-onno-van-es-consolidated-strategy-cell-compliance.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-lens-onno-van-es-consolidated-strategy-cell-compliance.md
+  contribution: run as the Board Chair lens; cell-by-cell read of all twelve sections against STRUCTURE-FOR-ONNO.md,
+    table arithmetic and page budget; produced the four findings actioned here
+  learning_disposition: no_new_learning
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md
+  pdf: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf

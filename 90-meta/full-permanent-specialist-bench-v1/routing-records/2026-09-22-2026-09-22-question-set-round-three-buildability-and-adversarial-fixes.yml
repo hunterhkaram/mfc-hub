@@ -1,0 +1,165 @@
+schema_version: 2
+objective: 'Act on both independent review passes over the final measurement question set: apply every
+  buildability finding from head-of-digital and every confirmed defect from the skeptic, rather than reporting
+  them back to Hunter as a list.'
+task_session_id: bff32e54-09cf-446a-a6d3-6049140f4d7b
+material_prompt_fingerprint: 95708fc8b504e8a7
+material_task_id: 95708fc8b504e8a7-2026-09-22T10:07:22.814904+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: route_now
+  reason: head-of-digital buildability read of all six forms
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: reuse_current_evidence
+  reason: 'head-of-research provenance review of 2026-09-21 applied unchanged: the wording basis is the
+    two advisor emails plus the founder readback'
+  applicability_reason: 'head-of-research provenance review of 2026-09-21 applied unchanged: the wording
+    basis is the two advisor emails plus the founder readback'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: route_now
+  reason: skeptic adversarial pass, all verbatim pairs hashed
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-2026-09-22-question-set-round-three-buildability-and-adversarial-fixes
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-2026-09-22-question-set-round-three-buildability-and-adversarial-fixes
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-compliance and lens-eimear-quigley were reconsidered and excluded from execution. The WHO-5
+    poor-wellbeing cut-off exposure the skeptic surfaced under AG-014 is real, but it is a qualified-human
+    boundary under CLAUDE.md section 6a condition 4 and section 10a. An AI compliance lens cannot discharge
+    it, and running one would manufacture the appearance of clearance over a matter Eimear and Debra must
+    rule on. It is instead written into section 5 as theirs to decide and named in the email brief. head-of-product
+    was excluded because no question''s purpose changed: every edit was wording, option structure, data
+    coding or build specification.'
+  changes: []
+  unresolved:
+  - The five placeholder values remain Hunter's and block the build. AG-014 and the WHO-5 non-commercial
+    licence question are qualified-human boundaries. Introduction-cohort withdrawal has no email list
+    to verify against. The five-person comprehension test has still never been run.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 276 lines. Opportunity answers moved out of the escape block on
+  all four administrations of the primary change score, correcting a rule that would have coded the most
+  informative answer as missing. Moment definition placed above item 1 on Form 1-PRE to match its verbatim
+  pair on Form 2. New sections 0.8 and 0.9 specifying the value map, three distinct missing codes, and
+  one multi-select instruction. Build note that the code block is one input field, not three. AG-004 narrowing
+  restated to disclose the GP line was removed too. AG-193 attribution written as the register holds it.
+  Consent panel wellbeing sentence conditionalised to Forms 2 and 5. Minimum cell suppression at five.
+  Primary change score pair named. Fabricated ninety-per-cent figure removed in both places.
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-07-question-set-buildability.md
+specialists:
+- id: A-07
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-head-of-digital-buildability.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-07-question-set-buildability.md
+  contribution: head-of-digital buildability read of all six forms
+  learning_disposition: no_new_learning
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-22-skeptic-question-set-round-three.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-22-A-24-question-set-adversarial.md
+  contribution: skeptic adversarial pass, all verbatim pairs hashed
+  learning_disposition: no_new_learning
+outputs_summary:
+  question-set: 60-projects/measurement-strategy-v1/39-THE-FINAL-QUESTION-SET-2026-09-21.md
