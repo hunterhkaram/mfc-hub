@@ -1,0 +1,186 @@
+schema_version: 2
+objective: Move the big costing tables out of the body into the appendix so the paper reads concisely
+  without losing information, return the body toward eleven pages, then sweep the whole document section
+  by section for drift left behind by the move.
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: f033540c8ac0b498
+material_task_id: f033540c8ac0b498-2026-09-23T16:29:56.490965+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: route_now
+  reason: section-by-section drift sweep; reported what each section now says and where it is stale against
+    the rest
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: route_now
+  reason: cross-references, glossary coverage and orphans sweep; followed every pointer literally and
+    found five that no longer resolve and five undefined terms
+- id: A-24
+  disposition: route_now
+  reason: numbers and product rules sweep; tabulated every figure, recomputed every sum and found the
+    figures sound, with two disagreements
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-tables-to-the-appendix-and-a-three-reader-sweep
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-tables-to-the-appendix-and-a-three-reader-sweep
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-commercial and head-of-digital were named mandatory and both are excluded. Commercial is
+    excluded because no price, cost or margin changed this turn: the tables moved location and every figure
+    in them was recomputed by A-24 and agrees with itself everywhere, so there was nothing commercial
+    to decide. Digital is excluded because no website, form, data capture or integration is touched. The
+    exclusion I want on the record as arguable is head-of-product, not named this turn: the manager session
+    was described as 45 minutes in one place and an hour in three, and I resolved it to 45 minutes from
+    the paper''s own component table rather than asking product which is correct. If the session is in
+    fact an hour, the fix is wrong and the cost line behind it moves. Stated here rather than smoothed
+    over.'
+  changes: []
+  unresolved:
+  - The body is twelve pages against the eleven Hunter wants, with the pack at fifteen, his ceiling. Moving
+    the tables bought a page and the fixes spent it; reaching eleven now needs a substantive cut, which
+    is Hunter's call and has been put to him. The manager-session duration was resolved from the paper
+    rather than from product. D-0140 still does not carry the manager-session pairing rule or the 900
+    dollar price. The bands above twenty remain built on in-person cost. The Appendix A reference still
+    cannot be followed from a PDF. Hunter's sign-off covers 29 blocks of 152. Jake has not seen this version.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'Appendix C became What each thing costs, and what it returns,
+  holding the booking economics for all configurations, the surplus and marginal-person notes and the
+  hour-by-hour breakdowns; section 4 keeps the prices and points at it; section 9''s cost table went the
+  same way and its four limits became a paragraph. Then three parallel readers, one failure mode each.
+  The numbers held: every price, ladder, multiple, hour total, margin and the year-one projection reconcile,
+  and all fifteen contents entries are correct. Fixed: the contents subtitles for sections 4 and 7 swapped
+  against their headings; section 7 pointing at section 4 for returns now in Appendix C; Appendix C pointing
+  at itself; section 2 promising Appendix A holds the census; the manager session at two durations; section
+  6 committing to a report a client may decline; section 1 promoting an aim to a floor; section 9''s orphaned
+  All four are Operational, duplicated runway sentence and unsupported national-pay claim; five glossary
+  terms missing; a caption defining mental fitness in words the glossary does not use; and an uncaptioned
+  figure.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-three-sweeps-after-the-table-move.md
+specialists:
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-23-numbers-sweep.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-three-sweeps-after-the-table-move.md
+  contribution: numbers and product rules sweep; tabulated every figure, recomputed every sum and found
+    the figures sound, with two disagreements
+  learning_disposition: candidate_update
+- id: A-23
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-23-crossrefs-sweep.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-three-sweeps-after-the-table-move.md
+  contribution: cross-references, glossary coverage and orphans sweep; followed every pointer literally
+    and found five that no longer resolve and five undefined terms
+  learning_disposition: candidate_update
+- id: A-08
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-23-drift-sweep.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-three-sweeps-after-the-table-move.md
+  contribution: section-by-section drift sweep; reported what each section now says and where it is stale
+    against the rest
+  learning_disposition: candidate_update
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md
+  pdf: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf
+  sweeps: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-three-sweeps-after-the-table-move.md

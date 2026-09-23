@@ -1,0 +1,167 @@
+schema_version: 2
+objective: Recost the online Hour so its price reflects what it actually takes rather than near-in-person
+  hours, returning more to the charity, and then hunt every internal contradiction in the paper judged
+  only against itself.
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: 9031927b797d2c14
+material_task_id: 9031927b797d2c14-2026-09-23T15:52:24.579825+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: route_now
+  reason: adversarial internal-consistency pass over the whole paper with the vault explicitly out of
+    scope; recomputed every sum and raised five contradictions, four of which were real and are fixed
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-recost-the-online-hour-and-hunt-internal-contradictions
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-recost-the-online-hour-and-hunt-internal-contradictions
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-commercial is the exclusion that needs justifying, because this turn changed what the charity
+    keeps on a product from 186 to 335 dollars. It is excluded because the change was Hunter''s own judgement,
+    stated plainly - he said the online hour was carrying too much cost and he wanted more back to the
+    charity - and because the recost was built from his own description of the work rather than composed:
+    0.75 booking, 0.75 preparation, 1.00 delivery. The arithmetic was put in front of him before it was
+    written, and the 2.43-hour difference from the in-person hour reconciles line by line against Appendix
+    C, which the scanner now verifies on every build. head-of-product and head-of-digital were named mandatory
+    by the trigger map and are irrelevant: nothing about what a participant experiences changed, and no
+    website, form or data capture was touched. A-25 and A-08 were excluded because this turn changed figures
+    and consistency, not structure or register.'
+  changes: []
+  unresolved:
+  - D-0140 carries neither the 500 dollar online Hour nor its cost basis, and still records the cap of
+    twenty as absolute on every product; both now disagree with the paper and the record needs a supersession
+    note. The 0.75-hour booking and preparation estimates for the online Hour are founder estimates, not
+    measured time, and the paper does not say so. The Appendix A reference still cannot be followed from
+    a PDF. Hunter's sign-off covers 29 blocks of what are now 147. Jake has not seen this version. The
+    branch is not merged to main.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'The online Hour recosted from 4.93 hours and 351 dollars to 2.50
+  hours and 165 dollars, so at 500 dollars the charity keeps 335 rather than 186. Appendix C now carries
+  both the in-person and online breakdowns, and the scanner verifies both independently. Four internal
+  contradictions closed: a totals figure labelled as preparation, two timeline clashes between sections
+  7 and 8, and a standing commitment the Hour broke. A fifth was checked and rejected: about 1,000 dollars
+  for both components off is correct, because only 2.5 of the report''s 4.92 hours come off; the explanation
+  for that had been lost when the table was trimmed and was restored rather than the number changed. Everything
+  committed in four separate commits as it was verified.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-A-24-internal-contradiction-hunt.md
+specialists:
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-23-A-24-internal-contradiction-hunt.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-A-24-internal-contradiction-hunt.md
+  contribution: adversarial internal-consistency pass over the whole paper with the vault explicitly out
+    of scope; recomputed every sum and raised five contradictions, four of which were real and are fixed
+  learning_disposition: candidate_update
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md
+  pdf: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf
+  contradiction-hunt: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-A-24-internal-contradiction-hunt.md

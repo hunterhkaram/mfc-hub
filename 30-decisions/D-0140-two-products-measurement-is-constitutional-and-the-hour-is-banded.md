@@ -3,7 +3,9 @@ title: "D-0140. Two products, measurement is constitutional, and the Hour is ban
 id: D-0140
 date: 2026-09-18
 status: decided
-superseded_in_part_by: "Hunter Karam, 2026-09-22: the cap of twenty binds Foundations only; the Hour is uncapped"
+superseded_in_part_by:
+  - "Hunter Karam, 2026-09-22: the cap of twenty binds Foundations only; the Hour is uncapped"
+  - "Hunter Karam, 2026-09-23: the Hour is sold online at the same $600, which this record does not carry"
 decided_by: Hunter Karam
 decision_authority: founder, delegated product and pricing authority under K-11
 mfc_topic: pricing
@@ -63,6 +65,45 @@ measurement may be cut on request.
 | **Up to 20** | **$600** |
 | **21 to 50** | **$800** |
 | **Over 50** | **$1,000** |
+
+> **AMENDED, 2026-09-23, by Hunter Karam directly. The manager session is an hour, not 45 minutes**,
+> and it is **never sold on its own**: it pairs with either product, and the managers attend that
+> session too, as participants. Sold alone it would collapse into the Introduction, because the
+> basics would have to be taught first. It is included in the half day, and adds **$300** to the
+> Hour, so **$900** together.
+>
+> **The extra quarter hour moves the half day's costs**: delivery goes from 6.75 to 7.00 hours, the
+> half day from 18.34 hours to **18.59**, its cost from $1,262 to **$1,279**, and the loaded floor
+> from $1,767 to **$1,791**. Hunter's reason for the change: *"I'd rather have an extra 15 minutes."*
+>
+> **AMENDED, 2026-09-23. On delivery format.** The table above applies whether the Hour is
+> delivered in person or online. **The Hour is sold online at the same $600.** Format is a delivery
+> choice, not a product tier: same routine, same facilitator, same follow-up, and the cards are
+> posted when MFC is not in the room.
+>
+> **An earlier form of this amendment priced online at $500.** That is withdrawn. A discount would
+> tell an organisation in Perth that the only version MFC can bring it is the lesser one, and it
+> would price on MFC's cost rather than on the session. **Where an organisation genuinely cannot
+> meet the price, MFC discounts on request, not by default.**
+>
+> **What it costs.** Online takes **2.5 paid hours** against the in-person 4.93: booking, contract
+> and invoicing at 0.75, preparation at 0.75, and the hour itself. With cards posted that is **$190**
+> against **$351**, so at $600 it keeps **$410** rather than $249. The 2.43-hour difference is the
+> travel hour, the 0.68 for setting up and the questions at each end, half an hour less quoting and a
+> quarter less preparation.
+>
+> **The surplus is cross-subsidy, not markup**, and the record should be read that way: it funds
+> in-person delivery to organisations where the trip costs more than the session earns.
+>
+> **What is not settled.** The 0.75-hour booking and preparation figures are founder estimates, not
+> measured time. No online Hour has been delivered or quoted. **Fuel, parking and tolls are not
+> costed anywhere in this record**, so in-person delivery costs more than the figures show. The
+> bands above twenty were built on in-person cost and have not been reworked for online, where cost
+> does not rise with headcount. **The rate is reviewed after the first ten delivered sessions, or by
+> 30 June 2027, whichever is sooner.** Committee ratification remains owed, as for every price here.
+>
+> The current position is carried in
+> `60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md`, section 4 and Appendix C.
 
 **$1,000 is a ceiling, not a band.** At a flat $600 the Hour fell below cost at a hundred people. The
 ceiling holds above floor to about 312 people, sits under the nearest published comparator at $1,199,

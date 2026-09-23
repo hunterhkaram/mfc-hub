@@ -1,0 +1,192 @@
+schema_version: 2
+objective: 'Hunter: we need emails somehow, unsure how we do it, just so we can get in contact with people
+  and send reminders for form completion.'
+task_session_id: bff32e54-09cf-446a-a6d3-6049140f4d7b
+material_prompt_fingerprint: fc9a65f72cc3f5e2
+material_task_id: fc9a65f72cc3f5e2-2026-09-23T14:01:50.097192+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: route_now
+  reason: 'head-of-digital: where the list lives, what enforces the never-merged rule, what deletes it,
+    and whether the sending tool becomes a second copy'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: route_now
+  reason: 'head-of-delivery: how an address is actually collected in a live room, and why the client must
+    not be the one who sends the reminder'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: reuse_current_evidence
+  reason: 'head-of-compliance''s front-page work earlier in this session, reused for the participant-facing
+    disclosure the two heads had to keep: the list exists, is kept apart from the answers, has one named
+    user, and is deleted at 90 days'
+  applicability_reason: 'head-of-compliance''s front-page work earlier in this session, reused for the
+    participant-facing disclosure the two heads had to keep: the list exists, is kept apart from the answers,
+    has one named user, and is deleted at 90 days'
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-2026-09-23-how-mfc-collects-and-holds-participant-emails
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-2026-09-23-how-mfc-collects-and-holds-participant-emails
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'The screen that mattered here was whether to run anyone at all, because the question Hunter asked
+    was already ruled on. 25-EMAIL-CAPTURE-RULING.md, dated 2026-09-15, permits collection for the sole
+    purpose of sending a form link and names four build conditions. Citing it and stopping was the tempting
+    answer and would have been wrong: the ruling says MFC MAY collect an address and is silent on how,
+    which is the entire content of Hunter''s question. Both heads were run without being shown each other''s
+    brief and landed on the same design as the ruling, which is stronger confirmation than re-reading
+    the ruling could ever be, and both then found defects the ruling did not contain. lens-debra-fidler
+    was reconsidered and excluded because it ran two turns earlier on this same material and its finding,
+    that the email list was undisclosed, is what prompted this question; running it again would have reported
+    its own output back. head-of-compliance was reused rather than executed because the participant-facing
+    wording it wrote this morning is a constraint on the answer rather than a question for it, and the
+    two genuinely new compliance questions the heads surfaced are recorded as open for it rather than
+    answered here.'
+  changes: []
+  unresolved:
+  - 'What happens to a withdrawal email once actioned is open and is head-of-compliance''s: the proposed
+    rule is act on it, delete the response, then delete the email and its thread, but whether MFC must
+    retain proof a withdrawal was honoured is unconfirmed. The facilitator script has not been past lens-eimear-quigley
+    and what is said aloud in a room is her territory. The client no-chase contract clause is a draft
+    for Bird and Bird rather than a finished term. AG-007 remains the most exposed open item in the set
+    and is unrelated to this question. MFC has delivered zero cohorts, so the completion rate this produces
+    is unknown against AG-176''s 15 percent.'
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: 'The two heads produced the operational answer the existing ruling
+  lacked, and agreed without contact. A separate one-field form at the close of the session, riding on
+  the moment Form 3 is already being completed, with the cohort as a hidden parameter and no code field,
+  so the separation is structural rather than procedural: address and response never arrive together and
+  there is no key joining them. head-of-delivery took the client-sends option seriously and rejected it
+  on three specific grounds, the strongest being that the client would then know who completed and who
+  did not, which in a room of eight is a coercion problem MFC cannot see or stop, and which contradicts
+  the never-a-breakdown-by-team promise the consent panel already makes. head-of-digital reframed AG-195''s
+  encryption requirement as access rather than cryptanalysis, on the wording of the quote itself, and
+  rejected client-side encryption, password-protected files and Workspace CSE as invented gates, noting
+  that a file which must be unlocked to send a reminder is a file that gets copied to the desktop. It
+  rejected mail-merge because tracking is on by default in every platform and that is the join path reintroduced
+  by a checkbox, and rejected an Apps Script deletion trigger because a silent failure in a deletion job
+  is indistinguishable from success. Two defects were found. The privacy page said nobody else sees the
+  list while Code.gs requires a second Workspace admin so MFC does not lose its data if Hunter is unavailable:
+  right arrangement, wrong sentence, on wording added the same morning, now fixed to say the list is used
+  by one named person and to explain the second pair of hands as what lets a deletion request survive
+  his absence. And the withdrawal route asks participants to email an address, a code and a cohort in
+  one message, which is exactly the joined record the architecture prevents, landing in an ordinary inbox
+  where nothing governs it.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-A-15-email-capture-in-the-room.md
+specialists:
+- id: A-15
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-23-head-of-delivery-email-capture-in-the-room.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-A-15-email-capture-in-the-room.md
+  contribution: 'head-of-delivery: how an address is actually collected in a live room, and why the client
+    must not be the one who sends the reminder'
+  learning_disposition: no_new_learning
+- id: A-07
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-23-head-of-digital-email-list-storage.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-23-A-07-email-list-storage.md
+  contribution: 'head-of-digital: where the list lives, what enforces the never-merged rule, what deletes
+    it, and whether the sending tool becomes a second copy'
+  learning_disposition: no_new_learning
+outputs_summary:
+  ruling: 60-projects/measurement-strategy-v1/25-EMAIL-CAPTURE-RULING.md
