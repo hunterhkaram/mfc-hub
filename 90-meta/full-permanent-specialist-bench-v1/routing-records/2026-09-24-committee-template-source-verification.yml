@@ -1,0 +1,165 @@
+schema_version: 2
+objective: >
+  Answer Hunter's question directly: is the committee meeting template (minutes/agenda
+  and annual calendar) actually grounded in what Onno spoke about and sent, and in what
+  Jake sent by email/meeting, or does it contain invented content. Re-verify against the
+  real 2026-09-18 Fathom transcript and the Hub action log rather than trust the files'
+  own framing.
+task_session_id: b729055b-379d-4a70-92f6-dbc54f5f67ec
+material_prompt_fingerprint: 2fb75c38c0542ac9
+material_task_id: 2fb75c38c0542ac9-2026-09-24T00:11:17.277268+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): internal procedural template, not buyer/public-facing
+    copy. Screened and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): the verification itself, checking the
+    document against the primary transcript source, was performed directly in this task rather than
+    delegated; no separately-commissioned A-23 review was required for a single-source line-by-line check.'
+- id: A-24
+  disposition: not_relevant
+  reason: 'A-24 (Experimentation and Organisational Learning): no new lesson or control change arose;
+    this was a factual re-check, not a process failure requiring a bound lesson.'
+- id: A-25
+  disposition: route_now
+  reason: 'A-25 (Board and Mission Strategy): committee-process grounding is this role''s domain. Screened
+    in and executed as the primary lens for this task (see below).'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): this is a factual verification returned directly to Hunter,
+    not a candidate artefact being finalised for him; no founder-taste judgement call was in scope.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): single-domain, single-source verification task; no produce/check/revise
+    loop across multiple contributors was required.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): task was routed and executed directly rather than through a multi-head
+    convening; single relevant domain, screened correctly rather than defaulted to.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-committee-template-source-verification
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-committee-template-source-verification
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on verifying document content against a primary meeting transcript, and
+    which would only add volume
+  omissions_challenged:
+  - 'A-23 (Knowledge Engineering and Source Integration) was the exclusion that matters, since this is
+    exactly a source-integration question. Reconsidered and kept excluded as a separate commissioned
+    review because the check itself, reading the transcript line by line against the document''s claims,
+    was already performed directly in this task; commissioning a second pass would have re-run the same
+    single-source comparison rather than added a distinct lens. FL-01 was reconsidered because the answer
+    goes back to Hunter, and excluded because the task is a factual check (does the content trace to a
+    real source), not a taste or acceptability judgement.'
+  changes: []
+  unresolved:
+  - 'The annual calendar''s topic-rotation table remains unsourced pending Jake''s actual draft. Hunter
+    was told directly not to send that document further as-is.'
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; A-25 executed directly, all other domains correctly screened
+    out with reasons stated.
+learning_disposition: no_new_learning
+what_changed_because_a_specialist_ran: >
+  The re-verification (A-25, Board and Mission Strategy) found the 12-section minutes/agenda
+  structure is genuinely traceable to Onno's spoken structural steer in the 2026-09-18
+  transcript (two real templates he walked through live), so that document stands. It also
+  found the annual calendar's specific topic-rotation table (which topics, what frequency,
+  which months) has no traceable source: Jake screen-shared two tables in that same meeting
+  but only described them verbally as "a starting draft list," the actual cell contents were
+  never spoken aloud so they are not in the transcript text, and a Hub action logged as
+  recently as 2026-09-22 still shows "follow up with Jake on the committee-meeting
+  agenda/minutes template he is building" as open and unsent. Hunter was told directly not
+  to send the calendar document further as-is, and to chase Jake for his real draft before
+  that document is rebuilt against actual sourced content.
+no_specialist_execution_reason: null
+specialists:
+- id: A-25
+  execution_mode: same_context_role_lens
+  learning_disposition: no_new_learning
+  outputs:
+    transcript_checked: 10-sources/fathom-transcripts/2026-09-18-jake-onno-hunter-cadence-and-strategy-structure.md
+    hub_action_checked: 90-meta/full-permanent-specialist-bench-v1/routing-records/2026-09-22-committee-profiles-plan-and-jake-template-action.yml
+specialist_evidence: 50-authority/committee-meeting-templates-v1/02-annual-committee-calendar-v1.md
+outputs_summary:
+  verification_answer: 50-authority/committee-meeting-templates-v1/02-annual-committee-calendar-v1.md
