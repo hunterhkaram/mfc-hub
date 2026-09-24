@@ -404,8 +404,11 @@ def unmet_heads(session_id, hook_input):
         # Silence still does not clear a head: the reason must have been given
         # somewhere in this session, which is what the offer in the block message says.
         all_assistant_text = []
+        raw_calls = []  # (tool_use_id, name, input), in transcript order
+        errored_ids = set()
         for line in Path(tp).read_text(encoding="utf-8", errors="replace").splitlines():
-            if '"tool_use"' not in line and '"text"' not in line:
+            if ('"tool_use"' not in line and '"text"' not in line
+                    and '"tool_result"' not in line):
                 continue
             try:
                 entry = json.loads(line)
@@ -417,12 +420,22 @@ def unmet_heads(session_id, hook_input):
             texts = []
             for block in content:
                 if isinstance(block, dict) and block.get("type") == "tool_use":
-                    calls.append((block.get("name", ""), block.get("input", {})))
+                    raw_calls.append((block.get("id"), block.get("name", ""), block.get("input", {})))
                 elif isinstance(block, dict) and block.get("type") == "text" and entry.get("type") == "assistant":
                     texts.append(str(block.get("text", "")))
+                elif isinstance(block, dict) and block.get("type") == "tool_result" and block.get("is_error"):
+                    errored_ids.add(block.get("tool_use_id"))
             if texts:
                 last_assistant_text = "\n".join(texts)
                 all_assistant_text.append(last_assistant_text)
+        # A tool_use blocked by a hook before it ran (is_error on its own result) is not
+        # execution evidence -- it is the harness refusing the call. Counting it the same as
+        # a call that actually went through contradicts this function's own premise ("evidence
+        # of a tool call, not a record claiming one"). Reproduced 2026-09-24: a fathom-capture
+        # sweep's only Write/Edit/NotebookEdit-shaped call was a single Edit blocked outright by
+        # require_topic_start_receipt.py (is_error: true, nothing written), which still tripped
+        # the no-artefact gate below and demanded three heads for a run that changed no file.
+        calls.extend((name, inp) for tid, name, inp in raw_calls if tid not in errored_ids)
         if is_scheduled_task(prompt) and not any(
                 name in ARTEFACT_TOOLS for name, _ in calls):
             return []  # a sweep that wrote nothing has no work product to review

@@ -65,6 +65,42 @@ amendment_note: "2026-08-06 (D-0085, correction found on re-check): claim-bounda
 11. Avoid discriminatory assumptions about culture, gender, sexuality, race, religion, disability, neurodivergence, socioeconomic position, age, mental health status, or family context.
 12. Make delivery accessible: plain language, flexible participation, sensory considerations, inclusive examples, non-stigmatising wording.
 
+### The evidence under rules 4, 6 and 10 (added 2026-09-24)
+
+Rules 4, 6 and 10 above were written as caution. **They now have a published source behind
+them, and it should be quoted rather than paraphrased**, because "we are being careful" is a
+weaker position than "the authors of the review say this."
+
+Boyd, Lanius and McKinnon (2018), reviewing mindfulness-based treatments for PTSD
+(*Journal of Psychiatry and Neuroscience* 43(1):7-25), state that mindfulness-based approaches:
+
+- **may increase distress or destabilise patients prone to flashbacks, rumination or easily
+  triggered trauma memories**;
+- **can be triggering for survivors of physical or sexual abuse**;
+- may be difficult for people without emotion-regulation or distress-tolerance skills;
+- **require a paced approach with fully informed consent.**
+
+**What this changes in practice — nothing MFC does, and everything about why.** Contemplative
+attention practices are already never forced (rule 6), calm is already never the goal (rule 9),
+and opt-out and pacing are already required (rule 4). This section exists so that anyone asked
+*why* can answer with the source instead of with an instinct.
+
+**What it does NOT license.** MFC must not describe its own sessions as carrying this risk, and
+must not describe them as free of it. Boyd is a narrative review of **treatment for a diagnosed
+clinical population**, with no stated search method, no pooled estimate and no risk-of-bias
+assessment, and MFC holds it as a documented exclusion for exactly that reason. It grounds a
+precaution; it measures nothing about a non-clinical education session.
+
+**A participant may be carrying a trauma history MFC does not know about and has no way to ask
+about.** That is the real reason the rule is not "screen people out" but "never require the
+practice, always offer the exit." It also converges with `AG-014` (Debra Fidler, 2026-07-20):
+an anonymous pre-screening form cannot surface someone who is unwell without realising it.
+
+**Owed to a qualified human.** This paragraph is drawn from a paper MFC screened out, not from
+clinical advice. **Eimear Quigley should confirm the wording before it is relied on in any
+participant-facing or buyer-facing document.** Until she does, it governs MFC's internal caution
+only, and nothing here is clinical clearance.
+
 ## Category-confidence rule (added 2026-08-05, provisional, on Hunter product approval)
 
 **Authority and status, stated precisely, same pattern as K-07's Radar and Stop-Shift-Do/Mental-Rep

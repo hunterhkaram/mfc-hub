@@ -1,0 +1,181 @@
+schema_version: 2
+objective: Make the three-axis contradiction sweep a permanent part of the pre-send read for board papers,
+  and verify that the market, competitor and opportunity research is accurately represented in the consolidated
+  strategy.
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: e079a62f0abd8bc7
+material_task_id: e079a62f0abd8bc7-2026-09-24T10:37:24.873366+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: route_now
+  reason: source-fidelity check of every market claim against the live census, run as head-of-research;
+    found three blocking inaccuracies including one added the same morning, all re-verified by the session
+    against the source before editing, all applied
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: reuse_current_evidence
+  reason: the three axis-split contradiction readers run earlier tonight, whose findings are applied and
+    whose method this task bound into the board-paper skill
+  applicability_reason: the three axis-split contradiction readers run earlier tonight, whose findings
+    are applied and whose method this task bound into the board-paper skill
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: route_now
+  reason: bounded claims-boundary read, run as head-of-compliance; found one unbounded universal negative
+    about third parties and one scope imprecision in the summary, both applied
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-contradiction-sweep-into-the-skill-and-market-source-fidelity
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-contradiction-sweep-into-the-skill-and-market-source-fidelity
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - A-08 communications and messaging is the exclusion that matters, and it matters more than when this
+    task started. Excluded on the grounds that the question was fidelity rather than persuasion - but
+    the fidelity check changed a headline differentiation number, from ten of 58 open to any adult down
+    to six, and restructured how the six-claim test is presented. That is buyer-facing argument no messaging
+    lens has read. The mitigation is that the change strengthens the claim rather than weakening it and
+    every figure is now sourced, but A-08 should read section 2 before this argument reaches anything
+    buyer-facing, and that is recorded as unresolved rather than closed. A-18 category strategy was reconsidered
+    because the differentiation rests on Stop, Shift, Do's prior art; excluded because the prior-art claims
+    checked out near-verbatim against the source and nothing was reopened. A-11 measurement was reconsidered
+    because the enactment claim is a measurement claim; excluded because H-02 tested it against AG-008
+    and found the process-versus-outcome distinction correctly drawn.
+  changes: []
+  unresolved:
+  - A-08 has not read the rewritten section 2 and the differentiation numbers changed. Jake has not seen
+    this version. The 28 September pre-read deadline is four days away. The corrected audience figures
+    now differ from any earlier document quoting ten of 58, and those documents are not marked superseded.
+    Two gaps a comprehension reader named remain unfilled by Hunter's decision.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'The contradiction sweep is now section 5a of the mfc-board-paper
+  skill, carrying the three rules that made it work, an explicit statement that it does not count against
+  the cap of two adversarial passes, and the instruction to check a paper''s research summary against
+  the source corpus rather than only against itself. Six market-claim corrections were applied: the audience
+  composition replaced with the source''s actual 42 scoped, six open, ten unestablished; the false statement
+  that clinical treatment was outside the census scope replaced with the fact that the census counts one
+  treatment service and it does not publish enactment either; the six-claim test separated from the measurement
+  finding with the arithmetic closed; the fifteen-of-34 comparator caveat carried forward; Appendix A
+  naming both live limits; and two claims fixes, an unbounded universal negative recast as a fact about
+  the material and the summary''s wording aligned to section 2. Contents renumbered and verified against
+  the rendered PDF after the sections shifted.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-24-head-of-research-market-source-fidelity.md
+specialists:
+- id: A-17
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-24-head-of-research-market-source-fidelity.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-24-head-of-research-market-source-fidelity.md
+  contribution: source-fidelity check of every market claim against the live census, run as head-of-research;
+    found three blocking inaccuracies including one added the same morning, all re-verified by the session
+    against the source before editing, all applied
+  learning_disposition: candidate_update
+- id: H-02
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-24-head-of-compliance-claims-boundary.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-24-head-of-compliance-claims-boundary.md
+  contribution: bounded claims-boundary read, run as head-of-compliance; found one unbounded universal
+    negative about third parties and one scope imprecision in the summary, both applied
+  learning_disposition: candidate_update
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md
+  pdf: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf
+  skill: .claude/skills/mfc-board-paper/SKILL.md
