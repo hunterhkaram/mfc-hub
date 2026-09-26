@@ -72,11 +72,12 @@ them, and it should be quoted rather than paraphrased**, because "we are being c
 weaker position than "the authors of the review say this."
 
 Boyd, Lanius and McKinnon (2018), reviewing mindfulness-based treatments for PTSD
-(*Journal of Psychiatry and Neuroscience* 43(1):7-25), state that mindfulness-based approaches:
+(*Journal of Psychiatry and Neuroscience* 43(1):7-25, full text PMC5747539), caution, citing
+earlier clinical work (Frewen and Lanius), that in a PTSD treatment population mindfulness-based approaches:
 
 - **may increase distress or destabilise patients prone to flashbacks, rumination or easily
   triggered trauma memories**;
-- **can be triggering for survivors of physical or sexual abuse**;
+- **may be triggering for survivors of physical or sexual abuse**;
 - may be difficult for people without emotion-regulation or distress-tolerance skills;
 - **require a paced approach with fully informed consent.**
 

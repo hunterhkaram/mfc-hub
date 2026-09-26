@@ -49,7 +49,8 @@ def latest_material_route(session_id, log_path=LOOP_LOG):
             continue
         if (record.get("hook_id") == "MFC-ROUTE-A"
                 and record.get("session_id") == session_id
-                and record.get("verdict") == "MFC_MATERIAL"):
+                and record.get("verdict") == "MFC_MATERIAL"
+                and not is_system_injected(record.get("prompt_text"))):
             return record
     return None
 
@@ -300,6 +301,19 @@ def self_test():
     assert is_system_injected(misfire)
     assert not is_system_injected("Draft a headline for the pricing page")
 
+    # 2026-09-26 regression: verbatim opening of a subagent hand-back that minted a task id.
+    handback = ('<agent-message from="ac53c0e641067cf4d">\n[Subagent hand-back] The text below is '
+                'the final report of a subagent this session delegated to. ... committee ... pricing')
+    assert is_system_injected(handback)
+    log = Path(tempfile.mkdtemp()) / "loop.jsonl"
+    log.write_text(
+        json.dumps({"hook_id": "MFC-ROUTE-A", "session_id": "s", "verdict": "MFC_MATERIAL",
+                    "prompt_text": "try and break them and then rebuild", "material_task_id": "real"}) + "\n"
+        + json.dumps({"hook_id": "MFC-ROUTE-A", "session_id": "s", "verdict": "MFC_MATERIAL",
+                      "prompt_text": handback, "material_task_id": "handback"}) + "\n",
+        encoding="utf-8")
+    assert latest_material_route("s", log)["material_task_id"] == "real"
+
     # 2026-09-07 regression, from the real daily Fathom sweep that blocked on six heads.
     # This is the VERBATIM opening of the scheduled task file, whose meeting-selection
     # vocabulary -- committee, advisor, workshop, social -- was read as subject matter.
@@ -448,8 +462,11 @@ def unmet_heads(session_id, hook_input):
         return []
 
 
+# "<agent-message" / "[Subagent hand-back]": 2026-09-26, five parallel lens reports each minted a
+# material task id, and the Stop hook then demanded a record for the last report, not Hunter's prompt.
 SYSTEM_INJECTED = ("[SYSTEM NOTIFICATION - NOT USER INPUT]", "<task-notification>",
-                   "I hit my usage limit while you were working")
+                   "I hit my usage limit while you were working",
+                   "<agent-message from=", "[Subagent hand-back]")
 
 
 def is_system_injected(prompt_text):

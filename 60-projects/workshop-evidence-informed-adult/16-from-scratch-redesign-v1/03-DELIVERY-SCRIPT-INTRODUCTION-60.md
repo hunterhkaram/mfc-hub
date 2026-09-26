@@ -405,40 +405,45 @@ disclosure, so ruling 17 is untouched.*
 > minutes, it will never once happen at twenty to four on a Wednesday. It isn't available.
 > Pretending it is, is why this stuff gets binned.
 >
-> So what's available? Two doors, both small. Shift your state, or shift your thinking.
+> So what's available? You can shift your state, or you can shift your thinking.
 >
 > **A state you're stuck in — tense, flooded, checked out, foggy — isn't a fixed fact about the
-> moment. It's a pattern you fell into, and patterns can be interrupted.** And you can interrupt one
-> four ways. **I'm going to show you all four, and I'm not going to make you do any of them.**
+> moment. It's a pattern you fell into, and patterns can be interrupted.** There are four ways in.
+> **I'm going to show you all four, and I'm not going to make you do any of them.**
 >
-> **Through your body.** The state usually shows up there first — tight shoulders, jaw, shallow
-> breathing. Feet on the floor. One slower breath. Stand up and stretch. Step outside for a minute.
-> **Changing something physical can move it, sometimes faster than trying to think your way out.**
+> **Body.** Change what your body is doing, or where your senses are — it can bring you down or bring
+> you up. The state usually shows up there first — tight shoulders, jaw. Feet into the floor. Drop
+> your shoulders. Cold water on your hands. Stand up and shake it out. Look around the room and let
+> your eyes land on something. Listen for three sounds. A slower breath is one option, never the
+> required one. **Changing something physical can move it, sometimes faster than trying to think
+> your way out.**
 >
-> **Through your attention.** Your attention can really only hold one thing properly at a time. Name
-> three things you can see. Find the furthest sound you can hear, then the closest. **That can make
-> space between you and whatever had hold of you, without you having to solve anything first.**
+> **Thinking.** Read it differently. Sometimes it isn't in your body, it's in how you're reading the
+> moment. What would I tell a mate right now? What else could be going on?
 >
-> **Through your thinking.** Sometimes it isn't in your body, it's in how big the problem feels.
-> Zoom out — will this matter in a week. Zoom in — what's the one next thing, not the whole list.
-> Or ask what you'd tell a friend in this spot. **A different question doesn't answer itself. It
-> can give your thinking somewhere else to go for a second.**
+> **Place.** Change what's around you. Phone on charge in another room. Step away from the smoking
+> spot. *"I need ten minutes, then I'm back."*
 >
-> **With other people.** Text one person. Ask for two minutes. Sit near someone without even
-> talking. **Some states are hard to shift alone — not because you're doing it wrong, but because
-> they were never meant to be handled alone.**
+> **People.** Reach someone who isn't part of it. *"Can I vent for two minutes?"* **Some states are
+> hard to shift alone — not because you're doing it wrong, but because they were never meant to be
+> handled alone.**
+>
+> And if it's more than a rough moment, see your GP, or call Lifeline on 13 11 14. In an emergency,
+> call 000.
+>
+> **Shift your body or your thinking. Your place and your people can help you get there.**
 >
 > **And every one of them is answering the same question: too much, too little, or workable?**
 > **Too much, shift down. Too little, shift up.** Already workable, there may be nothing here you
 > need.
 >
-> The point isn't which one. **It's that you have one at all** — because whichever one you can
-> actually reach in the moment is the right one.
+> When you're wound right up, start with Body or Place. Thinking usually works better once there's a
+> bit of space. **The point is that you have one to reach for** — not that there's a right one.
 >
 > The test is one question: **can I do the next thing from here?** That's the bar. Not calm.
 > Workable.
 >
-> And there's a version of that you can ask before you pick a door. **We call it the State Check.**
+> And there's a version of that you can ask before you pick one. **We call it the State Check.**
 > **Is there too much in me right now, too little, or is this workable?** That's it. Not *what* am I feeling — *how much*.
 > You're not scoring it and I'm never going to ask you for your answer.
 >
@@ -449,9 +454,11 @@ disclosure, so ruling 17 is untouched.*
 >
 > **Not just decided. Decided toward what actually matters to you** in that bit of your life.
 
-*⚑ **Fixed 2026-09-10:** two outcome statements in the four doors above were present indicative
-("that makes space", "it gives your thinking somewhere else to go"). Both now read **can**, matching
-"can move it" twelve lines up. Ruling 34, `K-08`, `AG-001`.*
+*⚑ **Rewritten 2026-09-26 (`D-0144`):** the four routes above are now **Body, Thinking, Place and
+People**, with the spoken line and the GP / Lifeline / 000 line beside People. The earlier
+"two doors" framing is no longer said aloud, and the attention route (and its "name three things"
+example) is retired. The 2026-09-10 fix still holds: no outcome statement in the routes is present
+indicative — "can move it" stays **can**. Ruling 34, `K-08`, `AG-001`.*
 
 **[D — Q1 ruling, Hunter, 2026-09-08. The honest statement. ⛔ NEVER replaced with a staged exercise]**
 > And I'll be straight with you about something most sessions like this fudge. **You can't do a Do

@@ -273,7 +273,7 @@ what you're feeling, you can nearly always change what you're doing."* by demons
 > Through **connecting**, the way in is somebody else. Walk to a desk. Say the one sentence.
 > **Some states are hard to shift alone.**
 >
-> **Four doors, one moment. When one is jammed, another one usually is not.**
+> **Four sides to one moment. When one is jammed, another one usually is not.**
 
 ### ⛔ The five skills, worked. This is the product difference and it is not cut.
 
@@ -404,7 +404,7 @@ the honest limit on everything above.]**
 
 ## BEAT 9 · Stop, Shift, Do. And the unit ⛔ **NEVER CUT**
 
-**CARRIED in full** — Stop, Shift, the four shift categories spoken through with examples, the
+**CARRIED in full** — Stop, Shift, the four Shift routes (Body, Thinking, Place, People) spoken through with examples, the
 too-much-too-little-workable question, the State Check named aloud, Do, the honest *you cannot do a
 Do in this room*, the phone as the rep they have already done, and the unit.
 
@@ -426,10 +426,12 @@ because the Hour never asks anyone to perform anything. Essentials does, at beat
 facilitator the room's trust at the exact moment the product's one differentiator runs.** Found by
 the adversarial pass, 2026-09-09.*
 
-**⛔ The four shift categories are the live website ones: through your body, through your attention,
-through your thinking, with other people** (ruling 29e). `K-07` and `D-0083` still record the older
-names and the website marks its own wording as a copy trial. **A decision record is owed on this and
-it is now going into a second delivered product.** See Open item 2.
+**⛔ The four Shift routes are Body, Thinking, Place and People** (ruling 29e, `D-0144`, locked
+2026-09-26). Spoken through at beat 9 exactly as the Hour does it, with the line *"Shift your body or
+your thinking. Your place and your people can help you get there."* and the GP / Lifeline / 000 line
+said beside People, never inside it. **Teaching rule:** when you're wound right up, start with Body or
+Place; Thinking usually works better once there's a bit of space. Live demonstration pair is **Body +
+Thinking**. Never say "doors" about the routes aloud.
 
 **[E — the State Check worked. Card 26 d2. In the Hour it is named and defined; here it gets what
 too much and too little actually feel like, and one worked check-in.]**
@@ -561,22 +563,23 @@ to end, of which one is silence. Uninterrupted, and never cut.]**
 >
 > *(Fifteen seconds.)*
 >
-> Now pick one of the four. **Through your body, through your attention, through your thinking, or
-> with other people.** Pick the one you could actually have reached in that moment, not the best
-> one. **If it needs ten minutes and a quiet room, it is the wrong one.**
+> Now pick one of the four. **Body, Thinking, Place or People.** Pick the one you could actually have
+> reached in that moment, not the best one. If you were wound right up, Body or Place is usually the
+> easier place to start. **If it needs a quiet room and nobody around, it is probably not the one for that moment.**
 >
 > *(Ten seconds.)*
 >
 > Now do it. **Here, now, sitting where you are — and do it so that nobody could tell which one you
 > picked.** Everything on that list has a version that happens where nobody can see it. If you
-> picked the body, it is one slower breath, or your feet flat, not a stretch. If you picked
-> attention, find three things you can see and the furthest sound you can hear, without moving your
-> head much. If you picked thinking, ask yourself the different question. If you picked other
-> people, work out who it would be and what the one sentence is — **you are not sending anything
-> now.**
+> picked Body, it is your feet into the floor, your shoulders dropping, or listening for three
+> sounds without moving your head much — not a stretch. If you picked Thinking, ask yourself what
+> you'd tell a mate right now, or what else could be going on. If you picked Place, work out where
+> you would have gone or what you would have moved — **you are not going anywhere now.** If you
+> picked People, work out who it would be and what the one sentence is — **you are not sending
+> anything now.**
 
 *⛔ **Corrected 2026-09-09 after the exposure gate.** The previous version instructed the visible
-routes — *"roll the shoulders"*, *"stand up"* — which told the person beside you which door you
+routes — *"roll the shoulders"*, *"stand up"* — which told the person beside you which route you
 picked, and therefore that you were not workable. **In a room whose own risk model is "a colleague
 hears it, a manager remembers it," that is disclosure with a different name.** The breath at beat 4
 is safe because everyone does the identical thing; this beat now works the same way. ⚑ The visible
@@ -1108,10 +1111,9 @@ has ever existed. Its numbering is superseded. Its content was never replaced.**
    refuses exactly that with no product qualification. **Hunter's call. The card set is a published
    artifact with no vault record and is one of the four files `22` lists as carrying no supersession
    marking.**
-2. **The four shift categories are the website's copy trial, not `K-07`'s locked names** (ruling
-   29e). `K-07` and `D-0083` still record Move it / Zoom in or out / Ask a different question /
-   Bring someone in. **The decision record is owed and this is now the second delivered product
-   using the trial wording.**
+2. ~~**The four shift categories are the website's copy trial, not `K-07`'s locked names.**~~
+   **CLOSED 2026-09-26 by `D-0144`:** the routes are Body, Thinking, Place and People, and this
+   script now uses them (beat 9 carried from the Hour, beat 11's silent practice).
 3. **Recovery 4 says elicit-before-explain requires writing. Ruling 7 says nobody writes
    anything.** I ran the device silently and did not create a writing surface for it. **The
    disagreement is real and it is with `22-THE-PARTICIPANT-FOUNDATION.md`, not with me** — recovery

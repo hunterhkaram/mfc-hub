@@ -574,19 +574,30 @@ perform, which is not optional in any product that contains practice:
 > Shift, on a moment that already happened to you, sitting exactly where you are. That one works in
 > here. The Do is the one that only happens out there.
 
-⛔ **The four shift categories are the four on the live website** (ruling 29e): **through your body,
-through your attention, through your thinking, with other people**, all answering too much, too
-little, or workable. ⚠ `K-07` and `D-0083` still record *Move it / Zoom in or out / Ask a different
-question / Bring someone in*, and the website marks its own wording as a copy trial. **A decision
-record is owed and this is now the third delivered product using the trial wording.** Open item 2.
+⛔ **The four Shift routes are Body, Thinking, Place and People** (ruling 29e, `D-0144`, locked
+2026-09-26), all answering too much, too little, or workable. Said to the room: *"Shift your body or
+your thinking. Your place and your people can help you get there."* The GP / Lifeline / 000 line sits
+beside People, never inside it: *"If it's more than a rough moment, see your GP, or call Lifeline on
+13 11 14. In an emergency, call 000."* Never say "doors" about the routes aloud.
 
 **Foundations widens three things.**
 
-`[F` card 34b `d3]` **The full menu with worked examples per category, the up and down direction for
-each, and the case where you have not got the tool.** Too much shifts down, too little shifts up.
+`[F` card 34b `d3]` **All four routes with worked examples, the up and down direction for each, and
+the case where you have not got the one you'd reach for.** Too much shifts down, too little shifts up.
 ⛔ **Up is as legitimate as down** (`[v3` R10`]`): if you are flat, lifting is a shift. Essentials
-shows the menu and has the room use one. Foundations works every category and then says what you do
+shows the four and has the room use one. Foundations works every route and then says what you do
 when the one you would reach for is not available, which is the case that actually occurs.
+
+| Route | What it is | Worked examples |
+|---|---|---|
+| **Body** | Change what your body is doing, or where your senses are. Up or down. | Feet into the floor. Drop your shoulders. Cold water on your hands. Stand up and shake it out. Look around the room and let your eyes land on something. Listen for three sounds. Breath is one option, never the required one. |
+| **Thinking** | Read it differently. | *"What would I tell a mate right now?"* *"What else could be going on?"* |
+| **Place** | Change what's around you. | Phone on charge in another room. Step away from the smoking spot. *"I need ten minutes, then I'm back."* |
+| **People** | Reach someone who isn't part of it. | *"Can I vent for two minutes?"* |
+
+⛔ **Teaching rule, said aloud:** *"When you're wound right up, start with Body or Place. Thinking
+usually works better once there's a bit of space."* The routes are options people use, never ranked
+as what works. The live demonstration pair is **Body + Thinking**.
 
 `[F` card 26 `d3`, and `[v3` beat 3, the taxonomy`]` **The full rep taxonomy with an example of
 each**, and this is the depth that makes the whole rest of the day legible:
@@ -615,8 +626,9 @@ is not the first time anyone has done anything.
 **What happens.** Each person changes exactly one thing about their state or their thinking, and
 notices what changed, which may be nothing.
 
-**What participants physically do.** Move something, or ask themselves a different question about
-how today is going. One thing. Not a sequence, not a routine.
+**What participants physically do.** One Body change (feet into the floor, shoulders down, listen
+for three sounds) or one Thinking change (*"what else could be going on today?"*). This is the Body +
+Thinking demonstration pair. One thing. Not a sequence, not a routine.
 
 **What the facilitator does.** Sets the boundary at one, names the up direction explicitly, runs
 ninety seconds of silence without narrating it, and debriefs in one sentence:
@@ -834,11 +846,12 @@ the wall.**
 compresses to nothing.**
 
 **What happens.** Each person takes one of their selected moments, puts it back in their head, finds
-where the catch was, picks one of the four shift categories, and does it, sitting where they are.
+where the catch was, picks one of the four routes, and does it, sitting where they are.
 
-**What participants physically do.** Sit. Think. Then actually do the shift: feet on the floor and
-one slower breath, or three things they can see and the furthest sound they can hear, or ask
-themselves the different question, or work out who the person is and what the one sentence would be.
+**What participants physically do.** Sit. Think. Then actually do the shift, in a version nobody can see:
+Body (feet into the floor, shoulders dropping, listening for three sounds), Thinking (*"what would I
+tell a mate right now?"*), Place (working out where they would have gone or what they would have
+moved), or People (working out who the person is and what the one sentence would be).
 A full minute. Eyes down or closed if they prefer.
 
 **What the facilitator does.** Walks it in four short steps with a silence after each. **Does one
@@ -1708,8 +1721,8 @@ manager is never excluded from a room containing their own reports** (ruling 27,
 1. **The organisational plan.** Card 43 says a third of the session; ruling 28, ruling 29, `D-0110`
    and `[v3` §6`]` say it lives nowhere in this product. **Followed the rulings. Hunter's call, and it
    is the biggest one on this list.**
-2. **The four shift categories are the website's copy trial, not `K-07`'s locked names** (ruling 29e).
-   **The decision record is owed and this is the third delivered product using the trial wording.**
+2. ~~**The four shift categories are the website's copy trial.**~~ **CLOSED 2026-09-26 by `D-0144`:**
+   Body, Thinking, Place and People, now used throughout this structure.
 3. **Nobody writes anything, against the gallery's "note them if you want to" and the Rep Plan's
    sheet.** Ruling 7's fourth rule is not scoped by product; `26` and `[v3]` both assume writing is
    available at 240. **Ran everything held in the head and said so. Hunter's call**, and it also
