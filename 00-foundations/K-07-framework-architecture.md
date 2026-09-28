@@ -725,6 +725,12 @@ description now names both.**
 > **"Shift is the moment you change something to become workable — you can shift your state, or you
 > can shift your thinking."**
 
+**"Workable" is never used on its own (Hunter direct, 2026-09-27).** The word stays, but wherever a
+reader meets it, a plain explanation sits right beside it: *workable — you have enough room to choose
+what you do next.* This answers Gina's AG-298 (she twice could not parse "workable" standing alone)
+without changing the governed sentence. Applies to every public surface: website, Radar, workshop
+slides and handouts.
+
 At the deep tier, the same sentence explains why **State Regulation** and **Flexible Thinking** are
 two distinct deep skills sitting under one public door. **No locked SSD step wording is changed by
 this.** The Shift step's own definition ("create enough space where useful and available") is already
@@ -1249,9 +1255,22 @@ term**: to users it is simply a **moment**, and its examples appear under **"For
 2. **Wording starts with When, As or On, and names what shows up.** It never names the change wanted
    and never moralises. *"When the urge to ___ hits"*, never *"When I notice the urge"* (noticing is the
    Stop, not the moment).
-3. **Behaviour chips are everyday behaviours plus smoke / vape.** Porn, alcohol, drugs and gambling
-   get **no chip**; they are left to the person's own words ("Something else"). **Nothing
-   self-harm-related**, as a chip or an example.
+3. **Behaviour chips are everyday behaviours plus smoke / vape, at most five plus "Something else".**
+   Drinking, betting, porn and drugs get **no chip**; people write them in their own words and the
+   broad moments cover them (Hunter direct, 2026-09-28, replacing the same-day drink/bet chips:
+   "Someone can manually write those moments in"). Neutral wording, no quit or addiction language.
+   **Nothing self-harm-related**, as a chip or an example.
+3a. **Scope (Hunter direct, 2026-09-28).** Faith and meaning are in scope as a "want more of" moment.
+   Intimacy and sex are **deliberately out of scope** for the public Radar; relationship moments
+   cover closeness without going there. A person can still write their own moment.
+   **Abuse and family or domestic violence are out of scope for curated moments** (Hunter direct,
+   2026-09-28: *"i don't think we add and provide coverage for somethings - people can write their
+   own like that"*). No ready-made moment covers abuse, coercive control or sexual consent; the
+   build fails if one does. Workplace conduct and raising concerns stay in the team bank.
+   Own words are treated like any other moment. The Radar is a practice tool, not a screening
+   tool: it does not try to detect or respond to what people type (Hunter direct, 2026-09-28: *"we're
+   delving too deeply into their lives. That is not the purpose of the radar and truthfully people
+   won't go there for that"*).
 4. **Banned words, anywhere user-facing:** addiction, recovery, quit, cravings, break the habit.
 5. **No new framework terms.** Users see "moments" and "For example", nothing else.
 
@@ -1284,8 +1303,11 @@ separate category taxonomy underneath them. The same route can take you up or do
 | **Place** | Change what's around you. | Phone on charge in another room. Step away from the smoking spot. "I need ten minutes, then I'm back." |
 | **People** | Reach someone who isn't part of it. | "Can I vent for two minutes?" |
 
-On its own line wherever People appears, never inside the route: *If it's more than a rough moment,
+**Workshop and printed materials:** on its own line wherever People appears, never inside the route: *If it's more than a rough moment,
 see your GP, or call Lifeline on 13 11 14. In an emergency, call 000.*
+**Public Radar (Hunter direct, 2026-09-28):** no care line in the flow, on moments or on the People
+route. One footer line sits outside the flow: *MFC is not a clinical service. If you need clinical
+support, see your GP.*
 
 **The spoken line:** *"Shift your body or your thinking. Your place and your people can help you get
 there."*
