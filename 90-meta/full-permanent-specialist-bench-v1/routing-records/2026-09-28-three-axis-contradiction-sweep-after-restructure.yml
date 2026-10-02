@@ -1,0 +1,182 @@
+schema_version: 2
+objective: Confirm the paper flows and does not contradict itself after the restructure, and strip the
+  covering email back to what Jake actually asked for.
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: 6b7e64bf591d476a
+material_task_id: 6b7e64bf591d476a-2026-09-28T21:49:11.574138+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: route_now
+  reason: what MFC claims and sells; found the cold-selling contradiction and the email-list contradiction,
+    both quoted on both sides
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: route_now
+  reason: structure, ownership and focus areas after the restructure; clean, with propagation confirmed
+    across sections 5, 6, 11 and Appendix D
+- id: A-24
+  disposition: route_now
+  reason: whether the paper reads as one argument after a day of surgical edits; found repetition, proportion
+    and a flat ending, of which the ending was taken
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-three-axis-contradiction-sweep-after-restructure
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-three-axis-contradiction-sweep-after-restructure
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - 'head-of-commercial is the exclusion that matters, because the contradiction found goes to how MFC
+    says it sells: the paper committed to never selling cold in two places and a glossary definition while
+    modelling two hundred cold approaches for a fifth of the year''s delivery. That is a commercial position,
+    not a wording slip. Excluded because the position was settled by Jake in the recorded session, in
+    his own words about stabbing in the dark at low conversion, and endorsed in his guidance to cast the
+    widest possible net; the task was to make the paper say what he and Hunter decided, not to form a
+    commercial view. The funnel arithmetic has been recomputed four times. head-of-marketing was reconsidered
+    because the second contradiction concerns what feeds the email list and therefore the lead narrative;
+    excluded because the correction aligns the summary to the body''s existing route table and changes
+    no channel decision. head-of-movement remains excluded as in the two prior tasks, the category language
+    being quoted from MFC''s own strategy rather than paraphrased.'
+  changes: []
+  unresolved:
+  - The email is drafted and unsent, addressed to Onno alone rather than Onno and Jake, which Hunter should
+    confirm. The PDF is not attached. Onno's permission to send is the gate. Gina cannot attend on 12
+    October and asked for material by 8 October, with nothing scheduled against it. Two of the flow reader's
+    findings were declined and could be revisited if Hunter reads the same redundancy. Three sweeps today
+    have each returned findings; each followed a change, but that pattern is worth watching rather than
+    assuming it has ended.
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: 'Two contradictions fixed, both created by today''s own work. The
+  paper no longer claims MFC never sells cold while modelling two hundred cold approaches: section 5,
+  section 6''s commitments and the glossary now say warm first, with cold alongside at lower expectations,
+  which is what Jake actually said. The executive summary no longer claims warm approaches feed the email
+  list when section 7 assigns that to social, the website and the Radar. Appendix D no longer ends the
+  paper on the one focus area being held steady. Separately the covering email was stripped to Jake''s
+  spoken shape after Hunter said it carried rationale nobody asked for: the justifications, the note that
+  risks and pricing were untouched, and the explanation of Rob''s likely question are gone.'
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-23-contradiction-sweep-structure.md
+specialists:
+- id: A-23
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-28-A-23-contradiction-sweep-structure.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-23-contradiction-sweep-structure.md
+  contribution: structure, ownership and focus areas after the restructure; clean, with propagation confirmed
+    across sections 5, 6, 11 and Appendix D
+  learning_disposition: candidate_update
+- id: A-08
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-28-A-08-contradiction-sweep-claims.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-08-contradiction-sweep-claims.md
+  contribution: what MFC claims and sells; found the cold-selling contradiction and the email-list contradiction,
+    both quoted on both sides
+  learning_disposition: candidate_update
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-28-A-24-contradiction-sweep-flow.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-24-contradiction-sweep-flow.md
+  contribution: whether the paper reads as one argument after a day of surgical edits; found repetition,
+    proportion and a flat ending, of which the ending was taken
+  learning_disposition: candidate_update
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf
+  draft: Gmail draft, Consolidated strategy - a few changes before it goes out

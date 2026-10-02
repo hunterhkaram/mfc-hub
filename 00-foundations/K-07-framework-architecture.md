@@ -1132,6 +1132,14 @@ separate claim.
 
 Prompt: *"Think about the person you are trying to become in this season of life."* — then 1–3 moments to handle better, 1–3 to experience more fully.
 
+**Radar tool record sync, 2026-09-29 (Hunter-approved Radar rebuild; no `D-` record; K-11 delegated product authority, committee ratification owed).** The shipped Radar tool records three decisions this section must not contradict:
+
+- **Size: 5 recommended, 12 maximum.** The tool recommends five moments and allows up to twelve. This is a product-design assumption, consistent with the direction of the evidence (fewer plans help more) but not an evidence-validated number (`D-0010`). The "1–3 per strand" guidance above remains the teaching guidance; the tool does not enforce it.
+- **Next-move form.** Each moment on a Radar reads *"When [moment] → I'll [next move]"*. The next move is the **Do** of Stop, Shift, Do: the rep's defining step, "choosing your next move, on purpose, toward what matters". For *handle better* moments only, an optional line may add a Shift route example (*"If I'm wound up first: [Body / Thinking / Place / People example]"*, `D-0144`). *Experience more fully* moments carry no Shift line. Where no good next move exists for a moment, the field is left empty for the person to write, never filled with a generic example. Team moments that are structural (hazards, process, workload) get structural next moves (raise it, put it in writing to whoever owns it), never an individual Shift, per the binding constraint below.
+- **User-facing strand label.** The construct stays *handle better / experience more fully*. The tool's user-facing label for the second strand is **"make the most of"** (relabel only, construct unchanged; replaces the drifted "want more of"). Not yet tested on an outside reader.
+
+Downstream: `radar-content-v2.1.json`, `broad-moments-spec.md` §2k, the Radar widget build, `pages/21-radar.md`.
+
 ### Personal and shared moments — added 2026-08-03, provisional
 
 **Authority and status, stated precisely.** Hunter approved this into the workshop product and
@@ -1176,6 +1184,34 @@ awaiting their own review; only the ownership-layer structure enters the product
 > adopted" position above is superseded by the starter Radars below. The paragraph is kept as
 > history. The Team Pulse → Team Radar Snapshot pathway and the societal layer remain not adopted.
 
+> **Partly superseded, 2026-10-01 (Hunter direct; CURRENT; committee ratification owed).** The
+> "two ownership layers" line above becomes **three Radars, split by who owns them**:
+>
+> - **My Radar.** Built alone, across every area of life, including my side of relationships and
+>   work. Worded "When… → I'll…". Private. The public default.
+> - **Our Radar.** Named people who each agree every moment together. Worded "When we… → We'll…".
+>   Never set up by one person on another's behalf. No one's private moments are shown to another.
+>   Anyone can step away at any time.
+> - **Team Radar.** A team or group agrees its shared moments together. Group voice. About how the
+>   group works, never about any one person.
+>
+> **Access.** Our and Team Radars are self-serve, not workshop-only. A manager may open a Team
+> Radar for their team (Hunter: "if a manager wants to look at the radar they should be able to
+> access it for the team... same for two people"). For a manager-opened Team Radar: the team agrees
+> the moments together; no individual scoring, ranking or monitoring; no record of who chose what;
+> structural issues get structural next moves, never a personal fix; personal moments stay private.
+> Every binding constraint above still applies.
+>
+> **Still true.** "Not one Radar per role": My Radar covers work and home in one. Both strands, the
+> enabling conditions and the next-move form apply in all three. The Team Pulse → Team Radar
+> Snapshot pathway and the societal layer remain not adopted; a Team Radar is chosen together, not
+> surveyed.
+>
+> **Coverage rule (Hunter, 2026-09-30).** Every life area aims for 5 broad moments, or however many
+> it needs. The ceiling is 6. An area that needs 7 or more is reviewed and consolidated back to 6 at
+> most, aiming for 5. Specific moments stay as "for example" prompts. Coverage means every life
+> area, not every life moment.
+
 ### Starter Radars — added 2026-09-27, provisional
 
 **Authority and status.** Hunter direct, 2026-09-27. No `D-` record. Adopted into the product under
@@ -1209,7 +1245,7 @@ Moment-level content, id migration and Shift sets:
 
 1. **Every moment is editable.** The person can keep, swap or remove any moment.
 2. **Nothing is active until the person confirms it.** Pre-ticked means suggested, not chosen.
-3. **The 1–3 per strand guidance above still applies** to what the person confirms.
+3. **The 1–3 per strand guidance above still applies** to what the person confirms. *(Record sync 2026-09-29: the tool recommends 5 moments and caps at 12, and each confirmed moment carries a next move (the Do) in the form "When [moment] → I'll [next move]"; see the Radar section above. The 1–3 guidance is teaching guidance the tool does not enforce.)*
 4. **Every moment is tagged with its strand:** handle better, or experience more fully.
 5. **A moment is a when-and-where cue, written in the first person** (e.g. "When I get home and
    walk through the door"). It is never a trait ("being more patient"), a value ("family comes
@@ -1260,7 +1296,7 @@ term**: to users it is simply a **moment**, and its examples appear under **"For
    broad moments cover them (Hunter direct, 2026-09-28, replacing the same-day drink/bet chips:
    "Someone can manually write those moments in"). Neutral wording, no quit or addiction language.
    **Nothing self-harm-related**, as a chip or an example.
-3a. **Scope (Hunter direct, 2026-09-28).** Faith and meaning are in scope as a "want more of" moment.
+3a. **Scope (Hunter direct, 2026-09-28).** Faith and meaning are in scope as an *experience more fully* ("make the most of") moment.
    Intimacy and sex are **deliberately out of scope** for the public Radar; relationship moments
    cover closeness without going there. A person can still write their own moment.
    **Abuse and family or domestic violence are out of scope for curated moments** (Hunter direct,

@@ -1,0 +1,168 @@
+schema_version: 2
+objective: Implement the three changes Jake raised in the 28 September review of the consolidated strategy,
+  verify them against the version Onno approved, and prepare the covering email to Onno and Jake.
+task_session_id: 18d0d973-758e-41ee-9afb-ab6b67370b81
+material_prompt_fingerprint: 58014f2a7af80a90
+material_task_id: 58014f2a7af80a90-2026-09-28T19:52:05.968362+10:00
+coverage_screen_source: null
+bench_relevance_screen:
+- id: A-07
+  disposition: not_relevant
+  reason: 'A-07 (UX and Information Architecture): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-08
+  disposition: not_relevant
+  reason: 'A-08 (Communications and Messaging): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-09
+  disposition: not_relevant
+  reason: 'A-09 (Behavioural and Social Context): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-12
+  disposition: not_relevant
+  reason: 'A-12 (Accessibility, Inclusion and Safeguarding): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-14
+  disposition: not_relevant
+  reason: 'A-14 (Brand and Creative Direction): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-10
+  disposition: not_relevant
+  reason: 'A-10 (Learning and Behaviour Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-11
+  disposition: not_relevant
+  reason: 'A-11 (Measurement, Evaluation and Insights): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-13
+  disposition: not_relevant
+  reason: 'A-13 (Community and Participation Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-15
+  disposition: not_relevant
+  reason: 'A-15 (Implementation and Delivery Design): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: SYS-03
+  disposition: not_relevant
+  reason: 'SYS-03 (Capability Factory and Agent Provisioner): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-16
+  disposition: not_relevant
+  reason: 'A-16 (Habit, Identity and Practice Design): no question in this domain arose in this task.
+    Screened and found absent, not overlooked.'
+- id: A-17
+  disposition: not_relevant
+  reason: 'A-17 (Market, Competitor and Ecosystem Intelligence): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-18
+  disposition: not_relevant
+  reason: 'A-18 (Category Strategy and Strategic Narrative): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-19
+  disposition: not_relevant
+  reason: 'A-19 (Public Health, Prevention and Systems Change): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-20
+  disposition: not_relevant
+  reason: 'A-20 (Impact, Theory of Change and Philanthropy): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-21
+  disposition: not_relevant
+  reason: 'A-21 (Partnerships, Fundraising and Stakeholder Strategy): no question in this domain arose
+    in this task. Screened and found absent, not overlooked.'
+- id: A-22
+  disposition: not_relevant
+  reason: 'A-22 (Audience and Cultural Insight): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-23
+  disposition: not_relevant
+  reason: 'A-23 (Knowledge Engineering and Source Integration): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: A-24
+  disposition: route_now
+  reason: adversarial comparison of the approved version against the amended one, run on Sonnet, briefed
+    on six named checks including whether all thirteen approved April priorities survived the regrouping
+- id: A-25
+  disposition: not_relevant
+  reason: 'A-25 (Board and Mission Strategy): no question in this domain arose in this task. Screened
+    and found absent, not overlooked.'
+- id: A-26
+  disposition: not_relevant
+  reason: 'A-26 (Policy, Government and Systems Engagement): no question in this domain arose in this
+    task. Screened and found absent, not overlooked.'
+- id: H-01
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: H-02
+  disposition: human_boundary
+  reason: Qualified-human boundary. An AI pass may prepare questions and may block on this, and never
+    supplies the clearance itself.
+- id: FL-01
+  disposition: not_relevant
+  reason: 'FL-01 (Founder and Mission Lens): no question in this domain arose in this task. Screened and
+    found absent, not overlooked.'
+- id: SYS-04
+  disposition: not_relevant
+  reason: 'SYS-04 (Loop Engineer): no question in this domain arose in this task. Screened and found absent,
+    not overlooked.'
+- id: SYS-05
+  disposition: not_relevant
+  reason: 'SYS-05 (Chief of Staff): no question in this domain arose in this task. Screened and found
+    absent, not overlooked.'
+coverage_challenge:
+  selector: primary task context
+  selector_context: primary-jakes-three-changes-implemented
+  challenger: A-24 — Experimentation and Organisational Learning
+  challenger_context: challenge-jakes-three-changes-implemented
+  completed_before_execution: true
+  decision_surfaces:
+  - Which roles genuinely bear on this task, and which would only add volume
+  omissions_challenged:
+  - head-of-commercial is the exclusion that matters, because the funnel is now a quantified sales model
+    with stated conversion rates, and it is the part Rob will interrogate as incoming Treasurer. Excluded
+    because the rates are explicitly labelled assumptions with no MFC history behind them, the paper says
+    first-quarter data replaces them, and the structural requirement came from Jake, who holds the commercial
+    brief and raised it himself in the recorded session. Substituting an internal lens for the co-founder
+    who asked for it would add nothing. head-of-framework was reconsidered because the five focus areas
+    rename MFC's own strategic architecture; excluded because Appendix D maps every one of the thirteen
+    approved priorities to its new home, so the regrouping is auditable rather than a redefinition, and
+    no construct or framework term changed. head-of-marketing was reconsidered because section 5's right-hand
+    column is now buyer-adjacent language; excluded because the column describes internal priorities to
+    a committee, not a proposition to a buyer.
+  changes: []
+  unresolved:
+  - 'One self-caught finding is not yet applied: the funnel yields fifteen warm and five cold directly
+    above fifteen Introductions and five half days, two different cuts of the same twenty that a reader
+    will conflate. The fix to sixteen and four is held until the review returns so its findings are not
+    stale. The review itself has not reported. The body has grown from eleven pages to just under twelve,
+    against Hunter''s earlier eleven-page instruction, because he asked for the additions. The covering
+    email to Onno and Jake is not yet drafted. Onno''s permission to send is outstanding and is the gate.'
+  reconciler: SYS-04 — Loop Engineer
+  reconciliation: Coverage retained as screened; contributions recorded as they actually occurred, and
+    exclusions carry stated reasons.
+learning_disposition: candidate_update
+what_changed_because_a_specialist_ran: Three changes from Jake, all applied. Section 5 goes from four
+  focus areas to five, splitting education from evidence, with the right-hand column now summarising the
+  April priorities instead of a one-line placeholder. A new Appendix D maps all thirteen approved priorities
+  onto the five areas so nothing the committee signed off has silently disappeared. The funnel is rebuilt
+  to work backwards from twenty sessions through separate warm and cold pathways with stated rates, warm
+  and cold defined as Jake and Hunter agreed, and the executive summary's hundred-approach figure corrected
+  to three hundred. A paragraph explains why the half day is the main product at a quarter of the volume.
+  Contents rebuilt and verified against the rendered pages, 52 of 52 checks pass, 17 pages.
+no_specialist_execution_reason: null
+specialist_evidence: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-24-old-versus-new-after-jakes-review.md
+specialists:
+- id: A-24
+  execution_mode: bounded_specialist_review
+  task_packet: 90-meta/full-permanent-specialist-bench-v1/routing-records/packets/2026-09-28-A-24-old-versus-new-after-jakes-review.yml
+  outputs:
+    review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-24-old-versus-new-after-jakes-review.md
+  contribution: adversarial comparison of the approved version against the amended one, run on Sonnet,
+    briefed on six named checks including whether all thirteen approved April priorities survived the
+    regrouping
+  learning_disposition: candidate_update
+outputs_summary:
+  paper: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.md
+  pdf: 60-projects/committee-pack-oct-2026/THE-CONSOLIDATED-STRATEGY.pdf
+  review: 90-meta/full-permanent-specialist-bench-v1/routing-records/outputs/2026-09-28-A-24-old-versus-new-after-jakes-review.md
